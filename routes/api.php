@@ -18,7 +18,7 @@ use Illuminate\Support\Facades\Route;
 //     return $request->user();
 // });
 
-Route::get("/tour/popular-tours", 'tourController@popularTours');
+Route::get("/tour/popular-tours", 'App\Http\Controllers\TourController@popularTours');
 
-Route::get("/destination/top-destinations", 'destinationController@topDestinations');
+Route::get("/destination/top-destinations", 'App\Http\Controllers\DestinationController@topDestinations');
 
