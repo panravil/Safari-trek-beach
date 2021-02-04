@@ -1,39 +1,66 @@
 <template>
   <div class="card mb-3 mx-2" id="tour-card">
-    <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light" :style="{
-                'background-image': 'url(' + tourData.image + ')',
-              }">
+    <div
+      class="bg-image hover-overlay ripple"
+      data-mdb-ripple-color="light"
+      :style="{
+        'background-image': 'url(' + tourData.image_url + ')',
+      }"
+    >
       <a href="#">
-        <div class="mask" style="background-color: rgba(251, 251, 251, 0.15)"></div>
+        <div
+          class="mask"
+          style="background-color: rgba(251, 251, 251, 0.15)"
+        ></div>
       </a>
       <div class="tour_title">
         {{ tourData.title }}
       </div>
-      <img :src="'./images/operator_logo.png'" style="width: 100px; height: auto; top: 0px; left: 30px;" class="position-absolute" />
+      <img
+        :src="'./images/operator_logo.png'"
+        style="width: 100px; height: auto; top: 0px; left: 30px"
+        class="position-absolute"
+      />
     </div>
-    <div class="card-body" style="position: relative; border-bottom: 1px dotted black">
+    <div
+      class="card-body"
+      style="position: relative; border-bottom: 1px dotted black"
+    >
       <div class="tag-image">
-        <img v-if="tourData.tagImage == './images/best-review.png'" :src="tourData.tagImage" style="margin-top: -15px; width: 60px; height: auto" />
-        <img v-else-if="tourData.tagImage == './images/bestseller.png'" :src="tourData.tagImage" style="width: 80px; height: auto" />
-        <img v-else :src="tourData.tagImage" style="width: 100px; height: auto" />
+        <img
+          v-if="tourData.tagImage == './images/best-review.png'"
+          :src="tourData.tagImage"
+          style="margin-top: -15px; width: 60px; height: auto"
+        />
+        <img
+          v-else-if="tourData.tagImage == './images/bestseller.png'"
+          :src="tourData.tagImage"
+          style="width: 80px; height: auto"
+        />
+        <img
+          v-else
+          :src="tourData.tagImage"
+          style="width: 100px; height: auto"
+        />
       </div>
       <p class="card-text mb-1">
         <strong> Acommodation: </strong>
-        {{ tourData.acommodation }}
+        No Data
+        <!-- {{ tourData.acommodation }} -->
       </p>
       <p class="card-text mb-1">
         <strong> Tour Type: </strong>
-        {{ tourData.type }}
+        {{ tourData.tour_group }}
       </p>
-      <p class="card-text mb-1">
+      <p class="card-text mb-1 trip-route">
         <strong> Trip Route: </strong>
-        {{ tourData.route }}
+        {{ tourData.start_city }}(Start) ... {{ tourData.end_city }} (End)
       </p>
     </div>
     <div class="row gx-0" style="position: relative">
       <div>
         <p class="card-text mb-1 ps-3">
-          {{ tourData.company }}
+          {{ tourData.company_name }}
         </p>
         <p class="card-text ps-3">
           <span class="star-rating">
@@ -42,15 +69,22 @@
             <span class="fa fa-star checked"></span>
             <span class="fa fa-star checked"></span>
             <span class="fa fa-star checked"></span>
-            <span><strong>{{ tourData.rating }}</strong></span>
+            <span
+              ><strong>{{ tourData.avg_review }}</strong></span
+            >
             <span> / </span>
-            <span v-if="tourData.reviews == 1">{{ tourData.reviews }} Review</span>
-            <span v-else>{{ tourData.reviews }} Reviews</span>
+            <span v-if="tourData.sum_review == 1"
+              >{{ tourData.sum_review }} Review</span
+            >
+            <span v-else>{{ tourData.sum_review }} Reviews</span>
           </span>
         </p>
       </div>
       <div class="price">
-        <strong><span class="fa fa-dollar"></span>{{ tourData.price }}</strong>&nbsp;<small>pp</small>
+        <strong
+          ><span class="fa fa-dollar"></span
+          >{{ tourData.adult_currency }}</strong
+        >&nbsp;<small>pp</small>
       </div>
     </div>
   </div>
@@ -59,13 +93,12 @@
 <script>
 export default {
   props: {
-    tourData: Object
+    tourData: Object,
   },
   computed: {},
   data() {
-    return {
-    }
-  }
+    return {};
+  },
 };
 </script>
 
@@ -73,10 +106,10 @@ export default {
 #tour-card .price {
   width: 80px;
   color: #0f6d24;
-  right: 15px;
+  right: 5px;
   bottom: 0px;
   top: 0px;
-  padding-left: 15px;
+  padding-left: 5px;
   border-left: 1px dotted black;
   position: absolute;
   font-size: 18px;
@@ -90,7 +123,6 @@ export default {
   position: absolute;
   right: 25px;
 }
-
 
 #tour-card .bg-image {
   background-size: cover;
@@ -131,5 +163,8 @@ export default {
 
 #tour-card.card:hover {
   box-shadow: 0px 1px 13px #666;
+}
+.trip-route {
+  min-height: 50px;
 }
 </style>

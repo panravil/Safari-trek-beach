@@ -23,6 +23,13 @@ class TourController extends Controller
 
         // dd($popularPackges);
 
-        return $popularPackges;
+          return response()->json(
+            [
+                'popularTour' => $popularPackges
+            ],
+            200,
+            [],
+            JSON_UNESCAPED_UNICODE
+        );
     }
 }

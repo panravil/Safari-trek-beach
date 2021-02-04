@@ -17,12 +17,16 @@ class DestinationController extends Controller
     }
 
     public function topDestinations() {
-        
+
         $destinations        = Destination::allDestinations();
         $popularDestinations = array_slice($destinations, 0, 12);
-
-        // dd($popularDestinations);
-
-        return $popularDestinations;
+          return response()->json(
+            [
+                'topDestinations' => $popularDestinations
+            ],
+            200,
+            [],
+            JSON_UNESCAPED_UNICODE
+        );
     }
 }

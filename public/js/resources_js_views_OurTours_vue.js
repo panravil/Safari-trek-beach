@@ -18739,6 +18739,40 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   props: {
     tourData: Object
@@ -18773,140 +18807,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _syncfusion_ej2_vue_buttons__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @syncfusion/ej2-vue-buttons */ "./node_modules/@syncfusion/ej2-vue-buttons/src/chips/chiplist.component.js");
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 //
 //
 //
@@ -19672,7 +19572,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n#tour-card .price {\n  width: 80px;\n  color: #0f6d24;\n  right: 15px;\n  bottom: 0px;\n  top: 0px;\n  padding-left: 15px;\n  border-left: 1px dotted black;\n  position: absolute;\n  font-size: 18px;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n}\n#tour-card .tag-image {\n  top: -12px;\n  position: absolute;\n  right: 25px;\n}\n#tour-card .bg-image {\n  background-size: cover;\n  position: relative;\n  width: 100%;\n  height: 0;\n  padding-top: 56.25%;\n}\n#tour-card .tour_title {\n  width: 100%;\n  position: absolute;\n  left: 0;\n  bottom: 0;\n  right: 0;\n  text-align: left;\n  padding: 20px 10px;\n  background: rgba(0, 0, 0, 0.4);\n  background: linear-gradient(\n    to bottom,\n    rgba(0, 0, 0, 0) 0%,\n    rgba(0, 0, 0, 0.5) 45%,\n    rgba(0, 0, 0, 0.9) 100%\n  );\n  color: white;\n  text-align: center;\n  font-weight: 700;\n  font-size: 20px;\n  margin: 40px 0 0px 0;\n  font-family: \"Montserrat\", sans-serif;\n}\n#tour-card.card {\n  transition: box-shadow 0.2s ease-in-out, transform 0.3s ease-in-out;\n  box-shadow: 0px 2px 3px rgb(0 0 0 / 18%);\n  cursor: pointer;\n}\n#tour-card.card:hover {\n  box-shadow: 0px 1px 13px #666;\n}\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n#tour-card .price {\r\n  width: 80px;\r\n  color: #0f6d24;\r\n  right: 5px;\r\n  bottom: 0px;\r\n  top: 0px;\r\n  padding-left: 5px;\r\n  border-left: 1px dotted black;\r\n  position: absolute;\r\n  font-size: 18px;\r\n  display: flex;\r\n  align-items: center;\r\n  justify-content: center;\n}\n#tour-card .tag-image {\r\n  top: -12px;\r\n  position: absolute;\r\n  right: 25px;\n}\n#tour-card .bg-image {\r\n  background-size: cover;\r\n  position: relative;\r\n  width: 100%;\r\n  height: 0;\r\n  padding-top: 56.25%;\n}\n#tour-card .tour_title {\r\n  width: 100%;\r\n  position: absolute;\r\n  left: 0;\r\n  bottom: 0;\r\n  right: 0;\r\n  text-align: left;\r\n  padding: 20px 10px;\r\n  background: rgba(0, 0, 0, 0.4);\r\n  background: linear-gradient(\r\n    to bottom,\r\n    rgba(0, 0, 0, 0) 0%,\r\n    rgba(0, 0, 0, 0.5) 45%,\r\n    rgba(0, 0, 0, 0.9) 100%\r\n  );\r\n  color: white;\r\n  text-align: center;\r\n  font-weight: 700;\r\n  font-size: 20px;\r\n  margin: 40px 0 0px 0;\r\n  font-family: \"Montserrat\", sans-serif;\n}\n#tour-card.card {\r\n  transition: box-shadow 0.2s ease-in-out, transform 0.3s ease-in-out;\r\n  box-shadow: 0px 2px 3px rgb(0 0 0 / 18%);\r\n  cursor: pointer;\n}\n#tour-card.card:hover {\r\n  box-shadow: 0px 1px 13px #666;\n}\n.trip-route {\r\n  min-height: 50px;\n}\r\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -19710,7 +19610,7 @@ ___CSS_LOADER_EXPORT___.i(_node_modules_css_loader_dist_cjs_js_clonedRuleSet_9_0
 ___CSS_LOADER_EXPORT___.i(_node_modules_css_loader_dist_cjs_js_clonedRuleSet_9_0_rules_0_use_1_node_modules_syncfusion_ej2_base_styles_material_css__WEBPACK_IMPORTED_MODULE_1__.default);
 ___CSS_LOADER_EXPORT___.i(_node_modules_css_loader_dist_cjs_js_clonedRuleSet_9_0_rules_0_use_1_node_modules_syncfusion_ej2_buttons_styles_material_css__WEBPACK_IMPORTED_MODULE_2__.default);
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n.e-radio-wrapper {\n  margin-top: 18px;\n}\nli {\n  list-style: none;\n}\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n.e-radio-wrapper {\r\n  margin-top: 18px;\n}\nli {\r\n  list-style: none;\n}\r\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -19976,7 +19876,7 @@ var render = function() {
         {
           staticClass: "bg-image hover-overlay ripple",
           style: {
-            "background-image": "url(" + _vm.tourData.image + ")"
+            "background-image": "url(" + _vm.tourData.image_url + ")"
           },
           attrs: { "data-mdb-ripple-color": "light" }
         },
@@ -20031,19 +19931,22 @@ var render = function() {
                 })
           ]),
           _vm._v(" "),
-          _c("p", { staticClass: "card-text mb-1" }, [
-            _c("strong", [_vm._v(" Acommodation: ")]),
-            _vm._v("\n      " + _vm._s(_vm.tourData.acommodation) + "\n    ")
-          ]),
+          _vm._m(1),
           _vm._v(" "),
           _c("p", { staticClass: "card-text mb-1" }, [
             _c("strong", [_vm._v(" Tour Type: ")]),
-            _vm._v("\n      " + _vm._s(_vm.tourData.type) + "\n    ")
+            _vm._v("\n      " + _vm._s(_vm.tourData.tour_group) + "\n    ")
           ]),
           _vm._v(" "),
-          _c("p", { staticClass: "card-text mb-1" }, [
+          _c("p", { staticClass: "card-text mb-1 trip-route" }, [
             _c("strong", [_vm._v(" Trip Route: ")]),
-            _vm._v("\n      " + _vm._s(_vm.tourData.route) + "\n    ")
+            _vm._v(
+              "\n      " +
+                _vm._s(_vm.tourData.start_city) +
+                "(Start) ... " +
+                _vm._s(_vm.tourData.end_city) +
+                " (End)\n    "
+            )
           ])
         ]
       ),
@@ -20054,7 +19957,9 @@ var render = function() {
         [
           _c("div", [
             _c("p", { staticClass: "card-text mb-1 ps-3" }, [
-              _vm._v("\n        " + _vm._s(_vm.tourData.company) + "\n      ")
+              _vm._v(
+                "\n        " + _vm._s(_vm.tourData.company_name) + "\n      "
+              )
             ]),
             _vm._v(" "),
             _c("p", { staticClass: "card-text ps-3" }, [
@@ -20070,17 +19975,17 @@ var render = function() {
                 _c("span", { staticClass: "fa fa-star checked" }),
                 _vm._v(" "),
                 _c("span", [
-                  _c("strong", [_vm._v(_vm._s(_vm.tourData.rating))])
+                  _c("strong", [_vm._v(_vm._s(_vm.tourData.avg_review))])
                 ]),
                 _vm._v(" "),
                 _c("span", [_vm._v(" / ")]),
                 _vm._v(" "),
-                _vm.tourData.reviews == 1
+                _vm.tourData.sum_review == 1
                   ? _c("span", [
-                      _vm._v(_vm._s(_vm.tourData.reviews) + " Review")
+                      _vm._v(_vm._s(_vm.tourData.sum_review) + " Review")
                     ])
                   : _c("span", [
-                      _vm._v(_vm._s(_vm.tourData.reviews) + " Reviews")
+                      _vm._v(_vm._s(_vm.tourData.sum_review) + " Reviews")
                     ])
               ])
             ])
@@ -20089,7 +19994,7 @@ var render = function() {
           _c("div", { staticClass: "price" }, [
             _c("strong", [
               _c("span", { staticClass: "fa fa-dollar" }),
-              _vm._v(_vm._s(_vm.tourData.price))
+              _vm._v(_vm._s(_vm.tourData.adult_currency))
             ]),
             _vm._v(" "),
             _c("small", [_vm._v("pp")])
@@ -20109,6 +20014,15 @@ var staticRenderFns = [
         staticClass: "mask",
         staticStyle: { "background-color": "rgba(251, 251, 251, 0.15)" }
       })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("p", { staticClass: "card-text mb-1" }, [
+      _c("strong", [_vm._v(" Acommodation: ")]),
+      _vm._v("\n      No Data\n      ")
     ])
   }
 ]
@@ -20137,657 +20051,683 @@ var render = function() {
   return _c("div", { attrs: { id: "our-tours" } }, [
     _c("div", { staticClass: "container" }, [
       _c("div", { staticClass: "row" }, [
-        _c(
-          "div",
-          { staticClass: "col-lg-3 col-xs-12" },
-          [
-            _c("div", { staticClass: "row gx-0" }, [
-              _c(
-                "div",
-                {
-                  directives: [
-                    {
-                      name: "click-outside-dropdown",
-                      rawName: "v-click-outside-dropdown",
-                      value: _vm.closeWhereToDropDown,
-                      expression: "closeWhereToDropDown"
-                    }
-                  ],
-                  staticClass: "col-md-12 mobile-filter position-relative"
-                },
-                [
-                  _c(
-                    "div",
-                    {
-                      staticClass:
-                        "bg-white h-100 align-items-center d-flex justify-content-between px-3"
-                    },
-                    [
-                      _c("span", { staticClass: "fa fa-map-marker" }),
-                      _vm._v(" "),
-                      _c(
-                        "div",
-                        {
-                          staticClass: "w-100 px-2",
-                          on: {
-                            click: function($event) {
-                              return _vm.showWhereToDropdown(true)
+        _c("div", { staticClass: "col-lg-3 col-xs-12 filters" }, [
+          _c(
+            "div",
+            { staticClass: "position-relative" },
+            [
+              _vm._m(0),
+              _vm._v(" "),
+              _c("div", { staticClass: "row gx-0" }, [
+                _c(
+                  "div",
+                  {
+                    directives: [
+                      {
+                        name: "click-outside-dropdown",
+                        rawName: "v-click-outside-dropdown",
+                        value: _vm.closeWhereToDropDown,
+                        expression: "closeWhereToDropDown"
+                      }
+                    ],
+                    staticClass: "col-md-12 mobile-filter position-relative"
+                  },
+                  [
+                    _c(
+                      "div",
+                      {
+                        staticClass:
+                          "bg-white h-100 align-items-center d-flex justify-content-between px-3"
+                      },
+                      [
+                        _c("span", { staticClass: "fa fa-map-marker" }),
+                        _vm._v(" "),
+                        _c(
+                          "div",
+                          {
+                            staticClass: "w-100 px-2",
+                            on: {
+                              click: function($event) {
+                                return _vm.showWhereToDropdown(true)
+                              }
                             }
-                          }
-                        },
-                        [
+                          },
+                          [
+                            _c("input", {
+                              directives: [
+                                {
+                                  name: "model",
+                                  rawName: "v-model",
+                                  value: _vm.where_to_search,
+                                  expression: "where_to_search"
+                                }
+                              ],
+                              ref: "whereTo",
+                              staticClass: "w-100",
+                              attrs: { placeholder: "Where To", type: "text" },
+                              domProps: { value: _vm.where_to_search },
+                              on: {
+                                input: function($event) {
+                                  if ($event.target.composing) {
+                                    return
+                                  }
+                                  _vm.where_to_search = $event.target.value
+                                }
+                              }
+                            })
+                          ]
+                        ),
+                        _vm._v(" "),
+                        _vm.visible_whereto_dropdown == true
+                          ? _c("span", { staticClass: "fa fa-search" })
+                          : _vm.where_to_search != "" &&
+                            _vm.visible_whereto_dropdown == false
+                          ? _c("span", {
+                              staticClass: "fa fa-times-circle-o",
+                              on: { click: _vm.setInitWhereTo }
+                            })
+                          : _c("span", {
+                              staticClass: "fa fa-search invisible"
+                            })
+                      ]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "transition",
+                      {
+                        attrs: {
+                          "enter-active-class":
+                            "animate__animated animate__fadeIn",
+                          "leave-active-class":
+                            "animate__animated animate__fadeOut"
+                        }
+                      },
+                      [
+                        _vm.visible_whereto_dropdown == true &&
+                        _vm.search_result != ""
+                          ? _c(
+                              "div",
+                              {
+                                staticClass:
+                                  "where_to_dropdown left-0 w-100 bg-white mt-3 triangule-where"
+                              },
+                              [
+                                _c(
+                                  "div",
+                                  {
+                                    staticClass:
+                                      "bg-warning text-white p-2 text-left"
+                                  },
+                                  [
+                                    _vm._v(
+                                      "\r\n                    Start typing or select below\r\n                  "
+                                    )
+                                  ]
+                                ),
+                                _vm._v(" "),
+                                _vm._l(_vm.search_result, function(
+                                  item,
+                                  index
+                                ) {
+                                  return _c("div", { key: index }, [
+                                    index < 6
+                                      ? _c(
+                                          "div",
+                                          {
+                                            staticClass:
+                                              "py-1 px-3 border-bottom border-1 text-start",
+                                            on: {
+                                              click: function($event) {
+                                                return _vm.setCurrentWhereTo(
+                                                  item.title
+                                                )
+                                              }
+                                            }
+                                          },
+                                          [
+                                            _c(
+                                              "div",
+                                              { staticClass: "p-0 m-0" },
+                                              [
+                                                _c("strong", [
+                                                  _vm._v(_vm._s(item.title))
+                                                ])
+                                              ]
+                                            ),
+                                            _vm._v(" "),
+                                            _c(
+                                              "div",
+                                              { staticClass: "p-0 m-0" },
+                                              [
+                                                _c("small", [
+                                                  _vm._v(_vm._s(item.country))
+                                                ])
+                                              ]
+                                            )
+                                          ]
+                                        )
+                                      : _vm._e()
+                                  ])
+                                })
+                              ],
+                              2
+                            )
+                          : _vm._e()
+                      ]
+                    )
+                  ],
+                  1
+                ),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  { staticClass: "col-md-12 mobile-filter position-relative" },
+                  [
+                    _c(
+                      "div",
+                      {
+                        staticClass:
+                          "bg-white w-100 h-100 align-items-center d-flex justify-content-between px-3"
+                      },
+                      [
+                        _c("span", { staticClass: "fa fa-calendar" }),
+                        _vm._v(" "),
+                        _c(
+                          "div",
+                          { staticClass: "w-100 px-2" },
+                          [
+                            _c("datepicker", {
+                              attrs: {
+                                disabledDates: _vm.disabledFn,
+                                placeholder: "Start Date",
+                                highlighted: _vm.highlighted
+                              },
+                              model: {
+                                value: _vm.start_date,
+                                callback: function($$v) {
+                                  _vm.start_date = $$v
+                                },
+                                expression: "start_date"
+                              }
+                            })
+                          ],
+                          1
+                        ),
+                        _vm._v(" "),
+                        _vm.start_date != ""
+                          ? _c("span", {
+                              staticClass: "fa fa-times-circle-o",
+                              on: { click: _vm.initStartDate }
+                            })
+                          : _c("span", {
+                              staticClass: "fa fa-times-circle-o invisible"
+                            })
+                      ]
+                    )
+                  ]
+                ),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  {
+                    directives: [
+                      {
+                        name: "click-outside-dropdown",
+                        rawName: "v-click-outside-dropdown",
+                        value: _vm.closeTravelerDropdown,
+                        expression: "closeTravelerDropdown"
+                      }
+                    ],
+                    staticClass: "col-md-12 mobile-filter position-relative"
+                  },
+                  [
+                    _c(
+                      "div",
+                      {
+                        staticClass:
+                          "bg-white w-100 h-100 align-items-center d-flex justify-content-between px-3",
+                        on: { click: _vm.showTravelerDropdown }
+                      },
+                      [
+                        _c("span", { staticClass: "fa fa-users" }),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "w-100 px-2" }, [
                           _c("input", {
                             directives: [
                               {
                                 name: "model",
                                 rawName: "v-model",
-                                value: _vm.where_to_search,
-                                expression: "where_to_search"
+                                value: _vm.traveler_number,
+                                expression: "traveler_number"
                               }
                             ],
-                            ref: "whereTo",
                             staticClass: "w-100",
-                            attrs: { placeholder: "Where To", type: "text" },
-                            domProps: { value: _vm.where_to_search },
+                            attrs: {
+                              id: "traveler_input",
+                              type: "text",
+                              placeholder: "Travelers"
+                            },
+                            domProps: { value: _vm.traveler_number },
                             on: {
                               input: function($event) {
                                 if ($event.target.composing) {
                                   return
                                 }
-                                _vm.where_to_search = $event.target.value
+                                _vm.traveler_number = $event.target.value
                               }
                             }
                           })
-                        ]
-                      ),
-                      _vm._v(" "),
-                      _vm.visible_whereto_dropdown == true
-                        ? _c("span", { staticClass: "fa fa-search" })
-                        : _vm.where_to_search != "" &&
-                          _vm.visible_whereto_dropdown == false
-                        ? _c("span", {
-                            staticClass: "fa fa-times-circle-o",
-                            on: { click: _vm.setInitWhereTo }
-                          })
-                        : _c("span", { staticClass: "fa fa-search invisible" })
-                    ]
-                  ),
-                  _vm._v(" "),
-                  _c(
-                    "transition",
-                    {
-                      attrs: {
-                        "enter-active-class":
-                          "animate__animated animate__fadeIn",
-                        "leave-active-class":
-                          "animate__animated animate__fadeOut"
-                      }
-                    },
-                    [
-                      _vm.visible_whereto_dropdown == true &&
-                      _vm.search_result != ""
-                        ? _c(
-                            "div",
-                            {
-                              staticClass:
-                                "where_to_dropdown left-0 w-100 bg-white mt-3 triangule-where"
-                            },
-                            [
-                              _c(
-                                "div",
-                                {
-                                  staticClass:
-                                    "bg-warning text-white p-2 text-left"
-                                },
-                                [
-                                  _vm._v(
-                                    "\n                  Start typing or select below\n                "
-                                  )
-                                ]
-                              ),
-                              _vm._v(" "),
-                              _vm._l(_vm.search_result, function(item, index) {
-                                return _c("div", { key: index }, [
-                                  index < 6
-                                    ? _c(
-                                        "div",
-                                        {
-                                          staticClass:
-                                            "py-1 px-3 border-bottom border-1 text-start",
-                                          on: {
-                                            click: function($event) {
-                                              return _vm.setCurrentWhereTo(
-                                                item.title
-                                              )
-                                            }
-                                          }
-                                        },
-                                        [
-                                          _c(
-                                            "div",
-                                            { staticClass: "p-0 m-0" },
-                                            [
-                                              _c("strong", [
-                                                _vm._v(_vm._s(item.title))
-                                              ])
-                                            ]
-                                          ),
-                                          _vm._v(" "),
-                                          _c(
-                                            "div",
-                                            { staticClass: "p-0 m-0" },
-                                            [
-                                              _c("small", [
-                                                _vm._v(_vm._s(item.country))
-                                              ])
-                                            ]
-                                          )
-                                        ]
-                                      )
-                                    : _vm._e()
-                                ])
-                              })
-                            ],
-                            2
-                          )
-                        : _vm._e()
-                    ]
-                  )
-                ],
-                1
-              ),
-              _vm._v(" "),
-              _c(
-                "div",
-                { staticClass: "col-md-12 mobile-filter position-relative" },
-                [
-                  _c(
-                    "div",
-                    {
-                      staticClass:
-                        "bg-white w-100 h-100 align-items-center d-flex justify-content-between px-3"
-                    },
-                    [
-                      _c("span", { staticClass: "fa fa-calendar" }),
-                      _vm._v(" "),
-                      _c(
-                        "div",
-                        { staticClass: "w-100 px-2" },
-                        [
-                          _c("datepicker", {
-                            attrs: {
-                              disabledDates: _vm.disabledFn,
-                              placeholder: "Start Date",
-                              highlighted: _vm.highlighted
-                            },
-                            model: {
-                              value: _vm.start_date,
-                              callback: function($$v) {
-                                _vm.start_date = $$v
+                        ]),
+                        _vm._v(" "),
+                        _vm.traveler_number != ""
+                          ? _c("span", {
+                              staticClass: "fa fa-times-circle-o",
+                              on: { click: _vm.setTravelerInit }
+                            })
+                          : _c("span", {
+                              staticClass: "fa fa-times-circle-o invisible"
+                            })
+                      ]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "transition",
+                      {
+                        attrs: {
+                          "enter-active-class":
+                            "animate__animated animate__fadeIn",
+                          "leave-active-class":
+                            "animate__animated animate__fadeOut"
+                        }
+                      },
+                      [
+                        _vm.visible_traveler_dropdown
+                          ? _c(
+                              "div",
+                              {
+                                staticClass:
+                                  "traveler-dropdown left-0 bg-white mt-3 triangule-where"
                               },
-                              expression: "start_date"
-                            }
-                          })
-                        ],
-                        1
-                      ),
-                      _vm._v(" "),
-                      _vm.start_date != ""
-                        ? _c("span", {
-                            staticClass: "fa fa-times-circle-o",
-                            on: { click: _vm.initStartDate }
-                          })
-                        : _c("span", {
-                            staticClass: "fa fa-times-circle-o invisible"
-                          })
-                    ]
-                  )
-                ]
-              ),
-              _vm._v(" "),
-              _c(
-                "div",
-                {
-                  directives: [
-                    {
-                      name: "click-outside-dropdown",
-                      rawName: "v-click-outside-dropdown",
-                      value: _vm.closeTravelerDropdown,
-                      expression: "closeTravelerDropdown"
-                    }
-                  ],
-                  staticClass: "col-md-12 mobile-filter position-relative"
-                },
-                [
-                  _c(
-                    "div",
-                    {
-                      staticClass:
-                        "bg-white w-100 h-100 align-items-center d-flex justify-content-between px-3",
-                      on: { click: _vm.showTravelerDropdown }
-                    },
-                    [
-                      _c("span", { staticClass: "fa fa-users" }),
-                      _vm._v(" "),
-                      _c("div", { staticClass: "w-100 px-2" }, [
-                        _c("input", {
-                          directives: [
-                            {
-                              name: "model",
-                              rawName: "v-model",
-                              value: _vm.traveler_number,
-                              expression: "traveler_number"
-                            }
-                          ],
-                          staticClass: "w-100",
-                          attrs: {
-                            id: "traveler_input",
-                            type: "text",
-                            placeholder: "Travelers"
-                          },
-                          domProps: { value: _vm.traveler_number },
-                          on: {
-                            input: function($event) {
-                              if ($event.target.composing) {
-                                return
-                              }
-                              _vm.traveler_number = $event.target.value
-                            }
-                          }
-                        })
-                      ]),
-                      _vm._v(" "),
-                      _vm.traveler_number != ""
-                        ? _c("span", {
-                            staticClass: "fa fa-times-circle-o",
-                            on: { click: _vm.setTravelerInit }
-                          })
-                        : _c("span", {
-                            staticClass: "fa fa-times-circle-o invisible"
-                          })
-                    ]
-                  ),
-                  _vm._v(" "),
-                  _c(
-                    "transition",
-                    {
-                      attrs: {
-                        "enter-active-class":
-                          "animate__animated animate__fadeIn",
-                        "leave-active-class":
-                          "animate__animated animate__fadeOut"
-                      }
-                    },
-                    [
-                      _vm.visible_traveler_dropdown
-                        ? _c(
-                            "div",
-                            {
-                              staticClass:
-                                "traveler-dropdown left-0 bg-white mt-3 triangule-where"
-                            },
-                            [
-                              _c(
-                                "div",
-                                {
-                                  staticClass:
-                                    "bg-warning text-white p-2 text-left"
-                                },
-                                [
-                                  _vm._v(
-                                    "\n                  Travelers\n                  "
-                                  ),
-                                  _c("span", {
-                                    staticClass: "fa fa-times-circle-o",
-                                    on: { click: _vm.closeTravelerDropdown }
-                                  })
-                                ]
-                              ),
-                              _vm._v(" "),
-                              _c(
-                                "div",
-                                {
-                                  staticClass:
-                                    "py-2 px-3 mt-2 border-1 text-start d-flex justify-content-between"
-                                },
-                                [
-                                  _c("div", [
-                                    _c("strong", [_vm._v("Adults")]),
-                                    _vm._v("(18+ years):")
-                                  ]),
-                                  _vm._v(" "),
-                                  _c(
-                                    "div",
-                                    [
-                                      _c("vue-numeric-input", {
-                                        attrs: { min: 1, max: 100, step: 1 },
-                                        model: {
-                                          value: _vm.adults_number,
-                                          callback: function($$v) {
-                                            _vm.adults_number = $$v
-                                          },
-                                          expression: "adults_number"
-                                        }
-                                      })
-                                    ],
-                                    1
-                                  )
-                                ]
-                              ),
-                              _vm._v(" "),
-                              _c(
-                                "div",
-                                {
-                                  staticClass:
-                                    "py-2 px-3 mt-2 border-1 text-start d-flex justify-content-between"
-                                },
-                                [
-                                  _c("div", [
-                                    _c("strong", [_vm._v("Children")]),
-                                    _vm._v("(0~17 years):")
-                                  ]),
-                                  _vm._v(" "),
-                                  _c(
-                                    "div",
-                                    [
-                                      _c("vue-numeric-input", {
-                                        attrs: { min: 0, max: 100, step: 1 },
-                                        model: {
-                                          value: _vm.children_number,
-                                          callback: function($$v) {
-                                            _vm.children_number = $$v
-                                          },
-                                          expression: "children_number"
-                                        }
-                                      })
-                                    ],
-                                    1
-                                  )
-                                ]
-                              ),
-                              _vm._v(" "),
-                              _c("div", { staticClass: "text-right" }, [
+                              [
                                 _c(
-                                  "button",
+                                  "div",
                                   {
-                                    staticClass: "btn btn-danger mx-3 my-3",
-                                    on: { click: _vm.setTravelerInfo }
+                                    staticClass:
+                                      "bg-warning text-white p-2 text-left"
                                   },
                                   [
                                     _vm._v(
-                                      "\n                    Done\n                  "
+                                      "\r\n                    Travelers\r\n                    "
+                                    ),
+                                    _c("span", {
+                                      staticClass: "fa fa-times-circle-o",
+                                      on: { click: _vm.closeTravelerDropdown }
+                                    })
+                                  ]
+                                ),
+                                _vm._v(" "),
+                                _c(
+                                  "div",
+                                  {
+                                    staticClass:
+                                      "py-2 px-3 mt-2 border-1 text-start d-flex justify-content-between"
+                                  },
+                                  [
+                                    _c("div", [
+                                      _c("strong", [_vm._v("Adults")]),
+                                      _vm._v("(18+ years):")
+                                    ]),
+                                    _vm._v(" "),
+                                    _c(
+                                      "div",
+                                      [
+                                        _c("vue-numeric-input", {
+                                          attrs: { min: 1, max: 100, step: 1 },
+                                          model: {
+                                            value: _vm.adults_number,
+                                            callback: function($$v) {
+                                              _vm.adults_number = $$v
+                                            },
+                                            expression: "adults_number"
+                                          }
+                                        })
+                                      ],
+                                      1
                                     )
                                   ]
-                                )
-                              ])
-                            ]
-                          )
-                        : _vm._e()
-                    ]
-                  )
-                ],
+                                ),
+                                _vm._v(" "),
+                                _c(
+                                  "div",
+                                  {
+                                    staticClass:
+                                      "py-2 px-3 mt-2 border-1 text-start d-flex justify-content-between"
+                                  },
+                                  [
+                                    _c("div", [
+                                      _c("strong", [_vm._v("Children")]),
+                                      _vm._v("(0~17 years):")
+                                    ]),
+                                    _vm._v(" "),
+                                    _c(
+                                      "div",
+                                      [
+                                        _c("vue-numeric-input", {
+                                          attrs: { min: 0, max: 100, step: 1 },
+                                          model: {
+                                            value: _vm.children_number,
+                                            callback: function($$v) {
+                                              _vm.children_number = $$v
+                                            },
+                                            expression: "children_number"
+                                          }
+                                        })
+                                      ],
+                                      1
+                                    )
+                                  ]
+                                ),
+                                _vm._v(" "),
+                                _c("div", { staticClass: "text-right" }, [
+                                  _c(
+                                    "button",
+                                    {
+                                      staticClass: "btn btn-danger mx-3 my-3",
+                                      on: { click: _vm.setTravelerInfo }
+                                    },
+                                    [
+                                      _vm._v(
+                                        "\r\n                      Done\r\n                    "
+                                      )
+                                    ]
+                                  )
+                                ])
+                              ]
+                            )
+                          : _vm._e()
+                      ]
+                    )
+                  ],
+                  1
+                ),
+                _vm._v(" "),
+                _vm._m(1)
+              ]),
+              _vm._v(" "),
+              _c("h6", { staticClass: "mt-5 fw-bold" }, [_vm._v("Tour Price")]),
+              _vm._v(" "),
+              _c("ejs-slider", {
+                attrs: { min: 100, max: 16000, type: "Range" },
+                model: {
+                  value: _vm.price_range,
+                  callback: function($$v) {
+                    _vm.price_range = $$v
+                  },
+                  expression: "price_range"
+                }
+              }),
+              _vm._v(" "),
+              _c("div", { staticClass: "d-flex justify-content-between" }, [
+                _c("div", [_vm._v("$" + _vm._s(_vm.price_range[0]))]),
+                _vm._v(" "),
+                _c("div", [_vm._v("$" + _vm._s(_vm.price_range[1]))])
+              ]),
+              _vm._v(" "),
+              _c("h6", { staticClass: "mt-5 fw-bold" }, [_vm._v("Tour Days")]),
+              _vm._v(" "),
+              _c("ejs-slider", {
+                attrs: { min: 1, max: 30, type: "Range" },
+                model: {
+                  value: _vm.day_range,
+                  callback: function($$v) {
+                    _vm.day_range = $$v
+                  },
+                  expression: "day_range"
+                }
+              }),
+              _vm._v(" "),
+              _c("div", { staticClass: "d-flex justify-content-between" }, [
+                _c("div", [_vm._v(_vm._s(_vm.day_range[0]) + " Days")]),
+                _vm._v(" "),
+                _c("div", [_vm._v(_vm._s(_vm.day_range[1]) + " Days")])
+              ]),
+              _vm._v(" "),
+              _c("h6", { staticClass: "mt-5 fw-bold" }, [
+                _vm._v("Private or Group")
+              ]),
+              _vm._v(" "),
+              _c("ul", [
+                _c(
+                  "li",
+                  [
+                    _c("ejs-radiobutton", {
+                      attrs: { label: "Private", name: "default" }
+                    })
+                  ],
+                  1
+                ),
+                _vm._v(" "),
+                _c(
+                  "li",
+                  [
+                    _c("ejs-radiobutton", {
+                      attrs: {
+                        label: "Group",
+                        name: "default",
+                        checked: "true"
+                      }
+                    })
+                  ],
+                  1
+                )
+              ]),
+              _vm._v(" "),
+              _c("h6", { staticClass: "mt-5 fw-bold" }, [_vm._v("Standard")]),
+              _vm._v(" "),
+              _c("p", [_c("ejs-checkbox", { attrs: { label: "Budget" } })], 1),
+              _vm._v(" "),
+              _c("p", [_c("ejs-checkbox", { attrs: { label: "Camping" } })], 1),
+              _vm._v(" "),
+              _c("p", [_c("ejs-checkbox", { attrs: { label: "Lodge" } })], 1),
+              _vm._v(" "),
+              _c("p", [_c("ejs-checkbox", { attrs: { label: "Luxury" } })], 1),
+              _vm._v(" "),
+              _c(
+                "p",
+                [_c("ejs-checkbox", { attrs: { label: "Luxury plus" } })],
                 1
               ),
               _vm._v(" "),
-              _vm._m(0)
-            ]),
-            _vm._v(" "),
-            _c("h6", { staticClass: "mt-5 fw-bold" }, [_vm._v("Tour Price")]),
-            _vm._v(" "),
-            _c("ejs-slider", {
-              attrs: { min: 100, max: 16000, type: "Range" },
-              model: {
-                value: _vm.price_range,
-                callback: function($$v) {
-                  _vm.price_range = $$v
-                },
-                expression: "price_range"
-              }
-            }),
-            _vm._v(" "),
-            _c("div", { staticClass: "d-flex justify-content-between" }, [
-              _c("div", [_vm._v("$" + _vm._s(_vm.price_range[0]))]),
-              _vm._v(" "),
-              _c("div", [_vm._v("$" + _vm._s(_vm.price_range[1]))])
-            ]),
-            _vm._v(" "),
-            _c("h6", { staticClass: "mt-5 fw-bold" }, [_vm._v("Tour Days")]),
-            _vm._v(" "),
-            _c("ejs-slider", {
-              attrs: { min: 1, max: 30, type: "Range" },
-              model: {
-                value: _vm.day_range,
-                callback: function($$v) {
-                  _vm.day_range = $$v
-                },
-                expression: "day_range"
-              }
-            }),
-            _vm._v(" "),
-            _c("div", { staticClass: "d-flex justify-content-between" }, [
-              _c("div", [_vm._v(_vm._s(_vm.day_range[0]) + " Days")]),
-              _vm._v(" "),
-              _c("div", [_vm._v(_vm._s(_vm.day_range[1]) + " Days")])
-            ]),
-            _vm._v(" "),
-            _c("h6", { staticClass: "mt-5 fw-bold" }, [
-              _vm._v("Private or Group")
-            ]),
-            _vm._v(" "),
-            _c("ul", [
               _c(
-                "li",
+                "p",
+                [_c("ejs-checkbox", { attrs: { label: "Mid Range" } })],
+                1
+              ),
+              _vm._v(" "),
+              _c("h6", { staticClass: "mt-5 fw-bold" }, [
+                _vm._v("Specialized")
+              ]),
+              _vm._v(" "),
+              _c(
+                "p",
+                [_c("ejs-checkbox", { attrs: { label: "Birdwatching" } })],
+                1
+              ),
+              _vm._v(" "),
+              _c(
+                "p",
                 [
-                  _c("ejs-radiobutton", {
-                    attrs: { label: "Private", name: "default" }
+                  _c("ejs-checkbox", {
+                    attrs: { label: " Canoe/Mokoro safari" }
                   })
                 ],
                 1
               ),
               _vm._v(" "),
               _c(
-                "li",
+                "p",
                 [
-                  _c("ejs-radiobutton", {
-                    attrs: { label: "Group", name: "default", checked: "true" }
+                  _c("ejs-checkbox", {
+                    attrs: { label: " Tour for disabled travelers" }
+                  })
+                ],
+                1
+              ),
+              _vm._v(" "),
+              _c(
+                "p",
+                [
+                  _c("ejs-checkbox", {
+                    attrs: { label: " Scenic and/or Cultural tour" }
+                  })
+                ],
+                1
+              ),
+              _vm._v(" "),
+              _c(
+                "p",
+                [_c("ejs-checkbox", { attrs: { label: "Cycling Safari" } })],
+                1
+              ),
+              _vm._v(" "),
+              _c("p", [_c("ejs-checkbox", { attrs: { label: "Yoga" } })], 1),
+              _vm._v(" "),
+              _c(
+                "p",
+                [
+                  _c("ejs-checkbox", {
+                    attrs: {
+                      label: "Gorilla and/or chimp tracking & mountain climbing"
+                    }
+                  })
+                ],
+                1
+              ),
+              _vm._v(" "),
+              _c(
+                "p",
+                [_c("ejs-checkbox", { attrs: { label: "Fly-in safari" } })],
+                1
+              ),
+              _vm._v(" "),
+              _c(
+                "p",
+                [_c("ejs-checkbox", { attrs: { label: "Game drive safari" } })],
+                1
+              ),
+              _vm._v(" "),
+              _c(
+                "p",
+                [
+                  _c("ejs-checkbox", {
+                    attrs: {
+                      label:
+                        " Gorilla and/or chimp trekking & game drive safari"
+                    }
+                  })
+                ],
+                1
+              ),
+              _vm._v(" "),
+              _c(
+                "p",
+                [
+                  _c("ejs-checkbox", {
+                    attrs: { label: " Gorilla and/or chimp trekking only" }
+                  })
+                ],
+                1
+              ),
+              _vm._v(" "),
+              _c(
+                "p",
+                [_c("ejs-checkbox", { attrs: { label: "Guided self drive" } })],
+                1
+              ),
+              _vm._v(" "),
+              _c(
+                "p",
+                [
+                  _c("ejs-checkbox", {
+                    attrs: { label: " Mountain climbing only" }
+                  })
+                ],
+                1
+              ),
+              _vm._v(" "),
+              _c(
+                "p",
+                [_c("ejs-checkbox", { attrs: { label: "Horseback Safari" } })],
+                1
+              ),
+              _vm._v(" "),
+              _c(
+                "p",
+                [
+                  _c("ejs-checkbox", {
+                    attrs: { label: " Mountain climbing & game drive safari" }
+                  })
+                ],
+                1
+              ),
+              _vm._v(" "),
+              _c(
+                "p",
+                [
+                  _c("ejs-checkbox", {
+                    attrs: { label: "Wildlife photography" }
+                  })
+                ],
+                1
+              ),
+              _vm._v(" "),
+              _c(
+                "p",
+                [
+                  _c("ejs-checkbox", {
+                    attrs: { label: " Golf & wildlife viewing" }
+                  })
+                ],
+                1
+              ),
+              _vm._v(" "),
+              _c(
+                "p",
+                [_c("ejs-checkbox", { attrs: { label: "walking-safari" } })],
+                1
+              ),
+              _vm._v(" "),
+              _c(
+                "p",
+                [
+                  _c("ejs-checkbox", {
+                    attrs: { label: "Beach holiday & game drive safari" }
+                  })
+                ],
+                1
+              ),
+              _vm._v(" "),
+              _c(
+                "p",
+                [
+                  _c("ejs-checkbox", { attrs: { label: "Beach holiday only" } })
+                ],
+                1
+              ),
+              _vm._v(" "),
+              _c(
+                "p",
+                [
+                  _c("ejs-checkbox", {
+                    attrs: { label: "Overland truck safari" }
                   })
                 ],
                 1
               )
-            ]),
-            _vm._v(" "),
-            _c("h6", { staticClass: "mt-5 fw-bold" }, [_vm._v("Standard")]),
-            _vm._v(" "),
-            _c("p", [_c("ejs-checkbox", { attrs: { label: "Budget" } })], 1),
-            _vm._v(" "),
-            _c("p", [_c("ejs-checkbox", { attrs: { label: "Camping" } })], 1),
-            _vm._v(" "),
-            _c("p", [_c("ejs-checkbox", { attrs: { label: "Lodge" } })], 1),
-            _vm._v(" "),
-            _c("p", [_c("ejs-checkbox", { attrs: { label: "Luxury" } })], 1),
-            _vm._v(" "),
-            _c(
-              "p",
-              [_c("ejs-checkbox", { attrs: { label: "Luxury plus" } })],
-              1
-            ),
-            _vm._v(" "),
-            _c("p", [_c("ejs-checkbox", { attrs: { label: "Mid Range" } })], 1),
-            _vm._v(" "),
-            _c("h6", { staticClass: "mt-5 fw-bold" }, [_vm._v("Specialized")]),
-            _vm._v(" "),
-            _c(
-              "p",
-              [_c("ejs-checkbox", { attrs: { label: "Birdwatching" } })],
-              1
-            ),
-            _vm._v(" "),
-            _c(
-              "p",
-              [
-                _c("ejs-checkbox", { attrs: { label: " Canoe/Mokoro safari" } })
-              ],
-              1
-            ),
-            _vm._v(" "),
-            _c(
-              "p",
-              [
-                _c("ejs-checkbox", {
-                  attrs: { label: " Tour for disabled travelers" }
-                })
-              ],
-              1
-            ),
-            _vm._v(" "),
-            _c(
-              "p",
-              [
-                _c("ejs-checkbox", {
-                  attrs: { label: " Scenic and/or Cultural tour" }
-                })
-              ],
-              1
-            ),
-            _vm._v(" "),
-            _c(
-              "p",
-              [_c("ejs-checkbox", { attrs: { label: "Cycling Safari" } })],
-              1
-            ),
-            _vm._v(" "),
-            _c("p", [_c("ejs-checkbox", { attrs: { label: "Yoga" } })], 1),
-            _vm._v(" "),
-            _c(
-              "p",
-              [
-                _c("ejs-checkbox", {
-                  attrs: {
-                    label: "Gorilla and/or chimp tracking & mountain climbing"
-                  }
-                })
-              ],
-              1
-            ),
-            _vm._v(" "),
-            _c(
-              "p",
-              [_c("ejs-checkbox", { attrs: { label: "Fly-in safari" } })],
-              1
-            ),
-            _vm._v(" "),
-            _c(
-              "p",
-              [_c("ejs-checkbox", { attrs: { label: "Game drive safari" } })],
-              1
-            ),
-            _vm._v(" "),
-            _c(
-              "p",
-              [
-                _c("ejs-checkbox", {
-                  attrs: {
-                    label: " Gorilla and/or chimp trekking & game drive safari"
-                  }
-                })
-              ],
-              1
-            ),
-            _vm._v(" "),
-            _c(
-              "p",
-              [
-                _c("ejs-checkbox", {
-                  attrs: { label: " Gorilla and/or chimp trekking only" }
-                })
-              ],
-              1
-            ),
-            _vm._v(" "),
-            _c(
-              "p",
-              [_c("ejs-checkbox", { attrs: { label: "Guided self drive" } })],
-              1
-            ),
-            _vm._v(" "),
-            _c(
-              "p",
-              [
-                _c("ejs-checkbox", {
-                  attrs: { label: " Mountain climbing only" }
-                })
-              ],
-              1
-            ),
-            _vm._v(" "),
-            _c(
-              "p",
-              [_c("ejs-checkbox", { attrs: { label: "Horseback Safari" } })],
-              1
-            ),
-            _vm._v(" "),
-            _c(
-              "p",
-              [
-                _c("ejs-checkbox", {
-                  attrs: { label: " Mountain climbing & game drive safari" }
-                })
-              ],
-              1
-            ),
-            _vm._v(" "),
-            _c(
-              "p",
-              [
-                _c("ejs-checkbox", { attrs: { label: "Wildlife photography" } })
-              ],
-              1
-            ),
-            _vm._v(" "),
-            _c(
-              "p",
-              [
-                _c("ejs-checkbox", {
-                  attrs: { label: " Golf & wildlife viewing" }
-                })
-              ],
-              1
-            ),
-            _vm._v(" "),
-            _c(
-              "p",
-              [_c("ejs-checkbox", { attrs: { label: "walking-safari" } })],
-              1
-            ),
-            _vm._v(" "),
-            _c(
-              "p",
-              [
-                _c("ejs-checkbox", {
-                  attrs: { label: "Beach holiday & game drive safari" }
-                })
-              ],
-              1
-            ),
-            _vm._v(" "),
-            _c(
-              "p",
-              [_c("ejs-checkbox", { attrs: { label: "Beach holiday only" } })],
-              1
-            ),
-            _vm._v(" "),
-            _c(
-              "p",
-              [
-                _c("ejs-checkbox", {
-                  attrs: { label: "Overland truck safari" }
-                })
-              ],
-              1
-            )
-          ],
-          1
-        ),
+            ],
+            1
+          )
+        ]),
         _vm._v(" "),
         _c("div", { staticClass: "col-lg-9 col-xs-12" }, [
           _c(
@@ -20798,7 +20738,7 @@ var render = function() {
               _vm._v(" "),
               _c("span", { staticClass: "read-more" }, [
                 _vm._v(
-                  "Tanzania is Africa’s number one safari destination. The wildlife\n            viewing is amazing and big cats are easy to see. Africa Big Five\n            can be found in many Tanzanian parks and reserves."
+                  "Tanzania is Africa’s number one safari destination. The wildlife\r\n            viewing is amazing and big cats are easy to see. Africa Big Five\r\n            can be found in many Tanzanian parks and reserves."
                 )
               ]),
               _vm._v(" "),
@@ -20816,7 +20756,7 @@ var render = function() {
                   _vm.read_more
                     ? _c("span", { staticClass: "read-more" }, [
                         _vm._v(
-                          "\n              The most famous parks are Ngorongoro Crater and Serengeti\n              National Park. More than a quarter of the country is set aside\n              for conservation. Tanzania is also home to Africa tallest\n              Mountain, Mt. Kilimanjaro and has the best white sand beaches at\n              Zanzibar Island."
+                          "\r\n              The most famous parks are Ngorongoro Crater and Serengeti\r\n              National Park. More than a quarter of the country is set aside\r\n              for conservation. Tanzania is also home to Africa tallest\r\n              Mountain, Mt. Kilimanjaro and has the best white sand beaches at\r\n              Zanzibar Island."
                         )
                       ])
                     : _vm._e()
@@ -20924,6 +20864,22 @@ var render = function() {
   ])
 }
 var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "div",
+      {
+        staticClass: "mobile-filter-close d-flex justify-content-between px-3"
+      },
+      [
+        _c("div", [_vm._v("Filter Options")]),
+        _vm._v(" "),
+        _c("div", [_c("span", { staticClass: "fa fa-times-circle-o" })])
+      ]
+    )
+  },
   function() {
     var _vm = this
     var _h = _vm.$createElement

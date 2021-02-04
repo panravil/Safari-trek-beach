@@ -2,7 +2,6 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -14,11 +13,12 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-// Route::middleware('auth:api')->get('/user', function (Request $request) {
-//     return $request->user();
-// });
-
+// to show  popular tours
 Route::get("/tour/popular-tours", 'App\Http\Controllers\TourController@popularTours');
 
+// to show top destinations
 Route::get("/destination/top-destinations", 'App\Http\Controllers\DestinationController@topDestinations');
+
+// to show homepage blog
+Route::get("/blog/homepage-blog", 'App\Http\Controllers\BlogController@homePageBlogs');
 

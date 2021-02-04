@@ -215,8 +215,8 @@
       <div class="row gx-0">
         <div
           class="col-lg-4 col-md-6 col-xs-12"
-          v-for="item in popularTours"
-          v-bind:key="item.id"
+          v-for="(item, index) in popularTours"
+          v-bind:key="index"
         >
           <TourCard :tourData="item"></TourCard>
         </div>
@@ -301,21 +301,21 @@
         <div
           class="col-lg-3 col-md-4 col-xs-12"
           v-for="item in topDestinations"
-          v-bind:key="item.id"
+          v-bind:key="item.post_id"
         >
           <div class="card mb-3 mx-2">
             <div
               class="bg-image hover-overlay ripple"
               data-mdb-ripple-color="light"
               :style="{
-                'background-image': 'url(' + item.image + ')',
+                'background-image': 'url(' + item.post_image + ')',
               }"
             >
               <a href="">
                 <div class="mask"></div>
               </a>
               <div class="overlay-text">
-                {{ item.title }}
+                {{ item.post_title }}
               </div>
             </div>
           </div>
