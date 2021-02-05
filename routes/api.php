@@ -16,6 +16,9 @@ use Illuminate\Support\Facades\Route;
 // to show  popular tours
 Route::get("/tour/popular-tours", 'App\Http\Controllers\TourController@popularTours');
 
+// to show filtered tours
+Route::get("/tour/filter", 'App\Http\Controllers\TourController@filterTours');
+
 // to show top destinations
 Route::get("/destination/top-destinations", 'App\Http\Controllers\DestinationController@topDestinations');
 
