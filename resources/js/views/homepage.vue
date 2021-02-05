@@ -452,15 +452,15 @@
         <div class="row gx-0">
           <div
             class="col-lg-4 col-md-6 col-xs-12"
-            v-for="item in blogs"
-            v-bind:key="item.id"
+            v-for="(blog, index) in popularBlogs"
+            v-bind:key="index"
           >
             <div class="card mb-3 mx-2">
               <div
                 class="bg-image hover-overlay ripple"
                 data-mdb-ripple-color="light"
                 :style="{
-                  'background-image': 'url(' + item.image + ')',
+                  'background-image': 'url(' + blog.post_image + ')',
                 }"
               >
                 <a href="#">
@@ -468,12 +468,15 @@
                 </a>
               </div>
               <div class="card-body">
-                <h5 class="card-title fw-bold text-center" :title="item.title">
-                  <div>{{ item.title }}</div>
+                <h5
+                  class="card-title fw-bold text-center"
+                  :title="blog.post_title"
+                >
+                  <div>{{ blog.post_title }}</div>
                 </h5>
                 <hr class="mx-3" />
-                <p class="card-text" :title="item.description">
-                  {{ item.description }}
+                <p class="card-text" :title="blog.short_description">
+                  {{ blog.short_description }}
                 </p>
                 <button type="button" class="btn btn-white">
                   Read More <span class="fa fa-angle-double-right ms-2"></span>
@@ -543,30 +546,6 @@ export default {
         "2 Years",
         "1 Year",
         "0 Years",
-      ],
-
-      blogs: [
-        {
-          id: 1,
-          image: "./images/img5.jpg",
-          title: "Exclusive Safaris In Tanzania",
-          description:
-            "Night game drive Safari Tour gives you the best opportunity to see nocturnal animals that are hard to see during. Night game drive Safari Tour gives you the best opportunity to see nocturnal animals that are hard to see during",
-        },
-        {
-          id: 2,
-          image: "./images/img5.jpg",
-          title: "Exclusive Safaris In Tanzania",
-          description:
-            "Night game drive Safari Tour gives you the best opportunity to see nocturnal animals that are hard to see during. Night game drive Safari Tour gives you the best opportunity to see nocturnal animals that are hard to see during",
-        },
-        {
-          id: 3,
-          image: "./images/img5.jpg",
-          title: "Exclusive Safaris In Tanzania",
-          description:
-            "Night game drive Safarie during. Night game drivto see nocturnal animals that are hard to see during",
-        },
       ],
       where_to_search: "",
       where_to_list: [
@@ -663,6 +642,7 @@ export default {
     ...mapGetters({
       popularTours: "tourController/popularTours",
       topDestinations: "destinationController/topDestinations",
+      popularBlogs: "blogController/popularBlogs",
     }),
   },
 
@@ -670,6 +650,7 @@ export default {
     this.search_result = this.where_to_list;
     this.getPopularTours();
     this.getTopDestinations();
+    this.getPopularBlogs();
   },
 
   directives: {
@@ -721,6 +702,10 @@ export default {
   },
 
   methods: {
+    getPopularBlogs() {
+      this.$store.dispatch("blogController/getPopularBlogs");
+    },
+
     getPopularTours() {
       this.$store.dispatch("tourController/getPopularTours");
     },
