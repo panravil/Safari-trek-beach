@@ -20,5 +20,4 @@ Route::get("/tour/popular-tours", 'App\Http\Controllers\TourController@popularTo
 Route::get("/destination/top-destinations", 'App\Http\Controllers\DestinationController@topDestinations');
 
 // to show homepage blog
-Route::get("/blog/homepage-blog", 'App\Http\Controllers\BlogController@homePageBlogs');
-
+Route::get("/blog/homepage-blog", 'App\Http\Controllers\BlogController@popularBlogs');
