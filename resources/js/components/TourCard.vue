@@ -26,7 +26,14 @@
       class="card-body"
       style="position: relative; border-bottom: 1px dotted black"
     >
-      <div class="tag-image">
+      <div
+        class="tag-image"
+        v-if="
+          tourData.tag !== null &&
+          tourData.tag !== undefined &&
+          tourData.tag !== ''
+        "
+      >
         <img
           v-if="tourData.tag == 'review'"
           :src="'./images/best-review.png'"
@@ -66,11 +73,45 @@
         </p>
         <p class="card-text ps-3">
           <span class="star-rating">
-            <span class="fa fa-star checked"></span>
-            <span class="fa fa-star checked"></span>
-            <span class="fa fa-star checked"></span>
-            <span class="fa fa-star checked"></span>
-            <span class="fa fa-star checked"></span>
+            <!-- first star -->
+            <span v-if="tourData.avg_review < 0.1" class="fa fa-star-o"></span>
+            <span
+              v-else-if="tourData.avg_review > 0.1 && tourData.avg_review < 0.5"
+              class="fa fa-star-half-full checked"
+            ></span>
+            <span v-else class="fa fa-star checked"></span>
+
+            <!-- second star -->
+            <span v-if="tourData.avg_review < 1" class="fa fa-star-o"></span>
+            <span
+              v-else-if="tourData.avg_review < 1.5"
+              class="fa fa-star-half-full checked"
+            ></span>
+            <span v-else class="fa fa-star checked"></span>
+
+            <!-- third star -->
+            <span v-if="tourData.avg_review < 2" class="fa fa-star-o"></span>
+            <span
+              v-else-if="tourData.avg_review < 2.5"
+              class="fa fa-star-half-full checked"
+            ></span>
+            <span v-else class="fa fa-star checked"></span>
+
+            <!-- fourth star -->
+            <span v-if="tourData.avg_review < 3" class="fa fa-star-o"></span>
+            <span
+              v-else-if="tourData.avg_review < 3.5"
+              class="fa fa-star-half-full checked"
+            ></span>
+            <span v-else class="fa fa-star checked"></span>
+
+            <!-- fifth star -->
+            <span v-if="tourData.avg_review < 4" class="fa fa-star-o"></span>
+            <span
+              v-else-if="tourData.avg_review < 4.5"
+              class="fa fa-star-half-full checked"
+            ></span>
+            <span v-else class="fa fa-star checked"></span>
             <span
               ><strong>{{ tourData.avg_review }}</strong></span
             >
