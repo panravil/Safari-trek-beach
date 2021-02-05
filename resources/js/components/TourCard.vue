@@ -28,18 +28,18 @@
     >
       <div class="tag-image">
         <img
-          v-if="tourData.tagImage == './images/best-review.png'"
-          :src="tourData.tagImage"
+          v-if="tourData.tag == 'review'"
+          :src="'./images/best-review.png'"
           style="margin-top: -15px; width: 60px; height: auto"
         />
         <img
-          v-else-if="tourData.tagImage == './images/bestseller.png'"
-          :src="tourData.tagImage"
+          v-else-if="tourData.tag == 'seller'"
+          :src="'./images/bestseller.png'"
           style="width: 80px; height: auto"
         />
         <img
           v-else
-          :src="tourData.tagImage"
+          :src="'./images/toprated2.png'"
           style="width: 100px; height: auto"
         />
       </div>
@@ -54,7 +54,9 @@
       </p>
       <p class="card-text mb-1 trip-route">
         <strong> Trip Route: </strong>
-        {{ tourData.start_city }}(Start) ... {{ tourData.end_city }} (End)
+        {{ tourData.start_city }}(Start),
+        {{ getMidRoute(tourData.destination) }}
+        {{ tourData.end_city }} (End)
       </p>
     </div>
     <div class="row gx-0" style="position: relative">
@@ -98,6 +100,18 @@ export default {
   computed: {},
   data() {
     return {};
+  },
+
+  methods: {
+    getMidRoute(destination) {
+      if (destination == undefined || destination == null) return "";
+      let route_data = "";
+      for (let i = 0; i < destination.length; i++) {
+        route_data = route_data + destination[i] + ",";
+      }
+      if (route_data.length > 60) return route_data.substr(0, 60) + "...";
+      else return route_data;
+    },
   },
 };
 </script>
@@ -165,6 +179,6 @@ export default {
   box-shadow: 0px 1px 13px #666;
 }
 .trip-route {
-  min-height: 50px;
+  min-height: 75px;
 }
 </style>

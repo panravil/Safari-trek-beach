@@ -2,86 +2,96 @@
 <div id="our-tours">
   <div class="container">
     <div class="row">
-      <div class="col-lg-3 col-xs-12 filters">
-        <div class="position-relative">
-          <div class="mobile-filter-close d-flex justify-content-between px-3">
-            <div>Filter Options</div>
-            <div><span class="fa fa-times-circle-o"></span></div>
-          </div>
-          <div class="row gx-0">
-            <div class="col-md-12 mobile-filter position-relative" v-click-outside-dropdown="closeWhereToDropDown">
-              <div class="bg-white h-100 align-items-center d-flex justify-content-between px-3">
-                <span class="fa fa-map-marker"></span>
-                <div class="w-100 px-2" @click="showWhereToDropdown(true)">
-                  <input v-model="where_to_search" placeholder="Where To" type="text" ref="whereTo" class="w-100" />
-                </div>
-                <span v-if="visible_whereto_dropdown == true" class="fa fa-search"></span>
-                <span v-else-if="
+        <div v-if="isSidebar" class="overlay-mobile" @click="isSidebar = false"></div>
+        <div class="col-lg-3 col-xs-12 filters" v-bind:style="[
+            isSidebar
+              ? {
+                  'right': 0,
+                }
+              : '',
+          ]">
+          <div class="position-relative">
+            <div class="mobile-filter-close w-100">
+              <div>Filter Options</div>
+              <div @click="isSidebar = false">CLOSE</div>
+            </div>
+            <div class="mobile-search-button w-100">
+              <div>Filter Options</div>
+            </div>
+            <div class="row gx-0">
+              <div class="col-md-12 mobile-filter position-relative" v-click-outside-dropdown="closeWhereToDropDown">
+                <div class="bg-white h-100 align-items-center d-flex justify-content-between px-3">
+                  <span class="fa fa-map-marker"></span>
+                  <div class="w-100 px-2" @click="showWhereToDropdown(true)">
+                    <input v-model="where_to_search" placeholder="Where To" type="text" ref="whereTo" class="w-100" />
+                  </div>
+                  <span v-if="visible_whereto_dropdown == true" class="fa fa-search"></span>
+                  <span v-else-if="
                     where_to_search != '' && visible_whereto_dropdown == false
                   " class="fa fa-times-circle-o" @click="setInitWhereTo"></span>
-                <span v-else class="fa fa-search invisible"></span>
-              </div>
-              <transition enter-active-class="animate__animated animate__fadeIn" leave-active-class="animate__animated animate__fadeOut">
-                <div class="where_to_dropdown left-0 w-100 bg-white mt-3 triangule-where" v-if="visible_whereto_dropdown == true && search_result != ''">
-                  <div class="bg-warning text-white p-2 text-left">
-                    Start typing or select below
-                  </div>
-                  <div v-for="(item, index) in search_result" v-bind:key="index">
-                    <div class="py-1 px-3 border-bottom border-1 text-start" v-if="index < 6" @click="setCurrentWhereTo(item.title)">
-                      <div class="p-0 m-0">
-                        <strong>{{ item.title }}</strong>
+                  <span v-else class="fa fa-search invisible"></span>
+                </div>
+                <transition enter-active-class="animate__animated animate__fadeIn" leave-active-class="animate__animated animate__fadeOut">
+                  <div class="where_to_dropdown left-0 w-100 bg-white mt-3 triangule-where" v-if="visible_whereto_dropdown == true && search_result != ''">
+                    <div class="bg-warning text-white p-2 text-left">
+                      Start typing or select below
+                    </div>
+                    <div v-for="(item, index) in search_result" v-bind:key="index">
+                      <div class="py-1 px-3 border-bottom border-1 text-start" v-if="index < 6" @click="setCurrentWhereTo(item.title)">
+                        <div class="p-0 m-0">
+                          <strong>{{ item.title }}</strong>
+                        </div>
+                        <div class="p-0 m-0">
+                          <small>{{ item.country }}</small>
+                        </div>
                       </div>
-                      <div class="p-0 m-0">
-                        <small>{{ item.country }}</small>
+                    </div>
+                  </div>
+                </transition>
+              </div>
+              <div class="col-md-12 mobile-filter position-relative">
+                <div class="bg-white w-100 h-100 align-items-center d-flex justify-content-between px-3">
+                  <span class="fa fa-calendar"></span>
+                  <div class="w-100 px-2">
+                    <datepicker :disabledDates="disabledFn" v-model="start_date" :placeholder="'Start Date'" :highlighted="highlighted"></datepicker>
+                  </div>
+                  <span v-if="start_date != ''" class="fa fa-times-circle-o" @click="initStartDate"></span>
+                  <span v-else class="fa fa-times-circle-o invisible"></span>
+                </div>
+              </div>
+              <div class="col-md-12 mobile-filter position-relative" v-click-outside-dropdown="closeTravelerDropdown">
+                <div class="bg-white w-100 h-100 align-items-center d-flex justify-content-between px-3" @click="showTravelerDropdown">
+                  <span class="fa fa-users"></span>
+                  <div class="w-100 px-2">
+                    <input v-model="traveler_number" id="traveler_input" type="text" placeholder="Travelers" class="w-100" />
+                  </div>
+                  <span v-if="traveler_number != ''" class="fa fa-times-circle-o" @click="setTravelerInit"></span>
+                  <span v-else class="fa fa-times-circle-o invisible"></span>
+                </div>
+                <transition enter-active-class="animate__animated animate__fadeIn" leave-active-class="animate__animated animate__fadeOut">
+                  <div v-if="visible_traveler_dropdown" class="traveler-dropdown left-0 bg-white mt-3 triangule-where">
+                    <div class="bg-warning text-white p-2 text-left">
+                      Travelers
+                      <span class="fa fa-times-circle-o" @click="closeTravelerDropdown"></span>
+                    </div>
+                    <div class="py-2 px-3 mt-2 border-1 text-start d-flex justify-content-between">
+                      <div><strong>Adults</strong>(18+ years):</div>
+                      <div>
+                        <vue-numeric-input v-model="adults_number" :min="1" :max="100" :step="1"></vue-numeric-input>
                       </div>
                     </div>
-                  </div>
-                </div>
-              </transition>
-            </div>
-            <div class="col-md-12 mobile-filter position-relative">
-              <div class="bg-white w-100 h-100 align-items-center d-flex justify-content-between px-3">
-                <span class="fa fa-calendar"></span>
-                <div class="w-100 px-2">
-                  <datepicker :disabledDates="disabledFn" v-model="start_date" :placeholder="'Start Date'" :highlighted="highlighted"></datepicker>
-                </div>
-                <span v-if="start_date != ''" class="fa fa-times-circle-o" @click="initStartDate"></span>
-                <span v-else class="fa fa-times-circle-o invisible"></span>
-              </div>
-            </div>
-            <div class="col-md-12 mobile-filter position-relative" v-click-outside-dropdown="closeTravelerDropdown">
-              <div class="bg-white w-100 h-100 align-items-center d-flex justify-content-between px-3" @click="showTravelerDropdown">
-                <span class="fa fa-users"></span>
-                <div class="w-100 px-2">
-                  <input v-model="traveler_number" id="traveler_input" type="text" placeholder="Travelers" class="w-100" />
-                </div>
-                <span v-if="traveler_number != ''" class="fa fa-times-circle-o" @click="setTravelerInit"></span>
-                <span v-else class="fa fa-times-circle-o invisible"></span>
-              </div>
-              <transition enter-active-class="animate__animated animate__fadeIn" leave-active-class="animate__animated animate__fadeOut">
-                <div v-if="visible_traveler_dropdown" class="traveler-dropdown left-0 bg-white mt-3 triangule-where">
-                  <div class="bg-warning text-white p-2 text-left">
-                    Travelers
-                    <span class="fa fa-times-circle-o" @click="closeTravelerDropdown"></span>
-                  </div>
-                  <div class="py-2 px-3 mt-2 border-1 text-start d-flex justify-content-between">
-                    <div><strong>Adults</strong>(18+ years):</div>
-                    <div>
-                      <vue-numeric-input v-model="adults_number" :min="1" :max="100" :step="1"></vue-numeric-input>
+                    <div class="py-2 px-3 mt-2 border-1 text-start d-flex justify-content-between">
+                      <div><strong>Children</strong>(0~17 years):</div>
+                      <div>
+                        <vue-numeric-input v-model="children_number" :min="0" :max="100" :step="1"></vue-numeric-input>
+                      </div>
                     </div>
-                  </div>
-                  <div class="py-2 px-3 mt-2 border-1 text-start d-flex justify-content-between">
-                    <div><strong>Children</strong>(0~17 years):</div>
-                    <div>
-                      <vue-numeric-input v-model="children_number" :min="0" :max="100" :step="1"></vue-numeric-input>
-                    </div>
-                  </div>
 
-                  <!--
+                    <!--
                       @this is for children age select options
                      -->
 
-                  <!-- <p class="mt-3 text-center" v-if="children_number">
+                    <!-- <p class="mt-3 text-center" v-if="children_number">
                       Age at the end of the tour
                     </p>
                     <hr class="mx-3" v-if="children_number" />
@@ -92,135 +102,135 @@
                       </div>
                     </div> -->
 
-                  <div class="text-right">
-                    <button class="btn btn-danger mx-3 my-3" @click="setTravelerInfo">
-                      Done
-                    </button>
+                    <div class="text-right">
+                      <button class="btn btn-danger mx-3 my-3" @click="setTravelerInfo">
+                        Done
+                      </button>
+                    </div>
                   </div>
-                </div>
-              </transition>
+                </transition>
+              </div>
+              <div class="col-md-12 mobile-filter">
+                <button class="btn btn-danger w-100 h-100">
+                  <span>Search Tours</span>
+                  <span class="fa fa-angle-right ms-2"></span>
+                </button>
+              </div>
             </div>
-            <div class="col-md-12 mobile-filter">
-              <button class="btn btn-danger w-100 h-100">
-                <span>Search Tours</span>
-                <span class="fa fa-angle-right ms-2"></span>
-              </button>
+
+            <h6 class="mt-5 fw-bold">Tour Price</h6>
+
+            <ejs-slider :min="100" :max="16000" :type="'Range'" v-model="price_range"></ejs-slider>
+            <div class="d-flex justify-content-between">
+              <div>${{ price_range[0] }}</div>
+              <div>${{ price_range[1] }}</div>
             </div>
+
+            <h6 class="mt-5 fw-bold">Tour Days</h6>
+
+            <ejs-slider :min="1" :max="30" :type="'Range'" v-model="day_range"></ejs-slider>
+            <div class="d-flex justify-content-between">
+              <div>{{ day_range[0] }} Days</div>
+              <div>{{ day_range[1] }} Days</div>
+            </div>
+
+            <h6 class="mt-5 fw-bold">Private or Group</h6>
+
+            <ul>
+              <li>
+                <ejs-radiobutton label="Private" name="default"></ejs-radiobutton>
+              </li>
+              <li>
+                <ejs-radiobutton label="Group" name="default" checked="true"></ejs-radiobutton>
+              </li>
+            </ul>
+            <h6 class="mt-5 fw-bold">Standard</h6>
+
+            <p>
+              <ejs-checkbox label="Budget"></ejs-checkbox>
+            </p>
+            <p>
+              <ejs-checkbox label="Camping"></ejs-checkbox>
+            </p>
+            <p>
+              <ejs-checkbox label="Lodge"></ejs-checkbox>
+            </p>
+            <p>
+              <ejs-checkbox label="Luxury"></ejs-checkbox>
+            </p>
+            <p>
+              <ejs-checkbox label="Luxury plus"></ejs-checkbox>
+            </p>
+            <p>
+              <ejs-checkbox label="Mid Range"></ejs-checkbox>
+            </p>
+            <h6 class="mt-5 fw-bold">Specialized</h6>
+
+            <p>
+              <ejs-checkbox label="Birdwatching"></ejs-checkbox>
+            </p>
+            <p>
+              <ejs-checkbox label=" Canoe/Mokoro safari"></ejs-checkbox>
+            </p>
+            <p>
+              <ejs-checkbox label=" Tour for disabled travelers"></ejs-checkbox>
+            </p>
+            <p>
+              <ejs-checkbox label=" Scenic and/or Cultural tour"></ejs-checkbox>
+            </p>
+            <p>
+              <ejs-checkbox label="Cycling Safari"></ejs-checkbox>
+            </p>
+            <p>
+              <ejs-checkbox label="Yoga"></ejs-checkbox>
+            </p>
+            <p>
+              <ejs-checkbox label="Gorilla and/or chimp tracking & mountain climbing"></ejs-checkbox>
+            </p>
+            <p>
+              <ejs-checkbox label="Fly-in safari"></ejs-checkbox>
+            </p>
+            <p>
+              <ejs-checkbox label="Game drive safari"></ejs-checkbox>
+            </p>
+            <p>
+              <ejs-checkbox label=" Gorilla and/or chimp trekking & game drive safari"></ejs-checkbox>
+            </p>
+            <p>
+              <ejs-checkbox label=" Gorilla and/or chimp trekking only"></ejs-checkbox>
+            </p>
+            <p>
+              <ejs-checkbox label="Guided self drive"></ejs-checkbox>
+            </p>
+            <p>
+              <ejs-checkbox label=" Mountain climbing only"></ejs-checkbox>
+            </p>
+            <p>
+              <ejs-checkbox label="Horseback Safari"></ejs-checkbox>
+            </p>
+            <p>
+              <ejs-checkbox label=" Mountain climbing & game drive safari"></ejs-checkbox>
+            </p>
+            <p>
+              <ejs-checkbox label="Wildlife photography"></ejs-checkbox>
+            </p>
+            <p>
+              <ejs-checkbox label=" Golf & wildlife viewing"></ejs-checkbox>
+            </p>
+            <p>
+              <ejs-checkbox label="walking-safari"></ejs-checkbox>
+            </p>
+            <p>
+              <ejs-checkbox label="Beach holiday & game drive safari"></ejs-checkbox>
+            </p>
+            <p>
+              <ejs-checkbox label="Beach holiday only"></ejs-checkbox>
+            </p>
+            <p>
+              <ejs-checkbox label="Overland truck safari"></ejs-checkbox>
+            </p>
           </div>
-
-          <h6 class="mt-5 fw-bold">Tour Price</h6>
-
-          <ejs-slider :min="100" :max="16000" :type="'Range'" v-model="price_range"></ejs-slider>
-          <div class="d-flex justify-content-between">
-            <div>${{ price_range[0] }}</div>
-            <div>${{ price_range[1] }}</div>
-          </div>
-
-          <h6 class="mt-5 fw-bold">Tour Days</h6>
-
-          <ejs-slider :min="1" :max="30" :type="'Range'" v-model="day_range"></ejs-slider>
-          <div class="d-flex justify-content-between">
-            <div>{{ day_range[0] }} Days</div>
-            <div>{{ day_range[1] }} Days</div>
-          </div>
-
-          <h6 class="mt-5 fw-bold">Private or Group</h6>
-
-          <ul>
-            <li>
-              <ejs-radiobutton label="Private" name="default"></ejs-radiobutton>
-            </li>
-            <li>
-              <ejs-radiobutton label="Group" name="default" checked="true"></ejs-radiobutton>
-            </li>
-          </ul>
-          <h6 class="mt-5 fw-bold">Standard</h6>
-
-          <p>
-            <ejs-checkbox label="Budget"></ejs-checkbox>
-          </p>
-          <p>
-            <ejs-checkbox label="Camping"></ejs-checkbox>
-          </p>
-          <p>
-            <ejs-checkbox label="Lodge"></ejs-checkbox>
-          </p>
-          <p>
-            <ejs-checkbox label="Luxury"></ejs-checkbox>
-          </p>
-          <p>
-            <ejs-checkbox label="Luxury plus"></ejs-checkbox>
-          </p>
-          <p>
-            <ejs-checkbox label="Mid Range"></ejs-checkbox>
-          </p>
-          <h6 class="mt-5 fw-bold">Specialized</h6>
-
-          <p>
-            <ejs-checkbox label="Birdwatching"></ejs-checkbox>
-          </p>
-          <p>
-            <ejs-checkbox label=" Canoe/Mokoro safari"></ejs-checkbox>
-          </p>
-          <p>
-            <ejs-checkbox label=" Tour for disabled travelers"></ejs-checkbox>
-          </p>
-          <p>
-            <ejs-checkbox label=" Scenic and/or Cultural tour"></ejs-checkbox>
-          </p>
-          <p>
-            <ejs-checkbox label="Cycling Safari"></ejs-checkbox>
-          </p>
-          <p>
-            <ejs-checkbox label="Yoga"></ejs-checkbox>
-          </p>
-          <p>
-            <ejs-checkbox label="Gorilla and/or chimp tracking & mountain climbing"></ejs-checkbox>
-          </p>
-          <p>
-            <ejs-checkbox label="Fly-in safari"></ejs-checkbox>
-          </p>
-          <p>
-            <ejs-checkbox label="Game drive safari"></ejs-checkbox>
-          </p>
-          <p>
-            <ejs-checkbox label=" Gorilla and/or chimp trekking & game drive safari"></ejs-checkbox>
-          </p>
-          <p>
-            <ejs-checkbox label=" Gorilla and/or chimp trekking only"></ejs-checkbox>
-          </p>
-          <p>
-            <ejs-checkbox label="Guided self drive"></ejs-checkbox>
-          </p>
-          <p>
-            <ejs-checkbox label=" Mountain climbing only"></ejs-checkbox>
-          </p>
-          <p>
-            <ejs-checkbox label="Horseback Safari"></ejs-checkbox>
-          </p>
-          <p>
-            <ejs-checkbox label=" Mountain climbing & game drive safari"></ejs-checkbox>
-          </p>
-          <p>
-            <ejs-checkbox label="Wildlife photography"></ejs-checkbox>
-          </p>
-          <p>
-            <ejs-checkbox label=" Golf & wildlife viewing"></ejs-checkbox>
-          </p>
-          <p>
-            <ejs-checkbox label="walking-safari"></ejs-checkbox>
-          </p>
-          <p>
-            <ejs-checkbox label="Beach holiday & game drive safari"></ejs-checkbox>
-          </p>
-          <p>
-            <ejs-checkbox label="Beach holiday only"></ejs-checkbox>
-          </p>
-          <p>
-            <ejs-checkbox label="Overland truck safari"></ejs-checkbox>
-          </p>
         </div>
-      </div>
       <div class="col-lg-9 col-xs-12">
         <section class="section-header">
           <h3>Our Tours</h3>
@@ -239,6 +249,9 @@
           <span v-if="!read_more" class="read-more text-danger" @click="read_more = !read_more">Read more</span>
           <span v-else class="read-more text-danger" @click="read_more = !read_more">Read less</span>
         </section>
+        <div class="mobile-sidebar-trigger">
+          <button class="btn btn-primary" @click="isSidebar = true">Search Filter</button>
+        </div>
         <ul class="tagpill-group ps-0 mt-3">
           <span class="my-1">Selected Filters:</span>
           <ejs-chiplist id="tag-list-filter" cssClass="e-outline e-info" enableDelete="true">
@@ -617,6 +630,7 @@ export default {
         },
       ],
       search_result: [],
+      isSidebar: false,
     };
   },
   directives: {

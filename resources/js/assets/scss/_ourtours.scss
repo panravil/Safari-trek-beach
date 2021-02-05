@@ -69,16 +69,31 @@
 #our-tours button.btn-danger > span {
   font-size: 18px;
 }
-
+.mobile-filter-close,
+.mobile-sidebar-trigger {
+  display: none;
+}
+.overlay-mobile {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vh;
+  height: 100vh;
+  background-color: rgba($color: #000000, $alpha: 0.3);
+  z-index: 1021;
+}
 @media (max-width: 991px) {
   .filters {
-    padding: 30px !important;
-    display: block;
+    padding-left: 30px !important;
+    padding-right: 30px !important;
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
     position: fixed;
-    right: 0;
+    right: -100%;
+    // left: 100%;
     background-color: #fff;
     border-left: 1px solid #e2e1e1;
-    z-index: 1021;
+    z-index: 1022;
     padding: 2.5rem 0 0 0;
     top: 0;
     margin-top: 0;
@@ -89,7 +104,42 @@
     will-change: transform;
     transition: transform 0.2s cubic-bezier(0.4, 0, 1, 1);
     backface-visibility: hidden;
+    background-color: #f1f1f1;
+    transition:cubic-bezier(0.785, 0.135, 0.15, 0.86) 0.5s;
+    animation-name: sidebar;
   }
+@keyframes sidebar {
+  0% {
+    right: -100%;
+}
+100% {
+    right: 0;
+}
+}
+ 
+  .mobile-filter-close {
+    display: block;
+    position: sticky;
+    z-index: 9999;
+    background-color: #f1f1f1;
+    top: 0;
+    left: 0;
+  }
+  .mobile-search-button {
+      display: block;
+      position: absolute;
+      z-index: 9999;
+      width: 100%;
+      background-color: #f1f1f1;
+      bottom: 0;
+      left: 0;
+    }
+    .mobile-sidebar-trigger {
+      display: block;
+    }
+    // .filters {
+    //   display: none;
+    // }
 }
 
 @media (min-width: 744px) and (max-width: 991px) {

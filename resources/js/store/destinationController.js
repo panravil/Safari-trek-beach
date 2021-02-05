@@ -15,7 +15,7 @@ const mutations = {
 
 const actions = {
     async getTopDestinations(context) {
-        console.log("get Top Destination called");
+        // console.log("get Top Destination called");
         await axios
             .get("/api/destination/top-destinations")
             .then(res => {

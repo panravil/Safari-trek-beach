@@ -11,6 +11,7 @@ const getters = {
 
 const mutations = {
     setPopularTours(state, data) {
+        console.log("popular tour", data);
         state.popularTours = data;
     },
     setOurTours(state, data) {
@@ -20,7 +21,7 @@ const mutations = {
 
 const actions = {
     async getPopularTours(context) {
-        console.log("get popular tour called");
+        // console.log("get popular tour called");
         await axios
             .get("/api/tour/popular-tours")
             .then(res => {
