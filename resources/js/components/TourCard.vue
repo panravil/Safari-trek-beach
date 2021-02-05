@@ -17,7 +17,7 @@
         {{ tourData.title }}
       </div>
       <img
-        :src="'./images/operator_logo.png'"
+        :src="tourData.operator_logo"
         style="width: 75px; height: auto; top: 0px; left: 30px"
         class="position-absolute"
       />

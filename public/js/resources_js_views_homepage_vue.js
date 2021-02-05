@@ -1166,7 +1166,7 @@ var render = function() {
               top: "0px",
               left: "30px"
             },
-            attrs: { src: "./images/operator_logo.png" }
+            attrs: { src: _vm.tourData.operator_logo }
           })
         ]
       ),
