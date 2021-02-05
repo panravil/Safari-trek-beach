@@ -38,8 +38,9 @@ const router = new Router({
                 path: '/tour-operators',
                 name: 'Tour Operators',
                 index: 3,
-                component: () => import('./views/TourOperators.vue')
-                },{
+                component: () => import('./views/BlogPost.vue')
+                },
+                {
                 path: '/contact',
                 name: 'Contact Us',
                 index: 4,
@@ -49,6 +50,11 @@ const router = new Router({
                 name: 'About Us',
                 index: 5,
                 component: () => import('./views/AboutUs.vue')
+                },{
+                path: '/blog',
+                name: 'Blog Post',
+                index: 6,
+                component: () => import('./views/BlogPost.vue')
                 },
             ]
         },

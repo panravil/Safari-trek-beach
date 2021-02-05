@@ -18,7 +18,7 @@
       </div>
       <img
         :src="tourData.operator_logo"
-        style="width: 75px; height: auto; top: 0px; left: 30px"
+        style="width: 70px; height: auto; top: 0px; left: 30px"
         class="position-absolute"
       />
     </div>
@@ -52,12 +52,12 @@
       </div>
       <p class="card-text mb-1">
         <strong> Acommodation: </strong>
-        No Data
-        <!-- {{ tourData.acommodation }} -->
+
+        {{ getTourDataType(tourData.level) }}
       </p>
       <p class="card-text mb-1">
         <strong> Tour Type: </strong>
-        {{getTourLevel(tourData.level)}}
+        {{ tourData.tour_group }}
       </p>
       <p class="card-text mb-1 trip-route">
         <strong> Trip Route: </strong>
@@ -148,20 +148,18 @@ export default {
       if (destination == undefined || destination == null) return "";
       let route_data = "";
       for (let i = 0; i < destination.length; i++) {
-        route_data = route_data + destination[i] + ", ";
+        route_data = route_data + destination[i] + ",";
       }
-      if (route_data.length > 60) return route_data.substr(0, 60) + "...";
+      if (route_data.length > 50) return route_data.substr(0, 50) + "...";
       else return route_data;
     },
-    getTourLevel(level) {
+
+    getTourDataType(level) {
       if (level == undefined || level == null) return "";
-      let level_data = this.tourData.tour_group;
+      let level_data = "";
       for (let i = 0; i < level.length; i++) {
-        level_data += ", " + level[i];
+        level_data = level_data + level[i] + ",";
       }
-      level_data = level_data.toLowerCase().replace(/\b[a-z]/g, function(letter) {
-        return letter.toUpperCase();
-      });
       return level_data;
     },
   },

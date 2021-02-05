@@ -455,38 +455,11 @@
             v-for="(blog, index) in popularBlogs"
             v-bind:key="index"
           >
-            <div class="card mb-3 mx-2">
-              <div
-                class="bg-image hover-overlay ripple"
-                data-mdb-ripple-color="light"
-                :style="{
-                  'background-image': 'url(' + blog.post_image + ')',
-                }"
-              >
-                <a href="#">
-                  <div class="mask"></div>
-                </a>
-              </div>
-              <div class="card-body">
-                <h5
-                  class="card-title fw-bold text-center"
-                  :title="blog.post_title"
-                >
-                  <div>{{ blog.post_title }}</div>
-                </h5>
-                <hr class="mx-3" />
-                <p class="card-text" :title="blog.short_description">
-                  {{ blog.short_description }}
-                </p>
-                <button type="button" class="btn btn-white">
-                  Read More <span class="fa fa-angle-double-right ms-2"></span>
-                </button>
-              </div>
-            </div>
+            <BlogCard :blog="blog"></BlogCard>
           </div>
         </div>
         <div class="text-center">
-          <a href="#" class="btn btn-danger">
+          <a href="/blog" class="btn btn-danger">
             View All <span class="fa fa-angle-right ms-2"></span
           ></a>
         </div>
@@ -500,12 +473,14 @@ import { mapState, mapGetters, mapMutations } from "vuex";
 import VueNumericInput from "vue-numeric-input";
 import Datepicker from "vuejs-datepicker";
 import TourCard from "../components/TourCard";
+import BlogCard from "../components/BlogCard";
 
 export default {
   components: {
     VueNumericInput,
     Datepicker,
     TourCard,
+    BlogCard,
   },
   data() {
     return {
