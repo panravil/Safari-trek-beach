@@ -103,6 +103,49 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   props: {
     tourData: Object
@@ -110,6 +153,31 @@ __webpack_require__.r(__webpack_exports__);
   computed: {},
   data: function data() {
     return {};
+  },
+  methods: {
+    getMidRoute: function getMidRoute(destination) {
+      if (destination == undefined || destination == null) return "";
+      var route_data = "";
+
+      for (var i = 0; i < destination.length; i++) {
+        route_data = route_data + destination[i] + ", ";
+      }
+
+      if (route_data.length > 60) return route_data.substr(0, 60) + "...";else return route_data;
+    },
+    getTourLevel: function getTourLevel(level) {
+      if (level == undefined || level == null) return "";
+      var level_data = this.tourData.tour_group;
+
+      for (var i = 0; i < level.length; i++) {
+        level_data += ", " + level[i];
+      }
+
+      level_data = level_data.toLowerCase().replace(/\b[a-z]/g, function (letter) {
+        return letter.toUpperCase();
+      });
+      return level_data;
+    }
   }
 });
 
@@ -137,6 +205,9 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
+//
+//
+//
 //
 //
 //
@@ -663,22 +734,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         dates: [new Date()]
       },
       options: ["- Age -", "17 Years", "16 Years", "15 Years", "14 Years", "13 Years", "12 Years", "11 Years", "10 Years", "9 Years", "8 Years", "7 Years", "6 Years", "5 Years", "4 Years", "2 Years", "1 Year", "0 Years"],
-      blogs: [{
-        id: 1,
-        image: "./images/img5.jpg",
-        title: "Exclusive Safaris In Tanzania",
-        description: "Night game drive Safari Tour gives you the best opportunity to see nocturnal animals that are hard to see during. Night game drive Safari Tour gives you the best opportunity to see nocturnal animals that are hard to see during"
-      }, {
-        id: 2,
-        image: "./images/img5.jpg",
-        title: "Exclusive Safaris In Tanzania",
-        description: "Night game drive Safari Tour gives you the best opportunity to see nocturnal animals that are hard to see during. Night game drive Safari Tour gives you the best opportunity to see nocturnal animals that are hard to see during"
-      }, {
-        id: 3,
-        image: "./images/img5.jpg",
-        title: "Exclusive Safaris In Tanzania",
-        description: "Night game drive Safarie during. Night game drivto see nocturnal animals that are hard to see during"
-      }],
       where_to_search: "",
       where_to_list: [{
         title: "All Safari Destinations",
@@ -749,12 +804,14 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
   },
   computed: _objectSpread({}, (0,vuex__WEBPACK_IMPORTED_MODULE_3__.mapGetters)({
     popularTours: "tourController/popularTours",
-    topDestinations: "destinationController/topDestinations"
+    topDestinations: "destinationController/topDestinations",
+    popularBlogs: "blogController/popularBlogs"
   })),
   created: function created() {
     this.search_result = this.where_to_list;
     this.getPopularTours();
     this.getTopDestinations();
+    this.getPopularBlogs();
   },
   directives: {
     "click-outside-dropdown": {
@@ -804,6 +861,9 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     }
   },
   methods: {
+    getPopularBlogs: function getPopularBlogs() {
+      this.$store.dispatch("blogController/getPopularBlogs");
+    },
     getPopularTours: function getPopularTours() {
       this.$store.dispatch("tourController/getPopularTours");
     },
@@ -866,7 +926,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n#tour-card .price {\r\n  width: 80px;\r\n  color: #0f6d24;\r\n  right: 5px;\r\n  bottom: 0px;\r\n  top: 0px;\r\n  padding-left: 5px;\r\n  border-left: 1px dotted black;\r\n  position: absolute;\r\n  font-size: 18px;\r\n  display: flex;\r\n  align-items: center;\r\n  justify-content: center;\n}\n#tour-card .tag-image {\r\n  top: -12px;\r\n  position: absolute;\r\n  right: 25px;\n}\n#tour-card .bg-image {\r\n  background-size: cover;\r\n  position: relative;\r\n  width: 100%;\r\n  height: 0;\r\n  padding-top: 56.25%;\n}\n#tour-card .tour_title {\r\n  width: 100%;\r\n  position: absolute;\r\n  left: 0;\r\n  bottom: 0;\r\n  right: 0;\r\n  text-align: left;\r\n  padding: 20px 10px;\r\n  background: rgba(0, 0, 0, 0.4);\r\n  background: linear-gradient(\r\n    to bottom,\r\n    rgba(0, 0, 0, 0) 0%,\r\n    rgba(0, 0, 0, 0.5) 45%,\r\n    rgba(0, 0, 0, 0.9) 100%\r\n  );\r\n  color: white;\r\n  text-align: center;\r\n  font-weight: 700;\r\n  font-size: 20px;\r\n  margin: 40px 0 0px 0;\r\n  font-family: \"Montserrat\", sans-serif;\n}\n#tour-card.card {\r\n  transition: box-shadow 0.2s ease-in-out, transform 0.3s ease-in-out;\r\n  box-shadow: 0px 2px 3px rgb(0 0 0 / 18%);\r\n  cursor: pointer;\n}\n#tour-card.card:hover {\r\n  box-shadow: 0px 1px 13px #666;\n}\n.trip-route {\r\n  min-height: 50px;\n}\r\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n#tour-card .price {\n  width: 80px;\n  color: #0f6d24;\n  right: 5px;\n  bottom: 0px;\n  top: 0px;\n  padding-left: 5px;\n  border-left: 1px dotted black;\n  position: absolute;\n  font-size: 18px;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n}\n#tour-card .tag-image {\n  top: -12px;\n  position: absolute;\n  right: 25px;\n}\n#tour-card .bg-image {\n  background-size: cover;\n  position: relative;\n  width: 100%;\n  height: 0;\n  padding-top: 56.25%;\n}\n#tour-card .tour_title {\n  width: 100%;\n  position: absolute;\n  left: 0;\n  bottom: 0;\n  right: 0;\n  text-align: left;\n  padding: 20px 10px;\n  background: rgba(0, 0, 0, 0.4);\n  background: linear-gradient(\n    to bottom,\n    rgba(0, 0, 0, 0) 0%,\n    rgba(0, 0, 0, 0.5) 45%,\n    rgba(0, 0, 0, 0.9) 100%\n  );\n  color: white;\n  text-align: center;\n  font-weight: 700;\n  font-size: 20px;\n  margin: 40px 0 0px 0;\n  font-family: \"Montserrat\", sans-serif;\n}\n#tour-card.card {\n  transition: box-shadow 0.2s ease-in-out, transform 0.3s ease-in-out;\n  box-shadow: 0px 2px 3px rgb(0 0 0 / 18%);\n  cursor: pointer;\n}\n#tour-card.card:hover {\n  box-shadow: 0px 1px 13px #666;\n}\n.trip-route {\n  min-height: 75px;\n}\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -1101,7 +1161,7 @@ var render = function() {
           _c("img", {
             staticClass: "position-absolute",
             staticStyle: {
-              width: "100px",
+              width: "75px",
               height: "auto",
               top: "0px",
               left: "30px"
@@ -1121,32 +1181,40 @@ var render = function() {
           }
         },
         [
-          _c("div", { staticClass: "tag-image" }, [
-            _vm.tourData.tagImage == "./images/best-review.png"
-              ? _c("img", {
-                  staticStyle: {
-                    "margin-top": "-15px",
-                    width: "60px",
-                    height: "auto"
-                  },
-                  attrs: { src: _vm.tourData.tagImage }
-                })
-              : _vm.tourData.tagImage == "./images/bestseller.png"
-              ? _c("img", {
-                  staticStyle: { width: "80px", height: "auto" },
-                  attrs: { src: _vm.tourData.tagImage }
-                })
-              : _c("img", {
-                  staticStyle: { width: "100px", height: "auto" },
-                  attrs: { src: _vm.tourData.tagImage }
-                })
-          ]),
+          _vm.tourData.tag !== null &&
+          _vm.tourData.tag !== undefined &&
+          _vm.tourData.tag !== ""
+            ? _c("div", { staticClass: "tag-image" }, [
+                _vm.tourData.tag == "review"
+                  ? _c("img", {
+                      staticStyle: {
+                        "margin-top": "-15px",
+                        width: "60px",
+                        height: "auto"
+                      },
+                      attrs: { src: "./images/best-review.png" }
+                    })
+                  : _vm.tourData.tag == "seller"
+                  ? _c("img", {
+                      staticStyle: { width: "80px", height: "auto" },
+                      attrs: { src: "./images/bestseller.png" }
+                    })
+                  : _c("img", {
+                      staticStyle: { width: "100px", height: "auto" },
+                      attrs: { src: "./images/toprated2.png" }
+                    })
+              ])
+            : _vm._e(),
           _vm._v(" "),
           _vm._m(1),
           _vm._v(" "),
           _c("p", { staticClass: "card-text mb-1" }, [
             _c("strong", [_vm._v(" Tour Type: ")]),
-            _vm._v("\n      " + _vm._s(_vm.tourData.tour_group) + "\n    ")
+            _vm._v(
+              "\n      " +
+                _vm._s(_vm.getTourLevel(_vm.tourData.level)) +
+                "\n    "
+            )
           ]),
           _vm._v(" "),
           _c("p", { staticClass: "card-text mb-1 trip-route" }, [
@@ -1154,7 +1222,9 @@ var render = function() {
             _vm._v(
               "\n      " +
                 _vm._s(_vm.tourData.start_city) +
-                "(Start) ... " +
+                "(Start),\n      " +
+                _vm._s(_vm.getMidRoute(_vm.tourData.destination)) +
+                "\n      " +
                 _vm._s(_vm.tourData.end_city) +
                 " (End)\n    "
             )
@@ -1175,15 +1245,36 @@ var render = function() {
             _vm._v(" "),
             _c("p", { staticClass: "card-text ps-3" }, [
               _c("span", { staticClass: "star-rating" }, [
-                _c("span", { staticClass: "fa fa-star checked" }),
+                _vm.tourData.avg_review < 0.1
+                  ? _c("span", { staticClass: "fa fa-star-o" })
+                  : _vm.tourData.avg_review > 0.1 &&
+                    _vm.tourData.avg_review < 0.5
+                  ? _c("span", { staticClass: "fa fa-star-half-full checked" })
+                  : _c("span", { staticClass: "fa fa-star checked" }),
                 _vm._v(" "),
-                _c("span", { staticClass: "fa fa-star checked" }),
+                _vm.tourData.avg_review < 1
+                  ? _c("span", { staticClass: "fa fa-star-o" })
+                  : _vm.tourData.avg_review < 1.5
+                  ? _c("span", { staticClass: "fa fa-star-half-full checked" })
+                  : _c("span", { staticClass: "fa fa-star checked" }),
                 _vm._v(" "),
-                _c("span", { staticClass: "fa fa-star checked" }),
+                _vm.tourData.avg_review < 2
+                  ? _c("span", { staticClass: "fa fa-star-o" })
+                  : _vm.tourData.avg_review < 2.5
+                  ? _c("span", { staticClass: "fa fa-star-half-full checked" })
+                  : _c("span", { staticClass: "fa fa-star checked" }),
                 _vm._v(" "),
-                _c("span", { staticClass: "fa fa-star checked" }),
+                _vm.tourData.avg_review < 3
+                  ? _c("span", { staticClass: "fa fa-star-o" })
+                  : _vm.tourData.avg_review < 3.5
+                  ? _c("span", { staticClass: "fa fa-star-half-full checked" })
+                  : _c("span", { staticClass: "fa fa-star checked" }),
                 _vm._v(" "),
-                _c("span", { staticClass: "fa fa-star checked" }),
+                _vm.tourData.avg_review < 4
+                  ? _c("span", { staticClass: "fa fa-star-o" })
+                  : _vm.tourData.avg_review < 4.5
+                  ? _c("span", { staticClass: "fa fa-star-half-full checked" })
+                  : _c("span", { staticClass: "fa fa-star checked" }),
                 _vm._v(" "),
                 _c("span", [
                   _c("strong", [_vm._v(_vm._s(_vm.tourData.avg_review))])
@@ -1961,10 +2052,10 @@ var render = function() {
         _c(
           "div",
           { staticClass: "row gx-0" },
-          _vm._l(_vm.blogs, function(item) {
+          _vm._l(_vm.popularBlogs, function(blog, index) {
             return _c(
               "div",
-              { key: item.id, staticClass: "col-lg-4 col-md-6 col-xs-12" },
+              { key: index, staticClass: "col-lg-4 col-md-6 col-xs-12" },
               [
                 _c("div", { staticClass: "card mb-3 mx-2" }, [
                   _c(
@@ -1972,7 +2063,7 @@ var render = function() {
                     {
                       staticClass: "bg-image hover-overlay ripple",
                       style: {
-                        "background-image": "url(" + item.image + ")"
+                        "background-image": "url(" + blog.post_image + ")"
                       },
                       attrs: { "data-mdb-ripple-color": "light" }
                     },
@@ -1984,9 +2075,9 @@ var render = function() {
                       "h5",
                       {
                         staticClass: "card-title fw-bold text-center",
-                        attrs: { title: item.title }
+                        attrs: { title: blog.post_title }
                       },
-                      [_c("div", [_vm._v(_vm._s(item.title))])]
+                      [_c("div", [_vm._v(_vm._s(blog.post_title))])]
                     ),
                     _vm._v(" "),
                     _c("hr", { staticClass: "mx-3" }),
@@ -1995,12 +2086,12 @@ var render = function() {
                       "p",
                       {
                         staticClass: "card-text",
-                        attrs: { title: item.description }
+                        attrs: { title: blog.short_description }
                       },
                       [
                         _vm._v(
                           "\n                " +
-                            _vm._s(item.description) +
+                            _vm._s(blog.short_description) +
                             "\n              "
                         )
                       ]
