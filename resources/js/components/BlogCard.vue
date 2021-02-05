@@ -60,4 +60,29 @@ box-shadow: 0px 1px 13px #666;
 }
 
 
+#blog-card .card-text {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  position: relative;
+  --max-lines: 3;
+  min-height: 75px;
+  max-height: calc(var(--lh) * var(--max-lines));
+  overflow: hidden;
+  padding-right: 1rem;
+}
+#blog-card .card-title {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  position: relative;
+  --max-lines: 2;
+  min-height: 48px;
+  max-height: calc(var(--lh) * var(--max-lines));
+  overflow: hidden;
+  padding-right: 1rem;
+}
+
+
+
 </style>

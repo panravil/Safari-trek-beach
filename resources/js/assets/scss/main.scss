@@ -271,30 +271,6 @@ input#traveler_input {
   left: -50px;
 }
 
-#about-us .card-text {
-  display: -webkit-box;
-  -webkit-line-clamp: 3;
-  -webkit-box-orient: vertical;
-  position: relative;
-  --max-lines: 3;
-  min-height: 75px;
-  max-height: calc(var(--lh) * var(--max-lines));
-  overflow: hidden;
-  padding-right: 1rem;
-}
-#about-us .card-title {
-  display: -webkit-box;
-  -webkit-line-clamp: 2;
-  -webkit-box-orient: vertical;
-  position: relative;
-  --max-lines: 2;
-  min-height: 48px;
-  max-height: calc(var(--lh) * var(--max-lines));
-  overflow: hidden;
-  padding-right: 1rem;
-}
-
-
 #about-us .card-text::before {
   position: absolute;
   content: "";

@@ -34,8 +34,8 @@ export default {
         short_description: "sdfasdfasdfasdfasdfadsfdasfdsfa",
         post_image: "http://operators.safari-trek-beach.com/images/gallery/tanzania/tour/SELOUS_GAME_RESERVE_19.jpg",
       }, {
-        post_title: "sdfasdfasdfasdfasdfadsfdasfdsfa",
-        short_description: "sdfasdfasdfasdfasdfadsfdasfdsfa",
+        post_title: "sdfasdfa sdfasd fasdfads asdf asd fads fads fads fads fads fads fads fads fads fads fads fads fads fads fads asdfasdfa dsasdfasd fadsfd asfdsfa",
+        short_description: "sdfa sdfa dasdfa dasdfa dasdfa fa dasdfa fa dasdfa fa dasdfa fa dasdfa fa dasdfa fa dasdfa fa dasdfa fa dasdfa fa dasdfa fa dasdfa fa dasdfa fa dasdfa fa dasdfa fa dasdfa fa dasdfa fa dasdfa fa dasdfa fa dasdfa fa dasdfa dasdfa dasdfa dasdfa dasdfa dasdfa dasdfa dasdfa dasdfa dasdfa dasfdsfa",
         post_image: "http://operators.safari-trek-beach.com/images/gallery/tanzania/tour/SELOUS_GAME_RESERVE_19.jpg",
       }, {
         post_title: "sdfasdfasdfasdfasdfadsfdasfdsfa",
