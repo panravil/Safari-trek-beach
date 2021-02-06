@@ -18830,22 +18830,19 @@ __webpack_require__.r(__webpack_exports__);
       var route_data = "";
 
       for (var i = 0; i < destination.length; i++) {
-        route_data = route_data + destination[i] + ", ";
+        route_data = route_data + destination[i] + ",";
       }
 
-      if (route_data.length > 60) return route_data.substr(0, 60) + "...";else return route_data;
+      if (route_data.length > 50) return route_data.substr(0, 50) + "...";else return route_data;
     },
-    getTourLevel: function getTourLevel(level) {
+    getTourDataType: function getTourDataType(level) {
       if (level == undefined || level == null) return "";
-      var level_data = this.tourData.tour_group;
+      var level_data = "";
 
       for (var i = 0; i < level.length; i++) {
-        level_data += ", " + level[i];
+        level_data = level_data + level[i] + ",";
       }
 
-      level_data = level_data.toLowerCase().replace(/\b[a-z]/g, function (letter) {
-        return letter.toUpperCase();
-      });
       return level_data;
     }
   }
@@ -18875,6 +18872,29 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _syncfusion_ej2_vue_buttons__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @syncfusion/ej2-vue-buttons */ "./node_modules/@syncfusion/ej2-vue-buttons/src/chips/chiplist.component.js");
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -19971,7 +19991,7 @@ var render = function() {
           _c("img", {
             staticClass: "position-absolute",
             staticStyle: {
-              width: "75px",
+              width: "70px",
               height: "auto",
               top: "0px",
               left: "30px"
@@ -20016,15 +20036,18 @@ var render = function() {
               ])
             : _vm._e(),
           _vm._v(" "),
-          _vm._m(1),
+          _c("p", { staticClass: "card-text mb-1" }, [
+            _c("strong", [_vm._v(" Acommodation: ")]),
+            _vm._v(
+              "\n\n      " +
+                _vm._s(_vm.getTourDataType(_vm.tourData.level)) +
+                "\n    "
+            )
+          ]),
           _vm._v(" "),
           _c("p", { staticClass: "card-text mb-1" }, [
             _c("strong", [_vm._v(" Tour Type: ")]),
-            _vm._v(
-              "\n      " +
-                _vm._s(_vm.getTourLevel(_vm.tourData.level)) +
-                "\n    "
-            )
+            _vm._v("\n      " + _vm._s(_vm.tourData.tour_group) + "\n    ")
           ]),
           _vm._v(" "),
           _c("p", { staticClass: "card-text mb-1 trip-route" }, [
@@ -20127,15 +20150,6 @@ var staticRenderFns = [
         staticStyle: { "background-color": "rgba(251, 251, 251, 0.15)" }
       })
     ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("p", { staticClass: "card-text mb-1" }, [
-      _c("strong", [_vm._v(" Acommodation: ")]),
-      _vm._v("\n      No Data\n      ")
-    ])
   }
 ]
 render._withStripped = true
@@ -20177,6 +20191,66 @@ var render = function() {
         _c(
           "div",
           {
+            staticClass: "mobile-filter-close bg-danger text-white py-3",
+            style: [
+              _vm.isSidebar
+                ? {
+                    right: 0
+                  }
+                : ""
+            ]
+          },
+          [
+            _c(
+              "div",
+              {
+                staticClass:
+                  "position-relative d-flex justify-content-between align-items-center px-3"
+              },
+              [
+                _c("h4", { staticClass: "font-bold my-0" }, [
+                  _vm._v("Filter Options")
+                ]),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  {
+                    staticClass: "filter-option-close",
+                    on: {
+                      click: function($event) {
+                        _vm.isSidebar = false
+                      }
+                    }
+                  },
+                  [
+                    _c("span", {
+                      staticClass: "fa fa-times-circle-o display-5"
+                    })
+                  ]
+                )
+              ]
+            )
+          ]
+        ),
+        _vm._v(" "),
+        _c(
+          "div",
+          {
+            staticClass: "mobile-filter-button bg-white text-white py-3",
+            style: [
+              _vm.isSidebar
+                ? {
+                    right: 0
+                  }
+                : ""
+            ]
+          },
+          [_vm._m(0)]
+        ),
+        _vm._v(" "),
+        _c(
+          "div",
+          {
             staticClass: "col-lg-3 col-xs-12 filters",
             style: [
               _vm.isSidebar
@@ -20191,24 +20265,6 @@ var render = function() {
               "div",
               { staticClass: "position-relative" },
               [
-                _c("div", { staticClass: "mobile-filter-close w-100" }, [
-                  _c("div", [_vm._v("Filter Options")]),
-                  _vm._v(" "),
-                  _c(
-                    "div",
-                    {
-                      on: {
-                        click: function($event) {
-                          _vm.isSidebar = false
-                        }
-                      }
-                    },
-                    [_vm._v("CLOSE")]
-                  )
-                ]),
-                _vm._v(" "),
-                _vm._m(0),
-                _vm._v(" "),
                 _c("div", { staticClass: "row gx-0" }, [
                   _c(
                     "div",
@@ -20314,7 +20370,7 @@ var render = function() {
                                     },
                                     [
                                       _vm._v(
-                                        "\n                      Start typing or select below\n                    "
+                                        "\n                    Start typing or select below\n                  "
                                       )
                                     ]
                                   ),
@@ -20513,7 +20569,7 @@ var render = function() {
                                     },
                                     [
                                       _vm._v(
-                                        "\n                      Travelers\n                      "
+                                        "\n                    Travelers\n                    "
                                       ),
                                       _c("span", {
                                         staticClass: "fa fa-times-circle-o",
@@ -20601,7 +20657,7 @@ var render = function() {
                                       },
                                       [
                                         _vm._v(
-                                          "\n                        Done\n                      "
+                                          "\n                      Done\n                    "
                                         )
                                       ]
                                     )
@@ -20986,7 +21042,7 @@ var render = function() {
             1
           ),
           _vm._v(" "),
-          _c("div", { staticClass: "mobile-sidebar-trigger" }, [
+          _c("div", { staticClass: "mobile-sidebar-trigger mt-3" }, [
             _c(
               "button",
               {
@@ -20997,7 +21053,10 @@ var render = function() {
                   }
                 }
               },
-              [_vm._v("Search Filter")]
+              [
+                _c("span", { staticClass: "fa fa-filter me-2" }),
+                _vm._v(" Search Filter")
+              ]
             )
           ]),
           _vm._v(" "),
@@ -21077,21 +21136,27 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "mobile-search-button w-100" }, [
-      _c("div", [_vm._v("Filter Options")])
+    return _c("button", { staticClass: "btn btn-danger w-100 h-100" }, [
+      _c("span", [_vm._v("Search Tours")]),
+      _vm._v(" "),
+      _c("span", { staticClass: "fa fa-angle-right ms-2" })
     ])
   },
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col-md-12 mobile-filter" }, [
-      _c("button", { staticClass: "btn btn-danger w-100 h-100" }, [
-        _c("span", [_vm._v("Search Tours")]),
-        _vm._v(" "),
-        _c("span", { staticClass: "fa fa-angle-right ms-2" })
-      ])
-    ])
+    return _c(
+      "div",
+      { staticClass: "col-md-12 mobile-filter mobile-filter-none" },
+      [
+        _c("button", { staticClass: "btn btn-danger w-100 h-100" }, [
+          _c("span", [_vm._v("Search Tours")]),
+          _vm._v(" "),
+          _c("span", { staticClass: "fa fa-angle-right ms-2" })
+        ])
+      ]
+    )
   }
 ]
 render._withStripped = true
