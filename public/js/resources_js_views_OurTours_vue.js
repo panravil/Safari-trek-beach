@@ -18815,7 +18815,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   props: {
     tourData: Object
@@ -18830,19 +18829,22 @@ __webpack_require__.r(__webpack_exports__);
       var route_data = "";
 
       for (var i = 0; i < destination.length; i++) {
-        route_data = route_data + destination[i] + ",";
+        route_data = route_data + destination[i] + ", ";
       }
 
-      if (route_data.length > 50) return route_data.substr(0, 50) + "...";else return route_data;
+      if (route_data.length > 60) return route_data.substr(0, 60) + "...";else return route_data;
     },
-    getTourDataType: function getTourDataType(level) {
+    getTourLevel: function getTourLevel(level) {
       if (level == undefined || level == null) return "";
-      var level_data = "";
+      var level_data = this.tourData.tour_group;
 
       for (var i = 0; i < level.length; i++) {
-        level_data = level_data + level[i] + ",";
+        level_data += ", " + level[i];
       }
 
+      level_data = level_data.toLowerCase().replace(/\b[a-z]/g, function (letter) {
+        return letter.toUpperCase();
+      });
       return level_data;
     }
   }
@@ -20036,18 +20038,15 @@ var render = function() {
               ])
             : _vm._e(),
           _vm._v(" "),
-          _c("p", { staticClass: "card-text mb-1" }, [
-            _c("strong", [_vm._v(" Acommodation: ")]),
-            _vm._v(
-              "\n\n      " +
-                _vm._s(_vm.getTourDataType(_vm.tourData.level)) +
-                "\n    "
-            )
-          ]),
+          _vm._m(1),
           _vm._v(" "),
           _c("p", { staticClass: "card-text mb-1" }, [
             _c("strong", [_vm._v(" Tour Type: ")]),
-            _vm._v("\n      " + _vm._s(_vm.tourData.tour_group) + "\n    ")
+            _vm._v(
+              "\n      " +
+                _vm._s(_vm.getTourLevel(_vm.tourData.level)) +
+                "\n    "
+            )
           ]),
           _vm._v(" "),
           _c("p", { staticClass: "card-text mb-1 trip-route" }, [
@@ -20149,6 +20148,15 @@ var staticRenderFns = [
         staticClass: "mask",
         staticStyle: { "background-color": "rgba(251, 251, 251, 0.15)" }
       })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("p", { staticClass: "card-text mb-1" }, [
+      _c("strong", [_vm._v(" Acommodation: ")]),
+      _vm._v("\n      No Data\n    ")
     ])
   }
 ]
