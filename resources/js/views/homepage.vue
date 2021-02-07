@@ -322,7 +322,7 @@
         </div>
       </div>
       <div class="text-center">
-        <a href="#" class="btn btn-danger">
+        <a href="/destinations" class="btn btn-danger">
           View All Destinations <span class="fa fa-angle-right ms-2"></span
         ></a>
       </div>
@@ -454,6 +454,7 @@
             class="col-lg-4 col-md-6 col-xs-12"
             v-for="(blog, index) in popularBlogs"
             v-bind:key="index"
+            @click="$router.push('./blog_inner_page')"
           >
             <BlogCard :blog="blog"></BlogCard>
           </div>

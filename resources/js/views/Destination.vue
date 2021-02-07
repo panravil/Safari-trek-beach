@@ -1,14 +1,14 @@
 <template>
-<div class="blog-post-page">
+<div class="destination-page">
   <div class="container">
     <section>
       <header class="section-header mt-5">
-        <h3>OUR BLOG POSTS</h3>
+        <h3>DESTINATIONS</h3>
       </header>
 
       <div class="row gx-0">
-        <div class="col-lg-4 col-md-6 col-xs-12" v-for="(blog, index) in popularBlogs" v-bind:key="index" @click="toBlogInnerPage">
-          <BlogCard :blog="blog"></BlogCard>
+        <div class="col-lg-4 col-md-6 col-xs-12" v-for="(blog, index) in popularBlogs" v-bind:key="index">
+          <DestinationCard :destination="blog"></DestinationCard>
         </div>
       </div>
     </section>
@@ -17,11 +17,11 @@
 </template>
 
 <script>
-import BlogCard from "../components/BlogCard";
+import DestinationCard from "../components/DestinationCard";
 export default {
-  name: "BlogPost",
+  name: "DestinationPage",
   components: {
-    BlogCard,
+    DestinationCard,
   },
   data() {
     return {
@@ -52,22 +52,17 @@ export default {
       }, ]
     };
   },
-  methods: {
-    toBlogInnerPage() {
-      this.$router.push('./blog_inner_page');
-    }
-  }
 };
 </script>
 
 <style>
-.blog-post-page {
+.destination-page {
   padding-top: 50px;
   padding-bottom: 100px;
   background-color: #f2f2f2;
 }
 
-.blog-post-page section {
+.destination-page section {
   margin-top: 100px;
 }
 </style>
