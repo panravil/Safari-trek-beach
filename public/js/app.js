@@ -5310,6 +5310,20 @@ var router = new vue_router__WEBPACK_IMPORTED_MODULE_1__.default({
       component: function component() {
         return __webpack_require__.e(/*! import() */ "resources_js_views_BlogPost_vue").then(__webpack_require__.bind(__webpack_require__, /*! ./views/BlogPost.vue */ "./resources/js/views/BlogPost.vue"));
       }
+    }, {
+      path: '/destinations',
+      name: 'Destination',
+      index: 7,
+      component: function component() {
+        return __webpack_require__.e(/*! import() */ "resources_js_views_Destination_vue").then(__webpack_require__.bind(__webpack_require__, /*! ./views/Destination.vue */ "./resources/js/views/Destination.vue"));
+      }
+    }, {
+      path: '/blog_inner_page',
+      name: 'Blog Inner Page',
+      index: 8,
+      component: function component() {
+        return __webpack_require__.e(/*! import() */ "resources_js_views_BlogInnerPage_vue").then(__webpack_require__.bind(__webpack_require__, /*! ./views/BlogInnerPage.vue */ "./resources/js/views/BlogInnerPage.vue"));
+      }
     }]
   }]
 }); // import NProgress from 'nprogress';
@@ -29585,7 +29599,7 @@ var index = {
 /******/ 		// This function allow to reference async chunks
 /******/ 		__webpack_require__.u = (chunkId) => {
 /******/ 			// return url for filenames not based on template
-/******/ 			if ({"resources_js_layout_blank_Blank_vue":1,"resources_js_views_homepage_vue":1,"resources_js_views_OurTours_vue":1,"resources_js_views_BlogPost_vue":1,"resources_js_views_ContactUs_vue":1,"resources_js_views_AboutUs_vue":1}[chunkId]) return "js/" + chunkId + ".js";
+/******/ 			if ({"resources_js_layout_blank_Blank_vue":1,"resources_js_views_homepage_vue":1,"resources_js_views_OurTours_vue":1,"resources_js_views_BlogPost_vue":1,"resources_js_views_ContactUs_vue":1,"resources_js_views_AboutUs_vue":1,"resources_js_views_Destination_vue":1,"resources_js_views_BlogInnerPage_vue":1}[chunkId]) return "js/" + chunkId + ".js";
 /******/ 			// return url for filenames based on template
 /******/ 			return undefined;
 /******/ 		};

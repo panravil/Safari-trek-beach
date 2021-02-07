@@ -30,4 +30,20 @@ class BlogController extends Controller
             JSON_UNESCAPED_UNICODE
         );
     }
+
+    public function listBlogs() {
+
+        $blogs = Blog::allBlogs();
+
+        // dd($blogs);
+        
+        return response()->json(
+            [
+                'blogList' => $blogs
+            ],
+            200,
+            [],
+            JSON_UNESCAPED_UNICODE
+        );
+    }
 }

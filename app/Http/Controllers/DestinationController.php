@@ -18,15 +18,32 @@ class DestinationController extends Controller
 
     public function topDestinations() {
 
-        $destinations        = Destination::allDestinations();
-        $popularDestinations = array_slice($destinations, 0, 12);
-          return response()->json(
-            [
-                'topDestinations' => $popularDestinations
-            ],
-            200,
-            [],
-            JSON_UNESCAPED_UNICODE
-        );
+      $destinations        = Destination::allDestinations();
+      $popularDestinations = array_slice($destinations, 0, 12);
+
+      return response()->json(
+        [
+          'topDestinations' => $popularDestinations
+        ],
+        200,
+        [],
+        JSON_UNESCAPED_UNICODE
+      );
+    }
+
+    public function listDestinations() {
+
+      $destinations = Destination::allDestinations();
+
+      // dd($destinations);
+
+      return response()->json(
+        [
+          'destinationsList' => $destinations
+        ],
+        200,
+        [],
+        JSON_UNESCAPED_UNICODE
+      );
     }
 }

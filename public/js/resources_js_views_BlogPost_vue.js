@@ -114,6 +114,11 @@ __webpack_require__.r(__webpack_exports__);
         post_image: "http://operators.safari-trek-beach.com/images/gallery/tanzania/tour/SELOUS_GAME_RESERVE_19.jpg"
       }]
     };
+  },
+  methods: {
+    toBlogInnerPage: function toBlogInnerPage() {
+      this.$router.push('./blog_inner_page');
+    }
   }
 });
 
@@ -136,7 +141,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n#blog-card .bg-image {\n  background-size: cover;\n  position: relative;\n  width: 100%;\n  height: 0;\n  padding-top: 56.25%;\n}\n#blog-card {\n  transition: box-shadow 0.2s ease-in-out, transform 0.3s ease-in-out;\n  box-shadow: 0px 2px 3px rgb(0 0 0 / 18%);\n  cursor: pointer;\n}\n#blog-card:hover {\nbox-shadow: 0px 1px 13px #666;\n}\n#blog-card .card-text {\n  display: -webkit-box;\n  -webkit-line-clamp: 3;\n  -webkit-box-orient: vertical;\n  position: relative;\n  --max-lines: 3;\n  min-height: 75px;\n  max-height: calc(var(--lh) * var(--max-lines));\n  overflow: hidden;\n  padding-right: 1rem;\n}\n#blog-card .card-title {\n  display: -webkit-box;\n  -webkit-line-clamp: 2;\n  -webkit-box-orient: vertical;\n  position: relative;\n  --max-lines: 2;\n  min-height: 48px;\n  max-height: calc(var(--lh) * var(--max-lines));\n  overflow: hidden;\n  padding-right: 1rem;\n}\n\n\n\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n#blog-card .bg-image {\n  background-size: cover;\n  position: relative;\n  width: 100%;\n  height: 0;\n  padding-top: 56.25%;\n}\n#blog-card {\n  transition: box-shadow 0.2s ease-in-out, transform 0.3s ease-in-out;\n  box-shadow: 0px 2px 3px rgb(0 0 0 / 18%);\n  cursor: pointer;\n}\n#blog-card:hover {\nbox-shadow: 0px 1px 13px #666;\n}\n#blog-card .card-text {\n  display: -webkit-box;\n  -webkit-line-clamp: 3;\n  -webkit-box-orient: vertical;\n  position: relative;\n  --max-lines: 3;\n  min-height: 75px;\n  max-height: calc(var(--lh) * var(--max-lines));\n  overflow: hidden;\n  padding-right: 1rem;\n}\n#blog-card .card-title {\n  display: -webkit-box;\n  -webkit-line-clamp: 2;\n  -webkit-box-orient: vertical;\n  position: relative;\n  --max-lines: 2;\n  min-height: 48px;\n  max-height: calc(var(--lh) * var(--max-lines));\n  overflow: hidden;\n  padding-right: 1rem;\n}\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -464,9 +469,7 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("a", { attrs: { href: "#" } }, [
-      _c("div", { staticClass: "mask" })
-    ])
+    return _c("a", [_c("div", { staticClass: "mask" })])
   },
   function() {
     var _vm = this
@@ -515,7 +518,11 @@ var render = function() {
           _vm._l(_vm.popularBlogs, function(blog, index) {
             return _c(
               "div",
-              { key: index, staticClass: "col-lg-4 col-md-6 col-xs-12" },
+              {
+                key: index,
+                staticClass: "col-lg-4 col-md-6 col-xs-12",
+                on: { click: _vm.toBlogInnerPage }
+              },
               [_c("BlogCard", { attrs: { blog: blog } })],
               1
             )
