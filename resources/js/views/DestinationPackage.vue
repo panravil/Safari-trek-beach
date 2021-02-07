@@ -1,26 +1,26 @@
 <template>
-<div class="blog-inner-page">
+<div class="destination-package">
   <div class="container mt-5">
     <div class="card">
       <div class="position-relative overflow-hidden">
-        <img src="https://africasafar.com/wp-content/uploads/2020/01/barranco-camps.jpg" class="card-img-top" />
-        <div class="image_title">Can You Climb Mount Kilimanjaro Without A Guide</div>
+        <img src="https://africasafar.com/wp-content/uploads/2020/01/the-maasai-mara.jpg" class="card-img-top" />
+        <div class="image_title">Kilimanjaro National Park</div>
       </div>
       <div class="card-body px-0">
         <div class="row gx-0">
           <div class="col-lg-9 col-md-12 content-section px-4">
             <div class="mt-5">
-              <h3 class="section-title pt-3">Experience A Night Game Drive</h3>
+              <h3 class="section-title pt-3">Kilimanjaro National Park</h3>
             </div>
             <p>sdf asdf asdf sadfsdf sdf sdaf sd asdf sadfsdf sdf sdaf sd asdf sadfsdf sdf sdaf sd asdf sadfsdf sdf sdaf sdaf asdf sadf sadf sdaf sadf dsaf</p>
             <p>sdf asdf asdf sadfsdf sdf s asdf sadfsdf sdf sdaf sd asdf sadfsdf sdf sdaf sd asdf sadfsdf sdf sdaf sd asdf sadfsdf sdf sdaf sd asdf sadfsdf sdf sdaf sddaf sdaf asdf sadf sadf sdaf sadf dsaf</p>
             <p>sdf asdf asdf sadfsdf sdf sdaf sdaf asdf sadf asdf sadfsdf sdf sdaf sd asdf sadfsdf sdf sdaf sd asdf sadfsdf sdf sdaf sd asdf sadfsdf sdf sdaf sd asdf sadfsdf sdf sdaf sd asdf sadfsdf sdf sdaf sd sadf sdaf sadf dsaf</p>
 
-            <div v-for="(item, index) in 6" v-bind:key="index">
+            <div v-for="(item, index) in 3" v-bind:key="index">
               <div class="mt-5">
                 <h3 class="section-title-inner pb-3">Section {{ index + 1 }}</h3>
               </div>
-              <img src="https://africasafar.com/wp-content/uploads/2020/01/barranco-camps.jpg" class="w-100 mb-3" />
+              <img src="https://africasafar.com/wp-content/uploads/2020/01/the-maasai-mara.jpg" class="w-100 mb-3" />
               <p>sdf asdf asdf sadfsdf sdf sdaf sd asdf sadfsdf sdf sdaf sd asdf sadfsdf sdf sdaf sd asdf sadfsdf sdf sdaf sdaf asdf sadf sadf sdaf sadf dsaf</p>
               <p>sdf asdf asdf sadfsdf sdf s asdf sadfsdf sdf sdaf sd asdf sadfsdf sdf sdaf sd asdf sadfsdf sdf sdaf sd asdf sadfsdf sdf sdaf sd asdf sadfsdf sdf sdaf sddaf sdaf asdf sadf sadf sdaf sadf dsaf</p>
               <p>sdf asdf asdf sadfsdf sdf sdaf sdaf asdf sadf asdf sadfsdf sdf sdaf sd asdf sadfsdf sdf sdaf sd asdf sadfsdf sdf sdaf sd asdf sadfsdf sdf sdaf sd asdf sadfsdf sdf sdaf sd asdf sadfsdf sdf sdaf sd sadf sdaf sadf dsaf</p>
@@ -28,9 +28,9 @@
                 <a href="#" class="btn btn-danger"> Tour that includes Section {{ index + 1 }} </a>
               </div>
             </div>
-            <div class="mt-5">
+            <!-- <div class="mt-5">
               <h3 class="section-title-inner pb-3">Comments (234)</h3>
-            </div>
+            </div> -->
             <form class="mt-5">
               <h3 class="section-title-inner pb-3">Speak Your Mind</h3>
               <div class="row">
@@ -63,12 +63,12 @@
               <h6 class="fw-bolder text-center text-danger">Popular Links</h6>
               <ul class="m-0 ps-3">
                 <li v-for="(index) in 6" v-bind:key="index">
-                  <a class="text-primary">efsdf sdf sdf sdaf  sdfg dsfg dsfg dsfg dsfg dsfg dsfg sadf sdaf dsf</a>
+                  <a class="text-primary">efsdf sdf sdf sdaf sdfg dsfg dsfg dsfg dsfg dsfg dsfg sadf sdaf dsf</a>
                 </li>
               </ul>
             </div>
           </div>
-          
+
         </div>
       </div>
     </div>
@@ -97,7 +97,7 @@ Vue.use(TextBoxPlugin);
 
 import TourCard from "../components/TourCard";
 export default {
-  name: "BlogInnerPage",
+  name: "DestinationPackage",
   components: {
     TourCard,
   },
@@ -113,13 +113,13 @@ export default {
 </script>
 
 <style>
-.blog-inner-page {
+.destination-package {
   padding-top: 60px;
   padding-bottom: 100px;
   background-color: #f2f2f2;
 }
 
-.blog-inner-page .image_title {
+.destination-package .image_title {
   position: absolute;
   bottom: 0px;
   left: 0;
@@ -135,59 +135,65 @@ export default {
   background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.5) 45%, rgba(0, 0, 0, 0.9) 100%);
 }
 
-.blog-inner-page .content-section {
+.destination-package .content-section {
   border-right: 1px solid #ccc;
 }
 
-.blog-inner-page .section-title {
+.destination-package .section-title {
   border-top: 1px solid #ccc;
   width: 100%;
 }
 
-.blog-inner-page .section-title-inner {
+.destination-package .section-title-inner {
   border-bottom: 1px solid #ccc;
   width: 100%;
   font-weight: 700;
 }
 
-.blog-inner-page .blog-category {
+.destination-package .blog-category {
   border: 1px solid #ccc;
   border-bottom: 5px solid #ccc;
 }
-.blog-inner-page ul li {
+
+.destination-package ul li {
   list-style: none;
   position: relative;
   cursor: pointer;
 }
-.blog-inner-page ul li:before {
-    content: "›";
-    font-weight: normal;
-    top: -8px;
-    font-size: 25px;
-    position: absolute;
-    left: -15px;
+
+.destination-package ul li:before {
+  content: "›";
+  font-weight: normal;
+  top: -8px;
+  font-size: 25px;
+  position: absolute;
+  left: -15px;
 }
+
 .e-multi-line-input textarea {
   height: 100px;
 }
 
 .quick-link-section {
-    display: block;
-  }
+  display: block;
+}
 
-@media (max-width: 991px)  {
-  .blog-inner-page .quick-link-section {
+@media (max-width: 991px) {
+  .destination-package .quick-link-section {
     display: none;
   }
-  .blog-inner-page .content-section{
+
+  .destination-package .content-section {
     border: none;
   }
-  .blog-inner-page .image_title {
+
+  .destination-package .image_title {
     font-size: 25px;
     line-height: 35px;
     padding: 10px 20px;
   }
-  .blog-inner-page .card-img-top {
+
+  .destination-package .card-img-top {
     height: 100%;
     width: auto;
     position: absolute;
@@ -195,7 +201,8 @@ export default {
     top: 50%;
     transform: translateY(-50%) translateX(-50%);
   }
-  .blog-inner-page .position-relative.overflow-hidden {
+
+  .destination-package .position-relative.overflow-hidden {
     border-top-right-radius: 0.25rem;
     border-top-left-radius: 0.25rem;
     height: 300px;

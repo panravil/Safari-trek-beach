@@ -65,6 +65,11 @@ const router = new Router({
                 name: 'Blog Inner Page',
                 index: 8,
                 component: () => import('./views/BlogInnerPage.vue')
+                },{
+                path: '/destination_package',
+                name: 'Destination Package',
+                index: 8,
+                component: () => import('./views/DestinationPackage.vue')
                 },
             ]
         },

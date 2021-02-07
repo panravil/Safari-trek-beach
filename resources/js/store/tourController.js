@@ -28,6 +28,17 @@ const actions = {
                 context.commit("setPopularTours", res.data.popularTour);
             })
             .catch(err => {});
+    },
+
+    async getTourFilter(context) {
+        // console.log("get popular tour called");
+        await axios
+            .get("/api/tour/filter")
+            .then(res => {
+                console.log("filter result", res);
+                // context.commit("setPopularTours", res.data.popularTour);
+            })
+            .catch(err => {});
     }
 };
 

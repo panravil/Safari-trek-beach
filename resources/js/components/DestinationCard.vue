@@ -2,7 +2,7 @@
 <div class="card mb-3 mx-2" id="destination-card">
   <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light" :style="{
                   'background-image': 'url(' + destination.post_image + ')',
-                }">
+                }" :title="destination.post_title">
     <a href="#">
       <div class="mask"></div>
     </a>
@@ -11,7 +11,7 @@
     <h5 class="card-title fw-bold text-center text-danger" :title="destination.post_title">
       <div>{{ destination.post_title }}</div>
     </h5>
-    <h6 class="fw-bold text-dark mt-4 mb-2">Top reasons to visit</h6>
+    <h6 class="fw-bold text-dark mt-4 mb-2 subtitle" :title="destination.post_sub_title" style="text-overflow: ellipsis;">{{ destination.post_sub_title }}</h6>
     <p class="card-text" :title="destination.short_description">
       {{ destination.short_description }}
     </p>
@@ -58,8 +58,6 @@ export default {
 #destination-card:hover {
 box-shadow: 0px 1px 13px #666;
 }
-
-
 #destination-card .card-text {
   display: -webkit-box;
   -webkit-line-clamp: 3;
@@ -81,5 +79,13 @@ box-shadow: 0px 1px 13px #666;
   max-height: calc(var(--lh) * var(--max-lines));
   overflow: hidden;
   padding-right: 1rem;
+}
+#destination-card .subtitle {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+#destination-card .subtitle::first-letter {
+  text-transform: uppercase;
 }
 </style>

@@ -302,6 +302,7 @@
           class="col-lg-3 col-md-4 col-xs-12"
           v-for="item in topDestinations"
           v-bind:key="item.post_id"
+          @click="$router.push('./destination_package')"
         >
           <div class="card mb-3 mx-2">
             <div
@@ -678,6 +679,9 @@ export default {
   },
 
   methods: {
+    getTourFilter() {
+      this.$store.dispatch("tourController/getTourFilter");
+    },
     getPopularBlogs() {
       this.$store.dispatch("blogController/getPopularBlogs");
     },

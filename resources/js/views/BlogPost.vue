@@ -7,7 +7,7 @@
       </header>
 
       <div class="row gx-0">
-        <div class="col-lg-4 col-md-6 col-xs-12" v-for="(blog, index) in popularBlogs" v-bind:key="index" @click="toBlogInnerPage">
+        <div class="col-lg-4 col-md-6 col-xs-12" v-for="(blog, index) in listBlog" v-bind:key="index" @click="toBlogInnerPage">
           <BlogCard :blog="blog"></BlogCard>
         </div>
       </div>
@@ -18,6 +18,7 @@
 
 <script>
 import BlogCard from "../components/BlogCard";
+import { mapState, mapGetters, mapMutations } from "vuex";
 export default {
   name: "BlogPost",
   components: {
@@ -25,36 +26,22 @@ export default {
   },
   data() {
     return {
-      popularBlogs: [{
-        post_title: "sdfasdfasdfasdfasdfadsfdasfdsfa",
-        short_description: "sdfasdfasdfasdfasdfadsfdasfdsfa",
-        post_image: "http://operators.safari-trek-beach.com/images/gallery/tanzania/tour/SELOUS_GAME_RESERVE_19.jpg",
-      }, {
-        post_title: "sdfasdfasdfasdfasdfadsfdasfdsfa",
-        short_description: "sdfasdfasdfasdfasdfadsfdasfdsfa",
-        post_image: "http://operators.safari-trek-beach.com/images/gallery/tanzania/tour/SELOUS_GAME_RESERVE_19.jpg",
-      }, {
-        post_title: "sdfasdfa sdfasd fasdfads asdf asd fads fads fads fads fads fads fads fads fads fads fads fads fads fads fads asdfasdfa dsasdfasd fadsfd asfdsfa",
-        short_description: "sdfa sdfa dasdfa dasdfa dasdfa fa dasdfa fa dasdfa fa dasdfa fa dasdfa fa dasdfa fa dasdfa fa dasdfa fa dasdfa fa dasdfa fa dasdfa fa dasdfa fa dasdfa fa dasdfa fa dasdfa fa dasdfa fa dasdfa fa dasdfa fa dasdfa fa dasdfa dasdfa dasdfa dasdfa dasdfa dasdfa dasdfa dasdfa dasdfa dasdfa dasfdsfa",
-        post_image: "http://operators.safari-trek-beach.com/images/gallery/tanzania/tour/SELOUS_GAME_RESERVE_19.jpg",
-      }, {
-        post_title: "sdfasdfasdfasdfasdfadsfdasfdsfa",
-        short_description: "sdfasdfasdfasdfasdfadsfdasfdsfa",
-        post_image: "http://operators.safari-trek-beach.com/images/gallery/tanzania/tour/SELOUS_GAME_RESERVE_19.jpg",
-      }, {
-        post_title: "sdfasdfasdfasdfasdfadsfdasfdsfa",
-        short_description: "sdfasdfasdfasdfasdfadsfdasfdsfa",
-        post_image: "http://operators.safari-trek-beach.com/images/gallery/tanzania/tour/SELOUS_GAME_RESERVE_19.jpg",
-      }, {
-        post_title: "sdfasdfasdfasdfasdfadsfdasfdsfa",
-        short_description: "sdfasdfasdfasdfasdfadsfdasfdsfa",
-        post_image: "http://operators.safari-trek-beach.com/images/gallery/tanzania/tour/SELOUS_GAME_RESERVE_19.jpg",
-      }, ]
     };
+  },
+  computed: {
+    ...mapGetters({
+      listBlog: "blogController/listBlog",
+    }),
+  },
+  created() {
+    this.getListDestinations();
   },
   methods: {
     toBlogInnerPage() {
       this.$router.push('./blog_inner_page');
+    },
+    getListDestinations() {
+      this.$store.dispatch("blogController/getListBlogs");
     }
   }
 };
