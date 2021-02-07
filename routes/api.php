@@ -17,10 +17,16 @@ use Illuminate\Support\Facades\Route;
 Route::get("/tour/popular-tours", 'App\Http\Controllers\TourController@popularTours');
 
 // to show tour inner page details
-Route::get("/tour/{id}", 'App\Http\Controllers\TourController@tourInnerDetail');
+Route::get("/tour/package/{id}", 'App\Http\Controllers\TourController@tourInnerDetail');
 
 // to show filtered tours
 Route::get("/tour/filter", 'App\Http\Controllers\TourController@filterTours');
+
+// to show list of tour levels on filter
+Route::get("/tour/level", 'App\Http\Controllers\TourController@tourLevel');
+
+// to show list of tour activities on filter
+Route::get("/tour/activity", 'App\Http\Controllers\TourController@tourActivity');
 
 // to show top destinations
 Route::get("/destination/top-destinations", 'App\Http\Controllers\DestinationController@topDestinations');

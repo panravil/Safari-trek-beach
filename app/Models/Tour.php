@@ -429,4 +429,28 @@ class Tour extends Model {
             return $data;
         }
     }
+
+    public static function tourLevel() {
+        /**
+         * Fetch all tour levels that shown in tour inner page (filter)
+         */
+
+        $levels = DB::select("
+            SELECT * FROM tour_level ORDER BY title ASC
+        ");
+
+        return $levels;
+    }
+
+    public static function tourActivity() {
+        /**
+         * Fetch all tour activities that shown in tour inner page (filter)
+         */
+
+        $activities = DB::select("
+            SELECT * FROM tour_activity ORDER BY title ASC
+        ");
+
+        return $activities;
+    }
 }

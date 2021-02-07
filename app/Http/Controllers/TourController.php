@@ -126,4 +126,36 @@ class TourController extends Controller
       JSON_UNESCAPED_UNICODE
     );
   }
+
+  public function tourLevel() {
+
+    $levels = Tour::tourLevel();
+
+    // dd($levels);
+
+    return response()->json(
+      [
+        'tourlevels' => $levels
+      ],
+      200,
+      [],
+      JSON_UNESCAPED_UNICODE
+    );
+  }
+
+  public function tourActivity() {
+
+    $activities = Tour::tourActivity();
+
+    // dd($activities);
+
+    return response()->json(
+      [
+        'tourActivities' => $activities
+      ],
+      200,
+      [],
+      JSON_UNESCAPED_UNICODE
+    );
+  }
 }
