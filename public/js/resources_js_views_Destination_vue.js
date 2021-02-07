@@ -62,6 +62,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => __WEBPACK_DEFAULT_EXPORT__
 /* harmony export */ });
 /* harmony import */ var _components_DestinationCard__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../components/DestinationCard */ "./resources/js/components/DestinationCard.vue");
+/* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 //
 //
 //
@@ -81,39 +88,25 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 
+
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: "DestinationPage",
   components: {
     DestinationCard: _components_DestinationCard__WEBPACK_IMPORTED_MODULE_0__.default
   },
   data: function data() {
-    return {
-      popularBlogs: [{
-        post_title: "sdfasdfasdfasdfasdfadsfdasfdsfa",
-        short_description: "sdfasdfasdfasdfasdfadsfdasfdsfa",
-        post_image: "http://operators.safari-trek-beach.com/images/gallery/tanzania/tour/SELOUS_GAME_RESERVE_19.jpg"
-      }, {
-        post_title: "sdfasdfasdfasdfasdfadsfdasfdsfa",
-        short_description: "sdfasdfasdfasdfasdfadsfdasfdsfa",
-        post_image: "http://operators.safari-trek-beach.com/images/gallery/tanzania/tour/SELOUS_GAME_RESERVE_19.jpg"
-      }, {
-        post_title: "sdfasdfa sdfasd fasdfads asdf asd fads fads fads fads fads fads fads fads fads fads fads fads fads fads fads asdfasdfa dsasdfasd fadsfd asfdsfa",
-        short_description: "sdfa sdfa dasdfa dasdfa dasdfa fa dasdfa fa dasdfa fa dasdfa fa dasdfa fa dasdfa fa dasdfa fa dasdfa fa dasdfa fa dasdfa fa dasdfa fa dasdfa fa dasdfa fa dasdfa fa dasdfa fa dasdfa fa dasdfa fa dasdfa fa dasdfa fa dasdfa dasdfa dasdfa dasdfa dasdfa dasdfa dasdfa dasdfa dasdfa dasdfa dasfdsfa",
-        post_image: "http://operators.safari-trek-beach.com/images/gallery/tanzania/tour/SELOUS_GAME_RESERVE_19.jpg"
-      }, {
-        post_title: "sdfasdfasdfasdfasdfadsfdasfdsfa",
-        short_description: "sdfasdfasdfasdfasdfadsfdasfdsfa",
-        post_image: "http://operators.safari-trek-beach.com/images/gallery/tanzania/tour/SELOUS_GAME_RESERVE_19.jpg"
-      }, {
-        post_title: "sdfasdfasdfasdfasdfadsfdasfdsfa",
-        short_description: "sdfasdfasdfasdfasdfadsfdasfdsfa",
-        post_image: "http://operators.safari-trek-beach.com/images/gallery/tanzania/tour/SELOUS_GAME_RESERVE_19.jpg"
-      }, {
-        post_title: "sdfasdfasdfasdfasdfadsfdasfdsfa",
-        short_description: "sdfasdfasdfasdfasdfadsfdasfdsfa",
-        post_image: "http://operators.safari-trek-beach.com/images/gallery/tanzania/tour/SELOUS_GAME_RESERVE_19.jpg"
-      }]
-    };
+    return {};
+  },
+  computed: _objectSpread({}, (0,vuex__WEBPACK_IMPORTED_MODULE_1__.mapGetters)({
+    listDestinations: "destinationController/listDestinations"
+  })),
+  created: function created() {
+    this.getListDestinations();
+  },
+  methods: {
+    getListDestinations: function getListDestinations() {
+      this.$store.dispatch("destinationController/getListDestinations");
+    }
   }
 });
 
@@ -136,7 +129,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n#destination-card .bg-image {\n  background-size: cover;\n  position: relative;\n  width: 100%;\n  height: 0;\n  padding-top: 56.25%;\n}\n#destination-card {\n  transition: box-shadow 0.2s ease-in-out, transform 0.3s ease-in-out;\n  box-shadow: 0px 2px 3px rgb(0 0 0 / 18%);\n  cursor: pointer;\n}\n#destination-card:hover {\nbox-shadow: 0px 1px 13px #666;\n}\n#destination-card .card-text {\n  display: -webkit-box;\n  -webkit-line-clamp: 3;\n  -webkit-box-orient: vertical;\n  position: relative;\n  --max-lines: 3;\n  min-height: 75px;\n  max-height: calc(var(--lh) * var(--max-lines));\n  overflow: hidden;\n  padding-right: 1rem;\n}\n#destination-card .card-title {\n  display: -webkit-box;\n  -webkit-line-clamp: 1;\n  -webkit-box-orient: vertical;\n  position: relative;\n  --max-lines: 1;\n  min-height: 24px;\n  max-height: calc(var(--lh) * var(--max-lines));\n  overflow: hidden;\n  padding-right: 1rem;\n}\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n#destination-card .bg-image {\n  background-size: cover;\n  position: relative;\n  width: 100%;\n  height: 0;\n  padding-top: 56.25%;\n}\n#destination-card {\n  transition: box-shadow 0.2s ease-in-out, transform 0.3s ease-in-out;\n  box-shadow: 0px 2px 3px rgb(0 0 0 / 18%);\n  cursor: pointer;\n}\n#destination-card:hover {\nbox-shadow: 0px 1px 13px #666;\n}\n#destination-card .card-text {\n  display: -webkit-box;\n  -webkit-line-clamp: 3;\n  -webkit-box-orient: vertical;\n  position: relative;\n  --max-lines: 3;\n  min-height: 75px;\n  max-height: calc(var(--lh) * var(--max-lines));\n  overflow: hidden;\n  padding-right: 1rem;\n}\n#destination-card .card-title {\n  display: -webkit-box;\n  -webkit-line-clamp: 1;\n  -webkit-box-orient: vertical;\n  position: relative;\n  --max-lines: 1;\n  min-height: 24px;\n  max-height: calc(var(--lh) * var(--max-lines));\n  overflow: hidden;\n  padding-right: 1rem;\n}\n#destination-card .subtitle {\n  overflow: hidden;\n  white-space: nowrap;\n  text-overflow: ellipsis;\n}\n#destination-card .subtitle::first-letter {\n  text-transform: uppercase;\n}\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -428,7 +421,10 @@ var render = function() {
           style: {
             "background-image": "url(" + _vm.destination.post_image + ")"
           },
-          attrs: { "data-mdb-ripple-color": "light" }
+          attrs: {
+            "data-mdb-ripple-color": "light",
+            title: _vm.destination.post_title
+          }
         },
         [_vm._m(0)]
       ),
@@ -443,9 +439,15 @@ var render = function() {
           [_c("div", [_vm._v(_vm._s(_vm.destination.post_title))])]
         ),
         _vm._v(" "),
-        _c("h6", { staticClass: "fw-bold text-dark mt-4 mb-2" }, [
-          _vm._v("Top reasons to visit")
-        ]),
+        _c(
+          "h6",
+          {
+            staticClass: "fw-bold text-dark mt-4 mb-2 subtitle",
+            staticStyle: { "text-overflow": "ellipsis" },
+            attrs: { title: _vm.destination.post_sub_title }
+          },
+          [_vm._v(_vm._s(_vm.destination.post_sub_title))]
+        ),
         _vm._v(" "),
         _c(
           "p",
@@ -518,11 +520,11 @@ var render = function() {
         _c(
           "div",
           { staticClass: "row gx-0" },
-          _vm._l(_vm.popularBlogs, function(blog, index) {
+          _vm._l(_vm.listDestinations, function(destination, index) {
             return _c(
               "div",
               { key: index, staticClass: "col-lg-4 col-md-6 col-xs-12" },
-              [_c("DestinationCard", { attrs: { destination: blog } })],
+              [_c("DestinationCard", { attrs: { destination: destination } })],
               1
             )
           }),

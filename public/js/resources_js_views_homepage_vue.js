@@ -726,6 +726,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
 
 
 
@@ -887,6 +888,9 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     }
   },
   methods: {
+    getTourFilter: function getTourFilter() {
+      this.$store.dispatch("tourController/getTourFilter");
+    },
     getPopularBlogs: function getPopularBlogs() {
       this.$store.dispatch("blogController/getPopularBlogs");
     },
@@ -1316,7 +1320,10 @@ var render = function() {
           style: {
             "background-image": "url(" + _vm.blog.post_image + ")"
           },
-          attrs: { "data-mdb-ripple-color": "light" }
+          attrs: {
+            "data-mdb-ripple-color": "light",
+            title: _vm.blog.post_title
+          }
         },
         [_vm._m(0)]
       ),
@@ -2167,7 +2174,15 @@ var render = function() {
           _vm._l(_vm.topDestinations, function(item) {
             return _c(
               "div",
-              { key: item.post_id, staticClass: "col-lg-3 col-md-4 col-xs-12" },
+              {
+                key: item.post_id,
+                staticClass: "col-lg-3 col-md-4 col-xs-12",
+                on: {
+                  click: function($event) {
+                    return _vm.$router.push("./destination_package")
+                  }
+                }
+              },
               [
                 _c("div", { staticClass: "card mb-3 mx-2" }, [
                   _c(

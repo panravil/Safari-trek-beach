@@ -5324,6 +5324,13 @@ var router = new vue_router__WEBPACK_IMPORTED_MODULE_1__.default({
       component: function component() {
         return __webpack_require__.e(/*! import() */ "resources_js_views_BlogInnerPage_vue").then(__webpack_require__.bind(__webpack_require__, /*! ./views/BlogInnerPage.vue */ "./resources/js/views/BlogInnerPage.vue"));
       }
+    }, {
+      path: '/destination_package',
+      name: 'Destination Package',
+      index: 8,
+      component: function component() {
+        return __webpack_require__.e(/*! import() */ "resources_js_views_DestinationPackage_vue").then(__webpack_require__.bind(__webpack_require__, /*! ./views/DestinationPackage.vue */ "./resources/js/views/DestinationPackage.vue"));
+      }
     }]
   }]
 }); // import NProgress from 'nprogress';
@@ -5367,16 +5374,23 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
 
 var state = {
-  popularBlogs: null
+  popularBlogs: null,
+  listBlog: null
 };
 var getters = {
   popularBlogs: function popularBlogs(state) {
     return state.popularBlogs;
+  },
+  listBlog: function listBlog(state) {
+    return state.listBlog;
   }
 };
 var mutations = {
   setPopularBlogs: function setPopularBlogs(state, data) {
     state.popularBlogs = data;
+  },
+  setListBlogs: function setListBlogs(state, data) {
+    state.listBlog = data;
   }
 };
 var actions = {
@@ -5397,6 +5411,25 @@ var actions = {
           }
         }
       }, _callee);
+    }))();
+  },
+  getListBlogs: function getListBlogs(context) {
+    return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee2() {
+      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee2$(_context2) {
+        while (1) {
+          switch (_context2.prev = _context2.next) {
+            case 0:
+              _context2.next = 2;
+              return axios__WEBPACK_IMPORTED_MODULE_1___default().get("/api/blog/list").then(function (res) {
+                context.commit("setListBlogs", res.data.blogList);
+              })["catch"](function (err) {});
+
+            case 2:
+            case "end":
+              return _context2.stop();
+          }
+        }
+      }, _callee2);
     }))();
   }
 };
@@ -5433,16 +5466,23 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
 
 var state = {
-  topDestinations: null
+  topDestinations: null,
+  listDestinations: null
 };
 var getters = {
   topDestinations: function topDestinations(state) {
     return state.topDestinations;
+  },
+  listDestinations: function listDestinations(state) {
+    return state.listDestinations;
   }
 };
 var mutations = {
   setTopDestinations: function setTopDestinations(state, data) {
     state.topDestinations = data;
+  },
+  setListDestinations: function setListDestinations(state, data) {
+    state.listDestinations = data;
   }
 };
 var actions = {
@@ -5455,7 +5495,6 @@ var actions = {
               _context.next = 2;
               return axios__WEBPACK_IMPORTED_MODULE_1___default().get("/api/destination/top-destinations").then(function (res) {
                 if (res.status == 200) {
-                  console.log(res);
                   context.commit("setTopDestinations", res.data.topDestinations);
                 }
               })["catch"](function (err) {});
@@ -5466,6 +5505,28 @@ var actions = {
           }
         }
       }, _callee);
+    }))();
+  },
+  getListDestinations: function getListDestinations(context) {
+    return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee2() {
+      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee2$(_context2) {
+        while (1) {
+          switch (_context2.prev = _context2.next) {
+            case 0:
+              _context2.next = 2;
+              return axios__WEBPACK_IMPORTED_MODULE_1___default().get("/api/destination/list").then(function (res) {
+                if (res.status == 200) {
+                  console.log('all destination:', res);
+                  context.commit("setListDestinations", res.data.destinationsList);
+                }
+              })["catch"](function (err) {});
+
+            case 2:
+            case "end":
+              return _context2.stop();
+          }
+        }
+      }, _callee2);
     }))();
   }
 };
@@ -5573,6 +5634,25 @@ var actions = {
           }
         }
       }, _callee);
+    }))();
+  },
+  getTourFilter: function getTourFilter(context) {
+    return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee2() {
+      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee2$(_context2) {
+        while (1) {
+          switch (_context2.prev = _context2.next) {
+            case 0:
+              _context2.next = 2;
+              return axios__WEBPACK_IMPORTED_MODULE_1___default().get("/api/tour/filter").then(function (res) {
+                console.log("filter result", res); // context.commit("setPopularTours", res.data.popularTour);
+              })["catch"](function (err) {});
+
+            case 2:
+            case "end":
+              return _context2.stop();
+          }
+        }
+      }, _callee2);
     }))();
   }
 };
@@ -29599,7 +29679,7 @@ var index = {
 /******/ 		// This function allow to reference async chunks
 /******/ 		__webpack_require__.u = (chunkId) => {
 /******/ 			// return url for filenames not based on template
-/******/ 			if ({"resources_js_layout_blank_Blank_vue":1,"resources_js_views_homepage_vue":1,"resources_js_views_OurTours_vue":1,"resources_js_views_BlogPost_vue":1,"resources_js_views_ContactUs_vue":1,"resources_js_views_AboutUs_vue":1,"resources_js_views_Destination_vue":1,"resources_js_views_BlogInnerPage_vue":1}[chunkId]) return "js/" + chunkId + ".js";
+/******/ 			if ({"resources_js_layout_blank_Blank_vue":1,"resources_js_views_homepage_vue":1,"resources_js_views_OurTours_vue":1,"resources_js_views_BlogPost_vue":1,"resources_js_views_ContactUs_vue":1,"resources_js_views_AboutUs_vue":1,"resources_js_views_Destination_vue":1,"resources_js_views_BlogInnerPage_vue":1,"resources_js_views_DestinationPackage_vue":1}[chunkId]) return "js/" + chunkId + ".js";
 /******/ 			// return url for filenames based on template
 /******/ 			return undefined;
 /******/ 		};
