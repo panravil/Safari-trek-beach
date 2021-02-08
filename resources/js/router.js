@@ -61,15 +61,25 @@ const router = new Router({
                 index: 7,
                 component: () => import('./views/Destination.vue')
                 },{
-                path: '/blog_inner_page',
+                path: '/blog-inner-page',
                 name: 'Blog Inner Page',
                 index: 8,
                 component: () => import('./views/BlogInnerPage.vue')
                 },{
-                path: '/destination_package',
+                path: '/destination-package',
                 name: 'Destination Package',
-                index: 8,
+                index: 9,
                 component: () => import('./views/DestinationPackage.vue')
+                },{
+                path: '/tourQuote',
+                name: 'Destination Package',
+                index: 9,
+                component: () => import('./views/TourQuote.vue')
+                },{
+                path: '/tour-package',
+                name: 'Destination Package',
+                index: 9,
+                component: () => import('./views/TourPackage.vue')
                 },
             ]
         },

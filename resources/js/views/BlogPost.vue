@@ -38,7 +38,7 @@ export default {
   },
   methods: {
     toBlogInnerPage() {
-      this.$router.push('./blog_inner_page');
+      this.$router.push('./blog-inner-page');
     },
     getListDestinations() {
       this.$store.dispatch("blogController/getListBlogs");

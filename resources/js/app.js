@@ -26,6 +26,10 @@ import AOS from "aos";
 
 import "aos/dist/aos.css";
 
+// import VueContentPlaceholders from 'vue-content-placeholders'
+ 
+// Vue.use(VueContentPlaceholders)
+
 new Vue({
     created() {
         AOS.init();
