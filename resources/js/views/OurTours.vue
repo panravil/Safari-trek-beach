@@ -263,27 +263,26 @@
               v-model="day_range"
             ></ejs-slider>
             <div class="d-flex justify-content-between">
-              <div>{{ day_range[0] }} Days</div>
+              <div v-if="day_range[0] == 1">{{ day_range[0] }} Day</div>
+              <div v-else>{{ day_range[0] }} Days</div>
               <div>{{ day_range[1] }} Days</div>
             </div>
 
             <h6 class="mt-5 fw-bold">Private or Group</h6>
-
-            <ul>
-              <li>
-                <ejs-radiobutton
-                  label="Private"
-                  name="default"
-                ></ejs-radiobutton>
-              </li>
-              <li>
-                <ejs-radiobutton
-                  label="Group"
-                  name="default"
-                  checked="true"
-                ></ejs-radiobutton>
-              </li>
-            </ul>
+            <p v-bind:key="'private' + update_private_check">
+              <ejs-checkbox
+                label="Private"
+                name="default"
+                v-model="check_private_filter"
+              ></ejs-checkbox>
+            </p>
+            <p v-bind:key="'group' + update_group_check">
+              <ejs-checkbox
+                label="Group"
+                name="default"
+                v-model="check_group_filter"
+              ></ejs-checkbox>
+            </p>
             <div v-bind:key="update_checklist">
               <h6 class="mt-5 fw-bold">Standard</h6>
               <p
@@ -361,12 +360,33 @@
             >
               <e-chips>
                 <e-chip
+                  :text="getPriceRangeChip()"
+                  v-if="price_range[0] != 100 || price_range[1] != 16000"
+                ></e-chip>
+                <e-chip
+                  :text="getDayRangeChip()"
+                  v-if="day_range[0] != 1 || day_range[1] != 30"
+                ></e-chip>
+                <e-chip
+                  text="Private"
+                  v-if="check_private_filter == true"
+                ></e-chip>
+                <e-chip text="Group" v-if="check_group_filter == true"></e-chip>
+                <e-chip
                   :text="item.label"
                   v-for="(item, index) in checked_filter_options"
                   v-bind:key="index"
                 ></e-chip>
                 <e-chip
-                  v-if="checked_filter_options.length != 0"
+                  v-if="
+                    checked_filter_options.length != 0 ||
+                    day_range[0] != 1 ||
+                    day_range[1] != 30 ||
+                    this.price_range[0] != 100 ||
+                    this.price_range[1] != 16000 ||
+                    check_private_filter == true ||
+                    check_group_filter == true
+                  "
                   text="Clear All Filters"
                   cssClass="e-outline e-danger"
                 ></e-chip>
@@ -407,6 +427,12 @@ Vue.use(RadioButtonPlugin);
 import { ChipListPlugin } from "@syncfusion/ej2-vue-buttons";
 Vue.use(ChipListPlugin);
 
+import {
+  enableRipple
+} from '@syncfusion/ej2-base';
+
+enableRipple(true);
+
 export default {
   name: "OurTours",
   components: {
@@ -418,7 +444,7 @@ export default {
     return {
       type: "Range",
       price_range: [100, 16000],
-      day_range: [0, 30],
+      day_range: [1, 30],
       type: "Range",
       read_more: false,
       ddd: "",
@@ -443,6 +469,8 @@ export default {
           new Date(),
         ],
       },
+
+      day_range_chip: "",
       searched_package: [
         {
           id: 1,
@@ -800,6 +828,10 @@ export default {
       ],
       checked_filter_options: [],
       update_checklist: 0,
+      check_private_filter: false,
+      check_group_filter: false,
+      update_private_check: 0,
+      update_group_check: 0,
     };
   },
   directives: {
@@ -828,15 +860,6 @@ export default {
 
   computed: {},
   watch: {
-    // children_number: function (newValue, oldValue) {
-    //   if (newValue > oldValue) {
-    //     this.selectedAge.push({
-    //       Age: "- Age -"
-    //     });
-    //   } else {
-    //     this.selectedAge.splice(this.selectedAge.length - 1, 1);
-    //   }
-    // },
     where_to_search: function () {
       if (this.where_to_search) {
         this.search_result = this.where_to_list.filter((item) => {
@@ -872,26 +895,33 @@ export default {
       }
       this.checked_filter_options = checked_list;
     },
+
     closeWhereToDropDown() {
       this.visible_whereto_dropdown = false;
     },
+
     showWhereToDropdown(visible_flag) {
       this.visible_whereto_dropdown = visible_flag;
     },
+
     setCurrentWhereTo(value) {
       this.where_to_search = value;
       this.visible_whereto_dropdown = false;
     },
+
     setInitWhereTo() {
       this.where_to_search = "";
     },
+
     showTravelerDropdown() {
       var current_flag = this.visible_traveler_dropdown;
       this.visible_traveler_dropdown = !current_flag;
     },
+
     closeTravelerDropdown: function (event) {
       this.visible_traveler_dropdown = false;
     },
+
     setTravelerInfo(event) {
       event.preventDefault();
       let traveler = this.adults_number + this.children_number;
@@ -899,11 +929,13 @@ export default {
       else this.traveler_number = traveler + " Travelers";
       this.closeTravelerDropdown();
     },
+
     setTravelerInit() {
       this.traveler_number = "";
       this.adults_number = 1;
       this.children_number = 0;
     },
+
     initStartDate() {
       this.start_date = "";
     },
@@ -916,12 +948,40 @@ export default {
     },
 
     deleteFilterOption: function (e) {
-      if (e.data.text == "Clear All Filters") {
-        this.checked_filter_options = [];
-        this.initCheckList();
-      } else {
-        this.removeFilterOptionItem(e.data.text);
-        this.uncheckFilterCheckListItem(e.data.text);
+      var lastChar = e.data.text[e.data.text.length - 1];
+      var check_last_string = e.data.text.substr(e.data.text.length - 4, 4);
+      if (lastChar == "$") {
+        this.price_range = [100, 16000];
+        return;
+      }
+      if (check_last_string == "days") {
+        this.day_range = [1, 30];
+        return;
+      }
+      switch (e.data.text) {
+        case "Clear All Filters":
+          this.checked_filter_options = [];
+          this.day_range = [1, 30];
+          this.price_range = [100, 16000];
+          this.check_private_filter = false;
+          this.check_group_filter = false;
+          this.update_private_check++;
+          this.update_group_check++;
+          this.initCheckList();
+          break;
+        case "Private":
+          this.check_private_filter = false;
+          this.update_private_check++;
+          break;
+
+        case "Group":
+          this.check_group_filter = false;
+          this.update_group_check++;
+          break;
+        default:
+          this.removeFilterOptionItem(e.data.text);
+          this.uncheckFilterCheckListItem(e.data.text);
+          break;
       }
     },
 
@@ -956,6 +1016,48 @@ export default {
         this.specialized_check_list[i].checked_state = false;
       }
       this.update_checklist++;
+    },
+
+    getDayRangeChip() {
+      let day_range_text = "";
+      if (this.day_range[0] != 1) {
+        if (this.day_range[1] == 30)
+          day_range_text = "From " + this.day_range[0] + " days";
+        else
+          day_range_text =
+            this.day_range[0] + " to " + this.day_range[1] + " days";
+      } else if (this.day_range[1] != 30) {
+        day_range_text = "Up to " + this.day_range[1] + " days";
+      }
+      return day_range_text;
+    },
+
+    getPriceRangeChip() {
+      let price_range_text = "";
+      if (this.price_range[0] != 100) {
+        if (this.price_range[1] == 16000)
+          price_range_text = "From " + this.price_range[0] + "$";
+        else
+          price_range_text =
+            this.price_range[0] + " to " + this.price_range[1] + "$";
+      } else if (this.price_range[1] != 16000) {
+        price_range_text = "Up to " + this.price_range[1] + "$";
+      }
+      return price_range_text;
+    },
+
+    showClearAllChip() {
+      let show_clear_all = false;
+      if (checked_filter_options.length != 0) show_clear_all = true;
+      if (this.day_range[0] != 1 || this.day_range[1] != 30)
+        show_clear_all = true;
+
+      if (this.price_range[0] != 100 || this.price_range[1] != 16000)
+        show_clear_all = true;
+
+      if (this.check_private_filter == true || this.check_group_filter == true)
+        show_clear_all = true;
+      return show_clear_all;
     },
   },
 };
