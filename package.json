@@ -30,6 +30,7 @@
         "@syncfusion/ej2-vue-calendars": "^18.4.41",
         "@syncfusion/ej2-vue-dropdowns": "^18.4.41",
         "@syncfusion/ej2-vue-inputs": "^18.4.41",
+        "@syncfusion/ej2-vue-navigations": "^18.4.41",
         "animate.css": "^4.1.1",
         "aos": "^2.3.4",
         "mdb-ui-kit": "^3.2.0",
