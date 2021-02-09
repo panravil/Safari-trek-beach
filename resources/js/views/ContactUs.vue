@@ -1,7 +1,5 @@
 <template>
-  <div>
-    This is CONTACT US page
-  </div>
+  <div>This is CONTACT US page</div>
 </template>
 <script>
 export default {

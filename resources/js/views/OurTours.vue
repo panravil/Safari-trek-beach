@@ -242,26 +242,28 @@
             </div>
 
             <h6 class="mt-5 fw-bold">Tour Price</h6>
-
-            <ejs-slider
-              :min="100"
-              :max="16000"
-              :type="'Range'"
-              v-model="price_range"
-            ></ejs-slider>
+            <div v-on:mouseup="getFilterTours">
+              <ejs-slider
+                :min="100"
+                :max="16000"
+                :type="'Range'"
+                v-model="price_range"
+              ></ejs-slider>
+            </div>
             <div class="d-flex justify-content-between">
               <div>${{ price_range[0] }}</div>
               <div>${{ price_range[1] }}</div>
             </div>
 
             <h6 class="mt-5 fw-bold">Tour Days</h6>
-
-            <ejs-slider
-              :min="1"
-              :max="30"
-              :type="'Range'"
-              v-model="day_range"
-            ></ejs-slider>
+            <div v-on:mouseup="getFilterTours">
+              <ejs-slider
+                :min="1"
+                :max="30"
+                :type="'Range'"
+                v-model="day_range"
+              ></ejs-slider>
+            </div>
             <div class="d-flex justify-content-between">
               <div v-if="day_range[0] == 1">{{ day_range[0] }} Day</div>
               <div v-else>{{ day_range[0] }} Days</div>
@@ -350,13 +352,25 @@
             </button>
           </div>
           <ul class="tagpill-group ps-0 mt-3">
-            <span class="my-1">Selected Filters:</span>
+            <span
+              class="my-1"
+              v-if="
+                checked_specialized_filter_options.length != 0 ||
+                checked_standard_filter_options.length != 0 ||
+                day_range[0] != 1 ||
+                day_range[1] != 30 ||
+                this.price_range[0] != 100 ||
+                this.price_range[1] != 16000 ||
+                check_private_filter == true ||
+                check_group_filter == true
+              "
+              >Selected Filters:</span
+            >
             <ejs-chiplist
               id="tag-list-filter"
               cssClass="e-outline e-info"
               enableDelete="true"
               v-on:delete="deleteFilterOption"
-              v-on:click.native="chipClick"
             >
               <e-chips>
                 <e-chip
@@ -374,12 +388,18 @@
                 <e-chip text="Group" v-if="check_group_filter == true"></e-chip>
                 <e-chip
                   :text="item.label"
-                  v-for="(item, index) in checked_filter_options"
+                  v-for="(item, index) in checked_standard_filter_options"
+                  v-bind:key="index"
+                ></e-chip>
+                <e-chip
+                  :text="item.label"
+                  v-for="(item, index) in checked_specialized_filter_options"
                   v-bind:key="index"
                 ></e-chip>
                 <e-chip
                   v-if="
-                    checked_filter_options.length != 0 ||
+                    checked_specialized_filter_options.length != 0 ||
+                    checked_standard_filter_options.length != 0 ||
                     day_range[0] != 1 ||
                     day_range[1] != 30 ||
                     this.price_range[0] != 100 ||
@@ -393,12 +413,16 @@
               </e-chips>
             </ejs-chiplist>
           </ul>
-          <h6 class="my-3 fw-bold">Showing 1 - 23 of 300 results</h6>
+          <h6 class="my-3 fw-bold" v-if="filterTours != null">
+            <span v-if="filterTours.length != 0"
+              >Showing 1 - {{ filterTours.length }} of 300 results</span
+            >
+          </h6>
           <div class="row gx-0">
             <div
               class="col-md-6 col-xs-12"
-              v-for="(item, index) in searched_package"
-              v-bind:key="index"
+              v-for="(item, index) in filterTours"
+              v-bind:key="'filter' + index"
             >
               <TourCard :tourData="item"></TourCard>
             </div>
@@ -427,10 +451,8 @@ Vue.use(RadioButtonPlugin);
 import { ChipListPlugin } from "@syncfusion/ej2-vue-buttons";
 Vue.use(ChipListPlugin);
 
-import {
-  enableRipple
-} from '@syncfusion/ej2-base';
-
+import { enableRipple } from "@syncfusion/ej2-base";
+import { mapState, mapGetters, mapMutations } from "vuex";
 enableRipple(true);
 
 export default {
@@ -471,232 +493,7 @@ export default {
       },
 
       day_range_chip: "",
-      searched_package: [
-        {
-          id: 1,
-          title: "3-Day Ngorongoro & Serengeti Budget Tour",
-          acommodation: "Budget, Camping",
-          type: "Group",
-          route:
-            "Arusha (Start), Ngorongoro crater, Serengeti National Pa..., Arusha (End)",
-          company: "Meru Slopes Tours and Safaris",
-          reviews: 42,
-          rating: "5.0",
-          price: 339,
-          image: "./images/CHEMKA_HOT_SPRING_8.jpg",
-          tagImage: "./images/toprated2.png",
-        },
-        {
-          id: 2,
-          title: "4-Day Budget Camping to Tarangire, Serengeti &Ngorongoro",
-          acommodation: "Budget, Camping",
-          type: "Group",
-          route:
-            "Arusha (Start), Ngorongoro crater, Serengeti National Pa..., Arusha (End)",
-          company: "Travel Africa Safari Agency",
-          reviews: 12,
-          rating: "5.0",
-          price: 59,
-          image: "./images/NGORONGORO_CRATER_3.jpg",
-          tagImage: "./images/toprated2.png",
-        },
-        {
-          id: 3,
-          title: "6-Day Camping Safari to Serengeti, Ngorongoro & Tarangire",
-          acommodation: "Budget, Camping",
-          type: "Group",
-          route:
-            "Arusha (Start), Ngorongoro crater, Serengeti National Pa..., Arusha (End)",
-          company: "Travel Africa Safari Agency",
-          reviews: 0,
-          rating: "5.0",
-          price: 599,
-          image: "./images/SERENGETI_NATIONAL_PARK_11.jpg",
-          tagImage: "./images/toprated2.png",
-        },
-        {
-          id: 4,
-          title: "2-Day Coffee, city tour, chemka & Materuni waterfalls",
-          acommodation: "Budget, Camping",
-          type: "Private",
-          route:
-            "Arusha (Start), Ngorongoro crater, Serengeti National Pa..., Arusha (End)",
-          company: "wildlife oasis tours",
-          reviews: 12,
-          rating: "5.0",
-          price: 99,
-          image: "./images/TARANGIRE_NATIONAL_PARK_7.jpg",
-          tagImage: "./images/best-review.png",
-        },
-        {
-          id: 5,
-          title: "5-Day Private Tour",
-          acommodation: "Budget, Camping",
-          type: "Private",
-          route:
-            "Arusha (Start), Ngorongoro crater, Serengeti National Pa..., Arusha (End)",
-          company: "wildlife oasis tours",
-          reviews: 53,
-          rating: "5.0",
-          price: 599,
-          image: "./images/SERENGETI_NATIONAL_PARK_28.jpg",
-          tagImage: "./images/toprated2.png",
-        },
-        {
-          id: 6,
-          title: "5-Day Tarangire, Serengeti(2 nights) & Ngorongoro crater",
-          acommodation: "Budget, Camping",
-          type: "Private",
-          route:
-            "Arusha (Start), Ngorongoro crater, Serengeti National Pa..., Arusha (End)",
-          company: "Safari soles tours",
-          reviews: 9,
-          rating: "5.0",
-          price: 159,
-          image: "./images/TARANGIRE_NATIONAL_PARK_7.jpg",
-          tagImage: "./images/bestseller.png",
-        },
-        {
-          id: 2,
-          title: "4-Day Budget Camping to Tarangire, Serengeti &Ngorongoro",
-          acommodation: "Budget, Camping",
-          type: "Group",
-          route:
-            "Arusha (Start), Ngorongoro crater, Serengeti National Pa..., Arusha (End)",
-          company: "Travel Africa Safari Agency",
-          reviews: 12,
-          rating: "5.0",
-          price: 59,
-          image: "./images/NGORONGORO_CRATER_3.jpg",
-          tagImage: "./images/toprated2.png",
-        },
-        {
-          id: 3,
-          title: "6-Day Camping Safari to Serengeti, Ngorongoro & Tarangire",
-          acommodation: "Budget, Camping",
-          type: "Group",
-          route:
-            "Arusha (Start), Ngorongoro crater, Serengeti National Pa..., Arusha (End)",
-          company: "Travel Africa Safari Agency",
-          reviews: 0,
-          rating: "5.0",
-          price: 599,
-          image: "./images/SERENGETI_NATIONAL_PARK_11.jpg",
-          tagImage: "./images/toprated2.png",
-        },
-        {
-          id: 4,
-          title: "2-Day Coffee, city tour, chemka & Materuni waterfalls",
-          acommodation: "Budget, Camping",
-          type: "Private",
-          route:
-            "Arusha (Start), Ngorongoro crater, Serengeti National Pa..., Arusha (End)",
-          company: "wildlife oasis tours",
-          reviews: 12,
-          rating: "5.0",
-          price: 99,
-          image: "./images/TARANGIRE_NATIONAL_PARK_7.jpg",
-          tagImage: "./images/best-review.png",
-        },
-        {
-          id: 5,
-          title: "5-Day Private Tour",
-          acommodation: "Budget, Camping",
-          type: "Private",
-          route:
-            "Arusha (Start), Ngorongoro crater, Serengeti National Pa..., Arusha (End)",
-          company: "wildlife oasis tours",
-          reviews: 53,
-          rating: "5.0",
-          price: 599,
-          image: "./images/SERENGETI_NATIONAL_PARK_28.jpg",
-          tagImage: "./images/toprated2.png",
-        },
-        {
-          id: 6,
-          title: "5-Day Tarangire, Serengeti(2 nights) & Ngorongoro crater",
-          acommodation: "Budget, Camping",
-          type: "Private",
-          route:
-            "Arusha (Start), Ngorongoro crater, Serengeti National Pa..., Arusha (End)",
-          company: "Safari soles tours",
-          reviews: 9,
-          rating: "5.0",
-          price: 159,
-          image: "./images/TARANGIRE_NATIONAL_PARK_7.jpg",
-          tagImage: "./images/bestseller.png",
-        },
-        {
-          id: 2,
-          title: "4-Day Budget Camping to Tarangire, Serengeti &Ngorongoro",
-          acommodation: "Budget, Camping",
-          type: "Group",
-          route:
-            "Arusha (Start), Ngorongoro crater, Serengeti National Pa..., Arusha (End)",
-          company: "Travel Africa Safari Agency",
-          reviews: 12,
-          rating: "5.0",
-          price: 59,
-          image: "./images/NGORONGORO_CRATER_3.jpg",
-          tagImage: "./images/toprated2.png",
-        },
-        {
-          id: 3,
-          title: "6-Day Camping Safari to Serengeti, Ngorongoro & Tarangire",
-          acommodation: "Budget, Camping",
-          type: "Group",
-          route:
-            "Arusha (Start), Ngorongoro crater, Serengeti National Pa..., Arusha (End)",
-          company: "Travel Africa Safari Agency",
-          reviews: 0,
-          rating: "5.0",
-          price: 599,
-          image: "./images/SERENGETI_NATIONAL_PARK_11.jpg",
-          tagImage: "./images/toprated2.png",
-        },
-        {
-          id: 4,
-          title: "2-Day Coffee, city tour, chemka & Materuni waterfalls",
-          acommodation: "Budget, Camping",
-          type: "Private",
-          route:
-            "Arusha (Start), Ngorongoro crater, Serengeti National Pa..., Arusha (End)",
-          company: "wildlife oasis tours",
-          reviews: 12,
-          rating: "5.0",
-          price: 99,
-          image: "./images/TARANGIRE_NATIONAL_PARK_7.jpg",
-          tagImage: "./images/best-review.png",
-        },
-        {
-          id: 5,
-          title: "5-Day Private Tour",
-          acommodation: "Budget, Camping",
-          type: "Private",
-          route:
-            "Arusha (Start), Ngorongoro crater, Serengeti National Pa..., Arusha (End)",
-          company: "wildlife oasis tours",
-          reviews: 53,
-          rating: "5.0",
-          price: 599,
-          image: "./images/SERENGETI_NATIONAL_PARK_28.jpg",
-          tagImage: "./images/toprated2.png",
-        },
-        {
-          id: 6,
-          title: "5-Day Tarangire, Serengeti(2 nights) & Ngorongoro crater",
-          acommodation: "Budget, Camping",
-          type: "Private",
-          route:
-            "Arusha (Start), Ngorongoro crater, Serengeti National Pa..., Arusha (End)",
-          company: "Safari soles tours",
-          reviews: 9,
-          rating: "5.0",
-          price: 159,
-          image: "./images/TARANGIRE_NATIONAL_PARK_7.jpg",
-          tagImage: "./images/bestseller.png",
-        },
-      ],
+
       where_to_list: [
         {
           title: "All Safari Destinations",
@@ -826,7 +623,8 @@ export default {
         { label: "Beach holiday only", checked_state: false },
         { label: "Overland truck safari", checked_state: false },
       ],
-      checked_filter_options: [],
+      checked_specialized_filter_options: [],
+      checked_standard_filter_options: [],
       update_checklist: 0,
       check_private_filter: false,
       check_group_filter: false,
@@ -858,8 +656,21 @@ export default {
     },
   },
 
-  computed: {},
+  computed: {
+    ...mapGetters({
+      filterTours: "tourController/filterTours",
+    }),
+  },
   watch: {
+    //   filter when click private checkbox checked
+    check_private_filter: function () {
+      this.getFilterTours();
+    },
+    // filter when click group checkbox  checked
+    check_group_filter: function () {
+      this.getFilterTours();
+    },
+
     where_to_search: function () {
       if (this.where_to_search) {
         this.search_result = this.where_to_list.filter((item) => {
@@ -875,25 +686,31 @@ export default {
   },
   created() {
     this.search_result = this.where_to_list;
+    this.getFilterTours();
   },
   methods: {
     updateCheckedFilterOptions() {
-      let checked_list = [];
       let index = 0;
+      this.checked_standard_filter_options = [];
+      this.checked_specialized_filter_options = [];
       for (let i = 0; i < this.standard_check_list.length; i++) {
         if (this.standard_check_list[i].checked_state) {
-          checked_list[index] = this.standard_check_list[i];
+          this.checked_standard_filter_options[
+            index
+          ] = this.standard_check_list[i];
           index++;
         }
       }
-
+      index = 0;
       for (let i = 0; i < this.specialized_check_list.length; i++) {
         if (this.specialized_check_list[i].checked_state) {
-          checked_list[index] = this.specialized_check_list[i];
+          this.checked_specialized_filter_options[
+            index
+          ] = this.specialized_check_list[i];
           index++;
         }
       }
-      this.checked_filter_options = checked_list;
+      this.getFilterTours();
     },
 
     closeWhereToDropDown() {
@@ -940,27 +757,23 @@ export default {
       this.start_date = "";
     },
 
-    chipClick: function (e) {
-      if (e.target.textContent == "Clear All Filters") {
-        this.checked_filter_options = [];
-        this.initCheckList();
-      }
-    },
-
     deleteFilterOption: function (e) {
       var lastChar = e.data.text[e.data.text.length - 1];
       var check_last_string = e.data.text.substr(e.data.text.length - 4, 4);
       if (lastChar == "$") {
         this.price_range = [100, 16000];
+        this.getFilterTours();
         return;
       }
       if (check_last_string == "days") {
         this.day_range = [1, 30];
+        this.getFilterTours();
         return;
       }
       switch (e.data.text) {
         case "Clear All Filters":
-          this.checked_filter_options = [];
+          this.checked_specialized_filter_options = [];
+          this.checked_standard_filter_options = [];
           this.day_range = [1, 30];
           this.price_range = [100, 16000];
           this.check_private_filter = false;
@@ -968,15 +781,20 @@ export default {
           this.update_private_check++;
           this.update_group_check++;
           this.initCheckList();
+
           break;
         case "Private":
           this.check_private_filter = false;
           this.update_private_check++;
+          this.getFilterTours();
+
           break;
 
         case "Group":
           this.check_group_filter = false;
           this.update_group_check++;
+          this.getFilterTours();
+
           break;
         default:
           this.removeFilterOptionItem(e.data.text);
@@ -997,13 +815,19 @@ export default {
         }
       }
       this.update_checklist++;
+      this.getFilterTours();
     },
 
     removeFilterOptionItem(item) {
-      for (let i = 0; i < this.checked_filter_options.length; i++) {
-        if (this.checked_filter_options[i].label == item) {
-          this.checked_filter_options.splice(i, 1);
-          console.log(this.checked_filter_options);
+      for (let i = 0; i < this.checked_standard_filter_options.length; i++) {
+        if (this.checked_standard_filter_options[i].label == item) {
+          this.checked_standard_filter_options.splice(i, 1);
+        }
+      }
+
+      for (let i = 0; i < this.checked_specialized_filter_options.length; i++) {
+        if (this.checked_specialized_filter_options[i].label == item) {
+          this.checked_specialized_filter_options.splice(i, 1);
         }
       }
     },
@@ -1016,6 +840,8 @@ export default {
         this.specialized_check_list[i].checked_state = false;
       }
       this.update_checklist++;
+
+      this.getFilterTours();
     },
 
     getDayRangeChip() {
@@ -1046,18 +872,49 @@ export default {
       return price_range_text;
     },
 
-    showClearAllChip() {
-      let show_clear_all = false;
-      if (checked_filter_options.length != 0) show_clear_all = true;
-      if (this.day_range[0] != 1 || this.day_range[1] != 30)
-        show_clear_all = true;
+    // filter tours function
 
-      if (this.price_range[0] != 100 || this.price_range[1] != 16000)
-        show_clear_all = true;
+    getFilterTours() {
+      let group_filter = "";
+      let level_filter = "";
+      let specialized_filter = "";
+      if (this.check_private_filter) {
+        group_filter = "private";
+        if (this.check_group_filter) group_filter = group_filter + "|group";
+      } else if (this.check_group_filter) group_filter += "group";
+      for (let i = 0; i < this.checked_standard_filter_options.length; i++) {
+        level_filter += this.checked_standard_filter_options[i].label + "|";
+      }
+      if (level_filter != "") {
+        level_filter = level_filter.substring(0, level_filter.length - 1);
+      }
+      for (let i = 0; i < this.checked_specialized_filter_options.length; i++) {
+        specialized_filter +=
+          this.checked_specialized_filter_options[i].label + "|";
+      }
 
-      if (this.check_private_filter == true || this.check_group_filter == true)
-        show_clear_all = true;
-      return show_clear_all;
+      if (specialized_filter != "") {
+        specialized_filter = specialized_filter.substring(
+          0,
+          specialized_filter.length - 1
+        );
+      }
+
+      this.$router
+        .replace({
+          query: {
+            destination: "",
+            min_price: this.price_range[0],
+            max_price: this.price_range[1],
+            min_day: this.day_range[0],
+            max_day: this.day_range[1],
+            group: group_filter,
+            comfort: level_filter,
+            focus: specialized_filter,
+          },
+        })
+        .catch(() => {});
+      this.$store.dispatch("tourController/getTourFilter", this.$route.query);
     },
   },
 };

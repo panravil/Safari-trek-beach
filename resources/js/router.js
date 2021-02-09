@@ -73,12 +73,12 @@ const router = new Router({
                 },{
                 path: '/tour-quote',
                 name: 'Destination Package',
-                index: 9,
+                index: 10,
                 component: () => import('./views/TourQuote.vue')
                 },{
                 path: '/tour-package',
                 name: 'Destination Package',
-                index: 9,
+                index:11,
                 component: () => import('./views/TourPackage.vue')
                 },
             ]
