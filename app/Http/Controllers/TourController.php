@@ -97,13 +97,18 @@ class TourController extends Controller
 
     $data = !empty($data)?array_slice($data, $start, $limit):[];
 
+    // dd($start + 1);
+
     return response()->json(
       [
-        'tours'     => $data,
-        'pages'     => $total_pages,
-        'page'      => $page,
-        'previous'  => $previous,
-        'next'      => $next
+        'tours'           => $data,
+        'total_tours'     => $total_tours,
+        'tour_show_from'  => $start + 1,
+        'tour_show_to'    => $start + count($data),
+        'pages'           => $total_pages,
+        'page'            => $page,
+        'previous'        => $previous,
+        'next'            => $next
       ],
       200,
       [],

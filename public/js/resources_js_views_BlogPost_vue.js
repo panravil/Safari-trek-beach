@@ -105,7 +105,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
   },
   methods: {
     toBlogInnerPage: function toBlogInnerPage() {
-      this.$router.push('./blog_inner_page');
+      this.$router.push('./blog-inner-page');
     },
     getListDestinations: function getListDestinations() {
       this.$store.dispatch("blogController/getListBlogs");

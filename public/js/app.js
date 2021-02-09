@@ -5211,6 +5211,8 @@ vue__WEBPACK_IMPORTED_MODULE_9__.default.component("v-select", (vue_select__WEBP
 
 
 
+ // import VueContentPlaceholders from 'vue-content-placeholders'
+// Vue.use(VueContentPlaceholders)
 
 new vue__WEBPACK_IMPORTED_MODULE_9__.default({
   created: function created() {
@@ -5318,18 +5320,32 @@ var router = new vue_router__WEBPACK_IMPORTED_MODULE_1__.default({
         return __webpack_require__.e(/*! import() */ "resources_js_views_Destination_vue").then(__webpack_require__.bind(__webpack_require__, /*! ./views/Destination.vue */ "./resources/js/views/Destination.vue"));
       }
     }, {
-      path: '/blog_inner_page',
+      path: '/blog-inner-page',
       name: 'Blog Inner Page',
       index: 8,
       component: function component() {
         return __webpack_require__.e(/*! import() */ "resources_js_views_BlogInnerPage_vue").then(__webpack_require__.bind(__webpack_require__, /*! ./views/BlogInnerPage.vue */ "./resources/js/views/BlogInnerPage.vue"));
       }
     }, {
-      path: '/destination_package',
+      path: '/destination-package',
       name: 'Destination Package',
-      index: 8,
+      index: 9,
       component: function component() {
         return __webpack_require__.e(/*! import() */ "resources_js_views_DestinationPackage_vue").then(__webpack_require__.bind(__webpack_require__, /*! ./views/DestinationPackage.vue */ "./resources/js/views/DestinationPackage.vue"));
+      }
+    }, {
+      path: '/tour-quote',
+      name: 'Destination Package',
+      index: 10,
+      component: function component() {
+        return __webpack_require__.e(/*! import() */ "resources_js_views_TourQuote_vue").then(__webpack_require__.bind(__webpack_require__, /*! ./views/TourQuote.vue */ "./resources/js/views/TourQuote.vue"));
+      }
+    }, {
+      path: '/tour-package',
+      name: 'Destination Package',
+      index: 11,
+      component: function component() {
+        return __webpack_require__.e(/*! import() */ "resources_js_views_TourPackage_vue").then(__webpack_require__.bind(__webpack_require__, /*! ./views/TourPackage.vue */ "./resources/js/views/TourPackage.vue"));
       }
     }]
   }]
@@ -5597,7 +5613,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
 var state = {
   popularTours: null,
-  ourTours: null
+  ourTours: null,
+  filterTours: null
 };
 var getters = {
   popularTours: function popularTours(state) {
@@ -5605,6 +5622,9 @@ var getters = {
   },
   ourTours: function ourTours(state) {
     return state.ourTours;
+  },
+  filterTours: function filterTours(state) {
+    return state.filterTours;
   }
 };
 var mutations = {
@@ -5614,6 +5634,9 @@ var mutations = {
   },
   setOurTours: function setOurTours(state, data) {
     state.ourTours = data;
+  },
+  setFilterTours: function setFilterTours(state, data) {
+    state.filterTours = data;
   }
 };
 var actions = {
@@ -5636,15 +5659,18 @@ var actions = {
       }, _callee);
     }))();
   },
-  getTourFilter: function getTourFilter(context) {
+  getTourFilter: function getTourFilter(context, query) {
     return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee2() {
       return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee2$(_context2) {
         while (1) {
           switch (_context2.prev = _context2.next) {
             case 0:
               _context2.next = 2;
-              return axios__WEBPACK_IMPORTED_MODULE_1___default().get("/api/tour/filter").then(function (res) {
-                console.log("filter result", res); // context.commit("setPopularTours", res.data.popularTour);
+              return axios__WEBPACK_IMPORTED_MODULE_1___default().get("/api/tour/filter", {
+                params: query
+              }).then(function (res) {
+                console.log("filter result", res);
+                context.commit("setFilterTours", res.data.tours);
               })["catch"](function (err) {});
 
             case 2:
@@ -29679,7 +29705,7 @@ var index = {
 /******/ 		// This function allow to reference async chunks
 /******/ 		__webpack_require__.u = (chunkId) => {
 /******/ 			// return url for filenames not based on template
-/******/ 			if ({"resources_js_layout_blank_Blank_vue":1,"resources_js_views_homepage_vue":1,"resources_js_views_OurTours_vue":1,"resources_js_views_BlogPost_vue":1,"resources_js_views_ContactUs_vue":1,"resources_js_views_AboutUs_vue":1,"resources_js_views_Destination_vue":1,"resources_js_views_BlogInnerPage_vue":1,"resources_js_views_DestinationPackage_vue":1}[chunkId]) return "js/" + chunkId + ".js";
+/******/ 			if ({"resources_js_layout_blank_Blank_vue":1,"resources_js_views_homepage_vue":1,"resources_js_views_OurTours_vue":1,"resources_js_views_BlogPost_vue":1,"resources_js_views_ContactUs_vue":1,"resources_js_views_AboutUs_vue":1,"resources_js_views_Destination_vue":1,"resources_js_views_BlogInnerPage_vue":1,"resources_js_views_DestinationPackage_vue":1,"resources_js_views_TourQuote_vue":1,"resources_js_views_TourPackage_vue":1}[chunkId]) return "js/" + chunkId + ".js";
 /******/ 			// return url for filenames based on template
 /******/ 			return undefined;
 /******/ 		};

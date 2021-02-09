@@ -18872,8 +18872,151 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _syncfusion_ej2_vue_buttons__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @syncfusion/ej2-vue-buttons */ "./node_modules/@syncfusion/ej2-vue-buttons/src/check-box/checkbox.component.js");
 /* harmony import */ var _syncfusion_ej2_vue_buttons__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @syncfusion/ej2-vue-buttons */ "./node_modules/@syncfusion/ej2-vue-buttons/src/radio-button/radiobutton.component.js");
 /* harmony import */ var _syncfusion_ej2_vue_buttons__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @syncfusion/ej2-vue-buttons */ "./node_modules/@syncfusion/ej2-vue-buttons/src/chips/chiplist.component.js");
+/* harmony import */ var _syncfusion_ej2_base__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @syncfusion/ej2-base */ "./node_modules/@syncfusion/ej2-base/index.js");
+/* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -19184,6 +19327,9 @@ vue__WEBPACK_IMPORTED_MODULE_3__.default.use(_syncfusion_ej2_vue_buttons__WEBPAC
 vue__WEBPACK_IMPORTED_MODULE_3__.default.use(_syncfusion_ej2_vue_buttons__WEBPACK_IMPORTED_MODULE_6__.RadioButtonPlugin);
 
 vue__WEBPACK_IMPORTED_MODULE_3__.default.use(_syncfusion_ej2_vue_buttons__WEBPACK_IMPORTED_MODULE_7__.ChipListPlugin);
+
+
+(0,_syncfusion_ej2_base__WEBPACK_IMPORTED_MODULE_8__.enableRipple)(true);
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: "OurTours",
   components: {
@@ -19197,7 +19343,7 @@ vue__WEBPACK_IMPORTED_MODULE_3__.default.use(_syncfusion_ej2_vue_buttons__WEBPAC
     return _ref = {
       type: "Range",
       price_range: [100, 16000],
-      day_range: [0, 30]
+      day_range: [1, 30]
     }, _defineProperty(_ref, "type", "Range"), _defineProperty(_ref, "read_more", false), _defineProperty(_ref, "ddd", ""), _defineProperty(_ref, "where_to_search", ""), _defineProperty(_ref, "traveler_number", ""), _defineProperty(_ref, "start_date", ""), _defineProperty(_ref, "visible_whereto_dropdown", false), _defineProperty(_ref, "visible_traveler_dropdown", false), _defineProperty(_ref, "adults_number", 1), _defineProperty(_ref, "children_number", 0), _defineProperty(_ref, "disabledFn", {
       customPredictor: function customPredictor(date) {
         var current_date = new Date();
@@ -19209,199 +19355,7 @@ vue__WEBPACK_IMPORTED_MODULE_3__.default.use(_syncfusion_ej2_vue_buttons__WEBPAC
     }), _defineProperty(_ref, "highlighted", {
       dates: [// your date
       new Date()]
-    }), _defineProperty(_ref, "searched_package", [{
-      id: 1,
-      title: "3-Day Ngorongoro & Serengeti Budget Tour",
-      acommodation: "Budget, Camping",
-      type: "Group",
-      route: "Arusha (Start), Ngorongoro crater, Serengeti National Pa..., Arusha (End)",
-      company: "Meru Slopes Tours and Safaris",
-      reviews: 42,
-      rating: "5.0",
-      price: 339,
-      image: "./images/CHEMKA_HOT_SPRING_8.jpg",
-      tagImage: "./images/toprated2.png"
-    }, {
-      id: 2,
-      title: "4-Day Budget Camping to Tarangire, Serengeti &Ngorongoro",
-      acommodation: "Budget, Camping",
-      type: "Group",
-      route: "Arusha (Start), Ngorongoro crater, Serengeti National Pa..., Arusha (End)",
-      company: "Travel Africa Safari Agency",
-      reviews: 12,
-      rating: "5.0",
-      price: 59,
-      image: "./images/NGORONGORO_CRATER_3.jpg",
-      tagImage: "./images/toprated2.png"
-    }, {
-      id: 3,
-      title: "6-Day Camping Safari to Serengeti, Ngorongoro & Tarangire",
-      acommodation: "Budget, Camping",
-      type: "Group",
-      route: "Arusha (Start), Ngorongoro crater, Serengeti National Pa..., Arusha (End)",
-      company: "Travel Africa Safari Agency",
-      reviews: 0,
-      rating: "5.0",
-      price: 599,
-      image: "./images/SERENGETI_NATIONAL_PARK_11.jpg",
-      tagImage: "./images/toprated2.png"
-    }, {
-      id: 4,
-      title: "2-Day Coffee, city tour, chemka & Materuni waterfalls",
-      acommodation: "Budget, Camping",
-      type: "Private",
-      route: "Arusha (Start), Ngorongoro crater, Serengeti National Pa..., Arusha (End)",
-      company: "wildlife oasis tours",
-      reviews: 12,
-      rating: "5.0",
-      price: 99,
-      image: "./images/TARANGIRE_NATIONAL_PARK_7.jpg",
-      tagImage: "./images/best-review.png"
-    }, {
-      id: 5,
-      title: "5-Day Private Tour",
-      acommodation: "Budget, Camping",
-      type: "Private",
-      route: "Arusha (Start), Ngorongoro crater, Serengeti National Pa..., Arusha (End)",
-      company: "wildlife oasis tours",
-      reviews: 53,
-      rating: "5.0",
-      price: 599,
-      image: "./images/SERENGETI_NATIONAL_PARK_28.jpg",
-      tagImage: "./images/toprated2.png"
-    }, {
-      id: 6,
-      title: "5-Day Tarangire, Serengeti(2 nights) & Ngorongoro crater",
-      acommodation: "Budget, Camping",
-      type: "Private",
-      route: "Arusha (Start), Ngorongoro crater, Serengeti National Pa..., Arusha (End)",
-      company: "Safari soles tours",
-      reviews: 9,
-      rating: "5.0",
-      price: 159,
-      image: "./images/TARANGIRE_NATIONAL_PARK_7.jpg",
-      tagImage: "./images/bestseller.png"
-    }, {
-      id: 2,
-      title: "4-Day Budget Camping to Tarangire, Serengeti &Ngorongoro",
-      acommodation: "Budget, Camping",
-      type: "Group",
-      route: "Arusha (Start), Ngorongoro crater, Serengeti National Pa..., Arusha (End)",
-      company: "Travel Africa Safari Agency",
-      reviews: 12,
-      rating: "5.0",
-      price: 59,
-      image: "./images/NGORONGORO_CRATER_3.jpg",
-      tagImage: "./images/toprated2.png"
-    }, {
-      id: 3,
-      title: "6-Day Camping Safari to Serengeti, Ngorongoro & Tarangire",
-      acommodation: "Budget, Camping",
-      type: "Group",
-      route: "Arusha (Start), Ngorongoro crater, Serengeti National Pa..., Arusha (End)",
-      company: "Travel Africa Safari Agency",
-      reviews: 0,
-      rating: "5.0",
-      price: 599,
-      image: "./images/SERENGETI_NATIONAL_PARK_11.jpg",
-      tagImage: "./images/toprated2.png"
-    }, {
-      id: 4,
-      title: "2-Day Coffee, city tour, chemka & Materuni waterfalls",
-      acommodation: "Budget, Camping",
-      type: "Private",
-      route: "Arusha (Start), Ngorongoro crater, Serengeti National Pa..., Arusha (End)",
-      company: "wildlife oasis tours",
-      reviews: 12,
-      rating: "5.0",
-      price: 99,
-      image: "./images/TARANGIRE_NATIONAL_PARK_7.jpg",
-      tagImage: "./images/best-review.png"
-    }, {
-      id: 5,
-      title: "5-Day Private Tour",
-      acommodation: "Budget, Camping",
-      type: "Private",
-      route: "Arusha (Start), Ngorongoro crater, Serengeti National Pa..., Arusha (End)",
-      company: "wildlife oasis tours",
-      reviews: 53,
-      rating: "5.0",
-      price: 599,
-      image: "./images/SERENGETI_NATIONAL_PARK_28.jpg",
-      tagImage: "./images/toprated2.png"
-    }, {
-      id: 6,
-      title: "5-Day Tarangire, Serengeti(2 nights) & Ngorongoro crater",
-      acommodation: "Budget, Camping",
-      type: "Private",
-      route: "Arusha (Start), Ngorongoro crater, Serengeti National Pa..., Arusha (End)",
-      company: "Safari soles tours",
-      reviews: 9,
-      rating: "5.0",
-      price: 159,
-      image: "./images/TARANGIRE_NATIONAL_PARK_7.jpg",
-      tagImage: "./images/bestseller.png"
-    }, {
-      id: 2,
-      title: "4-Day Budget Camping to Tarangire, Serengeti &Ngorongoro",
-      acommodation: "Budget, Camping",
-      type: "Group",
-      route: "Arusha (Start), Ngorongoro crater, Serengeti National Pa..., Arusha (End)",
-      company: "Travel Africa Safari Agency",
-      reviews: 12,
-      rating: "5.0",
-      price: 59,
-      image: "./images/NGORONGORO_CRATER_3.jpg",
-      tagImage: "./images/toprated2.png"
-    }, {
-      id: 3,
-      title: "6-Day Camping Safari to Serengeti, Ngorongoro & Tarangire",
-      acommodation: "Budget, Camping",
-      type: "Group",
-      route: "Arusha (Start), Ngorongoro crater, Serengeti National Pa..., Arusha (End)",
-      company: "Travel Africa Safari Agency",
-      reviews: 0,
-      rating: "5.0",
-      price: 599,
-      image: "./images/SERENGETI_NATIONAL_PARK_11.jpg",
-      tagImage: "./images/toprated2.png"
-    }, {
-      id: 4,
-      title: "2-Day Coffee, city tour, chemka & Materuni waterfalls",
-      acommodation: "Budget, Camping",
-      type: "Private",
-      route: "Arusha (Start), Ngorongoro crater, Serengeti National Pa..., Arusha (End)",
-      company: "wildlife oasis tours",
-      reviews: 12,
-      rating: "5.0",
-      price: 99,
-      image: "./images/TARANGIRE_NATIONAL_PARK_7.jpg",
-      tagImage: "./images/best-review.png"
-    }, {
-      id: 5,
-      title: "5-Day Private Tour",
-      acommodation: "Budget, Camping",
-      type: "Private",
-      route: "Arusha (Start), Ngorongoro crater, Serengeti National Pa..., Arusha (End)",
-      company: "wildlife oasis tours",
-      reviews: 53,
-      rating: "5.0",
-      price: 599,
-      image: "./images/SERENGETI_NATIONAL_PARK_28.jpg",
-      tagImage: "./images/toprated2.png"
-    }, {
-      id: 6,
-      title: "5-Day Tarangire, Serengeti(2 nights) & Ngorongoro crater",
-      acommodation: "Budget, Camping",
-      type: "Private",
-      route: "Arusha (Start), Ngorongoro crater, Serengeti National Pa..., Arusha (End)",
-      company: "Safari soles tours",
-      reviews: 9,
-      rating: "5.0",
-      price: 159,
-      image: "./images/TARANGIRE_NATIONAL_PARK_7.jpg",
-      tagImage: "./images/bestseller.png"
-    }]), _defineProperty(_ref, "where_to_list", [{
+    }), _defineProperty(_ref, "day_range_chip", ""), _defineProperty(_ref, "where_to_list", [{
       title: "All Safari Destinations",
       country: "Search Everywhere"
     }, {
@@ -19464,7 +19418,85 @@ vue__WEBPACK_IMPORTED_MODULE_3__.default.use(_syncfusion_ej2_vue_buttons__WEBPAC
     }, {
       title: "xsdfr National Park67",
       country: "Park(Tanzania)"
-    }]), _defineProperty(_ref, "search_result", []), _defineProperty(_ref, "isSidebar", false), _ref;
+    }]), _defineProperty(_ref, "search_result", []), _defineProperty(_ref, "isSidebar", false), _defineProperty(_ref, "standard_check_list", [{
+      label: "budget",
+      checked_state: false
+    }, {
+      label: "Camping",
+      checked_state: false
+    }, {
+      label: "Lodge",
+      checked_state: false
+    }, {
+      label: "Luxury",
+      checked_state: false
+    }, {
+      label: "Luxury plus",
+      checked_state: false
+    }, {
+      label: "Mid rage",
+      checked_state: false
+    }]), _defineProperty(_ref, "specialized_check_list", [{
+      label: "Birdwatching",
+      checked_state: false
+    }, {
+      label: "Canoe/Mokoro safari",
+      checked_state: false
+    }, {
+      label: "Tour for disabled travelers",
+      checked_state: false
+    }, {
+      label: "Scenic and/or Cultural tour",
+      checked_state: false
+    }, {
+      label: "Cycling Safari",
+      checked_state: false
+    }, {
+      label: "Gorilla and/or chimp tracking & mountain climbing",
+      checked_state: false
+    }, {
+      label: "Fly-in safari",
+      checked_state: false
+    }, {
+      label: "Game drive safari",
+      checked_state: false
+    }, {
+      label: "Gorilla and/or chimp trekking & game drive safari",
+      checked_state: false
+    }, {
+      label: "Gorilla and/or chimp trekking only",
+      checked_state: false
+    }, {
+      label: "Guided self drive",
+      checked_state: false
+    }, {
+      label: "Mountain climbing only",
+      checked_state: false
+    }, {
+      label: "Horseback Safari",
+      checked_state: false
+    }, {
+      label: "Mountain climbing & game drive safari",
+      checked_state: false
+    }, {
+      label: "Wildlife photography",
+      checked_state: false
+    }, {
+      label: "Golf & wildlife viewing",
+      checked_state: false
+    }, {
+      label: "walking-safari",
+      checked_state: false
+    }, {
+      label: "Beach holiday & game drive safari",
+      checked_state: false
+    }, {
+      label: "Beach holiday only",
+      checked_state: false
+    }, {
+      label: "Overland truck safari",
+      checked_state: false
+    }]), _defineProperty(_ref, "checked_specialized_filter_options", []), _defineProperty(_ref, "checked_standard_filter_options", []), _defineProperty(_ref, "update_checklist", 0), _defineProperty(_ref, "check_private_filter", false), _defineProperty(_ref, "check_group_filter", false), _defineProperty(_ref, "update_private_check", 0), _defineProperty(_ref, "update_group_check", 0), _ref;
   },
   directives: {
     "click-outside-dropdown": {
@@ -19489,16 +19521,18 @@ vue__WEBPACK_IMPORTED_MODULE_3__.default.use(_syncfusion_ej2_vue_buttons__WEBPAC
       }
     }
   },
+  computed: _objectSpread({}, (0,vuex__WEBPACK_IMPORTED_MODULE_9__.mapGetters)({
+    filterTours: "tourController/filterTours"
+  })),
   watch: {
-    // children_number: function (newValue, oldValue) {
-    //   if (newValue > oldValue) {
-    //     this.selectedAge.push({
-    //       Age: "- Age -"
-    //     });
-    //   } else {
-    //     this.selectedAge.splice(this.selectedAge.length - 1, 1);
-    //   }
-    // },
+    //   filter when click private checkbox checked
+    check_private_filter: function check_private_filter() {
+      this.getFilterTours();
+    },
+    // filter when click group checkbox  checked
+    check_group_filter: function check_group_filter() {
+      this.getFilterTours();
+    },
     where_to_search: function where_to_search() {
       var _this = this;
 
@@ -19515,8 +19549,32 @@ vue__WEBPACK_IMPORTED_MODULE_3__.default.use(_syncfusion_ej2_vue_buttons__WEBPAC
   },
   created: function created() {
     this.search_result = this.where_to_list;
+    this.getFilterTours();
   },
   methods: {
+    updateCheckedFilterOptions: function updateCheckedFilterOptions() {
+      var index = 0;
+      this.checked_standard_filter_options = [];
+      this.checked_specialized_filter_options = [];
+
+      for (var i = 0; i < this.standard_check_list.length; i++) {
+        if (this.standard_check_list[i].checked_state) {
+          this.checked_standard_filter_options[index] = this.standard_check_list[i];
+          index++;
+        }
+      }
+
+      index = 0;
+
+      for (var _i = 0; _i < this.specialized_check_list.length; _i++) {
+        if (this.specialized_check_list[_i].checked_state) {
+          this.checked_specialized_filter_options[index] = this.specialized_check_list[_i];
+          index++;
+        }
+      }
+
+      this.getFilterTours();
+    },
     closeWhereToDropDown: function closeWhereToDropDown() {
       this.visible_whereto_dropdown = false;
     },
@@ -19551,7 +19609,156 @@ vue__WEBPACK_IMPORTED_MODULE_3__.default.use(_syncfusion_ej2_vue_buttons__WEBPAC
     initStartDate: function initStartDate() {
       this.start_date = "";
     },
-    chipclick: function chipclick(e) {//   console.log('you have clicked ' + e.target.textContent);
+    deleteFilterOption: function deleteFilterOption(e) {
+      var lastChar = e.data.text[e.data.text.length - 1];
+      var check_last_string = e.data.text.substr(e.data.text.length - 4, 4);
+
+      if (lastChar == "$") {
+        this.price_range = [100, 16000];
+        this.getFilterTours();
+        return;
+      }
+
+      if (check_last_string == "days") {
+        this.day_range = [1, 30];
+        this.getFilterTours();
+        return;
+      }
+
+      switch (e.data.text) {
+        case "Clear All Filters":
+          this.checked_specialized_filter_options = [];
+          this.checked_standard_filter_options = [];
+          this.day_range = [1, 30];
+          this.price_range = [100, 16000];
+          this.check_private_filter = false;
+          this.check_group_filter = false;
+          this.update_private_check++;
+          this.update_group_check++;
+          this.initCheckList();
+          break;
+
+        case "Private":
+          this.check_private_filter = false;
+          this.update_private_check++;
+          this.getFilterTours();
+          break;
+
+        case "Group":
+          this.check_group_filter = false;
+          this.update_group_check++;
+          this.getFilterTours();
+          break;
+
+        default:
+          this.removeFilterOptionItem(e.data.text);
+          this.uncheckFilterCheckListItem(e.data.text);
+          break;
+      }
+    },
+    uncheckFilterCheckListItem: function uncheckFilterCheckListItem(item) {
+      for (var i = 0; i < this.standard_check_list.length; i++) {
+        if (this.standard_check_list[i].label == item) {
+          this.standard_check_list[i].checked_state = false;
+        }
+      }
+
+      for (var _i2 = 0; _i2 < this.specialized_check_list.length; _i2++) {
+        if (this.specialized_check_list[_i2].label == item) {
+          this.specialized_check_list[_i2].checked_state = false;
+        }
+      }
+
+      this.update_checklist++;
+      this.getFilterTours();
+    },
+    removeFilterOptionItem: function removeFilterOptionItem(item) {
+      for (var i = 0; i < this.checked_standard_filter_options.length; i++) {
+        if (this.checked_standard_filter_options[i].label == item) {
+          this.checked_standard_filter_options.splice(i, 1);
+        }
+      }
+
+      for (var _i3 = 0; _i3 < this.checked_specialized_filter_options.length; _i3++) {
+        if (this.checked_specialized_filter_options[_i3].label == item) {
+          this.checked_specialized_filter_options.splice(_i3, 1);
+        }
+      }
+    },
+    initCheckList: function initCheckList() {
+      for (var i = 0; i < this.standard_check_list.length; i++) {
+        this.standard_check_list[i].checked_state = false;
+      }
+
+      for (var _i4 = 0; _i4 < this.specialized_check_list.length; _i4++) {
+        this.specialized_check_list[_i4].checked_state = false;
+      }
+
+      this.update_checklist++;
+      this.getFilterTours();
+    },
+    getDayRangeChip: function getDayRangeChip() {
+      var day_range_text = "";
+
+      if (this.day_range[0] != 1) {
+        if (this.day_range[1] == 30) day_range_text = "From " + this.day_range[0] + " days";else day_range_text = this.day_range[0] + " to " + this.day_range[1] + " days";
+      } else if (this.day_range[1] != 30) {
+        day_range_text = "Up to " + this.day_range[1] + " days";
+      }
+
+      return day_range_text;
+    },
+    getPriceRangeChip: function getPriceRangeChip() {
+      var price_range_text = "";
+
+      if (this.price_range[0] != 100) {
+        if (this.price_range[1] == 16000) price_range_text = "From " + this.price_range[0] + "$";else price_range_text = this.price_range[0] + " to " + this.price_range[1] + "$";
+      } else if (this.price_range[1] != 16000) {
+        price_range_text = "Up to " + this.price_range[1] + "$";
+      }
+
+      return price_range_text;
+    },
+    // filter tours function
+    getFilterTours: function getFilterTours() {
+      var group_filter = "";
+      var level_filter = "";
+      var specialized_filter = "";
+
+      if (this.check_private_filter) {
+        group_filter = "private";
+        if (this.check_group_filter) group_filter = group_filter + "|group";
+      } else if (this.check_group_filter) group_filter += "group";
+
+      for (var i = 0; i < this.checked_standard_filter_options.length; i++) {
+        level_filter += this.checked_standard_filter_options[i].label + "|";
+      }
+
+      if (level_filter != "") {
+        level_filter = level_filter.substring(0, level_filter.length - 1);
+      }
+
+      for (var _i5 = 0; _i5 < this.checked_specialized_filter_options.length; _i5++) {
+        specialized_filter += this.checked_specialized_filter_options[_i5].label + "|";
+      }
+
+      if (specialized_filter != "") {
+        specialized_filter = specialized_filter.substring(0, specialized_filter.length - 1);
+      }
+
+      this.$router.replace({
+        query: {
+          destination: "",
+          min_price: this.price_range[0],
+          max_price: this.price_range[1],
+          min_day: this.day_range[0],
+          max_day: this.day_range[1],
+          group: group_filter,
+          comfort: level_filter,
+          focus: specialized_filter
+        }
+      })["catch"](function () {});
+      this.$store.dispatch("tourController/getTourFilter", this.$route.query);
     }
   }
 });
@@ -20269,721 +20476,554 @@ var render = function() {
             ]
           },
           [
-            _c(
-              "div",
-              { staticClass: "position-relative" },
-              [
-                _c("div", { staticClass: "row gx-0" }, [
-                  _c(
-                    "div",
-                    {
-                      directives: [
-                        {
-                          name: "click-outside-dropdown",
-                          rawName: "v-click-outside-dropdown",
-                          value: _vm.closeWhereToDropDown,
-                          expression: "closeWhereToDropDown"
-                        }
-                      ],
-                      staticClass: "col-md-12 mobile-filter position-relative"
-                    },
-                    [
-                      _c(
-                        "div",
-                        {
-                          staticClass:
-                            "bg-white h-100 align-items-center d-flex justify-content-between px-3"
-                        },
-                        [
-                          _c("span", { staticClass: "fa fa-map-marker" }),
-                          _vm._v(" "),
-                          _c(
-                            "div",
-                            {
-                              staticClass: "w-100 px-2",
-                              on: {
-                                click: function($event) {
-                                  return _vm.showWhereToDropdown(true)
-                                }
-                              }
-                            },
-                            [
-                              _c("input", {
-                                directives: [
-                                  {
-                                    name: "model",
-                                    rawName: "v-model",
-                                    value: _vm.where_to_search,
-                                    expression: "where_to_search"
-                                  }
-                                ],
-                                ref: "whereTo",
-                                staticClass: "w-100",
-                                attrs: {
-                                  placeholder: "Where To",
-                                  type: "text"
-                                },
-                                domProps: { value: _vm.where_to_search },
-                                on: {
-                                  input: function($event) {
-                                    if ($event.target.composing) {
-                                      return
-                                    }
-                                    _vm.where_to_search = $event.target.value
-                                  }
-                                }
-                              })
-                            ]
-                          ),
-                          _vm._v(" "),
-                          _vm.visible_whereto_dropdown == true
-                            ? _c("span", { staticClass: "fa fa-search" })
-                            : _vm.where_to_search != "" &&
-                              _vm.visible_whereto_dropdown == false
-                            ? _c("span", {
-                                staticClass: "fa fa-times-circle-o",
-                                on: { click: _vm.setInitWhereTo }
-                              })
-                            : _c("span", {
-                                staticClass: "fa fa-search invisible"
-                              })
-                        ]
-                      ),
-                      _vm._v(" "),
-                      _c(
-                        "transition",
-                        {
-                          attrs: {
-                            "enter-active-class":
-                              "animate__animated animate__fadeIn",
-                            "leave-active-class":
-                              "animate__animated animate__fadeOut"
-                          }
-                        },
-                        [
-                          _vm.visible_whereto_dropdown == true &&
-                          _vm.search_result != ""
-                            ? _c(
-                                "div",
-                                {
-                                  staticClass:
-                                    "where_to_dropdown left-0 w-100 bg-white mt-3 triangule-where"
-                                },
-                                [
-                                  _c(
-                                    "div",
-                                    {
-                                      staticClass:
-                                        "bg-warning text-white p-2 text-left"
-                                    },
-                                    [
-                                      _vm._v(
-                                        "\n                    Start typing or select below\n                  "
-                                      )
-                                    ]
-                                  ),
-                                  _vm._v(" "),
-                                  _vm._l(_vm.search_result, function(
-                                    item,
-                                    index
-                                  ) {
-                                    return _c("div", { key: index }, [
-                                      index < 6
-                                        ? _c(
-                                            "div",
-                                            {
-                                              staticClass:
-                                                "py-1 px-3 border-bottom border-1 text-start",
-                                              on: {
-                                                click: function($event) {
-                                                  return _vm.setCurrentWhereTo(
-                                                    item.title
-                                                  )
-                                                }
-                                              }
-                                            },
-                                            [
-                                              _c(
-                                                "div",
-                                                { staticClass: "p-0 m-0" },
-                                                [
-                                                  _c("strong", [
-                                                    _vm._v(_vm._s(item.title))
-                                                  ])
-                                                ]
-                                              ),
-                                              _vm._v(" "),
-                                              _c(
-                                                "div",
-                                                { staticClass: "p-0 m-0" },
-                                                [
-                                                  _c("small", [
-                                                    _vm._v(_vm._s(item.country))
-                                                  ])
-                                                ]
-                                              )
-                                            ]
-                                          )
-                                        : _vm._e()
-                                    ])
-                                  })
-                                ],
-                                2
-                              )
-                            : _vm._e()
-                        ]
-                      )
+            _c("div", { staticClass: "position-relative" }, [
+              _c("div", { staticClass: "row gx-0" }, [
+                _c(
+                  "div",
+                  {
+                    directives: [
+                      {
+                        name: "click-outside-dropdown",
+                        rawName: "v-click-outside-dropdown",
+                        value: _vm.closeWhereToDropDown,
+                        expression: "closeWhereToDropDown"
+                      }
                     ],
-                    1
-                  ),
-                  _vm._v(" "),
-                  _c(
-                    "div",
-                    {
-                      staticClass: "col-md-12 mobile-filter position-relative"
-                    },
-                    [
-                      _c(
-                        "div",
-                        {
-                          staticClass:
-                            "bg-white w-100 h-100 align-items-center d-flex justify-content-between px-3"
-                        },
-                        [
-                          _c("span", { staticClass: "fa fa-calendar" }),
-                          _vm._v(" "),
-                          _c(
-                            "div",
-                            { staticClass: "w-100 px-2" },
-                            [
-                              _c("datepicker", {
-                                attrs: {
-                                  disabledDates: _vm.disabledFn,
-                                  placeholder: "Start Date",
-                                  highlighted: _vm.highlighted
-                                },
-                                model: {
-                                  value: _vm.start_date,
-                                  callback: function($$v) {
-                                    _vm.start_date = $$v
-                                  },
-                                  expression: "start_date"
-                                }
-                              })
-                            ],
-                            1
-                          ),
-                          _vm._v(" "),
-                          _vm.start_date != ""
-                            ? _c("span", {
-                                staticClass: "fa fa-times-circle-o",
-                                on: { click: _vm.initStartDate }
-                              })
-                            : _c("span", {
-                                staticClass: "fa fa-times-circle-o invisible"
-                              })
-                        ]
-                      )
-                    ]
-                  ),
-                  _vm._v(" "),
-                  _c(
-                    "div",
-                    {
-                      directives: [
-                        {
-                          name: "click-outside-dropdown",
-                          rawName: "v-click-outside-dropdown",
-                          value: _vm.closeTravelerDropdown,
-                          expression: "closeTravelerDropdown"
-                        }
-                      ],
-                      staticClass: "col-md-12 mobile-filter position-relative"
-                    },
-                    [
-                      _c(
-                        "div",
-                        {
-                          staticClass:
-                            "bg-white w-100 h-100 align-items-center d-flex justify-content-between px-3",
-                          on: { click: _vm.showTravelerDropdown }
-                        },
-                        [
-                          _c("span", { staticClass: "fa fa-users" }),
-                          _vm._v(" "),
-                          _c("div", { staticClass: "w-100 px-2" }, [
+                    staticClass: "col-md-12 mobile-filter position-relative"
+                  },
+                  [
+                    _c(
+                      "div",
+                      {
+                        staticClass:
+                          "bg-white h-100 align-items-center d-flex justify-content-between px-3"
+                      },
+                      [
+                        _c("span", { staticClass: "fa fa-map-marker" }),
+                        _vm._v(" "),
+                        _c(
+                          "div",
+                          {
+                            staticClass: "w-100 px-2",
+                            on: {
+                              click: function($event) {
+                                return _vm.showWhereToDropdown(true)
+                              }
+                            }
+                          },
+                          [
                             _c("input", {
                               directives: [
                                 {
                                   name: "model",
                                   rawName: "v-model",
-                                  value: _vm.traveler_number,
-                                  expression: "traveler_number"
+                                  value: _vm.where_to_search,
+                                  expression: "where_to_search"
                                 }
                               ],
+                              ref: "whereTo",
                               staticClass: "w-100",
-                              attrs: {
-                                id: "traveler_input",
-                                type: "text",
-                                placeholder: "Travelers"
-                              },
-                              domProps: { value: _vm.traveler_number },
+                              attrs: { placeholder: "Where To", type: "text" },
+                              domProps: { value: _vm.where_to_search },
                               on: {
                                 input: function($event) {
                                   if ($event.target.composing) {
                                     return
                                   }
-                                  _vm.traveler_number = $event.target.value
+                                  _vm.where_to_search = $event.target.value
                                 }
                               }
                             })
-                          ]),
-                          _vm._v(" "),
-                          _vm.traveler_number != ""
-                            ? _c("span", {
-                                staticClass: "fa fa-times-circle-o",
-                                on: { click: _vm.setTravelerInit }
-                              })
-                            : _c("span", {
-                                staticClass: "fa fa-times-circle-o invisible"
-                              })
-                        ]
-                      ),
-                      _vm._v(" "),
-                      _c(
-                        "transition",
-                        {
-                          attrs: {
-                            "enter-active-class":
-                              "animate__animated animate__fadeIn",
-                            "leave-active-class":
-                              "animate__animated animate__fadeOut"
-                          }
-                        },
-                        [
-                          _vm.visible_traveler_dropdown
-                            ? _c(
-                                "div",
-                                {
-                                  staticClass:
-                                    "traveler-dropdown left-0 bg-white mt-3 triangule-where"
+                          ]
+                        ),
+                        _vm._v(" "),
+                        _vm.visible_whereto_dropdown == true
+                          ? _c("span", { staticClass: "fa fa-search" })
+                          : _vm.where_to_search != "" &&
+                            _vm.visible_whereto_dropdown == false
+                          ? _c("span", {
+                              staticClass: "fa fa-times-circle-o",
+                              on: { click: _vm.setInitWhereTo }
+                            })
+                          : _c("span", {
+                              staticClass: "fa fa-search invisible"
+                            })
+                      ]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "transition",
+                      {
+                        attrs: {
+                          "enter-active-class":
+                            "animate__animated animate__fadeIn",
+                          "leave-active-class":
+                            "animate__animated animate__fadeOut"
+                        }
+                      },
+                      [
+                        _vm.visible_whereto_dropdown == true &&
+                        _vm.search_result != ""
+                          ? _c(
+                              "div",
+                              {
+                                staticClass:
+                                  "where_to_dropdown left-0 w-100 bg-white mt-3 triangule-where"
+                              },
+                              [
+                                _c(
+                                  "div",
+                                  {
+                                    staticClass:
+                                      "bg-warning text-white p-2 text-left"
+                                  },
+                                  [
+                                    _vm._v(
+                                      "\n                    Start typing or select below\n                  "
+                                    )
+                                  ]
+                                ),
+                                _vm._v(" "),
+                                _vm._l(_vm.search_result, function(
+                                  item,
+                                  index
+                                ) {
+                                  return _c("div", { key: index }, [
+                                    index < 6
+                                      ? _c(
+                                          "div",
+                                          {
+                                            staticClass:
+                                              "py-1 px-3 border-bottom border-1 text-start",
+                                            on: {
+                                              click: function($event) {
+                                                return _vm.setCurrentWhereTo(
+                                                  item.title
+                                                )
+                                              }
+                                            }
+                                          },
+                                          [
+                                            _c(
+                                              "div",
+                                              { staticClass: "p-0 m-0" },
+                                              [
+                                                _c("strong", [
+                                                  _vm._v(_vm._s(item.title))
+                                                ])
+                                              ]
+                                            ),
+                                            _vm._v(" "),
+                                            _c(
+                                              "div",
+                                              { staticClass: "p-0 m-0" },
+                                              [
+                                                _c("small", [
+                                                  _vm._v(_vm._s(item.country))
+                                                ])
+                                              ]
+                                            )
+                                          ]
+                                        )
+                                      : _vm._e()
+                                  ])
+                                })
+                              ],
+                              2
+                            )
+                          : _vm._e()
+                      ]
+                    )
+                  ],
+                  1
+                ),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  { staticClass: "col-md-12 mobile-filter position-relative" },
+                  [
+                    _c(
+                      "div",
+                      {
+                        staticClass:
+                          "bg-white w-100 h-100 align-items-center d-flex justify-content-between px-3"
+                      },
+                      [
+                        _c("span", { staticClass: "fa fa-calendar" }),
+                        _vm._v(" "),
+                        _c(
+                          "div",
+                          { staticClass: "w-100 px-2" },
+                          [
+                            _c("datepicker", {
+                              attrs: {
+                                disabledDates: _vm.disabledFn,
+                                placeholder: "Start Date",
+                                highlighted: _vm.highlighted
+                              },
+                              model: {
+                                value: _vm.start_date,
+                                callback: function($$v) {
+                                  _vm.start_date = $$v
                                 },
-                                [
+                                expression: "start_date"
+                              }
+                            })
+                          ],
+                          1
+                        ),
+                        _vm._v(" "),
+                        _vm.start_date != ""
+                          ? _c("span", {
+                              staticClass: "fa fa-times-circle-o",
+                              on: { click: _vm.initStartDate }
+                            })
+                          : _c("span", {
+                              staticClass: "fa fa-times-circle-o invisible"
+                            })
+                      ]
+                    )
+                  ]
+                ),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  {
+                    directives: [
+                      {
+                        name: "click-outside-dropdown",
+                        rawName: "v-click-outside-dropdown",
+                        value: _vm.closeTravelerDropdown,
+                        expression: "closeTravelerDropdown"
+                      }
+                    ],
+                    staticClass: "col-md-12 mobile-filter position-relative"
+                  },
+                  [
+                    _c(
+                      "div",
+                      {
+                        staticClass:
+                          "bg-white w-100 h-100 align-items-center d-flex justify-content-between px-3",
+                        on: { click: _vm.showTravelerDropdown }
+                      },
+                      [
+                        _c("span", { staticClass: "fa fa-users" }),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "w-100 px-2" }, [
+                          _c("input", {
+                            directives: [
+                              {
+                                name: "model",
+                                rawName: "v-model",
+                                value: _vm.traveler_number,
+                                expression: "traveler_number"
+                              }
+                            ],
+                            staticClass: "w-100",
+                            attrs: {
+                              id: "traveler_input",
+                              type: "text",
+                              placeholder: "Travelers"
+                            },
+                            domProps: { value: _vm.traveler_number },
+                            on: {
+                              input: function($event) {
+                                if ($event.target.composing) {
+                                  return
+                                }
+                                _vm.traveler_number = $event.target.value
+                              }
+                            }
+                          })
+                        ]),
+                        _vm._v(" "),
+                        _vm.traveler_number != ""
+                          ? _c("span", {
+                              staticClass: "fa fa-times-circle-o",
+                              on: { click: _vm.setTravelerInit }
+                            })
+                          : _c("span", {
+                              staticClass: "fa fa-times-circle-o invisible"
+                            })
+                      ]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "transition",
+                      {
+                        attrs: {
+                          "enter-active-class":
+                            "animate__animated animate__fadeIn",
+                          "leave-active-class":
+                            "animate__animated animate__fadeOut"
+                        }
+                      },
+                      [
+                        _vm.visible_traveler_dropdown
+                          ? _c(
+                              "div",
+                              {
+                                staticClass:
+                                  "traveler-dropdown left-0 bg-white mt-3 triangule-where"
+                              },
+                              [
+                                _c(
+                                  "div",
+                                  {
+                                    staticClass:
+                                      "bg-warning text-white p-2 text-left"
+                                  },
+                                  [
+                                    _vm._v(
+                                      "\n                    Travelers\n                    "
+                                    ),
+                                    _c("span", {
+                                      staticClass: "fa fa-times-circle-o",
+                                      on: { click: _vm.closeTravelerDropdown }
+                                    })
+                                  ]
+                                ),
+                                _vm._v(" "),
+                                _c(
+                                  "div",
+                                  {
+                                    staticClass:
+                                      "py-2 px-3 mt-2 border-1 text-start d-flex justify-content-between"
+                                  },
+                                  [
+                                    _c("div", [
+                                      _c("strong", [_vm._v("Adults")]),
+                                      _vm._v("(18+ years):")
+                                    ]),
+                                    _vm._v(" "),
+                                    _c(
+                                      "div",
+                                      [
+                                        _c("vue-numeric-input", {
+                                          attrs: { min: 1, max: 100, step: 1 },
+                                          model: {
+                                            value: _vm.adults_number,
+                                            callback: function($$v) {
+                                              _vm.adults_number = $$v
+                                            },
+                                            expression: "adults_number"
+                                          }
+                                        })
+                                      ],
+                                      1
+                                    )
+                                  ]
+                                ),
+                                _vm._v(" "),
+                                _c(
+                                  "div",
+                                  {
+                                    staticClass:
+                                      "py-2 px-3 mt-2 border-1 text-start d-flex justify-content-between"
+                                  },
+                                  [
+                                    _c("div", [
+                                      _c("strong", [_vm._v("Children")]),
+                                      _vm._v("(0~17 years):")
+                                    ]),
+                                    _vm._v(" "),
+                                    _c(
+                                      "div",
+                                      [
+                                        _c("vue-numeric-input", {
+                                          attrs: { min: 0, max: 100, step: 1 },
+                                          model: {
+                                            value: _vm.children_number,
+                                            callback: function($$v) {
+                                              _vm.children_number = $$v
+                                            },
+                                            expression: "children_number"
+                                          }
+                                        })
+                                      ],
+                                      1
+                                    )
+                                  ]
+                                ),
+                                _vm._v(" "),
+                                _c("div", { staticClass: "text-right" }, [
                                   _c(
-                                    "div",
+                                    "button",
                                     {
-                                      staticClass:
-                                        "bg-warning text-white p-2 text-left"
+                                      staticClass: "btn btn-danger mx-3 my-3",
+                                      on: { click: _vm.setTravelerInfo }
                                     },
                                     [
                                       _vm._v(
-                                        "\n                    Travelers\n                    "
-                                      ),
-                                      _c("span", {
-                                        staticClass: "fa fa-times-circle-o",
-                                        on: { click: _vm.closeTravelerDropdown }
-                                      })
-                                    ]
-                                  ),
-                                  _vm._v(" "),
-                                  _c(
-                                    "div",
-                                    {
-                                      staticClass:
-                                        "py-2 px-3 mt-2 border-1 text-start d-flex justify-content-between"
-                                    },
-                                    [
-                                      _c("div", [
-                                        _c("strong", [_vm._v("Adults")]),
-                                        _vm._v("(18+ years):")
-                                      ]),
-                                      _vm._v(" "),
-                                      _c(
-                                        "div",
-                                        [
-                                          _c("vue-numeric-input", {
-                                            attrs: {
-                                              min: 1,
-                                              max: 100,
-                                              step: 1
-                                            },
-                                            model: {
-                                              value: _vm.adults_number,
-                                              callback: function($$v) {
-                                                _vm.adults_number = $$v
-                                              },
-                                              expression: "adults_number"
-                                            }
-                                          })
-                                        ],
-                                        1
+                                        "\n                      Done\n                    "
                                       )
                                     ]
-                                  ),
-                                  _vm._v(" "),
-                                  _c(
-                                    "div",
-                                    {
-                                      staticClass:
-                                        "py-2 px-3 mt-2 border-1 text-start d-flex justify-content-between"
-                                    },
-                                    [
-                                      _c("div", [
-                                        _c("strong", [_vm._v("Children")]),
-                                        _vm._v("(0~17 years):")
-                                      ]),
-                                      _vm._v(" "),
-                                      _c(
-                                        "div",
-                                        [
-                                          _c("vue-numeric-input", {
-                                            attrs: {
-                                              min: 0,
-                                              max: 100,
-                                              step: 1
-                                            },
-                                            model: {
-                                              value: _vm.children_number,
-                                              callback: function($$v) {
-                                                _vm.children_number = $$v
-                                              },
-                                              expression: "children_number"
-                                            }
-                                          })
-                                        ],
-                                        1
-                                      )
-                                    ]
-                                  ),
-                                  _vm._v(" "),
-                                  _c("div", { staticClass: "text-right" }, [
-                                    _c(
-                                      "button",
-                                      {
-                                        staticClass: "btn btn-danger mx-3 my-3",
-                                        on: { click: _vm.setTravelerInfo }
-                                      },
-                                      [
-                                        _vm._v(
-                                          "\n                      Done\n                    "
-                                        )
-                                      ]
-                                    )
-                                  ])
-                                ]
-                              )
-                            : _vm._e()
-                        ]
-                      )
-                    ],
-                    1
-                  ),
+                                  )
+                                ])
+                              ]
+                            )
+                          : _vm._e()
+                      ]
+                    )
+                  ],
+                  1
+                ),
+                _vm._v(" "),
+                _vm._m(1)
+              ]),
+              _vm._v(" "),
+              _c("h6", { staticClass: "mt-5 fw-bold" }, [_vm._v("Tour Price")]),
+              _vm._v(" "),
+              _c(
+                "div",
+                { on: { mouseup: _vm.getFilterTours } },
+                [
+                  _c("ejs-slider", {
+                    attrs: { min: 100, max: 16000, type: "Range" },
+                    model: {
+                      value: _vm.price_range,
+                      callback: function($$v) {
+                        _vm.price_range = $$v
+                      },
+                      expression: "price_range"
+                    }
+                  })
+                ],
+                1
+              ),
+              _vm._v(" "),
+              _c("div", { staticClass: "d-flex justify-content-between" }, [
+                _c("div", [_vm._v("$" + _vm._s(_vm.price_range[0]))]),
+                _vm._v(" "),
+                _c("div", [_vm._v("$" + _vm._s(_vm.price_range[1]))])
+              ]),
+              _vm._v(" "),
+              _c("h6", { staticClass: "mt-5 fw-bold" }, [_vm._v("Tour Days")]),
+              _vm._v(" "),
+              _c(
+                "div",
+                { on: { mouseup: _vm.getFilterTours } },
+                [
+                  _c("ejs-slider", {
+                    attrs: { min: 1, max: 30, type: "Range" },
+                    model: {
+                      value: _vm.day_range,
+                      callback: function($$v) {
+                        _vm.day_range = $$v
+                      },
+                      expression: "day_range"
+                    }
+                  })
+                ],
+                1
+              ),
+              _vm._v(" "),
+              _c("div", { staticClass: "d-flex justify-content-between" }, [
+                _vm.day_range[0] == 1
+                  ? _c("div", [_vm._v(_vm._s(_vm.day_range[0]) + " Day")])
+                  : _c("div", [_vm._v(_vm._s(_vm.day_range[0]) + " Days")]),
+                _vm._v(" "),
+                _c("div", [_vm._v(_vm._s(_vm.day_range[1]) + " Days")])
+              ]),
+              _vm._v(" "),
+              _c("h6", { staticClass: "mt-5 fw-bold" }, [
+                _vm._v("Private or Group")
+              ]),
+              _vm._v(" "),
+              _c(
+                "p",
+                { key: "private" + _vm.update_private_check },
+                [
+                  _c("ejs-checkbox", {
+                    attrs: { label: "Private", name: "default" },
+                    model: {
+                      value: _vm.check_private_filter,
+                      callback: function($$v) {
+                        _vm.check_private_filter = $$v
+                      },
+                      expression: "check_private_filter"
+                    }
+                  })
+                ],
+                1
+              ),
+              _vm._v(" "),
+              _c(
+                "p",
+                { key: "group" + _vm.update_group_check },
+                [
+                  _c("ejs-checkbox", {
+                    attrs: { label: "Group", name: "default" },
+                    model: {
+                      value: _vm.check_group_filter,
+                      callback: function($$v) {
+                        _vm.check_group_filter = $$v
+                      },
+                      expression: "check_group_filter"
+                    }
+                  })
+                ],
+                1
+              ),
+              _vm._v(" "),
+              _c(
+                "div",
+                { key: _vm.update_checklist },
+                [
+                  _c("h6", { staticClass: "mt-5 fw-bold" }, [
+                    _vm._v("Standard")
+                  ]),
                   _vm._v(" "),
-                  _vm._m(1)
-                ]),
-                _vm._v(" "),
-                _c("h6", { staticClass: "mt-5 fw-bold" }, [
-                  _vm._v("Tour Price")
-                ]),
-                _vm._v(" "),
-                _c("ejs-slider", {
-                  attrs: { min: 100, max: 16000, type: "Range" },
-                  model: {
-                    value: _vm.price_range,
-                    callback: function($$v) {
-                      _vm.price_range = $$v
-                    },
-                    expression: "price_range"
-                  }
-                }),
-                _vm._v(" "),
-                _c("div", { staticClass: "d-flex justify-content-between" }, [
-                  _c("div", [_vm._v("$" + _vm._s(_vm.price_range[0]))]),
+                  _vm._l(_vm.standard_check_list, function(check_data) {
+                    return _c(
+                      "p",
+                      { key: check_data.label },
+                      [
+                        _c("ejs-checkbox", {
+                          attrs: { label: check_data.label },
+                          on: { change: _vm.updateCheckedFilterOptions },
+                          model: {
+                            value: check_data.checked_state,
+                            callback: function($$v) {
+                              _vm.$set(check_data, "checked_state", $$v)
+                            },
+                            expression: "check_data.checked_state"
+                          }
+                        })
+                      ],
+                      1
+                    )
+                  }),
                   _vm._v(" "),
-                  _c("div", [_vm._v("$" + _vm._s(_vm.price_range[1]))])
-                ]),
-                _vm._v(" "),
-                _c("h6", { staticClass: "mt-5 fw-bold" }, [
-                  _vm._v("Tour Days")
-                ]),
-                _vm._v(" "),
-                _c("ejs-slider", {
-                  attrs: { min: 1, max: 30, type: "Range" },
-                  model: {
-                    value: _vm.day_range,
-                    callback: function($$v) {
-                      _vm.day_range = $$v
-                    },
-                    expression: "day_range"
-                  }
-                }),
-                _vm._v(" "),
-                _c("div", { staticClass: "d-flex justify-content-between" }, [
-                  _c("div", [_vm._v(_vm._s(_vm.day_range[0]) + " Days")]),
+                  _c("h6", { staticClass: "mt-5 fw-bold" }, [
+                    _vm._v("Specialized")
+                  ]),
                   _vm._v(" "),
-                  _c("div", [_vm._v(_vm._s(_vm.day_range[1]) + " Days")])
-                ]),
-                _vm._v(" "),
-                _c("h6", { staticClass: "mt-5 fw-bold" }, [
-                  _vm._v("Private or Group")
-                ]),
-                _vm._v(" "),
-                _c("ul", [
-                  _c(
-                    "li",
-                    [
-                      _c("ejs-radiobutton", {
-                        attrs: { label: "Private", name: "default" }
-                      })
-                    ],
-                    1
-                  ),
-                  _vm._v(" "),
-                  _c(
-                    "li",
-                    [
-                      _c("ejs-radiobutton", {
-                        attrs: {
-                          label: "Group",
-                          name: "default",
-                          checked: "true"
-                        }
-                      })
-                    ],
-                    1
-                  )
-                ]),
-                _vm._v(" "),
-                _c("h6", { staticClass: "mt-5 fw-bold" }, [_vm._v("Standard")]),
-                _vm._v(" "),
-                _c(
-                  "p",
-                  [_c("ejs-checkbox", { attrs: { label: "Budget" } })],
-                  1
-                ),
-                _vm._v(" "),
-                _c(
-                  "p",
-                  [_c("ejs-checkbox", { attrs: { label: "Camping" } })],
-                  1
-                ),
-                _vm._v(" "),
-                _c("p", [_c("ejs-checkbox", { attrs: { label: "Lodge" } })], 1),
-                _vm._v(" "),
-                _c(
-                  "p",
-                  [_c("ejs-checkbox", { attrs: { label: "Luxury" } })],
-                  1
-                ),
-                _vm._v(" "),
-                _c(
-                  "p",
-                  [_c("ejs-checkbox", { attrs: { label: "Luxury plus" } })],
-                  1
-                ),
-                _vm._v(" "),
-                _c(
-                  "p",
-                  [_c("ejs-checkbox", { attrs: { label: "Mid Range" } })],
-                  1
-                ),
-                _vm._v(" "),
-                _c("h6", { staticClass: "mt-5 fw-bold" }, [
-                  _vm._v("Specialized")
-                ]),
-                _vm._v(" "),
-                _c(
-                  "p",
-                  [_c("ejs-checkbox", { attrs: { label: "Birdwatching" } })],
-                  1
-                ),
-                _vm._v(" "),
-                _c(
-                  "p",
-                  [
-                    _c("ejs-checkbox", {
-                      attrs: { label: " Canoe/Mokoro safari" }
-                    })
-                  ],
-                  1
-                ),
-                _vm._v(" "),
-                _c(
-                  "p",
-                  [
-                    _c("ejs-checkbox", {
-                      attrs: { label: " Tour for disabled travelers" }
-                    })
-                  ],
-                  1
-                ),
-                _vm._v(" "),
-                _c(
-                  "p",
-                  [
-                    _c("ejs-checkbox", {
-                      attrs: { label: " Scenic and/or Cultural tour" }
-                    })
-                  ],
-                  1
-                ),
-                _vm._v(" "),
-                _c(
-                  "p",
-                  [_c("ejs-checkbox", { attrs: { label: "Cycling Safari" } })],
-                  1
-                ),
-                _vm._v(" "),
-                _c("p", [_c("ejs-checkbox", { attrs: { label: "Yoga" } })], 1),
-                _vm._v(" "),
-                _c(
-                  "p",
-                  [
-                    _c("ejs-checkbox", {
-                      attrs: {
-                        label:
-                          "Gorilla and/or chimp tracking & mountain climbing"
-                      }
-                    })
-                  ],
-                  1
-                ),
-                _vm._v(" "),
-                _c(
-                  "p",
-                  [_c("ejs-checkbox", { attrs: { label: "Fly-in safari" } })],
-                  1
-                ),
-                _vm._v(" "),
-                _c(
-                  "p",
-                  [
-                    _c("ejs-checkbox", {
-                      attrs: { label: "Game drive safari" }
-                    })
-                  ],
-                  1
-                ),
-                _vm._v(" "),
-                _c(
-                  "p",
-                  [
-                    _c("ejs-checkbox", {
-                      attrs: {
-                        label:
-                          " Gorilla and/or chimp trekking & game drive safari"
-                      }
-                    })
-                  ],
-                  1
-                ),
-                _vm._v(" "),
-                _c(
-                  "p",
-                  [
-                    _c("ejs-checkbox", {
-                      attrs: { label: " Gorilla and/or chimp trekking only" }
-                    })
-                  ],
-                  1
-                ),
-                _vm._v(" "),
-                _c(
-                  "p",
-                  [
-                    _c("ejs-checkbox", {
-                      attrs: { label: "Guided self drive" }
-                    })
-                  ],
-                  1
-                ),
-                _vm._v(" "),
-                _c(
-                  "p",
-                  [
-                    _c("ejs-checkbox", {
-                      attrs: { label: " Mountain climbing only" }
-                    })
-                  ],
-                  1
-                ),
-                _vm._v(" "),
-                _c(
-                  "p",
-                  [
-                    _c("ejs-checkbox", { attrs: { label: "Horseback Safari" } })
-                  ],
-                  1
-                ),
-                _vm._v(" "),
-                _c(
-                  "p",
-                  [
-                    _c("ejs-checkbox", {
-                      attrs: { label: " Mountain climbing & game drive safari" }
-                    })
-                  ],
-                  1
-                ),
-                _vm._v(" "),
-                _c(
-                  "p",
-                  [
-                    _c("ejs-checkbox", {
-                      attrs: { label: "Wildlife photography" }
-                    })
-                  ],
-                  1
-                ),
-                _vm._v(" "),
-                _c(
-                  "p",
-                  [
-                    _c("ejs-checkbox", {
-                      attrs: { label: " Golf & wildlife viewing" }
-                    })
-                  ],
-                  1
-                ),
-                _vm._v(" "),
-                _c(
-                  "p",
-                  [_c("ejs-checkbox", { attrs: { label: "walking-safari" } })],
-                  1
-                ),
-                _vm._v(" "),
-                _c(
-                  "p",
-                  [
-                    _c("ejs-checkbox", {
-                      attrs: { label: "Beach holiday & game drive safari" }
-                    })
-                  ],
-                  1
-                ),
-                _vm._v(" "),
-                _c(
-                  "p",
-                  [
-                    _c("ejs-checkbox", {
-                      attrs: { label: "Beach holiday only" }
-                    })
-                  ],
-                  1
-                ),
-                _vm._v(" "),
-                _c(
-                  "p",
-                  [
-                    _c("ejs-checkbox", {
-                      attrs: { label: "Overland truck safari" }
-                    })
-                  ],
-                  1
-                )
-              ],
-              1
-            )
+                  _vm._l(_vm.specialized_check_list, function(check_data) {
+                    return _c(
+                      "p",
+                      { key: check_data.label },
+                      [
+                        _c("ejs-checkbox", {
+                          attrs: { label: check_data.label },
+                          on: { change: _vm.updateCheckedFilterOptions },
+                          model: {
+                            value: check_data.checked_state,
+                            callback: function($$v) {
+                              _vm.$set(check_data, "checked_state", $$v)
+                            },
+                            expression: "check_data.checked_state"
+                          }
+                        })
+                      ],
+                      1
+                    )
+                  })
+                ],
+                2
+              )
+            ])
           ]
         ),
         _vm._v(" "),
@@ -21063,7 +21103,7 @@ var render = function() {
               },
               [
                 _c("span", { staticClass: "fa fa-filter me-2" }),
-                _vm._v(" Search Filter")
+                _vm._v(" Search Filter\n          ")
               ]
             )
           ]),
@@ -21072,9 +21112,18 @@ var render = function() {
             "ul",
             { staticClass: "tagpill-group ps-0 mt-3" },
             [
-              _c("span", { staticClass: "my-1" }, [
-                _vm._v("Selected Filters:")
-              ]),
+              _vm.checked_specialized_filter_options.length != 0 ||
+              _vm.checked_standard_filter_options.length != 0 ||
+              _vm.day_range[0] != 1 ||
+              _vm.day_range[1] != 30 ||
+              this.price_range[0] != 100 ||
+              this.price_range[1] != 16000 ||
+              _vm.check_private_filter == true ||
+              _vm.check_group_filter == true
+                ? _c("span", { staticClass: "my-1" }, [
+                    _vm._v("Selected Filters:")
+                  ])
+                : _vm._e(),
               _vm._v(" "),
               _c(
                 "ejs-chiplist",
@@ -21083,30 +21132,68 @@ var render = function() {
                     id: "tag-list-filter",
                     cssClass: "e-outline e-info",
                     enableDelete: "true"
-                  }
+                  },
+                  on: { delete: _vm.deleteFilterOption }
                 },
                 [
                   _c(
                     "e-chips",
                     [
-                      _vm._l(15, function(item, index) {
+                      _vm.price_range[0] != 100 || _vm.price_range[1] != 16000
+                        ? _c("e-chip", {
+                            attrs: { text: _vm.getPriceRangeChip() }
+                          })
+                        : _vm._e(),
+                      _vm._v(" "),
+                      _vm.day_range[0] != 1 || _vm.day_range[1] != 30
+                        ? _c("e-chip", {
+                            attrs: { text: _vm.getDayRangeChip() }
+                          })
+                        : _vm._e(),
+                      _vm._v(" "),
+                      _vm.check_private_filter == true
+                        ? _c("e-chip", { attrs: { text: "Private" } })
+                        : _vm._e(),
+                      _vm._v(" "),
+                      _vm.check_group_filter == true
+                        ? _c("e-chip", { attrs: { text: "Group" } })
+                        : _vm._e(),
+                      _vm._v(" "),
+                      _vm._l(_vm.checked_standard_filter_options, function(
+                        item,
+                        index
+                      ) {
                         return _c("e-chip", {
                           key: index,
-                          attrs: { text: "Andrew" },
-                          nativeOn: {
-                            click: function($event) {
-                              return _vm.chipclick($event)
-                            }
-                          }
+                          attrs: { text: item.label }
                         })
                       }),
                       _vm._v(" "),
-                      _c("e-chip", {
-                        attrs: {
-                          text: "Clear All Filters",
-                          cssClass: "e-outline e-danger"
-                        }
-                      })
+                      _vm._l(_vm.checked_specialized_filter_options, function(
+                        item,
+                        index
+                      ) {
+                        return _c("e-chip", {
+                          key: index,
+                          attrs: { text: item.label }
+                        })
+                      }),
+                      _vm._v(" "),
+                      _vm.checked_specialized_filter_options.length != 0 ||
+                      _vm.checked_standard_filter_options.length != 0 ||
+                      _vm.day_range[0] != 1 ||
+                      _vm.day_range[1] != 30 ||
+                      this.price_range[0] != 100 ||
+                      this.price_range[1] != 16000 ||
+                      _vm.check_private_filter == true ||
+                      _vm.check_group_filter == true
+                        ? _c("e-chip", {
+                            attrs: {
+                              text: "Clear All Filters",
+                              cssClass: "e-outline e-danger"
+                            }
+                          })
+                        : _vm._e()
                     ],
                     2
                   )
@@ -21117,17 +21204,27 @@ var render = function() {
             1
           ),
           _vm._v(" "),
-          _c("h6", { staticClass: "my-3 fw-bold" }, [
-            _vm._v("Showing 1 - 23 of 300 results")
-          ]),
+          _vm.filterTours != null
+            ? _c("h6", { staticClass: "my-3 fw-bold" }, [
+                _vm.filterTours.length != 0
+                  ? _c("span", [
+                      _vm._v(
+                        "Showing 1 - " +
+                          _vm._s(_vm.filterTours.length) +
+                          " of 300 results"
+                      )
+                    ])
+                  : _vm._e()
+              ])
+            : _vm._e(),
           _vm._v(" "),
           _c(
             "div",
             { staticClass: "row gx-0" },
-            _vm._l(_vm.searched_package, function(item, index) {
+            _vm._l(_vm.filterTours, function(item, index) {
               return _c(
                 "div",
-                { key: index, staticClass: "col-md-6 col-xs-12" },
+                { key: "filter" + index, staticClass: "col-md-6 col-xs-12" },
                 [_c("TourCard", { attrs: { tourData: item } })],
                 1
               )
