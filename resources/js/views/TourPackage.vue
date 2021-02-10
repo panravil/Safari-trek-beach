@@ -5,13 +5,13 @@
       <div class="row g-0 package-inner-banner">
         <div class="col-lg-7 col-md-12">
           <div class="package-inner-image" :style="{
-        'background-image': 'url(http://operators.safari-trek-beach.com/images/gallery/tanzania/tour/NGORONGORO_CRATER_3.jpg',
+        'background-image': 'url(' + popularTours.image_url + ')',
       }"></div>
         </div>
         <div class="col-lg-5 col-md-12 p-3 position-relative package-inner-title">
           <div class="card-body">
-            <h3 class="card-title fw-bold">3-Day Ngorongoro & Serengeti Budget Tour</h3>
-            <h5 class="card-title">Meru Slopes Tours and Safaris</h5>
+            <h3 class="card-title fw-bold">{{ popularTours.title }}</h3>
+            <h5 class="card-title">{{ popularTours.company_name }}</h5>
           </div>
           <div class="price-rate p-3">
             <div class="p-3">
@@ -22,9 +22,9 @@
                 <span class="fa fa-star checked"></span>
                 <span class="fa fa-star checked"></span>
                 <span class="fa fa-star checked"></span>
-                <span>Reviews</span>
+                <span>{{ popularTours.avg_review }} ({{ popularTours.sum_review }} Reviews)</span>
               </p>
-              <button class="btn btn-danger">Get Free Quote Now <span class="fa fa-angle-right ms-2"></span></button>
+              <a class="btn btn-danger" href="/tour-quote">Get Free Quote Now <span class="fa fa-angle-right ms-2"></span></a>
             </div>
           </div>
         </div>
@@ -139,16 +139,16 @@
               <div>
                 <div class="p-3">
                   <h3 class="fw-bold">Itinery</h3>
-                  <div class="itinery mt-3" v-for="(item, index6) in 4" v-bind:key="'E'+index6">
+                  <div class="itinery mt-3" v-for="(item, index6) in popularTours.day" v-bind:key="'E'+index6">
                     <div class="position-relative">
                       <img :src="'http://operators.safari-trek-beach.com/images/gallery/tanzania/tour_day/NGORONGORO_CRATER_5.jpg'" class="w-100" />
                       <div class="itinery-title">
-                        <h4 class="fw-bold my-2">Day {{ index6 + 1 }}</h4>
-                        <h5 class="fw-bold my-0">asdfasdf sdf sadf dsf </h5>
+                        <h4 class="fw-bold my-2">Day {{ index6 }}</h4>
+                        <h5 class="fw-bold my-0">{{ item.title }}</h5>
                       </div>
                     </div>
                     <div class="mt-3">
-                      <div class="itinery-content">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</div>
+                      <div class="itinery-content">{{ item.day_description }}</div>
                     </div>
                     <div class="d-flex align-items-start mt-3 mb-0">
                       <div style="min-width: 160px">
@@ -209,9 +209,9 @@
                 <div class="p-3">
                   <h3 class="fw-bold">Photo Gallary</h3>
                   <div class="row g-0">
-                    <div class="col-lg-4 col-md-6 col-sm-12 p-2" v-for="(item, index8) in 10" v-bind:key="'G'+index8">
+                    <div class="col-lg-4 col-md-6 col-sm-12 p-2" v-for="(item, index8) in popularTours.gallery" v-bind:key="'G'+index8">
                       <div class="photo-gallery-item" :style="{
-                        'background-image': 'url(http://operators.safari-trek-beach.com/images/gallery/tanzania/NGORONGORO_CRATER_5.jpg',
+                        'background-image': 'url(' + item + ')',
                       }"></div>
                     </div>
                   </div>
@@ -276,7 +276,7 @@
           </div>
         </div>
         <div class="card p-4 mb-3">
-          <img :src="'./images/tour_logo_example.jpg'" class="mx-auto w-50"/>
+          <img :src="'./images/tour_logo_example.jpg'" class="mx-auto w-50" />
           <hr>
           <h6 class="mb-0 mt-2"><strong>Offered by:</strong> <span>Meru Slopes Tours and Safaris</span></h6>
           <h6 class="mb-0 mt-2"><strong>Employees:</strong> <span>5</span></h6>
@@ -293,27 +293,31 @@
               <h6 class="text-dark my-0 ms-3">Reviewed: <span class="text-muted">Feb 09, 2021</span></h6>
             </div>
           </div>
-          <div class="my-3 review-detail">
-            <h4 class="text-muted">
-              "asdfdsaf df dsaf dsaf sadf a sdsdfsadf"
-            </h4>
-            <h5 class="reviews">
-              <span class="fa fa-star checked"></span>
-              <span class="fa fa-star checked"></span>
-              <span class="fa fa-star checked"></span>
-              <span class="fa fa-star"></span>
-              <span class="fa fa-star"></span>
-              <span class="text-dark"> 2 / 5 </span>
-            </h5>
-            <div class="review-description">
+          <carousel :per-page="1" :mouse-drag="false" :speed="1000" :loop="true" :autoplayTimeout="3000" :autoplayDirection="'backward'" :paginationEnabled="false" :autoplay="true">
+            <slide v-for="(item, indexsss) in 10" v-bind:key="'SSS'+indexsss">
+              <div class="my-3 review-detail">
+                <h4 class="text-muted">
+                  "asdfdsaf df dsaf dsaf sadf a sdsdfsadf"
+                </h4>
+                <h5 class="reviews">
+                  <span class="fa fa-star checked"></span>
+                  <span class="fa fa-star checked"></span>
+                  <span class="fa fa-star checked"></span>
+                  <span class="fa fa-star"></span>
+                  <span class="fa fa-star"></span>
+                  <span class="text-dark"> 2 / 5 </span>
+                </h5>
+                <div class="review-description">
 
-              Although Covid-19 stopped us actually having our dream holiday,
-              BST Tours were fantastic in helping us plan, change and organise
-              our dream trip. Staff were helpful,responded quickly to emails
-              and questions, thought of things we hadn’t...
+                  Although Covid-19 stopped us actually having our dream holiday,
+                  BST Tours were fantastic in helping us plan, change and organise
+                  our dream trip. Staff were helpful,responded quickly to emails
+                  and questions, thought of things we hadn’t...
 
-            </div>
-          </div>
+                </div>
+              </div>
+            </slide>
+          </carousel>
           <button class="btn btn-danger">Write A Review</button>
         </div>
         <div class="card p-4 mb-3 gallery">
@@ -352,21 +356,46 @@ import {
 } from '@syncfusion/ej2-vue-navigations';
 
 Vue.use(TabPlugin);
+import {
+  mapState,
+  mapGetters,
+  mapMutations
+} from "vuex";
 
 export default {
   name: "TourPackage",
   components: {
 
   },
+  computed: {
+    package_id: function () {
+      var id = this.$route.params.id;
+      return id.slice(0, id.length);
+    },
+    ...mapGetters({
+      popularTours: "tourController/packageData",
+    }),
+  },
   data() {
     return {
 
     };
   },
+  created() {
+    this.getPacakgeById(this.package_id);
+  },
   mounted() {
 
   },
-  methods: {},
+  methods: {
+    getPacakgeById(package_id) {
+      this.$store.dispatch("tourController/getTourById", package_id)
+      .then(() => {
+        console.log('tag', this.popularTours)
+      })
+      
+    }
+  },
 };
 </script>
 
@@ -435,7 +464,7 @@ export default {
   font-size: 18px;
 }
 
-@media (min-width: 992px) and (max-width: 1300px) {
+@media (min-width: 992px) and (max-width: 1400px) {
   .package-inner-page .package-inner-image {
     padding-top: 50%;
   }

@@ -2,13 +2,15 @@ import axios from "axios";
 const state = {
     popularTours: null,
     ourTours: null,
-    filterTours: null
+    filterTours: null,
+    packageData: null,
 };
 
 const getters = {
     popularTours: state => state.popularTours,
     ourTours: state => state.ourTours,
-    filterTours: state => state.filterTours
+    filterTours: state => state.filterTours,
+    packageData: state => state.packageData,
 };
 
 const mutations = {
@@ -23,6 +25,10 @@ const mutations = {
 
     setFilterTours(state, data) {
         state.filterTours = data;
+    },
+
+    setTourById(state, data) {
+        state.packageData = data;
     }
 };
 
@@ -43,6 +49,16 @@ const actions = {
             .then(res => {
                 console.log("filter result", res);
                 context.commit("setFilterTours", res.data.tours);
+            })
+            .catch(err => {});
+    },
+
+    async getTourById(context, id) {
+        await axios
+            .get("/api/tour/package/" + id)
+            .then(res => {
+                console.log("one result", res.data.package);
+                context.commit("setTourById", res.data.package);
             })
             .catch(err => {});
     }

@@ -1,5 +1,5 @@
 <template>
-  <div class="card mb-3 mx-2" id="tour-card">
+  <div class="card mb-3 mx-2" id="tour-card" @click="toInnerPackage()">
     <div
       class="bg-image hover-overlay ripple"
       data-mdb-ripple-color="light"
@@ -7,12 +7,12 @@
         'background-image': 'url(' + tourData.image_url + ')',
       }"
     >
-      <a href="#">
+      <div>
         <div
           class="mask"
           style="background-color: rgba(251, 251, 251, 0.15)"
         ></div>
-      </a>
+      </div>
       <div class="tour_title">
         {{ tourData.title }}
       </div>
@@ -165,6 +165,10 @@ export default {
         return letter.toUpperCase();
       });
       return level_data;
+    },
+
+    toInnerPackage() {
+      this.$router.push("/tour-package/" + this.tourData.package_id)
     }
   },
 };

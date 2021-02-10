@@ -170,7 +170,7 @@ export default {
   left: -15px;
 }
 
-.e-multi-line-input textarea {
+.destination-package .e-multi-line-input textarea {
   height: 100px;
 }
 

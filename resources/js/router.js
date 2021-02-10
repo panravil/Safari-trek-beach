@@ -85,16 +85,22 @@ const router = new Router({
                     component: () => import("./views/TourQuote.vue")
                 },
                 {
-                    path: "/tour-package",
+                    path: "/tour-package/:id",
                     name: "Tour Package",
                     index: 11,
                     component: () => import("./views/TourPackage.vue")
                 },
                 {
-                    path: "/tour-landing",
+                    path: "/tour-landing-one",
                     name: "Tour Landing",
                     index: 12,
-                    component: () => import("./views/TourLanding.vue")
+                    component: () => import("./views/TourLandingOne.vue")
+                },
+                {
+                    path: "/tour-landing-two",
+                    name: "Tour Landing",
+                    index: 13,
+                    component: () => import("./views/TourLandingTwo.vue")
                 }
             ]
         }
