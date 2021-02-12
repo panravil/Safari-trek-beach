@@ -24,7 +24,7 @@
                 }
               : '',
           ]">
-        <button class="btn btn-danger w-100 h-100">
+        <button class="btn btn-danger w-100 h-100"  @click="isSidebar = false" >
           <span>Search Tours</span>
           <span class="fa fa-angle-right ms-2"></span>
         </button>
@@ -199,7 +199,7 @@
           <span v-if="!read_more" class="read-more text-danger" @click="read_more = !read_more">Read more</span>
           <span v-else class="read-more text-danger" @click="read_more = !read_more">Read less</span>
         </section>
-        <div class="mobile-sidebar-trigger mt-3">
+        <div class="mobile-sidebar-trigger mt-3 text-center">
           <button class="btn btn-primary" @click="isSidebar = true">
             <span class="fa fa-filter me-2"></span> Search Filter
           </button>

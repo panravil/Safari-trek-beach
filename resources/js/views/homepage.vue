@@ -448,9 +448,9 @@
                 </p>
               </div>
               <div>
-                <button class="btn btn-danger">
+                <a class="btn btn-danger" href="/about">
                   Read More <span class="fa fa-angle-right ms-2"></span>
-                </button>
+                </a>
               </div>
             </div>
           </div>

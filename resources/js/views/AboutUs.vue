@@ -106,6 +106,7 @@
       <div class="mt-3 description text-center" v-html="our_community"></div>
     </section>
 
+    
   </div>
 </div>
 </template>
@@ -170,9 +171,9 @@ export default {
         description: 'Jartan Mbalakai is the director of content in Safari Trek Beach. Having attending a wildlife university, he has a degree of wildlife tourism. He has being a Tour Guide for over 5 years, during the period amassing the knowledge and experience to inform the world about Tanzania Tourism. We say for the best stories about Tanzania there is no one better to share than Jartan Mbalakai.',
       }, ],
 
-      our_vision : "Ensure the whole process of planning and finding the right tour operator for your safari is as easy as Possible.",
+      our_vision: "Ensure the whole process of planning and finding the right tour operator for your safari is as easy as Possible.",
 
-      our_community : "We strive to ensure that the number of women employed in tourism sector improves.<br /> We encourage tour companies to employ more women. One among our raking factors for tour companies is the number of women they have employed.",
+      our_community: "We strive to ensure that the number of women employed in tourism sector improves.<br /> We encourage tour companies to employ more women. One among our raking factors for tour companies is the number of women they have employed.",
     };
   },
 };

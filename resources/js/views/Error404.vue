@@ -65,4 +65,11 @@
     left: 0;
     right: 0;
 }
+
+@media (max-width: 767px) {
+  .notfound .notfound-404 h1 {
+    top: 30%;
+    font-size: 100px;
+  }
+}
 </style>

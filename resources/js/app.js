@@ -30,6 +30,10 @@ import VueContentPlaceholders from 'vue-content-placeholders'
  
 Vue.use(VueContentPlaceholders)
 
+import ReadMore from 'vue-read-more';
+ 
+Vue.use(ReadMore);
+ 
 new Vue({
     created() {
         AOS.init();

@@ -41,7 +41,45 @@
                       It's budget tour, but it's good. They're good person. I highly recommend this company.
                     </h6>
                   </div>
-                  <button class="btn btn-danger mt-3">Write a Review</button>
+                  <button type="button" class="btn btn-danger mt-3" data-bs-toggle="modal" data-bs-target="#writeareview">Write A Review</button>
+
+                  <!-- Modal -->
+                  <div class="modal fade" id="writeareview" tabindex="-1" aria-labelledby="reviewLavel" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered modal-fullscreen-sm-down">
+                      <div class="modal-content">
+                        <div class="modal-header bg-danger text-white">
+                          <h5 class="modal-title" id="reviewLavel">Write a Review</h5>
+                          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body text-left">
+                          <div class="row align-items-center">
+                            <div class="col-sm-12">
+                              <ejs-textbox floatLabelType="Auto" type="text" placeholder="Name" required></ejs-textbox>
+                            </div>
+                            <div class="col-sm-12  mt-3">
+                              <ejs-textbox floatLabelType="Auto" type="text" placeholder="Email" required></ejs-textbox>
+                            </div>
+                            <div class="col-sm-12  mt-3">
+                              <ejs-textbox floatLabelType="Auto" type="text" placeholder="Title" required></ejs-textbox>
+                            </div>
+                            <div class="col-sm-12  mt-5">
+                              <h5 class="fw-bold">Rate:</h5>
+                            </div>
+                            <div class="col-sm-12  mt-3">
+                              <star-rating :rating="5" :show-rating="false" active-color="#f93154"></star-rating>
+                            </div>
+                            <div class="col-sm-12  mt-5">
+                              <ejs-textbox :multiline="true" floatLabelType="Auto" placeholder="Write a review" required></ejs-textbox>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="modal-footer">
+                          <button type="button" class="btn btn-light" data-bs-dismiss="modal">Close</button>
+                          <button type="button" class="btn btn-danger">Send</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
@@ -79,12 +117,20 @@ import {
 
 Vue.use(TabPlugin);
 
+import {
+  TextBoxPlugin
+} from '@syncfusion/ej2-vue-inputs';
+
+Vue.use(TextBoxPlugin);
+
 import TourCard from "../components/TourCard";
+import StarRating from 'vue-star-rating'
 
 export default {
   name: "TourOperator",
   components: {
-    TourCard
+    TourCard,
+    StarRating,
   },
   data() {
     return {
@@ -104,7 +150,7 @@ export default {
       top_view: {},
     };
   },
- 
+
 };
 </script>
 
@@ -119,8 +165,13 @@ export default {
   background-color: #f5f5f5;
 }
 
+.tour-operator-page .e-multi-line-input textarea {
+  height: 150px;
+}
+
 @import "@syncfusion/ej2-base/styles/material.css";
 @import "@syncfusion/ej2-vue-buttons/styles/material.css";
 @import "@syncfusion/ej2-vue-navigations/styles/material.css";
 @import "@syncfusion/ej2-vue-popups/styles/material.css";
+@import "@syncfusion/ej2-vue-inputs/styles/material.css";
 </style>

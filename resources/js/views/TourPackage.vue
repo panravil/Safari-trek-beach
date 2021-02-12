@@ -2,8 +2,8 @@
 <div class="package-inner-page">
   <div class="container mt-5">
     <div class="card mb-3">
-      <div class="row g-0 package-inner-banner">
-        <div class="col-lg-7 col-md-12">
+      <div class="row g-0 package-inner-banner"  >
+        <div class="col-lg-7 col-md-12" v-if="popularTours != null" :title="popularTours.title">
           <div class="package-inner-image" :style="[popularTours != null ? {
         'background-image': 'url(' + popularTours.image_url + ')',
       } : {'background': '#FFF'}]"></div>
@@ -15,7 +15,7 @@
           </div>
           <div class="price-rate p-3">
             <div class="p-3" v-if="popularTours != null">
-              <h4 class="fw-bold text-success my-2">${{ popularTours.rate.adult_currency }} <small class="text-dark">USD</small></h4>
+              <h4 class="fw-bold text-success my-2" :title="popularTours.rate.child_currency + ' USD per Child'">${{ popularTours.rate.adult_currency }} <small class="text-dark">USD</small></h4>
               <p class="mt-2">
                 <span class="fa fa-star checked"></span>
                 <span class="fa fa-star checked"></span>
@@ -235,22 +235,31 @@
                       </div>
                     </div>
                     <div class="mt-3">
-                      <div class="review-content">{{ item.description }}</div>
+                      <div class="review-content">
+                        <read-more more-str="Read more" :text="item.description" less-str="Read less" :max-chars="100"></read-more>
+                      </div>
                     </div>
                     <hr class="my-3">
                   </div>
                 </div>
               </div>
               <div>
-                <div class="p-3">
+                <div class="p-3" v-if="popularTours != null">
                   <h3 class="fw-bold">Photo Gallary</h3>
-                  <div class="row g-0" v-if="popularTours != null">
+                  <!-- <div class="row g-0" v-if="popularTours != null">
                     <div class="col-lg-4 col-md-6 col-sm-12 p-2" v-for="(item, index8) in popularTours.gallery" v-bind:key="'G'+index8">
                       <div class="photo-gallery-item" :style="{
                         'background-image': 'url(' + item + ')',
                       }"></div>
                     </div>
-                  </div>
+                  </div> -->
+                  <viewer :images="popularTours.gallery">
+                    <div class="row g-0" v-if="popularTours != null">
+                      <div class="col-lg-4 col-md-6 col-sm-12 p-2" v-for="(item, index8) in popularTours.gallery" v-bind:key="'G'+index8">
+                        <img :src="item" style="width: 100%; height: auto">
+                      </div>
+                    </div>
+                  </viewer>
                 </div>
               </div>
             </div>
@@ -291,6 +300,12 @@
         <div class="card p-4 mb-3" v-if="popularTours != null">
           <h3 class="fw-bold text-success">Price: $ {{ popularTours.rate.adult_currency }} <small class="fw-normal">pp</small></h3>
           <h5 class="fw-bold">Request a Quote</h5>
+          <div class="row">
+            <div class="col-sm-12 mt-3">
+              <ejs-datepicker :placeholder="'Select a Date'"></ejs-datepicker>
+            </div>
+            <div class="col-sm-12 mt-3"></div>
+          </div>
           <button class="btn btn-danger mb-3">Enquire Now</button>
           <div class="d-flex ms-3">
             <div style="min-width: 25px">
@@ -318,47 +333,86 @@
           <h6 class="mb-0 mt-2"><strong>Employees:</strong> <span> {{ popularTours.no_of_staff }}</span></h6>
 
         </div>
-        <div class="card p-4 mb-3">
+        <div class="card p-4 mb-3"  v-if="popularTours != null">
           <h3 class="fw-bold">Customer Reviews</h3>
-          <div class="d-flex align-items-center">
-            <div>
-              <img :src="'/images/user_review.png'" width="40px" height="40px">
-            </div>
-            <div>
-              <h4 class="fw-bold text-dark my-0 ms-3">John Joe</h4>
-              <h6 class="text-dark my-0 ms-3">Reviewed: <span class="text-muted">Feb 09, 2021</span></h6>
-            </div>
-          </div>
-          <carousel :per-page="1" :mouse-drag="false" :speed="1000" :loop="true" :autoplayTimeout="3000" :autoplayDirection="'backward'" :paginationEnabled="false" :autoplay="true">
-            <slide v-for="(item, indexsss) in 10" v-bind:key="'SSS'+indexsss">
+
+          <carousel :per-page="1" :speed="1000" :loop="true" :autoplayTimeout="3000" :autoplayDirection="'backward'" :paginationEnabled="false" :autoplay="true">
+            <slide v-for="(item, indexsss) in  popularTours.review" v-bind:key="'review'+indexsss">
+              <div class="d-flex align-items-center">
+                <div>
+                  <img :src="'/images/user_review.png'" width="40px" height="40px">
+                </div>
+                <div>
+                  <h4 class="fw-bold text-dark my-0 ms-3">{{ item.full_name }}</h4>
+                  <!-- <h6 class="text-dark my-0 ms-3">Reviewed: <span class="text-muted">{{ new Date(item.created_at).toDateString() }}</span></h6> -->
+                </div>
+              </div>
               <div class="my-3 review-detail">
-                <h4 class="text-muted">
-                  "asdfdsaf df dsaf dsaf sadf a sdsdfsadf"
-                </h4>
+                <h5 class="text-muted fw-bold">
+                  {{ item.title }}
+                </h5>
                 <h5 class="reviews">
                   <span class="fa fa-star checked"></span>
                   <span class="fa fa-star checked"></span>
                   <span class="fa fa-star checked"></span>
-                  <span class="fa fa-star"></span>
-                  <span class="fa fa-star"></span>
-                  <span class="text-dark"> 2 / 5 </span>
+                  <span class="fa fa-star checked"></span>
+                  <span class="fa fa-star checked"></span>
+                  <span class="text-dark"> {{ item.rate }} / 5 </span>
                 </h5>
                 <div class="review-description">
 
-                  Although Covid-19 stopped us actually having our dream holiday,
-                  BST Tours were fantastic in helping us plan, change and organise
-                  our dream trip. Staff were helpful,responded quickly to emails
-                  and questions, thought of things we hadn’t...
+                  {{ item.description.substr(0, 200) }}
+                  <span v-if="item.description.length > 200">...</span>
 
                 </div>
               </div>
             </slide>
           </carousel>
-          <button class="btn btn-danger">Write A Review</button>
+          <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#writeareview">Write A Review</button>
+
+          <!-- Modal -->
+          <div class="modal fade" id="writeareview" tabindex="-1" aria-labelledby="reviewLavel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered modal-fullscreen-sm-down">
+              <div class="modal-content">
+                <div class="modal-header bg-danger text-white">
+                  <h5 class="modal-title" id="reviewLavel">Write a Review</h5>
+                  <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                  <div class="row align-items-center">
+                    <div class="col-sm-12">
+                      <ejs-textbox floatLabelType="Auto" type="text" placeholder="Name" required></ejs-textbox>
+                    </div>
+                    <div class="col-sm-12  mt-3">
+                      <ejs-textbox floatLabelType="Auto" type="text" placeholder="Email" required></ejs-textbox>
+                    </div>
+                    <div class="col-sm-12  mt-3">
+                      <ejs-textbox floatLabelType="Auto" type="text" placeholder="Title" required></ejs-textbox>
+                    </div>
+                    <div class="col-sm-12  mt-5">
+                      <h5 class="fw-bold">Rate:</h5>
+                    </div>
+                    <div class="col-sm-12  mt-3">
+                      <star-rating :rating="5" :show-rating="false" active-color="#f93154"></star-rating>
+                    </div>
+                    <div class="col-sm-12  mt-5">
+                      <ejs-textbox :multiline="true" floatLabelType="Auto" placeholder="Write a review" required></ejs-textbox>
+                    </div>
+                  </div>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-light" data-bs-dismiss="modal">Close</button>
+                  <button type="button" class="btn btn-danger">Send</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
         </div>
         <div class="card p-4 mb-3 gallery" v-if="popularTours != null">
           <h3 class="fw-bold">Gallery</h3>
-          <carousel :per-page="1" :mouse-drag="false" :speed="1000" :loop="true" :autoplayTimeout="3000" :autoplayDirection="'backward'" :paginationEnabled="false" :autoplay="true">
+          <!-- <carousel :navigationEnabled="true" :per-page="1" :mouse-drag="false" :speed="1000" :loop="true" :autoplayTimeout="3000" :autoplayDirection="'backward'" :paginationEnabled="false" :autoplay="true"> -->
+          <carousel :per-page="1" :paginationEnabled="false" :autoplay="true" :speed="1000" :loop="true" :autoplayTimeout="3000">
             <slide v-for="(item, index8) in popularTours.gallery" v-bind:key="'G23'+index8">
               <div class="bg-image" :style="{'background-image': 'url(' + item + ')'}"></div>
             </slide>
@@ -377,16 +431,35 @@ import {
 } from '@syncfusion/ej2-vue-navigations';
 
 Vue.use(TabPlugin);
+
+import {
+  TextBoxPlugin
+} from '@syncfusion/ej2-vue-inputs';
+
+Vue.use(TextBoxPlugin);
+
+import {
+  DatePickerPlugin
+} from '@syncfusion/ej2-vue-calendars';
+
+Vue.use(DatePickerPlugin);
+
+import 'viewerjs/dist/viewer.css'
+import Viewer from 'v-viewer'
+Vue.use(Viewer)
+
 import {
   mapState,
   mapGetters,
   mapMutations
 } from "vuex";
 
+import StarRating from 'vue-star-rating'
+
 export default {
   name: "TourPackage",
   components: {
-
+    StarRating,
   },
   computed: {
     package_id: function () {
@@ -412,7 +485,7 @@ export default {
     getPacakgeById(package_id) {
       this.$store.dispatch("tourController/getTourById", package_id)
         .then(() => {
-          // console.log('tag', this.popularTours)
+          console.log('tag', this.popularTours)
         })
 
     }
@@ -532,8 +605,14 @@ export default {
   padding: 20px;
 }
 
+.package-inner-page .e-multi-line-input textarea {
+  height: 150px;
+}
+
 @import "@syncfusion/ej2-base/styles/material.css";
 @import "@syncfusion/ej2-vue-buttons/styles/material.css";
-/* @import "@syncfusion/ej2-vue-popups/styles/material.css"; */
+@import "@syncfusion/ej2-vue-popups/styles/material.css";
 @import "@syncfusion/ej2-vue-navigations/styles/material.css";
+@import "@syncfusion/ej2-vue-inputs/styles/material.css";
+@import "@syncfusion/ej2-vue-calendars/styles/material.css";
 </style>
