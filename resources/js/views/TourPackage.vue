@@ -4,25 +4,25 @@
     <div class="card mb-3">
       <div class="row g-0 package-inner-banner">
         <div class="col-lg-7 col-md-12">
-          <div class="package-inner-image" :style="{
+          <div class="package-inner-image" :style="[popularTours != null ? {
         'background-image': 'url(' + popularTours.image_url + ')',
-      }"></div>
+      } : {'background': '#FFF'}]"></div>
         </div>
         <div class="col-lg-5 col-md-12 p-3 position-relative package-inner-title">
           <div class="card-body">
-            <h3 class="card-title fw-bold">{{ popularTours.title }}</h3>
-            <h5 class="card-title">{{ popularTours.company_name }}</h5>
+            <h3 class="card-title fw-bold" v-if="popularTours != null">{{ popularTours.title }}</h3>
+            <h5 class="card-title" v-if="popularTours != null">{{ popularTours.company_name }}</h5>
           </div>
           <div class="price-rate p-3">
-            <div class="p-3">
-              <h4 class="fw-bold text-success my-2">$243 <small class="text-dark">USD</small></h4>
+            <div class="p-3" v-if="popularTours != null">
+              <h4 class="fw-bold text-success my-2">${{ popularTours.rate.adult_currency }} <small class="text-dark">USD</small></h4>
               <p class="mt-2">
                 <span class="fa fa-star checked"></span>
                 <span class="fa fa-star checked"></span>
                 <span class="fa fa-star checked"></span>
                 <span class="fa fa-star checked"></span>
                 <span class="fa fa-star checked"></span>
-                <span>{{ popularTours.avg_review }} ({{ popularTours.sum_review }} Reviews)</span>
+                <span v-if="popularTours != null">{{ popularTours.avg_review }} ({{ popularTours.sum_review }} Reviews)</span>
               </p>
               <a class="btn btn-danger" href="/tour-quote">Get Free Quote Now <span class="fa fa-angle-right ms-2"></span></a>
             </div>
@@ -36,45 +36,45 @@
           <ejs-tab id='element'>
             <div class="e-tab-header">
               <div>Short Description </div>
-              <div>Itinery </div>
+              <div>Itinerary </div>
               <div>Reviews </div>
               <div>Photo Gallery </div>
             </div>
             <div class="e-content">
               <div>
-                <div class="p-3">
+                <div class="p-3" v-if="popularTours != null">
                   <h3 class="fw-bold">Overview</h3>
                   <div class="overview-description">
-                    On this 3-day camping safari you will be well looked after and see some of the best that Tanzania has to offer the driver will pick you up from your accomodation. You will experience breathtaking wildlife in the midst of some of the most diverse landscapes; monkeys in the forest, lions in trees, elephants among acacias and a huge variety of animals inside a collapsed volcano. Not only will you visit Serengeti and ngorongoro National Park but also drive into the world-famous rift valley.
+                    {{ popularTours.description }}
                   </div>
                   <hr>
                   <h4 class="fw-bold text-danger">
                     <span class="fa fa-arrow-circle-right"></span>
                     Tour Summary
                   </h4>
-                  <h6 class="my-1">Tour Start from <strong>Arusha City</strong></h6>
-                  <div class="routine ms-2" v-for="(item, index1) in 2" v-bind:key="index1">
-                    <h6 class="fw-bold mt-4">Day {{ index1 + 1 }}</h6>
+                  <h6 class="my-1">Tour Start from <strong>{{ popularTours.getting_there.start_city }} City</strong></h6>
+                  <div class="routine ms-2" v-for="(item, index1) in popularTours.day" v-bind:key="index1">
+                    <h6 class="fw-bold mt-4">Day {{ index1 }}</h6>
                     <div class="routine-detail ms-3">
                       <h6 class="my-2">
                         <span class="me-2">✓</span>
-                        <span>Destination: <strong>Tarangire</strong></span>
+                        <span>Destination: <strong>{{ item.destination }}</strong></span>
+                      </h6>
+                      <h6 class="my-2" v-if="item.accom_name != null">
+                        <span class="me-2">✓</span>
+                        <span>Accomodation: <strong>{{ item.accom_name }}</strong></span>
                       </h6>
                       <h6 class="my-2">
                         <span class="me-2">✓</span>
-                        <span>Accomodation: <strong>Fig Tree Lodge</strong></span>
+                        <span>Location: <strong>{{ item.accom_location }}</strong></span>
                       </h6>
                       <h6 class="my-2">
                         <span class="me-2">✓</span>
-                        <span>Location: <strong>Just Outside The park</strong></span>
+                        <span>Comfort: <strong>{{ item.accom_level }}</strong></span>
                       </h6>
                       <h6 class="my-2">
                         <span class="me-2">✓</span>
-                        <span>Comfort: <strong>Budget</strong></span>
-                      </h6>
-                      <h6 class="my-2">
-                        <span class="me-2">✓</span>
-                        <span>Type: <strong>Lodge</strong></span>
+                        <span>Type: <strong>{{ item.accom_type }}</strong></span>
                       </h6>
                       <h6 class="my-2">
                         <span class="me-2">✓</span>
@@ -100,18 +100,18 @@
                     Inclusive
                   </h4>
                   <div class="row g-0">
-                    <div class="col-md-6 col-sm-12">
+                    <div class="col-md-6 col-sm-12" v-if="popularTours != null">
                       <h4 class="fw-bold ms-2">Inclusion</h4>
-                      <h5 class="ms-5" v-for="(item, index2) in 4" v-bind:key="'A'+index2">
+                      <h5 class="ms-5" v-for="(item, index2) in popularTours.inclusion.included" v-bind:key="'A'+index2">
                         <span class="fa fa-check me-3 text-danger"></span>
-                        <span class="exclusion-inclusion">Sleeping bag</span>
+                        <span class="exclusion-inclusion">{{ item }}</span>
                       </h5>
                     </div>
-                    <div class="col-md-6 col-sm-12">
+                    <div class="col-md-6 col-sm-12" v-if="popularTours != null">
                       <h4 class="fw-bold ms-2">Exclusion</h4>
-                      <h5 class="ms-5" v-for="(item, index3) in 4" v-bind:key="'B'+index3">
+                      <h5 class="ms-5" v-for="(item, index3) in popularTours.inclusion.excluded" v-bind:key="'B'+index3">
                         <span class="fa fa-times me-3 text-danger"></span>
-                        <span class="exclusion-inclusion">Bath towels</span>
+                        <span class="exclusion-inclusion">{{ item }}</span>
                       </h5>
                     </div>
                   </div>
@@ -120,25 +120,51 @@
                     <span class="fa fa-arrow-circle-right"></span>
                     Activities & Transpotation
                   </h4>
-                  <h5 class="ms-5" v-for="(item, index4) in 4" v-bind:key="'C'+index4">
+                  <h5 class="ms-5">
                     <span class="fa fa-check me-3 text-danger"></span>
-                    <span class="exclusion-inclusion">Sleeping bag</span>
+                    <span class="exclusion-inclusion">
+                      Activitiy:
+                      <strong>
+                        {{ popularTours.tour_focus }}
+                      </strong>
+                    </span>
+                  </h5>
+                  <h5 class="ms-5">
+                    <span class="fa fa-check me-3 text-danger"></span>
+                    <span class="exclusion-inclusion">
+                      Getting around:
+                      <strong v-for="(item, index) in popularTours.transport" v-bind:key="index + 'transport'">
+                      {{ item }}<span v-if="index != popularTours.transport.length - 1">, </span>
+                      </strong>
+                    </span>
                   </h5>
                   <hr>
                   <h4 class="fw-bold text-danger">
                     <span class="fa fa-arrow-circle-right"></span>
                     Getting There
                   </h4>
-                  <h5 class="ms-5" v-for="(item, index5) in 4" v-bind:key="'D'+index5">
+                  <h5 class="ms-5">
+                    <span class="fa fa-check me-3 text-danger"></span>
+                    <span class="exclusion-inclusion"> The Tour Starts in: <strong> {{ popularTours.getting_there.start_city}}</strong></span>
+                  </h5>
+                  <h5 class="ms-5" v-if="popularTours.getting_there.airport_transfer == 'yes'">
+                    <span class="fa fa-check me-3 text-danger"></span>
+                    <span class="exclusion-inclusion">Airport transfer are included</span>
+                  </h5>
+                  <!-- <h5 class="ms-5">
                     <span class="fa fa-check me-3 text-danger"></span>
                     <span class="exclusion-inclusion">Sleeping bag</span>
+                  </h5> -->
+                  <h5 class="ms-5">
+                    <span class="fa fa-check me-3 text-danger"></span>
+                    <span class="exclusion-inclusion"> The Tour Ends in: <strong>{{ popularTours.getting_there.end_city}}</strong></span>
                   </h5>
                   <hr>
                 </div>
               </div>
               <div>
-                <div class="p-3">
-                  <h3 class="fw-bold">Itinery</h3>
+                <div class="p-3" v-if="popularTours != null">
+                  <h3 class="fw-bold">Itinerary</h3>
                   <div class="itinery mt-3" v-for="(item, index6) in popularTours.day" v-bind:key="'E'+index6">
                     <div class="position-relative">
                       <img :src="'http://operators.safari-trek-beach.com/images/gallery/tanzania/tour_day/NGORONGORO_CRATER_5.jpg'" class="w-100" />
@@ -155,7 +181,8 @@
                         <h6 class="fw-bold">Accommodation:</h6>
                       </div>
                       <div>
-                        <h6>Camping (Budget)</h6>
+                        <h6 v-if="item.accom_level != null">{{ item.accom_type }} ({{ item.accom_level }})</h6>
+                        <h6 v-else>No Accommodation</h6>
                       </div>
                     </div>
                     <div class="d-flex align-items-start mt-0">
@@ -163,14 +190,19 @@
                         <h6 class="fw-bold">Meals & Drinks:</h6>
                       </div>
                       <div>
-                        <h6> Breakfast, Lunch, Diner, Drinking water and Beer and wine</h6>
+                        <h6>
+                          <span v-for="(meal, index) in popularTours.day_meal[index6]" v-bind:key="'meal' + index">
+                            {{ meal }}<span v-if="index == popularTours.day_meal[index6].length - 2"> and </span>
+                            <span v-else-if="index != popularTours.day_meal[index6].length - 1">, </span>
+                          </span>
+                        </h6>
                       </div>
                     </div>
                   </div>
                 </div>
               </div>
               <div>
-                <div class="p-3">
+                <div class="p-3" v-if="popularTours != null">
                   <h5 class="reviews">
                     <span class="fa fa-star checked"></span>
                     <span class="fa fa-star checked"></span>
@@ -180,26 +212,26 @@
                     <span class="text-danger">Reviews 5.0 / 5 <small class="text-muted">(12 reviews)</small></span>
                   </h5>
                   <hr />
-                  <div class="review" v-for="(item, index7) in 3" v-bind:key="'F'+index7">
-                    <h3 class="fw-bold mt-5">Every thing is Good over there</h3>
+                  <div class="review" v-for="(item, index7) in popularTours.review" v-bind:key="'F'+index7">
+                    <h3 class="fw-bold mt-5">{{ item.title}}</h3>
                     <h6 class="reviews">
                       <span class="fa fa-star checked"></span>
                       <span class="fa fa-star checked"></span>
                       <span class="fa fa-star checked"></span>
                       <span class="fa fa-star checked"></span>
                       <span class="fa fa-star checked"></span>
-                      <span class="text-danger"> 5.0 / 5 <small class="text-muted">(12 reviews)</small></span>
+                      <span class="text-danger"> {{ item.rate }} / 5 <small class="text-muted"></small></span>
                     </h6>
                     <div class="d-flex align-items-center">
                       <div>
-                        <img :src="'./images/user_review.png'" width="40px" height="40px">
+                        <img :src="'/images/user_review.png'" width="40px" height="40px">
                       </div>
                       <div>
-                        <h4 class="fw-bold text-muted my-0 ms-3">John Joe</h4>
+                        <h4 class="fw-bold text-muted my-0 ms-3">{{ item.full_name }}</h4>
                       </div>
                     </div>
                     <div class="mt-3">
-                      <div class="review-content">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</div>
+                      <div class="review-content">{{ item.description }}</div>
                     </div>
                     <hr class="my-3">
                   </div>
@@ -208,7 +240,7 @@
               <div>
                 <div class="p-3">
                   <h3 class="fw-bold">Photo Gallary</h3>
-                  <div class="row g-0">
+                  <div class="row g-0" v-if="popularTours != null">
                     <div class="col-lg-4 col-md-6 col-sm-12 p-2" v-for="(item, index8) in popularTours.gallery" v-bind:key="'G'+index8">
                       <div class="photo-gallery-item" :style="{
                         'background-image': 'url(' + item + ')',
@@ -252,8 +284,8 @@
         </div>
       </div>
       <div class="col-lg-4 col-md-12">
-        <div class="card p-4 mb-3">
-          <h3 class="fw-bold text-success">Price: $ 599 <small class="fw-normal">pp</small></h3>
+        <div class="card p-4 mb-3" v-if="popularTours != null">
+          <h3 class="fw-bold text-success">Price: $ {{ popularTours.rate.adult_currency }} <small class="fw-normal">pp</small></h3>
           <h5 class="fw-bold">Request a Quote</h5>
           <button class="btn btn-danger mb-3">Enquire Now</button>
           <div class="d-flex ms-3">
@@ -275,18 +307,18 @@
             <div class="fst-italic">Your request will be sent directly to the operator</div>
           </div>
         </div>
-        <div class="card p-4 mb-3">
-          <img :src="'./images/tour_logo_example.jpg'" class="mx-auto w-50" />
-          <hr>
-          <h6 class="mb-0 mt-2"><strong>Offered by:</strong> <span>Meru Slopes Tours and Safaris</span></h6>
-          <h6 class="mb-0 mt-2"><strong>Employees:</strong> <span>5</span></h6>
+        <div class="card p-4 mb-3" v-if="popularTours != null">
+          <img :src="popularTours.logo" v-if="popularTours.logo != null" class="mx-auto w-50" />
+          <hr v-if="popularTours.logo != null">
+          <h6 class="mb-0 mt-2"><strong>Offered by:</strong> <span>{{ popularTours.company_name }}</span></h6>
+          <h6 class="mb-0 mt-2"><strong>Employees:</strong> <span> {{ popularTours.no_of_staff }}</span></h6>
 
         </div>
         <div class="card p-4 mb-3">
           <h3 class="fw-bold">Customer Reviews</h3>
           <div class="d-flex align-items-center">
             <div>
-              <img :src="'./images/user_review.png'" width="40px" height="40px">
+              <img :src="'/images/user_review.png'" width="40px" height="40px">
             </div>
             <div>
               <h4 class="fw-bold text-dark my-0 ms-3">John Joe</h4>
@@ -320,26 +352,11 @@
           </carousel>
           <button class="btn btn-danger">Write A Review</button>
         </div>
-        <div class="card p-4 mb-3 gallery">
+        <div class="card p-4 mb-3 gallery" v-if="popularTours != null">
           <h3 class="fw-bold">Gallery</h3>
           <carousel :per-page="1" :mouse-drag="false" :speed="1000" :loop="true" :autoplayTimeout="3000" :autoplayDirection="'backward'" :paginationEnabled="false" :autoplay="true">
-            <slide>
-              <div class="bg-image" style=" background-image: url('http://operators.safari-trek-beach.com/images/gallery/tanzania/NGORONGORO_CRATER_6.jpg');"></div>
-            </slide>
-            <slide>
-              <div class="bg-image" style=" background-image: url('http://operators.safari-trek-beach.com/images/gallery/tanzania/NGORONGORO_CRATER_1.jpg');"></div>
-            </slide>
-            <slide>
-              <div class="bg-image" style=" background-image: url('http://operators.safari-trek-beach.com/images/gallery/tanzania/NGORONGORO_CRATER_7.jpg');"></div>
-            </slide>
-            <slide>
-              <div class="bg-image" style=" background-image: url('http://operators.safari-trek-beach.com/images/gallery/tanzania/NGORONGORO_CRATER_2.jpg');"></div>
-            </slide>
-            <slide>
-              <div class="bg-image" style=" background-image: url('http://operators.safari-trek-beach.com/images/gallery/tanzania/NGORONGORO_CRATER_5.jpg');"></div>
-            </slide>
-            <slide>
-              <div class="bg-image" style=" background-image: url('http://operators.safari-trek-beach.com/images/gallery/tanzania/NGORONGORO_CRATER_3.jpg');"></div>
+            <slide v-for="(item, index8) in popularTours.gallery" v-bind:key="'G23'+index8">
+              <div class="bg-image" :style="{'background-image': 'url(' + item + ')'}"></div>
             </slide>
           </carousel>
         </div>
@@ -390,10 +407,10 @@ export default {
   methods: {
     getPacakgeById(package_id) {
       this.$store.dispatch("tourController/getTourById", package_id)
-      .then(() => {
-        console.log('tag', this.popularTours)
-      })
-      
+        .then(() => {
+          console.log('tag', this.popularTours)
+        })
+
     }
   },
 };
@@ -409,7 +426,7 @@ export default {
 .package-inner-page .package-inner-image {
   height: 0;
   width: 100%;
-  padding-top: 40%;
+  padding-top: 45%;
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;

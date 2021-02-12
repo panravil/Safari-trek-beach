@@ -6,7 +6,7 @@
     >
       <div class="container-fluid">
         <a class="navbar-brand" href="/">
-          <img :src="'./images/logo.png'" alt="logo" />
+          <img :src="'/images/logo.png'" alt="logo" />
         </a>
         <button
           class="navbar-toggler"

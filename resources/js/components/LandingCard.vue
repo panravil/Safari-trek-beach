@@ -1,5 +1,5 @@
 <template>
-  <div class="card mb-3 mx-2" id="tour-card">
+  <div class="card mb-3 mx-auto" id="tour-card">
     <div
       class="bg-image hover-overlay ripple"
       data-mdb-ripple-color="light"
@@ -7,7 +7,7 @@
         'background-image': 'url(' + tourData.image_url + ')',
       }"
     >
-      <a href="#">
+      <a>
         <div
           class="mask"
           style="background-color: rgba(251, 251, 251, 0.15)"
@@ -44,6 +44,7 @@ export default {
   transition: box-shadow 0.2s ease-in-out, transform 0.3s ease-in-out;
   box-shadow: 0px 2px 3px rgb(0 0 0 / 18%);
   cursor: pointer;
+  width: 75%;
 }
 
 #tour-card.card:hover {
@@ -51,5 +52,11 @@ export default {
 }
 .trip-route {
   min-height: 75px;
+}
+
+@media (max-width: 767px) {
+  #tour-card.card {
+    width: 100%;
+  }
 }
 </style>

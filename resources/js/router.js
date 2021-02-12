@@ -40,7 +40,7 @@ const router = new Router({
                     path: "/tour-operators",
                     name: "Tour Operators",
                     index: 3,
-                    component: () => import("./views/BlogPost.vue")
+                    component: () => import("./views/TourOperators.vue")
                 },
                 {
                     path: "/contact",
@@ -101,10 +101,32 @@ const router = new Router({
                     name: "Tour Landing",
                     index: 13,
                     component: () => import("./views/TourLandingTwo.vue")
-                }
+                },
+                {
+                    path: "/operator",
+                    name: "Tour Operator",
+                    index: 14,
+                    component: () => import("./views/TourOperator.vue")
+                },
+                {
+                    path: "/become-a-partner",
+                    name: "Become A Partner",
+                    index: 15,
+                    component: () => import("./views/BecomePartner.vue")
+                },
             ]
-        }
-    ]
+        },
+        {
+            path: "/Error404",
+            name: "404 Page",
+            index: 15,
+            component: () => import("./views/Error404.vue")
+        },
+        {
+      path: "*",
+      redirect: "/Error404",
+    },
+    ],
 });
 
 // import NProgress from 'nprogress';

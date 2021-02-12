@@ -168,7 +168,7 @@ export default {
     },
 
     toInnerPackage() {
-      this.$router.push("/tour-package/" + this.tourData.package_id)
+      this.$router.push("/tour-package/" + this.tourData.package_id).catch(()=>{});
     }
   },
 };
