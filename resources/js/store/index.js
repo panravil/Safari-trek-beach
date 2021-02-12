@@ -10,7 +10,26 @@ const store = new Vuex.Store({
         destinationController,
         tourController,
         blogController
-    }
+    },
+    state: {
+        tourcard_loading: false,
+        blogcard_loading: false,
+    },
+    mutations: {
+        setRequestLoadingStatus(state, status) {
+            state.tourcard_loading = status;
+        },
+        setBlogLoadingStatus(state, status) {
+            state.blogcard_loading = status;
+        },
+    },
+    actions: {
+    
+    },
+    getters: {
+        tourcard_loading: state => state.tourcard_loading,
+        blogcard_loading: state => state.blogcard_loading,
+    },
 });
 
 export default store;

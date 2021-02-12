@@ -15,7 +15,7 @@ const getters = {
 
 const mutations = {
     setPopularTours(state, data) {
-        console.log("popular tour", data);
+        // console.log("popular tour", data);
         state.popularTours = data;
     },
 
@@ -29,38 +29,49 @@ const mutations = {
 
     setTourById(state, data) {
         state.packageData = data;
-    }
+    },
 };
 
 const actions = {
     async getPopularTours(context) {
-        // console.log("get popular tour called");
+        context.commit("setRequestLoadingStatus", true, {root: true,});
         await axios
             .get("/api/tour/popular-tours")
             .then(res => {
                 context.commit("setPopularTours", res.data.popularTour);
+                context.commit("setRequestLoadingStatus", false, {root: true,});
             })
-            .catch(err => {});
+            .catch(err => {
+                context.commit("setRequestLoadingStatus", false, {root: true,});
+            });
     },
 
     async getTourFilter(context, query) {
+        context.commit("setRequestLoadingStatus", true, {root: true,});
         await axios
             .get("/api/tour/filter", { params: query })
             .then(res => {
-                console.log("filter result", res);
+                // console.log("filter result", res);
                 context.commit("setFilterTours", res.data.tours);
+                context.commit("setRequestLoadingStatus", false, {root: true,});
             })
-            .catch(err => {});
+            .catch(err => {
+                context.commit("setRequestLoadingStatus", false, {root: true,});
+            });
     },
 
     async getTourById(context, id) {
+        context.commit("setRequestLoadingStatus", true, {root: true,});
         await axios
             .get("/api/tour/package/" + id)
             .then(res => {
-                console.log("one result", res.data.package);
+                // console.log("one result", res.data.package);
                 context.commit("setTourById", res.data.package);
+                context.commit("setRequestLoadingStatus", false, {root: true,});
             })
-            .catch(err => {});
+            .catch(err => {
+                context.commit("setRequestLoadingStatus", false, {root: true,});
+            });
     }
 };
 

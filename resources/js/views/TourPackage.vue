@@ -134,7 +134,7 @@
                     <span class="exclusion-inclusion">
                       Getting around:
                       <strong v-for="(item, index) in popularTours.transport" v-bind:key="index + 'transport'">
-                      {{ item }}<span v-if="index != popularTours.transport.length - 1">, </span>
+                        {{ item }}<span v-if="index != popularTours.transport.length - 1">, </span>
                       </strong>
                     </span>
                   </h5>
@@ -166,12 +166,16 @@
                 <div class="p-3" v-if="popularTours != null">
                   <h3 class="fw-bold">Itinerary</h3>
                   <div class="itinery mt-3" v-for="(item, index6) in popularTours.day" v-bind:key="'E'+index6">
-                    <div class="position-relative">
-                      <img :src="'http://operators.safari-trek-beach.com/images/gallery/tanzania/tour_day/NGORONGORO_CRATER_5.jpg'" class="w-100" />
+                    <div class="position-relative" v-if="item.image_url != null">
+                      <img :src="item.image_url" class="w-100" />
                       <div class="itinery-title">
                         <h4 class="fw-bold my-2">Day {{ index6 }}</h4>
                         <h5 class="fw-bold my-0">{{ item.title }}</h5>
                       </div>
+                    </div>
+                    <div v-else>
+                      <h4 class="fw-bold my-2">Day {{ index6 }}</h4>
+                      <h5 class="fw-bold my-0">{{ item.title }}</h5>
                     </div>
                     <div class="mt-3">
                       <div class="itinery-content">{{ item.day_description }}</div>
@@ -408,7 +412,7 @@ export default {
     getPacakgeById(package_id) {
       this.$store.dispatch("tourController/getTourById", package_id)
         .then(() => {
-          console.log('tag', this.popularTours)
+          // console.log('tag', this.popularTours)
         })
 
     }

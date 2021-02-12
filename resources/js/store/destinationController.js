@@ -21,6 +21,8 @@ const mutations = {
 const actions = {
     async getTopDestinations(context) {
         // console.log("get Top Destination called");
+        context.commit("setRequestLoadingStatus", true, {root: true,});
+        
         await axios
             .get("/api/destination/top-destinations")
             .then(res => {
@@ -30,23 +32,31 @@ const actions = {
                         res.data.topDestinations
                     );
                 }
+                context.commit("setRequestLoadingStatus", false, {root: true,});
             })
-            .catch(err => {});
+            .catch(err => {
+                context.commit("setRequestLoadingStatus", false, {root: true,});
+
+            });
     },
     async getListDestinations(context) {
         // console.log("get Top Destination called");
+        context.commit("setRequestLoadingStatus", true, {root: true,});
         await axios
             .get("/api/destination/list")
             .then(res => {
                 if (res.status == 200) {
-                    console.log('all destination:',  res);
+                    // console.log('all destination:',  res);
                     context.commit(
                         "setListDestinations",
                         res.data.destinationsList
                     );
                 }
+                context.commit("setRequestLoadingStatus", false, {root: true,});
             })
-            .catch(err => {});
+            .catch(err => {
+                context.commit("setRequestLoadingStatus", false, {root: true,});
+            });
     }
 };
 

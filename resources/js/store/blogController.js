@@ -21,21 +21,30 @@ const mutations = {
 const actions = {
     async getPopularBlogs(context) {
         // console.log("get popular tour called");
+        context.commit("setBlogLoadingStatus", true, {root: true,});
         await axios
             .get("/api/blog/homepage-blog")
             .then(res => {
                 context.commit("setPopularBlogs", res.data.homepageBlog);
+                context.commit("setBlogLoadingStatus", false, {root: true,});
             })
-            .catch(err => {});
+            .catch(err => {
+                context.commit("setBlogLoadingStatus", false, {root: true,});
+
+            });
     },
     async getListBlogs(context) {
         // console.log("get popular tour called");
+            context.commit("setRequestLoadingStatus", true, {root: true,});
         await axios
             .get("/api/blog/list")
             .then(res => {
                 context.commit("setListBlogs", res.data.blogList);
+                context.commit("setRequestLoadingStatus", false, {root: true,});
             })
-            .catch(err => {});
+            .catch(err => {
+                context.commit("setRequestLoadingStatus", false, {root: true,});
+            });
     }
 };
 

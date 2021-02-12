@@ -216,10 +216,10 @@
       <div v-if="loading" class="row gx-0">
         <div
           class="col-lg-4 col-md-6 col-xs-12"
-          v-for="(item, index) in popularTours"
-          v-bind:key="index"
+          v-for="(item, index) in 6"
+          v-bind:key="index + 'skel'"
         >
-          <!-- <TourCardSkelecton></TourCardSkelecton> -->
+          <TourCardSkelecton></TourCardSkelecton>
         </div>
       </div>
       <!-- end of test  -->
@@ -461,7 +461,16 @@
         <header class="section-header mt-5">
           <h3>FROM OUR BLOG</h3>
         </header>
-        <div class="row gx-0">
+        <div class="row gx-0" v-if="blog_loading">
+          <div
+            class="col-lg-4 col-md-6 col-xs-12"
+            v-for="(blog, index) in 3"
+            v-bind:key="index + 'blog'"
+          >
+            <TourCardSkelecton></TourCardSkelecton>
+          </div>
+        </div>
+        <div class="row gx-0" v-else>
           <div
             class="col-lg-4 col-md-6 col-xs-12"
             v-for="(blog, index) in popularBlogs"
@@ -487,7 +496,7 @@ import VueNumericInput from "vue-numeric-input";
 import Datepicker from "vuejs-datepicker";
 import TourCard from "../components/TourCard";
 import BlogCard from "../components/BlogCard";
-// import TourCardSkelecton from "../components/TourCardSkelecton";
+import TourCardSkelecton from "../components/TourCardSkelecton";
 
 export default {
   components: {
@@ -495,7 +504,7 @@ export default {
     Datepicker,
     TourCard,
     BlogCard,
-    // TourCardSkelecton,
+    TourCardSkelecton,
   },
   data() {
     return {
@@ -506,7 +515,6 @@ export default {
       traveler_number: "",
       start_date: "",
       selectedAge: [],
-      loading: true,
       disabledFn: {
         customPredictor(date) {
           var current_date = new Date();
@@ -634,6 +642,8 @@ export default {
       popularTours: "tourController/popularTours",
       topDestinations: "destinationController/topDestinations",
       popularBlogs: "blogController/popularBlogs",
+      loading: "tourcard_loading",
+      blog_loading: "blogcard_loading",
     }),
   },
 
@@ -702,7 +712,6 @@ export default {
 
     async getPopularTours() {
       await this.$store.dispatch("tourController/getPopularTours").then(() => {
-        this.loading = false;
       });
     },
 

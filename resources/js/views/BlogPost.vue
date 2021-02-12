@@ -6,7 +6,12 @@
         <h3>OUR BLOG POSTS</h3>
       </header>
 
-      <div class="row gx-0">
+      <div class="row gx-0" v-if="loading">
+        <div class="col-lg-4 col-md-6 col-xs-12" v-for="(blog, index) in 6" v-bind:key="index + 'bloglist'">
+          <TourCardSkelecton></TourCardSkelecton>
+        </div>
+      </div>
+      <div class="row gx-0" v-else>
         <div class="col-lg-4 col-md-6 col-xs-12" v-for="(blog, index) in listBlog" v-bind:key="index" @click="toBlogInnerPage">
           <BlogCard :blog="blog"></BlogCard>
         </div>
@@ -19,10 +24,12 @@
 <script>
 import BlogCard from "../components/BlogCard";
 import { mapState, mapGetters, mapMutations } from "vuex";
+import TourCardSkelecton from "../components/TourCardSkelecton";
 export default {
   name: "BlogPost",
   components: {
     BlogCard,
+    TourCardSkelecton,
   },
   data() {
     return {
@@ -31,6 +38,7 @@ export default {
   computed: {
     ...mapGetters({
       listBlog: "blogController/listBlog",
+      loading: "tourcard_loading",
     }),
   },
   created() {
