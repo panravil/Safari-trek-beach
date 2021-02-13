@@ -3,7 +3,7 @@
   <div class="container mt-5">
     <div class="card mb-3">
       <div class="row g-0 package-inner-banner"  >
-        <div class="col-lg-7 col-md-12" v-if="popularTours != null" :title="popularTours.title">
+        <div class="col-lg-7 col-md-12">
           <div class="package-inner-image" :style="[popularTours != null ? {
         'background-image': 'url(' + popularTours.image_url + ')',
       } : {'background': '#FFF'}]"></div>

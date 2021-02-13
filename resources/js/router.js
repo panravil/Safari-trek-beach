@@ -114,6 +114,12 @@ const router = new Router({
                     index: 15,
                     component: () => import("./views/BecomePartner.vue")
                 },
+                {
+                    path: "/terms",
+                    name: "Terms and Condition",
+                    index: 16,
+                    component: () => import("./views/TermsCondition.vue")
+                },
             ]
         },
         {

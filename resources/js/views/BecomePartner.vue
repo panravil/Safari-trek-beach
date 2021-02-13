@@ -39,7 +39,8 @@
           </div>
 
           <p class="px-3 mt-3">
-            <ejs-checkbox label="Terms and Policy"></ejs-checkbox>
+            <ejs-checkbox label="I agree to the Safari-Trek-Beach "></ejs-checkbox>
+            <a href="/terms"><span class=" text-decoration-underline text-dark">Terms and Condition.</span></a>
           </p>
 
           <div class="px-3 my-3">
@@ -66,7 +67,9 @@ import {
 } from "@syncfusion/ej2-vue-buttons";
 Vue.use(CheckBoxPlugin);
 
-import { enableRipple } from "@syncfusion/ej2-base";
+import {
+  enableRipple
+} from "@syncfusion/ej2-base";
 enableRipple(true);
 
 export default {

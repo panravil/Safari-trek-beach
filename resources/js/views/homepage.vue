@@ -255,7 +255,6 @@
 
           <carousel
             :per-page="1"
-            :mouse-drag="false"
             :speed="1000"
             :loop="true"
             :autoplayTimeout="3000"
@@ -349,7 +348,6 @@
         <div class="pt-5 why-us">
           <carousel
             :per-page="1"
-            :mouse-drag="false"
             :speed="1000"
             :loop="true"
             :autoplayTimeout="3000"

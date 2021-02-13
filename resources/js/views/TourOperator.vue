@@ -51,7 +51,7 @@
                           <h5 class="modal-title" id="reviewLavel">Write a Review</h5>
                           <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
-                        <div class="modal-body text-left">
+                        <div class="modal-body text-start">
                           <div class="row align-items-center">
                             <div class="col-sm-12">
                               <ejs-textbox floatLabelType="Auto" type="text" placeholder="Name" required></ejs-textbox>

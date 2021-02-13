@@ -134,12 +134,12 @@
                 </div>
               </transition>
             </div>
-            <div class="col-md-12 mobile-filter mobile-filter-none">
+            <!-- <div class="col-md-12 mobile-filter mobile-filter-none">
               <button class="btn btn-danger w-100 h-100">
                 <span>Search Tours</span>
                 <span class="fa fa-angle-right ms-2"></span>
               </button>
-            </div>
+            </div> -->
           </div>
 
           <h6 class="mt-5 fw-bold">Tour Price</h6>

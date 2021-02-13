@@ -11,16 +11,16 @@
             <a href="/about" class="footerLink">About Us</a>
           </li>
           <li class="footerList">
-            <a href="#" class="footerLink">Contact us</a>
+            <a href="/contact" class="footerLink">Contact us</a>
           </li>
           <li class="footerList">
-            <a href="#" class="footerLink">Become a Partner</a>
+            <a href="/become-a-partner" class="footerLink">Become a Partner</a>
           </li>
           <li class="footerList">
             <a href="#" class="footerLink">Operator Login</a>
           </li>
           <li class="footerList">
-            <a href="#" class="footerLink">Term &amp; Conditions</a>
+            <a href="/terms" class="footerLink">Terms &amp; Conditions</a>
           </li>
         </ul>
       </div>
