@@ -39,3 +39,18 @@ Route::get("/blog/homepage-blog", 'App\Http\Controllers\BlogController@popularBl
 
 // to show blog list page
 Route::get("/blog/list", 'App\Http\Controllers\BlogController@listBlogs');
+
+// to add new operator
+Route::post("/operator/add", 'App\Http\Controllers\OperatorController@addOperator');
+
+// to show operator list page
+Route::get("/operator/list", 'App\Http\Controllers\OperatorController@listOperators');
+
+// to show operator detals page
+Route::get("/operator/detail/{id}", 'App\Http\Controllers\OperatorController@operatorDetail');
+
+// to add review
+Route::post("/review/add", 'App\Http\Controllers\ReviewController@addReview');
+
+// to add quote
+Route::post("/quote/add", 'App\Http\Controllers\QuoteController@addQuote');

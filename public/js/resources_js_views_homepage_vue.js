@@ -226,6 +226,9 @@ __webpack_require__.r(__webpack_exports__);
         return letter.toUpperCase();
       });
       return level_data;
+    },
+    toInnerPackage: function toInnerPackage() {
+      this.$router.push("/tour-package/" + this.tourData.package_id)["catch"](function () {});
     }
   }
 });
@@ -243,6 +246,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => __WEBPACK_DEFAULT_EXPORT__
 /* harmony export */ });
+//
 //
 //
 //
@@ -648,6 +652,142 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -671,7 +811,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       traveler_number: "",
       start_date: "",
       selectedAge: [],
-      loading: true,
       disabledFn: {
         customPredictor: function customPredictor(date) {
           var current_date = new Date();
@@ -756,7 +895,9 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
   computed: _objectSpread({}, (0,vuex__WEBPACK_IMPORTED_MODULE_6__.mapGetters)({
     popularTours: "tourController/popularTours",
     topDestinations: "destinationController/topDestinations",
-    popularBlogs: "blogController/popularBlogs"
+    popularBlogs: "blogController/popularBlogs",
+    loading: "tourcard_loading",
+    blog_loading: "blogcard_loading"
   })),
   created: function created() {
     this.search_result = this.where_to_list;
@@ -827,9 +968,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
             switch (_context.prev = _context.next) {
               case 0:
                 _context.next = 2;
-                return _this2.$store.dispatch("tourController/getPopularTours").then(function () {
-                  _this2.loading = false;
-                });
+                return _this2.$store.dispatch("tourController/getPopularTours").then(function () {});
 
               case 2:
               case "end":
@@ -929,6 +1068,30 @@ ___CSS_LOADER_EXPORT___.push([module.id, "\n#tour-card .price {\n  width: 80px;\
 
 /***/ }),
 
+/***/ "./node_modules/css-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[2]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/TourCardSkelecton.vue?vue&type=style&index=0&lang=css&":
+/*!********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/css-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[2]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/TourCardSkelecton.vue?vue&type=style&index=0&lang=css& ***!
+  \********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+/***/ ((module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => __WEBPACK_DEFAULT_EXPORT__
+/* harmony export */ });
+/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../node_modules/css-loader/dist/runtime/api.js */ "./node_modules/css-loader/dist/runtime/api.js");
+/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0__);
+// Imports
+
+var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
+// Module
+___CSS_LOADER_EXPORT___.push([module.id, "\n.vue-content-placeholders-img,\n.vue-content-placeholders-text__line {\n    background: #c9c9c9 !important;\n}\n.vue-content-placeholders-img {\n  height: 200px !important;\n}\n\n", ""]);
+// Exports
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
+
+
+/***/ }),
+
 /***/ "./node_modules/style-loader/dist/cjs.js!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[2]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/BlogCard.vue?vue&type=style&index=0&lang=css&":
 /*!***************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/style-loader/dist/cjs.js!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[2]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/BlogCard.vue?vue&type=style&index=0&lang=css& ***!
@@ -986,6 +1149,36 @@ var update = _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js
 
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_css_loader_dist_cjs_js_clonedRuleSet_9_0_rules_0_use_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_9_0_rules_0_use_2_node_modules_vue_loader_lib_index_js_vue_loader_options_TourCard_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_1__.default.locals || {});
+
+/***/ }),
+
+/***/ "./node_modules/style-loader/dist/cjs.js!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[2]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/TourCardSkelecton.vue?vue&type=style&index=0&lang=css&":
+/*!************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/style-loader/dist/cjs.js!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[2]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/TourCardSkelecton.vue?vue&type=style&index=0&lang=css& ***!
+  \************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => __WEBPACK_DEFAULT_EXPORT__
+/* harmony export */ });
+/* harmony import */ var _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! !../../../node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js */ "./node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js");
+/* harmony import */ var _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _node_modules_css_loader_dist_cjs_js_clonedRuleSet_9_0_rules_0_use_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_9_0_rules_0_use_2_node_modules_vue_loader_lib_index_js_vue_loader_options_TourCardSkelecton_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! !!../../../node_modules/css-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[1]!../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[2]!../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./TourCardSkelecton.vue?vue&type=style&index=0&lang=css& */ "./node_modules/css-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[2]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/TourCardSkelecton.vue?vue&type=style&index=0&lang=css&");
+
+            
+
+var options = {};
+
+options.insert = "head";
+options.singleton = false;
+
+var update = _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default()(_node_modules_css_loader_dist_cjs_js_clonedRuleSet_9_0_rules_0_use_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_9_0_rules_0_use_2_node_modules_vue_loader_lib_index_js_vue_loader_options_TourCardSkelecton_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_1__.default, options);
+
+
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_css_loader_dist_cjs_js_clonedRuleSet_9_0_rules_0_use_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_9_0_rules_0_use_2_node_modules_vue_loader_lib_index_js_vue_loader_options_TourCardSkelecton_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_1__.default.locals || {});
 
 /***/ }),
 
@@ -1084,15 +1277,17 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _TourCardSkelecton_vue_vue_type_template_id_22e01bd3___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./TourCardSkelecton.vue?vue&type=template&id=22e01bd3& */ "./resources/js/components/TourCardSkelecton.vue?vue&type=template&id=22e01bd3&");
 /* harmony import */ var _TourCardSkelecton_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./TourCardSkelecton.vue?vue&type=script&lang=js& */ "./resources/js/components/TourCardSkelecton.vue?vue&type=script&lang=js&");
-/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! !../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+/* harmony import */ var _TourCardSkelecton_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./TourCardSkelecton.vue?vue&type=style&index=0&lang=css& */ "./resources/js/components/TourCardSkelecton.vue?vue&type=style&index=0&lang=css&");
+/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! !../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
 
 
 
+;
 
 
 /* normalize component */
-;
-var component = (0,_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__.default)(
+
+var component = (0,_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__.default)(
   _TourCardSkelecton_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__.default,
   _TourCardSkelecton_vue_vue_type_template_id_22e01bd3___WEBPACK_IMPORTED_MODULE_0__.render,
   _TourCardSkelecton_vue_vue_type_template_id_22e01bd3___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns,
@@ -1235,6 +1430,19 @@ __webpack_require__.r(__webpack_exports__);
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _node_modules_style_loader_dist_cjs_js_node_modules_css_loader_dist_cjs_js_clonedRuleSet_9_0_rules_0_use_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_9_0_rules_0_use_2_node_modules_vue_loader_lib_index_js_vue_loader_options_TourCard_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/style-loader/dist/cjs.js!../../../node_modules/css-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[1]!../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[2]!../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./TourCard.vue?vue&type=style&index=0&lang=css& */ "./node_modules/style-loader/dist/cjs.js!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[2]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/TourCard.vue?vue&type=style&index=0&lang=css&");
+
+
+/***/ }),
+
+/***/ "./resources/js/components/TourCardSkelecton.vue?vue&type=style&index=0&lang=css&":
+/*!****************************************************************************************!*\
+  !*** ./resources/js/components/TourCardSkelecton.vue?vue&type=style&index=0&lang=css& ***!
+  \****************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_style_loader_dist_cjs_js_node_modules_css_loader_dist_cjs_js_clonedRuleSet_9_0_rules_0_use_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_9_0_rules_0_use_2_node_modules_vue_loader_lib_index_js_vue_loader_options_TourCardSkelecton_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/style-loader/dist/cjs.js!../../../node_modules/css-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[1]!../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[2]!../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./TourCardSkelecton.vue?vue&type=style&index=0&lang=css& */ "./node_modules/style-loader/dist/cjs.js!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[2]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/TourCardSkelecton.vue?vue&type=style&index=0&lang=css&");
 
 
 /***/ }),
@@ -1413,7 +1621,15 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c(
     "div",
-    { staticClass: "card mb-3 mx-2", attrs: { id: "tour-card" } },
+    {
+      staticClass: "card mb-3 mx-2",
+      attrs: { id: "tour-card" },
+      on: {
+        click: function($event) {
+          return _vm.toInnerPackage()
+        }
+      }
+    },
     [
       _c(
         "div",
@@ -1584,7 +1800,7 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("a", { attrs: { href: "#" } }, [
+    return _c("div", [
       _c("div", {
         staticClass: "mask",
         staticStyle: { "background-color": "rgba(251, 251, 251, 0.15)" }
@@ -1623,7 +1839,27 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "card mb-3 mx-2" })
+  return _c(
+    "div",
+    { staticClass: "card mb-3 mx-2" },
+    [
+      _c(
+        "content-placeholders",
+        { attrs: { rounded: true } },
+        [
+          _c("content-placeholders-img"),
+          _vm._v(" "),
+          _c("content-placeholders-heading"),
+          _vm._v(" "),
+          _c("content-placeholders-heading"),
+          _vm._v(" "),
+          _c("content-placeholders-heading")
+        ],
+        1
+      )
+    ],
+    1
+  )
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -2090,10 +2326,13 @@ var render = function() {
           ? _c(
               "div",
               { staticClass: "row gx-0" },
-              _vm._l(_vm.popularTours, function(item, index) {
+              _vm._l(6, function(item, index) {
                 return _c(
                   "div",
-                  { key: index, staticClass: "col-lg-4 col-md-6 col-xs-12" },
+                  {
+                    key: index + "skel",
+                    staticClass: "col-lg-4 col-md-6 col-xs-12"
+                  },
                   [_c("TourCardSkelecton")],
                   1
                 )
@@ -2137,7 +2376,6 @@ var render = function() {
               {
                 attrs: {
                   "per-page": 1,
-                  "mouse-drag": false,
                   speed: 1000,
                   loop: true,
                   autoplayTimeout: 3000,
@@ -2281,7 +2519,6 @@ var render = function() {
               {
                 attrs: {
                   "per-page": 1,
-                  "mouse-drag": false,
                   speed: 1000,
                   loop: true,
                   autoplayTimeout: 3000,
@@ -2369,27 +2606,44 @@ var render = function() {
       _c("section", [
         _vm._m(8),
         _vm._v(" "),
-        _c(
-          "div",
-          { staticClass: "row gx-0" },
-          _vm._l(_vm.popularBlogs, function(blog, index) {
-            return _c(
+        _vm.blog_loading
+          ? _c(
               "div",
-              {
-                key: index,
-                staticClass: "col-lg-4 col-md-6 col-xs-12",
-                on: {
-                  click: function($event) {
-                    return _vm.$router.push("./blog-inner-page")
-                  }
-                }
-              },
-              [_c("BlogCard", { attrs: { blog: blog } })],
-              1
+              { staticClass: "row gx-0" },
+              _vm._l(3, function(blog, index) {
+                return _c(
+                  "div",
+                  {
+                    key: index + "blog",
+                    staticClass: "col-lg-4 col-md-6 col-xs-12"
+                  },
+                  [_c("TourCardSkelecton")],
+                  1
+                )
+              }),
+              0
             )
-          }),
-          0
-        ),
+          : _c(
+              "div",
+              { staticClass: "row gx-0" },
+              _vm._l(_vm.popularBlogs, function(blog, index) {
+                return _c(
+                  "div",
+                  {
+                    key: index,
+                    staticClass: "col-lg-4 col-md-6 col-xs-12",
+                    on: {
+                      click: function($event) {
+                        return _vm.$router.push("./blog-inner-page")
+                      }
+                    }
+                  },
+                  [_c("BlogCard", { attrs: { blog: blog } })],
+                  1
+                )
+              }),
+              0
+            ),
         _vm._v(" "),
         _vm._m(9)
       ])
@@ -2495,10 +2749,14 @@ var staticRenderFns = [
             ]),
             _vm._v(" "),
             _c("div", [
-              _c("button", { staticClass: "btn btn-danger" }, [
-                _vm._v("\n                Read More "),
-                _c("span", { staticClass: "fa fa-angle-right ms-2" })
-              ])
+              _c(
+                "a",
+                { staticClass: "btn btn-danger", attrs: { href: "/about" } },
+                [
+                  _vm._v("\n                Read More "),
+                  _c("span", { staticClass: "fa fa-angle-right ms-2" })
+                ]
+              )
             ])
           ])
         ])

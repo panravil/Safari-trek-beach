@@ -12418,6 +12418,9 @@ __webpack_require__.r(__webpack_exports__);
         return letter.toUpperCase();
       });
       return level_data;
+    },
+    toInnerPackage: function toInnerPackage() {
+      this.$router.push("/tour-package/" + this.tourData.package_id)["catch"](function () {});
     }
   }
 });
@@ -12901,7 +12904,15 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c(
     "div",
-    { staticClass: "card mb-3 mx-2", attrs: { id: "tour-card" } },
+    {
+      staticClass: "card mb-3 mx-2",
+      attrs: { id: "tour-card" },
+      on: {
+        click: function($event) {
+          return _vm.toInnerPackage()
+        }
+      }
+    },
     [
       _c(
         "div",
@@ -13072,7 +13083,7 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("a", { attrs: { href: "#" } }, [
+    return _c("div", [
       _c("div", {
         staticClass: "mask",
         staticStyle: { "background-color": "rgba(251, 251, 251, 0.15)" }

@@ -12418,6 +12418,9 @@ __webpack_require__.r(__webpack_exports__);
         return letter.toUpperCase();
       });
       return level_data;
+    },
+    toInnerPackage: function toInnerPackage() {
+      this.$router.push("/tour-package/" + this.tourData.package_id)["catch"](function () {});
     }
   }
 });
@@ -12642,7 +12645,7 @@ var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBP
 ___CSS_LOADER_EXPORT___.i(_node_modules_css_loader_dist_cjs_js_clonedRuleSet_9_0_rules_0_use_1_node_modules_syncfusion_ej2_vue_inputs_styles_material_css__WEBPACK_IMPORTED_MODULE_2__.default);
 ___CSS_LOADER_EXPORT___.i(_node_modules_css_loader_dist_cjs_js_clonedRuleSet_9_0_rules_0_use_1_node_modules_syncfusion_ej2_base_styles_material_css__WEBPACK_IMPORTED_MODULE_1__.default);
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n.destination-package {\n  padding-top: 60px;\n  padding-bottom: 100px;\n  background-color: #f2f2f2;\n}\n.destination-package .image_title {\n  position: absolute;\n  bottom: 0px;\n  left: 0;\n  width: 100%;\n  padding: 4.375rem 1.875rem 1.875rem 1.5625rem;\n  color: white;\n  font-size: 2.375rem;\n  line-height: 2.5rem;\n  font-weight: 600;\n  font-family: 'Gentium Basic', serif;\n  text-shadow: 1px 1px 5px #000;\n  z-index: 3;\n  background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.5) 45%, rgba(0, 0, 0, 0.9) 100%);\n}\n.destination-package .content-section {\n  border-right: 1px solid #ccc;\n}\n.destination-package .section-title {\n  border-top: 1px solid #ccc;\n  width: 100%;\n}\n.destination-package .section-title-inner {\n  border-bottom: 1px solid #ccc;\n  width: 100%;\n  font-weight: 700;\n}\n.destination-package .blog-category {\n  border: 1px solid #ccc;\n  border-bottom: 5px solid #ccc;\n}\n.destination-package ul li {\n  list-style: none;\n  position: relative;\n  cursor: pointer;\n}\n.destination-package ul li:before {\n  content: \"›\";\n  font-weight: normal;\n  top: -8px;\n  font-size: 25px;\n  position: absolute;\n  left: -15px;\n}\n.e-multi-line-input textarea {\n  height: 100px;\n}\n.quick-link-section {\n  display: block;\n}\n@media (max-width: 991px) {\n.destination-package .quick-link-section {\n    display: none;\n}\n.destination-package .content-section {\n    border: none;\n}\n.destination-package .image_title {\n    font-size: 25px;\n    line-height: 35px;\n    padding: 10px 20px;\n}\n.destination-package .card-img-top {\n    height: 100%;\n    width: auto;\n    position: absolute;\n    left: 50%;\n    top: 50%;\n    transform: translateY(-50%) translateX(-50%);\n}\n.destination-package .position-relative.overflow-hidden {\n    border-top-right-radius: 0.25rem;\n    border-top-left-radius: 0.25rem;\n    height: 300px;\n}\n}\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n.destination-package {\n  padding-top: 60px;\n  padding-bottom: 100px;\n  background-color: #f2f2f2;\n}\n.destination-package .image_title {\n  position: absolute;\n  bottom: 0px;\n  left: 0;\n  width: 100%;\n  padding: 4.375rem 1.875rem 1.875rem 1.5625rem;\n  color: white;\n  font-size: 2.375rem;\n  line-height: 2.5rem;\n  font-weight: 600;\n  font-family: 'Gentium Basic', serif;\n  text-shadow: 1px 1px 5px #000;\n  z-index: 3;\n  background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.5) 45%, rgba(0, 0, 0, 0.9) 100%);\n}\n.destination-package .content-section {\n  border-right: 1px solid #ccc;\n}\n.destination-package .section-title {\n  border-top: 1px solid #ccc;\n  width: 100%;\n}\n.destination-package .section-title-inner {\n  border-bottom: 1px solid #ccc;\n  width: 100%;\n  font-weight: 700;\n}\n.destination-package .blog-category {\n  border: 1px solid #ccc;\n  border-bottom: 5px solid #ccc;\n}\n.destination-package ul li {\n  list-style: none;\n  position: relative;\n  cursor: pointer;\n}\n.destination-package ul li:before {\n  content: \"›\";\n  font-weight: normal;\n  top: -8px;\n  font-size: 25px;\n  position: absolute;\n  left: -15px;\n}\n.destination-package .e-multi-line-input textarea {\n  height: 100px;\n}\n.quick-link-section {\n  display: block;\n}\n@media (max-width: 991px) {\n.destination-package .quick-link-section {\n    display: none;\n}\n.destination-package .content-section {\n    border: none;\n}\n.destination-package .image_title {\n    font-size: 25px;\n    line-height: 35px;\n    padding: 10px 20px;\n}\n.destination-package .card-img-top {\n    height: 100%;\n    width: auto;\n    position: absolute;\n    left: 50%;\n    top: 50%;\n    transform: translateY(-50%) translateX(-50%);\n}\n.destination-package .position-relative.overflow-hidden {\n    border-top-right-radius: 0.25rem;\n    border-top-left-radius: 0.25rem;\n    height: 300px;\n}\n}\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -12901,7 +12904,15 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c(
     "div",
-    { staticClass: "card mb-3 mx-2", attrs: { id: "tour-card" } },
+    {
+      staticClass: "card mb-3 mx-2",
+      attrs: { id: "tour-card" },
+      on: {
+        click: function($event) {
+          return _vm.toInnerPackage()
+        }
+      }
+    },
     [
       _c(
         "div",
@@ -13072,7 +13083,7 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("a", { attrs: { href: "#" } }, [
+    return _c("div", [
       _c("div", {
         staticClass: "mask",
         staticStyle: { "background-color": "rgba(251, 251, 251, 0.15)" }
