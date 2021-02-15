@@ -335,7 +335,7 @@
                     <hr />
                     <div
                       class="review"
-                      v-for="(item, index7) in packageData.review"
+                      v-for="(item, index7) in current_page_reviews"
                       v-bind:key="'F' + index7"
                     >
                       <h3 class="fw-bold mt-5">{{ item.title }}</h3>
@@ -372,6 +372,14 @@
                         </div>
                       </div>
                       <hr class="my-3" />
+                    </div>
+                    <div class="review-pagination">
+                      <Pagination
+                        v-model="current_review_page"
+                        :records="packageData.review.length"
+                        :per-page="reviews_per_page"
+                        :options="pagenation_options"
+                      />
                     </div>
                   </div>
                 </div>
@@ -681,11 +689,13 @@ import { mapState, mapGetters, mapMutations } from "vuex";
 
 import StarRating from "vue-star-rating";
 import CustomStarRating from "../components/CustomStarRating";
+import Pagination from "vue-pagination-2";
 export default {
   name: "TourPackage",
   components: {
     StarRating,
     CustomStarRating,
+    Pagination,
   },
   computed: {
     package_id: function () {
@@ -697,10 +707,22 @@ export default {
     }),
   },
   data() {
-    return {};
+    return {
+      current_review_page: 1,
+      reviews_per_page: 5,
+      current_page_reviews: [],
+      pagenation_options: {
+        chunk: 5,
+      },
+    };
   },
   created() {
     this.getPacakgeById(this.package_id);
+  },
+  watch: {
+    current_review_page: function (newValue) {
+      this.getCurrentPageReviews(newValue);
+    },
   },
   mounted() {},
   methods: {
@@ -708,8 +730,23 @@ export default {
       this.$store
         .dispatch("tourController/getTourById", package_id)
         .then(() => {
-          console.log("tag", this.packageData);
+          this.getCurrentPageReviews(1);
         });
+    },
+
+    getCurrentPageReviews(page_num) {
+      this.current_page_reviews = [];
+      let index = 0;
+      for (
+        let i = (page_num - 1) * this.reviews_per_page;
+        i < page_num * this.reviews_per_page;
+        i++
+      ) {
+        if (this.packageData.review[i] != undefined) {
+          this.current_page_reviews[index] = this.packageData.review[i];
+          index++;
+        }
+      }
     },
   },
 };
@@ -780,7 +817,10 @@ export default {
     rgba(0, 0, 0, 0.9) 100%
   );
 }
-
+.review-pagination {
+  justify-content: center;
+  display: flex;
+}
 .exclusion-inclusion {
   font-size: 18px;
 }

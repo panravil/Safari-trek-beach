@@ -1,12 +1,12 @@
 import axios from "axios";
 const state = {
     operatorList: null,
-    operatorData: null,
+    operatorData: null
 };
 
 const getters = {
     operatorList: state => state.operatorList,
-    operatorData: state => state.operatorData,
+    operatorData: state => state.operatorData
 };
 
 const mutations = {
@@ -16,7 +16,7 @@ const mutations = {
 
     setOperatorData(state, data) {
         state.operatorData = data;
-    },
+    }
 };
 
 const actions = {
@@ -24,22 +24,18 @@ const actions = {
         await axios
             .get("/api/operator/list")
             .then(res => {
-                console.log('operator list', res.data.operatorList)
                 context.commit("setOperatorList", res.data.operatorList);
             })
-            .catch(err => {
-            });
+            .catch(err => {});
     },
 
     async getOperatorById(context, id) {
         await axios
             .get("/api/operator/detail/" + id)
             .then(res => {
-                console.log("operator", res.data.operator);
                 context.commit("setOperatorData", res.data.operator);
             })
-            .catch(err => {
-            });
+            .catch(err => {});
     }
 };
 

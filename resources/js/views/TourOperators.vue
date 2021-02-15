@@ -9,7 +9,7 @@
 
       <div
         class="card p-3 mt-5 tour-operator-card"
-        v-for="(operator, index) in operatorList"
+        v-for="(operator, index) in current_page_operators"
         v-bind:key="'operator' + index"
         data-aos="fade-up"
         @click="toOperatorDetail(operator.user_id)"
@@ -44,19 +44,36 @@
           ></div>
         </div>
       </div>
+      <div class="operator-pagination" v-if="operatorList != null">
+        <Pagination
+          v-model="current_operator_page"
+          :records="operatorList.length"
+          :per-page="operators_per_page"
+          :options="pagenation_options"
+        />
+      </div>
     </div>
   </div>
 </template>
 
 <script>
 import { mapState, mapGetters, mapMutations } from "vuex";
+import Pagination from "vue-pagination-2";
 import CustomStarRating from "../components/CustomStarRating";
 export default {
   name: "TourOperators",
   data() {
-    return {};
+    return {
+      current_operator_page: 1,
+      operators_per_page: 10,
+      current_page_operators: [],
+      pagenation_options: {
+        chunk: 5,
+      },
+    };
   },
   components: {
+    Pagination,
     CustomStarRating,
   },
   computed: {
@@ -64,16 +81,38 @@ export default {
       operatorList: "operatorController/operatorList",
     }),
   },
+  watch: {
+    current_operator_page: function (newValue) {
+      this.getCurrentPageOperators(newValue);
+    },
+  },
   created() {
     this.getOperatorList();
   },
   methods: {
     getOperatorList() {
-      this.$store.dispatch("operatorController/getOperatorList");
+      this.$store.dispatch("operatorController/getOperatorList").then(() => {
+        this.getCurrentPageOperators(1);
+      });
     },
 
     toOperatorDetail(id) {
       this.$router.push("/operator/" + id);
+    },
+
+    getCurrentPageOperators(page_num) {
+      this.current_page_operators = [];
+      let index = 0;
+      for (
+        let i = (page_num - 1) * this.operators_per_page;
+        i < page_num * this.operators_per_page;
+        i++
+      ) {
+        if (this.operatorList[i] != undefined) {
+          this.current_page_operators[index] = this.operatorList[i];
+          index++;
+        }
+      }
     },
   },
 
@@ -125,6 +164,11 @@ export default {
 }
 .tour-operator-card {
   cursor: pointer;
+}
+.operator-pagination {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
 }
 @media (max-width: 1200px) {
   #tour-operators-page .wrapper {

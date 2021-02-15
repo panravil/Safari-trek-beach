@@ -264,6 +264,16 @@ input#traveler_input {
   width: 100px;
 }
 
+.page-link {
+  cursor: pointer !important;
+  padding: 5px 10px;
+  border: solid 1px #c5c5c5;
+  border-radius: 3px;
+  margin: 0px 1px;
+}
+.VuePagination__count {
+    display: none;
+}
 .where_to_dropdown,
 .traveler-dropdown {
   position: absolute;

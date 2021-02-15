@@ -177,7 +177,7 @@
                 <h3 class="fw-bold mb-0 mt-3">Reviews</h3>
                 <div
                   class="review-section mt-3 p-3"
-                  v-for="(review, index) in operatorData.review"
+                  v-for="(review, index) in current_page_reviews"
                   v-bind:key="'r' + index"
                 >
                   <h4>{{ review.full_name }}</h4>
@@ -188,6 +188,14 @@
                     ></strong>
                     {{ review.description }}
                   </h5>
+                </div>
+                <div class="review-pagination">
+                  <Pagination
+                    v-model="current_review_page"
+                    :records="operatorData.review.length"
+                    :per-page="reviews_per_page"
+                    :options="pagenation_options"
+                  />
                 </div>
               </div>
             </div>
@@ -213,15 +221,25 @@ import TourCardOperator from "../components/TourCardOperator";
 import StarRating from "vue-star-rating";
 import { mapState, mapGetters, mapMutations } from "vuex";
 import CustomStarRating from "../components/CustomStarRating";
+import Pagination from "vue-pagination-2";
+
 export default {
   name: "TourOperator",
   components: {
     TourCardOperator,
     StarRating,
     CustomStarRating,
+    Pagination,
   },
   data() {
-    return {};
+    return {
+      current_review_page: 1,
+      reviews_per_page: 5,
+      current_page_reviews: [],
+      pagenation_options: {
+        chunk: 5,
+      },
+    };
   },
   computed: {
     operator_id: function () {
@@ -232,6 +250,11 @@ export default {
       operatorData: "operatorController/operatorData",
     }),
   },
+  watch: {
+    current_review_page: function (newValue) {
+      this.getCurrentPageReviews(newValue);
+    },
+  },
   created() {
     this.getOperatorById(this.operator_id);
   },
@@ -240,8 +263,23 @@ export default {
       this.$store
         .dispatch("operatorController/getOperatorById", operator_id)
         .then(() => {
-          console.log("operator", this.operatorData);
+          this.getCurrentPageReviews(1);
         });
+    },
+
+    getCurrentPageReviews(page_num) {
+      this.current_page_reviews = [];
+      let index = 0;
+      for (
+        let i = (page_num - 1) * this.reviews_per_page;
+        i < page_num * this.reviews_per_page;
+        i++
+      ) {
+        if (this.operatorData.review[i] != undefined) {
+          this.current_page_reviews[index] = this.operatorData.review[i];
+          index++;
+        }
+      }
     },
   },
 };
@@ -256,6 +294,12 @@ export default {
 
 .review-section {
   background-color: #f5f5f5;
+}
+
+.review-pagination {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
 }
 
 .tour-operator-page .e-multi-line-input textarea {
