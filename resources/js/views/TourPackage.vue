@@ -7,9 +7,9 @@
             <div
               class="package-inner-image"
               :style="[
-                popularTours != null
+                packageData != null
                   ? {
-                      'background-image': 'url(' + popularTours.image_url + ')',
+                      'background-image': 'url(' + packageData.image_url + ')',
                     }
                   : { background: '#FFF' },
               ]"
@@ -19,28 +19,28 @@
             class="col-lg-5 col-md-12 p-3 position-relative package-inner-title"
           >
             <div class="card-body">
-              <h3 class="card-title fw-bold" v-if="popularTours != null">
-                {{ popularTours.title }}
+              <h3 class="card-title fw-bold" v-if="packageData != null">
+                {{ packageData.title }}
               </h3>
-              <h5 class="card-title" v-if="popularTours != null">
-                {{ popularTours.company_name }}
+              <h5 class="card-title" v-if="packageData != null">
+                {{ packageData.company_name }}
               </h5>
             </div>
             <div class="price-rate p-3">
-              <div class="p-3" v-if="popularTours != null">
+              <div class="p-3" v-if="packageData != null">
                 <h4
                   class="fw-bold text-success my-2"
-                  :title="popularTours.rate.child_currency + ' USD per Child'"
+                  :title="packageData.rate.child_currency + ' USD per Child'"
                 >
-                  ${{ popularTours.rate.adult_currency }}
+                  ${{ packageData.rate.adult_currency }}
                   <small class="text-dark">USD</small>
                 </h4>
-                <p class="mt-2" v-if="popularTours != null">
+                <p class="mt-2" v-if="packageData != null">
                   <CustomStarRating
-                    :rating="popularTours.avg_review"
+                    :rating="packageData.avg_review"
                   ></CustomStarRating>
-                  <span>{{ popularTours.avg_review }}</span>
-                  <span>({{ popularTours.sum_review }} Reviews)</span>
+                  <span>{{ packageData.avg_review }}</span>
+                  <span>({{ packageData.sum_review }} Reviews)</span>
                 </p>
                 <a class="btn btn-danger" href="/tour-quote"
                   >Get Free Quote Now
@@ -63,10 +63,10 @@
               </div>
               <div class="e-content">
                 <div>
-                  <div class="p-3" v-if="popularTours != null">
+                  <div class="p-3" v-if="packageData != null">
                     <h3 class="fw-bold">Overview</h3>
                     <div class="overview-description">
-                      {{ popularTours.description }}
+                      {{ packageData.description }}
                     </div>
                     <hr />
                     <h4 class="fw-bold text-danger">
@@ -76,15 +76,12 @@
                     <h6 class="my-1">
                       Tour Start from
                       <strong
-                        >{{
-                          popularTours.getting_there.start_city
-                        }}
-                        City</strong
+                        >{{ packageData.getting_there.start_city }} City</strong
                       >
                     </h6>
                     <div
                       class="routine ms-2"
-                      v-for="(item, index1) in popularTours.day"
+                      v-for="(item, index1) in packageData.day"
                       v-bind:key="index1"
                     >
                       <h6 class="fw-bold mt-4">Day {{ index1 }}</h6>
@@ -151,12 +148,12 @@
                     <div class="row g-0">
                       <div
                         class="col-md-6 col-sm-12"
-                        v-if="popularTours != null"
+                        v-if="packageData != null"
                       >
                         <h4 class="fw-bold ms-2">Inclusion</h4>
                         <h5
                           class="ms-5"
-                          v-for="(item, index2) in popularTours.inclusion
+                          v-for="(item, index2) in packageData.inclusion
                             .included"
                           v-bind:key="'A' + index2"
                         >
@@ -166,12 +163,12 @@
                       </div>
                       <div
                         class="col-md-6 col-sm-12"
-                        v-if="popularTours != null"
+                        v-if="packageData != null"
                       >
                         <h4 class="fw-bold ms-2">Exclusion</h4>
                         <h5
                           class="ms-5"
-                          v-for="(item, index3) in popularTours.inclusion
+                          v-for="(item, index3) in packageData.inclusion
                             .excluded"
                           v-bind:key="'B' + index3"
                         >
@@ -190,7 +187,7 @@
                       <span class="exclusion-inclusion">
                         Activitiy:
                         <strong>
-                          {{ popularTours.tour_focus }}
+                          {{ packageData.tour_focus }}
                         </strong>
                       </span>
                     </h5>
@@ -199,12 +196,12 @@
                       <span class="exclusion-inclusion">
                         Getting around:
                         <strong
-                          v-for="(item, index) in popularTours.transport"
+                          v-for="(item, index) in packageData.transport"
                           v-bind:key="index + 'transport'"
                         >
                           {{ item
                           }}<span
-                            v-if="index != popularTours.transport.length - 1"
+                            v-if="index != packageData.transport.length - 1"
                             >,
                           </span>
                         </strong>
@@ -220,15 +217,13 @@
                       <span class="exclusion-inclusion">
                         The Tour Starts in:
                         <strong>
-                          {{ popularTours.getting_there.start_city }}</strong
+                          {{ packageData.getting_there.start_city }}</strong
                         ></span
                       >
                     </h5>
                     <h5
                       class="ms-5"
-                      v-if="
-                        popularTours.getting_there.airport_transfer == 'yes'
-                      "
+                      v-if="packageData.getting_there.airport_transfer == 'yes'"
                     >
                       <span class="fa fa-check me-3 text-danger"></span>
                       <span class="exclusion-inclusion"
@@ -244,7 +239,7 @@
                       <span class="exclusion-inclusion">
                         The Tour Ends in:
                         <strong>{{
-                          popularTours.getting_there.end_city
+                          packageData.getting_there.end_city
                         }}</strong></span
                       >
                     </h5>
@@ -252,11 +247,11 @@
                   </div>
                 </div>
                 <div>
-                  <div class="p-3" v-if="popularTours != null">
+                  <div class="p-3" v-if="packageData != null">
                     <h3 class="fw-bold">Itinerary</h3>
                     <div
                       class="itinery mt-3"
-                      v-for="(item, index6) in popularTours.day"
+                      v-for="(item, index6) in packageData.day"
                       v-bind:key="'E' + index6"
                     >
                       <div
@@ -296,7 +291,7 @@
                         <div>
                           <h6>
                             <span
-                              v-for="(meal, index) in popularTours.day_meal[
+                              v-for="(meal, index) in packageData.day_meal[
                                 index6
                               ]"
                               v-bind:key="'meal' + index"
@@ -305,7 +300,7 @@
                               }}<span
                                 v-if="
                                   index ==
-                                  popularTours.day_meal[index6].length - 2
+                                  packageData.day_meal[index6].length - 2
                                 "
                               >
                                 and
@@ -313,7 +308,7 @@
                               <span
                                 v-else-if="
                                   index !=
-                                  popularTours.day_meal[index6].length - 1
+                                  packageData.day_meal[index6].length - 1
                                 "
                                 >,
                               </span>
@@ -325,31 +320,29 @@
                   </div>
                 </div>
                 <div>
-                  <div class="p-3" v-if="popularTours != null">
+                  <div class="p-3" v-if="packageData != null">
                     <h5 class="reviews">
                       <CustomStarRating
-                        :rating="popularTours.avg_review"
+                        :rating="packageData.avg_review"
                       ></CustomStarRating>
                       <span class="text-danger"
-                        >Reviews {{ popularTours.avg_review }} / 5
+                        >Reviews {{ packageData.avg_review }} / 5
                         <small class="text-muted"
-                          >({{ popularTours.sum_review }} reviews)</small
+                          >({{ packageData.sum_review }} reviews)</small
                         ></span
                       >
                     </h5>
                     <hr />
                     <div
                       class="review"
-                      v-for="(item, index7) in popularTours.review"
+                      v-for="(item, index7) in packageData.review"
                       v-bind:key="'F' + index7"
                     >
                       <h3 class="fw-bold mt-5">{{ item.title }}</h3>
                       <h6 class="reviews">
-                        <span class="fa fa-star checked"></span>
-                        <span class="fa fa-star checked"></span>
-                        <span class="fa fa-star checked"></span>
-                        <span class="fa fa-star checked"></span>
-                        <span class="fa fa-star checked"></span>
+                        <CustomStarRating
+                          :rating="item.rate"
+                        ></CustomStarRating>
                         <span class="text-danger">
                           {{ item.rate }} / 5 <small class="text-muted"></small
                         ></span>
@@ -383,20 +376,20 @@
                   </div>
                 </div>
                 <div>
-                  <div class="p-3" v-if="popularTours != null">
+                  <div class="p-3" v-if="packageData != null">
                     <h3 class="fw-bold">Photo Gallary</h3>
-                    <!-- <div class="row g-0" v-if="popularTours != null">
-                    <div class="col-lg-4 col-md-6 col-sm-12 p-2" v-for="(item, index8) in popularTours.gallery" v-bind:key="'G'+index8">
+                    <!-- <div class="row g-0" v-if="packageData != null">
+                    <div class="col-lg-4 col-md-6 col-sm-12 p-2" v-for="(item, index8) in packageData.gallery" v-bind:key="'G'+index8">
                       <div class="photo-gallery-item" :style="{
                         'background-image': 'url(' + item + ')',
                       }"></div>
                     </div>
                   </div> -->
-                    <viewer :images="popularTours.gallery">
-                      <div class="row g-0" v-if="popularTours != null">
+                    <viewer :images="packageData.gallery">
+                      <div class="row g-0" v-if="packageData != null">
                         <div
                           class="col-lg-4 col-md-6 col-sm-12 p-2"
-                          v-for="(item, index8) in popularTours.gallery"
+                          v-for="(item, index8) in packageData.gallery"
                           v-bind:key="'G' + index8"
                         >
                           <img :src="item" style="width: 100%; height: auto" />
@@ -452,9 +445,9 @@
           </div>
         </div>
         <div class="col-lg-4 col-md-12">
-          <div class="card p-4 mb-3" v-if="popularTours != null">
+          <div class="card p-4 mb-3" v-if="packageData != null">
             <h3 class="fw-bold text-success">
-              Price: $ {{ popularTours.rate.adult_currency }}
+              Price: $ {{ packageData.rate.adult_currency }}
               <small class="fw-normal">pp</small>
             </h3>
             <h5 class="fw-bold">Request a Quote</h5>
@@ -486,23 +479,23 @@
               </div>
             </div>
           </div>
-          <div class="card p-4 mb-3" v-if="popularTours != null">
+          <div class="card p-4 mb-3" v-if="packageData != null">
             <img
-              :src="popularTours.logo"
-              v-if="popularTours.logo != null"
+              :src="packageData.logo"
+              v-if="packageData.logo != null"
               class="mx-auto w-50"
             />
-            <hr v-if="popularTours.logo != null" />
+            <hr v-if="packageData.logo != null" />
             <h6 class="mb-0 mt-2">
               <strong>Offered by:</strong>
-              <span>{{ popularTours.company_name }}</span>
+              <span>{{ packageData.company_name }}</span>
             </h6>
             <h6 class="mb-0 mt-2">
               <strong>Employees:</strong>
-              <span> {{ popularTours.no_of_staff }}</span>
+              <span> {{ packageData.no_of_staff }}</span>
             </h6>
           </div>
-          <div class="card p-4 mb-3" v-if="popularTours != null">
+          <div class="card p-4 mb-3" v-if="packageData != null">
             <h3 class="fw-bold">Customer Reviews</h3>
 
             <carousel
@@ -515,7 +508,7 @@
               :autoplay="true"
             >
               <slide
-                v-for="(item, indexsss) in popularTours.review"
+                v-for="(item, indexsss) in packageData.review"
                 v-bind:key="'review' + indexsss"
               >
                 <div class="d-flex align-items-center">
@@ -638,7 +631,7 @@
               </div>
             </div>
           </div>
-          <div class="card p-4 mb-3 gallery" v-if="popularTours != null">
+          <div class="card p-4 mb-3 gallery" v-if="packageData != null">
             <h3 class="fw-bold">Gallery</h3>
             <!-- <carousel :navigationEnabled="true" :per-page="1" :mouse-drag="false" :speed="1000" :loop="true" :autoplayTimeout="3000" :autoplayDirection="'backward'" :paginationEnabled="false" :autoplay="true"> -->
             <carousel
@@ -650,7 +643,7 @@
               :autoplayTimeout="3000"
             >
               <slide
-                v-for="(item, index8) in popularTours.gallery"
+                v-for="(item, index8) in packageData.gallery"
                 v-bind:key="'G23' + index8"
               >
                 <div
@@ -700,7 +693,7 @@ export default {
       return id.slice(0, id.length);
     },
     ...mapGetters({
-      popularTours: "tourController/packageData",
+      packageData: "tourController/packageData",
     }),
   },
   data() {
@@ -715,7 +708,7 @@ export default {
       this.$store
         .dispatch("tourController/getTourById", package_id)
         .then(() => {
-          console.log("tag", this.popularTours);
+          console.log("tag", this.packageData);
         });
     },
   },

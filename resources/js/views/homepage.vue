@@ -234,7 +234,7 @@
       </div>
 
       <div class="text-center">
-        <a href="#" class="btn btn-danger"> View All Packages </a>
+        <a href="/our-tours" class="btn btn-danger"> View All Packages </a>
       </div>
     </div>
 
@@ -709,8 +709,9 @@ export default {
     },
 
     async getPopularTours() {
-      await this.$store.dispatch("tourController/getPopularTours").then(() => {
-      });
+      await this.$store
+        .dispatch("tourController/getPopularTours")
+        .then(() => {});
     },
 
     getTopDestinations() {
