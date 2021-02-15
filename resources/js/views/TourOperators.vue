@@ -1,52 +1,88 @@
 <template>
-<div id="tour-operators-page">
-  <div class="container">
+  <div id="tour-operators-page">
+    <div class="container">
+      <section>
+        <header class="section-header" data-aos="fade-up">
+          <h3>AFRICA SAFARI BOOKING OPERATORS</h3>
+        </header>
+      </section>
 
-    <section>
-      <header class="section-header" data-aos="fade-up">
-        <h3>AFRICA SAFARI BOOKING OPERATORS</h3>
-      </header>
-    </section>
-
-    <div class="card p-3 mt-5" v-for="(item, index) in 5" v-bind:key="index" data-aos="fade-up">
-      <div class="wrapper">
-        <div class="operator-logo text-center">
-          <img :src="'http://operators.safari-trek-beach.com/images/user/13_1612774884.jpg'" />
-        </div>
-        <div class="px-3 operator-content">
-          <h4 class="fw-bold">See Endless Adventures</h4>
-          <h6 class="description">
-            We are experts when involving safari in Tanzania. We make you fulfill your dream safari by offering the best safari packages based on Wildlife safaris, Mountain Trekking, Beach Holiday Safaris, Cultural Tour as well as City Tour, in both Private and ...
-          </h6>
-          <p class="mt-2">
-            <span class="fa fa-star checked"></span>
-            <span class="fa fa-star checked"></span>
-            <span class="fa fa-star checked"></span>
-            <span class="fa fa-star checked"></span>
-            <span class="fa fa-star checked"></span>
-            <span>5.0 (177 Reviews)</span>
-          </p>
-          <h6>Learn More about this company</h6>
-        </div>
-        <div class="logo-layout" style="background-image: url('http://operators.safari-trek-beach.com/images/user/13_1612529259.jpg')">
+      <div
+        class="card p-3 mt-5 tour-operator-card"
+        v-for="(operator, index) in operatorList"
+        v-bind:key="'operator' + index"
+        data-aos="fade-up"
+        @click="toOperatorDetail(operator.user_id)"
+      >
+        <div class="wrapper">
+          <div class="operator-logo text-center">
+            <img :src="operator.logo" />
+          </div>
+          <div class="px-3 operator-content">
+            <h4 class="fw-bold">{{ operator.company_name }}</h4>
+            <h6 class="description">
+              {{ operator.brief | limitText }}
+            </h6>
+            <p class="mt-2">
+              <CustomStarRating
+                :rating="operator.avg_review"
+              ></CustomStarRating>
+              <span
+                >{{ operator.avg_review }} ({{
+                  operator.sum_review
+                }}
+                Reviews)</span
+              >
+            </p>
+            <h6>Learn More about this company</h6>
+          </div>
+          <div
+            class="logo-layout"
+            :style="{
+              'background-image': 'url(' + operator.banner + ')',
+            }"
+          ></div>
         </div>
       </div>
     </div>
   </div>
-</div>
 </template>
 
 <script>
+import { mapState, mapGetters, mapMutations } from "vuex";
+import CustomStarRating from "../components/CustomStarRating";
 export default {
   name: "TourOperators",
   data() {
     return {};
   },
+  components: {
+    CustomStarRating,
+  },
+  computed: {
+    ...mapGetters({
+      operatorList: "operatorController/operatorList",
+    }),
+  },
+  created() {
+    this.getOperatorList();
+  },
   methods: {
-    example() {
+    getOperatorList() {
+      this.$store.dispatch("operatorController/getOperatorList");
+    },
 
-    }
-  }
+    toOperatorDetail(id) {
+      this.$router.push("/operator/" + id);
+    },
+  },
+
+  filters: {
+    limitText: function (string) {
+      if (string.length > 300) return string.substring(0, 300) + "...";
+      else return string;
+    },
+  },
 };
 </script>
 
@@ -87,7 +123,9 @@ export default {
 #tour-operators-page .operator-content {
   min-width: calc(100% - 550px);
 }
-
+.tour-operator-card {
+  cursor: pointer;
+}
 @media (max-width: 1200px) {
   #tour-operators-page .wrapper {
     display: flex;

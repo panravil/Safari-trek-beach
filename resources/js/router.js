@@ -103,7 +103,7 @@ const router = new Router({
                     component: () => import("./views/TourLandingTwo.vue")
                 },
                 {
-                    path: "/operator",
+                    path: "/operator/:id",
                     name: "Tour Operator",
                     index: 14,
                     component: () => import("./views/TourOperator.vue")

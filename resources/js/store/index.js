@@ -3,13 +3,15 @@ import Vuex from "vuex";
 import destinationController from "./destinationController";
 import tourController from "./tourController";
 import blogController from "./blogController";
+import operatorController from "./operatorController";
 Vue.use(Vuex);
 
 const store = new Vuex.Store({
     modules: {
         destinationController,
         tourController,
-        blogController
+        blogController,
+        operatorController,
     },
     state: {
         tourcard_loading: false,

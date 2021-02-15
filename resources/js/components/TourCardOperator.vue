@@ -68,23 +68,58 @@
     <div class="row gx-0" style="position: relative">
       <div>
         <p class="card-text mb-1 ps-3">
-          {{ tourData.company_name }}
+          {{ company_name }}
         </p>
-        <p class="card-text ps-3 d-flex mb-2">
-          <!-- <star-rating
-            :rating="tourData.avg_review"
-            :round-start-rating="false"
-            :read-only="true"
-            :star-size="22"
-            active-color="#f93154"
-          ></star-rating> -->
-          <CustomStarRating :rating="tourData.avg_review"></CustomStarRating>
-          <strong> {{ tourData.avg_review }} </strong>
-          <span> / </span>
-          <span v-if="tourData.sum_review == 1"
-            >{{ tourData.sum_review }} Review</span
-          >
-          <span v-else>{{ tourData.sum_review }} Reviews</span>
+        <p class="card-text ps-3">
+          <span class="star-rating">
+            <!-- first star -->
+            <span v-if="avg_review < 0.1" class="fa fa-star-o"></span>
+            <span
+              v-else-if="avg_review > 0.1 && avg_review < 0.5"
+              class="fa fa-star-half-full checked"
+            ></span>
+            <span v-else class="fa fa-star checked"></span>
+
+            <!-- second star -->
+            <span v-if="avg_review < 1" class="fa fa-star-o"></span>
+            <span
+              v-else-if="avg_review < 1.5"
+              class="fa fa-star-half-full checked"
+            ></span>
+            <span v-else class="fa fa-star checked"></span>
+
+            <!-- third star -->
+            <span v-if="avg_review < 2" class="fa fa-star-o"></span>
+            <span
+              v-else-if="avg_review < 2.5"
+              class="fa fa-star-half-full checked"
+            ></span>
+            <span v-else class="fa fa-star checked"></span>
+
+            <!-- fourth star -->
+            <span v-if="avg_review < 3" class="fa fa-star-o"></span>
+            <span
+              v-else-if="avg_review < 3.5"
+              class="fa fa-star-half-full checked"
+            ></span>
+            <span v-else class="fa fa-star checked"></span>
+
+            <!-- fifth star -->
+            <span v-if="avg_review < 4" class="fa fa-star-o"></span>
+            <span
+              v-else-if="avg_review < 4.5"
+              class="fa fa-star-half-full checked"
+            ></span>
+            <span v-else class="fa fa-star checked"></span>
+            <span
+              ><strong>{{ avg_review }}</strong></span
+            >
+            <span> / </span>
+            <span v-if="sum_review == 1"
+              >{{ sum_review }} Review</span
+            >
+            <span v-else>{{ sum_review }} Reviews</span>
+          </span>
         </p>
       </div>
       <div class="price">
@@ -98,13 +133,12 @@
 </template>
 
 <script>
-import CustomStarRating from "../components/CustomStarRating";
 export default {
-  components: {
-    CustomStarRating,
-  },
   props: {
     tourData: Object,
+    company_name: String,
+    avg_review: Number,
+    sum_review: Number,
   },
   computed: {},
   data() {
@@ -130,19 +164,15 @@ export default {
         level_data += ", " + level[i];
       }
 
-      level_data = level_data
-        .toLowerCase()
-        .replace(/\b[a-z]/g, function (letter) {
-          return letter.toUpperCase();
-        });
+      level_data = level_data.toLowerCase().replace(/\b[a-z]/g, function (letter) {
+        return letter.toUpperCase();
+      });
       return level_data;
     },
 
     toInnerPackage() {
-      this.$router
-        .push("/tour-package/" + this.tourData.package_id)
-        .catch(() => {});
-    },
+      this.$router.push("/tour-package/" + this.tourData.package_id).catch(()=>{});
+    }
   },
 };
 </script>
