@@ -14,7 +14,7 @@
         ></div>
       </div>
       <div class="tour_title">
-        {{ tourData.title }}
+        {{ tourData.no_of_day }}-Day {{ tourData.title }}
       </div>
       <img
         :src="tourData.operator_logo"
@@ -24,7 +24,11 @@
     </div>
     <div
       class="card-body"
-      style="position: relative; border-bottom: 1px dotted black"
+      style="
+        position: relative;
+        border-bottom: 1px dotted black;
+        font-size: 1rem;
+      "
     >
       <div
         class="tag-image"
@@ -65,7 +69,7 @@
         {{ tourData.end_city }} (End)
       </p>
     </div>
-    <div class="row gx-0" style="position: relative">
+    <div class="row gx-0" style="position: relative; font-size: 1rem">
       <div>
         <p class="card-text mb-1 ps-3">
           {{ company_name }}
@@ -115,9 +119,7 @@
               ><strong>{{ avg_review }}</strong></span
             >
             <span> / </span>
-            <span v-if="sum_review == 1"
-              >{{ sum_review }} Review</span
-            >
+            <span v-if="sum_review == 1">{{ sum_review }} Review</span>
             <span v-else>{{ sum_review }} Reviews</span>
           </span>
         </p>
@@ -164,15 +166,19 @@ export default {
         level_data += ", " + level[i];
       }
 
-      level_data = level_data.toLowerCase().replace(/\b[a-z]/g, function (letter) {
-        return letter.toUpperCase();
-      });
+      level_data = level_data
+        .toLowerCase()
+        .replace(/\b[a-z]/g, function (letter) {
+          return letter.toUpperCase();
+        });
       return level_data;
     },
 
     toInnerPackage() {
-      this.$router.push("/tour-package/" + this.tourData.package_id).catch(()=>{});
-    }
+      this.$router
+        .push("/tour-package/" + this.tourData.package_id)
+        .catch(() => {});
+    },
   },
 };
 </script>

@@ -14,7 +14,7 @@
         ></div>
       </div>
       <div class="tour_title">
-        {{ tourData.title }}
+        {{ tourData.no_of_day }}-Day {{ tourData.title }}
       </div>
       <img
         :src="tourData.operator_logo"

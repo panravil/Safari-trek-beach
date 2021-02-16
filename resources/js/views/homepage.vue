@@ -711,7 +711,9 @@ export default {
     async getPopularTours() {
       await this.$store
         .dispatch("tourController/getPopularTours")
-        .then(() => {});
+        .then(() => {
+          console.log('tag', this.popularTours)
+        });
     },
 
     getTopDestinations() {

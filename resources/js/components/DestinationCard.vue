@@ -29,7 +29,11 @@
       <p class="card-text" :title="destination.short_description">
         {{ destination.short_description }}
       </p>
-      <button type="button" class="btn btn-white">
+      <button
+        type="button"
+        class="btn btn-white"
+        @click="goToDestinationDetailPage"
+      >
         Read More <span class="fa fa-angle-double-right ms-2"></span>
       </button>
     </div>
@@ -47,7 +51,11 @@ export default {
     return {};
   },
   created() {},
-  methods: {},
+  methods: {
+    goToDestinationDetailPage() {
+      this.$router.push("/destination-package");
+    },
+  },
 };
 </script>
 

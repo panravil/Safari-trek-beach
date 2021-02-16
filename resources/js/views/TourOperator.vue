@@ -26,7 +26,11 @@
           <div class="e-content">
             <div>
               <h3 class="fw-bold mb-0 mt-3">Overview</h3>
-              <h6 class="mt-2" v-if="operatorData != null">
+              <h6
+                class="mt-2"
+                v-if="operatorData != null"
+                style="color: darkslategrey"
+              >
                 {{ operatorData.brief }}
               </h6>
               <hr />
@@ -53,7 +57,12 @@
                       <h5>{{ review.full_name }}</h5>
                       <h6>
                         <strong
-                          >{{ review.title }}<br />
+                          >{{ review.title }}
+                          <br />
+                        </strong>
+                      </h6>
+                      <h6 class="text-start" style="color: darkslategrey">
+                        <strong>
                           <span class="fa fa-quote-left ms-2"></span
                         ></strong>
                         {{ review.description }}
