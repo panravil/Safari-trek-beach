@@ -1,9 +1,9 @@
 (self["webpackChunk"] = self["webpackChunk"] || []).push([["resources_js_views_TourLandingOne_vue"],{
 
-/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/TourCard.vue?vue&type=script&lang=js&":
-/*!***************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/TourCard.vue?vue&type=script&lang=js& ***!
-  \***************************************************************************************************************************************************************************************************************/
+/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/CustomStarRating.vue?vue&type=script&lang=js&":
+/*!***********************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/CustomStarRating.vue?vue&type=script&lang=js& ***!
+  \***********************************************************************************************************************************************************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -43,109 +43,135 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  props: {
+    rating: Number
+  },
+  computed: {},
+  data: function data() {
+    return {};
+  },
+  methods: {}
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/TourCard.vue?vue&type=script&lang=js&":
+/*!***************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/TourCard.vue?vue&type=script&lang=js& ***!
+  \***************************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => __WEBPACK_DEFAULT_EXPORT__
+/* harmony export */ });
+/* harmony import */ var _components_CustomStarRating__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../components/CustomStarRating */ "./resources/js/components/CustomStarRating.vue");
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  components: {
+    CustomStarRating: _components_CustomStarRating__WEBPACK_IMPORTED_MODULE_0__.default
+  },
   props: {
     tourData: Object
   },
@@ -347,6 +373,45 @@ var update = _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js
 
 /***/ }),
 
+/***/ "./resources/js/components/CustomStarRating.vue":
+/*!******************************************************!*\
+  !*** ./resources/js/components/CustomStarRating.vue ***!
+  \******************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => __WEBPACK_DEFAULT_EXPORT__
+/* harmony export */ });
+/* harmony import */ var _CustomStarRating_vue_vue_type_template_id_3897cf4b___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./CustomStarRating.vue?vue&type=template&id=3897cf4b& */ "./resources/js/components/CustomStarRating.vue?vue&type=template&id=3897cf4b&");
+/* harmony import */ var _CustomStarRating_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./CustomStarRating.vue?vue&type=script&lang=js& */ "./resources/js/components/CustomStarRating.vue?vue&type=script&lang=js&");
+/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! !../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+;
+var component = (0,_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__.default)(
+  _CustomStarRating_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__.default,
+  _CustomStarRating_vue_vue_type_template_id_3897cf4b___WEBPACK_IMPORTED_MODULE_0__.render,
+  _CustomStarRating_vue_vue_type_template_id_3897cf4b___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns,
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/CustomStarRating.vue"
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (component.exports);
+
+/***/ }),
+
 /***/ "./resources/js/components/TourCard.vue":
 /*!**********************************************!*\
   !*** ./resources/js/components/TourCard.vue ***!
@@ -427,6 +492,22 @@ component.options.__file = "resources/js/views/TourLandingOne.vue"
 
 /***/ }),
 
+/***/ "./resources/js/components/CustomStarRating.vue?vue&type=script&lang=js&":
+/*!*******************************************************************************!*\
+  !*** ./resources/js/components/CustomStarRating.vue?vue&type=script&lang=js& ***!
+  \*******************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => __WEBPACK_DEFAULT_EXPORT__
+/* harmony export */ });
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_CustomStarRating_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./CustomStarRating.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/CustomStarRating.vue?vue&type=script&lang=js&");
+ /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_CustomStarRating_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__.default); 
+
+/***/ }),
+
 /***/ "./resources/js/components/TourCard.vue?vue&type=script&lang=js&":
 /*!***********************************************************************!*\
   !*** ./resources/js/components/TourCard.vue?vue&type=script&lang=js& ***!
@@ -472,6 +553,23 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./resources/js/components/CustomStarRating.vue?vue&type=template&id=3897cf4b&":
+/*!*************************************************************************************!*\
+  !*** ./resources/js/components/CustomStarRating.vue?vue&type=template&id=3897cf4b& ***!
+  \*************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "render": () => /* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_CustomStarRating_vue_vue_type_template_id_3897cf4b___WEBPACK_IMPORTED_MODULE_0__.render,
+/* harmony export */   "staticRenderFns": () => /* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_CustomStarRating_vue_vue_type_template_id_3897cf4b___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns
+/* harmony export */ });
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_CustomStarRating_vue_vue_type_template_id_3897cf4b___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./CustomStarRating.vue?vue&type=template&id=3897cf4b& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/CustomStarRating.vue?vue&type=template&id=3897cf4b&");
+
+
+/***/ }),
+
 /***/ "./resources/js/components/TourCard.vue?vue&type=template&id=5583021a&":
 /*!*****************************************************************************!*\
   !*** ./resources/js/components/TourCard.vue?vue&type=template&id=5583021a& ***!
@@ -502,6 +600,61 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "staticRenderFns": () => /* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_TourLandingOne_vue_vue_type_template_id_1a62f0a6___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns
 /* harmony export */ });
 /* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_TourLandingOne_vue_vue_type_template_id_1a62f0a6___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./TourLandingOne.vue?vue&type=template&id=1a62f0a6& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/views/TourLandingOne.vue?vue&type=template&id=1a62f0a6&");
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/CustomStarRating.vue?vue&type=template&id=3897cf4b&":
+/*!****************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/CustomStarRating.vue?vue&type=template&id=3897cf4b& ***!
+  \****************************************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "render": () => /* binding */ render,
+/* harmony export */   "staticRenderFns": () => /* binding */ staticRenderFns
+/* harmony export */ });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("span", { staticClass: "star-rating" }, [
+    _vm.rating < 0.1
+      ? _c("span", { staticClass: "fa fa-star-o" })
+      : _vm.rating > 0.1 && _vm.rating < 0.5
+      ? _c("span", { staticClass: "fa fa-star-half-full checked" })
+      : _c("span", { staticClass: "fa fa-star checked" }),
+    _vm._v(" "),
+    _vm.rating < 1
+      ? _c("span", { staticClass: "fa fa-star-o" })
+      : _vm.rating < 1.5
+      ? _c("span", { staticClass: "fa fa-star-half-full checked" })
+      : _c("span", { staticClass: "fa fa-star checked" }),
+    _vm._v(" "),
+    _vm.rating < 2
+      ? _c("span", { staticClass: "fa fa-star-o" })
+      : _vm.rating < 2.5
+      ? _c("span", { staticClass: "fa fa-star-half-full checked" })
+      : _c("span", { staticClass: "fa fa-star checked" }),
+    _vm._v(" "),
+    _vm.rating < 3
+      ? _c("span", { staticClass: "fa fa-star-o" })
+      : _vm.rating < 3.5
+      ? _c("span", { staticClass: "fa fa-star-half-full checked" })
+      : _c("span", { staticClass: "fa fa-star checked" }),
+    _vm._v(" "),
+    _vm.rating < 4
+      ? _c("span", { staticClass: "fa fa-star-o" })
+      : _vm.rating < 4.5
+      ? _c("span", { staticClass: "fa fa-star-half-full checked" })
+      : _c("span", { staticClass: "fa fa-star checked" })
+  ])
+}
+var staticRenderFns = []
+render._withStripped = true
+
 
 
 /***/ }),
@@ -547,7 +700,13 @@ var render = function() {
           _vm._m(0),
           _vm._v(" "),
           _c("div", { staticClass: "tour_title" }, [
-            _vm._v("\n      " + _vm._s(_vm.tourData.title) + "\n    ")
+            _vm._v(
+              "\n      " +
+                _vm._s(_vm.tourData.no_of_day) +
+                "-Day " +
+                _vm._s(_vm.tourData.title) +
+                "\n    "
+            )
           ]),
           _vm._v(" "),
           _c("img", {
@@ -635,41 +794,16 @@ var render = function() {
               )
             ]),
             _vm._v(" "),
-            _c("p", { staticClass: "card-text ps-3" }, [
-              _c("span", { staticClass: "star-rating" }, [
-                _vm.tourData.avg_review < 0.1
-                  ? _c("span", { staticClass: "fa fa-star-o" })
-                  : _vm.tourData.avg_review > 0.1 &&
-                    _vm.tourData.avg_review < 0.5
-                  ? _c("span", { staticClass: "fa fa-star-half-full checked" })
-                  : _c("span", { staticClass: "fa fa-star checked" }),
+            _c(
+              "p",
+              { staticClass: "card-text ps-3 d-flex mb-2" },
+              [
+                _c("CustomStarRating", {
+                  attrs: { rating: _vm.tourData.avg_review }
+                }),
                 _vm._v(" "),
-                _vm.tourData.avg_review < 1
-                  ? _c("span", { staticClass: "fa fa-star-o" })
-                  : _vm.tourData.avg_review < 1.5
-                  ? _c("span", { staticClass: "fa fa-star-half-full checked" })
-                  : _c("span", { staticClass: "fa fa-star checked" }),
-                _vm._v(" "),
-                _vm.tourData.avg_review < 2
-                  ? _c("span", { staticClass: "fa fa-star-o" })
-                  : _vm.tourData.avg_review < 2.5
-                  ? _c("span", { staticClass: "fa fa-star-half-full checked" })
-                  : _c("span", { staticClass: "fa fa-star checked" }),
-                _vm._v(" "),
-                _vm.tourData.avg_review < 3
-                  ? _c("span", { staticClass: "fa fa-star-o" })
-                  : _vm.tourData.avg_review < 3.5
-                  ? _c("span", { staticClass: "fa fa-star-half-full checked" })
-                  : _c("span", { staticClass: "fa fa-star checked" }),
-                _vm._v(" "),
-                _vm.tourData.avg_review < 4
-                  ? _c("span", { staticClass: "fa fa-star-o" })
-                  : _vm.tourData.avg_review < 4.5
-                  ? _c("span", { staticClass: "fa fa-star-half-full checked" })
-                  : _c("span", { staticClass: "fa fa-star checked" }),
-                _vm._v(" "),
-                _c("span", [
-                  _c("strong", [_vm._v(_vm._s(_vm.tourData.avg_review))])
+                _c("strong", [
+                  _vm._v(" " + _vm._s(_vm.tourData.avg_review) + " ")
                 ]),
                 _vm._v(" "),
                 _c("span", [_vm._v(" / ")]),
@@ -681,8 +815,9 @@ var render = function() {
                   : _c("span", [
                       _vm._v(_vm._s(_vm.tourData.sum_review) + " Reviews")
                     ])
-              ])
-            ])
+              ],
+              1
+            )
           ]),
           _vm._v(" "),
           _c("div", { staticClass: "price" }, [

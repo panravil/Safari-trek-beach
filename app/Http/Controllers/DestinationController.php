@@ -46,4 +46,20 @@ class DestinationController extends Controller
         JSON_UNESCAPED_UNICODE
       );
     }
+
+    public function postDetail($slug) {
+
+      $details = Destination::postDetail($slug);
+
+      // dd($details);
+
+      return response()->json(
+        [
+          'post' => $details
+        ],
+        200,
+        [],
+        JSON_UNESCAPED_UNICODE
+      );
+    }
 }

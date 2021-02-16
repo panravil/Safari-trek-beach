@@ -35,6 +35,24 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: "DestinationCard",
   props: {
@@ -45,7 +63,11 @@ __webpack_require__.r(__webpack_exports__);
     return {};
   },
   created: function created() {},
-  methods: {}
+  methods: {
+    goToDestinationDetailPage: function goToDestinationDetailPage() {
+      this.$router.push("/destination-package");
+    }
+  }
 });
 
 /***/ }),
@@ -169,7 +191,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n#destination-card .bg-image {\n  background-size: cover;\n  position: relative;\n  width: 100%;\n  height: 0;\n  padding-top: 56.25%;\n}\n#destination-card {\n  transition: box-shadow 0.2s ease-in-out, transform 0.3s ease-in-out;\n  box-shadow: 0px 2px 3px rgb(0 0 0 / 18%);\n  cursor: pointer;\n}\n#destination-card:hover {\nbox-shadow: 0px 1px 13px #666;\n}\n#destination-card .card-text {\n  display: -webkit-box;\n  -webkit-line-clamp: 3;\n  -webkit-box-orient: vertical;\n  position: relative;\n  --max-lines: 3;\n  min-height: 75px;\n  max-height: calc(var(--lh) * var(--max-lines));\n  overflow: hidden;\n  padding-right: 1rem;\n}\n#destination-card .card-title {\n  display: -webkit-box;\n  -webkit-line-clamp: 1;\n  -webkit-box-orient: vertical;\n  position: relative;\n  --max-lines: 1;\n  min-height: 24px;\n  max-height: calc(var(--lh) * var(--max-lines));\n  overflow: hidden;\n  padding-right: 1rem;\n}\n#destination-card .subtitle {\n  overflow: hidden;\n  white-space: nowrap;\n  text-overflow: ellipsis;\n}\n#destination-card .subtitle::first-letter {\n  text-transform: uppercase;\n}\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n#destination-card .bg-image {\n  background-size: cover;\n  position: relative;\n  width: 100%;\n  height: 0;\n  padding-top: 56.25%;\n}\n#destination-card {\n  transition: box-shadow 0.2s ease-in-out, transform 0.3s ease-in-out;\n  box-shadow: 0px 2px 3px rgb(0 0 0 / 18%);\n  cursor: pointer;\n}\n#destination-card:hover {\n  box-shadow: 0px 1px 13px #666;\n}\n#destination-card .card-text {\n  display: -webkit-box;\n  -webkit-line-clamp: 3;\n  -webkit-box-orient: vertical;\n  position: relative;\n  --max-lines: 3;\n  min-height: 75px;\n  max-height: calc(var(--lh) * var(--max-lines));\n  overflow: hidden;\n  padding-right: 1rem;\n}\n#destination-card .card-title {\n  display: -webkit-box;\n  -webkit-line-clamp: 1;\n  -webkit-box-orient: vertical;\n  position: relative;\n  --max-lines: 1;\n  min-height: 24px;\n  max-height: calc(var(--lh) * var(--max-lines));\n  overflow: hidden;\n  padding-right: 1rem;\n}\n#destination-card .subtitle {\n  overflow: hidden;\n  white-space: nowrap;\n  text-overflow: ellipsis;\n}\n#destination-card .subtitle::first-letter {\n  text-transform: uppercase;\n}\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -627,7 +649,11 @@ var render = function() {
             staticStyle: { "text-overflow": "ellipsis" },
             attrs: { title: _vm.destination.post_sub_title }
           },
-          [_vm._v(_vm._s(_vm.destination.post_sub_title))]
+          [
+            _vm._v(
+              "\n      " + _vm._s(_vm.destination.post_sub_title) + "\n    "
+            )
+          ]
         ),
         _vm._v(" "),
         _c(
@@ -643,7 +669,18 @@ var render = function() {
           ]
         ),
         _vm._v(" "),
-        _vm._m(1)
+        _c(
+          "button",
+          {
+            staticClass: "btn btn-white",
+            attrs: { type: "button" },
+            on: { click: _vm.goToDestinationDetailPage }
+          },
+          [
+            _vm._v("\n      Read More "),
+            _c("span", { staticClass: "fa fa-angle-double-right ms-2" })
+          ]
+        )
       ])
     ]
   )
@@ -653,22 +690,9 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("a", { attrs: { href: "#" } }, [
+    return _c("a", { attrs: { href: "/destination-package" } }, [
       _c("div", { staticClass: "mask" })
     ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "button",
-      { staticClass: "btn btn-white", attrs: { type: "button" } },
-      [
-        _vm._v("\n      Read More "),
-        _c("span", { staticClass: "fa fa-angle-double-right ms-2" })
-      ]
-    )
   }
 ]
 render._withStripped = true

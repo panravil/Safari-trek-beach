@@ -34,11 +34,17 @@ Route::get("/destination/top-destinations", 'App\Http\Controllers\DestinationCon
 // to show destinations list page
 Route::get("/destination/list", 'App\Http\Controllers\DestinationController@listDestinations');
 
+// to show destination inner page details
+Route::get("/destination/post/{slug}", 'App\Http\Controllers\DestinationController@postDetail');
+
 // to show homepage blog
 Route::get("/blog/homepage-blog", 'App\Http\Controllers\BlogController@popularBlogs');
 
 // to show blog list page
 Route::get("/blog/list", 'App\Http\Controllers\BlogController@listBlogs');
+
+// to show blog inner page details
+Route::get("/blog/post/{slug}", 'App\Http\Controllers\BlogController@postDetail');
 
 // to add new operator
 Route::post("/operator/add", 'App\Http\Controllers\OperatorController@addOperator');
