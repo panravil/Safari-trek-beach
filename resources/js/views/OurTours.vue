@@ -462,8 +462,10 @@ import { ChipListPlugin } from "@syncfusion/ej2-vue-buttons";
 Vue.use(ChipListPlugin);
 
 import { enableRipple } from "@syncfusion/ej2-base";
-import { mapState, mapGetters, mapMutations } from "vuex";
 enableRipple(true);
+
+import { mapState, mapGetters, mapMutations } from "vuex";
+
 
 export default {
   name: "OurTours",

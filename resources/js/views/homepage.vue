@@ -312,7 +312,7 @@
           class="col-lg-3 col-md-4 col-xs-12"
           v-for="item in topDestinations"
           v-bind:key="item.post_id"
-          @click="$router.push('./destination-package')"
+          @click="$router.push('/destination-package/' + item.post_slug)"
         >
           <div class="card mb-3 mx-2">
             <div
@@ -333,7 +333,7 @@
         </div>
       </div>
       <div class="text-center">
-        <a href="/destinations" class="btn btn-danger">
+        <a href="/tour-destinations" class="btn btn-danger">
           View All Destinations <span class="fa fa-angle-right ms-2"></span
         ></a>
       </div>
@@ -473,7 +473,6 @@
             class="col-lg-4 col-md-6 col-xs-12"
             v-for="(blog, index) in popularBlogs"
             v-bind:key="index"
-            @click="$router.push('./blog-inner-page')"
           >
             <BlogCard :blog="blog"></BlogCard>
           </div>
@@ -712,7 +711,7 @@ export default {
       await this.$store
         .dispatch("tourController/getPopularTours")
         .then(() => {
-          console.log('tag', this.popularTours)
+          // console.log('tag', this.popularTours)
         });
     },
 

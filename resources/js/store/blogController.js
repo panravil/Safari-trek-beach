@@ -2,11 +2,13 @@ import axios from "axios";
 const state = {
     popularBlogs: null,
     listBlog: null,
+    blogData: null,
 };
 
 const getters = {
     popularBlogs: state => state.popularBlogs,
     listBlog: state => state.listBlog,
+    blogData: state => state.blogData,
 };
 
 const mutations = {
@@ -15,7 +17,10 @@ const mutations = {
     },
     setListBlogs(state, data) {
         state.listBlog = data;
-    }
+    },
+    setBlogData(state, data) {
+        state.blogData = data;
+    },
 };
 
 const actions = {
@@ -40,6 +45,20 @@ const actions = {
             .get("/api/blog/list")
             .then(res => {
                 context.commit("setListBlogs", res.data.blogList);
+                // console.log('blog', res.data.blogList)
+                context.commit("setRequestLoadingStatus", false, {root: true,});
+            })
+            .catch(err => {
+                context.commit("setRequestLoadingStatus", false, {root: true,});
+            });
+    },
+    async getBlogById(context, slug) {
+        context.commit("setRequestLoadingStatus", true, {root: true,});
+        await axios
+            .get("/api/blog/post/" + slug)
+            .then(res => {
+                // console.log('res', res.data.post)
+                context.commit("setBlogData", res.data.post);
                 context.commit("setRequestLoadingStatus", false, {root: true,});
             })
             .catch(err => {

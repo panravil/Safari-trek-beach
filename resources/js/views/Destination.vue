@@ -12,7 +12,7 @@
         </div>
       </div>
       <div class="row gx-0" v-else>
-        <div class="col-lg-4 col-md-6 col-xs-12" v-for="(destination, index) in listDestinations" v-bind:key="index">
+        <div class="col-lg-4 col-md-6 col-xs-12" v-for="(destination, index) in listDestinations" v-bind:key="'destination'+ index">
           <DestinationCard :destination="destination"></DestinationCard>
         </div>
       </div>
@@ -48,9 +48,15 @@ export default {
     this.getListDestinations();
   },
   methods: {
+
     getListDestinations() {
       this.$store.dispatch("destinationController/getListDestinations");
-    }
+    },
+
+    // toDestinationInnerPage(slug) {
+    //   this.$router.push('/destination-package/' + slug);
+    // },
+
   }
 };
 </script>

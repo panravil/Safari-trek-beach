@@ -33,24 +33,24 @@
       <div
         class="tag-image"
         v-if="
-          tourData.tag !== null &&
-          tourData.tag !== undefined &&
-          tourData.tag !== ''
+          tag !== null &&
+          tag !== undefined &&
+          tag !== ''
         "
       >
         <img
-          v-if="tourData.tag == 'review'"
-          :src="'./images/best-review.png'"
+          v-if="tag == 'review'"
+          :src="'/images/best-review.png'"
           style="margin-top: -15px; width: 60px; height: auto"
         />
         <img
-          v-else-if="tourData.tag == 'seller'"
-          :src="'./images/bestseller.png'"
+          v-else-if="tag == 'seller'"
+          :src="'/images/bestseller.png'"
           style="width: 80px; height: auto"
         />
         <img
           v-else
-          :src="'./images/toprated2.png'"
+          :src="'/images/toprated2.png'"
           style="width: 100px; height: auto"
         />
       </div>
@@ -139,6 +139,7 @@ export default {
   props: {
     tourData: Object,
     company_name: String,
+    tag: String,
     avg_review: Number,
     sum_review: Number,
   },

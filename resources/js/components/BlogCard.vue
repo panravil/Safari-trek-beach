@@ -1,5 +1,5 @@
 <template>
-<div class="card mb-3 mx-2" id="blog-card">
+<div class="card mb-3 mx-2" id="blog-card" @click="$router.push('/blog-inner-page/' + blog.post_slug)">
   <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light" :style="{
                   'background-image': 'url(' + blog.post_image + ')',
                 }" :title="blog.post_title">

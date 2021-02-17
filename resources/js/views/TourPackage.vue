@@ -14,7 +14,10 @@
         </div>
         <div class="col-lg-5 col-md-12 p-3 position-relative package-inner-title">
           <div class="card-body">
-            <h3 class="card-title fw-bold" v-if="packageData != null">
+            <div v-if="loading">
+              <content-placeholders-heading />
+            </div>
+            <h3 class="card-title fw-bold" v-else-if="packageData != null">
               {{ packageData.no_of_day }}-Day {{ packageData.title }}
             </h3>
             <h5 class="card-title" v-if="packageData != null">
@@ -22,7 +25,10 @@
             </h5>
           </div>
           <div class="price-rate p-3">
-            <div class="p-3" v-if="packageData != null">
+            <div v-if="loading" class="p-3">
+              <content-placeholders-text :lines="3" />
+            </div>
+            <div class="p-3" v-else>
               <h4 class="fw-bold text-success my-2" :title="packageData.rate.child_currency + ' USD per Child'">
                 ${{ packageData.rate.adult_currency }}
                 <small class="text-dark">USD</small>
@@ -51,9 +57,13 @@
             </div>
             <div class="e-content">
               <div>
-                <div class="p-3" v-if="packageData != null">
+                <div class="p-3">
                   <h3 class="fw-bold">Overview</h3>
-                  <div class="overview-description">
+                  <div v-if="loading">
+                    <content-placeholders-heading />
+                    <content-placeholders-heading />
+                  </div>
+                  <div v-else-if="packageData != null" class="overview-description">
                     {{ packageData.description }}
                   </div>
                   <hr />
@@ -61,53 +71,55 @@
                     <span class="fa fa-arrow-circle-right"></span>
                     Tour Summary
                   </h4>
-                  <h6 class="my-1">
+                  <h6 class="my-1" v-if="packageData != null">
                     Tour Start from
                     <strong>{{ packageData.getting_there.start_city }} City</strong>
                   </h6>
-                  <div class="routine ms-2" v-for="(item, index1) in packageData.day" v-bind:key="index1">
-                    <h6 class="fw-bold mt-4">Day {{ index1 }}</h6>
-                    <div class="routine-detail ms-3">
-                      <h6 class="my-2">
-                        <span class="me-2">✓</span>
-                        <span>Destination:
-                          <strong>{{ item.destination }}</strong></span>
-                      </h6>
-                      <h6 class="my-2" v-if="item.accom_name != null">
-                        <span class="me-2">✓</span>
-                        <span>Accomodation:
-                          <strong>{{ item.accom_name }}</strong></span>
-                      </h6>
-                      <h6 class="my-2">
-                        <span class="me-2">✓</span>
-                        <span>Location:
-                          <strong>{{ item.accom_location }}</strong></span>
-                      </h6>
-                      <h6 class="my-2">
-                        <span class="me-2">✓</span>
-                        <span>Comfort:
-                          <strong>{{ item.accom_level }}</strong></span>
-                      </h6>
-                      <h6 class="my-2">
-                        <span class="me-2">✓</span>
-                        <span>Type: <strong>{{ item.accom_type }}</strong></span>
-                      </h6>
-                      <h6 class="my-2">
-                        <span class="me-2">✓</span>
-                        <span>BreakFast: <strong>Include</strong></span>
-                      </h6>
-                      <h6 class="my-2">
-                        <span class="me-2">X</span>
-                        <span>Lunch: <strong>Include</strong></span>
-                      </h6>
-                      <h6 class="my-2">
-                        <span class="me-2">X</span>
-                        <span>Dinner: <strong>Exclude</strong></span>
-                      </h6>
-                      <h6 class="my-2">
-                        <span class="me-2">X</span>
-                        <span>Drinks: <strong>Water, Beer and Wine</strong></span>
-                      </h6>
+                  <div v-if="packageData != null">
+                    <div class="routine ms-2" v-for="(item, index1) in packageData.day" v-bind:key="index1">
+                      <h6 class="fw-bold mt-4">Day {{ index1 }}</h6>
+                      <div class="routine-detail ms-3">
+                        <h6 class="my-2">
+                          <span class="me-2">✓</span>
+                          <span>Destination:
+                            <strong>{{ item.destination }}</strong></span>
+                        </h6>
+                        <h6 class="my-2" v-if="item.accom_name != null">
+                          <span class="me-2">✓</span>
+                          <span>Accomodation:
+                            <strong>{{ item.accom_name }}</strong></span>
+                        </h6>
+                        <h6 class="my-2">
+                          <span class="me-2">✓</span>
+                          <span>Location:
+                            <strong>{{ item.accom_location }}</strong></span>
+                        </h6>
+                        <h6 class="my-2">
+                          <span class="me-2">✓</span>
+                          <span>Comfort:
+                            <strong>{{ item.accom_level }}</strong></span>
+                        </h6>
+                        <h6 class="my-2">
+                          <span class="me-2">✓</span>
+                          <span>Type: <strong>{{ item.accom_type }}</strong></span>
+                        </h6>
+                        <h6 class="my-2">
+                          <span class="me-2">✓</span>
+                          <span>BreakFast: <strong>Include</strong></span>
+                        </h6>
+                        <h6 class="my-2">
+                          <span class="me-2">X</span>
+                          <span>Lunch: <strong>Include</strong></span>
+                        </h6>
+                        <h6 class="my-2">
+                          <span class="me-2">X</span>
+                          <span>Dinner: <strong>Exclude</strong></span>
+                        </h6>
+                        <h6 class="my-2">
+                          <span class="me-2">X</span>
+                          <span>Drinks: <strong>Water, Beer and Wine</strong></span>
+                        </h6>
+                      </div>
                     </div>
                   </div>
                   <hr />
@@ -138,7 +150,7 @@
                     <span class="fa fa-arrow-circle-right"></span>
                     Activities & Transpotation
                   </h4>
-                  <h5 class="ms-5">
+                  <h5 class="ms-5" v-if="packageData != null">
                     <span class="fa fa-check me-3 text-danger"></span>
                     <span class="exclusion-inclusion">
                       Activitiy:
@@ -147,7 +159,7 @@
                       </strong>
                     </span>
                   </h5>
-                  <h5 class="ms-5">
+                  <h5 class="ms-5" v-if="packageData != null">
                     <span class="fa fa-check me-3 text-danger"></span>
                     <span class="exclusion-inclusion">
                       Getting around:
@@ -163,22 +175,24 @@
                     <span class="fa fa-arrow-circle-right"></span>
                     Getting There
                   </h4>
-                  <h5 class="ms-5">
+                  <h5 class="ms-5" v-if="packageData != null">
                     <span class="fa fa-check me-3 text-danger"></span>
                     <span class="exclusion-inclusion">
                       The Tour Starts in:
                       <strong>
                         {{ packageData.getting_there.start_city }}</strong></span>
                   </h5>
-                  <h5 class="ms-5" v-if="packageData.getting_there.airport_transfer == 'yes'">
-                    <span class="fa fa-check me-3 text-danger"></span>
-                    <span class="exclusion-inclusion">Airport transfer are included</span>
-                  </h5>
+                  <div v-if="packageData != null">
+                    <h5 class="ms-5" v-if="packageData.getting_there.airport_transfer == 'yes'">
+                      <span class="fa fa-check me-3 text-danger"></span>
+                      <span class="exclusion-inclusion">Airport transfer are included</span>
+                    </h5>
+                  </div>
                   <!-- <h5 class="ms-5">
                     <span class="fa fa-check me-3 text-danger"></span>
                     <span class="exclusion-inclusion">Sleeping bag</span>
                   </h5> -->
-                  <h5 class="ms-5">
+                  <h5 class="ms-5" v-if="packageData != null">
                     <span class="fa fa-check me-3 text-danger"></span>
                     <span class="exclusion-inclusion">
                       The Tour Ends in:
@@ -194,7 +208,7 @@
                   <h3 class="fw-bold">Itinerary</h3>
                   <div class="itinery mt-3" v-for="(item, index6) in packageData.day" v-bind:key="'E' + index6">
                     <div class="position-relative" v-if="item.image_url != null">
-                      <img :src="item.image_url" class="w-100" />
+                      <img :src="'http://operators.safari-trek-beach.com' + item.image_url" class="w-100" />
                       <div class="itinery-title">
                         <h4 class="fw-bold my-2">Day {{ index6 }}</h4>
                         <h5 class="fw-bold my-0">{{ item.title }}</h5>
@@ -263,6 +277,9 @@
                   </h5>
                   <div class="rating-wrap">
                     <div class="rating-item">
+                      <span class="rating-grade pe-2">
+                        <ejs-checkbox name="default" v-model="excellent"></ejs-checkbox>
+                      </span>
                       <span class="rating-grade pe-3">Exellent</span>
                       <div class="rating-grade w-100">
                         <div class="progress">
@@ -273,6 +290,9 @@
                     </div>
 
                     <div class="rating-item">
+                      <span class="rating-grade pe-2">
+                        <ejs-checkbox name="default" v-model="excellent"></ejs-checkbox>
+                      </span>
                       <span class="rating-grade pe-3">Very Good</span>
                       <div class="rating-grade w-100">
                         <div class="progress">
@@ -283,6 +303,9 @@
                     </div>
 
                     <div class="rating-item" style="color: gray">
+                      <span class="rating-grade pe-2">
+                        <ejs-checkbox name="default" v-model="excellent"></ejs-checkbox>
+                      </span>
                       <span class="rating-grade pe-3">Average</span>
                       <div class="rating-grade w-100">
                         <div class="progress">
@@ -293,6 +316,9 @@
                     </div>
 
                     <div class="rating-item" style="color: gray">
+                      <span class="rating-grade pe-2">
+                        <ejs-checkbox name="default" v-model="excellent" :disabled="'true'"></ejs-checkbox>
+                      </span>
                       <span class="rating-grade pe-3">Poor</span>
                       <div class="rating-grade w-100">
                         <div class="progress">
@@ -303,6 +329,9 @@
                     </div>
 
                     <div class="rating-item" style="color: gray">
+                      <span class="rating-grade pe-2">
+                        <ejs-checkbox name="default" v-model="excellent"></ejs-checkbox>
+                      </span>
                       <span class="rating-grade pe-3">Terrible</span>
                       <div class="rating-grade w-100">
                         <div class="progress">
@@ -567,6 +596,12 @@ import "viewerjs/dist/viewer.css";
 import Viewer from "v-viewer";
 Vue.use(Viewer);
 
+import { CheckBoxPlugin } from "@syncfusion/ej2-vue-buttons";
+Vue.use(CheckBoxPlugin);
+
+import { enableRipple } from "@syncfusion/ej2-base";
+enableRipple(true);
+
 import {
   mapState,
   mapGetters,
@@ -590,6 +625,7 @@ export default {
     },
     ...mapGetters({
       packageData: "tourController/packageData",
+      loading: "tourcard_loading",
     }),
   },
   data() {
@@ -600,6 +636,7 @@ export default {
       pagenation_options: {
         chunk: 5,
       },
+      excellent: false,
     };
   },
   created() {
@@ -772,11 +809,11 @@ export default {
   display: table-row;
 }
 
-.rating-item span{
+.rating-item span {
   font-size: 15px;
 }
 
-.rating-item .progress{
+.rating-item .progress {
   height: 15px;
 }
 

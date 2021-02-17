@@ -1,5 +1,5 @@
 <template>
-  <div class="card mb-3 mx-2" id="destination-card">
+  <div class="card mb-3 mx-2" id="destination-card" @click="$router.push('/destination-package/' + destination.post_slug)">
     <div
       class="bg-image hover-overlay ripple"
       data-mdb-ripple-color="light"
@@ -8,7 +8,7 @@
       }"
       :title="destination.post_title"
     >
-      <a href="/destination-package">
+      <a>
         <div class="mask"></div>
       </a>
     </div>
@@ -32,7 +32,6 @@
       <button
         type="button"
         class="btn btn-white"
-        @click="goToDestinationDetailPage"
       >
         Read More <span class="fa fa-angle-double-right ms-2"></span>
       </button>
@@ -52,9 +51,9 @@ export default {
   },
   created() {},
   methods: {
-    goToDestinationDetailPage() {
-      this.$router.push("/destination-package");
-    },
+    // goToDestinationDetailPage() {
+    //   this.$router.push("/destination-package/" + this.destination.post_slug);
+    // },
   },
 };
 </script>

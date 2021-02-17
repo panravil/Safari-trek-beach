@@ -1,19 +1,18 @@
 <template>
-  <div id="tour-operators-page">
-    <div class="container">
-      <section>
-        <header class="section-header" data-aos="fade-up">
-          <h3>AFRICA SAFARI BOOKING OPERATORS</h3>
-        </header>
-      </section>
-
-      <div
-        class="card p-3 mt-5 tour-operator-card"
-        v-for="(operator, index) in current_page_operators"
-        v-bind:key="'operator' + index"
-        data-aos="fade-up"
-        @click="toOperatorDetail(operator.user_id)"
-      >
+<div id="tour-operators-page">
+  <div class="container">
+    <section>
+      <header class="section-header" data-aos="fade-up">
+        <h3>AFRICA SAFARI BOOKING OPERATORS</h3>
+      </header>
+    </section>
+    <div v-if="loading">
+      <TourOperatorsSkelecton></TourOperatorsSkelecton>
+      <TourOperatorsSkelecton></TourOperatorsSkelecton>
+      <TourOperatorsSkelecton></TourOperatorsSkelecton>
+    </div>
+    <div v-else>
+      <div class="card p-3 mt-5 tour-operator-card" v-for="(operator, index) in current_page_operators" v-bind:key="'operator' + index" data-aos="fade-up" @click="toOperatorDetail(operator.user_id)">
         <div class="wrapper">
           <div class="operator-logo text-center">
             <img :src="operator.logo" />
@@ -24,42 +23,37 @@
               {{ operator.brief | limitText }}
             </h6>
             <p class="mt-2">
-              <CustomStarRating
-                :rating="operator.avg_review"
-              ></CustomStarRating>
-              <span
-                >{{ operator.avg_review }} ({{
+              <CustomStarRating :rating="operator.avg_review"></CustomStarRating>
+              <span>{{ operator.avg_review }} ({{
                   operator.sum_review
                 }}
-                Reviews)</span
-              >
+                Reviews)</span>
             </p>
             <h6>Learn More about this company</h6>
           </div>
-          <div
-            class="logo-layout"
-            :style="{
+          <div class="logo-layout" :style="{
               'background-image': 'url(' + operator.banner + ')',
-            }"
-          ></div>
+            }"></div>
         </div>
       </div>
-      <div class="operator-pagination" v-if="operatorList != null">
-        <Pagination
-          v-model="current_operator_page"
-          :records="operatorList.length"
-          :per-page="operators_per_page"
-          :options="pagenation_options"
-        />
-      </div>
+    </div>
+    <div class="operator-pagination" v-if="operatorList != null">
+      <Pagination v-model="current_operator_page" :records="operatorList.length" :per-page="operators_per_page" :options="pagenation_options" />
     </div>
   </div>
+</div>
 </template>
 
 <script>
-import { mapState, mapGetters, mapMutations } from "vuex";
+import {
+  mapState,
+  mapGetters,
+  mapMutations
+} from "vuex";
 import Pagination from "vue-pagination-2";
 import CustomStarRating from "../components/CustomStarRating";
+import TourOperatorsSkelecton from "../components/TourOperatorsSkelecton";
+
 export default {
   name: "TourOperators",
   data() {
@@ -75,10 +69,12 @@ export default {
   components: {
     Pagination,
     CustomStarRating,
+    TourOperatorsSkelecton,
   },
   computed: {
     ...mapGetters({
       operatorList: "operatorController/operatorList",
+      loading: "tourcard_loading",
     }),
   },
   watch: {
@@ -104,9 +100,7 @@ export default {
       this.current_page_operators = [];
       let index = 0;
       for (
-        let i = (page_num - 1) * this.operators_per_page;
-        i < page_num * this.operators_per_page;
-        i++
+        let i = (page_num - 1) * this.operators_per_page; i < page_num * this.operators_per_page; i++
       ) {
         if (this.operatorList[i] != undefined) {
           this.current_page_operators[index] = this.operatorList[i];
@@ -162,14 +156,17 @@ export default {
 #tour-operators-page .operator-content {
   min-width: calc(100% - 550px);
 }
+
 .tour-operator-card {
   cursor: pointer;
 }
+
 .operator-pagination {
   display: flex;
   justify-content: center;
   margin-top: 20px;
 }
+
 @media (max-width: 1200px) {
   #tour-operators-page .wrapper {
     display: flex;

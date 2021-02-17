@@ -61,19 +61,19 @@ const router = new Router({
                     component: () => import("./views/BlogPost.vue")
                 },
                 {
-                    path: "/destinations",
+                    path: "/tour-destinations",
                     name: "Destination",
                     index: 7,
                     component: () => import("./views/Destination.vue")
                 },
                 {
-                    path: "/blog-inner-page",
+                    path: "/blog-inner-page/:id",
                     name: "Blog Inner Page",
                     index: 8,
                     component: () => import("./views/BlogInnerPage.vue")
                 },
                 {
-                    path: "/destination-package",
+                    path: "/destination-package/:id",
                     name: "Destination Package",
                     index: 9,
                     component: () => import("./views/DestinationPackage.vue")

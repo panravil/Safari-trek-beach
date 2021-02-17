@@ -21,21 +21,29 @@ const mutations = {
 
 const actions = {
     async getOperatorList(context, query) {
+        context.commit("setRequestLoadingStatus", true, {root: true,});
         await axios
             .get("/api/operator/list")
             .then(res => {
+                context.commit("setRequestLoadingStatus", false, {root: true,});
                 context.commit("setOperatorList", res.data.operatorList);
             })
-            .catch(err => {});
+            .catch(err => {
+                context.commit("setRequestLoadingStatus", false, {root: true,});
+            });
     },
 
     async getOperatorById(context, id) {
+        context.commit("setRequestLoadingStatus", true, {root: true,});
         await axios
             .get("/api/operator/detail/" + id)
             .then(res => {
+                context.commit("setRequestLoadingStatus", false, {root: true,});
                 context.commit("setOperatorData", res.data.operator);
             })
-            .catch(err => {});
+            .catch(err => {
+                context.commit("setRequestLoadingStatus", false, {root: true,});
+            });
     }
 };
 

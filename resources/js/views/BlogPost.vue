@@ -12,7 +12,7 @@
         </div>
       </div>
       <div class="row gx-0" v-else>
-        <div class="col-lg-4 col-md-6 col-xs-12" v-for="(blog, index) in listBlog" v-bind:key="index" @click="toBlogInnerPage">
+        <div class="col-lg-4 col-md-6 col-xs-12" v-for="(blog, index) in listBlog" v-bind:key="index">
           <BlogCard :blog="blog"></BlogCard>
         </div>
       </div>
@@ -45,9 +45,9 @@ export default {
     this.getListDestinations();
   },
   methods: {
-    toBlogInnerPage() {
-      this.$router.push('./blog-inner-page');
-    },
+    // toBlogInnerPage(slug) {
+    //   this.$router.push('/blog-inner-page/' + slug);
+    // },
     getListDestinations() {
       this.$store.dispatch("blogController/getListBlogs");
     }
