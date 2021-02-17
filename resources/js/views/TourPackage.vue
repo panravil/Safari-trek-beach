@@ -520,40 +520,44 @@
           <!-- Modal -->
           <div class="modal fade" id="writeareview" tabindex="-1" aria-labelledby="reviewLavel" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered modal-fullscreen-sm-down">
-              <div class="modal-content">
+              <form class="modal-content" @submit.prevent="submitReview">
                 <div class="modal-header bg-danger text-white">
-                  <h5 class="modal-title" id="reviewLavel">Write a Review</h5>
+                  <h5 class="modal-title" id="reviewLavel">
+                    Write a Review
+                  </h5>
                   <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <div class="modal-body">
+                <div class="modal-body text-start">
                   <div class="row align-items-center">
                     <div class="col-sm-12">
-                      <ejs-textbox floatLabelType="Auto" type="text" placeholder="Name" required></ejs-textbox>
+                      <ejs-textbox v-model="name" floatLabelType="Auto" type="text" placeholder="Name" required></ejs-textbox>
                     </div>
                     <div class="col-sm-12 mt-3">
-                      <ejs-textbox floatLabelType="Auto" type="text" placeholder="Email" required></ejs-textbox>
+                      <ejs-textbox v-model="email" floatLabelType="Auto" type="email" placeholder="Email" required></ejs-textbox>
                     </div>
                     <div class="col-sm-12 mt-3">
-                      <ejs-textbox floatLabelType="Auto" type="text" placeholder="Title" required></ejs-textbox>
+                      <ejs-textbox v-model="title" floatLabelType="Auto" type="text" placeholder="Title" required></ejs-textbox>
                     </div>
                     <div class="col-sm-12 mt-5">
                       <h5 class="fw-bold">Rate:</h5>
                     </div>
                     <div class="col-sm-12 mt-3">
-                      <star-rating :rating="5" :show-rating="false" active-color="#f93154"></star-rating>
+                      <star-rating :show-rating="false" v-model="rating" active-color="#f93154"></star-rating>
                     </div>
                     <div class="col-sm-12 mt-5">
-                      <ejs-textbox :multiline="true" floatLabelType="Auto" placeholder="Write a review" required></ejs-textbox>
+                      <ejs-textbox :multiline="true" v-model="review" floatLabelType="Auto" placeholder="Write a review" required></ejs-textbox>
                     </div>
                   </div>
                 </div>
                 <div class="modal-footer">
-                  <button type="button" class="btn btn-light" data-bs-dismiss="modal">
+                  <button type="button" class="btn btn-light" ref="closeButton" data-bs-dismiss="modal">
                     Close
                   </button>
-                  <button type="button" class="btn btn-danger">Send</button>
+                  <button type="submit" class="btn btn-danger">
+                    Send
+                  </button>
                 </div>
-              </div>
+              </form>
             </div>
           </div>
         </div>
@@ -569,6 +573,7 @@
       </div>
     </div>
   </div>
+  <notifications group="review" classes="review-notify"/>
 </div>
 </template>
 
@@ -596,10 +601,14 @@ import "viewerjs/dist/viewer.css";
 import Viewer from "v-viewer";
 Vue.use(Viewer);
 
-import { CheckBoxPlugin } from "@syncfusion/ej2-vue-buttons";
+import {
+  CheckBoxPlugin
+} from "@syncfusion/ej2-vue-buttons";
 Vue.use(CheckBoxPlugin);
 
-import { enableRipple } from "@syncfusion/ej2-base";
+import {
+  enableRipple
+} from "@syncfusion/ej2-base";
 enableRipple(true);
 
 import {
@@ -637,6 +646,11 @@ export default {
         chunk: 5,
       },
       excellent: false,
+      name: '',
+      email: '',
+      title: '',
+      rating: 5,
+      review: '',
     };
   },
   created() {
@@ -669,6 +683,37 @@ export default {
         }
       }
     },
+
+    submitReview() {
+      let params = {};
+
+      params = {
+        'name': this.name,
+        'email': this.email,
+        'title': this.title,
+        'review': this.review,
+        'rate': this.rating,
+        'operator_id': this.packageData.user_id
+      };
+
+      this.$store
+        .dispatch("operatorController/postReview", params)
+        .then(() => {
+          this.$notify({
+            group: 'review',
+            title: 'Review Success',
+            text: 'Thank you! We have received your review. We will publish your review soon.'
+          });
+          this.name = ''
+          this.email = ''
+          this.title = ''
+          this.review = ''
+          this.rating = 5
+          const elem = this.$refs.closeButton
+          elem.click()
+        })
+        .catch(() => {});
+    }
   },
 };
 </script>

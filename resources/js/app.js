@@ -34,6 +34,10 @@ import ReadMore from 'vue-read-more';
  
 Vue.use(ReadMore);
  
+import Notifications from 'vue-notification'
+ 
+Vue.use(Notifications)
+
 new Vue({
     created() {
         AOS.init();

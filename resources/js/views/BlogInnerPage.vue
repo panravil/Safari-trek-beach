@@ -73,27 +73,28 @@
               </div>
             </form> -->
           </div>
-          <div class="col-lg-3 col-md-12 quick-link-section px-4">
-            <button class="btn-danger btn w-100 mt-5" @click="goToOurTourPage">
-              Our Tours <span class="fa fa-angle-right ms-2"></span>
-            </button>
-            <div class="w-100 p-3 blog-category mt-3">
-              <h6 class="fw-bolder text-center text-danger">
-                Table Of Contents
-              </h6>
-              <ul class="m-0 ps-3" v-if="loading">
-                <li v-for="(item, index) in 4" v-bind:key="'skelect'+index" class="mt-2">
-                  <a class="text-primary">
-                    <content-placeholders-text :lines="1" /></a>
-                </li>
-              </ul>
-              <ul class="m-0 ps-3" v-else>
-                <li v-for="(content, index) in blogData.section" v-bind:key="index" class="mt-2">
-                  <a class="text-primary" :href="'#section'+ index">Section {{ index + 1 }}. {{ content.title }}</a>
-                </li>
-              </ul>
-            </div>
-            <!-- <div class="w-100 p-3 blog-category mt-5">
+          <div class="col-lg-3 col-md-12 quick-link-section px-4 position-relative">
+            <div style="position: sticky; top: 50px;">
+              <button class="btn-danger btn w-100 mt-5" @click="goToOurTourPage">
+                Our Tours <span class="fa fa-angle-right ms-2"></span>
+              </button>
+              <div class="w-100 p-3 blog-category mt-3">
+                <h6 class="fw-bolder text-center text-danger">
+                  Table Of Contents
+                </h6>
+                <ul class="m-0 ps-3" v-if="loading">
+                  <li v-for="(item, index) in 4" v-bind:key="'skelect'+index" class="mt-2">
+                    <a class="text-primary">
+                      <content-placeholders-text :lines="1" /></a>
+                  </li>
+                </ul>
+                <ul class="m-0 ps-3" v-else>
+                  <li v-for="(content, index) in blogData.section" v-bind:key="index" class="mt-2">
+                    <a class="text-primary" :href="'#section'+ index">Section {{ index + 1 }}. {{ content.title }}</a>
+                  </li>
+                </ul>
+              </div>
+              <!-- <div class="w-100 p-3 blog-category mt-5">
                 <h6 class="fw-bolder text-center text-danger">Popular Links</h6>
                 <ul class="m-0 ps-3">
                   <li v-for="index in 6" v-bind:key="index">
@@ -104,6 +105,7 @@
                   </li>
                 </ul>
               </div> -->
+            </div>
           </div>
         </div>
       </div>

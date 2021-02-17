@@ -32,7 +32,7 @@ const actions = {
             .get("/api/destination/top-destinations")
             .then(res => {
                 if (res.status == 200) {
-                    console.log('tag', res.data.topDestinations)
+                    // console.log('tag', res.data.topDestinations)
                     context.commit(
                         "setTopDestinations",
                         res.data.topDestinations

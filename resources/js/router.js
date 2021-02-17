@@ -92,13 +92,13 @@ const router = new Router({
                 },
                 {
                     path: "/tour-landing-one",
-                    name: "Tour Landing",
+                    name: "Tour Landing One",
                     index: 12,
                     component: () => import("./views/TourLandingOne.vue")
                 },
                 {
                     path: "/tour-landing-two",
-                    name: "Tour Landing",
+                    name: "Tour Landing Two",
                     index: 13,
                     component: () => import("./views/TourLandingTwo.vue")
                 },

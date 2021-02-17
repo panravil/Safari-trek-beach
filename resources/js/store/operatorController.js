@@ -44,6 +44,21 @@ const actions = {
             .catch(err => {
                 context.commit("setRequestLoadingStatus", false, {root: true,});
             });
+    },
+
+    async postReview(context, query) {
+        // context.commit("setRequestLoadingStatus", true, {root: true,});
+        await axios
+            .post("/api/review/add", query)
+            .then(res => {
+                if (res.status == 200) {
+                }
+                // context.commit("setRequestLoadingStatus", false, {root: true,});
+                // context.commit("setOperatorData", res.data.operator);
+            })
+            .catch(err => {
+                // context.commit("setRequestLoadingStatus", false, {root: true,});
+            });
     }
 };
 

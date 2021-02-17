@@ -405,3 +405,18 @@ input#traveler_input {
     transform: scaleX(1);
   }
 }
+
+.review-notify {
+  padding: 10px 20px;
+  background-color: #bbf5bb;
+  border-radius: 10px;
+}
+
+.review-notify .notification-title {
+  font-size: 18px;
+  color: #266b2a;
+} 
+.review-notify .notification-content {
+  font-size: 15px;
+  color:  #266b2a;
+}
