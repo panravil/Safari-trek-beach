@@ -208,7 +208,7 @@
                   <h3 class="fw-bold">Itinerary</h3>
                   <div class="itinery mt-3" v-for="(item, index6) in packageData.day" v-bind:key="'E' + index6">
                     <div class="position-relative" v-if="item.image_url != null">
-                      <img :src="'http://operators.safari-trek-beach.com' + item.image_url" class="w-100" />
+                      <img :src="item.image_url" class="w-100" />
                       <div class="itinery-title">
                         <h4 class="fw-bold my-2">Day {{ index6 }}</h4>
                         <h5 class="fw-bold my-0">{{ item.title }}</h5>
@@ -446,6 +446,9 @@
             <div class="col-sm-12 mt-3">
               <ejs-datepicker :placeholder="'Select a Date'"></ejs-datepicker>
             </div>
+            <div class="col-sm-12 mt-3">
+              <ejs-textbox floatLabelType="Auto" type="number" placeholder="Travellers" required></ejs-textbox>
+            </div>
             <div class="col-sm-12 mt-3"></div>
           </div>
           <button class="btn btn-danger mb-3">Enquire Now</button>
@@ -573,7 +576,6 @@
       </div>
     </div>
   </div>
-  <notifications group="review" classes="review-notify"/>
 </div>
 </template>
 
@@ -635,6 +637,7 @@ export default {
     ...mapGetters({
       packageData: "tourController/packageData",
       loading: "tourcard_loading",
+      request_status: "request_status",
     }),
   },
   data() {
@@ -699,20 +702,47 @@ export default {
       this.$store
         .dispatch("operatorController/postReview", params)
         .then(() => {
-          this.$notify({
-            group: 'review',
-            title: 'Review Success',
-            text: 'Thank you! We have received your review. We will publish your review soon.'
-          });
-          this.name = ''
-          this.email = ''
-          this.title = ''
-          this.review = ''
-          this.rating = 5
+          if (this.request_status == true) {
+            this.$notify({
+              group: 'success',
+              title: 'Review Success',
+              text: 'Thank you! We have received your review. We will publish your review soon.'
+            });
+
+            this.name = ''
+            this.email = ''
+            this.title = ''
+            this.review = ''
+            this.rating = 5
+          } else {
+            this.$notify({
+              group: 'warning',
+              title: 'Submit Error !',
+              text: 'Sorry, Something went wrong...'
+            });
+
+            this.name = ''
+            this.email = ''
+            this.title = ''
+            this.review = ''
+            this.rating = 5
+          }
           const elem = this.$refs.closeButton
           elem.click()
         })
-        .catch(() => {});
+        .catch(() => {
+          this.$notify({
+              group: 'warning',
+              title: 'Submit Error !',
+              text: 'Sorry, Something went wrong...'
+            });
+
+            this.name = ''
+            this.email = ''
+            this.title = ''
+            this.review = ''
+            this.rating = 5
+        });
     }
   },
 };

@@ -7,6 +7,8 @@
     </transition>
   </div>
   <Footer v-if="$route.name != '404 Page'"></Footer>
+  <notifications group="success" classes="success-notify" />
+  <notifications group="warning" classes="warning-notify" />
 </div>
 </template>
 

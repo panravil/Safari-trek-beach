@@ -6,48 +6,50 @@
         <h3>BECOME OUR PARTNER</h3>
       </header>
       <div class="card mt-5 p-3">
-        <div class="row g-0">
-          <div class="col-md-6 col-sm-12 px-3 mt-3">
-            <ejs-textbox floatLabelType="Auto" type="text" placeholder="Company Name" required></ejs-textbox>
-          </div>
-          <div class="col-md-6 col-sm-12 px-3 mt-3">
-            <ejs-textbox floatLabelType="Auto" type="text" placeholder="Contact Person Name" required></ejs-textbox>
-          </div>
-          <div class="col-md-6 col-sm-12 px-3 mt-3">
-            <ejs-textbox floatLabelType="Auto" type="email" placeholder="Email" required></ejs-textbox>
-          </div>
-          <div class="col-md-6 col-sm-12 px-3 mt-3">
-            <ejs-textbox floatLabelType="Auto" type="password" placeholder="Password" required></ejs-textbox>
-          </div>
-          <div class="col-md-6 col-sm-12 px-3 mt-3">
-            <ejs-textbox floatLabelType="Auto" type="text" placeholder="Phone" required></ejs-textbox>
-          </div>
-          <div class="col-md-6 col-sm-12 px-3 mt-3">
-            <ejs-textbox floatLabelType="Auto" type="text" placeholder="Address" required></ejs-textbox>
-          </div>
-          <div class="col-md-6 col-sm-12 px-3 mt-3">
-            <ejs-textbox floatLabelType="Auto" type="number" placeholder="Number of Stuffs" required></ejs-textbox>
-          </div>
-          <div class="col-md-6 col-sm-12 px-3 mt-3">
-            <ejs-textbox floatLabelType="Auto" type="text" placeholder="Tour Type" required></ejs-textbox>
-          </div>
-          <div class="col-sm-12 px-3 mt-3">
-            <ejs-textbox :multiline="true" floatLabelType="Auto" placeholder="Company Brief" required></ejs-textbox>
-          </div>
-          <div class="col-sm-12 px-3 mt-3">
-            <ejs-textbox :multiline="true" floatLabelType="Auto" placeholder="Company Description" required></ejs-textbox>
-          </div>
+        <form @submit.prevent="submitCompanyData">
 
-          <p class="px-3 mt-3">
-            <ejs-checkbox label="I agree to the Safari-Trek-Beach "></ejs-checkbox>
-            <a href="/terms"><span class=" text-decoration-underline text-dark">Terms and Condition.</span></a>
-          </p>
+          <div class="row g-0">
+            <div class="col-md-6 col-sm-12 px-3 mt-3">
+              <ejs-textbox v-model="companyName" floatLabelType="Auto" type="text" placeholder="Company Name" required></ejs-textbox>
+            </div>
+            <div class="col-md-6 col-sm-12 px-3 mt-3">
+              <ejs-textbox v-model="personalName" floatLabelType="Auto" type="text" placeholder="Contact Person Name" required></ejs-textbox>
+            </div>
+            <div class="col-md-6 col-sm-12 px-3 mt-3">
+              <ejs-textbox v-model="email" floatLabelType="Auto" type="email" placeholder="Email" required></ejs-textbox>
+            </div>
+            <div class="col-md-6 col-sm-12 px-3 mt-3">
+              <ejs-textbox v-model="password" floatLabelType="Auto" type="password" placeholder="Password" required></ejs-textbox>
+            </div>
+            <div class="col-md-6 col-sm-12 px-3 mt-3">
+              <ejs-textbox v-model="phone" floatLabelType="Auto" type="text" placeholder="Phone" required></ejs-textbox>
+            </div>
+            <div class="col-md-6 col-sm-12 px-3 mt-3">
+              <ejs-textbox v-model="address" floatLabelType="Auto" type="text" placeholder="Address" required></ejs-textbox>
+            </div>
+            <div class="col-md-6 col-sm-12 px-3 mt-3">
+              <ejs-textbox v-model="stuffs" floatLabelType="Auto" type="number" placeholder="Number of Stuffs" required></ejs-textbox>
+            </div>
+            <div class="col-md-6 col-sm-12 px-3 mt-3">
+              <ejs-textbox v-model="tourType" floatLabelType="Auto" type="text" placeholder="Tour Type" required></ejs-textbox>
+            </div>
+            <div class="col-sm-12 px-3 mt-3">
+              <ejs-textbox v-model="companyBrief" :multiline="true" floatLabelType="Auto" placeholder="Company Brief" required></ejs-textbox>
+            </div>
+            <div class="col-sm-12 px-3 mt-3">
+              <ejs-textbox v-model="companyDescription" :multiline="true" floatLabelType="Auto" placeholder="Company Description" required></ejs-textbox>
+            </div>
 
-          <div class="px-3 my-3">
-            <button class="btn btn-danger">Send Request</button>
+            <p class="px-3 mt-3">
+              <ejs-checkbox v-model="conditions" label="I agree to the Safari-Trek-Beach" required></ejs-checkbox>
+              <a href="/terms"><span class=" text-decoration-underline text-dark" style="font-size: 13px">Terms and Condition.</span></a>
+            </p>
+
+            <div class="px-3 my-3">
+              <button type="submit" class="btn btn-danger">Send Request</button>
+            </div>
           </div>
-
-        </div>
+        </form>
       </div>
     </section>
   </div>
@@ -72,11 +74,105 @@ import {
 } from "@syncfusion/ej2-base";
 enableRipple(true);
 
+import {
+  mapState,
+  mapGetters,
+  mapMutations
+} from "vuex";
+
 export default {
   name: "BecomePartner",
   data() {
-    return {};
+    return {
+      companyName: '',
+      email: '',
+      phone: '',
+      stuffs: '',
+      personalName: '',
+      password: '',
+      address: '',
+      tourType: '',
+      companyBrief: '',
+      companyDescription: '',
+      conditions: false,
+    };
   },
+  computed: {
+    ...mapGetters({
+      packageData: "tourController/packageData",
+      request_status: "request_status",
+    }),
+  },
+  methods: {
+    submitCompanyData() {
+      let companyData = {};
+
+      companyData = {
+        'companyName': this.companyName,
+        'email': this.email,
+        'phone': this.phone,
+        'stuffs': this.stuffs,
+        'personalName': this.personalName,
+        'password': this.password,
+        'address': this.address,
+        'tourType': this.tourType,
+        'companyBrief': this.companyBrief,
+        'companyDescription': this.companyDescription,
+        'conditions': this.conditions,
+      };
+
+      this.$store
+        .dispatch("operatorController/becomePartner", companyData)
+        .then(() => {
+          if (this.request_status == true) {
+            this.$notify({
+              group: 'success',
+              title: 'Submit Success !',
+              text: 'Thank you! We have received your company data.'
+            });
+          } else {
+            this.$notify({
+              group: 'warning',
+              title: 'Submit Error !',
+              text: 'Sorry, Something went wrong...'
+            });
+          }
+
+          this.companyName = ''
+          this.email = ''
+          this.phone = ''
+          this.stuffs = ''
+          this.personalName = ''
+          this.password = ''
+          this.address = ''
+          this.tourType = ''
+          this.companyBrief = ''
+          this.companyDescription = ''
+          this.conditions = false
+
+        })
+        .catch(() => {
+          this.$notify({
+            group: 'warning',
+            title: 'Submit Error !',
+            text: 'Sorry, Something went wrong...'
+          });
+
+          this.companyName = ''
+          this.email = ''
+          this.phone = ''
+          this.stuffs = ''
+          this.personalName = ''
+          this.password = ''
+          this.address = ''
+          this.tourType = ''
+          this.companyBrief = ''
+          this.companyDescription = ''
+          this.conditions = false
+        });
+
+    }
+  }
 };
 </script>
 

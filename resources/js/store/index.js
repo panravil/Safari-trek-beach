@@ -16,6 +16,7 @@ const store = new Vuex.Store({
     state: {
         tourcard_loading: false,
         blogcard_loading: false,
+        request_status: null,
     },
     mutations: {
         setRequestLoadingStatus(state, status) {
@@ -24,6 +25,9 @@ const store = new Vuex.Store({
         setBlogLoadingStatus(state, status) {
             state.blogcard_loading = status;
         },
+        setRequestStatus(state, status) {
+            state.request_status = status;
+        },
     },
     actions: {
     
@@ -31,6 +35,7 @@ const store = new Vuex.Store({
     getters: {
         tourcard_loading: state => state.tourcard_loading,
         blogcard_loading: state => state.blogcard_loading,
+        request_status: state => state.request_status,
     },
 });
 

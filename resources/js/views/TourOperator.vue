@@ -200,7 +200,6 @@
       </ejs-tab>
     </div>
   </div>
-  <notifications group="review"  classes="review-notify" />
 </div>
 </template>
 
@@ -261,6 +260,7 @@ export default {
     ...mapGetters({
       operatorData: "operatorController/operatorData",
       loading: "tourcard_loading",
+      request_status: "request_status",
     }),
   },
   watch: {
@@ -310,22 +310,47 @@ export default {
       this.$store
         .dispatch("operatorController/postReview", params)
         .then(() => {
-          this.name = ''
-          this.email = ''
-          this.title = ''
-          this.review = ''
-          this.rating = 5
-          this.$notify({
-            group: 'review',
-            type: 'success',
-            title: 'Review Success',
-            text: 'Thank you! We have received your review. We will publish your review soon.'
-          });
+          if (this.request_status == true) {
+            this.$notify({
+              group: 'success',
+              title: 'Review Success',
+              text: 'Thank you! We have received your review. We will publish your review soon.'
+            });
+
+            this.name = ''
+            this.email = ''
+            this.title = ''
+            this.review = ''
+            this.rating = 5
+          } else {
+            this.$notify({
+              group: 'warning',
+              title: 'Submit Error !',
+              text: 'Sorry, Something went wrong...'
+            });
+
+            this.name = ''
+            this.email = ''
+            this.title = ''
+            this.review = ''
+            this.rating = 5
+          }
           const elem = this.$refs.closeButton
           elem.click()
         })
-        .catch(() => {});
+        .catch(() => {
+          this.$notify({
+              group: 'warning',
+              title: 'Submit Error !',
+              text: 'Sorry, Something went wrong...'
+            });
 
+            this.name = ''
+            this.email = ''
+            this.title = ''
+            this.review = ''
+            this.rating = 5
+        });
     }
   },
 };
