@@ -85,6 +85,26 @@ const actions = {
                 context.commit("setRequestStatus", false, {root: true,});
             });
     },
+
+    async tourQuote(context, query) {
+        // context.commit("setRequestLoadingStatus", true, {root: true,});
+        await axios
+            .post("/api/quote/add", query)
+            .then(res => {
+                if (res.status == 200) {
+                    context.commit("setRequestStatus", true, {root: true,});
+                }
+                else {
+                    context.commit("setRequestStatus", false, {root: true,});
+                }
+                // context.commit("setRequestLoadingStatus", false, {root: true,});
+                // context.commit("setOperatorData", res.data.operator);
+            })
+            .catch(err => {
+                // context.commit("setRequestLoadingStatus", false, {root: true,});
+                context.commit("setRequestStatus", false, {root: true,});
+            });
+    },
 };
 
 export default {

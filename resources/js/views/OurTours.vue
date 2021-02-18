@@ -1,217 +1,121 @@
 <template>
-  <div id="our-tours">
-    <div class="container">
-      <div class="row">
-        <div
-          v-if="isSidebar"
-          class="overlay-mobile"
-          @click="isSidebar = false"
-        ></div>
-        <div
-          class="mobile-filter-close bg-danger text-white py-3"
-          v-bind:style="[
+<div id="our-tours">
+  <div class="container">
+    <div class="row">
+      <div v-if="isSidebar" class="overlay-mobile" @click="isSidebar = false"></div>
+      <div class="mobile-filter-close bg-danger text-white py-3" v-bind:style="[
             isSidebar
               ? {
                   right: 0,
                 }
               : '',
-          ]"
-        >
-          <div
-            class="position-relative d-flex justify-content-between align-items-center px-3"
-          >
-            <h4 class="font-bold my-0">Filter Options</h4>
-            <div @click="isSidebar = false" class="filter-option-close">
-              <span class="fa fa-times-circle-o display-5"></span>
-            </div>
+          ]">
+        <div class="position-relative d-flex justify-content-between align-items-center px-3">
+          <h4 class="font-bold my-0">Filter Options</h4>
+          <div @click="isSidebar = false" class="filter-option-close">
+            <span class="fa fa-times-circle-o display-5"></span>
           </div>
         </div>
-        <div
-          class="mobile-filter-button bg-white text-white py-3"
-          v-bind:style="[
+      </div>
+      <div class="mobile-filter-button bg-white text-white py-3" v-bind:style="[
             isSidebar
               ? {
                   right: 0,
                 }
               : '',
-          ]"
-        >
-          <button class="btn btn-danger w-100 h-100" @click="isSidebar = false">
-            <span>Search Tours</span>
-            <span class="fa fa-angle-right ms-2"></span>
-          </button>
-        </div>
-        <div
-          class="col-lg-3 col-xs-12 filters"
-          v-bind:style="[
+          ]">
+        <button class="btn btn-danger w-100 h-100" @click="isSidebar = false">
+          <span>Search Tours</span>
+          <span class="fa fa-angle-right ms-2"></span>
+        </button>
+      </div>
+      <div class="col-lg-3 col-xs-12 filters" v-bind:style="[
             isSidebar
               ? {
                   right: 0,
                 }
               : '',
-          ]"
-        >
-          <div class="position-relative">
-            <!-- <div class="mobile-search-button w-100">
+          ]">
+        <div class="position-relative">
+          <!-- <div class="mobile-search-button w-100">
             <div>Filter Options</div>
           </div> -->
-            <div class="row gx-0">
-              <div
-                class="col-md-12 mobile-filter position-relative"
-                v-click-outside-dropdown="closeWhereToDropDown"
-              >
-                <div
-                  class="bg-white h-100 align-items-center d-flex justify-content-between px-3"
-                >
-                  <span class="fa fa-map-marker"></span>
-                  <div class="w-100 px-2" @click="showWhereToDropdown(true)">
-                    <input
-                      v-model="where_to_search"
-                      placeholder="Where To"
-                      type="text"
-                      ref="whereTo"
-                      class="w-100"
-                    />
-                  </div>
-                  <span
-                    v-if="visible_whereto_dropdown == true"
-                    class="fa fa-search"
-                  ></span>
-                  <span
-                    v-else-if="
+          <div class="row gx-0">
+            <div class="col-md-12 mobile-filter position-relative" v-click-outside-dropdown="closeWhereToDropDown">
+              <div class="bg-white h-100 align-items-center d-flex justify-content-between px-3">
+                <span class="fa fa-map-marker"></span>
+                <div class="w-100 px-2" @click="showWhereToDropdown(true)">
+                  <input v-model="where_to_search" placeholder="Where To" type="text" ref="whereTo" class="w-100" />
+                </div>
+                <span v-if="visible_whereto_dropdown == true" class="fa fa-search"></span>
+                <span v-else-if="
                       where_to_search != '' && visible_whereto_dropdown == false
-                    "
-                    class="fa fa-times-circle-o"
-                    @click="setInitWhereTo"
-                  ></span>
-                  <span v-else class="fa fa-search invisible"></span>
-                </div>
-                <transition
-                  enter-active-class="animate__animated animate__fadeIn"
-                  leave-active-class="animate__animated animate__fadeOut"
-                >
-                  <div
-                    class="where_to_dropdown left-0 w-100 bg-white mt-3 triangule-where"
-                    v-if="
+                    " class="fa fa-times-circle-o" @click="setInitWhereTo"></span>
+                <span v-else class="fa fa-search invisible"></span>
+              </div>
+              <transition enter-active-class="animate__animated animate__fadeIn" leave-active-class="animate__animated animate__fadeOut">
+                <div class="where_to_dropdown left-0 w-100 bg-white mt-3 triangule-where" v-if="
                       visible_whereto_dropdown == true && search_result != ''
-                    "
-                  >
-                    <div class="bg-warning text-white p-2 text-left">
-                      Start typing or select below
-                    </div>
-                    <div
-                      v-for="(item, index) in search_result"
-                      v-bind:key="index"
-                    >
-                      <div
-                        class="py-1 px-3 border-bottom border-1 text-start"
-                        v-if="index < 6"
-                        @click="setCurrentWhereTo(item.title)"
-                      >
-                        <div class="p-0 m-0">
-                          <strong>{{ item.title }}</strong>
-                        </div>
-                        <div class="p-0 m-0">
-                          <small>{{ item.country }}</small>
-                        </div>
+                    ">
+                  <div class="bg-warning text-white p-2 text-left">
+                    Start typing or select below
+                  </div>
+                  <div v-for="(item, index) in search_result" v-bind:key="index">
+                    <div class="py-1 px-3 border-bottom border-1 text-start" v-if="index < 6" @click="setCurrentWhereTo(item.title)">
+                      <div class="p-0 m-0">
+                        <strong>{{ item.title }}</strong>
+                      </div>
+                      <div class="p-0 m-0">
+                        <small>{{ item.country }}</small>
                       </div>
                     </div>
                   </div>
-                </transition>
-              </div>
-              <div class="col-md-12 mobile-filter position-relative">
-                <div
-                  class="bg-white w-100 h-100 align-items-center d-flex justify-content-between px-3"
-                >
-                  <span class="fa fa-calendar"></span>
-                  <div class="w-100 px-2">
-                    <datepicker
-                      :disabledDates="disabledFn"
-                      v-model="start_date"
-                      :placeholder="'Start Date'"
-                      :highlighted="highlighted"
-                    ></datepicker>
-                  </div>
-                  <span
-                    v-if="start_date != ''"
-                    class="fa fa-times-circle-o"
-                    @click="initStartDate"
-                  ></span>
-                  <span v-else class="fa fa-times-circle-o invisible"></span>
                 </div>
-              </div>
-              <div
-                class="col-md-12 mobile-filter position-relative"
-                v-click-outside-dropdown="closeTravelerDropdown"
-              >
-                <div
-                  class="bg-white w-100 h-100 align-items-center d-flex justify-content-between px-3"
-                  @click="showTravelerDropdown"
-                >
-                  <span class="fa fa-users"></span>
-                  <div class="w-100 px-2">
-                    <input
-                      v-model="traveler_number"
-                      id="traveler_input"
-                      type="text"
-                      placeholder="Travelers"
-                      class="w-100"
-                    />
-                  </div>
-                  <span
-                    v-if="traveler_number != ''"
-                    class="fa fa-times-circle-o"
-                    @click="setTravelerInit"
-                  ></span>
-                  <span v-else class="fa fa-times-circle-o invisible"></span>
+              </transition>
+            </div>
+            <div class="col-md-12 mobile-filter position-relative">
+              <div class="bg-white w-100 h-100 align-items-center d-flex justify-content-between px-3">
+                <span class="fa fa-calendar"></span>
+                <div class="w-100 px-2">
+                  <datepicker :disabledDates="disabledFn" v-model="start_date" :placeholder="'Start Date'" :highlighted="highlighted"></datepicker>
                 </div>
-                <transition
-                  enter-active-class="animate__animated animate__fadeIn"
-                  leave-active-class="animate__animated animate__fadeOut"
-                >
-                  <div
-                    v-if="visible_traveler_dropdown"
-                    class="traveler-dropdown left-0 bg-white mt-3 triangule-where"
-                  >
-                    <div class="bg-warning text-white p-2 text-left">
-                      Travelers
-                      <span
-                        class="fa fa-times-circle-o"
-                        @click="closeTravelerDropdown"
-                      ></span>
+                <span v-if="start_date != ''" class="fa fa-times-circle-o" @click="initStartDate"></span>
+                <span v-else class="fa fa-times-circle-o invisible"></span>
+              </div>
+            </div>
+            <div class="col-md-12 mobile-filter position-relative" v-click-outside-dropdown="closeTravelerDropdown">
+              <div class="bg-white w-100 h-100 align-items-center d-flex justify-content-between px-3" @click="showTravelerDropdown">
+                <span class="fa fa-users"></span>
+                <div class="w-100 px-2">
+                  <input v-model="traveler_number" id="traveler_input" type="text" placeholder="Travelers" class="w-100" />
+                </div>
+                <span v-if="traveler_number != ''" class="fa fa-times-circle-o" @click="setTravelerInit"></span>
+                <span v-else class="fa fa-times-circle-o invisible"></span>
+              </div>
+              <transition enter-active-class="animate__animated animate__fadeIn" leave-active-class="animate__animated animate__fadeOut">
+                <div v-if="visible_traveler_dropdown" class="traveler-dropdown left-0 bg-white mt-3 triangule-where">
+                  <div class="bg-warning text-white p-2 text-left">
+                    Travelers
+                    <span class="fa fa-times-circle-o" @click="closeTravelerDropdown"></span>
+                  </div>
+                  <div class="py-2 px-3 mt-2 border-1 text-start d-flex justify-content-between">
+                    <div><strong>Adults</strong>(18+ years):</div>
+                    <div>
+                      <vue-numeric-input v-model="adults_number" :min="1" :max="100" :step="1"></vue-numeric-input>
                     </div>
-                    <div
-                      class="py-2 px-3 mt-2 border-1 text-start d-flex justify-content-between"
-                    >
-                      <div><strong>Adults</strong>(18+ years):</div>
-                      <div>
-                        <vue-numeric-input
-                          v-model="adults_number"
-                          :min="1"
-                          :max="100"
-                          :step="1"
-                        ></vue-numeric-input>
-                      </div>
+                  </div>
+                  <div class="py-2 px-3 mt-2 border-1 text-start d-flex justify-content-between">
+                    <div><strong>Children</strong>(0~17 years):</div>
+                    <div>
+                      <vue-numeric-input v-model="children_number" :min="0" :max="100" :step="1"></vue-numeric-input>
                     </div>
-                    <div
-                      class="py-2 px-3 mt-2 border-1 text-start d-flex justify-content-between"
-                    >
-                      <div><strong>Children</strong>(0~17 years):</div>
-                      <div>
-                        <vue-numeric-input
-                          v-model="children_number"
-                          :min="0"
-                          :max="100"
-                          :step="1"
-                        ></vue-numeric-input>
-                      </div>
-                    </div>
+                  </div>
 
-                    <!--
+                  <!--
                       @this is for children age select options
                      -->
 
-                    <!-- <p class="mt-3 text-center" v-if="children_number">
+                  <!-- <p class="mt-3 text-center" v-if="children_number">
                       Age at the end of the tour
                     </p>
                     <hr class="mx-3" v-if="children_number" />
@@ -222,139 +126,86 @@
                       </div>
                     </div> -->
 
-                    <div class="text-right">
-                      <button
-                        class="btn btn-danger mx-3 my-3"
-                        @click="setTravelerInfo"
-                      >
-                        Done
-                      </button>
-                    </div>
+                  <div class="text-right">
+                    <button class="btn btn-danger mx-3 my-3" @click="setTravelerInfo">
+                      Done
+                    </button>
                   </div>
-                </transition>
-              </div>
-              <!-- <div class="col-md-12 mobile-filter mobile-filter-none">
+                </div>
+              </transition>
+            </div>
+            <!-- <div class="col-md-12 mobile-filter mobile-filter-none">
               <button class="btn btn-danger w-100 h-100">
                 <span>Search Tours</span>
                 <span class="fa fa-angle-right ms-2"></span>
               </button>
             </div> -->
-            </div>
+          </div>
 
-            <h6 class="mt-5 fw-bold">Tour Price</h6>
-            <div v-on:mouseup="getFilterTours">
-              <ejs-slider
-                :min="100"
-                :max="16000"
-                :type="'Range'"
-                v-model="price_range"
-              ></ejs-slider>
-            </div>
-            <div class="d-flex justify-content-between">
-              <div>${{ price_range[0] }}</div>
-              <div>${{ price_range[1] }}</div>
-            </div>
+          <h6 class="mt-5 fw-bold">Tour Price</h6>
+          <div v-on:mouseup="getFilterTours">
+            <ejs-slider :min="100" :max="16000" :type="'Range'" v-model="price_range"></ejs-slider>
+          </div>
+          <div class="d-flex justify-content-between">
+            <div>${{ price_range[0] }}</div>
+            <div>${{ price_range[1] }}</div>
+          </div>
 
-            <h6 class="mt-5 fw-bold">Tour Days</h6>
-            <div v-on:mouseup="getFilterTours">
-              <ejs-slider
-                :min="1"
-                :max="30"
-                :type="'Range'"
-                v-model="day_range"
-              ></ejs-slider>
-            </div>
-            <div class="d-flex justify-content-between">
-              <div v-if="day_range[0] == 1">{{ day_range[0] }} Day</div>
-              <div v-else>{{ day_range[0] }} Days</div>
-              <div>{{ day_range[1] }} Days</div>
-            </div>
+          <h6 class="mt-5 fw-bold">Tour Days</h6>
+          <div v-on:mouseup="getFilterTours">
+            <ejs-slider :min="1" :max="30" :type="'Range'" v-model="day_range"></ejs-slider>
+          </div>
+          <div class="d-flex justify-content-between">
+            <div v-if="day_range[0] == 1">{{ day_range[0] }} Day</div>
+            <div v-else>{{ day_range[0] }} Days</div>
+            <div>{{ day_range[1] }} Days</div>
+          </div>
 
-            <h6 class="mt-5 fw-bold">Private or Group</h6>
-            <p v-bind:key="'private' + update_private_check">
-              <ejs-checkbox
-                label="Private"
-                name="default"
-                v-model="check_private_filter"
-              ></ejs-checkbox>
+          <h6 class="mt-5 fw-bold">Private or Group</h6>
+          <p v-bind:key="'private' + update_private_check">
+            <ejs-checkbox label="Private" name="default" v-model="check_private_filter"></ejs-checkbox>
+          </p>
+          <p v-bind:key="'group' + update_group_check">
+            <ejs-checkbox label="Group" name="default" v-model="check_group_filter"></ejs-checkbox>
+          </p>
+          <div v-bind:key="update_checklist">
+            <h6 class="mt-5 fw-bold">Standard</h6>
+            <p v-for="check_data in standard_check_list" v-bind:key="check_data.label">
+              <ejs-checkbox :label="check_data.label" v-model="check_data.checked_state" v-on:change="updateCheckedFilterOptions"></ejs-checkbox>
             </p>
-            <p v-bind:key="'group' + update_group_check">
-              <ejs-checkbox
-                label="Group"
-                name="default"
-                v-model="check_group_filter"
-              ></ejs-checkbox>
-            </p>
-            <div v-bind:key="update_checklist">
-              <h6 class="mt-5 fw-bold">Standard</h6>
-              <p
-                v-for="check_data in standard_check_list"
-                v-bind:key="check_data.label"
-              >
-                <ejs-checkbox
-                  :label="check_data.label"
-                  v-model="check_data.checked_state"
-                  v-on:change="updateCheckedFilterOptions"
-                ></ejs-checkbox>
-              </p>
 
-              <h6 class="mt-5 fw-bold">Specialized</h6>
-              <p
-                v-for="check_data in specialized_check_list"
-                v-bind:key="check_data.label"
-              >
-                <ejs-checkbox
-                  :label="check_data.label"
-                  v-model="check_data.checked_state"
-                  v-on:change="updateCheckedFilterOptions"
-                ></ejs-checkbox>
-              </p>
-            </div>
+            <h6 class="mt-5 fw-bold">Specialized</h6>
+            <p v-for="check_data in specialized_check_list" v-bind:key="check_data.label">
+              <ejs-checkbox :label="check_data.label" v-model="check_data.checked_state" v-on:change="updateCheckedFilterOptions"></ejs-checkbox>
+            </p>
           </div>
         </div>
-        <div class="col-lg-9 col-xs-12">
-          <section class="section-header">
-            <h3>Our Tours</h3>
-            <span class="read-more"
-              >Tanzania is Africa’s number one safari destination. The wildlife
-              viewing is amazing and big cats are easy to see. Africa Big Five
-              can be found in many Tanzanian parks and reserves.</span
-            >
-            <span v-if="!read_more">...</span>
-            <transition
-              enter-active-class="animate__animated animate__fadeIn"
-              leave-active-class="animate__animated animate__fadeOut"
-            >
-              <span v-if="read_more" class="read-more">
-                The most famous parks are Ngorongoro Crater and Serengeti
-                National Park. More than a quarter of the country is set aside
-                for conservation. Tanzania is also home to Africa tallest
-                Mountain, Mt. Kilimanjaro and has the best white sand beaches at
-                Zanzibar Island.</span
-              >
-            </transition>
-            <span
-              v-if="!read_more"
-              class="read-more text-danger"
-              @click="read_more = !read_more"
-              >Read more</span
-            >
-            <span
-              v-else
-              class="read-more text-danger"
-              @click="read_more = !read_more"
-              >Read less</span
-            >
-          </section>
-          <div class="mobile-sidebar-trigger mt-3 text-center">
-            <button class="btn btn-primary" @click="isSidebar = true">
-              <span class="fa fa-filter me-2"></span> Search Filter
-            </button>
-          </div>
-          <ul class="tagpill-group ps-0 mt-3">
-            <span
-              class="my-1"
-              v-if="
+      </div>
+      <div class="col-lg-9 col-xs-12">
+        <section class="section-header">
+          <h3>Our Tours</h3>
+          <span class="read-more">Tanzania is Africa’s number one safari destination. The wildlife
+            viewing is amazing and big cats are easy to see. Africa Big Five
+            can be found in many Tanzanian parks and reserves.</span>
+          <span v-if="!read_more">...</span>
+          <transition enter-active-class="animate__animated animate__fadeIn" leave-active-class="animate__animated animate__fadeOut">
+            <span v-if="read_more" class="read-more">
+              The most famous parks are Ngorongoro Crater and Serengeti
+              National Park. More than a quarter of the country is set aside
+              for conservation. Tanzania is also home to Africa tallest
+              Mountain, Mt. Kilimanjaro and has the best white sand beaches at
+              Zanzibar Island.</span>
+          </transition>
+          <span v-if="!read_more" class="read-more text-danger" @click="read_more = !read_more">Read more</span>
+          <span v-else class="read-more text-danger" @click="read_more = !read_more">Read less</span>
+        </section>
+        <div class="mobile-sidebar-trigger mt-3 text-center">
+          <button class="btn btn-primary" @click="isSidebar = true">
+            <span class="fa fa-filter me-2"></span> Search Filter
+          </button>
+        </div>
+        <ul class="tagpill-group ps-0 mt-3">
+          <span class="my-1" v-if="
                 checked_specialized_filter_options.length != 0 ||
                 checked_standard_filter_options.length != 0 ||
                 day_range[0] != 1 ||
@@ -363,41 +214,16 @@
                 this.price_range[1] != 16000 ||
                 check_private_filter == true ||
                 check_group_filter == true
-              "
-              >Selected Filters:</span
-            >
-            <ejs-chiplist
-              id="tag-list-filter"
-              cssClass="e-outline e-info"
-              enableDelete="true"
-              v-on:delete="deleteFilterOption"
-            >
-              <e-chips>
-                <e-chip
-                  :text="getPriceRangeChip()"
-                  v-if="price_range[0] != 100 || price_range[1] != 16000"
-                ></e-chip>
-                <e-chip
-                  :text="getDayRangeChip()"
-                  v-if="day_range[0] != 1 || day_range[1] != 30"
-                ></e-chip>
-                <e-chip
-                  text="Private"
-                  v-if="check_private_filter == true"
-                ></e-chip>
-                <e-chip text="Group" v-if="check_group_filter == true"></e-chip>
-                <e-chip
-                  :text="item.label"
-                  v-for="(item, index) in checked_standard_filter_options"
-                  v-bind:key="index"
-                ></e-chip>
-                <e-chip
-                  :text="item.label"
-                  v-for="(item, index) in checked_specialized_filter_options"
-                  v-bind:key="index"
-                ></e-chip>
-                <e-chip
-                  v-if="
+              ">Selected Filters:</span>
+          <ejs-chiplist id="tag-list-filter" cssClass="e-outline e-info" enableDelete="true" v-on:delete="deleteFilterOption">
+            <e-chips>
+              <e-chip :text="getPriceRangeChip()" v-if="price_range[0] != 100 || price_range[1] != 16000"></e-chip>
+              <e-chip :text="getDayRangeChip()" v-if="day_range[0] != 1 || day_range[1] != 30"></e-chip>
+              <e-chip text="Private" v-if="check_private_filter == true"></e-chip>
+              <e-chip text="Group" v-if="check_group_filter == true"></e-chip>
+              <e-chip :text="item.label" v-for="(item, index) in checked_standard_filter_options" v-bind:key="index"></e-chip>
+              <e-chip :text="item.label" v-for="(item, index) in checked_specialized_filter_options" v-bind:key="index"></e-chip>
+              <e-chip v-if="
                     checked_specialized_filter_options.length != 0 ||
                     checked_standard_filter_options.length != 0 ||
                     day_range[0] != 1 ||
@@ -406,40 +232,27 @@
                     this.price_range[1] != 16000 ||
                     check_private_filter == true ||
                     check_group_filter == true
-                  "
-                  text="Clear All Filters"
-                  cssClass="e-outline e-danger"
-                ></e-chip>
-              </e-chips>
-            </ejs-chiplist>
-          </ul>
-          <h6 class="my-3 fw-bold" v-if="filterTours != null">
-            <span v-if="filterTours.length != 0"
-              >Showing 1 - {{ filterTours.length }} of 300 results</span
-            >
-          </h6>
-          <div class="row gx-0" v-if="loading">
-            <div
-              class="col-md-6 col-xs-12"
-              v-for="(item, index) in 12"
-              v-bind:key="'skelecton' + index"
-            >
-              <TourCardSkelecton></TourCardSkelecton>
-            </div>
+                  " text="Clear All Filters" cssClass="e-outline e-danger"></e-chip>
+            </e-chips>
+          </ejs-chiplist>
+        </ul>
+        <h6 class="my-3 fw-bold" v-if="filterTours != null">
+          <span v-if="filterTours.length != 0">Showing 1 - {{ filterTours.length }} of 300 results</span>
+        </h6>
+        <div class="row gx-0" v-if="loading">
+          <div class="col-md-6 col-xs-12" v-for="(item, index) in 12" v-bind:key="'skelecton' + index">
+            <TourCardSkelecton></TourCardSkelecton>
           </div>
-          <div class="row gx-0" v-else>
-            <div
-              class="col-md-6 col-xs-12"
-              v-for="(item, index) in filterTours"
-              v-bind:key="'filter' + index"
-            >
-              <TourCard :tourData="item"></TourCard>
-            </div>
+        </div>
+        <div class="row gx-0" v-else>
+          <div class="col-md-6 col-xs-12" v-for="(item, index) in filterTours" v-bind:key="'filter' + index">
+            <TourCard :tourData="item" :where_to_search="where_to_search" :traveler_number="traveler_number" :start_date="start_date" :adults_number="adults_number" :children_number="children_number"></TourCard>
           </div>
         </div>
       </div>
     </div>
   </div>
+</div>
 </template>
 
 <script>
@@ -449,23 +262,36 @@ import Datepicker from "vuejs-datepicker";
 import TourCardSkelecton from "../components/TourCardSkelecton";
 
 import Vue from "vue";
-import { SliderPlugin } from "@syncfusion/ej2-vue-inputs";
+import {
+  SliderPlugin
+} from "@syncfusion/ej2-vue-inputs";
 Vue.use(SliderPlugin);
 
-import { CheckBoxPlugin } from "@syncfusion/ej2-vue-buttons";
+import {
+  CheckBoxPlugin
+} from "@syncfusion/ej2-vue-buttons";
 Vue.use(CheckBoxPlugin);
 
-import { RadioButtonPlugin } from "@syncfusion/ej2-vue-buttons";
+import {
+  RadioButtonPlugin
+} from "@syncfusion/ej2-vue-buttons";
 Vue.use(RadioButtonPlugin);
 
-import { ChipListPlugin } from "@syncfusion/ej2-vue-buttons";
+import {
+  ChipListPlugin
+} from "@syncfusion/ej2-vue-buttons";
 Vue.use(ChipListPlugin);
 
-import { enableRipple } from "@syncfusion/ej2-base";
+import {
+  enableRipple
+} from "@syncfusion/ej2-base";
 enableRipple(true);
 
-import { mapState, mapGetters, mapMutations } from "vuex";
-
+import {
+  mapState,
+  mapGetters,
+  mapMutations
+} from "vuex";
 
 export default {
   name: "OurTours",
@@ -483,13 +309,16 @@ export default {
       type: "Range",
       read_more: false,
       ddd: "",
+
       where_to_search: "",
       traveler_number: "",
       start_date: "",
-      visible_whereto_dropdown: false,
-      visible_traveler_dropdown: false,
       adults_number: 1,
       children_number: 0,
+
+      visible_whereto_dropdown: false,
+      visible_traveler_dropdown: false,
+
       disabledFn: {
         customPredictor(date) {
           var current_date = new Date();
@@ -507,8 +336,7 @@ export default {
 
       day_range_chip: "",
 
-      where_to_list: [
-        {
+      where_to_list: [{
           title: "All Safari Destinations",
           country: "Search Everywhere",
         },
@@ -596,8 +424,7 @@ export default {
       search_result: [],
       isSidebar: false,
 
-      standard_check_list: [
-        {
+      standard_check_list: [{
           label: "budget",
           checked_state: false,
         },
@@ -623,8 +450,7 @@ export default {
         },
       ],
 
-      specialized_check_list: [
-        {
+      specialized_check_list: [{
           label: "Birdwatching",
           checked_state: false,
         },
@@ -742,6 +568,11 @@ export default {
     ...mapGetters({
       filterTours: "tourController/filterTours",
       loading: "tourcard_loading",
+
+      where_to_search_state: "tourController/where_to_search",
+      start_date_state: "tourController/start_date",
+      adults_number_state: "tourController/adults_number",
+      children_number_state: "tourController/children_number",
     }),
   },
   watch: {
@@ -769,7 +600,15 @@ export default {
   },
   created() {
     this.search_result = this.where_to_list;
+
+    this.where_to_search = this.where_to_search_state
+    this.traveler_number = this.traveler_number_state
+    this.start_date = this.start_date_state
+    this.adults_number = this.adults_number_state
+    this.children_number = this.children_number_state
+
     this.getFilterTours();
+    this.traveler_number_calc();
   },
   methods: {
     updateCheckedFilterOptions() {
@@ -828,6 +667,12 @@ export default {
       if (traveler == 1) this.traveler_number = traveler + " Traveler";
       else this.traveler_number = traveler + " Travelers";
       this.closeTravelerDropdown();
+    },
+
+    traveler_number_calc() {
+      let traveler = this.adults_number + this.children_number;
+      if (traveler == 1) this.traveler_number = traveler + " Traveler";
+      else this.traveler_number = traveler + " Travelers";
     },
 
     setTravelerInit() {
@@ -934,7 +779,7 @@ export default {
           day_range_text = "From " + this.day_range[0] + " days";
         else
           day_range_text =
-            this.day_range[0] + " to " + this.day_range[1] + " days";
+          this.day_range[0] + " to " + this.day_range[1] + " days";
       } else if (this.day_range[1] != 30) {
         day_range_text = "Up to " + this.day_range[1] + " days";
       }
@@ -948,7 +793,7 @@ export default {
           price_range_text = "From " + this.price_range[0] + "$";
         else
           price_range_text =
-            this.price_range[0] + " to " + this.price_range[1] + "$";
+          this.price_range[0] + " to " + this.price_range[1] + "$";
       } else if (this.price_range[1] != 16000) {
         price_range_text = "Up to " + this.price_range[1] + "$";
       }

@@ -4,6 +4,14 @@ const state = {
     ourTours: null,
     filterTours: null,
     packageData: null,
+
+    where_to_search: null,
+    start_date: null,
+    adults_number: 1,
+    children_number: 0,
+
+    package_id: null,
+    user_id: null,
 };
 
 const getters = {
@@ -11,6 +19,14 @@ const getters = {
     ourTours: state => state.ourTours,
     filterTours: state => state.filterTours,
     packageData: state => state.packageData,
+
+    where_to_search: state => state.where_to_search,
+    start_date: state => state.start_date,
+    adults_number: state => state.adults_number,
+    children_number: state => state.children_number,
+    
+    package_id: state => state.package_id,
+    user_id: state => state.user_id,
 };
 
 const mutations = {
@@ -29,6 +45,18 @@ const mutations = {
 
     setTourById(state, data) {
         state.packageData = data;
+    },
+    
+    setSearchData(state, data) {
+        state.where_to_search = data.where_to_search;
+        state.start_date = data.start_date;
+        state.adults_number = data.adults_number;
+        state.children_number = data.children_number;
+    },
+
+    setTourInfo(state, data) {
+        state.package_id = data.package_id;
+        state.user_id = data.user_id;
     },
 };
 
@@ -72,6 +100,16 @@ const actions = {
             .catch(err => {
                 context.commit("setRequestLoadingStatus", false, {root: true,});
             });
+    },
+
+    //save search data item to store to use other pages...
+    setSearchData(context, search_data) {
+        context.commit("setSearchData", search_data);
+    },
+
+    //save package and user id data to store to use quote page...
+    setTourInfo(context, tour_info) {
+        context.commit("setTourInfo", tour_info);
     }
 };
 

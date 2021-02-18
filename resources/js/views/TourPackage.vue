@@ -38,8 +38,8 @@
                 <span>{{ packageData.avg_review }}</span>
                 <span>({{ packageData.sum_review }} Reviews)</span>
               </p>
-              <a class="btn btn-danger" href="/tour-quote">Get Free Quote Now
-                <span class="fa fa-angle-right ms-2"></span></a>
+              <button class="btn btn-danger" @click="getQuoteNow">Get Free Quote Now
+                <span class="fa fa-angle-right ms-2"></span></button>
             </div>
           </div>
         </div>
@@ -395,7 +395,7 @@
           </ejs-tab>
           <h4 class="fw-bold ms-2 mt-3">Interested in this Tour ?</h4>
           <div>
-            <a class="btn btn-danger ms-2 mb-3" href="/tour-quote">Get a Free Quote <span class="fa fa-angle-right ms-2"></span></a>
+            <button class="btn btn-danger ms-2 mb-3" @click="getQuoteNow">Get a Free Quote <span class="fa fa-angle-right ms-2"></span></button>
           </div>
           <div class="d-flex ms-3">
             <div style="min-width: 20px">
@@ -444,14 +444,41 @@
           <h5 class="fw-bold">Request a Quote</h5>
           <div class="row">
             <div class="col-sm-12 mt-3">
-              <ejs-datepicker :placeholder="'Select a Date'"></ejs-datepicker>
+              <ejs-datepicker :placeholder="'Select a Date'" v-model="start_date"></ejs-datepicker>
             </div>
-            <div class="col-sm-12 mt-3">
-              <ejs-textbox floatLabelType="Auto" type="number" placeholder="Travellers" required></ejs-textbox>
+            <div class="col-sm-12 mt-3" v-click-outside-dropdown="closeTravelerDropdown">
+              <div @click="showTravelerDropdown">
+              <ejs-textbox floatLabelType="Auto" autocomplete="off" type="text" placeholder="Travellers" v-model="traveler_number"></ejs-textbox>
+              </div>
+              <!-- <transition enter-active-class="animate__animated animate__fadeIn" leave-active-class="animate__animated animate__fadeOut"> -->
+                <div v-if="visible_traveler_dropdown" class="traveler-dropdown left-0 bg-white mt-3 triangule-where">
+                  <div class="bg-warning text-white p-2 text-left">
+                    Travelers
+                    <span class="fa fa-times-circle-o" @click="closeTravelerDropdown"></span>
+                  </div>
+                  <div class="py-2 px-3 mt-2 border-1 text-start d-flex justify-content-between">
+                    <div><strong>Adults</strong>(18+ years):</div>
+                    <div>
+                      <vue-numeric-input v-model="adults_number" :min="1" :max="100" :step="1"></vue-numeric-input>
+                    </div>
+                  </div>
+                  <div class="py-2 px-3 mt-2 border-1 text-start d-flex justify-content-between">
+                    <div><strong>Children</strong>(0~17 years):</div>
+                    <div>
+                      <vue-numeric-input v-model="children_number" :min="0" :max="100" :step="1"></vue-numeric-input>
+                    </div>
+                  </div>
+                  <div class="text-right">
+                    <button class="btn btn-danger mx-3 my-3" @click="setTravelerInfo">
+                      Done
+                    </button>
+                  </div>
+                </div>
+              <!-- </transition> -->
             </div>
             <div class="col-sm-12 mt-3"></div>
           </div>
-          <button class="btn btn-danger mb-3">Enquire Now</button>
+          <button class="btn btn-danger mb-3" @click="getQuoteNow">Enquire Now</button>
           <div class="d-flex ms-3">
             <div style="min-width: 25px">
               <span class="fa fa-check-circle"></span>
@@ -619,15 +646,18 @@ import {
   mapMutations
 } from "vuex";
 
+import VueNumericInput from "vue-numeric-input";
 import StarRating from "vue-star-rating";
 import CustomStarRating from "../components/CustomStarRating";
 import Pagination from "vue-pagination-2";
+
 export default {
   name: "TourPackage",
   components: {
     StarRating,
     CustomStarRating,
     Pagination,
+    VueNumericInput,
   },
   computed: {
     package_id: function () {
@@ -638,6 +668,11 @@ export default {
       packageData: "tourController/packageData",
       loading: "tourcard_loading",
       request_status: "request_status",
+
+      where_to_search_state: "tourController/where_to_search",
+      start_date_state: "tourController/start_date",
+      adults_number_state: "tourController/adults_number",
+      children_number_state: "tourController/children_number",
     }),
   },
   data() {
@@ -654,17 +689,51 @@ export default {
       title: '',
       rating: 5,
       review: '',
+      start_date:'',
+      traveler_number: "",
+      visible_traveler_dropdown: false,
+      adults_number: 1,
+      children_number: 0,
     };
+  },
+  directives: {
+    "click-outside-dropdown": {
+      bind: function (el, binding) {
+        // Define ourClickEventHandler
+        const ourClickEventHandler = (event) => {
+          if (!el.contains(event.target) && el !== event.target) {
+            // as we are attaching an click event listern to the document (below)
+            // ensure the events target is outside the element or a child of it
+            binding.value(event); // before binding it
+          }
+        };
+        // attached the handler to the element so we can remove it later easily
+        el.__vueClickEventHandler__ = ourClickEventHandler;
+
+        // attaching ourClickEventHandler to a listener on the document here
+        document.addEventListener("click", ourClickEventHandler);
+      },
+      unbind: function (el) {
+        // Remove Event Listeners
+        document.removeEventListener("click", el.__vueClickEventHandler__);
+      },
+    },
   },
   created() {
     this.getPacakgeById(this.package_id);
+
+    this.traveler_number = this.traveler_number_state
+    this.start_date = this.start_date_state
+    this.adults_number = this.adults_number_state
+    this.children_number = this.children_number_state
+
+    this.traveler_number_calc();
   },
   watch: {
     current_review_page: function (newValue) {
       this.getCurrentPageReviews(newValue);
     },
   },
-  mounted() {},
   methods: {
     getPacakgeById(package_id) {
       this.$store
@@ -672,6 +741,12 @@ export default {
         .then(() => {
           this.getCurrentPageReviews(1);
         });
+    },
+
+    traveler_number_calc() {
+      let traveler = this.adults_number + this.children_number;
+      if (traveler == 1) this.traveler_number = traveler + " Traveler";
+      else this.traveler_number = traveler + " Travelers";
     },
 
     getCurrentPageReviews(page_num) {
@@ -685,6 +760,45 @@ export default {
           index++;
         }
       }
+    },
+
+    showTravelerDropdown() {
+      var current_flag = this.visible_traveler_dropdown;
+      this.visible_traveler_dropdown = !current_flag;
+    },
+
+    closeTravelerDropdown: function (event) {
+      this.visible_traveler_dropdown = false;
+    },
+    setTravelerInfo(event) {
+      event.preventDefault();
+      let traveler = this.adults_number + this.children_number;
+      if (traveler == 1) this.traveler_number = traveler + " Traveler";
+      else this.traveler_number = traveler + " Travelers";
+      this.closeTravelerDropdown();
+    },
+
+    getQuoteNow() {
+
+      let searchData = {};
+
+      searchData = {
+        'where_to_search': this.where_to_search,
+        'start_date': this.start_date,
+        'adults_number': this.adults_number,
+        'children_number': this.children_number,
+      }
+
+      this.$store.dispatch("tourController/setSearchData", searchData)
+
+      let quote_tourInfo = {};
+      quote_tourInfo = {
+        'package_id': this.packageData.package_id,
+        'user_id': this.packageData.user_id,
+      }
+      this.$store.dispatch("tourController/setTourInfo", quote_tourInfo)
+
+      this.$router.push('/tour-quote');
     },
 
     submitReview() {
@@ -732,16 +846,16 @@ export default {
         })
         .catch(() => {
           this.$notify({
-              group: 'warning',
-              title: 'Submit Error !',
-              text: 'Sorry, Something went wrong...'
-            });
+            group: 'warning',
+            title: 'Submit Error !',
+            text: 'Sorry, Something went wrong...'
+          });
 
-            this.name = ''
-            this.email = ''
-            this.title = ''
-            this.review = ''
-            this.rating = 5
+          this.name = ''
+          this.email = ''
+          this.title = ''
+          this.review = ''
+          this.rating = 5
         });
     }
   },

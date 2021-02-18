@@ -1,114 +1,90 @@
 <template>
-  <div class="card mb-3 mx-2" id="tour-card" @click="toInnerPackage()">
-    <div
-      class="bg-image hover-overlay ripple"
-      data-mdb-ripple-color="light"
-      :style="{
+<div class="card mb-3 mx-2" id="tour-card" @click="toInnerPackage()">
+  <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light" :style="{
         'background-image': 'url(' + tourData.image_url + ')',
-      }"
-    >
-      <div>
-        <div
-          class="mask"
-          style="background-color: rgba(251, 251, 251, 0.15)"
-        ></div>
-      </div>
-      <div class="tour_title">
-        {{ tourData.no_of_day }}-Day {{ tourData.title }}
-      </div>
-      <img
-        :src="tourData.operator_logo"
-        style="width: 70px; height: auto; top: 0px; left: 30px"
-        class="position-absolute"
-      />
+      }">
+    <div>
+      <div class="mask" style="background-color: rgba(251, 251, 251, 0.15)"></div>
     </div>
-    <div
-      class="card-body"
-      style="position: relative; border-bottom: 1px dotted black"
-    >
-      <div
-        class="tag-image"
-        v-if="
+    <div class="tour_title">
+      {{ tourData.no_of_day }}-Day {{ tourData.title }}
+    </div>
+    <img :src="tourData.operator_logo" style="width: 70px; height: auto; top: 0px; left: 30px" class="position-absolute" />
+  </div>
+  <div class="card-body" style="position: relative; border-bottom: 1px dotted black">
+    <div class="tag-image" v-if="
           tourData.tag !== null &&
           tourData.tag !== undefined &&
           tourData.tag !== ''
-        "
-      >
-        <img
-          v-if="tourData.tag == 'review'"
-          :src="'/images/best-review.png'"
-          style="margin-top: -15px; width: 60px; height: auto"
-        />
-        <img
-          v-else-if="tourData.tag == 'seller'"
-          :src="'/images/bestseller.png'"
-          style="width: 80px; height: auto"
-        />
-        <img
-          v-else
-          :src="'/images/toprated2.png'"
-          style="width: 100px; height: auto"
-        />
-      </div>
-      <p class="card-text mb-1">
-        <strong> Acommodation: </strong>
-        No Data
-      </p>
-      <p class="card-text mb-1">
-        <strong> Tour Type: </strong>
-        {{ getTourLevel(tourData.level) }}
-      </p>
-      <p class="card-text mb-1 trip-route">
-        <strong> Trip Route: </strong>
-        {{ tourData.start_city }}(Start),
-        {{ getMidRoute(tourData.destination) }}
-        {{ tourData.end_city }} (End)
-      </p>
+        ">
+      <img v-if="tourData.tag == 'review'" :src="'/images/best-review.png'" style="margin-top: -15px; width: 60px; height: auto" />
+      <img v-else-if="tourData.tag == 'seller'" :src="'/images/bestseller.png'" style="width: 80px; height: auto" />
+      <img v-else :src="'/images/toprated2.png'" style="width: 100px; height: auto" />
     </div>
-    <div class="row gx-0" style="position: relative">
-      <div>
-        <p class="card-text mb-1 ps-3">
-          {{ tourData.company_name }}
-        </p>
-        <p class="card-text ps-3 d-flex mb-2">
-          <!-- <star-rating
+    <p class="card-text mb-1">
+      <strong> Acommodation: </strong>
+      No Data
+    </p>
+    <p class="card-text mb-1">
+      <strong> Tour Type: </strong>
+      {{ getTourLevel(tourData.level) }}
+    </p>
+    <p class="card-text mb-1 trip-route">
+      <strong> Trip Route: </strong>
+      {{ tourData.start_city }}(Start),
+      {{ getMidRoute(tourData.destination) }}
+      {{ tourData.end_city }} (End)
+    </p>
+  </div>
+  <div class="row gx-0" style="position: relative">
+    <div>
+      <p class="card-text mb-1 ps-3">
+        {{ tourData.company_name }}
+      </p>
+      <p class="card-text ps-3 d-flex mb-2">
+        <!-- <star-rating
             :rating="tourData.avg_review"
             :round-start-rating="false"
             :read-only="true"
             :star-size="22"
             active-color="#f93154"
           ></star-rating> -->
-          <CustomStarRating :rating="tourData.avg_review"></CustomStarRating>
-          <strong> {{ tourData.avg_review }} </strong>
-          <span> / </span>
-          <span v-if="tourData.sum_review == 1"
-            >{{ tourData.sum_review }} Review</span
-          >
-          <span v-else>{{ tourData.sum_review }} Reviews</span>
-        </p>
-      </div>
-      <div class="price">
-        <strong
-          ><span class="fa fa-dollar"></span
-          >{{ tourData.adult_currency }}</strong
-        >&nbsp;<small>pp</small>
-      </div>
+        <CustomStarRating :rating="tourData.avg_review"></CustomStarRating>
+        <strong> {{ tourData.avg_review }} </strong>
+        <span> / </span>
+        <span v-if="tourData.sum_review == 1">{{ tourData.sum_review }} Review</span>
+        <span v-else>{{ tourData.sum_review }} Reviews</span>
+      </p>
+    </div>
+    <div class="price">
+      <strong><span class="fa fa-dollar"></span>{{ tourData.adult_currency }}</strong>&nbsp;<small>pp</small>
     </div>
   </div>
+</div>
 </template>
 
 <script>
 import CustomStarRating from "../components/CustomStarRating";
+// import { mapState, mapGetters, mapMutations } from "vuex";
 export default {
   components: {
     CustomStarRating,
   },
   props: {
     tourData: Object,
+
+    where_to_search: String,
+    start_date: Date,
+    adults_number: Number,
+    children_number: Number,
   },
   computed: {},
   data() {
     return {};
+  },
+
+  created() {
+
   },
 
   methods: {
@@ -139,6 +115,16 @@ export default {
     },
 
     toInnerPackage() {
+
+      let searchData = {};
+      searchData = {
+        'where_to_search': this.where_to_search,
+        'start_date': this.start_date,
+        'adults_number': this.adults_number,
+        'children_number': this.children_number,
+      }
+      this.$store.dispatch("tourController/setSearchData", searchData)
+
       this.$router
         .push("/tour-package/" + this.tourData.package_id)
         .catch(() => {});
@@ -186,12 +172,10 @@ export default {
   text-align: left;
   padding: 20px 10px;
   background: rgba(0, 0, 0, 0.4);
-  background: linear-gradient(
-    to bottom,
-    rgba(0, 0, 0, 0) 0%,
-    rgba(0, 0, 0, 0.5) 45%,
-    rgba(0, 0, 0, 0.9) 100%
-  );
+  background: linear-gradient(to bottom,
+      rgba(0, 0, 0, 0) 0%,
+      rgba(0, 0, 0, 0.5) 45%,
+      rgba(0, 0, 0, 0.9) 100%);
   color: white;
   text-align: center;
   font-weight: 700;
@@ -209,6 +193,7 @@ export default {
 #tour-card.card:hover {
   box-shadow: 0px 1px 13px #666;
 }
+
 .trip-route {
   min-height: 75px;
 }

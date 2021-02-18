@@ -3,7 +3,6 @@
     <!--
     main banner
     -->
-
     <section class="main-banner">
       <div class="wrapper">
         <h2 class="text-center" data-wow-delay="1">
@@ -193,7 +192,7 @@
                   </transition>
                 </div>
                 <div class="col-md-4 col-xs-12 ps-2 mobile-filter">
-                  <button type="button" class="btn btn-danger w-100 h-100">
+                  <button type="button" class="btn btn-danger w-100 h-100" @click="searchButton">
                     Search
                   </button>
                 </div>
@@ -754,6 +753,19 @@ export default {
     initStartDate() {
       this.start_date = "";
     },
+    searchButton() {
+      let searchData = {};
+      searchData = {
+        'where_to_search': this.where_to_search,
+        'start_date': this.start_date,
+        'adults_number': this.adults_number,
+        'children_number': this.children_number,
+      }
+
+      this.$store.dispatch("tourController/setSearchData", searchData)
+
+      this.$router.push('/our-tours')
+    }
   },
 };
 </script>

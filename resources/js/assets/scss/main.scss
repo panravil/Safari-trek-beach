@@ -278,6 +278,7 @@ input#traveler_input {
 .where_to_dropdown,
 .traveler-dropdown {
   position: absolute;
+  z-index: 2222;
 }
 .vdp-datepicker__calendar {
   left: -50px;
