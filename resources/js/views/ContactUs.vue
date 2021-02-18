@@ -21,55 +21,57 @@
       </h3>
       <h5 class="mt-5 fst-italic" data-aos="fade-up">Please fill the form >>></h5>
       <div class="card p-5 mx-auto contact-form-card">
-        <div class="row align-items-center">
-          <div class="col-sm-12">
-            <ejs-textbox floatLabelType="Auto" type="text" placeholder="Name" required></ejs-textbox>
-          </div>
-          <div class="col-sm-12 mt-3">
-            <ejs-textbox floatLabelType="Auto" type="email" placeholder="Email" required></ejs-textbox>
-          </div>
-          <div class="col-sm-12 mt-3">
-            <ejs-textbox :multiline="true" floatLabelType="Auto" placeholder="Write a message" required></ejs-textbox>
-          </div>
-          <div>
-            <button type="submit" class="btn btn-danger mt-3">Submit</button>
-          </div>
-          <div class="mt-5">
-            <h4 class="fw-bold">Address</h4>
-            <div class="d-flex align-items-center">
-              <h5 style="min-width: 30px" class="text-danger">
-                <span class="fa fa-map-marker me-3"></span>
-              </h5>
-              <h5>
-                <a href="http://maps.google.com/?q=Mafao House Arusha Tanzania" target="_blank">
-                  Mafao House Arusha Tanzania</a>
-              </h5>
+        <form @submit.prevent="submitContactInfo">
+          <div class="row align-items-center">
+            <div class="col-sm-12">
+              <ejs-textbox floatLabelType="Auto" type="text" placeholder="Name" v-model="name" required></ejs-textbox>
             </div>
-            <div class="d-flex align-items-center">
-              <h5 style="min-width: 30px" class="text-danger">
-                <span class="fa fa-phone-square me-2"></span>
-              </h5>
-              <h5> <a href="tel:+255758022567">+255 758 022 567</a></h5>
+            <div class="col-sm-12 mt-3">
+              <ejs-textbox floatLabelType="Auto" type="email" placeholder="Email" v-model="email" required></ejs-textbox>
             </div>
-            <div class="d-flex align-items-center">
-              <h5 style="min-width: 30px" class="text-danger">
-                <span class="fa fa-envelope me-2"></span>
-              </h5>
-              <h5>
-                <a href="mailto:info@safari-trek-beach.com">info@safari-trek-beach.com</a>
-              </h5>
+            <div class="col-sm-12 mt-3">
+              <ejs-textbox :multiline="true" floatLabelType="Auto" placeholder="Write a message" v-model="message" required></ejs-textbox>
+            </div>
+            <div>
+              <button type="submit" class="btn btn-danger mt-3">Submit</button>
+            </div>
+            <div class="mt-5">
+              <h4 class="fw-bold">Address</h4>
+              <div class="d-flex align-items-center">
+                <h5 style="min-width: 30px" class="text-danger">
+                  <span class="fa fa-map-marker me-3"></span>
+                </h5>
+                <h5>
+                  <a href="http://maps.google.com/?q=Mafao House Arusha Tanzania" target="_blank">
+                    Mafao House Arusha Tanzania</a>
+                </h5>
+              </div>
+              <div class="d-flex align-items-center">
+                <h5 style="min-width: 30px" class="text-danger">
+                  <span class="fa fa-phone-square me-2"></span>
+                </h5>
+                <h5> <a href="tel:+255758022567">+255 758 022 567</a></h5>
+              </div>
+              <div class="d-flex align-items-center">
+                <h5 style="min-width: 30px" class="text-danger">
+                  <span class="fa fa-envelope me-2"></span>
+                </h5>
+                <h5>
+                  <a href="mailto:info@safari-trek-beach.com">info@safari-trek-beach.com</a>
+                </h5>
+              </div>
+            </div>
+            <h4 class="fw-bold mt-3">Follow Us On</h4>
+            <div class="row gx-0 d-flex py-4 align-item-center">
+              <div class="col-md-12 text-center">
+                <a href="#"><span class="fa fa-facebook-f fa-2x text-danger me-5"></span></a>
+                <a href="#"><span class="fa fa-instagram fa-2x text-danger me-5"></span></a>
+                <a href="#"><span class="fa fa-twitter fa-2x text-danger me-5"></span></a>
+                <a href="#"><span class="fa fa-youtube fa-2x text-danger"></span></a>
+              </div>
             </div>
           </div>
-          <h4 class="fw-bold mt-3">Follow Us On</h4>
-          <div class="row gx-0 d-flex py-4 align-item-center">
-            <div class="col-md-12 text-center">
-              <a href="#"><span class="fa fa-facebook-f fa-2x text-danger me-5"></span></a>
-              <a href="#"><span class="fa fa-instagram fa-2x text-danger me-5"></span></a>
-              <a href="#"><span class="fa fa-twitter fa-2x text-danger me-5"></span></a>
-              <a href="#"><span class="fa fa-youtube fa-2x text-danger"></span></a>
-            </div>
-          </div>
-        </div>
+        </form>
       </div>
     </section>
   </div>
@@ -88,8 +90,44 @@ Vue.use(TextBoxPlugin);
 export default {
   name: "ContactUs",
   data() {
-    return {};
+    return {
+      name: '',
+      email: '',
+      message: '',
+    };
   },
+  methods: {
+    submitContactInfo() {
+
+      // this is for mail app
+      let url = "mailto:";
+      url +=
+        "info@safari-trek-beach.com" +
+        "?subject=" +
+        this.name +
+        "&body=" +
+        this.message.replace(/\n/g, "%0D%0A");
+      "%0D%0A%0D%0A This is my email:%0D%0A" +
+      this.email +
+      window.open(url, "_blank");
+
+      // this is for gmail in browser
+      
+      //   let url = "https://mail.google.com/mail/u/0/?fs=1&to=";
+      // url +=
+      //   "info@safari-trek-beach.com" +
+      //   "&su=" +
+      //   this.name +
+      //   "&body=" +
+      //   this.message.replace(/\n/g, "%0D%0A") +
+      //   "%0D%0A%0D%0A This is my email:%0D%0A" +
+      //   this.email +
+      //   "&tf=cm";
+      // window.open(url, "_blank");
+
+
+    }
+  }
 };
 </script>
 
@@ -111,6 +149,7 @@ export default {
 #contact-us-page .contact-form-card {
   width: 75%;
 }
+
 #contact-us-page a {
   color: #4f4f4f;
 }
