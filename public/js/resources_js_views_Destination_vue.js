@@ -52,7 +52,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: "DestinationCard",
   props: {
@@ -63,10 +62,9 @@ __webpack_require__.r(__webpack_exports__);
     return {};
   },
   created: function created() {},
-  methods: {
-    goToDestinationDetailPage: function goToDestinationDetailPage() {
-      this.$router.push("/destination-package");
-    }
+  methods: {// goToDestinationDetailPage() {
+    //   this.$router.push("/destination-package/" + this.destination.post_slug);
+    // },
   }
 });
 
@@ -168,7 +166,10 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
   methods: {
     getListDestinations: function getListDestinations() {
       this.$store.dispatch("destinationController/getListDestinations");
-    }
+    } // toDestinationInnerPage(slug) {
+    //   this.$router.push('/destination-package/' + slug);
+    // },
+
   }
 });
 
@@ -615,7 +616,17 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c(
     "div",
-    { staticClass: "card mb-3 mx-2", attrs: { id: "destination-card" } },
+    {
+      staticClass: "card mb-3 mx-2",
+      attrs: { id: "destination-card" },
+      on: {
+        click: function($event) {
+          return _vm.$router.push(
+            "/destination-package/" + _vm.destination.post_slug
+          )
+        }
+      }
+    },
     [
       _c(
         "div",
@@ -669,18 +680,7 @@ var render = function() {
           ]
         ),
         _vm._v(" "),
-        _c(
-          "button",
-          {
-            staticClass: "btn btn-white",
-            attrs: { type: "button" },
-            on: { click: _vm.goToDestinationDetailPage }
-          },
-          [
-            _vm._v("\n      Read More "),
-            _c("span", { staticClass: "fa fa-angle-double-right ms-2" })
-          ]
-        )
+        _vm._m(1)
       ])
     ]
   )
@@ -690,9 +690,20 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("a", { attrs: { href: "/destination-package" } }, [
-      _c("div", { staticClass: "mask" })
-    ])
+    return _c("a", [_c("div", { staticClass: "mask" })])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "button",
+      { staticClass: "btn btn-white", attrs: { type: "button" } },
+      [
+        _vm._v("\n      Read More "),
+        _c("span", { staticClass: "fa fa-angle-double-right ms-2" })
+      ]
+    )
   }
 ]
 render._withStripped = true
@@ -790,7 +801,10 @@ var render = function() {
               _vm._l(_vm.listDestinations, function(destination, index) {
                 return _c(
                   "div",
-                  { key: index, staticClass: "col-lg-4 col-md-6 col-xs-12" },
+                  {
+                    key: "destination" + index,
+                    staticClass: "col-lg-4 col-md-6 col-xs-12"
+                  },
                   [
                     _c("DestinationCard", {
                       attrs: { destination: destination }

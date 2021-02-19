@@ -144,9 +144,9 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     this.getListDestinations();
   },
   methods: {
-    toBlogInnerPage: function toBlogInnerPage() {
-      this.$router.push('./blog-inner-page');
-    },
+    // toBlogInnerPage(slug) {
+    //   this.$router.push('/blog-inner-page/' + slug);
+    // },
     getListDestinations: function getListDestinations() {
       this.$store.dispatch("blogController/getListBlogs");
     }
@@ -596,7 +596,15 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c(
     "div",
-    { staticClass: "card mb-3 mx-2", attrs: { id: "blog-card" } },
+    {
+      staticClass: "card mb-3 mx-2",
+      attrs: { id: "blog-card" },
+      on: {
+        click: function($event) {
+          return _vm.$router.push("/blog-inner-page/" + _vm.blog.post_slug)
+        }
+      }
+    },
     [
       _c(
         "div",
@@ -755,11 +763,7 @@ var render = function() {
               _vm._l(_vm.listBlog, function(blog, index) {
                 return _c(
                   "div",
-                  {
-                    key: index,
-                    staticClass: "col-lg-4 col-md-6 col-xs-12",
-                    on: { click: _vm.toBlogInnerPage }
-                  },
+                  { key: index, staticClass: "col-lg-4 col-md-6 col-xs-12" },
                   [_c("BlogCard", { attrs: { blog: blog } })],
                   1
                 )

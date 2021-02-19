@@ -12333,13 +12333,38 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 
 
 vue__WEBPACK_IMPORTED_MODULE_0__.default.use(_syncfusion_ej2_vue_inputs__WEBPACK_IMPORTED_MODULE_1__.TextBoxPlugin);
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: "ContactUs",
   data: function data() {
-    return {};
+    return {
+      name: '',
+      email: '',
+      message: ''
+    };
+  },
+  methods: {
+    submitContactInfo: function submitContactInfo() {
+      // this is for mail app
+      var url = "mailto:";
+      url += "info@safari-trek-beach.com" + "?subject=" + this.name + "&body=" + this.message.replace(/\n/g, "%0D%0A");
+      "%0D%0A%0D%0A This is my email:%0D%0A" + this.email + window.open(url, "_blank"); // this is for gmail in browser
+      //   let url = "https://mail.google.com/mail/u/0/?fs=1&to=";
+      // url +=
+      //   "info@safari-trek-beach.com" +
+      //   "&su=" +
+      //   this.name +
+      //   "&body=" +
+      //   this.message.replace(/\n/g, "%0D%0A") +
+      //   "%0D%0A%0D%0A This is my email:%0D%0A" +
+      //   this.email +
+      //   "&tf=cm";
+      // window.open(url, "_blank");
+    }
   }
 });
 
@@ -12582,63 +12607,99 @@ var render = function() {
         ),
         _vm._v(" "),
         _c("div", { staticClass: "card p-5 mx-auto contact-form-card" }, [
-          _c("div", { staticClass: "row align-items-center" }, [
-            _c(
-              "div",
-              { staticClass: "col-sm-12" },
-              [
-                _c("ejs-textbox", {
-                  attrs: {
-                    floatLabelType: "Auto",
-                    type: "text",
-                    placeholder: "Name",
-                    required: ""
-                  }
-                })
-              ],
-              1
-            ),
-            _vm._v(" "),
-            _c(
-              "div",
-              { staticClass: "col-sm-12 mt-3" },
-              [
-                _c("ejs-textbox", {
-                  attrs: {
-                    floatLabelType: "Auto",
-                    type: "email",
-                    placeholder: "Email",
-                    required: ""
-                  }
-                })
-              ],
-              1
-            ),
-            _vm._v(" "),
-            _c(
-              "div",
-              { staticClass: "col-sm-12 mt-3" },
-              [
-                _c("ejs-textbox", {
-                  attrs: {
-                    multiline: true,
-                    floatLabelType: "Auto",
-                    placeholder: "Write a message",
-                    required: ""
-                  }
-                })
-              ],
-              1
-            ),
-            _vm._v(" "),
-            _vm._m(2),
-            _vm._v(" "),
-            _vm._m(3),
-            _vm._v(" "),
-            _c("h4", { staticClass: "fw-bold mt-3" }, [_vm._v("Follow Us On")]),
-            _vm._v(" "),
-            _vm._m(4)
-          ])
+          _c(
+            "form",
+            {
+              on: {
+                submit: function($event) {
+                  $event.preventDefault()
+                  return _vm.submitContactInfo($event)
+                }
+              }
+            },
+            [
+              _c("div", { staticClass: "row align-items-center" }, [
+                _c(
+                  "div",
+                  { staticClass: "col-sm-12" },
+                  [
+                    _c("ejs-textbox", {
+                      attrs: {
+                        floatLabelType: "Auto",
+                        type: "text",
+                        placeholder: "Name",
+                        required: ""
+                      },
+                      model: {
+                        value: _vm.name,
+                        callback: function($$v) {
+                          _vm.name = $$v
+                        },
+                        expression: "name"
+                      }
+                    })
+                  ],
+                  1
+                ),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  { staticClass: "col-sm-12 mt-3" },
+                  [
+                    _c("ejs-textbox", {
+                      attrs: {
+                        floatLabelType: "Auto",
+                        type: "email",
+                        placeholder: "Email",
+                        required: ""
+                      },
+                      model: {
+                        value: _vm.email,
+                        callback: function($$v) {
+                          _vm.email = $$v
+                        },
+                        expression: "email"
+                      }
+                    })
+                  ],
+                  1
+                ),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  { staticClass: "col-sm-12 mt-3" },
+                  [
+                    _c("ejs-textbox", {
+                      attrs: {
+                        multiline: true,
+                        floatLabelType: "Auto",
+                        placeholder: "Write a message",
+                        required: ""
+                      },
+                      model: {
+                        value: _vm.message,
+                        callback: function($$v) {
+                          _vm.message = $$v
+                        },
+                        expression: "message"
+                      }
+                    })
+                  ],
+                  1
+                ),
+                _vm._v(" "),
+                _vm._m(2),
+                _vm._v(" "),
+                _vm._m(3),
+                _vm._v(" "),
+                _c("h4", { staticClass: "fw-bold mt-3" }, [
+                  _vm._v("Follow Us On")
+                ]),
+                _vm._v(" "),
+                _vm._m(4)
+              ])
+            ]
+          )
         ])
       ])
     ])
@@ -12731,7 +12792,7 @@ var staticRenderFns = [
                 target: "_blank"
               }
             },
-            [_vm._v("\n                  Mafao House Arusha Tanzania")]
+            [_vm._v("\n                    Mafao House Arusha Tanzania")]
           )
         ])
       ]),

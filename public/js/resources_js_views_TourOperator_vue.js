@@ -30198,6 +30198,7 @@ __webpack_require__.r(__webpack_exports__);
   props: {
     tourData: Object,
     company_name: String,
+    tag: String,
     avg_review: Number,
     sum_review: Number
   },
@@ -30237,6 +30238,37 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/TourCardSkelecton.vue?vue&type=script&lang=js&":
+/*!************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/TourCardSkelecton.vue?vue&type=script&lang=js& ***!
+  \************************************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => __WEBPACK_DEFAULT_EXPORT__
+/* harmony export */ });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  name: "TourCardSkelecton",
+  data: function data() {
+    return {};
+  }
+});
+
+/***/ }),
+
 /***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/views/TourOperator.vue?vue&type=script&lang=js&":
 /*!**************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/views/TourOperator.vue?vue&type=script&lang=js& ***!
@@ -30251,31 +30283,20 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm.js");
 /* harmony import */ var _syncfusion_ej2_vue_navigations__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @syncfusion/ej2-vue-navigations */ "./node_modules/@syncfusion/ej2-vue-navigations/src/tab/tab.component.js");
 /* harmony import */ var _syncfusion_ej2_vue_inputs__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @syncfusion/ej2-vue-inputs */ "./node_modules/@syncfusion/ej2-vue-inputs/src/textbox/textbox.component.js");
-/* harmony import */ var _components_TourCardOperator__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../components/TourCardOperator */ "./resources/js/components/TourCardOperator.vue");
-/* harmony import */ var vue_star_rating__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! vue-star-rating */ "./node_modules/vue-star-rating/dist/VueStarRating.common.js");
-/* harmony import */ var vue_star_rating__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(vue_star_rating__WEBPACK_IMPORTED_MODULE_4__);
-/* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
-/* harmony import */ var _components_CustomStarRating__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../components/CustomStarRating */ "./resources/js/components/CustomStarRating.vue");
-/* harmony import */ var vue_pagination_2__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! vue-pagination-2 */ "./node_modules/vue-pagination-2/compiled/main.js");
-/* harmony import */ var vue_pagination_2__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(vue_pagination_2__WEBPACK_IMPORTED_MODULE_6__);
+/* harmony import */ var _components_TourCardSkelecton__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../components/TourCardSkelecton */ "./resources/js/components/TourCardSkelecton.vue");
+/* harmony import */ var _components_TourCardOperator__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../components/TourCardOperator */ "./resources/js/components/TourCardOperator.vue");
+/* harmony import */ var vue_star_rating__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! vue-star-rating */ "./node_modules/vue-star-rating/dist/VueStarRating.common.js");
+/* harmony import */ var vue_star_rating__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(vue_star_rating__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
+/* harmony import */ var _components_CustomStarRating__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../components/CustomStarRating */ "./resources/js/components/CustomStarRating.vue");
+/* harmony import */ var vue_pagination_2__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! vue-pagination-2 */ "./node_modules/vue-pagination-2/compiled/main.js");
+/* harmony import */ var vue_pagination_2__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(vue_pagination_2__WEBPACK_IMPORTED_MODULE_7__);
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
 
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 //
 //
 //
@@ -30491,13 +30512,15 @@ vue__WEBPACK_IMPORTED_MODULE_0__.default.use(_syncfusion_ej2_vue_inputs__WEBPACK
 
 
 
+
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: "TourOperator",
   components: {
-    TourCardOperator: _components_TourCardOperator__WEBPACK_IMPORTED_MODULE_3__.default,
-    StarRating: (vue_star_rating__WEBPACK_IMPORTED_MODULE_4___default()),
-    CustomStarRating: _components_CustomStarRating__WEBPACK_IMPORTED_MODULE_5__.default,
-    Pagination: (vue_pagination_2__WEBPACK_IMPORTED_MODULE_6___default())
+    TourCardOperator: _components_TourCardOperator__WEBPACK_IMPORTED_MODULE_4__.default,
+    StarRating: (vue_star_rating__WEBPACK_IMPORTED_MODULE_5___default()),
+    CustomStarRating: _components_CustomStarRating__WEBPACK_IMPORTED_MODULE_6__.default,
+    Pagination: (vue_pagination_2__WEBPACK_IMPORTED_MODULE_7___default()),
+    TourCardSkelecton: _components_TourCardSkelecton__WEBPACK_IMPORTED_MODULE_3__.default
   },
   data: function data() {
     return {
@@ -30506,7 +30529,12 @@ vue__WEBPACK_IMPORTED_MODULE_0__.default.use(_syncfusion_ej2_vue_inputs__WEBPACK
       current_page_reviews: [],
       pagenation_options: {
         chunk: 5
-      }
+      },
+      name: '',
+      email: '',
+      title: '',
+      rating: 5,
+      review: ''
     };
   },
   computed: _objectSpread({
@@ -30514,8 +30542,10 @@ vue__WEBPACK_IMPORTED_MODULE_0__.default.use(_syncfusion_ej2_vue_inputs__WEBPACK
       var id = this.$route.params.id;
       return id.slice(0, id.length);
     }
-  }, (0,vuex__WEBPACK_IMPORTED_MODULE_7__.mapGetters)({
-    operatorData: "operatorController/operatorData"
+  }, (0,vuex__WEBPACK_IMPORTED_MODULE_8__.mapGetters)({
+    operatorData: "operatorController/operatorData",
+    loading: "tourcard_loading",
+    request_status: "request_status"
   })),
   watch: {
     current_review_page: function current_review_page(newValue) {
@@ -30530,7 +30560,8 @@ vue__WEBPACK_IMPORTED_MODULE_0__.default.use(_syncfusion_ej2_vue_inputs__WEBPACK
       var _this = this;
 
       this.$store.dispatch("operatorController/getOperatorById", operator_id).then(function () {
-        _this.getCurrentPageReviews(1);
+        _this.getCurrentPageReviews(1); // console.log('tag', this.operatorData)
+
       });
     },
     getCurrentPageReviews: function getCurrentPageReviews(page_num) {
@@ -30543,6 +30574,61 @@ vue__WEBPACK_IMPORTED_MODULE_0__.default.use(_syncfusion_ej2_vue_inputs__WEBPACK
           index++;
         }
       }
+    },
+    submitReview: function submitReview() {
+      var _this2 = this;
+
+      var params = {};
+      params = {
+        'name': this.name,
+        'email': this.email,
+        'title': this.title,
+        'review': this.review,
+        'rate': this.rating,
+        'operator_id': this.operatorData.user_id
+      };
+      this.$store.dispatch("operatorController/postReview", params).then(function () {
+        if (_this2.request_status == true) {
+          _this2.$notify({
+            group: 'success',
+            title: 'Review Success',
+            text: 'Thank you! We have received your review. We will publish your review soon.'
+          });
+
+          _this2.name = '';
+          _this2.email = '';
+          _this2.title = '';
+          _this2.review = '';
+          _this2.rating = 5;
+        } else {
+          _this2.$notify({
+            group: 'warning',
+            title: 'Submit Error !',
+            text: 'Sorry, Something went wrong...'
+          });
+
+          _this2.name = '';
+          _this2.email = '';
+          _this2.title = '';
+          _this2.review = '';
+          _this2.rating = 5;
+        }
+
+        var elem = _this2.$refs.closeButton;
+        elem.click();
+      })["catch"](function () {
+        _this2.$notify({
+          group: 'warning',
+          title: 'Submit Error !',
+          text: 'Sorry, Something went wrong...'
+        });
+
+        _this2.name = '';
+        _this2.email = '';
+        _this2.title = '';
+        _this2.review = '';
+        _this2.rating = 5;
+      });
     }
   }
 });
@@ -30692,6 +30778,30 @@ __webpack_require__.r(__webpack_exports__);
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
 ___CSS_LOADER_EXPORT___.push([module.id, "\n#tour-card .price {\n  width: 80px;\n  color: #0f6d24;\n  right: 5px;\n  bottom: 0px;\n  top: 0px;\n  padding-left: 5px;\n  border-left: 1px dotted black;\n  position: absolute;\n  font-size: 18px;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n}\n#tour-card .tag-image {\n  top: -12px;\n  position: absolute;\n  right: 25px;\n}\n#tour-card .bg-image {\n  background-size: cover;\n  position: relative;\n  width: 100%;\n  height: 0;\n  padding-top: 56.25%;\n}\n#tour-card .tour_title {\n  width: 100%;\n  position: absolute;\n  left: 0;\n  bottom: 0;\n  right: 0;\n  text-align: left;\n  padding: 20px 10px;\n  background: rgba(0, 0, 0, 0.4);\n  background: linear-gradient(\n    to bottom,\n    rgba(0, 0, 0, 0) 0%,\n    rgba(0, 0, 0, 0.5) 45%,\n    rgba(0, 0, 0, 0.9) 100%\n  );\n  color: white;\n  text-align: center;\n  font-weight: 700;\n  font-size: 20px;\n  margin: 40px 0 0px 0;\n  font-family: \"Montserrat\", sans-serif;\n}\n#tour-card.card {\n  transition: box-shadow 0.2s ease-in-out, transform 0.3s ease-in-out;\n  box-shadow: 0px 2px 3px rgb(0 0 0 / 18%);\n  cursor: pointer;\n}\n#tour-card.card:hover {\n  box-shadow: 0px 1px 13px #666;\n}\n.trip-route {\n  min-height: 75px;\n}\n", ""]);
+// Exports
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
+
+
+/***/ }),
+
+/***/ "./node_modules/css-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[2]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/TourCardSkelecton.vue?vue&type=style&index=0&lang=css&":
+/*!********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/css-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[2]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/TourCardSkelecton.vue?vue&type=style&index=0&lang=css& ***!
+  \********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+/***/ ((module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => __WEBPACK_DEFAULT_EXPORT__
+/* harmony export */ });
+/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../node_modules/css-loader/dist/runtime/api.js */ "./node_modules/css-loader/dist/runtime/api.js");
+/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0__);
+// Imports
+
+var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
+// Module
+___CSS_LOADER_EXPORT___.push([module.id, "\n.vue-content-placeholders-img,\n.vue-content-placeholders-text__line {\n    background: #c9c9c9 !important;\n}\n.vue-content-placeholders-img {\n  height: 200px !important;\n}\n\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -30954,6 +31064,36 @@ var update = _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js
 
 /***/ }),
 
+/***/ "./node_modules/style-loader/dist/cjs.js!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[2]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/TourCardSkelecton.vue?vue&type=style&index=0&lang=css&":
+/*!************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/style-loader/dist/cjs.js!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[2]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/TourCardSkelecton.vue?vue&type=style&index=0&lang=css& ***!
+  \************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => __WEBPACK_DEFAULT_EXPORT__
+/* harmony export */ });
+/* harmony import */ var _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! !../../../node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js */ "./node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js");
+/* harmony import */ var _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _node_modules_css_loader_dist_cjs_js_clonedRuleSet_9_0_rules_0_use_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_9_0_rules_0_use_2_node_modules_vue_loader_lib_index_js_vue_loader_options_TourCardSkelecton_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! !!../../../node_modules/css-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[1]!../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[2]!../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./TourCardSkelecton.vue?vue&type=style&index=0&lang=css& */ "./node_modules/css-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[2]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/TourCardSkelecton.vue?vue&type=style&index=0&lang=css&");
+
+            
+
+var options = {};
+
+options.insert = "head";
+options.singleton = false;
+
+var update = _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default()(_node_modules_css_loader_dist_cjs_js_clonedRuleSet_9_0_rules_0_use_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_9_0_rules_0_use_2_node_modules_vue_loader_lib_index_js_vue_loader_options_TourCardSkelecton_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_1__.default, options);
+
+
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_css_loader_dist_cjs_js_clonedRuleSet_9_0_rules_0_use_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_9_0_rules_0_use_2_node_modules_vue_loader_lib_index_js_vue_loader_options_TourCardSkelecton_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_1__.default.locals || {});
+
+/***/ }),
+
 /***/ "./node_modules/style-loader/dist/cjs.js!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[2]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/views/TourOperator.vue?vue&type=style&index=0&lang=css&":
 /*!**************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/style-loader/dist/cjs.js!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[2]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/views/TourOperator.vue?vue&type=style&index=0&lang=css& ***!
@@ -31064,6 +31204,47 @@ component.options.__file = "resources/js/components/TourCardOperator.vue"
 
 /***/ }),
 
+/***/ "./resources/js/components/TourCardSkelecton.vue":
+/*!*******************************************************!*\
+  !*** ./resources/js/components/TourCardSkelecton.vue ***!
+  \*******************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => __WEBPACK_DEFAULT_EXPORT__
+/* harmony export */ });
+/* harmony import */ var _TourCardSkelecton_vue_vue_type_template_id_22e01bd3___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./TourCardSkelecton.vue?vue&type=template&id=22e01bd3& */ "./resources/js/components/TourCardSkelecton.vue?vue&type=template&id=22e01bd3&");
+/* harmony import */ var _TourCardSkelecton_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./TourCardSkelecton.vue?vue&type=script&lang=js& */ "./resources/js/components/TourCardSkelecton.vue?vue&type=script&lang=js&");
+/* harmony import */ var _TourCardSkelecton_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./TourCardSkelecton.vue?vue&type=style&index=0&lang=css& */ "./resources/js/components/TourCardSkelecton.vue?vue&type=style&index=0&lang=css&");
+/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! !../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+;
+
+
+/* normalize component */
+
+var component = (0,_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__.default)(
+  _TourCardSkelecton_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__.default,
+  _TourCardSkelecton_vue_vue_type_template_id_22e01bd3___WEBPACK_IMPORTED_MODULE_0__.render,
+  _TourCardSkelecton_vue_vue_type_template_id_22e01bd3___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns,
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/TourCardSkelecton.vue"
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (component.exports);
+
+/***/ }),
+
 /***/ "./resources/js/views/TourOperator.vue":
 /*!*********************************************!*\
   !*** ./resources/js/views/TourOperator.vue ***!
@@ -31137,6 +31318,22 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./resources/js/components/TourCardSkelecton.vue?vue&type=script&lang=js&":
+/*!********************************************************************************!*\
+  !*** ./resources/js/components/TourCardSkelecton.vue?vue&type=script&lang=js& ***!
+  \********************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => __WEBPACK_DEFAULT_EXPORT__
+/* harmony export */ });
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_TourCardSkelecton_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./TourCardSkelecton.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/TourCardSkelecton.vue?vue&type=script&lang=js&");
+ /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_TourCardSkelecton_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__.default); 
+
+/***/ }),
+
 /***/ "./resources/js/views/TourOperator.vue?vue&type=script&lang=js&":
 /*!**********************************************************************!*\
   !*** ./resources/js/views/TourOperator.vue?vue&type=script&lang=js& ***!
@@ -31162,6 +31359,19 @@ __webpack_require__.r(__webpack_exports__);
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _node_modules_style_loader_dist_cjs_js_node_modules_css_loader_dist_cjs_js_clonedRuleSet_9_0_rules_0_use_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_9_0_rules_0_use_2_node_modules_vue_loader_lib_index_js_vue_loader_options_TourCardOperator_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/style-loader/dist/cjs.js!../../../node_modules/css-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[1]!../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[2]!../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./TourCardOperator.vue?vue&type=style&index=0&lang=css& */ "./node_modules/style-loader/dist/cjs.js!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[2]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/TourCardOperator.vue?vue&type=style&index=0&lang=css&");
+
+
+/***/ }),
+
+/***/ "./resources/js/components/TourCardSkelecton.vue?vue&type=style&index=0&lang=css&":
+/*!****************************************************************************************!*\
+  !*** ./resources/js/components/TourCardSkelecton.vue?vue&type=style&index=0&lang=css& ***!
+  \****************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_style_loader_dist_cjs_js_node_modules_css_loader_dist_cjs_js_clonedRuleSet_9_0_rules_0_use_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_9_0_rules_0_use_2_node_modules_vue_loader_lib_index_js_vue_loader_options_TourCardSkelecton_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/style-loader/dist/cjs.js!../../../node_modules/css-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[1]!../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[2]!../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./TourCardSkelecton.vue?vue&type=style&index=0&lang=css& */ "./node_modules/style-loader/dist/cjs.js!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[2]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/TourCardSkelecton.vue?vue&type=style&index=0&lang=css&");
 
 
 /***/ }),
@@ -31209,6 +31419,23 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "staticRenderFns": () => /* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_TourCardOperator_vue_vue_type_template_id_02a30292___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns
 /* harmony export */ });
 /* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_TourCardOperator_vue_vue_type_template_id_02a30292___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./TourCardOperator.vue?vue&type=template&id=02a30292& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/TourCardOperator.vue?vue&type=template&id=02a30292&");
+
+
+/***/ }),
+
+/***/ "./resources/js/components/TourCardSkelecton.vue?vue&type=template&id=22e01bd3&":
+/*!**************************************************************************************!*\
+  !*** ./resources/js/components/TourCardSkelecton.vue?vue&type=template&id=22e01bd3& ***!
+  \**************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "render": () => /* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_TourCardSkelecton_vue_vue_type_template_id_22e01bd3___WEBPACK_IMPORTED_MODULE_0__.render,
+/* harmony export */   "staticRenderFns": () => /* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_TourCardSkelecton_vue_vue_type_template_id_22e01bd3___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns
+/* harmony export */ });
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_TourCardSkelecton_vue_vue_type_template_id_22e01bd3___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./TourCardSkelecton.vue?vue&type=template&id=22e01bd3& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/TourCardSkelecton.vue?vue&type=template&id=22e01bd3&");
 
 
 /***/ }),
@@ -31359,27 +31586,25 @@ var render = function() {
           }
         },
         [
-          _vm.tourData.tag !== null &&
-          _vm.tourData.tag !== undefined &&
-          _vm.tourData.tag !== ""
+          _vm.tag !== null && _vm.tag !== undefined && _vm.tag !== ""
             ? _c("div", { staticClass: "tag-image" }, [
-                _vm.tourData.tag == "review"
+                _vm.tag == "review"
                   ? _c("img", {
                       staticStyle: {
                         "margin-top": "-15px",
                         width: "60px",
                         height: "auto"
                       },
-                      attrs: { src: "./images/best-review.png" }
+                      attrs: { src: "/images/best-review.png" }
                     })
-                  : _vm.tourData.tag == "seller"
+                  : _vm.tag == "seller"
                   ? _c("img", {
                       staticStyle: { width: "80px", height: "auto" },
-                      attrs: { src: "./images/bestseller.png" }
+                      attrs: { src: "/images/bestseller.png" }
                     })
                   : _c("img", {
                       staticStyle: { width: "100px", height: "auto" },
-                      attrs: { src: "./images/toprated2.png" }
+                      attrs: { src: "/images/toprated2.png" }
                     })
               ])
             : _vm._e(),
@@ -31506,6 +31731,51 @@ render._withStripped = true
 
 /***/ }),
 
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/TourCardSkelecton.vue?vue&type=template&id=22e01bd3&":
+/*!*****************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/TourCardSkelecton.vue?vue&type=template&id=22e01bd3& ***!
+  \*****************************************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "render": () => /* binding */ render,
+/* harmony export */   "staticRenderFns": () => /* binding */ staticRenderFns
+/* harmony export */ });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    { staticClass: "card mb-3 mx-2" },
+    [
+      _c(
+        "content-placeholders",
+        { attrs: { rounded: true } },
+        [
+          _c("content-placeholders-img"),
+          _vm._v(" "),
+          _c("content-placeholders-heading"),
+          _vm._v(" "),
+          _c("content-placeholders-heading"),
+          _vm._v(" "),
+          _c("content-placeholders-heading")
+        ],
+        1
+      )
+    ],
+    1
+  )
+}
+var staticRenderFns = []
+render._withStripped = true
+
+
+
+/***/ }),
+
 /***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/views/TourOperator.vue?vue&type=template&id=a78fcc8a&":
 /*!*******************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/views/TourOperator.vue?vue&type=template&id=a78fcc8a& ***!
@@ -31524,13 +31794,17 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "tour-operator-page" }, [
     _c("div", { staticClass: "container" }, [
-      _vm.operatorData != null
-        ? _c("div", { staticClass: "card p-4" }, [
-            _c("h3", { staticClass: "fw-bold mb-0" }, [
+      _c("div", { staticClass: "card p-4" }, [
+        _vm.loading
+          ? _c("div", [_c("content-placeholders-heading")], 1)
+          : _vm.operatorData != null
+          ? _c("h3", { staticClass: "fw-bold mb-0" }, [
               _vm._v(_vm._s(_vm.operatorData.company_name))
-            ]),
-            _vm._v(" "),
-            _c(
+            ])
+          : _vm._e(),
+        _vm._v(" "),
+        _vm.operatorData != null
+          ? _c(
               "p",
               { staticClass: "mt-2" },
               [
@@ -31549,8 +31823,8 @@ var render = function() {
               ],
               1
             )
-          ])
-        : _vm._e(),
+          : _vm._e()
+      ]),
       _vm._v(" "),
       _c(
         "div",
@@ -31571,7 +31845,9 @@ var render = function() {
                   _vm._v("Overview")
                 ]),
                 _vm._v(" "),
-                _vm.operatorData != null
+                _vm.loading
+                  ? _c("div", [_c("content-placeholders-heading")], 1)
+                  : _vm.operatorData != null
                   ? _c(
                       "h6",
                       {
@@ -31590,9 +31866,16 @@ var render = function() {
                 _vm._v(" "),
                 _c("hr"),
                 _vm._v(" "),
-                _vm.operatorData != null
-                  ? _c("div", { staticClass: "row g-0 align-items-center" }, [
-                      _c(
+                _c("div", { staticClass: "row g-0 align-items-center" }, [
+                  _vm.loading
+                    ? _c(
+                        "div",
+                        { staticClass: "col-lg-4 col-md-6 col-sm-12" },
+                        [_c("TourCardSkelecton")],
+                        1
+                      )
+                    : _vm.operatorData.package.length != 0
+                    ? _c(
                         "div",
                         { staticClass: "col-lg-4 col-md-6 col-sm-12" },
                         [
@@ -31601,333 +31884,365 @@ var render = function() {
                               tourData: _vm.operatorData.package[0],
                               company_name: _vm.operatorData.company_name,
                               avg_review: _vm.operatorData.avg_review,
-                              sum_review: _vm.operatorData.sum_review
+                              sum_review: _vm.operatorData.sum_review,
+                              tag: _vm.operatorData.tag
                             }
                           })
                         ],
                         1
-                      ),
-                      _vm._v(" "),
+                      )
+                    : _vm._e(),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "col-lg-8 col-md-6 col-sm-12" }, [
+                    _c("h4", { staticClass: "fw-bold mb-0 mt-3 ps-3" }, [
+                      _vm._v("Customer Reviews")
+                    ]),
+                    _vm._v(" "),
+                    _vm.loading
+                      ? _c(
+                          "div",
+                          { staticClass: "mt-5" },
+                          [
+                            _c("content-placeholders-heading"),
+                            _vm._v(" "),
+                            _c("content-placeholders-heading"),
+                            _vm._v(" "),
+                            _c("content-placeholders-heading"),
+                            _vm._v(" "),
+                            _c("content-placeholders-heading"),
+                            _vm._v(" "),
+                            _c("content-placeholders-heading")
+                          ],
+                          1
+                        )
+                      : _vm.operatorData != null &&
+                        _vm.operatorData.review.length > 0
+                      ? _c(
+                          "div",
+                          { staticClass: "text-center px-2" },
+                          _vm._l(_vm.operatorData.review.slice(0, 1), function(
+                            review,
+                            index
+                          ) {
+                            return _c(
+                              "div",
+                              {
+                                key: "review" + index,
+                                staticClass: "review-section mt-3 p-3"
+                              },
+                              [
+                                _c("h5", [_vm._v(_vm._s(review.full_name))]),
+                                _vm._v(" "),
+                                _c("h6", [
+                                  _c("strong", [
+                                    _vm._v(
+                                      _vm._s(review.title) +
+                                        "\n                        "
+                                    ),
+                                    _c("br")
+                                  ])
+                                ]),
+                                _vm._v(" "),
+                                _c(
+                                  "h6",
+                                  {
+                                    staticClass: "text-start",
+                                    staticStyle: { color: "darkslategrey" }
+                                  },
+                                  [
+                                    _c("strong", [
+                                      _c("span", {
+                                        staticClass: "fa fa-quote-left ms-2"
+                                      })
+                                    ]),
+                                    _vm._v(
+                                      "\n                      " +
+                                        _vm._s(review.description) +
+                                        "\n                    "
+                                    )
+                                  ]
+                                )
+                              ]
+                            )
+                          }),
+                          0
+                        )
+                      : _vm.operatorData.review.length == 0
+                      ? _c(
+                          "h5",
+                          { staticClass: "text-center my-3 fst-italic" },
+                          [
+                            _vm._v(
+                              "There is no review yet. Be the first person who write a review."
+                            )
+                          ]
+                        )
+                      : _vm._e(),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "text-center" }, [
                       _c(
-                        "div",
-                        { staticClass: "col-lg-8 col-md-6 col-sm-12" },
+                        "button",
+                        {
+                          staticClass: "btn btn-danger mt-3",
+                          attrs: {
+                            type: "button",
+                            "data-bs-toggle": "modal",
+                            "data-bs-target": "#writeareview"
+                          }
+                        },
                         [
-                          _c("h4", { staticClass: "fw-bold mb-0 mt-3 ps-3" }, [
-                            _vm._v("Customer Reviews")
-                          ]),
-                          _vm._v(" "),
-                          _c(
-                            "div",
-                            { staticClass: "text-center px-2" },
-                            [
-                              _vm._l(
-                                _vm.operatorData.review.slice(0, 1),
-                                function(review, index) {
-                                  return _c(
-                                    "div",
-                                    {
-                                      key: "review" + index,
-                                      staticClass: "review-section mt-3 p-3"
-                                    },
-                                    [
-                                      _c("h5", [
-                                        _vm._v(_vm._s(review.full_name))
-                                      ]),
-                                      _vm._v(" "),
-                                      _c("h6", [
-                                        _c("strong", [
-                                          _vm._v(
-                                            _vm._s(review.title) +
-                                              "\n                        "
-                                          ),
-                                          _c("br")
-                                        ])
-                                      ]),
-                                      _vm._v(" "),
-                                      _c(
-                                        "h6",
-                                        {
-                                          staticClass: "text-start",
-                                          staticStyle: {
-                                            color: "darkslategrey"
-                                          }
-                                        },
-                                        [
-                                          _c("strong", [
-                                            _c("span", {
-                                              staticClass:
-                                                "fa fa-quote-left ms-2"
-                                            })
-                                          ]),
-                                          _vm._v(
-                                            "\n                      " +
-                                              _vm._s(review.description) +
-                                              "\n                    "
-                                          )
-                                        ]
-                                      )
-                                    ]
-                                  )
-                                }
-                              ),
-                              _vm._v(" "),
-                              _c(
-                                "button",
-                                {
-                                  staticClass: "btn btn-danger mt-3",
-                                  attrs: {
-                                    type: "button",
-                                    "data-bs-toggle": "modal",
-                                    "data-bs-target": "#writeareview"
-                                  }
-                                },
-                                [
-                                  _vm._v(
-                                    "\n                    Write A Review\n                  "
-                                  )
-                                ]
-                              ),
-                              _vm._v(" "),
-                              _c(
-                                "div",
-                                {
-                                  staticClass: "modal fade",
-                                  attrs: {
-                                    id: "writeareview",
-                                    tabindex: "-1",
-                                    "aria-labelledby": "reviewLavel",
-                                    "aria-hidden": "true"
-                                  }
-                                },
-                                [
-                                  _c(
-                                    "div",
-                                    {
-                                      staticClass:
-                                        "modal-dialog modal-dialog-centered modal-fullscreen-sm-down"
-                                    },
-                                    [
-                                      _c(
-                                        "div",
-                                        { staticClass: "modal-content" },
-                                        [
-                                          _c(
-                                            "div",
-                                            {
-                                              staticClass:
-                                                "modal-header bg-danger text-white"
-                                            },
-                                            [
-                                              _c(
-                                                "h5",
-                                                {
-                                                  staticClass: "modal-title",
-                                                  attrs: { id: "reviewLavel" }
-                                                },
-                                                [
-                                                  _vm._v(
-                                                    "\n                            Write a Review\n                          "
-                                                  )
-                                                ]
-                                              ),
-                                              _vm._v(" "),
-                                              _c("button", {
-                                                staticClass:
-                                                  "btn-close btn-close-white",
-                                                attrs: {
-                                                  type: "button",
-                                                  "data-bs-dismiss": "modal",
-                                                  "aria-label": "Close"
-                                                }
-                                              })
-                                            ]
-                                          ),
-                                          _vm._v(" "),
-                                          _c(
-                                            "div",
-                                            {
-                                              staticClass:
-                                                "modal-body text-start"
-                                            },
-                                            [
-                                              _c(
-                                                "div",
-                                                {
-                                                  staticClass:
-                                                    "row align-items-center"
-                                                },
-                                                [
-                                                  _c(
-                                                    "div",
-                                                    {
-                                                      staticClass: "col-sm-12"
-                                                    },
-                                                    [
-                                                      _c("ejs-textbox", {
-                                                        attrs: {
-                                                          floatLabelType:
-                                                            "Auto",
-                                                          type: "text",
-                                                          placeholder: "Name",
-                                                          required: ""
-                                                        }
-                                                      })
-                                                    ],
-                                                    1
-                                                  ),
-                                                  _vm._v(" "),
-                                                  _c(
-                                                    "div",
-                                                    {
-                                                      staticClass:
-                                                        "col-sm-12 mt-3"
-                                                    },
-                                                    [
-                                                      _c("ejs-textbox", {
-                                                        attrs: {
-                                                          floatLabelType:
-                                                            "Auto",
-                                                          type: "text",
-                                                          placeholder: "Email",
-                                                          required: ""
-                                                        }
-                                                      })
-                                                    ],
-                                                    1
-                                                  ),
-                                                  _vm._v(" "),
-                                                  _c(
-                                                    "div",
-                                                    {
-                                                      staticClass:
-                                                        "col-sm-12 mt-3"
-                                                    },
-                                                    [
-                                                      _c("ejs-textbox", {
-                                                        attrs: {
-                                                          floatLabelType:
-                                                            "Auto",
-                                                          type: "text",
-                                                          placeholder: "Title",
-                                                          required: ""
-                                                        }
-                                                      })
-                                                    ],
-                                                    1
-                                                  ),
-                                                  _vm._v(" "),
-                                                  _c(
-                                                    "div",
-                                                    {
-                                                      staticClass:
-                                                        "col-sm-12 mt-5"
-                                                    },
-                                                    [
-                                                      _c(
-                                                        "h5",
-                                                        {
-                                                          staticClass: "fw-bold"
-                                                        },
-                                                        [_vm._v("Rate:")]
-                                                      )
-                                                    ]
-                                                  ),
-                                                  _vm._v(" "),
-                                                  _c(
-                                                    "div",
-                                                    {
-                                                      staticClass:
-                                                        "col-sm-12 mt-3"
-                                                    },
-                                                    [
-                                                      _c("star-rating", {
-                                                        attrs: {
-                                                          rating: 5,
-                                                          "show-rating": false,
-                                                          "active-color":
-                                                            "#f93154"
-                                                        }
-                                                      })
-                                                    ],
-                                                    1
-                                                  ),
-                                                  _vm._v(" "),
-                                                  _c(
-                                                    "div",
-                                                    {
-                                                      staticClass:
-                                                        "col-sm-12 mt-5"
-                                                    },
-                                                    [
-                                                      _c("ejs-textbox", {
-                                                        attrs: {
-                                                          multiline: true,
-                                                          floatLabelType:
-                                                            "Auto",
-                                                          placeholder:
-                                                            "Write a review",
-                                                          required: ""
-                                                        }
-                                                      })
-                                                    ],
-                                                    1
-                                                  )
-                                                ]
-                                              )
-                                            ]
-                                          ),
-                                          _vm._v(" "),
-                                          _c(
-                                            "div",
-                                            { staticClass: "modal-footer" },
-                                            [
-                                              _c(
-                                                "button",
-                                                {
-                                                  staticClass: "btn btn-light",
-                                                  attrs: {
-                                                    type: "button",
-                                                    "data-bs-dismiss": "modal"
-                                                  }
-                                                },
-                                                [
-                                                  _vm._v(
-                                                    "\n                            Close\n                          "
-                                                  )
-                                                ]
-                                              ),
-                                              _vm._v(" "),
-                                              _c(
-                                                "button",
-                                                {
-                                                  staticClass: "btn btn-danger",
-                                                  attrs: { type: "button" }
-                                                },
-                                                [
-                                                  _vm._v(
-                                                    "\n                            Send\n                          "
-                                                  )
-                                                ]
-                                              )
-                                            ]
-                                          )
-                                        ]
-                                      )
-                                    ]
-                                  )
-                                ]
-                              )
-                            ],
-                            2
+                          _vm._v(
+                            "\n                    Write A Review\n                  "
                           )
                         ]
                       )
-                    ])
-                  : _vm._e()
+                    ]),
+                    _vm._v(" "),
+                    _c(
+                      "div",
+                      {
+                        staticClass: "modal fade",
+                        attrs: {
+                          id: "writeareview",
+                          tabindex: "-1",
+                          "aria-labelledby": "reviewLavel",
+                          "aria-hidden": "true"
+                        }
+                      },
+                      [
+                        _c(
+                          "div",
+                          {
+                            staticClass:
+                              "modal-dialog modal-dialog-centered modal-fullscreen-sm-down"
+                          },
+                          [
+                            _c(
+                              "form",
+                              {
+                                staticClass: "modal-content",
+                                on: {
+                                  submit: function($event) {
+                                    $event.preventDefault()
+                                    return _vm.submitReview($event)
+                                  }
+                                }
+                              },
+                              [
+                                _c(
+                                  "div",
+                                  {
+                                    staticClass:
+                                      "modal-header bg-danger text-white"
+                                  },
+                                  [
+                                    _c(
+                                      "h5",
+                                      {
+                                        staticClass: "modal-title",
+                                        attrs: { id: "reviewLavel" }
+                                      },
+                                      [
+                                        _vm._v(
+                                          "\n                          Write a Review\n                        "
+                                        )
+                                      ]
+                                    ),
+                                    _vm._v(" "),
+                                    _c("button", {
+                                      staticClass: "btn-close btn-close-white",
+                                      attrs: {
+                                        type: "button",
+                                        "data-bs-dismiss": "modal",
+                                        "aria-label": "Close"
+                                      }
+                                    })
+                                  ]
+                                ),
+                                _vm._v(" "),
+                                _c(
+                                  "div",
+                                  { staticClass: "modal-body text-start" },
+                                  [
+                                    _c(
+                                      "div",
+                                      { staticClass: "row align-items-center" },
+                                      [
+                                        _c(
+                                          "div",
+                                          { staticClass: "col-sm-12" },
+                                          [
+                                            _c("ejs-textbox", {
+                                              attrs: {
+                                                floatLabelType: "Auto",
+                                                type: "text",
+                                                placeholder: "Name",
+                                                required: ""
+                                              },
+                                              model: {
+                                                value: _vm.name,
+                                                callback: function($$v) {
+                                                  _vm.name = $$v
+                                                },
+                                                expression: "name"
+                                              }
+                                            })
+                                          ],
+                                          1
+                                        ),
+                                        _vm._v(" "),
+                                        _c(
+                                          "div",
+                                          { staticClass: "col-sm-12 mt-3" },
+                                          [
+                                            _c("ejs-textbox", {
+                                              attrs: {
+                                                floatLabelType: "Auto",
+                                                type: "email",
+                                                placeholder: "Email",
+                                                required: ""
+                                              },
+                                              model: {
+                                                value: _vm.email,
+                                                callback: function($$v) {
+                                                  _vm.email = $$v
+                                                },
+                                                expression: "email"
+                                              }
+                                            })
+                                          ],
+                                          1
+                                        ),
+                                        _vm._v(" "),
+                                        _c(
+                                          "div",
+                                          { staticClass: "col-sm-12 mt-3" },
+                                          [
+                                            _c("ejs-textbox", {
+                                              attrs: {
+                                                floatLabelType: "Auto",
+                                                type: "text",
+                                                placeholder: "Title",
+                                                required: ""
+                                              },
+                                              model: {
+                                                value: _vm.title,
+                                                callback: function($$v) {
+                                                  _vm.title = $$v
+                                                },
+                                                expression: "title"
+                                              }
+                                            })
+                                          ],
+                                          1
+                                        ),
+                                        _vm._v(" "),
+                                        _c(
+                                          "div",
+                                          { staticClass: "col-sm-12 mt-5" },
+                                          [
+                                            _c(
+                                              "h5",
+                                              { staticClass: "fw-bold" },
+                                              [_vm._v("Rate:")]
+                                            )
+                                          ]
+                                        ),
+                                        _vm._v(" "),
+                                        _c(
+                                          "div",
+                                          { staticClass: "col-sm-12 mt-3" },
+                                          [
+                                            _c("star-rating", {
+                                              attrs: {
+                                                "show-rating": false,
+                                                "active-color": "#f93154"
+                                              },
+                                              model: {
+                                                value: _vm.rating,
+                                                callback: function($$v) {
+                                                  _vm.rating = $$v
+                                                },
+                                                expression: "rating"
+                                              }
+                                            })
+                                          ],
+                                          1
+                                        ),
+                                        _vm._v(" "),
+                                        _c(
+                                          "div",
+                                          { staticClass: "col-sm-12 mt-5" },
+                                          [
+                                            _c("ejs-textbox", {
+                                              attrs: {
+                                                multiline: true,
+                                                floatLabelType: "Auto",
+                                                placeholder: "Write a review",
+                                                required: ""
+                                              },
+                                              model: {
+                                                value: _vm.review,
+                                                callback: function($$v) {
+                                                  _vm.review = $$v
+                                                },
+                                                expression: "review"
+                                              }
+                                            })
+                                          ],
+                                          1
+                                        )
+                                      ]
+                                    )
+                                  ]
+                                ),
+                                _vm._v(" "),
+                                _c("div", { staticClass: "modal-footer" }, [
+                                  _c(
+                                    "button",
+                                    {
+                                      ref: "closeButton",
+                                      staticClass: "btn btn-light",
+                                      attrs: {
+                                        type: "button",
+                                        "data-bs-dismiss": "modal"
+                                      }
+                                    },
+                                    [
+                                      _vm._v(
+                                        "\n                          Close\n                        "
+                                      )
+                                    ]
+                                  ),
+                                  _vm._v(" "),
+                                  _c(
+                                    "button",
+                                    {
+                                      staticClass: "btn btn-danger",
+                                      attrs: { type: "submit" }
+                                    },
+                                    [
+                                      _vm._v(
+                                        "\n                          Send\n                        "
+                                      )
+                                    ]
+                                  )
+                                ])
+                              ]
+                            )
+                          ]
+                        )
+                      ]
+                    )
+                  ])
+                ])
               ]),
               _vm._v(" "),
               _c("div", [
-                _vm.operatorData != null
+                _vm.loading
+                  ? _c("div")
+                  : _vm.operatorData != null &&
+                    _vm.operatorData.package.length > 0
                   ? _c(
                       "div",
                       { staticClass: "row g-0 mt-3" },
@@ -31944,7 +32259,8 @@ var render = function() {
                                 tourData: item,
                                 company_name: _vm.operatorData.company_name,
                                 avg_review: _vm.operatorData.avg_review,
-                                sum_review: _vm.operatorData.sum_review
+                                sum_review: _vm.operatorData.sum_review,
+                                tag: _vm.operatorData.tag
                               }
                             })
                           ],
@@ -31953,11 +32269,18 @@ var render = function() {
                       }),
                       0
                     )
+                  : _vm.operatorData.package.length == 0
+                  ? _c("h5", { staticClass: "text-center my-3 fst-italic" }, [
+                      _vm._v("There is no package yet.")
+                    ])
                   : _vm._e()
               ]),
               _vm._v(" "),
               _c("div", [
-                _vm.operatorData != null
+                _vm.loading
+                  ? _c("div")
+                  : _vm.operatorData != null &&
+                    _vm.operatorData.review.length > 0
                   ? _c(
                       "div",
                       [
@@ -32022,6 +32345,275 @@ var render = function() {
                       ],
                       2
                     )
+                  : _vm.operatorData.review.length == 0
+                  ? _c("div", [
+                      _c("h5", { staticClass: "text-center my-3 fst-italic" }, [
+                        _vm._v(
+                          "There is no review yet. Be the first person who write a review."
+                        )
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "text-center" }, [
+                        _c(
+                          "button",
+                          {
+                            staticClass: "btn btn-danger mt-3",
+                            attrs: {
+                              type: "button",
+                              "data-bs-toggle": "modal",
+                              "data-bs-target": "#writeareview2"
+                            }
+                          },
+                          [
+                            _vm._v(
+                              "\n                  Write A Review\n                "
+                            )
+                          ]
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "div",
+                          {
+                            staticClass: "modal fade",
+                            attrs: {
+                              id: "writeareview2",
+                              tabindex: "-1",
+                              "aria-labelledby": "reviewLavel",
+                              "aria-hidden": "true"
+                            }
+                          },
+                          [
+                            _c(
+                              "div",
+                              {
+                                staticClass:
+                                  "modal-dialog modal-dialog-centered modal-fullscreen-sm-down"
+                              },
+                              [
+                                _c(
+                                  "form",
+                                  {
+                                    staticClass: "modal-content",
+                                    on: {
+                                      submit: function($event) {
+                                        $event.preventDefault()
+                                        return _vm.submitReview($event)
+                                      }
+                                    }
+                                  },
+                                  [
+                                    _c(
+                                      "div",
+                                      {
+                                        staticClass:
+                                          "modal-header bg-danger text-white"
+                                      },
+                                      [
+                                        _c(
+                                          "h5",
+                                          {
+                                            staticClass: "modal-title",
+                                            attrs: { id: "reviewLavel" }
+                                          },
+                                          [
+                                            _vm._v(
+                                              "\n                          Write a Review\n                        "
+                                            )
+                                          ]
+                                        ),
+                                        _vm._v(" "),
+                                        _c("button", {
+                                          staticClass:
+                                            "btn-close btn-close-white",
+                                          attrs: {
+                                            type: "button",
+                                            "data-bs-dismiss": "modal",
+                                            "aria-label": "Close"
+                                          }
+                                        })
+                                      ]
+                                    ),
+                                    _vm._v(" "),
+                                    _c(
+                                      "div",
+                                      { staticClass: "modal-body text-start" },
+                                      [
+                                        _c(
+                                          "div",
+                                          {
+                                            staticClass:
+                                              "row align-items-center"
+                                          },
+                                          [
+                                            _c(
+                                              "div",
+                                              { staticClass: "col-sm-12" },
+                                              [
+                                                _c("ejs-textbox", {
+                                                  attrs: {
+                                                    floatLabelType: "Auto",
+                                                    type: "text",
+                                                    placeholder: "Name",
+                                                    required: ""
+                                                  },
+                                                  model: {
+                                                    value: _vm.name,
+                                                    callback: function($$v) {
+                                                      _vm.name = $$v
+                                                    },
+                                                    expression: "name"
+                                                  }
+                                                })
+                                              ],
+                                              1
+                                            ),
+                                            _vm._v(" "),
+                                            _c(
+                                              "div",
+                                              { staticClass: "col-sm-12 mt-3" },
+                                              [
+                                                _c("ejs-textbox", {
+                                                  attrs: {
+                                                    floatLabelType: "Auto",
+                                                    type: "email",
+                                                    placeholder: "Email",
+                                                    required: ""
+                                                  },
+                                                  model: {
+                                                    value: _vm.email,
+                                                    callback: function($$v) {
+                                                      _vm.email = $$v
+                                                    },
+                                                    expression: "email"
+                                                  }
+                                                })
+                                              ],
+                                              1
+                                            ),
+                                            _vm._v(" "),
+                                            _c(
+                                              "div",
+                                              { staticClass: "col-sm-12 mt-3" },
+                                              [
+                                                _c("ejs-textbox", {
+                                                  attrs: {
+                                                    floatLabelType: "Auto",
+                                                    type: "text",
+                                                    placeholder: "Title",
+                                                    required: ""
+                                                  },
+                                                  model: {
+                                                    value: _vm.title,
+                                                    callback: function($$v) {
+                                                      _vm.title = $$v
+                                                    },
+                                                    expression: "title"
+                                                  }
+                                                })
+                                              ],
+                                              1
+                                            ),
+                                            _vm._v(" "),
+                                            _c(
+                                              "div",
+                                              { staticClass: "col-sm-12 mt-5" },
+                                              [
+                                                _c(
+                                                  "h5",
+                                                  { staticClass: "fw-bold" },
+                                                  [_vm._v("Rate:")]
+                                                )
+                                              ]
+                                            ),
+                                            _vm._v(" "),
+                                            _c(
+                                              "div",
+                                              { staticClass: "col-sm-12 mt-3" },
+                                              [
+                                                _c("star-rating", {
+                                                  attrs: {
+                                                    "show-rating": false,
+                                                    "active-color": "#f93154"
+                                                  },
+                                                  model: {
+                                                    value: _vm.rating,
+                                                    callback: function($$v) {
+                                                      _vm.rating = $$v
+                                                    },
+                                                    expression: "rating"
+                                                  }
+                                                })
+                                              ],
+                                              1
+                                            ),
+                                            _vm._v(" "),
+                                            _c(
+                                              "div",
+                                              { staticClass: "col-sm-12 mt-5" },
+                                              [
+                                                _c("ejs-textbox", {
+                                                  attrs: {
+                                                    multiline: true,
+                                                    floatLabelType: "Auto",
+                                                    placeholder:
+                                                      "Write a review",
+                                                    required: ""
+                                                  },
+                                                  model: {
+                                                    value: _vm.review,
+                                                    callback: function($$v) {
+                                                      _vm.review = $$v
+                                                    },
+                                                    expression: "review"
+                                                  }
+                                                })
+                                              ],
+                                              1
+                                            )
+                                          ]
+                                        )
+                                      ]
+                                    ),
+                                    _vm._v(" "),
+                                    _c("div", { staticClass: "modal-footer" }, [
+                                      _c(
+                                        "button",
+                                        {
+                                          ref: "closeButton",
+                                          staticClass: "btn btn-light",
+                                          attrs: {
+                                            type: "button",
+                                            "data-bs-dismiss": "modal"
+                                          }
+                                        },
+                                        [
+                                          _vm._v(
+                                            "\n                          Close\n                        "
+                                          )
+                                        ]
+                                      ),
+                                      _vm._v(" "),
+                                      _c(
+                                        "button",
+                                        {
+                                          staticClass: "btn btn-danger",
+                                          attrs: { type: "submit" }
+                                        },
+                                        [
+                                          _vm._v(
+                                            "\n                          Send\n                        "
+                                          )
+                                        ]
+                                      )
+                                    ])
+                                  ]
+                                )
+                              ]
+                            )
+                          ]
+                        )
+                      ])
+                    ])
                   : _vm._e()
               ])
             ])

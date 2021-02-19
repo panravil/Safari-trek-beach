@@ -12375,52 +12375,24 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
+ // import { mapState, mapGetters, mapMutations } from "vuex";
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   components: {
     CustomStarRating: _components_CustomStarRating__WEBPACK_IMPORTED_MODULE_0__.default
   },
   props: {
-    tourData: Object
+    tourData: Object,
+    where_to_search: String,
+    start_date: Date,
+    adults_number: Number,
+    children_number: Number
   },
   computed: {},
   data: function data() {
     return {};
   },
+  created: function created() {},
   methods: {
     getMidRoute: function getMidRoute(destination) {
       if (destination == undefined || destination == null) return "";
@@ -12446,6 +12418,14 @@ __webpack_require__.r(__webpack_exports__);
       return level_data;
     },
     toInnerPackage: function toInnerPackage() {
+      var searchData = {};
+      searchData = {
+        'where_to_search': this.where_to_search,
+        'start_date': this.start_date,
+        'adults_number': this.adults_number,
+        'children_number': this.children_number
+      };
+      this.$store.dispatch("tourController/setSearchData", searchData);
       this.$router.push("/tour-package/" + this.tourData.package_id)["catch"](function () {});
     }
   }
@@ -12610,41 +12590,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 
 
@@ -12659,10 +12604,18 @@ vue__WEBPACK_IMPORTED_MODULE_1__.default.use(_syncfusion_ej2_vue_inputs__WEBPACK
     return {};
   },
   created: function created() {
+    this.getBlogData();
     this.getPopularTours();
   },
-  computed: _objectSpread({}, (0,vuex__WEBPACK_IMPORTED_MODULE_4__.mapGetters)({
-    popularTours: "tourController/popularTours"
+  computed: _objectSpread({
+    blog_id: function blog_id() {
+      var id = this.$route.params.id;
+      return id.slice(0, id.length);
+    }
+  }, (0,vuex__WEBPACK_IMPORTED_MODULE_4__.mapGetters)({
+    blogData: "blogController/blogData",
+    popularTours: "tourController/popularTours",
+    loading: "tourcard_loading"
   })),
   methods: {
     goToOurTourPage: function goToOurTourPage() {
@@ -12685,6 +12638,25 @@ vue__WEBPACK_IMPORTED_MODULE_1__.default.use(_syncfusion_ej2_vue_inputs__WEBPACK
             }
           }
         }, _callee);
+      }))();
+    },
+    getBlogData: function getBlogData() {
+      var _this2 = this;
+
+      return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee2() {
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee2$(_context2) {
+          while (1) {
+            switch (_context2.prev = _context2.next) {
+              case 0:
+                _context2.next = 2;
+                return _this2.$store.dispatch("blogController/getBlogById", _this2.blog_id).then(function () {});
+
+              case 2:
+              case "end":
+                return _context2.stop();
+            }
+          }
+        }, _callee2);
       }))();
     }
   }
@@ -12759,7 +12731,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n#tour-card .price {\n  width: 80px;\n  color: #0f6d24;\n  right: 5px;\n  bottom: 0px;\n  top: 0px;\n  padding-left: 5px;\n  border-left: 1px dotted black;\n  position: absolute;\n  font-size: 18px;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n}\n#tour-card .tag-image {\n  top: -12px;\n  position: absolute;\n  right: 25px;\n}\n#tour-card .bg-image {\n  background-size: cover;\n  position: relative;\n  width: 100%;\n  height: 0;\n  padding-top: 56.25%;\n}\n#tour-card .tour_title {\n  width: 100%;\n  position: absolute;\n  left: 0;\n  bottom: 0;\n  right: 0;\n  text-align: left;\n  padding: 20px 10px;\n  background: rgba(0, 0, 0, 0.4);\n  background: linear-gradient(\n    to bottom,\n    rgba(0, 0, 0, 0) 0%,\n    rgba(0, 0, 0, 0.5) 45%,\n    rgba(0, 0, 0, 0.9) 100%\n  );\n  color: white;\n  text-align: center;\n  font-weight: 700;\n  font-size: 20px;\n  margin: 40px 0 0px 0;\n  font-family: \"Montserrat\", sans-serif;\n}\n#tour-card.card {\n  transition: box-shadow 0.2s ease-in-out, transform 0.3s ease-in-out;\n  box-shadow: 0px 2px 3px rgb(0 0 0 / 18%);\n  cursor: pointer;\n}\n#tour-card.card:hover {\n  box-shadow: 0px 1px 13px #666;\n}\n.trip-route {\n  min-height: 75px;\n}\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n#tour-card .price {\n  width: 80px;\n  color: #0f6d24;\n  right: 5px;\n  bottom: 0px;\n  top: 0px;\n  padding-left: 5px;\n  border-left: 1px dotted black;\n  position: absolute;\n  font-size: 18px;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n}\n#tour-card .tag-image {\n  top: -12px;\n  position: absolute;\n  right: 25px;\n}\n#tour-card .bg-image {\n  background-size: cover;\n  position: relative;\n  width: 100%;\n  height: 0;\n  padding-top: 56.25%;\n}\n#tour-card .tour_title {\n  width: 100%;\n  position: absolute;\n  left: 0;\n  bottom: 0;\n  right: 0;\n  text-align: left;\n  padding: 20px 10px;\n  background: rgba(0, 0, 0, 0.4);\n  background: linear-gradient(to bottom,\n      rgba(0, 0, 0, 0) 0%,\n      rgba(0, 0, 0, 0.5) 45%,\n      rgba(0, 0, 0, 0.9) 100%);\n  color: white;\n  text-align: center;\n  font-weight: 700;\n  font-size: 20px;\n  margin: 40px 0 0px 0;\n  font-family: \"Montserrat\", sans-serif;\n}\n#tour-card.card {\n  transition: box-shadow 0.2s ease-in-out, transform 0.3s ease-in-out;\n  box-shadow: 0px 2px 3px rgb(0 0 0 / 18%);\n  cursor: pointer;\n}\n#tour-card.card:hover {\n  box-shadow: 0px 1px 13px #666;\n}\n.trip-route {\n  min-height: 75px;\n}\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -12789,7 +12761,7 @@ var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBP
 ___CSS_LOADER_EXPORT___.i(_node_modules_css_loader_dist_cjs_js_clonedRuleSet_9_0_rules_0_use_1_node_modules_syncfusion_ej2_vue_inputs_styles_material_css__WEBPACK_IMPORTED_MODULE_2__.default);
 ___CSS_LOADER_EXPORT___.i(_node_modules_css_loader_dist_cjs_js_clonedRuleSet_9_0_rules_0_use_1_node_modules_syncfusion_ej2_base_styles_material_css__WEBPACK_IMPORTED_MODULE_1__.default);
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n.blog-inner-page {\n  padding-top: 60px;\n  padding-bottom: 100px;\n  background-color: #f2f2f2;\n}\n.blog-inner-page .image_title {\n  position: absolute;\n  bottom: 0px;\n  left: 0;\n  width: 100%;\n  padding: 4.375rem 1.875rem 1.875rem 1.5625rem;\n  color: white;\n  font-size: 2.375rem;\n  line-height: 2.5rem;\n  font-weight: 600;\n  font-family: \"Gentium Basic\", serif;\n  text-shadow: 1px 1px 5px #000;\n  z-index: 3;\n  background: linear-gradient(\n    to bottom,\n    rgba(0, 0, 0, 0) 0%,\n    rgba(0, 0, 0, 0.5) 45%,\n    rgba(0, 0, 0, 0.9) 100%\n  );\n}\n.blog-inner-page .content-section {\n  border-right: 1px solid #ccc;\n}\n.blog-inner-page .section-title {\n  border-top: 1px solid #ccc;\n  width: 100%;\n}\n.blog-inner-page .section-title-inner {\n  border-bottom: 1px solid #ccc;\n  width: 100%;\n  font-weight: 700;\n}\n.blog-inner-page .blog-category {\n  border: 1px solid #ccc;\n  border-bottom: 5px solid #ccc;\n}\n.blog-inner-page ul li {\n  list-style: none;\n  position: relative;\n  cursor: pointer;\n}\n.blog-inner-page ul li:before {\n  content: \"›\";\n  font-weight: normal;\n  top: -8px;\n  font-size: 25px;\n  position: absolute;\n  left: -15px;\n}\n.e-multi-line-input textarea {\n  height: 100px;\n}\n.quick-link-section {\n  display: block;\n}\n@media (max-width: 991px) {\n.blog-inner-page .quick-link-section {\n    display: none;\n}\n.blog-inner-page .content-section {\n    border: none;\n}\n.blog-inner-page .image_title {\n    font-size: 25px;\n    line-height: 35px;\n    padding: 10px 20px;\n}\n.blog-inner-page .card-img-top {\n    height: 100%;\n    width: auto;\n    position: absolute;\n    left: 50%;\n    top: 50%;\n    transform: translateY(-50%) translateX(-50%);\n}\n.blog-inner-page .position-relative.overflow-hidden {\n    border-top-right-radius: 0.25rem;\n    border-top-left-radius: 0.25rem;\n    height: 300px;\n}\n}\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n.blog-inner-page {\n  padding-top: 60px;\n  padding-bottom: 100px;\n  background-color: #f2f2f2;\n}\n.blog-inner-page .image_title {\n  position: absolute;\n  bottom: 0px;\n  left: 0;\n  width: 100%;\n  padding: 4.375rem 1.875rem 1.875rem 1.5625rem;\n  color: white;\n  font-size: 2.375rem;\n  line-height: 2.5rem;\n  font-weight: 600;\n  font-family: \"Gentium Basic\", serif;\n  text-shadow: 1px 1px 5px #000;\n  z-index: 3;\n  background: linear-gradient(to bottom,\n      rgba(0, 0, 0, 0) 0%,\n      rgba(0, 0, 0, 0.5) 45%,\n      rgba(0, 0, 0, 0.9) 100%);\n}\n.blog-inner-page .content-section {\n  border-right: 1px solid #ccc;\n}\n.blog-inner-page .section-title {\n  border-top: 1px solid #ccc;\n  width: 100%;\n}\n.blog-inner-page .section-title-inner {\n  border-bottom: 1px solid #ccc;\n  width: 100%;\n  font-weight: 700;\n}\n.blog-inner-page .blog-category {\n  border: 1px solid #ccc;\n  border-bottom: 5px solid #ccc;\n}\n.blog-inner-page ul li {\n  list-style: none;\n  position: relative;\n  cursor: pointer;\n}\n.blog-inner-page ul li:before {\n  content: \"›\";\n  font-weight: normal;\n  top: -8px;\n  font-size: 25px;\n  position: absolute;\n  left: -15px;\n}\n.e-multi-line-input textarea {\n  height: 100px;\n}\n.quick-link-section {\n  display: block;\n}\n@media (max-width: 991px) {\n.blog-inner-page .quick-link-section {\n    display: none;\n}\n.blog-inner-page .content-section {\n    border: none;\n}\n.blog-inner-page .image_title {\n    font-size: 25px;\n    line-height: 35px;\n    padding: 10px 20px;\n}\n.blog-inner-page .card-img-top {\n    height: 100%;\n    width: auto;\n    position: absolute;\n    left: 50%;\n    top: 50%;\n    transform: translateY(-50%) translateX(-50%);\n}\n.blog-inner-page .position-relative.overflow-hidden {\n    border-top-right-radius: 0.25rem;\n    border-top-left-radius: 0.25rem;\n    height: 300px;\n}\n}\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -13241,16 +13213,16 @@ var render = function() {
                         width: "60px",
                         height: "auto"
                       },
-                      attrs: { src: "./images/best-review.png" }
+                      attrs: { src: "/images/best-review.png" }
                     })
                   : _vm.tourData.tag == "seller"
                   ? _c("img", {
                       staticStyle: { width: "80px", height: "auto" },
-                      attrs: { src: "./images/bestseller.png" }
+                      attrs: { src: "/images/bestseller.png" }
                     })
                   : _c("img", {
                       staticStyle: { width: "100px", height: "auto" },
-                      attrs: { src: "./images/toprated2.png" }
+                      attrs: { src: "/images/toprated2.png" }
                     })
               ])
             : _vm._e(),
@@ -13378,7 +13350,31 @@ var render = function() {
   return _c("div", { staticClass: "blog-inner-page" }, [
     _c("div", { staticClass: "container mt-5" }, [
       _c("div", { staticClass: "card" }, [
-        _vm._m(0),
+        _vm.loading
+          ? _c(
+              "div",
+              [
+                _c(
+                  "content-placeholders",
+                  { attrs: { rounded: true } },
+                  [_c("content-placeholders-img")],
+                  1
+                )
+              ],
+              1
+            )
+          : _c("div", { staticClass: "position-relative overflow-hidden" }, [
+              _c("img", {
+                staticClass: "card-img-top",
+                attrs: { src: _vm.blogData.post_inner_image }
+              }),
+              _vm._v(" "),
+              _c("div", { staticClass: "image_title" }, [
+                _vm._v(
+                  "\n          " + _vm._s(_vm.blogData.title) + "\n        "
+                )
+              ])
+            ]),
         _vm._v(" "),
         _c("div", { staticClass: "card-body px-0" }, [
           _c("div", { staticClass: "row gx-0" }, [
@@ -13386,213 +13382,189 @@ var render = function() {
               "div",
               { staticClass: "col-lg-9 col-md-12 content-section px-4" },
               [
-                _vm._m(1),
-                _vm._v(" "),
-                _c("p", [
-                  _vm._v(
-                    "\n              sdf asdf asdf sadfsdf sdf sdaf sd asdf sadfsdf sdf sdaf sd asdf\n              sadfsdf sdf sdaf sd asdf sadfsdf sdf sdaf sdaf asdf sadf sadf\n              sdaf sadf dsaf\n            "
-                  )
-                ]),
-                _vm._v(" "),
-                _c("p", [
-                  _vm._v(
-                    "\n              sdf asdf asdf sadfsdf sdf s asdf sadfsdf sdf sdaf sd asdf\n              sadfsdf sdf sdaf sd asdf sadfsdf sdf sdaf sd asdf sadfsdf sdf\n              sdaf sd asdf sadfsdf sdf sdaf sddaf sdaf asdf sadf sadf sdaf\n              sadf dsaf\n            "
-                  )
-                ]),
-                _vm._v(" "),
-                _c("p", [
-                  _vm._v(
-                    "\n              sdf asdf asdf sadfsdf sdf sdaf sdaf asdf sadf asdf sadfsdf sdf\n              sdaf sd asdf sadfsdf sdf sdaf sd asdf sadfsdf sdf sdaf sd asdf\n              sadfsdf sdf sdaf sd asdf sadfsdf sdf sdaf sd asdf sadfsdf sdf\n              sdaf sd sadf sdaf sadf dsaf\n            "
-                  )
-                ]),
-                _vm._v(" "),
-                _vm._l(6, function(item, index) {
-                  return _c("div", { key: index }, [
-                    _c("div", { staticClass: "mt-5" }, [
-                      _c("h3", { staticClass: "section-title-inner pb-3" }, [
-                        _vm._v(
-                          "\n                  Section " +
-                            _vm._s(index + 1) +
-                            "\n                "
-                        )
-                      ])
-                    ]),
-                    _vm._v(" "),
-                    _c("img", {
-                      staticClass: "w-100 mb-3",
-                      attrs: {
-                        src:
-                          "https://africasafar.com/wp-content/uploads/2020/01/barranco-camps.jpg"
-                      }
-                    }),
-                    _vm._v(" "),
-                    _c("p", [
-                      _vm._v(
-                        "\n                sdf asdf asdf sadfsdf sdf sdaf sd asdf sadfsdf sdf sdaf sd\n                asdf sadfsdf sdf sdaf sd asdf sadfsdf sdf sdaf sdaf asdf sadf\n                sadf sdaf sadf dsaf\n              "
-                      )
-                    ]),
-                    _vm._v(" "),
-                    _c("p", [
-                      _vm._v(
-                        "\n                sdf asdf asdf sadfsdf sdf s asdf sadfsdf sdf sdaf sd asdf\n                sadfsdf sdf sdaf sd asdf sadfsdf sdf sdaf sd asdf sadfsdf sdf\n                sdaf sd asdf sadfsdf sdf sdaf sddaf sdaf asdf sadf sadf sdaf\n                sadf dsaf\n              "
-                      )
-                    ]),
-                    _vm._v(" "),
-                    _c("p", [
-                      _vm._v(
-                        "\n                sdf asdf asdf sadfsdf sdf sdaf sdaf asdf sadf asdf sadfsdf sdf\n                sdaf sd asdf sadfsdf sdf sdaf sd asdf sadfsdf sdf sdaf sd asdf\n                sadfsdf sdf sdaf sd asdf sadfsdf sdf sdaf sd asdf sadfsdf sdf\n                sdaf sd sadf sdaf sadf dsaf\n              "
-                      )
-                    ]),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "text-start mt-3" }, [
-                      _c(
-                        "a",
-                        { staticClass: "btn btn-danger", attrs: { href: "#" } },
-                        [
+                _vm.loading
+                  ? _c("div", [_c("content-placeholders-heading")], 1)
+                  : _c(
+                      "div",
+                      {
+                        staticClass: "mt-5",
+                        staticStyle: { "margin-bottom": "-60px" }
+                      },
+                      [
+                        _c("h3", { staticClass: "section-title pt-3" }, [
                           _vm._v(
-                            "\n                  Tour that includes Section " +
-                              _vm._s(index + 1) +
-                              "\n                "
+                            "\n                " +
+                              _vm._s(_vm.blogData.title) +
+                              "\n              "
                           )
-                        ]
-                      )
-                    ])
-                  ])
-                }),
+                        ]),
+                        _vm._v(" "),
+                        _c("p", [
+                          _vm._v(
+                            "\n                " +
+                              _vm._s(_vm.blogData.description) +
+                              "\n              "
+                          )
+                        ])
+                      ]
+                    ),
                 _vm._v(" "),
-                _vm._m(2),
-                _vm._v(" "),
-                _c("form", { staticClass: "mt-5" }, [
-                  _c("h3", { staticClass: "section-title-inner pb-3" }, [
-                    _vm._v("Speak Your Mind")
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "row" }, [
-                    _c(
+                _vm.loading
+                  ? _c("div", [_c("content-placeholders-heading")], 1)
+                  : _c(
                       "div",
-                      { staticClass: "col-md-6 col-sm-12 mt-3" },
-                      [
-                        _c("ejs-textbox", {
-                          attrs: {
-                            floatLabelType: "Auto",
-                            type: "text",
-                            placeholder: "Name",
-                            required: ""
-                          }
-                        })
-                      ],
-                      1
-                    ),
-                    _vm._v(" "),
-                    _c(
-                      "div",
-                      { staticClass: "col-md-6 col-sm-12 mt-3" },
-                      [
-                        _c("ejs-textbox", {
-                          attrs: {
-                            floatLabelType: "Auto",
-                            type: "email",
-                            placeholder: "Email",
-                            required: ""
-                          }
-                        })
-                      ],
-                      1
-                    ),
-                    _vm._v(" "),
-                    _c(
-                      "div",
-                      { staticClass: "col-md-12 col-sm-12 mt-3" },
-                      [
-                        _c("ejs-textbox", {
-                          attrs: {
-                            multiline: true,
-                            floatLabelType: "Auto",
-                            placeholder: "Write a comment",
-                            required: ""
-                          }
-                        })
-                      ],
-                      1
-                    ),
-                    _vm._v(" "),
-                    _vm._m(3)
-                  ])
-                ])
-              ],
-              2
+                      _vm._l(_vm.blogData.section, function(item, index) {
+                        return _c(
+                          "div",
+                          {
+                            key: index,
+                            staticClass: "pt-5",
+                            attrs: { id: "section" + index }
+                          },
+                          [
+                            _c("div", { staticClass: "pt-5" }, [
+                              _c(
+                                "h3",
+                                { staticClass: "section-title-inner pb-3" },
+                                [
+                                  _vm._v(
+                                    "\n                    Section " +
+                                      _vm._s(index + 1) +
+                                      ". " +
+                                      _vm._s(item.title) +
+                                      "\n                  "
+                                  )
+                                ]
+                              )
+                            ]),
+                            _vm._v(" "),
+                            _c("div", {
+                              domProps: { innerHTML: _vm._s(item.description) }
+                            }),
+                            _vm._v(" "),
+                            _c("div", { staticClass: "text-start mt-3" }, [
+                              _c(
+                                "a",
+                                {
+                                  staticClass: "btn btn-danger",
+                                  attrs: { href: "#" }
+                                },
+                                [
+                                  _vm._v(
+                                    "\n                    Tour that includes Section " +
+                                      _vm._s(index + 1) +
+                                      "\n                  "
+                                  )
+                                ]
+                              )
+                            ])
+                          ]
+                        )
+                      }),
+                      0
+                    )
+              ]
             ),
             _vm._v(" "),
             _c(
               "div",
-              { staticClass: "col-lg-3 col-md-12 quick-link-section px-4" },
+              {
+                staticClass:
+                  "col-lg-3 col-md-12 quick-link-section px-4 position-relative"
+              },
               [
                 _c(
-                  "button",
-                  {
-                    staticClass: "btn-danger btn w-100 mt-5",
-                    on: { click: _vm.goToOurTourPage }
-                  },
+                  "div",
+                  { staticStyle: { position: "sticky", top: "50px" } },
                   [
-                    _vm._v("\n              Our Tour "),
-                    _c("span", { staticClass: "fa fa-angle-right ms-2" })
-                  ]
-                ),
-                _vm._v(" "),
-                _c("div", { staticClass: "w-100 p-3 blog-category mt-3" }, [
-                  _c(
-                    "h6",
-                    { staticClass: "fw-bolder text-center text-danger" },
-                    [
-                      _vm._v(
-                        "\n                Table Of Contents\n              "
-                      )
-                    ]
-                  ),
-                  _vm._v(" "),
-                  _c(
-                    "ul",
-                    { staticClass: "m-0 ps-3" },
-                    _vm._l(6, function(index) {
-                      return _c("li", { key: index }, [
-                        _c("a", { staticClass: "text-primary" }, [
-                          _vm._v("efsdf sdf sdf sdaf sadf sdaf dsf")
-                        ])
-                      ])
-                    }),
-                    0
-                  )
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "w-100 p-3 blog-category mt-5" }, [
-                  _c(
-                    "h6",
-                    { staticClass: "fw-bolder text-center text-danger" },
-                    [_vm._v("Popular Links")]
-                  ),
-                  _vm._v(" "),
-                  _c(
-                    "ul",
-                    { staticClass: "m-0 ps-3" },
-                    _vm._l(6, function(index) {
-                      return _c("li", { key: index }, [
-                        _c("a", { staticClass: "text-primary" }, [
+                    _c(
+                      "button",
+                      {
+                        staticClass: "btn-danger btn w-100 mt-5",
+                        on: { click: _vm.goToOurTourPage }
+                      },
+                      [
+                        _vm._v("\n                Our Tours "),
+                        _c("span", { staticClass: "fa fa-angle-right ms-2" })
+                      ]
+                    ),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "w-100 p-3 blog-category mt-3" }, [
+                      _c(
+                        "h6",
+                        { staticClass: "fw-bolder text-center text-danger" },
+                        [
                           _vm._v(
-                            "efsdf sdf sdf sdaf sdfg dsfg dsfg dsfg dsfg dsfg dsfg\n                    sadf sdaf dsf"
+                            "\n                  Table Of Contents\n                "
                           )
-                        ])
-                      ])
-                    }),
-                    0
-                  )
-                ])
+                        ]
+                      ),
+                      _vm._v(" "),
+                      _vm.loading
+                        ? _c(
+                            "ul",
+                            { staticClass: "m-0 ps-3" },
+                            _vm._l(4, function(item, index) {
+                              return _c(
+                                "li",
+                                { key: "skelect" + index, staticClass: "mt-2" },
+                                [
+                                  _c(
+                                    "a",
+                                    { staticClass: "text-primary" },
+                                    [
+                                      _c("content-placeholders-text", {
+                                        attrs: { lines: 1 }
+                                      })
+                                    ],
+                                    1
+                                  )
+                                ]
+                              )
+                            }),
+                            0
+                          )
+                        : _c(
+                            "ul",
+                            { staticClass: "m-0 ps-3" },
+                            _vm._l(_vm.blogData.section, function(
+                              content,
+                              index
+                            ) {
+                              return _c(
+                                "li",
+                                { key: index, staticClass: "mt-2" },
+                                [
+                                  _c(
+                                    "a",
+                                    {
+                                      staticClass: "text-primary",
+                                      attrs: { href: "#section" + index }
+                                    },
+                                    [
+                                      _vm._v(
+                                        "Section " +
+                                          _vm._s(index + 1) +
+                                          ". " +
+                                          _vm._s(content.title)
+                                      )
+                                    ]
+                                  )
+                                ]
+                              )
+                            }),
+                            0
+                          )
+                    ])
+                  ]
+                )
               ]
             )
           ])
         ])
       ]),
       _vm._v(" "),
-      _vm._m(4),
+      _vm._m(0),
       _vm._v(" "),
       _vm.popularTours != null
         ? _c(
@@ -13610,68 +13582,11 @@ var render = function() {
           )
         : _vm._e(),
       _vm._v(" "),
-      _vm._m(5)
+      _vm._m(1)
     ])
   ])
 }
 var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "position-relative overflow-hidden" }, [
-      _c("img", {
-        staticClass: "card-img-top",
-        attrs: {
-          src:
-            "https://africasafar.com/wp-content/uploads/2020/01/barranco-camps.jpg"
-        }
-      }),
-      _vm._v(" "),
-      _c("div", { staticClass: "image_title" }, [
-        _vm._v(
-          "\n          Can You Climb Mount Kilimanjaro Without A Guide\n        "
-        )
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "mt-5" }, [
-      _c("h3", { staticClass: "section-title pt-3" }, [
-        _vm._v(
-          "\n                Experience A Night Game Drive\n              "
-        )
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "mt-5" }, [
-      _c("h3", { staticClass: "section-title-inner pb-3" }, [
-        _vm._v("Comments (234)")
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col-md-12 col-sm-12 text-end mt-3" }, [
-      _c(
-        "button",
-        { staticClass: "btn btn-danger", attrs: { type: "submit" } },
-        [
-          _vm._v("\n                    Post Comment "),
-          _c("span", { staticClass: "fa fa-paper-plane ms-2" })
-        ]
-      )
-    ])
-  },
   function() {
     var _vm = this
     var _h = _vm.$createElement

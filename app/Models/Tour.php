@@ -453,4 +453,16 @@ class Tour extends Model {
 
         return $activities;
     }
+
+    public static function tourFocus() {
+        /**
+         * Fetch all tour focus that shown in tour inner page (filter)
+         */
+
+        $focus = DB::select("
+            SELECT * FROM tour_focus ORDER BY title ASC
+        ");
+
+        return $focus;
+    }
 }

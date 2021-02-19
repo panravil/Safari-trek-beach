@@ -163,4 +163,20 @@ class TourController extends Controller
       JSON_UNESCAPED_UNICODE
     );
   }
+
+  public function tourFocus() {
+
+    $focus = Tour::tourFocus();
+
+    // dd($focus);
+
+    return response()->json(
+      [
+        'tourFocus' => $focus
+      ],
+      200,
+      [],
+      JSON_UNESCAPED_UNICODE
+    );
+  }
 }

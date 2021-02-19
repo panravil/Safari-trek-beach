@@ -183,52 +183,24 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
+ // import { mapState, mapGetters, mapMutations } from "vuex";
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   components: {
     CustomStarRating: _components_CustomStarRating__WEBPACK_IMPORTED_MODULE_0__.default
   },
   props: {
-    tourData: Object
+    tourData: Object,
+    where_to_search: String,
+    start_date: Date,
+    adults_number: Number,
+    children_number: Number
   },
   computed: {},
   data: function data() {
     return {};
   },
+  created: function created() {},
   methods: {
     getMidRoute: function getMidRoute(destination) {
       if (destination == undefined || destination == null) return "";
@@ -254,6 +226,14 @@ __webpack_require__.r(__webpack_exports__);
       return level_data;
     },
     toInnerPackage: function toInnerPackage() {
+      var searchData = {};
+      searchData = {
+        'where_to_search': this.where_to_search,
+        'start_date': this.start_date,
+        'adults_number': this.adults_number,
+        'children_number': this.children_number
+      };
+      this.$store.dispatch("tourController/setSearchData", searchData);
       this.$router.push("/tour-package/" + this.tourData.package_id)["catch"](function () {});
     }
   }
@@ -324,8 +304,6 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-//
-//
 //
 //
 //
@@ -994,8 +972,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
             switch (_context.prev = _context.next) {
               case 0:
                 _context.next = 2;
-                return _this2.$store.dispatch("tourController/getPopularTours").then(function () {
-                  console.log('tag', _this2.popularTours);
+                return _this2.$store.dispatch("tourController/getPopularTours").then(function () {// console.log('tag', this.popularTours)
                 });
 
               case 2:
@@ -1042,6 +1019,17 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     },
     initStartDate: function initStartDate() {
       this.start_date = "";
+    },
+    searchButton: function searchButton() {
+      var searchData = {};
+      searchData = {
+        'where_to_search': this.where_to_search,
+        'start_date': this.start_date,
+        'adults_number': this.adults_number,
+        'children_number': this.children_number
+      };
+      this.$store.dispatch("tourController/setSearchData", searchData);
+      this.$router.push('/our-tours');
     }
   }
 });
@@ -1089,7 +1077,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n#tour-card .price {\n  width: 80px;\n  color: #0f6d24;\n  right: 5px;\n  bottom: 0px;\n  top: 0px;\n  padding-left: 5px;\n  border-left: 1px dotted black;\n  position: absolute;\n  font-size: 18px;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n}\n#tour-card .tag-image {\n  top: -12px;\n  position: absolute;\n  right: 25px;\n}\n#tour-card .bg-image {\n  background-size: cover;\n  position: relative;\n  width: 100%;\n  height: 0;\n  padding-top: 56.25%;\n}\n#tour-card .tour_title {\n  width: 100%;\n  position: absolute;\n  left: 0;\n  bottom: 0;\n  right: 0;\n  text-align: left;\n  padding: 20px 10px;\n  background: rgba(0, 0, 0, 0.4);\n  background: linear-gradient(\n    to bottom,\n    rgba(0, 0, 0, 0) 0%,\n    rgba(0, 0, 0, 0.5) 45%,\n    rgba(0, 0, 0, 0.9) 100%\n  );\n  color: white;\n  text-align: center;\n  font-weight: 700;\n  font-size: 20px;\n  margin: 40px 0 0px 0;\n  font-family: \"Montserrat\", sans-serif;\n}\n#tour-card.card {\n  transition: box-shadow 0.2s ease-in-out, transform 0.3s ease-in-out;\n  box-shadow: 0px 2px 3px rgb(0 0 0 / 18%);\n  cursor: pointer;\n}\n#tour-card.card:hover {\n  box-shadow: 0px 1px 13px #666;\n}\n.trip-route {\n  min-height: 75px;\n}\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n#tour-card .price {\n  width: 80px;\n  color: #0f6d24;\n  right: 5px;\n  bottom: 0px;\n  top: 0px;\n  padding-left: 5px;\n  border-left: 1px dotted black;\n  position: absolute;\n  font-size: 18px;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n}\n#tour-card .tag-image {\n  top: -12px;\n  position: absolute;\n  right: 25px;\n}\n#tour-card .bg-image {\n  background-size: cover;\n  position: relative;\n  width: 100%;\n  height: 0;\n  padding-top: 56.25%;\n}\n#tour-card .tour_title {\n  width: 100%;\n  position: absolute;\n  left: 0;\n  bottom: 0;\n  right: 0;\n  text-align: left;\n  padding: 20px 10px;\n  background: rgba(0, 0, 0, 0.4);\n  background: linear-gradient(to bottom,\n      rgba(0, 0, 0, 0) 0%,\n      rgba(0, 0, 0, 0.5) 45%,\n      rgba(0, 0, 0, 0.9) 100%);\n  color: white;\n  text-align: center;\n  font-weight: 700;\n  font-size: 20px;\n  margin: 40px 0 0px 0;\n  font-family: \"Montserrat\", sans-serif;\n}\n#tour-card.card {\n  transition: box-shadow 0.2s ease-in-out, transform 0.3s ease-in-out;\n  box-shadow: 0px 2px 3px rgb(0 0 0 / 18%);\n  cursor: pointer;\n}\n#tour-card.card:hover {\n  box-shadow: 0px 1px 13px #666;\n}\n.trip-route {\n  min-height: 75px;\n}\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -1633,7 +1621,15 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c(
     "div",
-    { staticClass: "card mb-3 mx-2", attrs: { id: "blog-card" } },
+    {
+      staticClass: "card mb-3 mx-2",
+      attrs: { id: "blog-card" },
+      on: {
+        click: function($event) {
+          return _vm.$router.push("/blog-inner-page/" + _vm.blog.post_slug)
+        }
+      }
+    },
     [
       _c(
         "div",
@@ -1842,16 +1838,16 @@ var render = function() {
                         width: "60px",
                         height: "auto"
                       },
-                      attrs: { src: "./images/best-review.png" }
+                      attrs: { src: "/images/best-review.png" }
                     })
                   : _vm.tourData.tag == "seller"
                   ? _c("img", {
                       staticStyle: { width: "80px", height: "auto" },
-                      attrs: { src: "./images/bestseller.png" }
+                      attrs: { src: "/images/bestseller.png" }
                     })
                   : _c("img", {
                       staticStyle: { width: "100px", height: "auto" },
-                      attrs: { src: "./images/toprated2.png" }
+                      attrs: { src: "/images/toprated2.png" }
                     })
               ])
             : _vm._e(),
@@ -2444,7 +2440,21 @@ var render = function() {
                     1
                   ),
                   _vm._v(" "),
-                  _vm._m(0)
+                  _c(
+                    "div",
+                    { staticClass: "col-md-4 col-xs-12 ps-2 mobile-filter" },
+                    [
+                      _c(
+                        "button",
+                        {
+                          staticClass: "btn btn-danger w-100 h-100",
+                          attrs: { type: "button" },
+                          on: { click: _vm.searchButton }
+                        },
+                        [_vm._v("\n                  Search\n                ")]
+                      )
+                    ]
+                  )
                 ])
               ])
             ])
@@ -2457,7 +2467,7 @@ var render = function() {
       "div",
       { staticClass: "container bg-gray", attrs: { id: "popular-tour" } },
       [
-        _vm._m(1),
+        _vm._m(0),
         _vm._v(" "),
         _vm.loading
           ? _c(
@@ -2490,7 +2500,7 @@ var render = function() {
               0
             ),
         _vm._v(" "),
-        _vm._m(2)
+        _vm._m(1)
       ]
     ),
     _vm._v(" "),
@@ -2500,7 +2510,7 @@ var render = function() {
           "div",
           { staticClass: "pt-5 why-us" },
           [
-            _vm._m(3),
+            _vm._m(2),
             _vm._v(" "),
             _c("h5", [
               _vm._v(
@@ -2594,7 +2604,7 @@ var render = function() {
       "div",
       { staticClass: "container bg-gray", attrs: { id: "top-destination" } },
       [
-        _vm._m(4),
+        _vm._m(3),
         _vm._v(" "),
         _c(
           "div",
@@ -2607,7 +2617,9 @@ var render = function() {
                 staticClass: "col-lg-3 col-md-4 col-xs-12",
                 on: {
                   click: function($event) {
-                    return _vm.$router.push("./destination-package")
+                    return _vm.$router.push(
+                      "/destination-package/" + item.post_slug
+                    )
                   }
                 }
               },
@@ -2623,7 +2635,7 @@ var render = function() {
                       attrs: { "data-mdb-ripple-color": "light" }
                     },
                     [
-                      _vm._m(5, true),
+                      _vm._m(4, true),
                       _vm._v(" "),
                       _c("div", { staticClass: "overlay-text" }, [
                         _vm._v(
@@ -2641,7 +2653,7 @@ var render = function() {
           0
         ),
         _vm._v(" "),
-        _vm._m(6)
+        _vm._m(5)
       ]
     ),
     _vm._v(" "),
@@ -2738,10 +2750,10 @@ var render = function() {
     ]),
     _vm._v(" "),
     _c("div", { staticClass: "container bg-gray", attrs: { id: "about-us" } }, [
-      _vm._m(7),
+      _vm._m(6),
       _vm._v(" "),
       _c("section", [
-        _vm._m(8),
+        _vm._m(7),
         _vm._v(" "),
         _vm.blog_loading
           ? _c(
@@ -2766,15 +2778,7 @@ var render = function() {
               _vm._l(_vm.popularBlogs, function(blog, index) {
                 return _c(
                   "div",
-                  {
-                    key: index,
-                    staticClass: "col-lg-4 col-md-6 col-xs-12",
-                    on: {
-                      click: function($event) {
-                        return _vm.$router.push("./blog-inner-page")
-                      }
-                    }
-                  },
+                  { key: index, staticClass: "col-lg-4 col-md-6 col-xs-12" },
                   [_c("BlogCard", { attrs: { blog: blog } })],
                   1
                 )
@@ -2782,27 +2786,12 @@ var render = function() {
               0
             ),
         _vm._v(" "),
-        _vm._m(9)
+        _vm._m(8)
       ])
     ])
   ])
 }
 var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col-md-4 col-xs-12 ps-2 mobile-filter" }, [
-      _c(
-        "button",
-        {
-          staticClass: "btn btn-danger w-100 h-100",
-          attrs: { type: "button" }
-        },
-        [_vm._v("\n                  Search\n                ")]
-      )
-    ])
-  },
   function() {
     var _vm = this
     var _h = _vm.$createElement
@@ -2854,7 +2843,10 @@ var staticRenderFns = [
     return _c("div", { staticClass: "text-center" }, [
       _c(
         "a",
-        { staticClass: "btn btn-danger", attrs: { href: "/destinations" } },
+        {
+          staticClass: "btn btn-danger",
+          attrs: { href: "/tour-destinations" }
+        },
         [
           _vm._v("\n        View All Destinations "),
           _c("span", { staticClass: "fa fa-angle-right ms-2" })

@@ -13074,6 +13074,15 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _syncfusion_ej2_vue_inputs__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @syncfusion/ej2-vue-inputs */ "./node_modules/@syncfusion/ej2-vue-inputs/src/textbox/textbox.component.js");
 /* harmony import */ var _syncfusion_ej2_vue_buttons__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @syncfusion/ej2-vue-buttons */ "./node_modules/@syncfusion/ej2-vue-buttons/src/check-box/checkbox.component.js");
 /* harmony import */ var _syncfusion_ej2_base__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @syncfusion/ej2-base */ "./node_modules/@syncfusion/ej2-base/index.js");
+/* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+//
+//
 //
 //
 //
@@ -13137,10 +13146,92 @@ vue__WEBPACK_IMPORTED_MODULE_0__.default.use(_syncfusion_ej2_vue_inputs__WEBPACK
 vue__WEBPACK_IMPORTED_MODULE_0__.default.use(_syncfusion_ej2_vue_buttons__WEBPACK_IMPORTED_MODULE_2__.CheckBoxPlugin);
 
 (0,_syncfusion_ej2_base__WEBPACK_IMPORTED_MODULE_3__.enableRipple)(true);
+
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: "BecomePartner",
   data: function data() {
-    return {};
+    return {
+      companyName: '',
+      email: '',
+      phone: '',
+      stuffs: '',
+      personalName: '',
+      password: '',
+      address: '',
+      tourType: '',
+      companyBrief: '',
+      companyDescription: '',
+      conditions: false
+    };
+  },
+  computed: _objectSpread({}, (0,vuex__WEBPACK_IMPORTED_MODULE_4__.mapGetters)({
+    packageData: "tourController/packageData",
+    request_status: "request_status"
+  })),
+  methods: {
+    submitCompanyData: function submitCompanyData() {
+      var _this = this;
+
+      var companyData = {};
+      companyData = {
+        'companyName': this.companyName,
+        'email': this.email,
+        'phone': this.phone,
+        'stuffs': this.stuffs,
+        'personalName': this.personalName,
+        'password': this.password,
+        'address': this.address,
+        'tourType': this.tourType,
+        'companyBrief': this.companyBrief,
+        'companyDescription': this.companyDescription,
+        'conditions': this.conditions
+      };
+      this.$store.dispatch("operatorController/becomePartner", companyData).then(function () {
+        if (_this.request_status == true) {
+          _this.$notify({
+            group: 'success',
+            title: 'Submit Success !',
+            text: 'Thank you! We have received your company data.'
+          });
+        } else {
+          _this.$notify({
+            group: 'warning',
+            title: 'Submit Error !',
+            text: 'Sorry, Something went wrong...'
+          });
+        }
+
+        _this.companyName = '';
+        _this.email = '';
+        _this.phone = '';
+        _this.stuffs = '';
+        _this.personalName = '';
+        _this.password = '';
+        _this.address = '';
+        _this.tourType = '';
+        _this.companyBrief = '';
+        _this.companyDescription = '';
+        _this.conditions = false;
+      })["catch"](function () {
+        _this.$notify({
+          group: 'warning',
+          title: 'Submit Error !',
+          text: 'Sorry, Something went wrong...'
+        });
+
+        _this.companyName = '';
+        _this.email = '';
+        _this.phone = '';
+        _this.stuffs = '';
+        _this.personalName = '';
+        _this.password = '';
+        _this.address = '';
+        _this.tourType = '';
+        _this.companyBrief = '';
+        _this.companyDescription = '';
+        _this.conditions = false;
+      });
+    }
   }
 });
 
@@ -13422,182 +13513,275 @@ var render = function() {
         _vm._m(0),
         _vm._v(" "),
         _c("div", { staticClass: "card mt-5 p-3" }, [
-          _c("div", { staticClass: "row g-0" }, [
-            _c(
-              "div",
-              { staticClass: "col-md-6 col-sm-12 px-3 mt-3" },
-              [
-                _c("ejs-textbox", {
-                  attrs: {
-                    floatLabelType: "Auto",
-                    type: "text",
-                    placeholder: "Company Name",
-                    required: ""
-                  }
-                })
-              ],
-              1
-            ),
-            _vm._v(" "),
-            _c(
-              "div",
-              { staticClass: "col-md-6 col-sm-12 px-3 mt-3" },
-              [
-                _c("ejs-textbox", {
-                  attrs: {
-                    floatLabelType: "Auto",
-                    type: "text",
-                    placeholder: "Contact Person Name",
-                    required: ""
-                  }
-                })
-              ],
-              1
-            ),
-            _vm._v(" "),
-            _c(
-              "div",
-              { staticClass: "col-md-6 col-sm-12 px-3 mt-3" },
-              [
-                _c("ejs-textbox", {
-                  attrs: {
-                    floatLabelType: "Auto",
-                    type: "email",
-                    placeholder: "Email",
-                    required: ""
-                  }
-                })
-              ],
-              1
-            ),
-            _vm._v(" "),
-            _c(
-              "div",
-              { staticClass: "col-md-6 col-sm-12 px-3 mt-3" },
-              [
-                _c("ejs-textbox", {
-                  attrs: {
-                    floatLabelType: "Auto",
-                    type: "password",
-                    placeholder: "Password",
-                    required: ""
-                  }
-                })
-              ],
-              1
-            ),
-            _vm._v(" "),
-            _c(
-              "div",
-              { staticClass: "col-md-6 col-sm-12 px-3 mt-3" },
-              [
-                _c("ejs-textbox", {
-                  attrs: {
-                    floatLabelType: "Auto",
-                    type: "text",
-                    placeholder: "Phone",
-                    required: ""
-                  }
-                })
-              ],
-              1
-            ),
-            _vm._v(" "),
-            _c(
-              "div",
-              { staticClass: "col-md-6 col-sm-12 px-3 mt-3" },
-              [
-                _c("ejs-textbox", {
-                  attrs: {
-                    floatLabelType: "Auto",
-                    type: "text",
-                    placeholder: "Address",
-                    required: ""
-                  }
-                })
-              ],
-              1
-            ),
-            _vm._v(" "),
-            _c(
-              "div",
-              { staticClass: "col-md-6 col-sm-12 px-3 mt-3" },
-              [
-                _c("ejs-textbox", {
-                  attrs: {
-                    floatLabelType: "Auto",
-                    type: "number",
-                    placeholder: "Number of Stuffs",
-                    required: ""
-                  }
-                })
-              ],
-              1
-            ),
-            _vm._v(" "),
-            _c(
-              "div",
-              { staticClass: "col-md-6 col-sm-12 px-3 mt-3" },
-              [
-                _c("ejs-textbox", {
-                  attrs: {
-                    floatLabelType: "Auto",
-                    type: "text",
-                    placeholder: "Tour Type",
-                    required: ""
-                  }
-                })
-              ],
-              1
-            ),
-            _vm._v(" "),
-            _c(
-              "div",
-              { staticClass: "col-sm-12 px-3 mt-3" },
-              [
-                _c("ejs-textbox", {
-                  attrs: {
-                    multiline: true,
-                    floatLabelType: "Auto",
-                    placeholder: "Company Brief",
-                    required: ""
-                  }
-                })
-              ],
-              1
-            ),
-            _vm._v(" "),
-            _c(
-              "div",
-              { staticClass: "col-sm-12 px-3 mt-3" },
-              [
-                _c("ejs-textbox", {
-                  attrs: {
-                    multiline: true,
-                    floatLabelType: "Auto",
-                    placeholder: "Company Description",
-                    required: ""
-                  }
-                })
-              ],
-              1
-            ),
-            _vm._v(" "),
-            _c(
-              "p",
-              { staticClass: "px-3 mt-3" },
-              [
-                _c("ejs-checkbox", {
-                  attrs: { label: "I agree to the Safari-Trek-Beach " }
-                }),
+          _c(
+            "form",
+            {
+              on: {
+                submit: function($event) {
+                  $event.preventDefault()
+                  return _vm.submitCompanyData($event)
+                }
+              }
+            },
+            [
+              _c("div", { staticClass: "row g-0" }, [
+                _c(
+                  "div",
+                  { staticClass: "col-md-6 col-sm-12 px-3 mt-3" },
+                  [
+                    _c("ejs-textbox", {
+                      attrs: {
+                        floatLabelType: "Auto",
+                        type: "text",
+                        placeholder: "Company Name",
+                        required: ""
+                      },
+                      model: {
+                        value: _vm.companyName,
+                        callback: function($$v) {
+                          _vm.companyName = $$v
+                        },
+                        expression: "companyName"
+                      }
+                    })
+                  ],
+                  1
+                ),
                 _vm._v(" "),
-                _vm._m(1)
-              ],
-              1
-            ),
-            _vm._v(" "),
-            _vm._m(2)
-          ])
+                _c(
+                  "div",
+                  { staticClass: "col-md-6 col-sm-12 px-3 mt-3" },
+                  [
+                    _c("ejs-textbox", {
+                      attrs: {
+                        floatLabelType: "Auto",
+                        type: "text",
+                        placeholder: "Contact Person Name",
+                        required: ""
+                      },
+                      model: {
+                        value: _vm.personalName,
+                        callback: function($$v) {
+                          _vm.personalName = $$v
+                        },
+                        expression: "personalName"
+                      }
+                    })
+                  ],
+                  1
+                ),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  { staticClass: "col-md-6 col-sm-12 px-3 mt-3" },
+                  [
+                    _c("ejs-textbox", {
+                      attrs: {
+                        floatLabelType: "Auto",
+                        type: "email",
+                        placeholder: "Email",
+                        required: ""
+                      },
+                      model: {
+                        value: _vm.email,
+                        callback: function($$v) {
+                          _vm.email = $$v
+                        },
+                        expression: "email"
+                      }
+                    })
+                  ],
+                  1
+                ),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  { staticClass: "col-md-6 col-sm-12 px-3 mt-3" },
+                  [
+                    _c("ejs-textbox", {
+                      attrs: {
+                        floatLabelType: "Auto",
+                        type: "password",
+                        placeholder: "Password",
+                        required: ""
+                      },
+                      model: {
+                        value: _vm.password,
+                        callback: function($$v) {
+                          _vm.password = $$v
+                        },
+                        expression: "password"
+                      }
+                    })
+                  ],
+                  1
+                ),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  { staticClass: "col-md-6 col-sm-12 px-3 mt-3" },
+                  [
+                    _c("ejs-textbox", {
+                      attrs: {
+                        floatLabelType: "Auto",
+                        type: "text",
+                        placeholder: "Phone",
+                        required: ""
+                      },
+                      model: {
+                        value: _vm.phone,
+                        callback: function($$v) {
+                          _vm.phone = $$v
+                        },
+                        expression: "phone"
+                      }
+                    })
+                  ],
+                  1
+                ),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  { staticClass: "col-md-6 col-sm-12 px-3 mt-3" },
+                  [
+                    _c("ejs-textbox", {
+                      attrs: {
+                        floatLabelType: "Auto",
+                        type: "text",
+                        placeholder: "Address",
+                        required: ""
+                      },
+                      model: {
+                        value: _vm.address,
+                        callback: function($$v) {
+                          _vm.address = $$v
+                        },
+                        expression: "address"
+                      }
+                    })
+                  ],
+                  1
+                ),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  { staticClass: "col-md-6 col-sm-12 px-3 mt-3" },
+                  [
+                    _c("ejs-textbox", {
+                      attrs: {
+                        floatLabelType: "Auto",
+                        type: "number",
+                        placeholder: "Number of Stuffs",
+                        required: ""
+                      },
+                      model: {
+                        value: _vm.stuffs,
+                        callback: function($$v) {
+                          _vm.stuffs = $$v
+                        },
+                        expression: "stuffs"
+                      }
+                    })
+                  ],
+                  1
+                ),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  { staticClass: "col-md-6 col-sm-12 px-3 mt-3" },
+                  [
+                    _c("ejs-textbox", {
+                      attrs: {
+                        floatLabelType: "Auto",
+                        type: "text",
+                        placeholder: "Tour Type",
+                        required: ""
+                      },
+                      model: {
+                        value: _vm.tourType,
+                        callback: function($$v) {
+                          _vm.tourType = $$v
+                        },
+                        expression: "tourType"
+                      }
+                    })
+                  ],
+                  1
+                ),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  { staticClass: "col-sm-12 px-3 mt-3" },
+                  [
+                    _c("ejs-textbox", {
+                      attrs: {
+                        multiline: true,
+                        floatLabelType: "Auto",
+                        placeholder: "Company Brief",
+                        required: ""
+                      },
+                      model: {
+                        value: _vm.companyBrief,
+                        callback: function($$v) {
+                          _vm.companyBrief = $$v
+                        },
+                        expression: "companyBrief"
+                      }
+                    })
+                  ],
+                  1
+                ),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  { staticClass: "col-sm-12 px-3 mt-3" },
+                  [
+                    _c("ejs-textbox", {
+                      attrs: {
+                        multiline: true,
+                        floatLabelType: "Auto",
+                        placeholder: "Company Description",
+                        required: ""
+                      },
+                      model: {
+                        value: _vm.companyDescription,
+                        callback: function($$v) {
+                          _vm.companyDescription = $$v
+                        },
+                        expression: "companyDescription"
+                      }
+                    })
+                  ],
+                  1
+                ),
+                _vm._v(" "),
+                _c(
+                  "p",
+                  { staticClass: "px-3 mt-3" },
+                  [
+                    _c("ejs-checkbox", {
+                      attrs: {
+                        label: "I agree to the Safari-Trek-Beach",
+                        required: ""
+                      },
+                      model: {
+                        value: _vm.conditions,
+                        callback: function($$v) {
+                          _vm.conditions = $$v
+                        },
+                        expression: "conditions"
+                      }
+                    }),
+                    _vm._v(" "),
+                    _vm._m(1)
+                  ],
+                  1
+                ),
+                _vm._v(" "),
+                _vm._m(2)
+              ])
+            ]
+          )
         ])
       ])
     ])
@@ -13617,9 +13801,14 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("a", { attrs: { href: "/terms" } }, [
-      _c("span", { staticClass: " text-decoration-underline text-dark" }, [
-        _vm._v("Terms and Condition.")
-      ])
+      _c(
+        "span",
+        {
+          staticClass: " text-decoration-underline text-dark",
+          staticStyle: { "font-size": "13px" }
+        },
+        [_vm._v("Terms and Condition.")]
+      )
     ])
   },
   function() {
@@ -13627,7 +13816,11 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "px-3 my-3" }, [
-      _c("button", { staticClass: "btn btn-danger" }, [_vm._v("Send Request")])
+      _c(
+        "button",
+        { staticClass: "btn btn-danger", attrs: { type: "submit" } },
+        [_vm._v("Send Request")]
+      )
     ])
   }
 ]

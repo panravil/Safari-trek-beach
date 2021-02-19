@@ -28,6 +28,9 @@ Route::get("/tour/level", 'App\Http\Controllers\TourController@tourLevel');
 // to show list of tour activities on filter
 Route::get("/tour/activity", 'App\Http\Controllers\TourController@tourActivity');
 
+// to show list of tour specialized on filter
+Route::get("/tour/focus", 'App\Http\Controllers\TourController@tourFocus');
+
 // to show top destinations
 Route::get("/destination/top-destinations", 'App\Http\Controllers\DestinationController@topDestinations');
 
