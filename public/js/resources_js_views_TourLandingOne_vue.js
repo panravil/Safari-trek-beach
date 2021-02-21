@@ -130,9 +130,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
  // import { mapState, mapGetters, mapMutations } from "vuex";
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
@@ -142,7 +139,7 @@ __webpack_require__.r(__webpack_exports__);
   props: {
     tourData: Object,
     where_to_search: String,
-    start_date: Date,
+    start_date: String,
     adults_number: Number,
     children_number: Number
   },
@@ -183,8 +180,17 @@ __webpack_require__.r(__webpack_exports__);
         'adults_number': this.adults_number,
         'children_number': this.children_number
       };
-      this.$store.dispatch("tourController/setSearchData", searchData);
-      this.$router.push("/tour-package/" + this.tourData.package_id)["catch"](function () {});
+      this.$store.dispatch("tourController/setSearchData", searchData); // this.$router
+      //   .push("/tour-package/" + this.tourData.package_id)
+      //   .catch(() => {});
+
+      var routeData = this.$router.resolve({
+        name: "Tour Package",
+        params: {
+          id: this.tourData.package_id
+        }
+      });
+      window.open(routeData.href, '_blank');
     }
   }
 });
@@ -316,7 +322,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n#tour-card .price {\n  width: 80px;\n  color: #0f6d24;\n  right: 5px;\n  bottom: 0px;\n  top: 0px;\n  padding-left: 5px;\n  border-left: 1px dotted black;\n  position: absolute;\n  font-size: 18px;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n}\n#tour-card .tag-image {\n  top: -12px;\n  position: absolute;\n  right: 25px;\n}\n#tour-card .bg-image {\n  background-size: cover;\n  position: relative;\n  width: 100%;\n  height: 0;\n  padding-top: 56.25%;\n}\n#tour-card .tour_title {\n  width: 100%;\n  position: absolute;\n  left: 0;\n  bottom: 0;\n  right: 0;\n  text-align: left;\n  padding: 20px 10px;\n  background: rgba(0, 0, 0, 0.4);\n  background: linear-gradient(to bottom,\n      rgba(0, 0, 0, 0) 0%,\n      rgba(0, 0, 0, 0.5) 45%,\n      rgba(0, 0, 0, 0.9) 100%);\n  color: white;\n  text-align: center;\n  font-weight: 700;\n  font-size: 20px;\n  margin: 40px 0 0px 0;\n  font-family: \"Montserrat\", sans-serif;\n}\n#tour-card.card {\n  transition: box-shadow 0.2s ease-in-out, transform 0.3s ease-in-out;\n  box-shadow: 0px 2px 3px rgb(0 0 0 / 18%);\n  cursor: pointer;\n}\n#tour-card.card:hover {\n  box-shadow: 0px 1px 13px #666;\n}\n.trip-route {\n  min-height: 75px;\n}\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n#tour-card .price {\r\n  width: 90px;\r\n  color: #0f6d24;\r\n  right: 5px;\r\n  bottom: 0px;\r\n  top: 0px;\r\n  padding-left: 5px;\r\n  border-left: 1px dotted black;\r\n  position: absolute;\r\n  font-size: 18px;\r\n  display: flex;\r\n  align-items: center;\r\n  justify-content: center;\n}\n#tour-card .tag-image {\r\n  top: -12px;\r\n  position: absolute;\r\n  right: 10px;\n}\n#tour-card .bg-image {\r\n  background-size: cover;\r\n  position: relative;\r\n  width: 100%;\r\n  height: 0;\r\n  padding-top: 56.25%;\n}\n#tour-card .tour_title {\r\n  width: 100%;\r\n  position: absolute;\r\n  left: 0;\r\n  bottom: 0;\r\n  right: 0;\r\n  text-align: left;\r\n  padding: 15px 10px;\r\n  background: rgba(0, 0, 0, 0.4);\r\n  background: linear-gradient(to bottom,\r\n      rgba(0, 0, 0, 0) 0%,\r\n      rgba(0, 0, 0, 0.5) 45%,\r\n      rgba(0, 0, 0, 0.9) 100%);\r\n  color: white;\r\n  text-align: center;\r\n  font-weight: 700;\r\n  font-size: 20px;\r\n  margin: 40px 0 0px 0;\r\n  font-family: \"Montserrat\", sans-serif;\n}\n#tour-card.card {\r\n  transition: box-shadow 0.2s ease-in-out, transform 0.3s ease-in-out;\r\n  box-shadow: 0px 2px 3px rgb(0 0 0 / 18%);\r\n  cursor: pointer;\n}\n#tour-card.card:hover {\r\n  box-shadow: 0px 1px 13px #666;\n}\n.trip-route {\r\n  min-height: 75px;\n}\r\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -681,11 +687,11 @@ var render = function() {
           _vm._v(" "),
           _c("div", { staticClass: "tour_title" }, [
             _vm._v(
-              "\n      " +
+              "\r\n      " +
                 _vm._s(_vm.tourData.no_of_day) +
                 "-Day " +
                 _vm._s(_vm.tourData.title) +
-                "\n    "
+                "\r\n    "
             )
           ]),
           _vm._v(" "),
@@ -719,7 +725,7 @@ var render = function() {
                 _vm.tourData.tag == "review"
                   ? _c("img", {
                       staticStyle: {
-                        "margin-top": "-15px",
+                        "margin-top": "-3px",
                         width: "60px",
                         height: "auto"
                       },
@@ -737,27 +743,39 @@ var render = function() {
               ])
             : _vm._e(),
           _vm._v(" "),
-          _vm._m(1),
+          _c("p", { staticClass: "card-text mb-1" }, [
+            _c("strong", [_vm._v(" Accommodation: ")]),
+            _vm._v(" "),
+            _vm.tourData.no_of_day == 2
+              ? _c("span", [
+                  _vm._v(_vm._s(_vm.tourData.no_of_day - 1) + " Night")
+                ])
+              : _vm.tourData.no_of_day > 2
+              ? _c("span", [
+                  _vm._v(_vm._s(_vm.tourData.no_of_day - 1) + " Nights")
+                ])
+              : _c("span", [_vm._v("No Accommodation")])
+          ]),
           _vm._v(" "),
           _c("p", { staticClass: "card-text mb-1" }, [
             _c("strong", [_vm._v(" Tour Type: ")]),
             _vm._v(
-              "\n      " +
+              "\r\n      " +
                 _vm._s(_vm.getTourLevel(_vm.tourData.level)) +
-                "\n    "
+                "\r\n    "
             )
           ]),
           _vm._v(" "),
           _c("p", { staticClass: "card-text mb-1 trip-route" }, [
             _c("strong", [_vm._v(" Trip Route: ")]),
             _vm._v(
-              "\n      " +
+              "\r\n      " +
                 _vm._s(_vm.tourData.start_city) +
-                "(Start),\n      " +
+                "(Start),\r\n      " +
                 _vm._s(_vm.getMidRoute(_vm.tourData.destination)) +
-                "\n      " +
+                "\r\n      " +
                 _vm._s(_vm.tourData.end_city) +
-                " (End)\n    "
+                " (End)\r\n    "
             )
           ])
         ]
@@ -770,7 +788,9 @@ var render = function() {
           _c("div", [
             _c("p", { staticClass: "card-text mb-1 ps-3" }, [
               _vm._v(
-                "\n        " + _vm._s(_vm.tourData.company_name) + "\n      "
+                "\r\n        " +
+                  _vm._s(_vm.tourData.company_name) +
+                  "\r\n      "
               )
             ]),
             _vm._v(" "),
@@ -782,19 +802,20 @@ var render = function() {
                   attrs: { rating: _vm.tourData.avg_review }
                 }),
                 _vm._v(" "),
-                _c("strong", [
-                  _vm._v(" " + _vm._s(_vm.tourData.avg_review) + " ")
-                ]),
-                _vm._v(" "),
-                _c("span", [_vm._v(" / ")]),
-                _vm._v(" "),
+                _vm.tourData.avg_review == "5"
+                  ? _c("strong", [_vm._v("  5.0/5 ")])
+                  : _c("strong", [
+                      _vm._v("  " + _vm._s(_vm.tourData.avg_review) + "/5 ")
+                    ]),
+                _vm._v("\r\n        (\r\n        "),
                 _vm.tourData.sum_review == 1
                   ? _c("span", [
                       _vm._v(_vm._s(_vm.tourData.sum_review) + " Review")
                     ])
                   : _c("span", [
                       _vm._v(_vm._s(_vm.tourData.sum_review) + " Reviews")
-                    ])
+                    ]),
+                _vm._v("\r\n        )\r\n      ")
               ],
               1
             )
@@ -823,15 +844,6 @@ var staticRenderFns = [
         staticClass: "mask",
         staticStyle: { "background-color": "rgba(251, 251, 251, 0.15)" }
       })
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("p", { staticClass: "card-text mb-1" }, [
-      _c("strong", [_vm._v(" Acommodation: ")]),
-      _vm._v("\n      No Data\n    ")
     ])
   }
 ]
@@ -880,7 +892,7 @@ var render = function() {
         { staticClass: "text-center mt-3", attrs: { "data-aos": "fade-up" } },
         [
           _vm._v(
-            "\n      Lorem ipsum dolor sit amet consectetur adipiscing elit. A quis\n      aspernatur tempora eos ad necessitatibus magni vertatis ateque!\n      Veritatis laudantium saepe molestiae nostrum in molestlas. Offlciis ut\n      debitis atque provident. Consectetur, blanditlls excepturl, reiciendis\n      vel lusto repudiandae at ut minima magnam sit quidem quaerat laudantium\n      sed, cum ex nesclunt facere. Alias sed harum accusamus rerum autem,\n      temporibus officiis distinctio ratione?\n    "
+            "\r\n      Lorem ipsum dolor sit amet consectetur adipiscing elit. A quis\r\n      aspernatur tempora eos ad necessitatibus magni vertatis ateque!\r\n      Veritatis laudantium saepe molestiae nostrum in molestlas. Offlciis ut\r\n      debitis atque provident. Consectetur, blanditlls excepturl, reiciendis\r\n      vel lusto repudiandae at ut minima magnam sit quidem quaerat laudantium\r\n      sed, cum ex nesclunt facere. Alias sed harum accusamus rerum autem,\r\n      temporibus officiis distinctio ratione?\r\n    "
           )
         ]
       )
@@ -914,7 +926,7 @@ var staticRenderFns = [
         { staticClass: "text-center", attrs: { "data-aos": "fade-up" } },
         [
           _vm._v(
-            "\n        Lorem ipsum dolor sit amet consectetur adipiscing elit. A quis\n        aspernatur tempora eos ad necessitatibus magni vertatis ateque!\n        Veritatis laudantium saepe molestiae nostrum in molestlas. Offlciis ut\n        debitis atque provident. Consectetur, blanditlls excepturl, reiciendis\n        vel lusto repudiandae at ut minima magnam sit quidem quaerat laudantium\n        sed, cum ex nesclunt facere. Alias sed harum accusamus rerum autem,\n        temporibus officiis distinctio ratione?\n      "
+            "\r\n        Lorem ipsum dolor sit amet consectetur adipiscing elit. A quis\r\n        aspernatur tempora eos ad necessitatibus magni vertatis ateque!\r\n        Veritatis laudantium saepe molestiae nostrum in molestlas. Offlciis ut\r\n        debitis atque provident. Consectetur, blanditlls excepturl, reiciendis\r\n        vel lusto repudiandae at ut minima magnam sit quidem quaerat laudantium\r\n        sed, cum ex nesclunt facere. Alias sed harum accusamus rerum autem,\r\n        temporibus officiis distinctio ratione?\r\n      "
           )
         ]
       )

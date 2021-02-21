@@ -1,15 +1,26 @@
 import Vue from "vue";
 import Router from "vue-router";
+import qs from 'qs';
 
 Vue.use(Router);
 
 const router = new Router({
     mode: "history",
-    scrollBehavior() {
-        return {
+    // set custom query resolver
+    stringifyQuery  : query => {
+        let result = qs.stringify(query, { encode: false})
+        return result ? ('?' + result) : ''
+    },
+    scrollBehavior(to, from) {
+        if (to.name === from.name && to.name ==='Our Tours' )
+            return false;
+        else {
+            return {
             x: 0,
             y: 0
-        };
+            };
+        }
+        
     },
     base: process.env.BASE_URL,
     routes: [
@@ -37,7 +48,7 @@ const router = new Router({
                     component: () => import("./views/OurTours.vue")
                 },
                 {
-                    path: "/tour-operators",
+                    path: "/tour-operators/page/:id",
                     name: "Tour Operators",
                     index: 3,
                     component: () => import("./views/TourOperators.vue")
@@ -127,6 +138,18 @@ const router = new Router({
             name: "404 Page",
             index: 15,
             component: () => import("./views/Error404.vue")
+        },
+        {
+            path: "/thankyou-review",
+            name: "Thank Review",
+            index: 16,
+            component: () => import("./views/ThankyouReview.vue")
+        },
+        {
+            path: "/thankyou-quote",
+            name: "Thank Quote",
+            index: 16,
+            component: () => import("./views/ThankyouQuote.vue")
         },
         {
       path: "*",

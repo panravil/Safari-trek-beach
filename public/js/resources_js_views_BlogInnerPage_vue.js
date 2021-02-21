@@ -12372,9 +12372,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
  // import { mapState, mapGetters, mapMutations } from "vuex";
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
@@ -12384,7 +12381,7 @@ __webpack_require__.r(__webpack_exports__);
   props: {
     tourData: Object,
     where_to_search: String,
-    start_date: Date,
+    start_date: String,
     adults_number: Number,
     children_number: Number
   },
@@ -12425,8 +12422,17 @@ __webpack_require__.r(__webpack_exports__);
         'adults_number': this.adults_number,
         'children_number': this.children_number
       };
-      this.$store.dispatch("tourController/setSearchData", searchData);
-      this.$router.push("/tour-package/" + this.tourData.package_id)["catch"](function () {});
+      this.$store.dispatch("tourController/setSearchData", searchData); // this.$router
+      //   .push("/tour-package/" + this.tourData.package_id)
+      //   .catch(() => {});
+
+      var routeData = this.$router.resolve({
+        name: "Tour Package",
+        params: {
+          id: this.tourData.package_id
+        }
+      });
+      window.open(routeData.href, '_blank');
     }
   }
 });
@@ -12462,10 +12468,6 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-//
-//
-//
-//
 //
 //
 //
@@ -12649,7 +12651,10 @@ vue__WEBPACK_IMPORTED_MODULE_1__.default.use(_syncfusion_ej2_vue_inputs__WEBPACK
             switch (_context2.prev = _context2.next) {
               case 0:
                 _context2.next = 2;
-                return _this2.$store.dispatch("blogController/getBlogById", _this2.blog_id).then(function () {});
+                return _this2.$store.dispatch("blogController/getBlogById", _this2.blog_id).then(function () {
+                  var page_title = _this2.blogData.title + " - Safari-Trek-Beach";
+                  document.title = page_title;
+                });
 
               case 2:
               case "end":
@@ -12731,7 +12736,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n#tour-card .price {\n  width: 80px;\n  color: #0f6d24;\n  right: 5px;\n  bottom: 0px;\n  top: 0px;\n  padding-left: 5px;\n  border-left: 1px dotted black;\n  position: absolute;\n  font-size: 18px;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n}\n#tour-card .tag-image {\n  top: -12px;\n  position: absolute;\n  right: 25px;\n}\n#tour-card .bg-image {\n  background-size: cover;\n  position: relative;\n  width: 100%;\n  height: 0;\n  padding-top: 56.25%;\n}\n#tour-card .tour_title {\n  width: 100%;\n  position: absolute;\n  left: 0;\n  bottom: 0;\n  right: 0;\n  text-align: left;\n  padding: 20px 10px;\n  background: rgba(0, 0, 0, 0.4);\n  background: linear-gradient(to bottom,\n      rgba(0, 0, 0, 0) 0%,\n      rgba(0, 0, 0, 0.5) 45%,\n      rgba(0, 0, 0, 0.9) 100%);\n  color: white;\n  text-align: center;\n  font-weight: 700;\n  font-size: 20px;\n  margin: 40px 0 0px 0;\n  font-family: \"Montserrat\", sans-serif;\n}\n#tour-card.card {\n  transition: box-shadow 0.2s ease-in-out, transform 0.3s ease-in-out;\n  box-shadow: 0px 2px 3px rgb(0 0 0 / 18%);\n  cursor: pointer;\n}\n#tour-card.card:hover {\n  box-shadow: 0px 1px 13px #666;\n}\n.trip-route {\n  min-height: 75px;\n}\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n#tour-card .price {\r\n  width: 90px;\r\n  color: #0f6d24;\r\n  right: 5px;\r\n  bottom: 0px;\r\n  top: 0px;\r\n  padding-left: 5px;\r\n  border-left: 1px dotted black;\r\n  position: absolute;\r\n  font-size: 18px;\r\n  display: flex;\r\n  align-items: center;\r\n  justify-content: center;\n}\n#tour-card .tag-image {\r\n  top: -12px;\r\n  position: absolute;\r\n  right: 10px;\n}\n#tour-card .bg-image {\r\n  background-size: cover;\r\n  position: relative;\r\n  width: 100%;\r\n  height: 0;\r\n  padding-top: 56.25%;\n}\n#tour-card .tour_title {\r\n  width: 100%;\r\n  position: absolute;\r\n  left: 0;\r\n  bottom: 0;\r\n  right: 0;\r\n  text-align: left;\r\n  padding: 15px 10px;\r\n  background: rgba(0, 0, 0, 0.4);\r\n  background: linear-gradient(to bottom,\r\n      rgba(0, 0, 0, 0) 0%,\r\n      rgba(0, 0, 0, 0.5) 45%,\r\n      rgba(0, 0, 0, 0.9) 100%);\r\n  color: white;\r\n  text-align: center;\r\n  font-weight: 700;\r\n  font-size: 20px;\r\n  margin: 40px 0 0px 0;\r\n  font-family: \"Montserrat\", sans-serif;\n}\n#tour-card.card {\r\n  transition: box-shadow 0.2s ease-in-out, transform 0.3s ease-in-out;\r\n  box-shadow: 0px 2px 3px rgb(0 0 0 / 18%);\r\n  cursor: pointer;\n}\n#tour-card.card:hover {\r\n  box-shadow: 0px 1px 13px #666;\n}\n.trip-route {\r\n  min-height: 75px;\n}\r\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -12761,7 +12766,7 @@ var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBP
 ___CSS_LOADER_EXPORT___.i(_node_modules_css_loader_dist_cjs_js_clonedRuleSet_9_0_rules_0_use_1_node_modules_syncfusion_ej2_vue_inputs_styles_material_css__WEBPACK_IMPORTED_MODULE_2__.default);
 ___CSS_LOADER_EXPORT___.i(_node_modules_css_loader_dist_cjs_js_clonedRuleSet_9_0_rules_0_use_1_node_modules_syncfusion_ej2_base_styles_material_css__WEBPACK_IMPORTED_MODULE_1__.default);
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n.blog-inner-page {\n  padding-top: 60px;\n  padding-bottom: 100px;\n  background-color: #f2f2f2;\n}\n.blog-inner-page .image_title {\n  position: absolute;\n  bottom: 0px;\n  left: 0;\n  width: 100%;\n  padding: 4.375rem 1.875rem 1.875rem 1.5625rem;\n  color: white;\n  font-size: 2.375rem;\n  line-height: 2.5rem;\n  font-weight: 600;\n  font-family: \"Gentium Basic\", serif;\n  text-shadow: 1px 1px 5px #000;\n  z-index: 3;\n  background: linear-gradient(to bottom,\n      rgba(0, 0, 0, 0) 0%,\n      rgba(0, 0, 0, 0.5) 45%,\n      rgba(0, 0, 0, 0.9) 100%);\n}\n.blog-inner-page .content-section {\n  border-right: 1px solid #ccc;\n}\n.blog-inner-page .section-title {\n  border-top: 1px solid #ccc;\n  width: 100%;\n}\n.blog-inner-page .section-title-inner {\n  border-bottom: 1px solid #ccc;\n  width: 100%;\n  font-weight: 700;\n}\n.blog-inner-page .blog-category {\n  border: 1px solid #ccc;\n  border-bottom: 5px solid #ccc;\n}\n.blog-inner-page ul li {\n  list-style: none;\n  position: relative;\n  cursor: pointer;\n}\n.blog-inner-page ul li:before {\n  content: \"›\";\n  font-weight: normal;\n  top: -8px;\n  font-size: 25px;\n  position: absolute;\n  left: -15px;\n}\n.e-multi-line-input textarea {\n  height: 100px;\n}\n.quick-link-section {\n  display: block;\n}\n@media (max-width: 991px) {\n.blog-inner-page .quick-link-section {\n    display: none;\n}\n.blog-inner-page .content-section {\n    border: none;\n}\n.blog-inner-page .image_title {\n    font-size: 25px;\n    line-height: 35px;\n    padding: 10px 20px;\n}\n.blog-inner-page .card-img-top {\n    height: 100%;\n    width: auto;\n    position: absolute;\n    left: 50%;\n    top: 50%;\n    transform: translateY(-50%) translateX(-50%);\n}\n.blog-inner-page .position-relative.overflow-hidden {\n    border-top-right-radius: 0.25rem;\n    border-top-left-radius: 0.25rem;\n    height: 300px;\n}\n}\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n.blog-inner-page {\r\n  padding-top: 60px;\r\n  padding-bottom: 100px;\r\n  background-color: #f2f2f2;\n}\n.blog-inner-page .image_title {\r\n  position: absolute;\r\n  bottom: 0px;\r\n  left: 0;\r\n  width: 100%;\r\n  padding: 4.375rem 1.875rem 1.875rem 1.5625rem;\r\n  color: white;\r\n  font-size: 2.375rem;\r\n  line-height: 2.5rem;\r\n  font-weight: 600;\r\n  font-family: \"Gentium Basic\", serif;\r\n  text-shadow: 1px 1px 5px #000;\r\n  z-index: 3;\r\n  background: linear-gradient(to bottom,\r\n      rgba(0, 0, 0, 0) 0%,\r\n      rgba(0, 0, 0, 0.5) 45%,\r\n      rgba(0, 0, 0, 0.9) 100%);\n}\n.blog-inner-page .content-section {\r\n  border-right: 1px solid #ccc;\n}\n.blog-inner-page .section-title {\r\n  border-top: 1px solid #ccc;\r\n  width: 100%;\n}\n.blog-inner-page .section-title-inner {\r\n  border-bottom: 1px solid #ccc;\r\n  width: 100%;\r\n  font-weight: 700;\n}\n.blog-inner-page .blog-category {\r\n  border: 1px solid #ccc;\r\n  border-bottom: 5px solid #ccc;\n}\n.blog-inner-page ul li {\r\n  list-style: none;\r\n  position: relative;\r\n  cursor: pointer;\n}\n.blog-inner-page ul li:before {\r\n  content: \"›\";\r\n  font-weight: normal;\r\n  top: -8px;\r\n  font-size: 25px;\r\n  position: absolute;\r\n  left: -15px;\n}\n.e-multi-line-input textarea {\r\n  height: 100px;\n}\n.quick-link-section {\r\n  display: block;\n}\n.blog-inner-page .vue-content-placeholders-img {\r\n  height: 300px !important;\r\n  background: white !important;\n}\n@media (max-width: 991px) {\n.blog-inner-page .quick-link-section {\r\n    display: none;\n}\n.blog-inner-page .content-section {\r\n    border: none;\n}\n.blog-inner-page .image_title {\r\n    font-size: 25px;\r\n    line-height: 35px;\r\n    padding: 10px 20px;\n}\n.blog-inner-page .card-img-top {\r\n    height: 100%;\r\n    width: auto;\r\n    position: absolute;\r\n    left: 50%;\r\n    top: 50%;\r\n    transform: translateY(-50%) translateX(-50%);\n}\n.blog-inner-page .position-relative.overflow-hidden {\r\n    border-top-right-radius: 0.25rem;\r\n    border-top-left-radius: 0.25rem;\r\n    height: 300px;\n}\n}\r\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -13171,11 +13176,11 @@ var render = function() {
           _vm._v(" "),
           _c("div", { staticClass: "tour_title" }, [
             _vm._v(
-              "\n      " +
+              "\r\n      " +
                 _vm._s(_vm.tourData.no_of_day) +
                 "-Day " +
                 _vm._s(_vm.tourData.title) +
-                "\n    "
+                "\r\n    "
             )
           ]),
           _vm._v(" "),
@@ -13209,7 +13214,7 @@ var render = function() {
                 _vm.tourData.tag == "review"
                   ? _c("img", {
                       staticStyle: {
-                        "margin-top": "-15px",
+                        "margin-top": "-3px",
                         width: "60px",
                         height: "auto"
                       },
@@ -13227,27 +13232,39 @@ var render = function() {
               ])
             : _vm._e(),
           _vm._v(" "),
-          _vm._m(1),
+          _c("p", { staticClass: "card-text mb-1" }, [
+            _c("strong", [_vm._v(" Accommodation: ")]),
+            _vm._v(" "),
+            _vm.tourData.no_of_day == 2
+              ? _c("span", [
+                  _vm._v(_vm._s(_vm.tourData.no_of_day - 1) + " Night")
+                ])
+              : _vm.tourData.no_of_day > 2
+              ? _c("span", [
+                  _vm._v(_vm._s(_vm.tourData.no_of_day - 1) + " Nights")
+                ])
+              : _c("span", [_vm._v("No Accommodation")])
+          ]),
           _vm._v(" "),
           _c("p", { staticClass: "card-text mb-1" }, [
             _c("strong", [_vm._v(" Tour Type: ")]),
             _vm._v(
-              "\n      " +
+              "\r\n      " +
                 _vm._s(_vm.getTourLevel(_vm.tourData.level)) +
-                "\n    "
+                "\r\n    "
             )
           ]),
           _vm._v(" "),
           _c("p", { staticClass: "card-text mb-1 trip-route" }, [
             _c("strong", [_vm._v(" Trip Route: ")]),
             _vm._v(
-              "\n      " +
+              "\r\n      " +
                 _vm._s(_vm.tourData.start_city) +
-                "(Start),\n      " +
+                "(Start),\r\n      " +
                 _vm._s(_vm.getMidRoute(_vm.tourData.destination)) +
-                "\n      " +
+                "\r\n      " +
                 _vm._s(_vm.tourData.end_city) +
-                " (End)\n    "
+                " (End)\r\n    "
             )
           ])
         ]
@@ -13260,7 +13277,9 @@ var render = function() {
           _c("div", [
             _c("p", { staticClass: "card-text mb-1 ps-3" }, [
               _vm._v(
-                "\n        " + _vm._s(_vm.tourData.company_name) + "\n      "
+                "\r\n        " +
+                  _vm._s(_vm.tourData.company_name) +
+                  "\r\n      "
               )
             ]),
             _vm._v(" "),
@@ -13272,19 +13291,20 @@ var render = function() {
                   attrs: { rating: _vm.tourData.avg_review }
                 }),
                 _vm._v(" "),
-                _c("strong", [
-                  _vm._v(" " + _vm._s(_vm.tourData.avg_review) + " ")
-                ]),
-                _vm._v(" "),
-                _c("span", [_vm._v(" / ")]),
-                _vm._v(" "),
+                _vm.tourData.avg_review == "5"
+                  ? _c("strong", [_vm._v("  5.0/5 ")])
+                  : _c("strong", [
+                      _vm._v("  " + _vm._s(_vm.tourData.avg_review) + "/5 ")
+                    ]),
+                _vm._v("\r\n        (\r\n        "),
                 _vm.tourData.sum_review == 1
                   ? _c("span", [
                       _vm._v(_vm._s(_vm.tourData.sum_review) + " Review")
                     ])
                   : _c("span", [
                       _vm._v(_vm._s(_vm.tourData.sum_review) + " Reviews")
-                    ])
+                    ]),
+                _vm._v("\r\n        )\r\n      ")
               ],
               1
             )
@@ -13313,15 +13333,6 @@ var staticRenderFns = [
         staticClass: "mask",
         staticStyle: { "background-color": "rgba(251, 251, 251, 0.15)" }
       })
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("p", { staticClass: "card-text mb-1" }, [
-      _c("strong", [_vm._v(" Acommodation: ")]),
-      _vm._v("\n      No Data\n    ")
     ])
   }
 ]
@@ -13371,7 +13382,7 @@ var render = function() {
               _vm._v(" "),
               _c("div", { staticClass: "image_title" }, [
                 _vm._v(
-                  "\n          " + _vm._s(_vm.blogData.title) + "\n        "
+                  "\r\n          " + _vm._s(_vm.blogData.title) + "\r\n        "
                 )
               ])
             ]),
@@ -13393,17 +13404,17 @@ var render = function() {
                       [
                         _c("h3", { staticClass: "section-title pt-3" }, [
                           _vm._v(
-                            "\n                " +
+                            "\r\n                " +
                               _vm._s(_vm.blogData.title) +
-                              "\n              "
+                              "\r\n              "
                           )
                         ]),
                         _vm._v(" "),
                         _c("p", [
                           _vm._v(
-                            "\n                " +
+                            "\r\n                " +
                               _vm._s(_vm.blogData.description) +
-                              "\n              "
+                              "\r\n              "
                           )
                         ])
                       ]
@@ -13428,11 +13439,11 @@ var render = function() {
                                 { staticClass: "section-title-inner pb-3" },
                                 [
                                   _vm._v(
-                                    "\n                    Section " +
+                                    "\r\n                    Section " +
                                       _vm._s(index + 1) +
                                       ". " +
                                       _vm._s(item.title) +
-                                      "\n                  "
+                                      "\r\n                  "
                                   )
                                 ]
                               )
@@ -13442,27 +13453,90 @@ var render = function() {
                               domProps: { innerHTML: _vm._s(item.description) }
                             }),
                             _vm._v(" "),
-                            _c("div", { staticClass: "text-start mt-3" }, [
-                              _c(
-                                "a",
-                                {
-                                  staticClass: "btn btn-danger",
-                                  attrs: { href: "#" }
-                                },
-                                [
-                                  _vm._v(
-                                    "\n                    Tour that includes Section " +
-                                      _vm._s(index + 1) +
-                                      "\n                  "
+                            item.button_url != null && item.button_name != null
+                              ? _c("div", { staticClass: "text-start mt-3" }, [
+                                  _c(
+                                    "a",
+                                    {
+                                      staticClass: "btn btn-danger",
+                                      attrs: {
+                                        href: item.button_url,
+                                        target: "_blank"
+                                      }
+                                    },
+                                    [
+                                      _vm._v(
+                                        "\r\n                    " +
+                                          _vm._s(item.button_name) +
+                                          "\r\n                  "
+                                      )
+                                    ]
                                   )
-                                ]
-                              )
-                            ])
+                                ])
+                              : _vm._e()
                           ]
                         )
                       }),
                       0
-                    )
+                    ),
+                _vm._v(" "),
+                _c("form", { staticClass: "mt-5" }, [
+                  _c("h3", { staticClass: "section-title-inner pb-3" }, [
+                    _vm._v("Speak Your Mind")
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "row" }, [
+                    _c(
+                      "div",
+                      { staticClass: "col-md-6 col-sm-12 mt-3" },
+                      [
+                        _c("ejs-textbox", {
+                          attrs: {
+                            floatLabelType: "Auto",
+                            type: "text",
+                            placeholder: "Name",
+                            required: ""
+                          }
+                        })
+                      ],
+                      1
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "div",
+                      { staticClass: "col-md-6 col-sm-12 mt-3" },
+                      [
+                        _c("ejs-textbox", {
+                          attrs: {
+                            floatLabelType: "Auto",
+                            type: "email",
+                            placeholder: "Email",
+                            required: ""
+                          }
+                        })
+                      ],
+                      1
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "div",
+                      { staticClass: "col-md-12 col-sm-12 mt-3" },
+                      [
+                        _c("ejs-textbox", {
+                          attrs: {
+                            multiline: true,
+                            floatLabelType: "Auto",
+                            placeholder: "Write a comment",
+                            required: ""
+                          }
+                        })
+                      ],
+                      1
+                    ),
+                    _vm._v(" "),
+                    _vm._m(0)
+                  ])
+                ])
               ]
             ),
             _vm._v(" "),
@@ -13484,7 +13558,7 @@ var render = function() {
                         on: { click: _vm.goToOurTourPage }
                       },
                       [
-                        _vm._v("\n                Our Tours "),
+                        _vm._v("\r\n                Our Tours "),
                         _c("span", { staticClass: "fa fa-angle-right ms-2" })
                       ]
                     ),
@@ -13495,7 +13569,7 @@ var render = function() {
                         { staticClass: "fw-bolder text-center text-danger" },
                         [
                           _vm._v(
-                            "\n                  Table Of Contents\n                "
+                            "\r\n                  Table Of Contents\r\n                "
                           )
                         ]
                       ),
@@ -13564,7 +13638,7 @@ var render = function() {
         ])
       ]),
       _vm._v(" "),
-      _vm._m(0),
+      _vm._m(1),
       _vm._v(" "),
       _vm.popularTours != null
         ? _c(
@@ -13582,11 +13656,26 @@ var render = function() {
           )
         : _vm._e(),
       _vm._v(" "),
-      _vm._m(1)
+      _vm._m(2)
     ])
   ])
 }
 var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "col-md-12 col-sm-12 text-end mt-3" }, [
+      _c(
+        "button",
+        { staticClass: "btn btn-danger", attrs: { type: "submit" } },
+        [
+          _vm._v("\r\n                    Post Comment "),
+          _c("span", { staticClass: "fa fa-paper-plane ms-2" })
+        ]
+      )
+    ])
+  },
   function() {
     var _vm = this
     var _h = _vm.$createElement
@@ -13604,7 +13693,7 @@ var staticRenderFns = [
         "a",
         { staticClass: "btn btn-danger", attrs: { href: "/our-tours" } },
         [
-          _vm._v("\n        View All Packages "),
+          _vm._v("\r\n        View All Packages "),
           _c("span", { staticClass: "fa fa-angle-right ms-2" })
         ]
       )

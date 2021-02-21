@@ -3,7 +3,7 @@
   <div class="container mt-5">
     <div class="card mb-3">
       <div class="row g-0 package-inner-banner">
-        <div class="col-lg-7 col-md-12">
+        <div class="col-lg-8 col-md-12">
           <div class="package-inner-image" :style="[
                 packageData != null
                   ? {
@@ -12,7 +12,7 @@
                   : { background: '#FFF' },
               ]"></div>
         </div>
-        <div class="col-lg-5 col-md-12 p-3 position-relative package-inner-title">
+        <div class="col-lg-4 col-md-12 p-3 position-relative package-inner-title">
           <div class="card-body">
             <div v-if="loading">
               <content-placeholders-heading />
@@ -35,7 +35,8 @@
               </h4>
               <p class="mt-2" v-if="packageData != null">
                 <CustomStarRating :rating="packageData.avg_review"></CustomStarRating>
-                <span>{{ packageData.avg_review }}</span>
+                <strong v-if="packageData.avg_review == '5'">&nbsp;5.0/5</strong>
+                <strong v-else>&nbsp;{{ packageData.avg_review }}/5</strong>
                 <span>({{ packageData.sum_review }} Reviews)</span>
               </p>
               <button class="btn btn-danger" @click="getQuoteNow">Get Free Quote Now
@@ -66,10 +67,10 @@
                   <div v-else-if="packageData != null" class="overview-description">
                     {{ packageData.description }}
                   </div>
-                  <hr />
+                  <hr/>
                   <h4 class="fw-bold text-danger">
                     <span class="fa fa-arrow-circle-right"></span>
-                    Tour Summary
+                    <span>Tour Summary</span>
                   </h4>
                   <h6 class="my-1" v-if="packageData != null">
                     Tour Start from
@@ -208,7 +209,7 @@
                   <h3 class="fw-bold">Itinerary</h3>
                   <div class="itinery mt-3" v-for="(item, index6) in packageData.day" v-bind:key="'E' + index6">
                     <div class="position-relative" v-if="item.image_url != null">
-                      <img :src="item.image_url" class="w-100" />
+                      <img :src="'http://operators.safari-trek-beach.com' + item.image_url" class="w-100" />
                       <div class="itinery-title">
                         <h4 class="fw-bold my-2">Day {{ index6 }}</h4>
                         <h5 class="fw-bold my-0">{{ item.title }}</h5>
@@ -347,12 +348,16 @@
                     <h3 class="fw-bold mt-5">{{ item.title }}</h3>
                     <h6 class="reviews">
                       <CustomStarRating :rating="item.rate"></CustomStarRating>
-                      <span class="text-danger">
-                        {{ item.rate }} / 5 <small class="text-muted"></small></span>
+                      <span v-if="item.rate == '5'" class="text-danger">
+                        &nbsp;5.0 / 5
+                      </span>
+                      <span v-else class="text-danger">
+                        &nbsp;{{ item.rate }} / 5
+                      </span>
                     </h6>
                     <div class="d-flex align-items-center">
                       <div>
-                        <img :src="'/images/user_review.png'" width="40px" height="40px" />
+                        <span class="text-muted fa fa-user" style="font-size: 45px"></span>
                       </div>
                       <div>
                         <h4 class="fw-bold text-muted my-0 ms-3">
@@ -429,8 +434,39 @@
               <span class="fa fa-angle-right"></span>
             </div>
             <div>
-              If you request changes to this tour, the advertised rate will
-              likely change.
+              This operator reserves the right to change rates advertised on SafariBookings.
+            </div>
+          </div>
+          <div class="d-flex ms-3">
+            <div style="min-width: 20px">
+              <span class="fa fa-angle-right"></span>
+            </div>
+            <div>
+              If you request changes to this tour, the advertised rate will likely change.
+            </div>
+          </div>
+          <div class="d-flex ms-3">
+            <div style="min-width: 20px">
+              <span class="fa fa-angle-right"></span>
+            </div>
+            <div>
+              If an accommodation is fully booked, the operator will suggest a comparable alternative.
+            </div>
+          </div>
+          <div class="d-flex ms-3">
+            <div style="min-width: 20px">
+              <span class="fa fa-angle-right"></span>
+            </div>
+            <div>
+              The exact order, content and rate of this tour is subject to availability.
+            </div>
+          </div>
+          <div class="d-flex ms-3">
+            <div style="min-width: 20px">
+              <span class="fa fa-angle-right"></span>
+            </div>
+            <div>
+              This tour is subject to the <a target="_blank" href="/terms">terms & conditions</a> of Safari-Trek-Beach.
             </div>
           </div>
         </div>
@@ -438,7 +474,7 @@
       <div class="col-lg-4 col-md-12">
         <div class="card p-4 mb-3" v-if="packageData != null">
           <h3 class="fw-bold text-success">
-            Price: $ {{ packageData.rate.adult_currency }}
+            $ {{ packageData.rate.adult_currency }}
             <small class="fw-normal">pp</small>
           </h3>
           <h5 class="fw-bold">Request a Quote</h5>
@@ -448,32 +484,32 @@
             </div>
             <div class="col-sm-12 mt-3" v-click-outside-dropdown="closeTravelerDropdown">
               <div @click="showTravelerDropdown">
-              <ejs-textbox floatLabelType="Auto" autocomplete="off" type="text" placeholder="Travellers" v-model="traveler_number"></ejs-textbox>
+                <ejs-textbox floatLabelType="Auto" autocomplete="off" type="text" placeholder="Travellers" v-model="traveler_number"></ejs-textbox>
               </div>
               <!-- <transition enter-active-class="animate__animated animate__fadeIn" leave-active-class="animate__animated animate__fadeOut"> -->
-                <div v-if="visible_traveler_dropdown" class="traveler-dropdown left-0 bg-white mt-3 triangule-where">
-                  <div class="bg-warning text-white p-2 text-left">
-                    Travelers
-                    <span class="fa fa-times-circle-o" @click="closeTravelerDropdown"></span>
-                  </div>
-                  <div class="py-2 px-3 mt-2 border-1 text-start d-flex justify-content-between">
-                    <div><strong>Adults</strong>(18+ years):</div>
-                    <div>
-                      <vue-numeric-input v-model="adults_number" :min="1" :max="100" :step="1"></vue-numeric-input>
-                    </div>
-                  </div>
-                  <div class="py-2 px-3 mt-2 border-1 text-start d-flex justify-content-between">
-                    <div><strong>Children</strong>(0~17 years):</div>
-                    <div>
-                      <vue-numeric-input v-model="children_number" :min="0" :max="100" :step="1"></vue-numeric-input>
-                    </div>
-                  </div>
-                  <div class="text-right">
-                    <button class="btn btn-danger mx-3 my-3" @click="setTravelerInfo">
-                      Done
-                    </button>
+              <div v-if="visible_traveler_dropdown" class="shadow traveler-dropdown left-0 bg-white mt-3 triangule-where">
+                <div class="bg-warning text-white p-2 text-center">
+                  Travelers
+                  <span class="fa fa-times-circle-o" style="float:right; font-size: 25px; color:black" @click="closeTravelerDropdown"></span>
+                </div>
+                <div class="py-2 px-3 mt-2 border-1 text-start d-flex justify-content-between">
+                  <div><strong>Adults</strong>(16+ years):</div>
+                  <div>
+                    <vue-numeric-input v-model="adults_number" :min="1" :max="100" :step="1"></vue-numeric-input>
                   </div>
                 </div>
+                <div class="py-2 px-3 mt-2 border-1 text-start d-flex justify-content-between">
+                  <div><strong>Children</strong>(0~15 years):</div>
+                  <div>
+                    <vue-numeric-input v-model="children_number" :min="0" :max="100" :step="1"></vue-numeric-input>
+                  </div>
+                </div>
+                <div class="text-right">
+                  <button class="btn btn-danger mx-3 my-3" @click="setTravelerInfo">
+                    Done
+                  </button>
+                </div>
+              </div>
               <!-- </transition> -->
             </div>
             <div class="col-sm-12 mt-3"></div>
@@ -483,20 +519,20 @@
             <div style="min-width: 25px">
               <span class="fa fa-check-circle"></span>
             </div>
-            <div class="fst-italic">Best price guarantee</div>
+            <div class="fst-italic">Best Price Guarantee</div>
           </div>
           <div class="d-flex ms-3">
             <div style="min-width: 25px">
               <span class="fa fa-check-circle"></span>
             </div>
-            <div class="fst-italic">Without any obligation to book</div>
+            <div class="fst-italic">Not a must to Book</div>
           </div>
           <div class="d-flex ms-3">
             <div style="min-width: 25px">
               <span class="fa fa-check-circle"></span>
             </div>
             <div class="fst-italic">
-              Your request will be sent directly to the operator
+              Your request will be sent to tour Operator Only
             </div>
           </div>
         </div>
@@ -519,7 +555,7 @@
             <slide v-for="(item, indexsss) in packageData.review" v-bind:key="'review' + indexsss">
               <div class="d-flex align-items-center">
                 <div>
-                  <img :src="'/images/user_review.png'" width="40px" height="40px" />
+                  <span class="fa fa-user text-muted" style="font-size: 45px"></span>
                 </div>
                 <div>
                   <h4 class="fw-bold text-dark my-0 ms-3">
@@ -533,8 +569,9 @@
                   {{ item.title }}
                 </h5>
                 <h5 class="reviews">
-                  <CustomStarRating :rating="item.rate"> </CustomStarRating>
-                  <span style="color: #4f4f4f"> {{ item.rate }} / 5 </span>
+                  <CustomStarRating :rating="item.rate"></CustomStarRating>
+                  <span v-if="item.rate == '5'" style="color: #4f4f4f">&nbsp;5.0 / 5 </span>
+                  <span v-else style="color: #4f4f4f"> &nbsp;{{ item.rate }} / 5 </span>
                 </h5>
                 <div class="review-description">
                   {{ item.description.substr(0, 200) }}
@@ -689,7 +726,7 @@ export default {
       title: '',
       rating: 5,
       review: '',
-      start_date:'',
+      start_date: '',
       traveler_number: "",
       visible_traveler_dropdown: false,
       adults_number: 1,
@@ -723,7 +760,7 @@ export default {
     this.getPacakgeById(this.package_id);
 
     this.traveler_number = this.traveler_number_state
-    this.start_date = this.start_date_state
+    this.start_date = new Date(this.start_date_state)
     this.adults_number = this.adults_number_state
     this.children_number = this.children_number_state
 
@@ -739,6 +776,10 @@ export default {
       this.$store
         .dispatch("tourController/getTourById", package_id)
         .then(() => {
+          let page_title = this.packageData.company_name + ": " +
+            this.packageData.no_of_day + "-Day " +
+            this.packageData.title;
+          document.title = page_title;
           this.getCurrentPageReviews(1);
         });
     },
@@ -789,7 +830,15 @@ export default {
         'children_number': this.children_number,
       }
 
+      let quoteData = {};
+
+      quoteData = {
+        'title': this.packageData.title,
+        'no_of_day': this.packageData.no_of_day,
+      }
+
       this.$store.dispatch("tourController/setSearchData", searchData)
+      this.$store.dispatch("tourController/setQuotePackage", quoteData)
 
       let quote_tourInfo = {};
       quote_tourInfo = {
@@ -817,17 +866,18 @@ export default {
         .dispatch("operatorController/postReview", params)
         .then(() => {
           if (this.request_status == true) {
-            this.$notify({
-              group: 'success',
-              title: 'Review Success',
-              text: 'Thank you! We have received your review. We will publish your review soon.'
-            });
+            // this.$notify({
+            //   group: 'success',
+            //   title: 'Review Success',
+            //   text: 'Thank you! We have received your review. We will publish your review soon.'
+            // });
 
             this.name = ''
             this.email = ''
             this.title = ''
             this.review = ''
             this.rating = 5
+            this.$router.push('/thankyou-review')
           } else {
             this.$notify({
               group: 'warning',

@@ -19,7 +19,7 @@ h6 {
 
 .main-banner {
   /* min-height: 600px; */
-  background-image: url("/images/mainbanner2.jpg");
+  // background-image: url("/images/mainbanner2.png");
   position: relative;
   height: 80vh;
   display: table;
@@ -71,7 +71,7 @@ h6 {
       rgba(210, 211, 218, 0),
       rgba(0, 0, 0, 0.73)
     ),
-    url(/images/why_us.jpg);
+    url("/images/why_us.jpg");
   height: 400px;
   background-size: cover;
   background-attachment: fixed;
@@ -88,7 +88,7 @@ h6 {
       rgba(210, 211, 218, 0),
       rgba(0, 0, 0, 0.73)
     ),
-    url(/images/reviews_testimonial.jpg);
+    url("/images/reviews_testimonial.jpg");
   height: 400px;
   background-size: cover;
   background-attachment: fixed;
@@ -136,11 +136,15 @@ h6 {
   position: relative;
   cursor: pointer;
   top: 0;
-  transition: top ease 0.5s;
+  // transition: top ease 0.5s;
+  transition: box-shadow 0.2s ease-in-out, top ease 0.5s;
+  box-shadow: 0px 2px 3px rgb(0 0 0 / 18%);
+  cursor: pointer;
 }
 
 #top-destination .card:hover {
-  top: -10px;
+  top: -5px;
+  box-shadow: 0px 1px 13px #666;
 }
 
 #top-destination .mask,

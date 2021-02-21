@@ -168,6 +168,10 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
+//
 
 
 
@@ -176,8 +180,8 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
   name: "TourOperators",
   data: function data() {
     return {
-      current_operator_page: 1,
-      operators_per_page: 10,
+      current_operator_page: null,
+      operators_per_page: 5,
       current_page_operators: [],
       pagenation_options: {
         chunk: 5
@@ -189,16 +193,24 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     CustomStarRating: _components_CustomStarRating__WEBPACK_IMPORTED_MODULE_1__.default,
     TourOperatorsSkelecton: _components_TourOperatorsSkelecton__WEBPACK_IMPORTED_MODULE_2__.default
   },
-  computed: _objectSpread({}, (0,vuex__WEBPACK_IMPORTED_MODULE_3__.mapGetters)({
+  computed: _objectSpread({
+    page_id: function page_id() {
+      var id = this.$route.params.id;
+      return id.slice(0, id.length);
+    }
+  }, (0,vuex__WEBPACK_IMPORTED_MODULE_3__.mapGetters)({
     operatorList: "operatorController/operatorList",
     loading: "tourcard_loading"
   })),
   watch: {
     current_operator_page: function current_operator_page(newValue) {
-      this.getCurrentPageOperators(newValue);
+      this.$router.push('/tour-operators/page/' + newValue)["catch"](function () {});
     }
   },
   created: function created() {
+    var page_title = "Tour Operators of Safari-Trek-Beach.com";
+    document.title = page_title;
+    this.current_operator_page = parseInt(this.page_id);
     this.getOperatorList();
   },
   methods: {
@@ -206,11 +218,18 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       var _this = this;
 
       this.$store.dispatch("operatorController/getOperatorList").then(function () {
-        _this.getCurrentPageOperators(1);
+        _this.getCurrentPageOperators(_this.current_operator_page);
       });
     },
     toOperatorDetail: function toOperatorDetail(id) {
-      this.$router.push("/operator/" + id);
+      // this.$router.push("/operator/" + id);
+      var routeData = this.$router.resolve({
+        name: "Tour Operator",
+        params: {
+          id: id
+        }
+      });
+      window.open(routeData.href, '_blank');
     },
     getCurrentPageOperators: function getCurrentPageOperators(page_num) {
       this.current_page_operators = [];
@@ -250,7 +269,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n.skelecton-operator .operator-logo .vue-content-placeholders-img {\n  height: 150px !important;\n  min-width: 150px;\n  width: 150px;\n  margin: auto;\n}\n.skelecton-operator .wrapper {\n  display: flex;\n  flex-direction: row;\n  justify-content: space-between;\n}\n.skelecton-operator .logo-layout-skelecton {\n  min-width: 400px;\n  width: 400px;\n}\n.skelecton-operator .logo-layout-skelecton .vue-content-placeholders-img {\n  height: 225px !important;\n  margin: auto;\n}\n.vue-content-placeholders-img,\n.vue-content-placeholders-text__line {\n  background: #c9c9c9 !important;\n}\n@media (max-width: 1200px) {\n.skelecton-operator .logo-layout-skelecton {\n    margin: auto;\n}\n}\n@media (max-width: 420px) {\n.skelecton-operator .logo-layout-skelecton {\n    width: 100%;\n}\n}\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n.skelecton-operator .operator-logo .vue-content-placeholders-img {\r\n  height: 150px !important;\r\n  min-width: 150px;\r\n  width: 150px;\r\n  margin: auto;\n}\n.skelecton-operator .wrapper {\r\n  display: flex;\r\n  flex-direction: row;\r\n  justify-content: space-between;\n}\n.skelecton-operator .logo-layout-skelecton {\r\n  min-width: 400px;\r\n  width: 400px;\n}\n.skelecton-operator .logo-layout-skelecton .vue-content-placeholders-img {\r\n  height: 225px !important;\r\n  margin: auto;\n}\n.vue-content-placeholders-img,\r\n.vue-content-placeholders-text__line {\r\n  background: #c9c9c9 !important;\n}\n@media (max-width: 1200px) {\n.skelecton-operator .logo-layout-skelecton {\r\n    margin: auto;\n}\n}\n@media (max-width: 420px) {\n.skelecton-operator .logo-layout-skelecton {\r\n    width: 100%;\n}\n}\r\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -274,7 +293,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n#tour-operators-page {\n  background-color: #f2f2f2;\n  padding-top: 50px;\n  padding-bottom: 100px;\n}\n#tour-operators-page section {\n  margin-top: 100px;\n  margin-bottom: 30px;\n}\n#tour-operators-page .wrapper {\n  display: flex;\n  flex-direction: row;\n  justify-content: space-between;\n}\n#tour-operators-page .operator-logo img {\n  min-width: 150px;\n  height: 150px;\n}\n#tour-operators-page .logo-layout {\n  min-width: 400px;\n  width: 400px;\n  height: 0;\n  padding-top: calc(0.5625 * 400px);\n  background-repeat: no-repeat;\n  background-size: cover;\n  background-position: center;\n  margin: auto;\n}\n#tour-operators-page .operator-content {\n  min-width: calc(100% - 550px);\n}\n.tour-operator-card {\n  cursor: pointer;\n}\n.operator-pagination {\n  display: flex;\n  justify-content: center;\n  margin-top: 20px;\n}\n@media (max-width: 1200px) {\n#tour-operators-page .wrapper {\n    display: flex;\n    flex-direction: column;\n    justify-content: center;\n}\n.operator-content {\n    margin-top: 20px;\n    margin-bottom: 20px;\n}\n#tour-operators-page .operator-content h4 {\n    text-align: center;\n}\n}\n@media (max-width: 420px) {\n#tour-operators-page .logo-layout {\n    min-width: 100%;\n    width: 100%;\n    padding-top: 56.25%;\n}\n}\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n#tour-operators-page {\r\n  background-color: #f2f2f2;\r\n  padding-top: 50px;\r\n  padding-bottom: 100px;\n}\n#tour-operators-page section {\r\n  margin-top: 100px;\r\n  margin-bottom: 30px;\n}\n#tour-operators-page .wrapper {\r\n  display: flex;\r\n  flex-direction: row;\r\n  justify-content: space-between;\n}\n#tour-operators-page .operator-logo img {\r\n  min-width: 150px;\r\n  height: 150px;\n}\n#tour-operators-page .logo-layout {\r\n  min-width: 400px;\r\n  width: 400px;\r\n  height: 0;\r\n  padding-top: calc(0.5625 * 400px);\r\n  background-repeat: no-repeat;\r\n  background-size: cover;\r\n  background-position: center;\r\n  margin: auto;\n}\n#tour-operators-page .operator-content {\r\n  min-width: calc(100% - 550px);\n}\n.tour-operator-card {\r\n  cursor: pointer;\n}\n.operator-pagination {\r\n  display: flex;\r\n  justify-content: center;\r\n  margin-top: 20px;\n}\n@media (max-width: 1200px) {\n#tour-operators-page .wrapper {\r\n    display: flex;\r\n    flex-direction: column;\r\n    justify-content: center;\n}\n.operator-content {\r\n    margin-top: 20px;\r\n    margin-bottom: 20px;\n}\n#tour-operators-page .operator-content h4 {\r\n    text-align: center;\n}\n}\n@media (max-width: 420px) {\n#tour-operators-page .logo-layout {\r\n    min-width: 100%;\r\n    width: 100%;\r\n    padding-top: 56.25%;\n}\n}\r\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -957,9 +976,9 @@ var render = function() {
                       _vm._v(" "),
                       _c("h6", { staticClass: "description" }, [
                         _vm._v(
-                          "\n              " +
+                          "\r\n              " +
                             _vm._s(_vm._f("limitText")(operator.brief)) +
-                            "\n            "
+                            "\r\n            "
                         )
                       ]),
                       _vm._v(" "),
@@ -971,14 +990,22 @@ var render = function() {
                             attrs: { rating: operator.avg_review }
                           }),
                           _vm._v(" "),
-                          _c("span", [
-                            _vm._v(
-                              _vm._s(operator.avg_review) +
-                                " (" +
-                                _vm._s(operator.sum_review) +
-                                "\n                Reviews)"
-                            )
-                          ])
+                          operator.avg_review == "5"
+                            ? _c("span", [
+                                _vm._v(
+                                  "5.0 (" +
+                                    _vm._s(operator.sum_review) +
+                                    "\r\n                Reviews)"
+                                )
+                              ])
+                            : _c("span", [
+                                _vm._v(
+                                  _vm._s(operator.avg_review) +
+                                    " (" +
+                                    _vm._s(operator.sum_review) +
+                                    "\r\n                Reviews)"
+                                )
+                              ])
                         ],
                         1
                       ),
@@ -1034,7 +1061,7 @@ var staticRenderFns = [
       _c(
         "header",
         { staticClass: "section-header", attrs: { "data-aos": "fade-up" } },
-        [_c("h3", [_vm._v("AFRICA SAFARI BOOKING OPERATORS")])]
+        [_c("h3", [_vm._v("TOUR OPERATORS")])]
       )
     ])
   }

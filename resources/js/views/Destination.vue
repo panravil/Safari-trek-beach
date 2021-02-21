@@ -45,6 +45,8 @@ export default {
   },
 
   created() {
+    let page_title = "Safari-Trek-Beach.com Destination"
+    document.title = page_title;
     this.getListDestinations();
   },
   methods: {

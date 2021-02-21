@@ -151,3 +151,17 @@
   margin-top: 100px;
 }
 </style>
+
+<script>
+export default {
+  name: "AboutUs",
+  data() {
+    return {};
+  },
+
+  created() {
+    let page_title = "Terms and Conditions of Safari-Trek-Beach.com"
+    document.title = page_title;
+  }
+};
+</script>

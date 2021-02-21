@@ -19,19 +19,19 @@
                 <ejs-textbox floatLabelType="Auto" autocomplete="off" type="text" placeholder="Travellers" v-model="traveler_number"></ejs-textbox>
               </div>
               <!-- <transition enter-active-class="animate__animated animate__fadeIn" leave-active-class="animate__animated animate__fadeOut"> -->
-              <div v-if="visible_traveler_dropdown" class="traveler-dropdown left-0 bg-white mt-3 triangule-where">
-                <div class="bg-warning text-white p-2 text-left">
+              <div v-if="visible_traveler_dropdown" class="traveler-dropdown left-0 bg-white mt-3 triangule-where shadow">
+                <div class="bg-warning text-white p-2 text-center">
                   Travelers
-                  <span class="fa fa-times-circle-o" @click="closeTravelerDropdown"></span>
+                  <span class="fa fa-times-circle-o" style="float:right; font-size: 25px; color:black" @click="closeTravelerDropdown"></span>
                 </div>
                 <div class="py-2 px-3 mt-2 border-1 text-start d-flex justify-content-between">
-                  <div><strong>Adults</strong>(18+ years):</div>
+                  <div><strong>Adults</strong>(16+ years):</div>
                   <div>
                     <vue-numeric-input v-model="adults_number" :min="1" :max="100" :step="1"></vue-numeric-input>
                   </div>
                 </div>
                 <div class="py-2 px-3 mt-2 border-1 text-start d-flex justify-content-between">
-                  <div><strong>Children</strong>(0~17 years):</div>
+                  <div><strong>Children</strong>(0~15 years):</div>
                   <div>
                     <vue-numeric-input v-model="children_number" :min="0" :max="100" :step="1"></vue-numeric-input>
                   </div>
@@ -51,7 +51,7 @@
               <ejs-textbox v-model="email" floatLabelType="Auto" type="email" placeholder="Email Address" required></ejs-textbox>
             </div>
             <div class="col-lg-6 col-sm-12 mt-3">
-              <ejs-dropdownlist v-model="selected_country" :dataSource='countryData' placeholder='Country' required></ejs-dropdownlist>
+              <ejs-dropdownlist v-model="selected_country" :dataSource='countryData' :fields='fields' placeholder='Country' required></ejs-dropdownlist>
             </div>
             <div class="col-lg-6 col-sm-12 mt-3">
               <ejs-textbox v-model="mobileno" floatLabelType="Auto" type="phone" placeholder="Mobile Number" required></ejs-textbox>
@@ -97,6 +97,7 @@
 
 <script>
 import Vue from "vue"
+import axios from "axios"
 
 import {
   TextBoxPlugin
@@ -144,7 +145,8 @@ export default {
   data() {
     return {
       waterMark: 'Select a date',
-      countryData: countryData.countryList,
+      countryData: countryData.countryListAllIsoData,
+      fields: { text: 'name', value: 'code' },
       dayList: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14],
       zanzibar_activity: false,
       kiliman_activity: false,
@@ -159,11 +161,13 @@ export default {
       adults_number: 1,
       children_number: 0,
       fullname: '',
-      selected_country: '',
+      selected_country: 'US',
       message: '',
       email: '',
-      mobileno: '',
+      mobileno: '+1',
       start_date: '',
+
+      results:{},
     };
   },
   computed: {
@@ -173,12 +177,23 @@ export default {
       adults_number_state: "tourController/adults_number",
       children_number_state: "tourController/children_number",
 
+      package_data: "tourController/quoteData",
+
       package_id: "tourController/package_id",
       request_status: "request_status",
 
       user_id: "tourController/user_id",
     }),
   },
+
+  watch: {
+    selected_country: function() {
+      this.mobileno = countryData.calling_code.find(obj => {
+        return obj.code == this.selected_country
+      }).dial_code;
+    }
+  },
+
   directives: {
     "click-outside-dropdown": {
       bind: function (el, binding) {
@@ -210,6 +225,14 @@ export default {
     this.children_number = this.children_number_state
 
     this.traveler_number_calc();
+    axios.get('https://extreme-ip-lookup.com/json/').then(response => {
+      this.selected_country = response.data.countryCode
+      this.mobileno = countryData.calling_code.find(obj => {
+        return obj.code == this.selected_country
+      }).dial_code;
+    })
+
+    document.title = "Request a Quote for the Tour " + this.package_data.no_of_day + "-Day " + this.package_data.title + "- Safari-Trek-Beach.com"
   },
 
   methods: {
@@ -256,15 +279,17 @@ export default {
         'user_id': this.user_id,
       }
 
+      console.log('tag', quoteData)
+
       this.$store
         .dispatch("operatorController/tourQuote", quoteData)
         .then(() => {
           if (this.request_status == true) {
-            this.$notify({
-              group: 'success',
-              title: 'Review Success',
-              text: 'Thank you! We have received your tour qutoe.'
-            });
+            // this.$notify({
+            //   group: 'success',
+            //   title: 'Quote Success',
+            //   text: 'Thank you! We have received your tour qutoe.'
+            // });
 
             this.fullname = ''
             this.email = ''
@@ -274,6 +299,8 @@ export default {
             this.zanzibar_days = ''
             this.kilimanjaro_days = ''
             this.safari_days = ''
+
+            this.$router.push('/thankyou-quote')
 
           } else {
             this.$notify({

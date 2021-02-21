@@ -38,21 +38,17 @@
                     Section {{ index + 1 }}. {{ item.title }}
                   </h3>
                 </div>
-                <!-- <img
-                  src="https://africasafar.com/wp-content/uploads/2020/01/barranco-camps.jpg"
-                  class="w-100 mb-3"
-                /> -->
                 <div v-html="item.description"></div>
-                <div class="text-start mt-3">
-                  <a href="#" class="btn btn-danger">
-                    Tour that includes Section {{ index + 1 }}
+                <div class="text-start mt-3" v-if="item.button_url != null && item.button_name != null">
+                  <a :href="item.button_url" target="_blank" class="btn btn-danger">
+                    {{ item.button_name }}
                   </a>
                 </div>
               </div>
             </div>
             <!-- <div class="mt-5">
               <h3 class="section-title-inner pb-3">Comments (234)</h3>
-            </div>
+            </div> -->
             <form class="mt-5">
               <h3 class="section-title-inner pb-3">Speak Your Mind</h3>
               <div class="row">
@@ -71,7 +67,7 @@
                   </button>
                 </div>
               </div>
-            </form> -->
+            </form>
           </div>
           <div class="col-lg-3 col-md-12 quick-link-section px-4 position-relative">
             <div style="position: sticky; top: 50px;">
@@ -180,7 +176,10 @@ export default {
     async getBlogData() {
       await this.$store
         .dispatch("blogController/getBlogById", this.blog_id)
-        .then(() => {});
+        .then(() => {
+          let page_title = this.blogData.title + " - Safari-Trek-Beach"
+          document.title = page_title;
+        });
     },
   },
 };
@@ -253,6 +252,11 @@ export default {
 
 .quick-link-section {
   display: block;
+}
+
+.blog-inner-page .vue-content-placeholders-img {
+  height: 300px !important;
+  background: white !important;
 }
 
 @media (max-width: 991px) {

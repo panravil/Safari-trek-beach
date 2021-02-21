@@ -16,9 +16,9 @@
           <li class="footerList">
             <a href="/become-a-partner" class="footerLink">Become a Partner</a>
           </li>
-          <li class="footerList">
+          <!-- <li class="footerList">
             <a href="#" class="footerLink">Operator Login</a>
-          </li>
+          </li> -->
           <li class="footerList">
             <a href="/terms" class="footerLink">Terms &amp; Conditions</a>
           </li>

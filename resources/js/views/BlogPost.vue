@@ -42,6 +42,8 @@ export default {
     }),
   },
   created() {
+    let page_title = "Safari-Trek-Beach.com Blog"
+    document.title = page_title;
     this.getListDestinations();
   },
   methods: {

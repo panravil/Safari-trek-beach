@@ -4,6 +4,8 @@ import destinationController from "./destinationController";
 import tourController from "./tourController";
 import blogController from "./blogController";
 import operatorController from "./operatorController";
+import createPersistedState from "vuex-persistedstate";
+
 Vue.use(Vuex);
 
 const store = new Vuex.Store({
@@ -37,6 +39,7 @@ const store = new Vuex.Store({
         blogcard_loading: state => state.blogcard_loading,
         request_status: state => state.request_status,
     },
+    plugins: [createPersistedState()],
 });
 
 export default store;

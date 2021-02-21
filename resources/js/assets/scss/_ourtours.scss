@@ -65,6 +65,10 @@
     z-index: 222;
     width: 100% !important;
   }
+
+  #our-tours .traveler-dropdown {
+    width: 350px !important;
+  }
   
 #our-tours button.btn-danger > span {
   font-size: 18px;
@@ -89,6 +93,10 @@
 @media (max-width: 991px) {
   .mobile-filter-none {
     display: none;
+  }
+
+    #our-tours .traveler-dropdown {
+    width: 100% !important;
   }
    
   .mobile-filter-close {

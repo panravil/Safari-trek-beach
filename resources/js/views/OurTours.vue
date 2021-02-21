@@ -42,10 +42,10 @@
           </div> -->
           <div class="row gx-0">
             <div class="col-md-12 mobile-filter position-relative" v-click-outside-dropdown="closeWhereToDropDown">
-              <div class="bg-white h-100 align-items-center d-flex justify-content-between px-3">
+              <div class="bg-white h-100 align-items-center d-flex justify-content-between px-3 shadow-sm">
                 <span class="fa fa-map-marker"></span>
                 <div class="w-100 px-2" @click="showWhereToDropdown(true)">
-                  <input v-model="where_to_search" placeholder="Where To" type="text" ref="whereTo" class="w-100" />
+                  <input v-model="where_to_search" placeholder="Where To" type="text" ref="whereTo" class="w-100" v-on:keyup.enter="searchEnter" />
                 </div>
                 <span v-if="visible_whereto_dropdown == true" class="fa fa-search"></span>
                 <span v-else-if="
@@ -54,11 +54,12 @@
                 <span v-else class="fa fa-search invisible"></span>
               </div>
               <transition enter-active-class="animate__animated animate__fadeIn" leave-active-class="animate__animated animate__fadeOut">
-                <div class="where_to_dropdown left-0 w-100 bg-white mt-3 triangule-where" v-if="
+                <div class="shadow  where_to_dropdown left-0 w-100 bg-white mt-3 triangule-where" v-if="
                       visible_whereto_dropdown == true && search_result != ''
                     ">
-                  <div class="bg-warning text-white p-2 text-left">
+                  <div class="bg-warning text-white p-2 text-left d-flex justify-content-between align-items-center">
                     Start typing or select below
+                    <span class="fa fa-times-circle-o" style="font-size: 25px;" @click="visible_whereto_dropdown = false"></span>
                   </div>
                   <div v-for="(item, index) in search_result" v-bind:key="index">
                     <div class="py-1 px-3 border-bottom border-1 text-start" v-if="index < 6" @click="setCurrentWhereTo(item.title)">
@@ -66,7 +67,7 @@
                         <strong>{{ item.title }}</strong>
                       </div>
                       <div class="p-0 m-0">
-                        <small>{{ item.country }}</small>
+                        <small>{{ item.description }}</small>
                       </div>
                     </div>
                   </div>
@@ -74,7 +75,7 @@
               </transition>
             </div>
             <div class="col-md-12 mobile-filter position-relative">
-              <div class="bg-white w-100 h-100 align-items-center d-flex justify-content-between px-3">
+              <div class="bg-white w-100 h-100 align-items-center d-flex justify-content-between px-3 shadow-sm">
                 <span class="fa fa-calendar"></span>
                 <div class="w-100 px-2">
                   <datepicker :disabledDates="disabledFn" v-model="start_date" :placeholder="'Start Date'" :highlighted="highlighted"></datepicker>
@@ -84,7 +85,7 @@
               </div>
             </div>
             <div class="col-md-12 mobile-filter position-relative" v-click-outside-dropdown="closeTravelerDropdown">
-              <div class="bg-white w-100 h-100 align-items-center d-flex justify-content-between px-3" @click="showTravelerDropdown">
+              <div class="bg-white w-100 h-100 align-items-center d-flex justify-content-between px-3 shadow-sm" @click="showTravelerDropdown">
                 <span class="fa fa-users"></span>
                 <div class="w-100 px-2">
                   <input v-model="traveler_number" id="traveler_input" type="text" placeholder="Travelers" class="w-100" />
@@ -93,19 +94,19 @@
                 <span v-else class="fa fa-times-circle-o invisible"></span>
               </div>
               <transition enter-active-class="animate__animated animate__fadeIn" leave-active-class="animate__animated animate__fadeOut">
-                <div v-if="visible_traveler_dropdown" class="traveler-dropdown left-0 bg-white mt-3 triangule-where">
-                  <div class="bg-warning text-white p-2 text-left">
+                <div v-if="visible_traveler_dropdown" class="shadow traveler-dropdown left-0 bg-white mt-3 triangule-where">
+                  <div class="bg-warning text-white p-2 text-center">
                     Travelers
-                    <span class="fa fa-times-circle-o" @click="closeTravelerDropdown"></span>
+                    <span class="fa fa-times-circle-o" style="float:right; font-size: 25px; color:black" @click="closeTravelerDropdown"></span>
                   </div>
-                  <div class="py-2 px-3 mt-2 border-1 text-start d-flex justify-content-between">
-                    <div><strong>Adults</strong>(18+ years):</div>
+                  <div class="py-2 px-3 mt-2 border-1 text-start d-flex justify-content-between align-items-center">
+                    <div><strong>Adults</strong>: (16+ years)</div>
                     <div>
                       <vue-numeric-input v-model="adults_number" :min="1" :max="100" :step="1"></vue-numeric-input>
                     </div>
                   </div>
-                  <div class="py-2 px-3 mt-2 border-1 text-start d-flex justify-content-between">
-                    <div><strong>Children</strong>(0~17 years):</div>
+                  <div class="py-2 px-3 mt-2 border-1 text-start d-flex justify-content-between align-items-center">
+                    <div><strong>Children</strong>: (0~15 years)</div>
                     <div>
                       <vue-numeric-input v-model="children_number" :min="0" :max="100" :step="1"></vue-numeric-input>
                     </div>
@@ -144,11 +145,12 @@
 
           <h6 class="mt-5 fw-bold">Tour Price</h6>
           <div v-on:mouseup="getFilterTours">
-            <ejs-slider :min="100" :max="16000" :type="'Range'" v-model="price_range"></ejs-slider>
+            <ejs-slider :min="10" :max="10000" :type="'Range'" v-model="price_range"></ejs-slider>
           </div>
           <div class="d-flex justify-content-between">
             <div>${{ price_range[0] }}</div>
-            <div>${{ price_range[1] }}</div>
+            <div v-if="price_range[1] == 10000">${{ price_range[1] }}+</div>
+            <div v-else>${{ price_range[1] }}</div>
           </div>
 
           <h6 class="mt-5 fw-bold">Tour Days</h6>
@@ -158,7 +160,8 @@
           <div class="d-flex justify-content-between">
             <div v-if="day_range[0] == 1">{{ day_range[0] }} Day</div>
             <div v-else>{{ day_range[0] }} Days</div>
-            <div>{{ day_range[1] }} Days</div>
+            <div v-if="day_range[1] == 30">{{ day_range[1] }}+ Days</div>
+            <div v-else>{{ day_range[1] }} Days</div>
           </div>
 
           <h6 class="mt-5 fw-bold">Private or Group</h6>
@@ -168,15 +171,16 @@
           <p v-bind:key="'group' + update_group_check">
             <ejs-checkbox label="Group" name="default" v-model="check_group_filter"></ejs-checkbox>
           </p>
+
           <div v-bind:key="update_checklist">
             <h6 class="mt-5 fw-bold">Standard</h6>
-            <p v-for="check_data in standard_check_list" v-bind:key="check_data.label">
-              <ejs-checkbox :label="check_data.label" v-model="check_data.checked_state" v-on:change="updateCheckedFilterOptions"></ejs-checkbox>
+            <p v-for="check_data in standard_check_list" v-bind:key="check_data.title" class="standard">
+              <ejs-checkbox :label="check_data.title" v-model="check_data.checked_state" v-on:change="updateCheckedFilterOptions"></ejs-checkbox>
             </p>
 
             <h6 class="mt-5 fw-bold">Specialized</h6>
-            <p v-for="check_data in specialized_check_list" v-bind:key="check_data.label">
-              <ejs-checkbox :label="check_data.label" v-model="check_data.checked_state" v-on:change="updateCheckedFilterOptions"></ejs-checkbox>
+            <p v-for="check_data in specialized_check_list" v-bind:key="check_data.title">
+              <ejs-checkbox :label="check_data.title" v-model="check_data.checked_state" v-on:change="updateCheckedFilterOptions"></ejs-checkbox>
             </p>
           </div>
         </div>
@@ -210,43 +214,52 @@
                 checked_standard_filter_options.length != 0 ||
                 day_range[0] != 1 ||
                 day_range[1] != 30 ||
-                this.price_range[0] != 100 ||
-                this.price_range[1] != 16000 ||
+                this.price_range[0] != 10 ||
+                this.price_range[1] != 10000 ||
                 check_private_filter == true ||
                 check_group_filter == true
               ">Selected Filters:</span>
           <ejs-chiplist id="tag-list-filter" cssClass="e-outline e-info" enableDelete="true" v-on:delete="deleteFilterOption">
             <e-chips>
-              <e-chip :text="getPriceRangeChip()" v-if="price_range[0] != 100 || price_range[1] != 16000"></e-chip>
+              <e-chip :text="'To: '+where_to_search_option" v-if="where_to_search_option != '' && where_to_search_option != null"></e-chip>
+              <e-chip :text="getPriceRangeChip()" v-if="price_range[0] != 10 || price_range[1] != 10000"></e-chip>
               <e-chip :text="getDayRangeChip()" v-if="day_range[0] != 1 || day_range[1] != 30"></e-chip>
               <e-chip text="Private" v-if="check_private_filter == true"></e-chip>
               <e-chip text="Group" v-if="check_group_filter == true"></e-chip>
-              <e-chip :text="item.label" v-for="(item, index) in checked_standard_filter_options" v-bind:key="index"></e-chip>
-              <e-chip :text="item.label" v-for="(item, index) in checked_specialized_filter_options" v-bind:key="index"></e-chip>
+              <e-chip :text="item.title" v-for="(item, index) in checked_standard_filter_options" v-bind:key="index"></e-chip>
+              <e-chip :text="item.title" v-for="(item, index) in checked_specialized_filter_options" v-bind:key="index"></e-chip>
               <e-chip v-if="
                     checked_specialized_filter_options.length != 0 ||
                     checked_standard_filter_options.length != 0 ||
                     day_range[0] != 1 ||
                     day_range[1] != 30 ||
-                    this.price_range[0] != 100 ||
-                    this.price_range[1] != 16000 ||
+                    this.price_range[0] != 10 ||
+                    this.price_range[1] != 10000 ||
                     check_private_filter == true ||
-                    check_group_filter == true
+                    check_group_filter == true ||
+                    where_to_search_option != ''
                   " text="Clear All Filters" cssClass="e-outline e-danger"></e-chip>
             </e-chips>
           </ejs-chiplist>
         </ul>
         <h6 class="my-3 fw-bold" v-if="filterTours != null">
-          <span v-if="filterTours.length != 0">Showing 1 - {{ filterTours.length }} of 300 results</span>
+          <span v-if="filterTours.total_tours > 1">Showing {{ filterTours.tour_show_from }} - {{ filterTours.tour_show_to }} of {{ filterTours.total_tours }} results</span>
+          <span v-if="filterTours.total_tours == 1">Showing 1 of 1 result</span>
         </h6>
         <div class="row gx-0" v-if="loading">
-          <div class="col-md-6 col-xs-12" v-for="(item, index) in 12" v-bind:key="'skelecton' + index">
+          <div class="col-md-6 col-xs-12" v-for="(item, index) in 10" v-bind:key="'skelecton' + index">
             <TourCardSkelecton></TourCardSkelecton>
           </div>
         </div>
-        <div class="row gx-0" v-else>
-          <div class="col-md-6 col-xs-12" v-for="(item, index) in filterTours" v-bind:key="'filter' + index">
-            <TourCard :tourData="item" :where_to_search="where_to_search" :traveler_number="traveler_number" :start_date="start_date" :adults_number="adults_number" :children_number="children_number"></TourCard>
+        <div class="row gx-0" v-else-if="filterTours != null">
+          <div class="ourtours-pagination my-3" >
+            <Pagination v-model="current_ourtour_page" :records="filterTours.total_tours" :per-page="ourtour_perpage" :options="pagination_options" />
+          </div>
+          <div class="col-md-6 col-xs-12" v-for="(item, index) in filterTours.tours" v-bind:key="'filter' + index">
+            <TourCard :tourData="item" :where_to_search="where_to_search" :traveler_number="traveler_number" :start_date="start_date.toString()" :adults_number="adults_number" :children_number="children_number"></TourCard>
+          </div>
+          <div class="ourtours-pagination my-3">
+            <Pagination v-model="current_ourtour_page" :records="filterTours.total_tours" :per-page="ourtour_perpage" :options="pagination_options" />
           </div>
         </div>
       </div>
@@ -260,6 +273,7 @@ import TourCard from "../components/TourCard";
 import VueNumericInput from "vue-numeric-input";
 import Datepicker from "vuejs-datepicker";
 import TourCardSkelecton from "../components/TourCardSkelecton";
+import Pagination from "vue-pagination-2";
 
 import Vue from "vue";
 import {
@@ -300,11 +314,12 @@ export default {
     VueNumericInput,
     Datepicker,
     TourCardSkelecton,
+    Pagination,
   },
   data() {
     return {
       type: "Range",
-      price_range: [100, 16000],
+      price_range: [10, 10000],
       day_range: [1, 30],
       type: "Range",
       read_more: false,
@@ -336,208 +351,27 @@ export default {
 
       day_range_chip: "",
 
-      where_to_list: [{
-          title: "All Safari Destinations",
-          country: "Search Everywhere",
-        },
-        {
-          title: "Kenya",
-          country: "Country",
-        },
-        {
-          title: "Tarangire National Park",
-          country: "Park(Tanzania)",
-        },
-        {
-          title: "Tarangire National Park2",
-          country: "Park(Tanzania)",
-        },
-        {
-          title: "Tarangire National Park3",
-          country: "Park(Tanzania)",
-        },
-        {
-          title: "Tarangire National Park4",
-          country: "Park(Tanzania)",
-        },
-        {
-          title: "Tarangire National Park5",
-          country: "Park(Tanzania)",
-        },
-        {
-          title: "Tarangire National Park6",
-          country: "Park(Tanzania)",
-        },
-        {
-          title: "Tarangire National Park61",
-          country: "Park(Tanzania)",
-        },
-        {
-          title: "Tarangire National Park62",
-          country: "Park(Tanzania)",
-        },
-        {
-          title: "Tarangire National Park63",
-          country: "Park(Tanzania)",
-        },
-        {
-          title: "Tarangire National Park64",
-          country: "Park(Tanzania)",
-        },
-        {
-          title: "Tarangire National Park65",
-          country: "Park(Tanzania)",
-        },
-        {
-          title: "Tarangire National Park66",
-          country: "Park(Tanzania)",
-        },
-        {
-          title: "Tarangire National Park67",
-          country: "Park(Tanzania)",
-        },
-        {
-          title: "abd National Park68",
-          country: "Park(Tanzania)",
-        },
-        {
-          title: "bdd National Park67",
-          country: "Park(Tanzania)",
-        },
-        {
-          title: "csv National Park67",
-          country: "Park(Tanzania)",
-        },
-        {
-          title: "reee National Park67",
-          country: "Park(Tanzania)",
-        },
-        {
-          title: "hsh National Park67",
-          country: "Park(Tanzania)",
-        },
-        {
-          title: "xsdfr National Park67",
-          country: "Park(Tanzania)",
-        },
-      ],
       search_result: [],
       isSidebar: false,
+      standard_check_list: [],
+      specialized_check_list: [],
 
-      standard_check_list: [{
-          label: "budget",
-          checked_state: false,
-        },
-        {
-          label: "Camping",
-          checked_state: false,
-        },
-        {
-          label: "Lodge",
-          checked_state: false,
-        },
-        {
-          label: "Luxury",
-          checked_state: false,
-        },
-        {
-          label: "Luxury plus",
-          checked_state: false,
-        },
-        {
-          label: "Mid rage",
-          checked_state: false,
-        },
-      ],
-
-      specialized_check_list: [{
-          label: "Birdwatching",
-          checked_state: false,
-        },
-        {
-          label: "Canoe/Mokoro safari",
-          checked_state: false,
-        },
-        {
-          label: "Tour for disabled travelers",
-          checked_state: false,
-        },
-        {
-          label: "Scenic and/or Cultural tour",
-          checked_state: false,
-        },
-        {
-          label: "Cycling Safari",
-          checked_state: false,
-        },
-        {
-          label: "Gorilla and/or chimp tracking & mountain climbing",
-          checked_state: false,
-        },
-        {
-          label: "Fly-in safari",
-          checked_state: false,
-        },
-        {
-          label: "Game drive safari",
-          checked_state: false,
-        },
-        {
-          label: "Gorilla and/or chimp trekking & game drive safari",
-          checked_state: false,
-        },
-        {
-          label: "Gorilla and/or chimp trekking only",
-          checked_state: false,
-        },
-        {
-          label: "Guided self drive",
-          checked_state: false,
-        },
-        {
-          label: "Mountain climbing only",
-          checked_state: false,
-        },
-        {
-          label: "Horseback Safari",
-          checked_state: false,
-        },
-        {
-          label: "Mountain climbing & game drive safari",
-          checked_state: false,
-        },
-        {
-          label: "Wildlife photography",
-          checked_state: false,
-        },
-        {
-          label: "Golf & wildlife viewing",
-          checked_state: false,
-        },
-        {
-          label: "walking-safari",
-          checked_state: false,
-        },
-        {
-          label: "Beach holiday & game drive safari",
-          checked_state: false,
-        },
-        {
-          label: "Beach holiday only",
-          checked_state: false,
-        },
-        {
-          label: "Overland truck safari",
-          checked_state: false,
-        },
-      ],
       checked_specialized_filter_options: [],
       checked_standard_filter_options: [],
+      where_to_search_option: '',
       update_checklist: 0,
       check_private_filter: false,
       check_group_filter: false,
       update_private_check: 0,
       update_group_check: 0,
+
+      pagination_options: {
+        chunk: 5,
+      },
+      current_ourtour_page: 1,
+      ourtour_perpage: 40,
+
+      page: 1,
     };
   },
   directives: {
@@ -565,6 +399,9 @@ export default {
   },
 
   computed: {
+    router_query: function () {
+      return this.$route.query;
+    },
     ...mapGetters({
       filterTours: "tourController/filterTours",
       loading: "tourcard_loading",
@@ -573,15 +410,32 @@ export default {
       start_date_state: "tourController/start_date",
       adults_number_state: "tourController/adults_number",
       children_number_state: "tourController/children_number",
+
+      query_instore: "tourController/query_instore",
+
+      tourLevel: "tourController/tourLevel",
+      tourFocus: "tourController/tourFocus",
+      where_to_list: "tourController/tourActivity",
     }),
   },
+
   watch: {
     //   filter when click private checkbox checked
-    check_private_filter: function () {
+    check_private_filter: function (newValue) {
+      if (newValue) {
+        this.check_group_filter = false
+        this.update_group_check++;
+      }
+      this.page = 1;
       this.getFilterTours();
     },
     // filter when click group checkbox  checked
-    check_group_filter: function () {
+    check_group_filter: function (newValue) {
+      if (newValue) {
+        this.check_private_filter = false
+        this.update_private_check++;
+      }
+      this.page = 1;
       this.getFilterTours();
     },
 
@@ -597,8 +451,29 @@ export default {
         this.search_result = this.where_to_list;
       }
     },
+
+    current_ourtour_page: function (newValue) {
+      // this.$router.push('/tour-operators/page/' + newValue).catch(() =>{})
+      this.page = newValue;
+      this.getFilterTours();
+    },
+
+    start_date: function (newValue) {
+      this.saveFormtoStore();
+    },
+
+    adults_number: function (newValue) {
+      this.saveFormtoStore();
+    },
+
+    children_number: function (newValue) {
+      this.saveFormtoStore();
+    },
+
   },
-  created() {
+
+  async created() {
+    document.title = "Search Tours of Safari-Trek-Beach.com"
     this.search_result = this.where_to_list;
 
     this.where_to_search = this.where_to_search_state
@@ -607,10 +482,96 @@ export default {
     this.adults_number = this.adults_number_state
     this.children_number = this.children_number_state
 
-    this.getFilterTours();
+    if (this.where_to_search != '') {
+      this.where_to_search_option = this.where_to_search
+    }
+
+    await this.getTourFocus();
+    await this.getTourActivity();
+    await this.getTourLevel();
     this.traveler_number_calc();
+
+    this.$store
+      .dispatch("tourController/setQuery", this.router_query)
+
+    this.setCurrentCheck()
   },
+
   methods: {
+    async getTourActivity() {
+      await this.$store.dispatch("tourController/getTourActivity")
+        .then(() => {})
+    },
+
+    async getTourFocus() {
+      await this.$store.dispatch("tourController/getTourFocus")
+        .then(() => {
+          this.specialized_check_list = this.tourFocus
+          for (let i = 0; i < this.tourFocus.length; i++) {
+            this.specialized_check_list[i].checked_state = false
+          }
+        })
+    },
+
+    async getTourLevel() {
+      await this.$store.dispatch("tourController/getTourLevel")
+        .then(() => {
+          this.standard_check_list = this.tourLevel
+          for (let i = 0; i < this.tourLevel.length; i++) {
+            this.standard_check_list[i].checked_state = false
+          }
+        })
+    },
+
+    setCurrentCheck() {
+
+      var comfort_list = (this.query_instore["comfort"] !== undefined) ? this.query_instore.comfort.split("|") : [];
+      var focus_list = (this.query_instore["focus"] !== undefined) ? this.query_instore.focus.split("|") : [];
+      var destination = (this.query_instore["destination"] !== undefined) ? this.query_instore.destination : this.where_to_search;
+      var group = (this.query_instore["group"] !== undefined) ? this.query_instore.group : '';
+
+      if (group != '') {
+        if (group == 'group') {
+          this.check_group_filter = true
+        }
+        else {
+          this.check_private_filter = true
+        }
+        this.update_group_check++;
+        this.update_private_check++;
+      }
+
+      this.price_range = [
+        (this.query_instore.min_price != undefined)?this.query_instore.min_price:10, 
+        (this.query_instore.max_price != undefined)?this.query_instore.max_price:10000
+      ]
+      
+      this.day_range = [
+        (this.query_instore.min_day != undefined)?this.query_instore.min_day:1, 
+        (this.query_instore.max_day != undefined)?this.query_instore.max_day:30
+      ]
+
+      this.where_to_search = destination
+      this.where_to_search_option = destination
+
+      for (let i = 0; i < this.standard_check_list.length; i++) {
+        if (comfort_list.includes(this.standard_check_list[i].title)) {
+          this.standard_check_list[i].checked_state = true
+        }
+      }
+
+      for (let i = 0; i < this.specialized_check_list.length; i++) {
+        if (focus_list.includes(this.specialized_check_list[i].title)) {
+          this.specialized_check_list[i].checked_state = true
+        }
+      }
+
+      this.update_checklist++;
+
+      this.updateCheckedFilterOptions()
+
+    },
+
     updateCheckedFilterOptions() {
       let index = 0;
       this.checked_standard_filter_options = [];
@@ -632,6 +593,7 @@ export default {
           index++;
         }
       }
+      this.page = 1;
       this.getFilterTours();
     },
 
@@ -645,11 +607,35 @@ export default {
 
     setCurrentWhereTo(value) {
       this.where_to_search = value;
+      this.where_to_search_option = this.where_to_search
       this.visible_whereto_dropdown = false;
+      this.page = 1;
+
+      this.saveFormtoStore()
+
+      this.getFilterTours();
+    },
+
+    saveFormtoStore() {
+      let searchData = {};
+      searchData = {
+        'where_to_search': this.where_to_search,
+        'start_date': this.start_date,
+        'adults_number': this.adults_number,
+        'children_number': this.children_number,
+      }
+
+      this.$store.dispatch("tourController/setSearchData", searchData)
     },
 
     setInitWhereTo() {
       this.where_to_search = "";
+      this.where_to_search_option = "";
+      this.page = 1;
+
+      this.saveFormtoStore()
+
+      this.getFilterTours();
     },
 
     showTravelerDropdown() {
@@ -687,33 +673,48 @@ export default {
 
     deleteFilterOption: function (e) {
       var lastChar = e.data.text[e.data.text.length - 1];
+      var check_first_string = e.data.text.substr(0, 4);
       var check_last_string = e.data.text.substr(e.data.text.length - 4, 4);
       if (lastChar == "$") {
-        this.price_range = [100, 16000];
+        this.price_range = [10, 10000];
+        this.page = 1;
+        this.getFilterTours();
+        return;
+      }
+      if (check_first_string == "To: ") {
+        this.where_to_search = ''
+        this.where_to_search_option = ''
+        this.page = 1;
         this.getFilterTours();
         return;
       }
       if (check_last_string == "days") {
         this.day_range = [1, 30];
+        this.page = 1;
         this.getFilterTours();
         return;
       }
       switch (e.data.text) {
+
         case "Clear All Filters":
           this.checked_specialized_filter_options = [];
           this.checked_standard_filter_options = [];
           this.day_range = [1, 30];
-          this.price_range = [100, 16000];
+          this.price_range = [10, 10000];
           this.check_private_filter = false;
           this.check_group_filter = false;
+          this.where_to_search = ''
+          this.where_to_search_option = ''
           this.update_private_check++;
           this.update_group_check++;
           this.initCheckList();
 
           break;
+
         case "Private":
           this.check_private_filter = false;
           this.update_private_check++;
+          this.page = 1;
           this.getFilterTours();
 
           break;
@@ -721,9 +722,11 @@ export default {
         case "Group":
           this.check_group_filter = false;
           this.update_group_check++;
+          this.page = 1;
           this.getFilterTours();
 
           break;
+
         default:
           this.removeFilterOptionItem(e.data.text);
           this.uncheckFilterCheckListItem(e.data.text);
@@ -733,28 +736,29 @@ export default {
 
     uncheckFilterCheckListItem(item) {
       for (let i = 0; i < this.standard_check_list.length; i++) {
-        if (this.standard_check_list[i].label == item) {
+        if (this.standard_check_list[i].title == item) {
           this.standard_check_list[i].checked_state = false;
         }
       }
       for (let i = 0; i < this.specialized_check_list.length; i++) {
-        if (this.specialized_check_list[i].label == item) {
+        if (this.specialized_check_list[i].title == item) {
           this.specialized_check_list[i].checked_state = false;
         }
       }
       this.update_checklist++;
+      this.page = 1;
       this.getFilterTours();
     },
 
     removeFilterOptionItem(item) {
       for (let i = 0; i < this.checked_standard_filter_options.length; i++) {
-        if (this.checked_standard_filter_options[i].label == item) {
+        if (this.checked_standard_filter_options[i].title == item) {
           this.checked_standard_filter_options.splice(i, 1);
         }
       }
 
       for (let i = 0; i < this.checked_specialized_filter_options.length; i++) {
-        if (this.checked_specialized_filter_options[i].label == item) {
+        if (this.checked_specialized_filter_options[i].title == item) {
           this.checked_specialized_filter_options.splice(i, 1);
         }
       }
@@ -769,6 +773,7 @@ export default {
       }
       this.update_checklist++;
 
+      this.page = 1;
       this.getFilterTours();
     },
 
@@ -788,16 +793,29 @@ export default {
 
     getPriceRangeChip() {
       let price_range_text = "";
-      if (this.price_range[0] != 100) {
-        if (this.price_range[1] == 16000)
+      if (this.price_range[0] != 10) {
+        if (this.price_range[1] == 10000)
           price_range_text = "From " + this.price_range[0] + "$";
         else
           price_range_text =
           this.price_range[0] + " to " + this.price_range[1] + "$";
-      } else if (this.price_range[1] != 16000) {
+      } else if (this.price_range[1] != 10000) {
         price_range_text = "Up to " + this.price_range[1] + "$";
       }
       return price_range_text;
+    },
+
+    searchEnter() {
+      this.where_to_search_option = this.where_to_search;
+
+      this.saveFormtoStore()
+
+      this.getFilterTours();
+    },
+
+    radioTest() {
+      console.log('private', this.check_private_filter)
+      console.log('group', this.check_group_filter)
     },
 
     // filter tours function
@@ -811,14 +829,14 @@ export default {
         if (this.check_group_filter) group_filter = group_filter + "|group";
       } else if (this.check_group_filter) group_filter += "group";
       for (let i = 0; i < this.checked_standard_filter_options.length; i++) {
-        level_filter += this.checked_standard_filter_options[i].label + "|";
+        level_filter += this.checked_standard_filter_options[i].title + "|";
       }
       if (level_filter != "") {
         level_filter = level_filter.substring(0, level_filter.length - 1);
       }
       for (let i = 0; i < this.checked_specialized_filter_options.length; i++) {
         specialized_filter +=
-          this.checked_specialized_filter_options[i].label + "|";
+          this.checked_specialized_filter_options[i].title + "|";
       }
 
       if (specialized_filter != "") {
@@ -828,24 +846,40 @@ export default {
         );
       }
 
+      let query = {
+        destination: this.where_to_search,
+        min_price: this.price_range[0],
+        max_price: this.price_range[1],
+        min_day: this.day_range[0],
+        max_day: this.day_range[1],
+        group: group_filter,
+        comfort: level_filter,
+        focus: specialized_filter,
+        p: this.page,
+      };
+
+      // let filtered_query = query
+
+      for (var key in query) {
+        if (query[key] === '') {
+          delete query[key];
+        }
+      }
+
+      this.$store
+        .dispatch("tourController/setQuery", query)
+
       this.$router
         .replace({
-          query: {
-            destination: "",
-            min_price: this.price_range[0],
-            max_price: this.price_range[1],
-            min_day: this.day_range[0],
-            max_day: this.day_range[1],
-            group: group_filter,
-            comfort: level_filter,
-            focus: specialized_filter,
-          },
+          query: query
         })
         .catch(() => {});
 
       this.$store
-        .dispatch("tourController/getTourFilter", this.$route.query)
-        .then(() => {})
+        .dispatch("tourController/getTourFilter", query)
+        .then(() => {
+          this.current_ourtour_page = parseInt(this.filterTours.page);
+        })
         .catch(() => {});
     },
   },
@@ -864,5 +898,19 @@ export default {
 
 li {
   list-style: none;
+}
+
+p.standard .e-checkbox-wrapper .e-frame+.e-label,
+.e-css.e-checkbox-wrapper .e-frame+.e-label {
+  text-transform: capitalize;
+}
+
+.e-chip-text::first-letter {
+  text-transform: uppercase;
+}
+
+.ourtours-pagination {
+  display: flex;
+  justify-content: center;
 }
 </style>

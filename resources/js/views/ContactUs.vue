@@ -19,7 +19,6 @@
       <h3 class="text-center mt-5" data-aos="fade-up">
         For queries about Safari-Trek-Beach Company
       </h3>
-      <h5 class="mt-5 fst-italic" data-aos="fade-up">Please fill the form >>></h5>
       <div class="card p-5 mx-auto contact-form-card">
         <form @submit.prevent="submitContactInfo">
           <div class="row align-items-center">
@@ -96,6 +95,10 @@ export default {
       message: '',
     };
   },
+  created() {
+    let page_title = "Contact Safari-Trek-Beach.com"
+    document.title = page_title;
+  },
   methods: {
     submitContactInfo() {
 
@@ -112,7 +115,7 @@ export default {
       window.open(url, "_blank");
 
       // this is for gmail in browser
-      
+
       //   let url = "https://mail.google.com/mail/u/0/?fs=1&to=";
       // url +=
       //   "info@safari-trek-beach.com" +

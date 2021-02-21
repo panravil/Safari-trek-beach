@@ -5247,19 +5247,31 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => __WEBPACK_DEFAULT_EXPORT__
 /* harmony export */ });
-/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm.js");
-/* harmony import */ var vue_router__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vue-router */ "./node_modules/vue-router/dist/vue-router.esm.js");
+/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm.js");
+/* harmony import */ var vue_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! vue-router */ "./node_modules/vue-router/dist/vue-router.esm.js");
+/* harmony import */ var qs__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! qs */ "./node_modules/qs/lib/index.js");
+/* harmony import */ var qs__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(qs__WEBPACK_IMPORTED_MODULE_0__);
 /* provided dependency */ var process = __webpack_require__(/*! process/browser */ "./node_modules/process/browser.js");
 
 
-vue__WEBPACK_IMPORTED_MODULE_0__.default.use(vue_router__WEBPACK_IMPORTED_MODULE_1__.default);
-var router = new vue_router__WEBPACK_IMPORTED_MODULE_1__.default({
+
+vue__WEBPACK_IMPORTED_MODULE_1__.default.use(vue_router__WEBPACK_IMPORTED_MODULE_2__.default);
+var router = new vue_router__WEBPACK_IMPORTED_MODULE_2__.default({
   mode: "history",
-  scrollBehavior: function scrollBehavior() {
-    return {
-      x: 0,
-      y: 0
-    };
+  // set custom query resolver
+  stringifyQuery: function stringifyQuery(query) {
+    var result = qs__WEBPACK_IMPORTED_MODULE_0___default().stringify(query, {
+      encode: false
+    });
+    return result ? '?' + result : '';
+  },
+  scrollBehavior: function scrollBehavior(to, from) {
+    if (to.name === from.name && to.name === 'Our Tours') return false;else {
+      return {
+        x: 0,
+        y: 0
+      };
+    }
   },
   base: process.env.BASE_URL,
   routes: [// ======================
@@ -5288,7 +5300,7 @@ var router = new vue_router__WEBPACK_IMPORTED_MODULE_1__.default({
         return __webpack_require__.e(/*! import() */ "resources_js_views_OurTours_vue").then(__webpack_require__.bind(__webpack_require__, /*! ./views/OurTours.vue */ "./resources/js/views/OurTours.vue"));
       }
     }, {
-      path: "/tour-operators",
+      path: "/tour-operators/page/:id",
       name: "Tour Operators",
       index: 3,
       component: function component() {
@@ -5392,6 +5404,20 @@ var router = new vue_router__WEBPACK_IMPORTED_MODULE_1__.default({
     index: 15,
     component: function component() {
       return __webpack_require__.e(/*! import() */ "resources_js_views_Error404_vue").then(__webpack_require__.bind(__webpack_require__, /*! ./views/Error404.vue */ "./resources/js/views/Error404.vue"));
+    }
+  }, {
+    path: "/thankyou-review",
+    name: "Thank Review",
+    index: 16,
+    component: function component() {
+      return __webpack_require__.e(/*! import() */ "resources_js_views_ThankyouReview_vue").then(__webpack_require__.bind(__webpack_require__, /*! ./views/ThankyouReview.vue */ "./resources/js/views/ThankyouReview.vue"));
+    }
+  }, {
+    path: "/thankyou-quote",
+    name: "Thank Quote",
+    index: 16,
+    component: function component() {
+      return __webpack_require__.e(/*! import() */ "resources_js_views_ThankyouQuote_vue").then(__webpack_require__.bind(__webpack_require__, /*! ./views/ThankyouQuote.vue */ "./resources/js/views/ThankyouQuote.vue"));
     }
   }, {
     path: "*",
@@ -5737,20 +5763,22 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => __WEBPACK_DEFAULT_EXPORT__
 /* harmony export */ });
-/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm.js");
-/* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
+/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm.js");
+/* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
 /* harmony import */ var _destinationController__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./destinationController */ "./resources/js/store/destinationController.js");
 /* harmony import */ var _tourController__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./tourController */ "./resources/js/store/tourController.js");
 /* harmony import */ var _blogController__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./blogController */ "./resources/js/store/blogController.js");
 /* harmony import */ var _operatorController__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./operatorController */ "./resources/js/store/operatorController.js");
+/* harmony import */ var vuex_persistedstate__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! vuex-persistedstate */ "./node_modules/vuex-persistedstate/dist/vuex-persistedstate.es.js");
 
 
 
 
 
 
-vue__WEBPACK_IMPORTED_MODULE_4__.default.use(vuex__WEBPACK_IMPORTED_MODULE_5__.default);
-var store = new vuex__WEBPACK_IMPORTED_MODULE_5__.default.Store({
+
+vue__WEBPACK_IMPORTED_MODULE_5__.default.use(vuex__WEBPACK_IMPORTED_MODULE_6__.default);
+var store = new vuex__WEBPACK_IMPORTED_MODULE_6__.default.Store({
   modules: {
     destinationController: _destinationController__WEBPACK_IMPORTED_MODULE_0__.default,
     tourController: _tourController__WEBPACK_IMPORTED_MODULE_1__.default,
@@ -5784,7 +5812,8 @@ var store = new vuex__WEBPACK_IMPORTED_MODULE_5__.default.Store({
     request_status: function request_status(state) {
       return state.request_status;
     }
-  }
+  },
+  plugins: [(0,vuex_persistedstate__WEBPACK_IMPORTED_MODULE_4__.default)()]
 });
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (store);
 
@@ -6030,12 +6059,17 @@ var state = {
   ourTours: null,
   filterTours: null,
   packageData: null,
-  where_to_search: null,
-  start_date: null,
+  tourActivity: null,
+  tourLevel: null,
+  tourFocus: null,
+  query_instore: {},
+  where_to_search: '',
+  start_date: '',
   adults_number: 1,
   children_number: 0,
   package_id: null,
-  user_id: null
+  user_id: null,
+  quoteData: {}
 };
 var getters = {
   popularTours: function popularTours(state) {
@@ -6050,6 +6084,15 @@ var getters = {
   packageData: function packageData(state) {
     return state.packageData;
   },
+  tourActivity: function tourActivity(state) {
+    return state.tourActivity;
+  },
+  tourLevel: function tourLevel(state) {
+    return state.tourLevel;
+  },
+  tourFocus: function tourFocus(state) {
+    return state.tourFocus;
+  },
   where_to_search: function where_to_search(state) {
     return state.where_to_search;
   },
@@ -6062,6 +6105,12 @@ var getters = {
   children_number: function children_number(state) {
     return state.children_number;
   },
+  query_instore: function query_instore(state) {
+    return state.query_instore;
+  },
+  quoteData: function quoteData(state) {
+    return state.quoteData;
+  },
   package_id: function package_id(state) {
     return state.package_id;
   },
@@ -6071,8 +6120,16 @@ var getters = {
 };
 var mutations = {
   setPopularTours: function setPopularTours(state, data) {
-    // console.log("popular tour", data);
     state.popularTours = data;
+  },
+  setTourActivity: function setTourActivity(state, data) {
+    state.tourActivity = data;
+  },
+  setTourLevel: function setTourLevel(state, data) {
+    state.tourLevel = data;
+  },
+  setTourFocus: function setTourFocus(state, data) {
+    state.tourFocus = data;
   },
   setOurTours: function setOurTours(state, data) {
     state.ourTours = data;
@@ -6083,6 +6140,9 @@ var mutations = {
   setTourById: function setTourById(state, data) {
     state.packageData = data;
   },
+  setQuery: function setQuery(state, data) {
+    state.query_instore = data;
+  },
   setSearchData: function setSearchData(state, data) {
     state.where_to_search = data.where_to_search;
     state.start_date = data.start_date;
@@ -6092,6 +6152,9 @@ var mutations = {
   setTourInfo: function setTourInfo(state, data) {
     state.package_id = data.package_id;
     state.user_id = data.user_id;
+  },
+  setQuotePackage: function setQuotePackage(state, data) {
+    state.quoteData = data;
   }
 };
 var actions = {
@@ -6124,21 +6187,81 @@ var actions = {
       }, _callee);
     }))();
   },
-  getTourFilter: function getTourFilter(context, query) {
+  getTourActivity: function getTourActivity(context) {
     return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee2() {
       return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee2$(_context2) {
         while (1) {
           switch (_context2.prev = _context2.next) {
             case 0:
+              _context2.next = 2;
+              return axios__WEBPACK_IMPORTED_MODULE_1___default().get("/api/tour/activity").then(function (res) {
+                context.commit("setTourActivity", res.data.tourActivities);
+              })["catch"](function (err) {});
+
+            case 2:
+            case "end":
+              return _context2.stop();
+          }
+        }
+      }, _callee2);
+    }))();
+  },
+  getTourFocus: function getTourFocus(context) {
+    return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee3() {
+      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee3$(_context3) {
+        while (1) {
+          switch (_context3.prev = _context3.next) {
+            case 0:
+              _context3.next = 2;
+              return axios__WEBPACK_IMPORTED_MODULE_1___default().get("/api/tour/focus").then(function (res) {
+                context.commit("setTourFocus", res.data.tourFocus);
+              })["catch"](function (err) {});
+
+            case 2:
+            case "end":
+              return _context3.stop();
+          }
+        }
+      }, _callee3);
+    }))();
+  },
+  getTourLevel: function getTourLevel(context) {
+    return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee4() {
+      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee4$(_context4) {
+        while (1) {
+          switch (_context4.prev = _context4.next) {
+            case 0:
               context.commit("setRequestLoadingStatus", true, {
                 root: true
               });
-              _context2.next = 3;
+              _context4.next = 3;
+              return axios__WEBPACK_IMPORTED_MODULE_1___default().get("/api/tour/level").then(function (res) {
+                context.commit("setTourLevel", res.data.tourlevels);
+              })["catch"](function (err) {});
+
+            case 3:
+            case "end":
+              return _context4.stop();
+          }
+        }
+      }, _callee4);
+    }))();
+  },
+  getTourFilter: function getTourFilter(context, query) {
+    return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee5() {
+      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee5$(_context5) {
+        while (1) {
+          switch (_context5.prev = _context5.next) {
+            case 0:
+              context.commit("setRequestLoadingStatus", true, {
+                root: true
+              });
+              _context5.next = 3;
               return axios__WEBPACK_IMPORTED_MODULE_1___default().get("/api/tour/filter", {
                 params: query
               }).then(function (res) {
                 // console.log("filter result", res);
-                context.commit("setFilterTours", res.data.tours);
+                context.commit("setFilterTours", res.data);
                 context.commit("setRequestLoadingStatus", false, {
                   root: true
                 });
@@ -6150,22 +6273,22 @@ var actions = {
 
             case 3:
             case "end":
-              return _context2.stop();
+              return _context5.stop();
           }
         }
-      }, _callee2);
+      }, _callee5);
     }))();
   },
   getTourById: function getTourById(context, id) {
-    return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee3() {
-      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee3$(_context3) {
+    return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee6() {
+      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee6$(_context6) {
         while (1) {
-          switch (_context3.prev = _context3.next) {
+          switch (_context6.prev = _context6.next) {
             case 0:
               context.commit("setRequestLoadingStatus", true, {
                 root: true
               });
-              _context3.next = 3;
+              _context6.next = 3;
               return axios__WEBPACK_IMPORTED_MODULE_1___default().get("/api/tour/package/" + id).then(function (res) {
                 // console.log("one result", res.data.package);
                 context.commit("setTourById", res.data["package"]);
@@ -6180,10 +6303,10 @@ var actions = {
 
             case 3:
             case "end":
-              return _context3.stop();
+              return _context6.stop();
           }
         }
-      }, _callee3);
+      }, _callee6);
     }))();
   },
   //save search data item to store to use other pages...
@@ -6193,6 +6316,14 @@ var actions = {
   //save package and user id data to store to use quote page...
   setTourInfo: function setTourInfo(context, tour_info) {
     context.commit("setTourInfo", tour_info);
+  },
+  //save query data in store
+  setQuery: function setQuery(context, query) {
+    context.commit("setQuery", query);
+  },
+  //save quote data in store (package name, etc)
+  setQuotePackage: function setQuotePackage(context, quoteData) {
+    context.commit("setQuotePackage", quoteData);
   }
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
@@ -11210,7 +11341,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ".nav-item {\n  padding: 10px 8px 10px 8px;\n  text-decoration: none;\n  display: inline-block;\n  /* color: #fff; */\n  font-family: \"Montserrat\", sans-serif;\n  font-weight: 700;\n  font-size: 13px;\n  text-transform: uppercase;\n  outline: none;\n}\n\n.navbar {\n  position: fixed;\n  top: 0;\n  width: 100%;\n  z-index: 1020;\n}\n\n.navbar-brand img {\n  height: 60px;\n}\n\n.navbar-nav {\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  text-align: center;\n}\n\n@media (max-width: 1260px) {\n  .navbar-brand img {\n    height: 40px;\n  }\n}\n@media (max-width: 1200px) {\n  .navbar-brand img {\n    height: 30px;\n  }\n\n  .navbar.navbar-expand-lg {\n    padding-left: 10px !important;\n    padding-right: 10px !important;\n  }\n}\n@media (max-width: 992px) {\n  .navbar-brand img {\n    height: 50px;\n  }\n}\nfooter {\n  padding-top: 50px;\n  background: #0f1a2e;\n}\n\nfooter h6,\nfooter li a {\n  color: white;\n}\n\n#about_us_page {\n  background-color: #f2f2f2;\n  padding-top: 50px;\n  padding-bottom: 100px;\n}\n\n#about_us_page section {\n  margin-top: 100px;\n}\n\n#about_us_page div.description {\n  font-size: 1.1rem;\n  font-family: \"Open Sans\", sans-serif;\n}\n\n#about_us_page .fa {\n  font-size: 3rem;\n}\n\n#about_us_page .bg-image {\n  background-size: cover;\n  position: relative;\n  width: 250px;\n  height: 0;\n  padding-top: 250px;\n  border-radius: 0.25rem;\n  margin: 10px;\n}\n\n#about_us_page .card {\n  flex-direction: row;\n}\n\n#about_us_page .card-body {\n  width: calc(100% - 250px);\n}\n\n#about_us_page .developer-photo {\n  background-size: cover;\n  position: relative;\n  width: 250px;\n  height: 0;\n  padding-top: 250px;\n  border-radius: 0.25rem;\n  margin-left: calc(50% - 125px);\n  margin-bottom: 30px;\n}\n\n@media (max-width: 991px) {\n  #about_us_page .card {\n    flex-direction: column;\n  }\n\n  #about_us_page .card-body {\n    width: 100%;\n  }\n\n  #about_us_page .bg-image {\n    margin-left: calc(50% - 125px);\n  }\n}\n#our-tours {\n  background-color: #f2f2f2;\n  padding-top: 120px;\n  padding-bottom: 100px;\n}\n\n.tagpill-group {\n  display: flex;\n  width: 100%;\n  list-style: none;\n  list-style-image: none;\n  flex-wrap: wrap;\n  font-size: 15px;\n  align-items: center;\n}\n\n.tagpill-list {\n  border: 1px solid #0f6d24;\n  border-radius: 5px;\n  background-color: white;\n}\n\n.tagpill-list.all {\n  border: 1px solid #f93154;\n  border-radius: 5px;\n}\n\n.tagpill-list.all span {\n  color: #f93154;\n}\n\n.tagpill-list span {\n  color: #0f6d24;\n  cursor: pointer;\n}\n\n.read-more.text-danger {\n  cursor: pointer;\n}\n\n#our-tours .fa-map-marker,\n#our-tours .fa-calendar,\n#our-tours .fa-users {\n  color: #f80c35;\n  font-size: 20px;\n}\n\n#our-tours input.w-100 {\n  border: none;\n  outline: none;\n}\n\n#our-tours .mobile-filter {\n  margin: 7px 0px;\n  height: 3.25rem;\n}\n\n#our-tours .where_to_dropdown,\n#our-tours .traveler-dropdown {\n  position: relative;\n  z-index: 222;\n  width: 100% !important;\n}\n\n#our-tours button.btn-danger > span {\n  font-size: 18px;\n}\n\n.mobile-filter-close,\n.mobile-filter-button,\n.mobile-sidebar-trigger {\n  display: none;\n}\n\n.overlay-mobile {\n  position: fixed;\n  top: 0;\n  left: 0;\n  width: 100vh;\n  height: 100vh;\n  background-color: rgba(0, 0, 0, 0.3);\n  z-index: 1021;\n}\n\n.filter-option-close {\n  cursor: pointer;\n}\n\n@media (max-width: 991px) {\n  .mobile-filter-none {\n    display: none;\n  }\n\n  .mobile-filter-close {\n    display: block;\n    position: fixed;\n    z-index: 9999;\n    transition: cubic-bezier(0.785, 0.135, 0.15, 0.86) 0.5s;\n    -webkit-animation-name: sidebar;\n            animation-name: sidebar;\n    width: 100%;\n    right: -100%;\n    top: 0;\n  }\n\n  .mobile-filter-button {\n    display: block;\n    position: fixed;\n    z-index: 9999;\n    transition: cubic-bezier(0.785, 0.135, 0.15, 0.86) 0.5s;\n    -webkit-animation-name: sidebar;\n            animation-name: sidebar;\n    width: 100%;\n    right: -100%;\n    bottom: 0;\n  }\n\n  .filters {\n    padding-left: 30px !important;\n    padding-right: 30px !important;\n    padding-top: 100px !important;\n    padding-bottom: 0 !important;\n    position: fixed;\n    right: -100%;\n    background-color: #fff;\n    border-left: 1px solid #e2e1e1;\n    z-index: 1022;\n    padding: 2.5rem 0 0 0;\n    top: 0;\n    margin-top: 0;\n    overflow: scroll;\n    height: 100%;\n    width: 100%;\n    transform: translate3d(0, 0, 0);\n    will-change: transform;\n    transition: transform 0.2s cubic-bezier(0.4, 0, 1, 1);\n    -webkit-backface-visibility: hidden;\n            backface-visibility: hidden;\n    background-color: #f1f1f1;\n    transition: cubic-bezier(0.785, 0.135, 0.15, 0.86) 0.5s;\n    -webkit-animation-name: sidebar;\n            animation-name: sidebar;\n  }\n\n  @-webkit-keyframes sidebar {\n    0% {\n      right: -100%;\n    }\n    100% {\n      right: 0;\n    }\n  }\n\n  @keyframes sidebar {\n    0% {\n      right: -100%;\n    }\n    100% {\n      right: 0;\n    }\n  }\n  .mobile-search-button {\n    display: block;\n    position: absolute;\n    z-index: 9999;\n    width: 100%;\n    background-color: #f1f1f1;\n    bottom: 0;\n    left: 0;\n  }\n\n  .mobile-sidebar-trigger {\n    display: block;\n  }\n}\n@media (min-width: 744px) and (max-width: 991px) {\n  .filters,\n.mobile-filter-close,\n.mobile-filter-button {\n    width: 70%;\n  }\n}\n.tour-landing-page {\n  background-color: #f2f2f2;\n  padding-top: 120px;\n  padding-bottom: 100px;\n}\n\nh1,\nh2,\nh3,\nh4,\nh5,\nh6 {\n  font-family: \"Montserrat\", sans-serif;\n  font-weight: 400;\n  margin: 0 0 20px 0;\n  padding: 0;\n}\n\n.main-banner {\n  /* min-height: 600px; */\n  background-image: url(\"/images/mainbanner2.jpg\");\n  position: relative;\n  height: 80vh;\n  display: table;\n  width: 100%;\n  background-size: cover;\n  background-repeat: no-repeat;\n  background-position: center top;\n  background-attachment: fixed;\n}\n\n.main-banner h2 {\n  margin-top: 50px;\n  color: #fff;\n  font-size: 48px;\n  font-weight: 700;\n  text-shadow: 2px 2px 5px #000;\n  -webkit-animation-delay: 2s;\n          animation-delay: 2s;\n  -webkit-animation: fadeIn 1s;\n          animation: fadeIn 1s;\n  visibility: visible;\n}\n\n.main-banner .fa-map-marker,\n.main-banner .fa-calendar,\n.main-banner .fa-users {\n  color: #f80c35;\n  font-size: 25px;\n}\n\n.main-banner .mobile-filter > .btn {\n  font-size: 18px;\n}\n\n.onepixel-padding {\n  padding: 0 1px;\n}\n\n.main-banner h4 {\n  font-weight: bold;\n  font-size: 25px;\n  text-shadow: 2px 2px 5px #000;\n  -webkit-animation-delay: 1s;\n          animation-delay: 1s;\n  -webkit-animation: bounceIn 1s;\n          animation: bounceIn 1s;\n  visibility: visible;\n}\n\n.why-us {\n  background-image: linear-gradient(to bottom, rgba(210, 211, 218, 0), rgba(0, 0, 0, 0.73)), url(/images/why_us.jpg);\n  height: 400px;\n  background-size: cover;\n  background-attachment: fixed;\n}\n\n.why-us h3,\n.reviews_testimonial h3 {\n  text-shadow: 2px 2px 5px #000;\n}\n\n.reviews_testimonial {\n  background-image: linear-gradient(to bottom, rgba(210, 211, 218, 0), rgba(0, 0, 0, 0.73)), url(/images/reviews_testimonial.jpg);\n  height: 400px;\n  background-size: cover;\n  background-attachment: fixed;\n}\n\n.section-header h3 {\n  font-size: 32px;\n  color: #0f1a2e;\n  text-transform: uppercase;\n  text-align: center;\n  font-weight: 700;\n  position: relative;\n  padding-bottom: 15px;\n}\n\n.section-header h3:after {\n  content: \"\";\n  position: absolute;\n  display: block;\n  width: 40px;\n  height: 3px;\n  background: #ff294b;\n  bottom: 0;\n  left: calc(50% - 20px);\n}\n\n.section-header h3::before {\n  content: \"\";\n  position: absolute;\n  display: block;\n  width: 120px;\n  height: 1px;\n  background: #ddd;\n  bottom: 1px;\n  left: calc(50% - 60px);\n}\n\n#popular-tour,\n#about-us,\n#top-destination {\n  background-size: cover;\n  padding: 60px 0 40px 0;\n  position: relative;\n}\n\n#top-destination .card {\n  position: relative;\n  cursor: pointer;\n  top: 0;\n  transition: top ease 0.5s;\n}\n\n#top-destination .card:hover {\n  top: -10px;\n}\n\n#top-destination .mask,\n#about-us .mask {\n  background-color: rgba(251, 251, 251, 0.15);\n}\n\n#about-us .bg-image {\n  background-size: cover;\n  position: relative;\n  width: 100%;\n  height: 0;\n  padding-top: 56.25%;\n}\n\n#top-destination .bg-image {\n  background-size: cover;\n  position: relative;\n  width: 100%;\n  height: 0;\n  padding-top: 100%;\n}\n\n#top-destination .overlay-text {\n  position: absolute;\n  top: 0;\n  right: 0;\n  left: 0;\n  bottom: 0;\n  margin: auto;\n  font-family: coolvetica;\n  color: white;\n  font-size: 25px;\n  letter-spacing: 1px;\n  text-transform: uppercase;\n  font-weight: bolder;\n  display: flex;\n  align-items: center;\n  text-align: center;\n  justify-content: center;\n  background-color: rgba(15, 26, 46, 0.34);\n}\n\n#top-destination .fa-angle-right,\n#about-us .fa-angle-right,\n#about-us .fa-angle-double-right {\n  font-size: 16px;\n}\n\n.fa-star.checked,\n.fa-star-o,\n.fa-star-half-full.checked {\n  color: #ff294b;\n}\n\n.reviews_testimonial .wrap {\n  position: relative;\n  width: 60%;\n  margin-left: 20%;\n}\n\n.main-banner .wrapper {\n  width: 55.625rem;\n  max-width: 100%;\n  position: relative;\n  margin: 0 auto;\n  padding: 1.875rem 0.625rem;\n  left: 0;\n  right: 0;\n  z-index: 6;\n  text-align: center;\n}\n\n.main-banner input {\n  border: none;\n  outline: none;\n}\n\n.triangule-where::before {\n  position: absolute;\n  top: -0.4375rem;\n  left: 1.1875rem;\n  transform: rotate(-45deg);\n  content: \"\";\n  display: block;\n  width: 1rem;\n  height: 1rem;\n  border: 0.0625rem solid #ffa900;\n  background-color: #ffa900;\n  z-index: 0;\n}\n\n.triangule-where div:hover:not(:first-child) {\n  background-color: #f1f1f1;\n  cursor: pointer;\n}\n\n.vue-numeric-input input {\n  text-align: center !important;\n}\n\n.vue-numeric-input .btn-decrement .btn-icon:before,\n.vue-numeric-input .btn-increment .btn-icon:before {\n  width: 30% !important;\n}\n\n.vdp-datepicker input {\n  width: 100%;\n  border: none;\n  outline: none;\n}\n\n.vdp-datepicker__calendar {\n  top: 55px;\n}\n\ninput#traveler_input {\n  width: 100px;\n}\n\n.page-link {\n  cursor: pointer !important;\n  padding: 5px 10px;\n  border: solid 1px #c5c5c5;\n  border-radius: 3px;\n  margin: 0px 1px;\n}\n\n.VuePagination__count {\n  display: none;\n}\n\n.where_to_dropdown,\n.traveler-dropdown {\n  position: absolute;\n  z-index: 2222;\n}\n\n.vdp-datepicker__calendar {\n  left: -50px;\n}\n\n#about-us .card-text::before {\n  position: absolute;\n  content: \"\";\n  inset-block-end: 0;\n  /* \"bottom\" */\n  inset-inline-end: 0;\n}\n\n#about-us .card-text::after {\n  content: \"\";\n  position: absolute;\n  inset-inline-end: 0;\n  /* \"right\" */\n  width: 1rem;\n  height: 1rem;\n  background: white;\n}\n\n.traveler-dropdown {\n  width: 380px;\n}\n\n@media (min-width: 970px) {\n  .main-banner .wrapper {\n    max-width: 90%;\n    padding: 0;\n    margin-top: -8.1875rem;\n  }\n}\n@media (min-width: 767px) {\n  .main-banner form {\n    padding: 0.8125rem;\n    background-color: rgba(0, 0, 0, 0.45);\n    border-radius: 0 10px 10px 0;\n    height: 4.75rem;\n    margin: 0 0.75rem;\n  }\n\n  .main-banner .wrapper {\n    position: absolute;\n    top: 45%;\n    margin-top: -7.125rem;\n    margin-bottom: 0;\n    padding: 0;\n  }\n}\n@media (max-width: 767px) {\n  .main-banner .wrapper {\n    width: 100%;\n    padding-top: 100px;\n  }\n\n  .main-banner h2 {\n    font-size: 40px;\n  }\n\n  .reviews_testimonial .wrap {\n    position: relative;\n    width: 90%;\n    margin-left: 5%;\n  }\n\n  .mobile-filter {\n    margin: 7px 0px;\n    height: 3.75rem;\n    padding: 0 30px !important;\n  }\n\n  .where_to_dropdown,\n.traveler-dropdown {\n    position: relative;\n    z-index: 222;\n    width: 100% !important;\n  }\n}\n@-webkit-keyframes fadeIn {\n  from {\n    opacity: 0;\n  }\n  to {\n    opacity: 1;\n  }\n}\n@keyframes fadeIn {\n  from {\n    opacity: 0;\n  }\n  to {\n    opacity: 1;\n  }\n}\n@-webkit-keyframes bounceIn {\n  0%, 20%, 40%, 60%, 80%, 100% {\n    -webkit-animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);\n            animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);\n  }\n  0% {\n    opacity: 0;\n    transform: scale3d(0.3, 0.3, 0.3);\n  }\n  20% {\n    transform: scale3d(1.1, 1.1, 1.1);\n  }\n  40% {\n    transform: scale3d(0.9, 0.9, 0.9);\n  }\n  60% {\n    opacity: 1;\n    transform: scale3d(1.03, 1.03, 1.03);\n  }\n  80% {\n    transform: scale3d(0.97, 0.97, 0.97);\n  }\n  100% {\n    opacity: 1;\n    transform: scaleX(1);\n  }\n}\n@keyframes bounceIn {\n  0%, 20%, 40%, 60%, 80%, 100% {\n    -webkit-animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);\n            animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);\n  }\n  0% {\n    opacity: 0;\n    transform: scale3d(0.3, 0.3, 0.3);\n  }\n  20% {\n    transform: scale3d(1.1, 1.1, 1.1);\n  }\n  40% {\n    transform: scale3d(0.9, 0.9, 0.9);\n  }\n  60% {\n    opacity: 1;\n    transform: scale3d(1.03, 1.03, 1.03);\n  }\n  80% {\n    transform: scale3d(0.97, 0.97, 0.97);\n  }\n  100% {\n    opacity: 1;\n    transform: scaleX(1);\n  }\n}\n.success-notify {\n  padding: 10px 20px;\n  background-color: #bbf5bb;\n  border-radius: 10px;\n}\n\n.success-notify .notification-title {\n  font-size: 18px;\n  color: #266b2a;\n}\n\n.success-notify .notification-content {\n  font-size: 15px;\n  color: #266b2a;\n}\n\n.warning-notify {\n  padding: 10px 20px;\n  background-color: #f04d2f;\n  border-radius: 10px;\n}\n\n.warning-notify .notification-title {\n  font-size: 18px;\n  color: white;\n}\n\n.warning-notify .notification-content {\n  font-size: 15px;\n  color: white;\n}", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, ".nav-item {\n  padding: 10px 8px 10px 8px;\n  text-decoration: none;\n  display: inline-block;\n  /* color: #fff; */\n  font-family: \"Montserrat\", sans-serif;\n  font-weight: 700;\n  font-size: 13px;\n  text-transform: uppercase;\n  outline: none;\n}\n\n.navbar {\n  position: fixed;\n  top: 0;\n  width: 100%;\n  z-index: 1020;\n}\n\n.navbar-brand img {\n  height: 60px;\n}\n\n.navbar-nav {\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  text-align: center;\n}\n\n@media (max-width: 1260px) {\n  .navbar-brand img {\n    height: 40px;\n  }\n}\n@media (max-width: 1200px) {\n  .navbar-brand img {\n    height: 30px;\n  }\n\n  .navbar.navbar-expand-lg {\n    padding-left: 10px !important;\n    padding-right: 10px !important;\n  }\n}\n@media (max-width: 992px) {\n  .navbar-brand img {\n    height: 50px;\n  }\n}\nfooter {\n  padding-top: 50px;\n  background: #0f1a2e;\n}\n\nfooter h6,\nfooter li a {\n  color: white;\n}\n\n#about_us_page {\n  background-color: #f2f2f2;\n  padding-top: 50px;\n  padding-bottom: 100px;\n}\n\n#about_us_page section {\n  margin-top: 100px;\n}\n\n#about_us_page div.description {\n  font-size: 1.1rem;\n  font-family: \"Open Sans\", sans-serif;\n}\n\n#about_us_page .fa {\n  font-size: 3rem;\n}\n\n#about_us_page .bg-image {\n  background-size: cover;\n  position: relative;\n  width: 250px;\n  height: 0;\n  padding-top: 250px;\n  border-radius: 0.25rem;\n  margin: 10px;\n}\n\n#about_us_page .card {\n  flex-direction: row;\n}\n\n#about_us_page .card-body {\n  width: calc(100% - 250px);\n}\n\n#about_us_page .developer-photo {\n  background-size: cover;\n  position: relative;\n  width: 250px;\n  height: 0;\n  padding-top: 250px;\n  border-radius: 0.25rem;\n  margin-left: calc(50% - 125px);\n  margin-bottom: 30px;\n}\n\n@media (max-width: 991px) {\n  #about_us_page .card {\n    flex-direction: column;\n  }\n\n  #about_us_page .card-body {\n    width: 100%;\n  }\n\n  #about_us_page .bg-image {\n    margin-left: calc(50% - 125px);\n  }\n}\n#our-tours {\n  background-color: #f2f2f2;\n  padding-top: 120px;\n  padding-bottom: 100px;\n}\n\n.tagpill-group {\n  display: flex;\n  width: 100%;\n  list-style: none;\n  list-style-image: none;\n  flex-wrap: wrap;\n  font-size: 15px;\n  align-items: center;\n}\n\n.tagpill-list {\n  border: 1px solid #0f6d24;\n  border-radius: 5px;\n  background-color: white;\n}\n\n.tagpill-list.all {\n  border: 1px solid #f93154;\n  border-radius: 5px;\n}\n\n.tagpill-list.all span {\n  color: #f93154;\n}\n\n.tagpill-list span {\n  color: #0f6d24;\n  cursor: pointer;\n}\n\n.read-more.text-danger {\n  cursor: pointer;\n}\n\n#our-tours .fa-map-marker,\n#our-tours .fa-calendar,\n#our-tours .fa-users {\n  color: #f80c35;\n  font-size: 20px;\n}\n\n#our-tours input.w-100 {\n  border: none;\n  outline: none;\n}\n\n#our-tours .mobile-filter {\n  margin: 7px 0px;\n  height: 3.25rem;\n}\n\n#our-tours .where_to_dropdown,\n#our-tours .traveler-dropdown {\n  position: relative;\n  z-index: 222;\n  width: 100% !important;\n}\n\n#our-tours .traveler-dropdown {\n  width: 350px !important;\n}\n\n#our-tours button.btn-danger > span {\n  font-size: 18px;\n}\n\n.mobile-filter-close,\n.mobile-filter-button,\n.mobile-sidebar-trigger {\n  display: none;\n}\n\n.overlay-mobile {\n  position: fixed;\n  top: 0;\n  left: 0;\n  width: 100vh;\n  height: 100vh;\n  background-color: rgba(0, 0, 0, 0.3);\n  z-index: 1021;\n}\n\n.filter-option-close {\n  cursor: pointer;\n}\n\n@media (max-width: 991px) {\n  .mobile-filter-none {\n    display: none;\n  }\n\n  #our-tours .traveler-dropdown {\n    width: 100% !important;\n  }\n\n  .mobile-filter-close {\n    display: block;\n    position: fixed;\n    z-index: 9999;\n    transition: cubic-bezier(0.785, 0.135, 0.15, 0.86) 0.5s;\n    -webkit-animation-name: sidebar;\n            animation-name: sidebar;\n    width: 100%;\n    right: -100%;\n    top: 0;\n  }\n\n  .mobile-filter-button {\n    display: block;\n    position: fixed;\n    z-index: 9999;\n    transition: cubic-bezier(0.785, 0.135, 0.15, 0.86) 0.5s;\n    -webkit-animation-name: sidebar;\n            animation-name: sidebar;\n    width: 100%;\n    right: -100%;\n    bottom: 0;\n  }\n\n  .filters {\n    padding-left: 30px !important;\n    padding-right: 30px !important;\n    padding-top: 100px !important;\n    padding-bottom: 0 !important;\n    position: fixed;\n    right: -100%;\n    background-color: #fff;\n    border-left: 1px solid #e2e1e1;\n    z-index: 1022;\n    padding: 2.5rem 0 0 0;\n    top: 0;\n    margin-top: 0;\n    overflow: scroll;\n    height: 100%;\n    width: 100%;\n    transform: translate3d(0, 0, 0);\n    will-change: transform;\n    transition: transform 0.2s cubic-bezier(0.4, 0, 1, 1);\n    -webkit-backface-visibility: hidden;\n            backface-visibility: hidden;\n    background-color: #f1f1f1;\n    transition: cubic-bezier(0.785, 0.135, 0.15, 0.86) 0.5s;\n    -webkit-animation-name: sidebar;\n            animation-name: sidebar;\n  }\n\n  @-webkit-keyframes sidebar {\n    0% {\n      right: -100%;\n    }\n    100% {\n      right: 0;\n    }\n  }\n\n  @keyframes sidebar {\n    0% {\n      right: -100%;\n    }\n    100% {\n      right: 0;\n    }\n  }\n  .mobile-search-button {\n    display: block;\n    position: absolute;\n    z-index: 9999;\n    width: 100%;\n    background-color: #f1f1f1;\n    bottom: 0;\n    left: 0;\n  }\n\n  .mobile-sidebar-trigger {\n    display: block;\n  }\n}\n@media (min-width: 744px) and (max-width: 991px) {\n  .filters,\n.mobile-filter-close,\n.mobile-filter-button {\n    width: 70%;\n  }\n}\n.tour-landing-page {\n  background-color: #f2f2f2;\n  padding-top: 120px;\n  padding-bottom: 100px;\n}\n\nh1,\nh2,\nh3,\nh4,\nh5,\nh6 {\n  font-family: \"Montserrat\", sans-serif;\n  font-weight: 400;\n  margin: 0 0 20px 0;\n  padding: 0;\n}\n\n.main-banner {\n  /* min-height: 600px; */\n  position: relative;\n  height: 80vh;\n  display: table;\n  width: 100%;\n  background-size: cover;\n  background-repeat: no-repeat;\n  background-position: center top;\n  background-attachment: fixed;\n}\n\n.main-banner h2 {\n  margin-top: 50px;\n  color: #fff;\n  font-size: 48px;\n  font-weight: 700;\n  text-shadow: 2px 2px 5px #000;\n  -webkit-animation-delay: 2s;\n          animation-delay: 2s;\n  -webkit-animation: fadeIn 1s;\n          animation: fadeIn 1s;\n  visibility: visible;\n}\n\n.main-banner .fa-map-marker,\n.main-banner .fa-calendar,\n.main-banner .fa-users {\n  color: #f80c35;\n  font-size: 25px;\n}\n\n.main-banner .mobile-filter > .btn {\n  font-size: 18px;\n}\n\n.onepixel-padding {\n  padding: 0 1px;\n}\n\n.main-banner h4 {\n  font-weight: bold;\n  font-size: 25px;\n  text-shadow: 2px 2px 5px #000;\n  -webkit-animation-delay: 1s;\n          animation-delay: 1s;\n  -webkit-animation: bounceIn 1s;\n          animation: bounceIn 1s;\n  visibility: visible;\n}\n\n.why-us {\n  background-image: linear-gradient(to bottom, rgba(210, 211, 218, 0), rgba(0, 0, 0, 0.73)), url(\"/images/why_us.jpg\");\n  height: 400px;\n  background-size: cover;\n  background-attachment: fixed;\n}\n\n.why-us h3,\n.reviews_testimonial h3 {\n  text-shadow: 2px 2px 5px #000;\n}\n\n.reviews_testimonial {\n  background-image: linear-gradient(to bottom, rgba(210, 211, 218, 0), rgba(0, 0, 0, 0.73)), url(\"/images/reviews_testimonial.jpg\");\n  height: 400px;\n  background-size: cover;\n  background-attachment: fixed;\n}\n\n.section-header h3 {\n  font-size: 32px;\n  color: #0f1a2e;\n  text-transform: uppercase;\n  text-align: center;\n  font-weight: 700;\n  position: relative;\n  padding-bottom: 15px;\n}\n\n.section-header h3:after {\n  content: \"\";\n  position: absolute;\n  display: block;\n  width: 40px;\n  height: 3px;\n  background: #ff294b;\n  bottom: 0;\n  left: calc(50% - 20px);\n}\n\n.section-header h3::before {\n  content: \"\";\n  position: absolute;\n  display: block;\n  width: 120px;\n  height: 1px;\n  background: #ddd;\n  bottom: 1px;\n  left: calc(50% - 60px);\n}\n\n#popular-tour,\n#about-us,\n#top-destination {\n  background-size: cover;\n  padding: 60px 0 40px 0;\n  position: relative;\n}\n\n#top-destination .card {\n  position: relative;\n  cursor: pointer;\n  top: 0;\n  transition: box-shadow 0.2s ease-in-out, top ease 0.5s;\n  box-shadow: 0px 2px 3px rgba(0, 0, 0, 0.18);\n  cursor: pointer;\n}\n\n#top-destination .card:hover {\n  top: -5px;\n  box-shadow: 0px 1px 13px #666;\n}\n\n#top-destination .mask,\n#about-us .mask {\n  background-color: rgba(251, 251, 251, 0.15);\n}\n\n#about-us .bg-image {\n  background-size: cover;\n  position: relative;\n  width: 100%;\n  height: 0;\n  padding-top: 56.25%;\n}\n\n#top-destination .bg-image {\n  background-size: cover;\n  position: relative;\n  width: 100%;\n  height: 0;\n  padding-top: 100%;\n}\n\n#top-destination .overlay-text {\n  position: absolute;\n  top: 0;\n  right: 0;\n  left: 0;\n  bottom: 0;\n  margin: auto;\n  font-family: coolvetica;\n  color: white;\n  font-size: 25px;\n  letter-spacing: 1px;\n  text-transform: uppercase;\n  font-weight: bolder;\n  display: flex;\n  align-items: center;\n  text-align: center;\n  justify-content: center;\n  background-color: rgba(15, 26, 46, 0.34);\n}\n\n#top-destination .fa-angle-right,\n#about-us .fa-angle-right,\n#about-us .fa-angle-double-right {\n  font-size: 16px;\n}\n\n.fa-star.checked,\n.fa-star-o,\n.fa-star-half-full.checked {\n  color: #ff294b;\n}\n\n.reviews_testimonial .wrap {\n  position: relative;\n  width: 60%;\n  margin-left: 20%;\n}\n\n.main-banner .wrapper {\n  width: 55.625rem;\n  max-width: 100%;\n  position: relative;\n  margin: 0 auto;\n  padding: 1.875rem 0.625rem;\n  left: 0;\n  right: 0;\n  z-index: 6;\n  text-align: center;\n}\n\n.main-banner input {\n  border: none;\n  outline: none;\n}\n\n.triangule-where::before {\n  position: absolute;\n  top: -0.4375rem;\n  left: 1.1875rem;\n  transform: rotate(-45deg);\n  content: \"\";\n  display: block;\n  width: 1rem;\n  height: 1rem;\n  border: 0.0625rem solid #ffa900;\n  background-color: #ffa900;\n  z-index: 0;\n}\n\n.triangule-where div:hover:not(:first-child) {\n  background-color: #f1f1f1;\n  cursor: pointer;\n}\n\n.vue-numeric-input input {\n  text-align: center !important;\n}\n\n.vue-numeric-input .btn-decrement .btn-icon:before,\n.vue-numeric-input .btn-increment .btn-icon:before {\n  width: 30% !important;\n}\n\n.vdp-datepicker input {\n  width: 100%;\n  border: none;\n  outline: none;\n}\n\n.vdp-datepicker__calendar {\n  top: 55px;\n}\n\ninput#traveler_input {\n  width: 100px;\n}\n\n.page-link {\n  cursor: pointer !important;\n  padding: 5px 10px;\n  border: solid 1px #c5c5c5;\n  border-radius: 3px;\n  margin: 0px 1px;\n}\n\n.VuePagination__count {\n  display: none;\n}\n\n.where_to_dropdown,\n.traveler-dropdown {\n  position: absolute;\n  z-index: 2222;\n}\n\n.vdp-datepicker__calendar {\n  left: -50px;\n}\n\n#about-us .card-text::before {\n  position: absolute;\n  content: \"\";\n  inset-block-end: 0;\n  /* \"bottom\" */\n  inset-inline-end: 0;\n}\n\n#about-us .card-text::after {\n  content: \"\";\n  position: absolute;\n  inset-inline-end: 0;\n  /* \"right\" */\n  width: 1rem;\n  height: 1rem;\n  background: white;\n}\n\n.traveler-dropdown {\n  width: 380px;\n}\n\n@media (min-width: 970px) {\n  .main-banner .wrapper {\n    max-width: 90%;\n    padding: 0;\n    margin-top: -8.1875rem;\n  }\n}\n@media (min-width: 767px) {\n  .main-banner form {\n    padding: 0.8125rem;\n    background-color: rgba(0, 0, 0, 0.45);\n    border-radius: 0 10px 10px 0;\n    height: 4.75rem;\n    margin: 0 0.75rem;\n  }\n\n  .main-banner .wrapper {\n    position: absolute;\n    top: 45%;\n    margin-top: -7.125rem;\n    margin-bottom: 0;\n    padding: 0;\n  }\n}\n@media (max-width: 767px) {\n  .main-banner .wrapper {\n    width: 100%;\n    padding-top: 100px;\n  }\n\n  .main-banner h2 {\n    font-size: 40px;\n  }\n\n  .reviews_testimonial .wrap {\n    position: relative;\n    width: 90%;\n    margin-left: 5%;\n  }\n\n  .mobile-filter {\n    margin: 7px 0px;\n    height: 3.75rem;\n    padding: 0 30px !important;\n  }\n\n  .where_to_dropdown,\n.traveler-dropdown {\n    position: relative;\n    z-index: 222;\n    width: 100% !important;\n  }\n}\n@-webkit-keyframes fadeIn {\n  from {\n    opacity: 0;\n  }\n  to {\n    opacity: 1;\n  }\n}\n@keyframes fadeIn {\n  from {\n    opacity: 0;\n  }\n  to {\n    opacity: 1;\n  }\n}\n@-webkit-keyframes bounceIn {\n  0%, 20%, 40%, 60%, 80%, 100% {\n    -webkit-animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);\n            animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);\n  }\n  0% {\n    opacity: 0;\n    transform: scale3d(0.3, 0.3, 0.3);\n  }\n  20% {\n    transform: scale3d(1.1, 1.1, 1.1);\n  }\n  40% {\n    transform: scale3d(0.9, 0.9, 0.9);\n  }\n  60% {\n    opacity: 1;\n    transform: scale3d(1.03, 1.03, 1.03);\n  }\n  80% {\n    transform: scale3d(0.97, 0.97, 0.97);\n  }\n  100% {\n    opacity: 1;\n    transform: scaleX(1);\n  }\n}\n@keyframes bounceIn {\n  0%, 20%, 40%, 60%, 80%, 100% {\n    -webkit-animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);\n            animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);\n  }\n  0% {\n    opacity: 0;\n    transform: scale3d(0.3, 0.3, 0.3);\n  }\n  20% {\n    transform: scale3d(1.1, 1.1, 1.1);\n  }\n  40% {\n    transform: scale3d(0.9, 0.9, 0.9);\n  }\n  60% {\n    opacity: 1;\n    transform: scale3d(1.03, 1.03, 1.03);\n  }\n  80% {\n    transform: scale3d(0.97, 0.97, 0.97);\n  }\n  100% {\n    opacity: 1;\n    transform: scaleX(1);\n  }\n}\n.success-notify {\n  padding: 10px 20px;\n  background-color: #bbf5bb;\n  border-radius: 10px;\n}\n\n.success-notify .notification-title {\n  font-size: 18px;\n  color: #266b2a;\n}\n\n.success-notify .notification-content {\n  font-size: 15px;\n  color: #266b2a;\n}\n\n.warning-notify {\n  padding: 10px 20px;\n  background-color: #f04d2f;\n  border-radius: 10px;\n}\n\n.warning-notify .notification-title {\n  font-size: 18px;\n  color: white;\n}\n\n.warning-notify .notification-content {\n  font-size: 15px;\n  color: white;\n}", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -11403,7 +11534,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n#app {\n  display: flex;\n  min-height: 100vh;\n  flex-direction: column;\n  justify-content: space-between\n}\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n#app {\r\n  display: flex;\r\n  min-height: 100vh;\r\n  flex-direction: column;\r\n  justify-content: space-between\n}\r\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -11718,6 +11849,881 @@ process.chdir = function (dir) {
     throw new Error('process.chdir is not supported');
 };
 process.umask = function() { return 0; };
+
+
+/***/ }),
+
+/***/ "./node_modules/qs/lib/formats.js":
+/*!****************************************!*\
+  !*** ./node_modules/qs/lib/formats.js ***!
+  \****************************************/
+/***/ ((module) => {
+
+"use strict";
+
+
+var replace = String.prototype.replace;
+var percentTwenties = /%20/g;
+
+var Format = {
+    RFC1738: 'RFC1738',
+    RFC3986: 'RFC3986'
+};
+
+module.exports = {
+    'default': Format.RFC3986,
+    formatters: {
+        RFC1738: function (value) {
+            return replace.call(value, percentTwenties, '+');
+        },
+        RFC3986: function (value) {
+            return String(value);
+        }
+    },
+    RFC1738: Format.RFC1738,
+    RFC3986: Format.RFC3986
+};
+
+
+/***/ }),
+
+/***/ "./node_modules/qs/lib/index.js":
+/*!**************************************!*\
+  !*** ./node_modules/qs/lib/index.js ***!
+  \**************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+
+
+var stringify = __webpack_require__(/*! ./stringify */ "./node_modules/qs/lib/stringify.js");
+var parse = __webpack_require__(/*! ./parse */ "./node_modules/qs/lib/parse.js");
+var formats = __webpack_require__(/*! ./formats */ "./node_modules/qs/lib/formats.js");
+
+module.exports = {
+    formats: formats,
+    parse: parse,
+    stringify: stringify
+};
+
+
+/***/ }),
+
+/***/ "./node_modules/qs/lib/parse.js":
+/*!**************************************!*\
+  !*** ./node_modules/qs/lib/parse.js ***!
+  \**************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+
+
+var utils = __webpack_require__(/*! ./utils */ "./node_modules/qs/lib/utils.js");
+
+var has = Object.prototype.hasOwnProperty;
+var isArray = Array.isArray;
+
+var defaults = {
+    allowDots: false,
+    allowPrototypes: false,
+    arrayLimit: 20,
+    charset: 'utf-8',
+    charsetSentinel: false,
+    comma: false,
+    decoder: utils.decode,
+    delimiter: '&',
+    depth: 5,
+    ignoreQueryPrefix: false,
+    interpretNumericEntities: false,
+    parameterLimit: 1000,
+    parseArrays: true,
+    plainObjects: false,
+    strictNullHandling: false
+};
+
+var interpretNumericEntities = function (str) {
+    return str.replace(/&#(\d+);/g, function ($0, numberStr) {
+        return String.fromCharCode(parseInt(numberStr, 10));
+    });
+};
+
+var parseArrayValue = function (val, options) {
+    if (val && typeof val === 'string' && options.comma && val.indexOf(',') > -1) {
+        return val.split(',');
+    }
+
+    return val;
+};
+
+// This is what browsers will submit when the ✓ character occurs in an
+// application/x-www-form-urlencoded body and the encoding of the page containing
+// the form is iso-8859-1, or when the submitted form has an accept-charset
+// attribute of iso-8859-1. Presumably also with other charsets that do not contain
+// the ✓ character, such as us-ascii.
+var isoSentinel = 'utf8=%26%2310003%3B'; // encodeURIComponent('&#10003;')
+
+// These are the percent-encoded utf-8 octets representing a checkmark, indicating that the request actually is utf-8 encoded.
+var charsetSentinel = 'utf8=%E2%9C%93'; // encodeURIComponent('✓')
+
+var parseValues = function parseQueryStringValues(str, options) {
+    var obj = {};
+    var cleanStr = options.ignoreQueryPrefix ? str.replace(/^\?/, '') : str;
+    var limit = options.parameterLimit === Infinity ? undefined : options.parameterLimit;
+    var parts = cleanStr.split(options.delimiter, limit);
+    var skipIndex = -1; // Keep track of where the utf8 sentinel was found
+    var i;
+
+    var charset = options.charset;
+    if (options.charsetSentinel) {
+        for (i = 0; i < parts.length; ++i) {
+            if (parts[i].indexOf('utf8=') === 0) {
+                if (parts[i] === charsetSentinel) {
+                    charset = 'utf-8';
+                } else if (parts[i] === isoSentinel) {
+                    charset = 'iso-8859-1';
+                }
+                skipIndex = i;
+                i = parts.length; // The eslint settings do not allow break;
+            }
+        }
+    }
+
+    for (i = 0; i < parts.length; ++i) {
+        if (i === skipIndex) {
+            continue;
+        }
+        var part = parts[i];
+
+        var bracketEqualsPos = part.indexOf(']=');
+        var pos = bracketEqualsPos === -1 ? part.indexOf('=') : bracketEqualsPos + 1;
+
+        var key, val;
+        if (pos === -1) {
+            key = options.decoder(part, defaults.decoder, charset, 'key');
+            val = options.strictNullHandling ? null : '';
+        } else {
+            key = options.decoder(part.slice(0, pos), defaults.decoder, charset, 'key');
+            val = utils.maybeMap(
+                parseArrayValue(part.slice(pos + 1), options),
+                function (encodedVal) {
+                    return options.decoder(encodedVal, defaults.decoder, charset, 'value');
+                }
+            );
+        }
+
+        if (val && options.interpretNumericEntities && charset === 'iso-8859-1') {
+            val = interpretNumericEntities(val);
+        }
+
+        if (part.indexOf('[]=') > -1) {
+            val = isArray(val) ? [val] : val;
+        }
+
+        if (has.call(obj, key)) {
+            obj[key] = utils.combine(obj[key], val);
+        } else {
+            obj[key] = val;
+        }
+    }
+
+    return obj;
+};
+
+var parseObject = function (chain, val, options, valuesParsed) {
+    var leaf = valuesParsed ? val : parseArrayValue(val, options);
+
+    for (var i = chain.length - 1; i >= 0; --i) {
+        var obj;
+        var root = chain[i];
+
+        if (root === '[]' && options.parseArrays) {
+            obj = [].concat(leaf);
+        } else {
+            obj = options.plainObjects ? Object.create(null) : {};
+            var cleanRoot = root.charAt(0) === '[' && root.charAt(root.length - 1) === ']' ? root.slice(1, -1) : root;
+            var index = parseInt(cleanRoot, 10);
+            if (!options.parseArrays && cleanRoot === '') {
+                obj = { 0: leaf };
+            } else if (
+                !isNaN(index)
+                && root !== cleanRoot
+                && String(index) === cleanRoot
+                && index >= 0
+                && (options.parseArrays && index <= options.arrayLimit)
+            ) {
+                obj = [];
+                obj[index] = leaf;
+            } else {
+                obj[cleanRoot] = leaf;
+            }
+        }
+
+        leaf = obj;
+    }
+
+    return leaf;
+};
+
+var parseKeys = function parseQueryStringKeys(givenKey, val, options, valuesParsed) {
+    if (!givenKey) {
+        return;
+    }
+
+    // Transform dot notation to bracket notation
+    var key = options.allowDots ? givenKey.replace(/\.([^.[]+)/g, '[$1]') : givenKey;
+
+    // The regex chunks
+
+    var brackets = /(\[[^[\]]*])/;
+    var child = /(\[[^[\]]*])/g;
+
+    // Get the parent
+
+    var segment = options.depth > 0 && brackets.exec(key);
+    var parent = segment ? key.slice(0, segment.index) : key;
+
+    // Stash the parent if it exists
+
+    var keys = [];
+    if (parent) {
+        // If we aren't using plain objects, optionally prefix keys that would overwrite object prototype properties
+        if (!options.plainObjects && has.call(Object.prototype, parent)) {
+            if (!options.allowPrototypes) {
+                return;
+            }
+        }
+
+        keys.push(parent);
+    }
+
+    // Loop through children appending to the array until we hit depth
+
+    var i = 0;
+    while (options.depth > 0 && (segment = child.exec(key)) !== null && i < options.depth) {
+        i += 1;
+        if (!options.plainObjects && has.call(Object.prototype, segment[1].slice(1, -1))) {
+            if (!options.allowPrototypes) {
+                return;
+            }
+        }
+        keys.push(segment[1]);
+    }
+
+    // If there's a remainder, just add whatever is left
+
+    if (segment) {
+        keys.push('[' + key.slice(segment.index) + ']');
+    }
+
+    return parseObject(keys, val, options, valuesParsed);
+};
+
+var normalizeParseOptions = function normalizeParseOptions(opts) {
+    if (!opts) {
+        return defaults;
+    }
+
+    if (opts.decoder !== null && opts.decoder !== undefined && typeof opts.decoder !== 'function') {
+        throw new TypeError('Decoder has to be a function.');
+    }
+
+    if (typeof opts.charset !== 'undefined' && opts.charset !== 'utf-8' && opts.charset !== 'iso-8859-1') {
+        throw new TypeError('The charset option must be either utf-8, iso-8859-1, or undefined');
+    }
+    var charset = typeof opts.charset === 'undefined' ? defaults.charset : opts.charset;
+
+    return {
+        allowDots: typeof opts.allowDots === 'undefined' ? defaults.allowDots : !!opts.allowDots,
+        allowPrototypes: typeof opts.allowPrototypes === 'boolean' ? opts.allowPrototypes : defaults.allowPrototypes,
+        arrayLimit: typeof opts.arrayLimit === 'number' ? opts.arrayLimit : defaults.arrayLimit,
+        charset: charset,
+        charsetSentinel: typeof opts.charsetSentinel === 'boolean' ? opts.charsetSentinel : defaults.charsetSentinel,
+        comma: typeof opts.comma === 'boolean' ? opts.comma : defaults.comma,
+        decoder: typeof opts.decoder === 'function' ? opts.decoder : defaults.decoder,
+        delimiter: typeof opts.delimiter === 'string' || utils.isRegExp(opts.delimiter) ? opts.delimiter : defaults.delimiter,
+        // eslint-disable-next-line no-implicit-coercion, no-extra-parens
+        depth: (typeof opts.depth === 'number' || opts.depth === false) ? +opts.depth : defaults.depth,
+        ignoreQueryPrefix: opts.ignoreQueryPrefix === true,
+        interpretNumericEntities: typeof opts.interpretNumericEntities === 'boolean' ? opts.interpretNumericEntities : defaults.interpretNumericEntities,
+        parameterLimit: typeof opts.parameterLimit === 'number' ? opts.parameterLimit : defaults.parameterLimit,
+        parseArrays: opts.parseArrays !== false,
+        plainObjects: typeof opts.plainObjects === 'boolean' ? opts.plainObjects : defaults.plainObjects,
+        strictNullHandling: typeof opts.strictNullHandling === 'boolean' ? opts.strictNullHandling : defaults.strictNullHandling
+    };
+};
+
+module.exports = function (str, opts) {
+    var options = normalizeParseOptions(opts);
+
+    if (str === '' || str === null || typeof str === 'undefined') {
+        return options.plainObjects ? Object.create(null) : {};
+    }
+
+    var tempObj = typeof str === 'string' ? parseValues(str, options) : str;
+    var obj = options.plainObjects ? Object.create(null) : {};
+
+    // Iterate over the keys and setup the new object
+
+    var keys = Object.keys(tempObj);
+    for (var i = 0; i < keys.length; ++i) {
+        var key = keys[i];
+        var newObj = parseKeys(key, tempObj[key], options, typeof str === 'string');
+        obj = utils.merge(obj, newObj, options);
+    }
+
+    return utils.compact(obj);
+};
+
+
+/***/ }),
+
+/***/ "./node_modules/qs/lib/stringify.js":
+/*!******************************************!*\
+  !*** ./node_modules/qs/lib/stringify.js ***!
+  \******************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+
+
+var utils = __webpack_require__(/*! ./utils */ "./node_modules/qs/lib/utils.js");
+var formats = __webpack_require__(/*! ./formats */ "./node_modules/qs/lib/formats.js");
+var has = Object.prototype.hasOwnProperty;
+
+var arrayPrefixGenerators = {
+    brackets: function brackets(prefix) {
+        return prefix + '[]';
+    },
+    comma: 'comma',
+    indices: function indices(prefix, key) {
+        return prefix + '[' + key + ']';
+    },
+    repeat: function repeat(prefix) {
+        return prefix;
+    }
+};
+
+var isArray = Array.isArray;
+var push = Array.prototype.push;
+var pushToArray = function (arr, valueOrArray) {
+    push.apply(arr, isArray(valueOrArray) ? valueOrArray : [valueOrArray]);
+};
+
+var toISO = Date.prototype.toISOString;
+
+var defaultFormat = formats['default'];
+var defaults = {
+    addQueryPrefix: false,
+    allowDots: false,
+    charset: 'utf-8',
+    charsetSentinel: false,
+    delimiter: '&',
+    encode: true,
+    encoder: utils.encode,
+    encodeValuesOnly: false,
+    format: defaultFormat,
+    formatter: formats.formatters[defaultFormat],
+    // deprecated
+    indices: false,
+    serializeDate: function serializeDate(date) {
+        return toISO.call(date);
+    },
+    skipNulls: false,
+    strictNullHandling: false
+};
+
+var isNonNullishPrimitive = function isNonNullishPrimitive(v) {
+    return typeof v === 'string'
+        || typeof v === 'number'
+        || typeof v === 'boolean'
+        || typeof v === 'symbol'
+        || typeof v === 'bigint';
+};
+
+var stringify = function stringify(
+    object,
+    prefix,
+    generateArrayPrefix,
+    strictNullHandling,
+    skipNulls,
+    encoder,
+    filter,
+    sort,
+    allowDots,
+    serializeDate,
+    format,
+    formatter,
+    encodeValuesOnly,
+    charset
+) {
+    var obj = object;
+    if (typeof filter === 'function') {
+        obj = filter(prefix, obj);
+    } else if (obj instanceof Date) {
+        obj = serializeDate(obj);
+    } else if (generateArrayPrefix === 'comma' && isArray(obj)) {
+        obj = utils.maybeMap(obj, function (value) {
+            if (value instanceof Date) {
+                return serializeDate(value);
+            }
+            return value;
+        });
+    }
+
+    if (obj === null) {
+        if (strictNullHandling) {
+            return encoder && !encodeValuesOnly ? encoder(prefix, defaults.encoder, charset, 'key', format) : prefix;
+        }
+
+        obj = '';
+    }
+
+    if (isNonNullishPrimitive(obj) || utils.isBuffer(obj)) {
+        if (encoder) {
+            var keyValue = encodeValuesOnly ? prefix : encoder(prefix, defaults.encoder, charset, 'key', format);
+            return [formatter(keyValue) + '=' + formatter(encoder(obj, defaults.encoder, charset, 'value', format))];
+        }
+        return [formatter(prefix) + '=' + formatter(String(obj))];
+    }
+
+    var values = [];
+
+    if (typeof obj === 'undefined') {
+        return values;
+    }
+
+    var objKeys;
+    if (generateArrayPrefix === 'comma' && isArray(obj)) {
+        // we need to join elements in
+        objKeys = [{ value: obj.length > 0 ? obj.join(',') || null : undefined }];
+    } else if (isArray(filter)) {
+        objKeys = filter;
+    } else {
+        var keys = Object.keys(obj);
+        objKeys = sort ? keys.sort(sort) : keys;
+    }
+
+    for (var i = 0; i < objKeys.length; ++i) {
+        var key = objKeys[i];
+        var value = typeof key === 'object' && key.value !== undefined ? key.value : obj[key];
+
+        if (skipNulls && value === null) {
+            continue;
+        }
+
+        var keyPrefix = isArray(obj)
+            ? typeof generateArrayPrefix === 'function' ? generateArrayPrefix(prefix, key) : prefix
+            : prefix + (allowDots ? '.' + key : '[' + key + ']');
+
+        pushToArray(values, stringify(
+            value,
+            keyPrefix,
+            generateArrayPrefix,
+            strictNullHandling,
+            skipNulls,
+            encoder,
+            filter,
+            sort,
+            allowDots,
+            serializeDate,
+            format,
+            formatter,
+            encodeValuesOnly,
+            charset
+        ));
+    }
+
+    return values;
+};
+
+var normalizeStringifyOptions = function normalizeStringifyOptions(opts) {
+    if (!opts) {
+        return defaults;
+    }
+
+    if (opts.encoder !== null && opts.encoder !== undefined && typeof opts.encoder !== 'function') {
+        throw new TypeError('Encoder has to be a function.');
+    }
+
+    var charset = opts.charset || defaults.charset;
+    if (typeof opts.charset !== 'undefined' && opts.charset !== 'utf-8' && opts.charset !== 'iso-8859-1') {
+        throw new TypeError('The charset option must be either utf-8, iso-8859-1, or undefined');
+    }
+
+    var format = formats['default'];
+    if (typeof opts.format !== 'undefined') {
+        if (!has.call(formats.formatters, opts.format)) {
+            throw new TypeError('Unknown format option provided.');
+        }
+        format = opts.format;
+    }
+    var formatter = formats.formatters[format];
+
+    var filter = defaults.filter;
+    if (typeof opts.filter === 'function' || isArray(opts.filter)) {
+        filter = opts.filter;
+    }
+
+    return {
+        addQueryPrefix: typeof opts.addQueryPrefix === 'boolean' ? opts.addQueryPrefix : defaults.addQueryPrefix,
+        allowDots: typeof opts.allowDots === 'undefined' ? defaults.allowDots : !!opts.allowDots,
+        charset: charset,
+        charsetSentinel: typeof opts.charsetSentinel === 'boolean' ? opts.charsetSentinel : defaults.charsetSentinel,
+        delimiter: typeof opts.delimiter === 'undefined' ? defaults.delimiter : opts.delimiter,
+        encode: typeof opts.encode === 'boolean' ? opts.encode : defaults.encode,
+        encoder: typeof opts.encoder === 'function' ? opts.encoder : defaults.encoder,
+        encodeValuesOnly: typeof opts.encodeValuesOnly === 'boolean' ? opts.encodeValuesOnly : defaults.encodeValuesOnly,
+        filter: filter,
+        format: format,
+        formatter: formatter,
+        serializeDate: typeof opts.serializeDate === 'function' ? opts.serializeDate : defaults.serializeDate,
+        skipNulls: typeof opts.skipNulls === 'boolean' ? opts.skipNulls : defaults.skipNulls,
+        sort: typeof opts.sort === 'function' ? opts.sort : null,
+        strictNullHandling: typeof opts.strictNullHandling === 'boolean' ? opts.strictNullHandling : defaults.strictNullHandling
+    };
+};
+
+module.exports = function (object, opts) {
+    var obj = object;
+    var options = normalizeStringifyOptions(opts);
+
+    var objKeys;
+    var filter;
+
+    if (typeof options.filter === 'function') {
+        filter = options.filter;
+        obj = filter('', obj);
+    } else if (isArray(options.filter)) {
+        filter = options.filter;
+        objKeys = filter;
+    }
+
+    var keys = [];
+
+    if (typeof obj !== 'object' || obj === null) {
+        return '';
+    }
+
+    var arrayFormat;
+    if (opts && opts.arrayFormat in arrayPrefixGenerators) {
+        arrayFormat = opts.arrayFormat;
+    } else if (opts && 'indices' in opts) {
+        arrayFormat = opts.indices ? 'indices' : 'repeat';
+    } else {
+        arrayFormat = 'indices';
+    }
+
+    var generateArrayPrefix = arrayPrefixGenerators[arrayFormat];
+
+    if (!objKeys) {
+        objKeys = Object.keys(obj);
+    }
+
+    if (options.sort) {
+        objKeys.sort(options.sort);
+    }
+
+    for (var i = 0; i < objKeys.length; ++i) {
+        var key = objKeys[i];
+
+        if (options.skipNulls && obj[key] === null) {
+            continue;
+        }
+        pushToArray(keys, stringify(
+            obj[key],
+            key,
+            generateArrayPrefix,
+            options.strictNullHandling,
+            options.skipNulls,
+            options.encode ? options.encoder : null,
+            options.filter,
+            options.sort,
+            options.allowDots,
+            options.serializeDate,
+            options.format,
+            options.formatter,
+            options.encodeValuesOnly,
+            options.charset
+        ));
+    }
+
+    var joined = keys.join(options.delimiter);
+    var prefix = options.addQueryPrefix === true ? '?' : '';
+
+    if (options.charsetSentinel) {
+        if (options.charset === 'iso-8859-1') {
+            // encodeURIComponent('&#10003;'), the "numeric entity" representation of a checkmark
+            prefix += 'utf8=%26%2310003%3B&';
+        } else {
+            // encodeURIComponent('✓')
+            prefix += 'utf8=%E2%9C%93&';
+        }
+    }
+
+    return joined.length > 0 ? prefix + joined : '';
+};
+
+
+/***/ }),
+
+/***/ "./node_modules/qs/lib/utils.js":
+/*!**************************************!*\
+  !*** ./node_modules/qs/lib/utils.js ***!
+  \**************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+
+
+var formats = __webpack_require__(/*! ./formats */ "./node_modules/qs/lib/formats.js");
+
+var has = Object.prototype.hasOwnProperty;
+var isArray = Array.isArray;
+
+var hexTable = (function () {
+    var array = [];
+    for (var i = 0; i < 256; ++i) {
+        array.push('%' + ((i < 16 ? '0' : '') + i.toString(16)).toUpperCase());
+    }
+
+    return array;
+}());
+
+var compactQueue = function compactQueue(queue) {
+    while (queue.length > 1) {
+        var item = queue.pop();
+        var obj = item.obj[item.prop];
+
+        if (isArray(obj)) {
+            var compacted = [];
+
+            for (var j = 0; j < obj.length; ++j) {
+                if (typeof obj[j] !== 'undefined') {
+                    compacted.push(obj[j]);
+                }
+            }
+
+            item.obj[item.prop] = compacted;
+        }
+    }
+};
+
+var arrayToObject = function arrayToObject(source, options) {
+    var obj = options && options.plainObjects ? Object.create(null) : {};
+    for (var i = 0; i < source.length; ++i) {
+        if (typeof source[i] !== 'undefined') {
+            obj[i] = source[i];
+        }
+    }
+
+    return obj;
+};
+
+var merge = function merge(target, source, options) {
+    /* eslint no-param-reassign: 0 */
+    if (!source) {
+        return target;
+    }
+
+    if (typeof source !== 'object') {
+        if (isArray(target)) {
+            target.push(source);
+        } else if (target && typeof target === 'object') {
+            if ((options && (options.plainObjects || options.allowPrototypes)) || !has.call(Object.prototype, source)) {
+                target[source] = true;
+            }
+        } else {
+            return [target, source];
+        }
+
+        return target;
+    }
+
+    if (!target || typeof target !== 'object') {
+        return [target].concat(source);
+    }
+
+    var mergeTarget = target;
+    if (isArray(target) && !isArray(source)) {
+        mergeTarget = arrayToObject(target, options);
+    }
+
+    if (isArray(target) && isArray(source)) {
+        source.forEach(function (item, i) {
+            if (has.call(target, i)) {
+                var targetItem = target[i];
+                if (targetItem && typeof targetItem === 'object' && item && typeof item === 'object') {
+                    target[i] = merge(targetItem, item, options);
+                } else {
+                    target.push(item);
+                }
+            } else {
+                target[i] = item;
+            }
+        });
+        return target;
+    }
+
+    return Object.keys(source).reduce(function (acc, key) {
+        var value = source[key];
+
+        if (has.call(acc, key)) {
+            acc[key] = merge(acc[key], value, options);
+        } else {
+            acc[key] = value;
+        }
+        return acc;
+    }, mergeTarget);
+};
+
+var assign = function assignSingleSource(target, source) {
+    return Object.keys(source).reduce(function (acc, key) {
+        acc[key] = source[key];
+        return acc;
+    }, target);
+};
+
+var decode = function (str, decoder, charset) {
+    var strWithoutPlus = str.replace(/\+/g, ' ');
+    if (charset === 'iso-8859-1') {
+        // unescape never throws, no try...catch needed:
+        return strWithoutPlus.replace(/%[0-9a-f]{2}/gi, unescape);
+    }
+    // utf-8
+    try {
+        return decodeURIComponent(strWithoutPlus);
+    } catch (e) {
+        return strWithoutPlus;
+    }
+};
+
+var encode = function encode(str, defaultEncoder, charset, kind, format) {
+    // This code was originally written by Brian White (mscdex) for the io.js core querystring library.
+    // It has been adapted here for stricter adherence to RFC 3986
+    if (str.length === 0) {
+        return str;
+    }
+
+    var string = str;
+    if (typeof str === 'symbol') {
+        string = Symbol.prototype.toString.call(str);
+    } else if (typeof str !== 'string') {
+        string = String(str);
+    }
+
+    if (charset === 'iso-8859-1') {
+        return escape(string).replace(/%u[0-9a-f]{4}/gi, function ($0) {
+            return '%26%23' + parseInt($0.slice(2), 16) + '%3B';
+        });
+    }
+
+    var out = '';
+    for (var i = 0; i < string.length; ++i) {
+        var c = string.charCodeAt(i);
+
+        if (
+            c === 0x2D // -
+            || c === 0x2E // .
+            || c === 0x5F // _
+            || c === 0x7E // ~
+            || (c >= 0x30 && c <= 0x39) // 0-9
+            || (c >= 0x41 && c <= 0x5A) // a-z
+            || (c >= 0x61 && c <= 0x7A) // A-Z
+            || (format === formats.RFC1738 && (c === 0x28 || c === 0x29)) // ( )
+        ) {
+            out += string.charAt(i);
+            continue;
+        }
+
+        if (c < 0x80) {
+            out = out + hexTable[c];
+            continue;
+        }
+
+        if (c < 0x800) {
+            out = out + (hexTable[0xC0 | (c >> 6)] + hexTable[0x80 | (c & 0x3F)]);
+            continue;
+        }
+
+        if (c < 0xD800 || c >= 0xE000) {
+            out = out + (hexTable[0xE0 | (c >> 12)] + hexTable[0x80 | ((c >> 6) & 0x3F)] + hexTable[0x80 | (c & 0x3F)]);
+            continue;
+        }
+
+        i += 1;
+        c = 0x10000 + (((c & 0x3FF) << 10) | (string.charCodeAt(i) & 0x3FF));
+        out += hexTable[0xF0 | (c >> 18)]
+            + hexTable[0x80 | ((c >> 12) & 0x3F)]
+            + hexTable[0x80 | ((c >> 6) & 0x3F)]
+            + hexTable[0x80 | (c & 0x3F)];
+    }
+
+    return out;
+};
+
+var compact = function compact(value) {
+    var queue = [{ obj: { o: value }, prop: 'o' }];
+    var refs = [];
+
+    for (var i = 0; i < queue.length; ++i) {
+        var item = queue[i];
+        var obj = item.obj[item.prop];
+
+        var keys = Object.keys(obj);
+        for (var j = 0; j < keys.length; ++j) {
+            var key = keys[j];
+            var val = obj[key];
+            if (typeof val === 'object' && val !== null && refs.indexOf(val) === -1) {
+                queue.push({ obj: obj, prop: key });
+                refs.push(val);
+            }
+        }
+    }
+
+    compactQueue(queue);
+
+    return value;
+};
+
+var isRegExp = function isRegExp(obj) {
+    return Object.prototype.toString.call(obj) === '[object RegExp]';
+};
+
+var isBuffer = function isBuffer(obj) {
+    if (!obj || typeof obj !== 'object') {
+        return false;
+    }
+
+    return !!(obj.constructor && obj.constructor.isBuffer && obj.constructor.isBuffer(obj));
+};
+
+var combine = function combine(a, b) {
+    return [].concat(a, b);
+};
+
+var maybeMap = function maybeMap(val, fn) {
+    if (isArray(val)) {
+        var mapped = [];
+        for (var i = 0; i < val.length; i += 1) {
+            mapped.push(fn(val[i]));
+        }
+        return mapped;
+    }
+    return fn(val);
+};
+
+module.exports = {
+    arrayToObject: arrayToObject,
+    assign: assign,
+    combine: combine,
+    compact: compact,
+    decode: decode,
+    encode: encode,
+    isBuffer: isBuffer,
+    isRegExp: isRegExp,
+    maybeMap: maybeMap,
+    merge: merge
+};
 
 
 /***/ }),
@@ -13566,7 +14572,11 @@ var render = function() {
       _c(
         "div",
         [
-          _vm.$route.name != "404 Page" ? _c("NavBar") : _vm._e(),
+          _vm.$route.name != "404 Page" &&
+          _vm.$route.name != "Thank Review" &&
+          _vm.$route.name != "Thank Quote"
+            ? _c("NavBar")
+            : _vm._e(),
           _vm._v(" "),
           _c(
             "transition",
@@ -13583,7 +14593,11 @@ var render = function() {
         1
       ),
       _vm._v(" "),
-      _vm.$route.name != "404 Page" ? _c("Footer") : _vm._e(),
+      _vm.$route.name != "404 Page" &&
+      _vm.$route.name != "Thank Review" &&
+      _vm.$route.name != "Thank Quote"
+        ? _c("Footer")
+        : _vm._e(),
       _vm._v(" "),
       _c("notifications", {
         attrs: { group: "success", classes: "success-notify" }
@@ -13660,12 +14674,6 @@ var staticRenderFns = [
                   },
                   [_vm._v("Become a Partner")]
                 )
-              ]),
-              _vm._v(" "),
-              _c("li", { staticClass: "footerList" }, [
-                _c("a", { staticClass: "footerLink", attrs: { href: "#" } }, [
-                  _vm._v("Operator Login")
-                ])
               ]),
               _vm._v(" "),
               _c("li", { staticClass: "footerList" }, [
@@ -13817,7 +14825,9 @@ var staticRenderFns = [
                     },
                     [
                       _c("span", { staticClass: "fa fa-map-marker me-3" }),
-                      _vm._v(" NSSF Mafao House\n              Arusha Tanzania")
+                      _vm._v(
+                        " NSSF Mafao House\r\n              Arusha Tanzania"
+                      )
                     ]
                   )
                 ]),
@@ -13831,7 +14841,7 @@ var staticRenderFns = [
                     },
                     [
                       _c("span", { staticClass: "fa fa-phone-square me-2" }),
-                      _vm._v(" +255\n              758-022-567")
+                      _vm._v(" +255\r\n              758-022-567")
                     ]
                   )
                 ]),
@@ -13845,7 +14855,7 @@ var staticRenderFns = [
                     },
                     [
                       _c("span", { staticClass: "fa fa-envelope me-2" }),
-                      _vm._v("\n              info@safari-trek-beach.com")
+                      _vm._v("\r\n              info@safari-trek-beach.com")
                     ]
                   )
                 ])
@@ -13883,7 +14893,7 @@ var staticRenderFns = [
       _vm._v(" "),
       _c("div", { staticClass: "footer-copyright py-1 bg-dark" }, [
         _c("p", { staticClass: "text-light text-center mt-3" }, [
-          _vm._v("\n      © 2021 Safari Trek Beach\n    ")
+          _vm._v("\r\n      © 2021 Safari Trek Beach\r\n    ")
         ])
       ])
     ])
@@ -13965,7 +14975,7 @@ var render = function() {
                       staticClass: "nav-link",
                       class:
                         _vm.$route.name == "Tour Operators" ? "active" : "",
-                      attrs: { href: "/tour-operators" }
+                      attrs: { href: "/tour-operators/page/1" }
                     },
                     [_vm._v("TOUR OPERATORS")]
                   )
@@ -30562,6 +31572,23 @@ Vue.compile = compileToFunctions;
 
 /***/ }),
 
+/***/ "./node_modules/vuex-persistedstate/dist/vuex-persistedstate.es.js":
+/*!*************************************************************************!*\
+  !*** ./node_modules/vuex-persistedstate/dist/vuex-persistedstate.es.js ***!
+  \*************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => __WEBPACK_DEFAULT_EXPORT__
+/* harmony export */ });
+var r=function(r){return function(r){return!!r&&"object"==typeof r}(r)&&!function(r){var t=Object.prototype.toString.call(r);return"[object RegExp]"===t||"[object Date]"===t||function(r){return r.$$typeof===e}(r)}(r)},e="function"==typeof Symbol&&Symbol.for?Symbol.for("react.element"):60103;function t(r,e){return!1!==e.clone&&e.isMergeableObject(r)?u(Array.isArray(r)?[]:{},r,e):r}function n(r,e,n){return r.concat(e).map(function(r){return t(r,n)})}function o(r){return Object.keys(r).concat(function(r){return Object.getOwnPropertySymbols?Object.getOwnPropertySymbols(r).filter(function(e){return r.propertyIsEnumerable(e)}):[]}(r))}function c(r,e){try{return e in r}catch(r){return!1}}function u(e,i,a){(a=a||{}).arrayMerge=a.arrayMerge||n,a.isMergeableObject=a.isMergeableObject||r,a.cloneUnlessOtherwiseSpecified=t;var f=Array.isArray(i);return f===Array.isArray(e)?f?a.arrayMerge(e,i,a):function(r,e,n){var i={};return n.isMergeableObject(r)&&o(r).forEach(function(e){i[e]=t(r[e],n)}),o(e).forEach(function(o){(function(r,e){return c(r,e)&&!(Object.hasOwnProperty.call(r,e)&&Object.propertyIsEnumerable.call(r,e))})(r,o)||(i[o]=c(r,o)&&n.isMergeableObject(e[o])?function(r,e){if(!e.customMerge)return u;var t=e.customMerge(r);return"function"==typeof t?t:u}(o,n)(r[o],e[o],n):t(e[o],n))}),i}(e,i,a):t(i,a)}u.all=function(r,e){if(!Array.isArray(r))throw new Error("first argument should be an array");return r.reduce(function(r,t){return u(r,t,e)},{})};var i=u;function a(r){var e=(r=r||{}).storage||window&&window.localStorage,t=r.key||"vuex";function n(r,e){var t=e.getItem(r);try{return void 0!==t?JSON.parse(t):void 0}catch(r){}}function o(){return!0}function c(r,e,t){return t.setItem(r,JSON.stringify(e))}function u(r,e){return Array.isArray(e)?e.reduce(function(e,t){return function(r,e,t,n){return!/__proto__/.test(e)&&((e=e.split?e.split("."):e.slice(0)).slice(0,-1).reduce(function(r,e){return r[e]=r[e]||{}},r)[e.pop()]=t),r}(e,t,(n=r,void 0===(n=((o=t).split?o.split("."):o).reduce(function(r,e){return r&&r[e]},n))?void 0:n));var n,o},{}):r}function a(r){return function(e){return r.subscribe(e)}}(r.assertStorage||function(){e.setItem("@@",1),e.removeItem("@@")})(e);var f,s=function(){return(r.getState||n)(t,e)};return r.fetchBeforeUse&&(f=s()),function(n){r.fetchBeforeUse||(f=s()),"object"==typeof f&&null!==f&&(n.replaceState(r.overwrite?f:i(n.state,f,{arrayMerge:r.arrayMerger||function(r,e){return e},clone:!1})),(r.rehydrated||function(){})(n)),(r.subscriber||a)(n)(function(n,i){(r.filter||o)(n)&&(r.setState||c)(t,(r.reducer||u)(i,r.paths),e)})}}/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (a);
+//# sourceMappingURL=vuex-persistedstate.es.js.map
+
+
+/***/ }),
+
 /***/ "./node_modules/vuex/dist/vuex.esm.js":
 /*!********************************************!*\
   !*** ./node_modules/vuex/dist/vuex.esm.js ***!
@@ -31905,7 +32932,7 @@ var index = {
 /******/ 		// This function allow to reference async chunks
 /******/ 		__webpack_require__.u = (chunkId) => {
 /******/ 			// return url for filenames not based on template
-/******/ 			if ({"resources_js_layout_blank_Blank_vue":1,"resources_js_views_homepage_vue":1,"resources_js_views_OurTours_vue":1,"resources_js_views_TourOperators_vue":1,"resources_js_views_ContactUs_vue":1,"resources_js_views_AboutUs_vue":1,"resources_js_views_BlogPost_vue":1,"resources_js_views_Destination_vue":1,"resources_js_views_BlogInnerPage_vue":1,"resources_js_views_DestinationPackage_vue":1,"resources_js_views_TourQuote_vue":1,"resources_js_views_TourPackage_vue":1,"resources_js_views_TourLandingOne_vue":1,"resources_js_views_TourLandingTwo_vue":1,"resources_js_views_TourOperator_vue":1,"resources_js_views_BecomePartner_vue":1,"resources_js_views_TermsCondition_vue":1,"resources_js_views_Error404_vue":1}[chunkId]) return "js/" + chunkId + ".js";
+/******/ 			if ({"resources_js_layout_blank_Blank_vue":1,"resources_js_views_homepage_vue":1,"resources_js_views_OurTours_vue":1,"resources_js_views_TourOperators_vue":1,"resources_js_views_ContactUs_vue":1,"resources_js_views_AboutUs_vue":1,"resources_js_views_BlogPost_vue":1,"resources_js_views_Destination_vue":1,"resources_js_views_BlogInnerPage_vue":1,"resources_js_views_DestinationPackage_vue":1,"resources_js_views_TourQuote_vue":1,"resources_js_views_TourPackage_vue":1,"resources_js_views_TourLandingOne_vue":1,"resources_js_views_TourLandingTwo_vue":1,"resources_js_views_TourOperator_vue":1,"resources_js_views_BecomePartner_vue":1,"resources_js_views_TermsCondition_vue":1,"resources_js_views_Error404_vue":1,"resources_js_views_ThankyouReview_vue":1,"resources_js_views_ThankyouQuote_vue":1}[chunkId]) return "js/" + chunkId + ".js";
 /******/ 			// return url for filenames based on template
 /******/ 			return undefined;
 /******/ 		};

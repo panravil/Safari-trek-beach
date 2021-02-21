@@ -141,6 +141,8 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     loading: "tourcard_loading"
   })),
   created: function created() {
+    var page_title = "Safari-Trek-Beach.com Blog";
+    document.title = page_title;
     this.getListDestinations();
   },
   methods: {
@@ -172,7 +174,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n#blog-card .bg-image {\n  background-size: cover;\n  position: relative;\n  width: 100%;\n  height: 0;\n  padding-top: 56.25%;\n}\n#blog-card {\n  transition: box-shadow 0.2s ease-in-out, transform 0.3s ease-in-out;\n  box-shadow: 0px 2px 3px rgb(0 0 0 / 18%);\n  cursor: pointer;\n}\n#blog-card:hover {\nbox-shadow: 0px 1px 13px #666;\n}\n#blog-card .card-text {\n  display: -webkit-box;\n  -webkit-line-clamp: 3;\n  -webkit-box-orient: vertical;\n  position: relative;\n  --max-lines: 3;\n  min-height: 75px;\n  max-height: calc(var(--lh) * var(--max-lines));\n  overflow: hidden;\n  padding-right: 1rem;\n}\n#blog-card .card-title {\n  display: -webkit-box;\n  -webkit-line-clamp: 2;\n  -webkit-box-orient: vertical;\n  position: relative;\n  --max-lines: 2;\n  min-height: 48px;\n  max-height: calc(var(--lh) * var(--max-lines));\n  overflow: hidden;\n  padding-right: 1rem;\n}\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n#blog-card .bg-image {\r\n  background-size: cover;\r\n  position: relative;\r\n  width: 100%;\r\n  height: 0;\r\n  padding-top: 56.25%;\n}\n#blog-card {\r\n  transition: box-shadow 0.2s ease-in-out, transform 0.3s ease-in-out;\r\n  box-shadow: 0px 2px 3px rgb(0 0 0 / 18%);\r\n  cursor: pointer;\n}\n#blog-card:hover {\r\nbox-shadow: 0px 1px 13px #666;\n}\n#blog-card .card-text {\r\n  display: -webkit-box;\r\n  -webkit-line-clamp: 3;\r\n  -webkit-box-orient: vertical;\r\n  position: relative;\r\n  --max-lines: 3;\r\n  min-height: 75px;\r\n  max-height: calc(var(--lh) * var(--max-lines));\r\n  overflow: hidden;\r\n  padding-right: 1rem;\n}\n#blog-card .card-title {\r\n  display: -webkit-box;\r\n  -webkit-line-clamp: 2;\r\n  -webkit-box-orient: vertical;\r\n  position: relative;\r\n  --max-lines: 2;\r\n  min-height: 48px;\r\n  max-height: calc(var(--lh) * var(--max-lines));\r\n  overflow: hidden;\r\n  padding-right: 1rem;\n}\r\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -196,7 +198,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n.vue-content-placeholders-img,\n.vue-content-placeholders-text__line {\n    background: #c9c9c9 !important;\n}\n.vue-content-placeholders-img {\n  height: 200px !important;\n}\n\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n.vue-content-placeholders-img,\r\n.vue-content-placeholders-text__line {\r\n    background: #c9c9c9 !important;\n}\n.vue-content-placeholders-img {\r\n  height: 200px !important;\n}\r\n\r\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -220,7 +222,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n.blog-post-page {\n  padding-top: 50px;\n  padding-bottom: 100px;\n  background-color: #f2f2f2;\n}\n.blog-post-page section {\n  margin-top: 100px;\n}\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n.blog-post-page {\r\n  padding-top: 50px;\r\n  padding-bottom: 100px;\r\n  background-color: #f2f2f2;\n}\n.blog-post-page section {\r\n  margin-top: 100px;\n}\r\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -639,7 +641,11 @@ var render = function() {
             staticClass: "card-text",
             attrs: { title: _vm.blog.short_description }
           },
-          [_vm._v("\n      " + _vm._s(_vm.blog.short_description) + "\n    ")]
+          [
+            _vm._v(
+              "\r\n      " + _vm._s(_vm.blog.short_description) + "\r\n    "
+            )
+          ]
         ),
         _vm._v(" "),
         _vm._m(1)
@@ -660,9 +666,9 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c(
       "button",
-      { staticClass: "btn btn-white", attrs: { type: "button" } },
+      { staticClass: "btn btn-warning", attrs: { type: "button" } },
       [
-        _vm._v("\n      Read More "),
+        _vm._v("\r\n      Read More "),
         _c("span", { staticClass: "fa fa-angle-double-right ms-2" })
       ]
     )

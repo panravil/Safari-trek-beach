@@ -29,7 +29,7 @@
               <a class="nav-link" href="/our-tours" :class="$route.name =='Our Tours' ? 'active' : ''">OUR TOURS</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="/tour-operators" :class="$route.name =='Tour Operators' ? 'active' : ''">TOUR OPERATORS</a>
+              <a class="nav-link" href="/tour-operators/page/1" :class="$route.name =='Tour Operators' ? 'active' : ''">TOUR OPERATORS</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="/contact" :class="$route.name =='Contact Us' ? 'active' : ''">CONTACT US</a>

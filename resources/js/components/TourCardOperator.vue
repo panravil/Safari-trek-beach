@@ -1,140 +1,71 @@
 <template>
-  <div class="card mb-3 mx-2" id="tour-card" @click="toInnerPackage()">
-    <div
-      class="bg-image hover-overlay ripple"
-      data-mdb-ripple-color="light"
-      :style="{
+<div class="card mb-3 mx-2" id="tour-card" @click="toInnerPackage()">
+  <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light" :style="{
         'background-image': 'url(' + tourData.image_url + ')',
-      }"
-    >
-      <div>
-        <div
-          class="mask"
-          style="background-color: rgba(251, 251, 251, 0.15)"
-        ></div>
-      </div>
-      <div class="tour_title">
-        {{ tourData.no_of_day }}-Day {{ tourData.title }}
-      </div>
-      <img
-        :src="tourData.operator_logo"
-        style="width: 70px; height: auto; top: 0px; left: 30px"
-        class="position-absolute"
-      />
+      }">
+    <div>
+      <div class="mask" style="background-color: rgba(251, 251, 251, 0.15)"></div>
     </div>
-    <div
-      class="card-body"
-      style="
+    <div class="tour_title">
+      {{ tourData.no_of_day }}-Day {{ tourData.title }}
+    </div>
+    <img :src="tourData.operator_logo" style="width: 70px; height: auto; top: 0px; left: 30px" class="position-absolute" />
+  </div>
+  <div class="card-body" style="
         position: relative;
         border-bottom: 1px dotted black;
         font-size: 1rem;
-      "
-    >
-      <div
-        class="tag-image"
-        v-if="
+      ">
+    <div class="tag-image" v-if="
           tag !== null &&
           tag !== undefined &&
           tag !== ''
-        "
-      >
-        <img
-          v-if="tag == 'review'"
-          :src="'/images/best-review.png'"
-          style="margin-top: -15px; width: 60px; height: auto"
-        />
-        <img
-          v-else-if="tag == 'seller'"
-          :src="'/images/bestseller.png'"
-          style="width: 80px; height: auto"
-        />
-        <img
-          v-else
-          :src="'/images/toprated2.png'"
-          style="width: 100px; height: auto"
-        />
-      </div>
-      <p class="card-text mb-1">
-        <strong> Acommodation: </strong>
-        No Data
+        ">
+      <img v-if="tag == 'review'" :src="'/images/best-review.png'" style="margin-top: -3px; width: 60px; height: auto" />
+      <img v-else-if="tag == 'seller'" :src="'/images/bestseller.png'" style="width: 80px; height: auto" />
+      <img v-else :src="'/images/toprated2.png'" style="width: 100px; height: auto" />
+    </div>
+    <p class="card-text mb-1">
+      <strong> Accommodation: </strong>
+      <span v-if="tourData.no_of_day == 2">{{ tourData.no_of_day - 1 }} Night</span>
+      <span v-else-if="tourData.no_of_day > 2">{{ tourData.no_of_day - 1}} Nights</span>
+      <span v-else>No Accommodation</span>
+    </p>
+    <p class="card-text mb-1">
+      <strong> Tour Type: </strong>
+      {{ getTourLevel(tourData.level) }}
+    </p>
+    <p class="card-text mb-1 trip-route">
+      <strong> Trip Route: </strong>
+      {{ tourData.start_city }}(Start),
+      {{ getMidRoute(tourData.destination) }}
+      {{ tourData.end_city }} (End)
+    </p>
+  </div>
+  <div class="row gx-0" style="position: relative; font-size: 1rem">
+    <div>
+      <p class="card-text mb-1 ps-3">
+        {{ company_name }}
       </p>
-      <p class="card-text mb-1">
-        <strong> Tour Type: </strong>
-        {{ getTourLevel(tourData.level) }}
-      </p>
-      <p class="card-text mb-1 trip-route">
-        <strong> Trip Route: </strong>
-        {{ tourData.start_city }}(Start),
-        {{ getMidRoute(tourData.destination) }}
-        {{ tourData.end_city }} (End)
+      <p class="card-text ps-3">
+        <CustomStarRating :rating="avg_review"></CustomStarRating>
+        <strong v-if="avg_review == '5'"> &nbsp;5.0/5&nbsp;</strong>
+        <strong v-else> &nbsp;{{ avg_review }}/5&nbsp;</strong>
+        (
+        <span v-if="sum_review == 1">{{ sum_review }} Review</span>
+        <span v-else>{{ sum_review }} Reviews</span>
+        )
       </p>
     </div>
-    <div class="row gx-0" style="position: relative; font-size: 1rem">
-      <div>
-        <p class="card-text mb-1 ps-3">
-          {{ company_name }}
-        </p>
-        <p class="card-text ps-3">
-          <span class="star-rating">
-            <!-- first star -->
-            <span v-if="avg_review < 0.1" class="fa fa-star-o"></span>
-            <span
-              v-else-if="avg_review > 0.1 && avg_review < 0.5"
-              class="fa fa-star-half-full checked"
-            ></span>
-            <span v-else class="fa fa-star checked"></span>
-
-            <!-- second star -->
-            <span v-if="avg_review < 1" class="fa fa-star-o"></span>
-            <span
-              v-else-if="avg_review < 1.5"
-              class="fa fa-star-half-full checked"
-            ></span>
-            <span v-else class="fa fa-star checked"></span>
-
-            <!-- third star -->
-            <span v-if="avg_review < 2" class="fa fa-star-o"></span>
-            <span
-              v-else-if="avg_review < 2.5"
-              class="fa fa-star-half-full checked"
-            ></span>
-            <span v-else class="fa fa-star checked"></span>
-
-            <!-- fourth star -->
-            <span v-if="avg_review < 3" class="fa fa-star-o"></span>
-            <span
-              v-else-if="avg_review < 3.5"
-              class="fa fa-star-half-full checked"
-            ></span>
-            <span v-else class="fa fa-star checked"></span>
-
-            <!-- fifth star -->
-            <span v-if="avg_review < 4" class="fa fa-star-o"></span>
-            <span
-              v-else-if="avg_review < 4.5"
-              class="fa fa-star-half-full checked"
-            ></span>
-            <span v-else class="fa fa-star checked"></span>
-            <span
-              ><strong>{{ avg_review }}</strong></span
-            >
-            <span> / </span>
-            <span v-if="sum_review == 1">{{ sum_review }} Review</span>
-            <span v-else>{{ sum_review }} Reviews</span>
-          </span>
-        </p>
-      </div>
-      <div class="price">
-        <strong
-          ><span class="fa fa-dollar"></span
-          >{{ tourData.adult_currency }}</strong
-        >&nbsp;<small>pp</small>
-      </div>
+    <div class="price">
+      <strong><span class="fa fa-dollar"></span>{{ tourData.adult_currency }}</strong>&nbsp;<small>pp</small>
     </div>
   </div>
+</div>
 </template>
 
 <script>
+import CustomStarRating from "../components/CustomStarRating";
 export default {
   props: {
     tourData: Object,
@@ -142,6 +73,9 @@ export default {
     tag: String,
     avg_review: Number,
     sum_review: Number,
+  },
+  components: {
+    CustomStarRating,
   },
   computed: {},
   data() {
@@ -176,9 +110,17 @@ export default {
     },
 
     toInnerPackage() {
-      this.$router
-        .push("/tour-package/" + this.tourData.package_id)
-        .catch(() => {});
+      // this.$router
+      //   .push("/tour-package/" + this.tourData.package_id)
+      //   .catch(() => {});
+      let routeData = this.$router.resolve({
+        name: "Tour Package",
+        params: {
+          id: this.tourData.package_id
+        }
+      });
+      
+      window.open(routeData.href, '_blank');
     },
   },
 };
@@ -186,7 +128,7 @@ export default {
 
 <style>
 #tour-card .price {
-  width: 80px;
+  width: 90px;
   color: #0f6d24;
   right: 5px;
   bottom: 0px;
@@ -203,7 +145,7 @@ export default {
 #tour-card .tag-image {
   top: -12px;
   position: absolute;
-  right: 25px;
+  right: 10px;
 }
 
 #tour-card .bg-image {
@@ -221,14 +163,12 @@ export default {
   bottom: 0;
   right: 0;
   text-align: left;
-  padding: 20px 10px;
+  padding: 15px 10px;
   background: rgba(0, 0, 0, 0.4);
-  background: linear-gradient(
-    to bottom,
-    rgba(0, 0, 0, 0) 0%,
-    rgba(0, 0, 0, 0.5) 45%,
-    rgba(0, 0, 0, 0.9) 100%
-  );
+  background: linear-gradient(to bottom,
+      rgba(0, 0, 0, 0) 0%,
+      rgba(0, 0, 0, 0.5) 45%,
+      rgba(0, 0, 0, 0.9) 100%);
   color: white;
   text-align: center;
   font-weight: 700;
@@ -246,6 +186,7 @@ export default {
 #tour-card.card:hover {
   box-shadow: 0px 1px 13px #666;
 }
+
 .trip-route {
   min-height: 75px;
 }

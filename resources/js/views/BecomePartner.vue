@@ -33,6 +33,12 @@
             <div class="col-md-6 col-sm-12 px-3 mt-3">
               <ejs-textbox v-model="tourType" floatLabelType="Auto" type="text" placeholder="Tour Type" required></ejs-textbox>
             </div>
+            <div class="col-md-6 col-sm-12 px-3 mt-3">
+              <ejs-textbox v-model="office_location" floatLabelType="Auto" type="text" placeholder="Office Location" required></ejs-textbox>
+            </div>
+            <div class="col-md-6 col-sm-12 px-3 mt-3">
+              <ejs-textbox v-model="website_url" floatLabelType="Auto" type="text" placeholder="Website URL" required></ejs-textbox>
+            </div>
             <div class="col-sm-12 px-3 mt-3">
               <ejs-textbox v-model="companyBrief" :multiline="true" floatLabelType="Auto" placeholder="Company Brief" required></ejs-textbox>
             </div>
@@ -42,7 +48,7 @@
 
             <p class="px-3 mt-3">
               <ejs-checkbox v-model="conditions" label="I agree to the Safari-Trek-Beach" required></ejs-checkbox>
-              <a href="/terms"><span class=" text-decoration-underline text-dark" style="font-size: 13px">Terms and Condition.</span></a>
+              <a href="/terms" target="_blank"><span class=" text-decoration-underline text-dark" style="font-size: 13px">Terms and Condition.</span></a>
             </p>
 
             <div class="px-3 my-3">
@@ -95,7 +101,13 @@ export default {
       companyBrief: '',
       companyDescription: '',
       conditions: false,
+      office_location: '',
+      website_url: '',
     };
+  },
+  created() {
+    document.title = "Become a Partner of Safari-Trek-Beach.com"
+    this.search_result = this.where_to_list;
   },
   computed: {
     ...mapGetters({

@@ -17,13 +17,15 @@
           tourData.tag !== undefined &&
           tourData.tag !== ''
         ">
-      <img v-if="tourData.tag == 'review'" :src="'/images/best-review.png'" style="margin-top: -15px; width: 60px; height: auto" />
+      <img v-if="tourData.tag == 'review'" :src="'/images/best-review.png'" style="margin-top: -3px; width: 60px; height: auto" />
       <img v-else-if="tourData.tag == 'seller'" :src="'/images/bestseller.png'" style="width: 80px; height: auto" />
       <img v-else :src="'/images/toprated2.png'" style="width: 100px; height: auto" />
     </div>
     <p class="card-text mb-1">
-      <strong> Acommodation: </strong>
-      No Data
+      <strong> Accommodation: </strong>
+      <span v-if="tourData.no_of_day == 2">{{ tourData.no_of_day - 1 }} Night</span>
+      <span v-else-if="tourData.no_of_day > 2">{{ tourData.no_of_day - 1}} Nights</span>
+      <span v-else>No Accommodation</span>
     </p>
     <p class="card-text mb-1">
       <strong> Tour Type: </strong>
@@ -42,18 +44,13 @@
         {{ tourData.company_name }}
       </p>
       <p class="card-text ps-3 d-flex mb-2">
-        <!-- <star-rating
-            :rating="tourData.avg_review"
-            :round-start-rating="false"
-            :read-only="true"
-            :star-size="22"
-            active-color="#f93154"
-          ></star-rating> -->
         <CustomStarRating :rating="tourData.avg_review"></CustomStarRating>
-        <strong> {{ tourData.avg_review }} </strong>
-        <span> / </span>
+        <strong v-if="tourData.avg_review == '5'"> &nbsp;5.0/5&nbsp;</strong>
+        <strong v-else> &nbsp;{{ tourData.avg_review }}/5&nbsp;</strong>
+        (
         <span v-if="tourData.sum_review == 1">{{ tourData.sum_review }} Review</span>
         <span v-else>{{ tourData.sum_review }} Reviews</span>
+        )
       </p>
     </div>
     <div class="price">
@@ -72,9 +69,8 @@ export default {
   },
   props: {
     tourData: Object,
-
     where_to_search: String,
-    start_date: Date,
+    start_date: String,
     adults_number: Number,
     children_number: Number,
   },
@@ -125,9 +121,18 @@ export default {
       }
       this.$store.dispatch("tourController/setSearchData", searchData)
 
-      this.$router
-        .push("/tour-package/" + this.tourData.package_id)
-        .catch(() => {});
+      // this.$router
+      //   .push("/tour-package/" + this.tourData.package_id)
+      //   .catch(() => {});
+
+      let routeData = this.$router.resolve({
+        name: "Tour Package",
+        params: {
+          id: this.tourData.package_id
+        }
+      });
+      
+      window.open(routeData.href, '_blank');
     },
   },
 };
@@ -135,7 +140,7 @@ export default {
 
 <style>
 #tour-card .price {
-  width: 80px;
+  width: 90px;
   color: #0f6d24;
   right: 5px;
   bottom: 0px;
@@ -152,7 +157,7 @@ export default {
 #tour-card .tag-image {
   top: -12px;
   position: absolute;
-  right: 25px;
+  right: 10px;
 }
 
 #tour-card .bg-image {
@@ -170,7 +175,7 @@ export default {
   bottom: 0;
   right: 0;
   text-align: left;
-  padding: 20px 10px;
+  padding: 15px 10px;
   background: rgba(0, 0, 0, 0.4);
   background: linear-gradient(to bottom,
       rgba(0, 0, 0, 0) 0%,

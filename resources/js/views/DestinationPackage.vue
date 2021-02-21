@@ -166,7 +166,10 @@ export default {
     async getDestinationData() {
       await this.$store
         .dispatch("destinationController/getDestinationById", this.destination_id)
-        .then(() => {});
+        .then(() => {
+          let page_title = this.destinationData.title + " - Safari-Trek-Beach"
+          document.title = page_title;
+        });
     },
 
     goToOurTourPage() {

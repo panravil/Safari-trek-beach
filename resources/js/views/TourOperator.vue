@@ -278,7 +278,8 @@ export default {
         .then(() => {
           this.getCurrentPageReviews(1);
           // console.log('tag', this.operatorData)
-
+          let page_title = this.operatorData.company_name
+          document.title = page_title;
         });
     },
 
@@ -311,17 +312,19 @@ export default {
         .dispatch("operatorController/postReview", params)
         .then(() => {
           if (this.request_status == true) {
-            this.$notify({
-              group: 'success',
-              title: 'Review Success',
-              text: 'Thank you! We have received your review. We will publish your review soon.'
-            });
+            // this.$notify({
+            //   group: 'success',
+            //   title: 'Review Success',
+            //   text: 'Thank you! We have received your review. We will publish your review soon.'
+            // });
 
             this.name = ''
             this.email = ''
             this.title = ''
             this.review = ''
             this.rating = 5
+
+             this.$router.push('/thankyou-review')
           } else {
             this.$notify({
               group: 'warning',
@@ -340,16 +343,16 @@ export default {
         })
         .catch(() => {
           this.$notify({
-              group: 'warning',
-              title: 'Submit Error !',
-              text: 'Sorry, Something went wrong...'
-            });
+            group: 'warning',
+            title: 'Submit Error !',
+            text: 'Sorry, Something went wrong...'
+          });
 
-            this.name = ''
-            this.email = ''
-            this.title = ''
-            this.review = ''
-            this.rating = 5
+          this.name = ''
+          this.email = ''
+          this.title = ''
+          this.review = ''
+          this.rating = 5
         });
     }
   },

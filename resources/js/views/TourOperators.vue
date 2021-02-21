@@ -3,7 +3,7 @@
   <div class="container">
     <section>
       <header class="section-header" data-aos="fade-up">
-        <h3>AFRICA SAFARI BOOKING OPERATORS</h3>
+        <h3>TOUR OPERATORS</h3>
       </header>
     </section>
     <div v-if="loading">
@@ -24,7 +24,11 @@
             </h6>
             <p class="mt-2">
               <CustomStarRating :rating="operator.avg_review"></CustomStarRating>
-              <span>{{ operator.avg_review }} ({{
+              <span v-if="operator.avg_review == '5'">5.0 ({{
+                  operator.sum_review
+                }}
+                Reviews)</span>
+              <span v-else>{{ operator.avg_review }} ({{
                   operator.sum_review
                 }}
                 Reviews)</span>
@@ -58,8 +62,8 @@ export default {
   name: "TourOperators",
   data() {
     return {
-      current_operator_page: 1,
-      operators_per_page: 10,
+      current_operator_page: null,
+      operators_per_page: 5,
       current_page_operators: [],
       pagenation_options: {
         chunk: 5,
@@ -72,6 +76,10 @@ export default {
     TourOperatorsSkelecton,
   },
   computed: {
+    page_id: function () {
+      var id = this.$route.params.id;
+      return id.slice(0, id.length);
+    },
     ...mapGetters({
       operatorList: "operatorController/operatorList",
       loading: "tourcard_loading",
@@ -79,21 +87,33 @@ export default {
   },
   watch: {
     current_operator_page: function (newValue) {
-      this.getCurrentPageOperators(newValue);
+      this.$router.push('/tour-operators/page/' + newValue).catch(() =>{})
     },
   },
   created() {
+    let page_title = "Tour Operators of Safari-Trek-Beach.com"
+    document.title = page_title;
+    this.current_operator_page = parseInt(this.page_id)
     this.getOperatorList();
   },
   methods: {
     getOperatorList() {
       this.$store.dispatch("operatorController/getOperatorList").then(() => {
-        this.getCurrentPageOperators(1);
+        this.getCurrentPageOperators(this.current_operator_page);
       });
     },
 
     toOperatorDetail(id) {
-      this.$router.push("/operator/" + id);
+      // this.$router.push("/operator/" + id);
+
+      let routeData = this.$router.resolve({
+        name: "Tour Operator",
+        params: {
+          id: id
+        }
+      });
+      
+      window.open(routeData.href, '_blank');
     },
 
     getCurrentPageOperators(page_num) {

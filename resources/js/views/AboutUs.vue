@@ -106,7 +106,6 @@
       <div class="mt-3 description text-center" v-html="our_community"></div>
     </section>
 
-    
   </div>
 </div>
 </template>
@@ -176,5 +175,10 @@ export default {
       our_community: "We strive to ensure that the number of women employed in tourism sector improves.<br /> We encourage tour companies to employ more women. One among our raking factors for tour companies is the number of women they have employed.",
     };
   },
+
+  created() {
+    let page_title = "About Safari-Trek-Beach.com"
+    document.title = page_title;
+  }
 };
 </script>

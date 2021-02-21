@@ -123,7 +123,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: "AboutUs",
   data: function data() {
@@ -182,6 +181,10 @@ __webpack_require__.r(__webpack_exports__);
       our_vision: "Ensure the whole process of planning and finding the right tour operator for your safari is as easy as Possible.",
       our_community: "We strive to ensure that the number of women employed in tourism sector improves.<br /> We encourage tour companies to employ more women. One among our raking factors for tour companies is the number of women they have employed."
     };
+  },
+  created: function created() {
+    var page_title = "About Safari-Trek-Beach.com";
+    document.title = page_title;
   }
 });
 
@@ -371,9 +374,9 @@ var render = function() {
                       },
                       [
                         _vm._v(
-                          "\n            " +
+                          "\r\n            " +
                             _vm._s(item.description) +
-                            "\n          "
+                            "\r\n          "
                         )
                       ]
                     )
@@ -412,9 +415,9 @@ var render = function() {
                         _vm._v(" "),
                         _c("p", { staticClass: "card-text px-3" }, [
                           _vm._v(
-                            "\n                " +
+                            "\r\n                " +
                               _vm._s(item.description) +
-                              "\n              "
+                              "\r\n              "
                           )
                         ])
                       ]

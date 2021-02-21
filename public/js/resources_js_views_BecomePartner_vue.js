@@ -13139,6 +13139,12 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
+//
+//
+//
 
 
 vue__WEBPACK_IMPORTED_MODULE_0__.default.use(_syncfusion_ej2_vue_inputs__WEBPACK_IMPORTED_MODULE_1__.TextBoxPlugin);
@@ -13161,8 +13167,14 @@ vue__WEBPACK_IMPORTED_MODULE_0__.default.use(_syncfusion_ej2_vue_buttons__WEBPAC
       tourType: '',
       companyBrief: '',
       companyDescription: '',
-      conditions: false
+      conditions: false,
+      office_location: '',
+      website_url: ''
     };
+  },
+  created: function created() {
+    document.title = "Become a Partner of Safari-Trek-Beach.com";
+    this.search_result = this.where_to_list;
   },
   computed: _objectSpread({}, (0,vuex__WEBPACK_IMPORTED_MODULE_4__.mapGetters)({
     packageData: "tourController/packageData",
@@ -13367,7 +13379,7 @@ ___CSS_LOADER_EXPORT___.i(_node_modules_css_loader_dist_cjs_js_clonedRuleSet_9_0
 ___CSS_LOADER_EXPORT___.i(_node_modules_css_loader_dist_cjs_js_clonedRuleSet_9_0_rules_0_use_1_node_modules_syncfusion_ej2_base_styles_material_css__WEBPACK_IMPORTED_MODULE_1__.default);
 ___CSS_LOADER_EXPORT___.i(_node_modules_css_loader_dist_cjs_js_clonedRuleSet_9_0_rules_0_use_1_node_modules_syncfusion_ej2_buttons_styles_material_css__WEBPACK_IMPORTED_MODULE_2__.default);
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n#become-partner-page {\n  background-color: #f2f2f2;\n  padding-top: 50px;\n  padding-bottom: 100px;\n}\n#become-partner-page section {\n  margin-top: 100px;\n}\n#become-partner-page .e-multi-line-input textarea {\n  height: 100px;\n}\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n#become-partner-page {\r\n  background-color: #f2f2f2;\r\n  padding-top: 50px;\r\n  padding-bottom: 100px;\n}\n#become-partner-page section {\r\n  margin-top: 100px;\n}\n#become-partner-page .e-multi-line-input textarea {\r\n  height: 100px;\n}\r\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -13711,6 +13723,52 @@ var render = function() {
                 _vm._v(" "),
                 _c(
                   "div",
+                  { staticClass: "col-md-6 col-sm-12 px-3 mt-3" },
+                  [
+                    _c("ejs-textbox", {
+                      attrs: {
+                        floatLabelType: "Auto",
+                        type: "text",
+                        placeholder: "Office Location",
+                        required: ""
+                      },
+                      model: {
+                        value: _vm.office_location,
+                        callback: function($$v) {
+                          _vm.office_location = $$v
+                        },
+                        expression: "office_location"
+                      }
+                    })
+                  ],
+                  1
+                ),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  { staticClass: "col-md-6 col-sm-12 px-3 mt-3" },
+                  [
+                    _c("ejs-textbox", {
+                      attrs: {
+                        floatLabelType: "Auto",
+                        type: "text",
+                        placeholder: "Website URL",
+                        required: ""
+                      },
+                      model: {
+                        value: _vm.website_url,
+                        callback: function($$v) {
+                          _vm.website_url = $$v
+                        },
+                        expression: "website_url"
+                      }
+                    })
+                  ],
+                  1
+                ),
+                _vm._v(" "),
+                _c(
+                  "div",
                   { staticClass: "col-sm-12 px-3 mt-3" },
                   [
                     _c("ejs-textbox", {
@@ -13800,7 +13858,7 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("a", { attrs: { href: "/terms" } }, [
+    return _c("a", { attrs: { href: "/terms", target: "_blank" } }, [
       _c(
         "span",
         {
