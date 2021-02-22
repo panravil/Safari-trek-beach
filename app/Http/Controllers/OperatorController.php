@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 use App\Models\Operator;
 
 class OperatorController extends Controller
@@ -61,7 +62,6 @@ class OperatorController extends Controller
             'tourType'              => 'required',
             'companyBrief'          => 'required',
             'companyDescription'    => 'required',
-            'conditions'            => 'required',
         ]);
 
         // dd($request->all());
