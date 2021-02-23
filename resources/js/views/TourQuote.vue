@@ -12,7 +12,7 @@
           <h6 class="text-danger"><span class="fa fa-smile-o me-2"></span>We advice you to compare quote from 3 Tour Operators.</h6>
           <div class="mt-3 row quote">
             <div class="col-lg-6 col-sm-12 mt-3">
-              <ejs-datepicker :placeholder="waterMark" v-model="start_date"></ejs-datepicker>
+              <ejs-datepicker :placeholder="waterMark" v-model="start_date" ref="dateObj" :focus='onFocus'></ejs-datepicker>
             </div>
             <div class="col-lg-6 col-sm-12 mt-3" v-click-outside-dropdown="closeTravelerDropdown">
               <div @click="showTravelerDropdown">
@@ -37,7 +37,7 @@
                   </div>
                 </div>
                 <div class="text-right">
-                  <button class="btn btn-danger mx-3 my-3" @click="setTravelerInfo">
+                  <button class="btn btn-warning mx-3 my-3" @click="setTravelerInfo">
                     Done
                   </button>
                 </div>
@@ -257,6 +257,10 @@ export default {
       if (traveler == 1) this.traveler_number = traveler + " Traveler";
       else this.traveler_number = traveler + " Travelers";
       this.closeTravelerDropdown();
+    },
+
+     onFocus: function (args) {
+      this.$refs.dateObj.show();
     },
 
     tourQuote() {

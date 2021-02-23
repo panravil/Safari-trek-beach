@@ -101,7 +101,7 @@
                     </div> -->
 
                     <div class="text-right">
-                      <button class="btn btn-danger mx-3 my-3" @click="setTravelerInfo">
+                      <button class="btn btn-warning mx-3 my-3" @click="setTravelerInfo">
                         Done
                       </button>
                     </div>
@@ -141,7 +141,7 @@
       </div>
     </div>
 
-    <div class="text-center">
+    <div class="text-center mt-3">
       <a href="/our-tours" class="btn btn-danger"> View All Packages </a>
     </div>
   </div>
@@ -154,7 +154,7 @@
     <div class="text-center text-light">
       <div class="pt-5 why-us">
         <header class="section-header">
-          <h3 class="text-light">Why choose us?</h3>
+          <h3 class="text-light">Why Choose Us?</h3>
         </header>
         <h5>
           8 Reasons why Safari-Trek-Beach
@@ -189,7 +189,7 @@
             <p>Advise clients on questions <br />to ask before booking and <br />how to get best details.</p>
           </slide>
           <slide>
-            <img :src="'./images/why_pool.png'" />
+           <img :src="'./images/why_service.png'" />
             <p>We ensure clients get <br />large pool of Tour Operator of their choice!</p>
           </slide>
           <slide>
@@ -231,7 +231,7 @@
         </div>
       </div>
     </div>
-    <div class="text-center">
+    <div class="text-center mt-3">
       <a href="/tour-destinations" class="btn btn-danger">
         View All Destinations <span class="fa fa-angle-right ms-2"></span></a>
     </div>
@@ -317,7 +317,7 @@
       <div class="container">
         <div class="row gx-0 text-center align-items-center">
           <div class="col-md-6">
-            <div class="bg-image" style="background-image: url('./images/img5.jpg')"></div>
+            <div class="bg-image shadow-lg" style="background-image: url('./images/img5.jpg')"></div>
           </div>
           <div class="col-md-6 px-3 mt-5 mt-md-0">
             <h2 class="">About Us</h2>
@@ -326,7 +326,7 @@
                 Safari Trek Beach is the biggest market place for Tanzania tour packages. We help travellers find the best Tour Operators with the tour packages of their choice, to suit their budget and standard. We are the experts when it involves Tours and Holidays in Tanzania. Safari Trek Beach enables you to compare different tour operators on different categories such as Luxury, Lodge, Camping safaris or Mountain Climbing tours as well as Beach Holidays.
               </p>
             </div>
-            <div>
+            <div class="mt-3">
               <a class="btn btn-danger" href="/about">
                 Read More <span class="fa fa-angle-right ms-2"></span>
               </a>
@@ -336,11 +336,11 @@
       </div>
     </section>
 
-    <section>
+    <section class="mt-3">
       <header class="section-header mt-5">
         <h3>FROM OUR BLOG</h3>
       </header>
-      <div class="row gx-0" v-if="blog_loading">
+      <div class="row gx-0 mt-3" v-if="blog_loading">
         <div class="col-lg-4 col-md-6 col-xs-12" v-for="(blog, index) in 3" v-bind:key="index + 'blog'">
           <TourCardSkelecton></TourCardSkelecton>
         </div>
@@ -350,9 +350,9 @@
           <BlogCard :blog="blog"></BlogCard>
         </div>
       </div>
-      <div class="text-center">
+      <div class="text-center mt-3">
         <a href="/blog" class="btn btn-danger">
-          View All <span class="fa fa-angle-right ms-2"></span></a>
+          View All BLOGS<span class="fa fa-angle-right ms-2"></span></a>
       </div>
     </section>
   </div>
@@ -399,26 +399,26 @@ export default {
       highlighted: {
         dates: [new Date()],
       },
-      options: [
-        "- Age -",
-        "17 Years",
-        "16 Years",
-        "15 Years",
-        "14 Years",
-        "13 Years",
-        "12 Years",
-        "11 Years",
-        "10 Years",
-        "9 Years",
-        "8 Years",
-        "7 Years",
-        "6 Years",
-        "5 Years",
-        "4 Years",
-        "2 Years",
-        "1 Year",
-        "0 Years",
-      ],
+      // options: [
+      //   "- Age -",
+      //   "17 Years",
+      //   "16 Years",
+      //   "15 Years",
+      //   "14 Years",
+      //   "13 Years",
+      //   "12 Years",
+      //   "11 Years",
+      //   "10 Years",
+      //   "9 Years",
+      //   "8 Years",
+      //   "7 Years",
+      //   "6 Years",
+      //   "5 Years",
+      //   "4 Years",
+      //   "2 Years",
+      //   "1 Year",
+      //   "0 Years",
+      // ],
       where_to_search: "",
       search_result: [],
     };
@@ -432,12 +432,28 @@ export default {
       loading: "tourcard_loading",
       blog_loading: "blogcard_loading",
       where_to_list: "tourController/tourActivity",
+
+      where_to_search_state: "tourController/where_to_search",
+      start_date_state: "tourController/start_date",
+      adults_number_state: "tourController/adults_number",
+      children_number_state: "tourController/children_number",
+      traveler_number_state: "tourController/traveler_number",
     }),
   },
 
   created() {
     this.search_result = this.where_to_list;
+
     this.getTourActivity();
+
+    this.where_to_search = this.where_to_search_state
+    this.traveler_number = this.traveler_number_state
+    this.start_date = this.start_date_state
+    this.adults_number = this.adults_number_state
+    this.children_number = this.children_number_state
+
+    this.traveler_number_calc();
+
     this.getPopularTours();
     this.getTopDestinations();
     this.getPopularBlogs();
@@ -515,6 +531,12 @@ export default {
       this.$store.dispatch("destinationController/getTopDestinations");
     },
 
+    traveler_number_calc() {
+      let traveler = this.adults_number + this.children_number;
+      if (traveler == 1) this.traveler_number = traveler + " Traveler";
+      else this.traveler_number = traveler + " Travelers";
+    },
+
     closeWhereToDropDown() {
       this.visible_whereto_dropdown = false;
     },
@@ -557,6 +579,7 @@ export default {
         'start_date': this.start_date,
         'adults_number': this.adults_number,
         'children_number': this.children_number,
+        'traveler_number': this.traveler_number,
       }
 
       this.$store.dispatch("tourController/setSearchData", searchData)

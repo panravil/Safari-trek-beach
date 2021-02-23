@@ -1,7 +1,7 @@
 <template>
 <div id="become-partner-page">
   <div class="container">
-    <section data-aos="fade-up">
+    <section>
       <header class="section-header">
         <h3>BECOME OUR PARTNER</h3>
       </header>
@@ -33,12 +33,12 @@
             <div class="col-md-6 col-sm-12 px-3 mt-3">
               <ejs-textbox v-model="tourType" floatLabelType="Auto" type="text" placeholder="Tour Type" required></ejs-textbox>
             </div>
-            <div class="col-md-6 col-sm-12 px-3 mt-3">
+            <!-- <div class="col-md-6 col-sm-12 px-3 mt-3">
               <ejs-textbox v-model="office_location" floatLabelType="Auto" type="text" placeholder="Office Location" required></ejs-textbox>
             </div>
             <div class="col-md-6 col-sm-12 px-3 mt-3">
               <ejs-textbox v-model="website_url" floatLabelType="Auto" type="text" placeholder="Website URL" required></ejs-textbox>
-            </div>
+            </div> -->
             <div class="col-sm-12 px-3 mt-3">
               <ejs-textbox v-model="companyBrief" :multiline="true" floatLabelType="Auto" placeholder="Company Brief" required></ejs-textbox>
             </div>
@@ -46,9 +46,9 @@
               <ejs-textbox v-model="companyDescription" :multiline="true" floatLabelType="Auto" placeholder="Company Description" required></ejs-textbox>
             </div>
 
-            <p class="px-3 mt-3">
+            <p class="px-3 mt-3" v-bind:key="updateCheckbox">
               <ejs-checkbox v-model="conditions" label="I agree to the Safari-Trek-Beach" required></ejs-checkbox>
-              <a href="/terms" target="_blank"><span class=" text-decoration-underline text-dark" style="font-size: 13px">Terms and Condition.</span></a>
+              <a href="/terms" target="_blank"><span class="text-decoration-underline text-dark" style="font-size: 13px">Terms and Condition.</span></a>
             </p>
 
             <div class="px-3 my-3">
@@ -103,6 +103,8 @@ export default {
       conditions: false,
       office_location: '',
       website_url: '',
+
+      updateCheckbox: 0,
     };
   },
   created() {
@@ -137,11 +139,12 @@ export default {
         .dispatch("operatorController/becomePartner", companyData)
         .then(() => {
           if (this.request_status == true) {
-            this.$notify({
-              group: 'success',
-              title: 'Submit Success !',
-              text: 'Thank you! We have received your company data.'
-            });
+            // this.$notify({
+            //   group: 'success',
+            //   title: 'Submit Success !',
+            //   text: 'Thank you! We have received your company data.'
+            // });
+            this.$router.push('/thankyou-partner');
           } else {
             this.$notify({
               group: 'warning',
@@ -162,6 +165,7 @@ export default {
           this.companyDescription = ''
           this.conditions = false
 
+          this.updateCheckbox++
         })
         .catch(() => {
           this.$notify({
@@ -181,6 +185,7 @@ export default {
           this.companyBrief = ''
           this.companyDescription = ''
           this.conditions = false
+          this.updateCheckbox++
         });
 
     }

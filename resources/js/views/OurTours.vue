@@ -128,7 +128,7 @@
                     </div> -->
 
                   <div class="text-right">
-                    <button class="btn btn-danger mx-3 my-3" @click="setTravelerInfo">
+                    <button class="btn btn-warning mx-3 my-3" @click="setTravelerInfo">
                       Done
                     </button>
                   </div>
@@ -252,9 +252,9 @@
           </div>
         </div>
         <div class="row gx-0" v-else-if="filterTours != null">
-          <div class="ourtours-pagination my-3" >
+          <!-- <div class="ourtours-pagination my-3" >
             <Pagination v-model="current_ourtour_page" :records="filterTours.total_tours" :per-page="ourtour_perpage" :options="pagination_options" />
-          </div>
+          </div> -->
           <div class="col-md-6 col-xs-12" v-for="(item, index) in filterTours.tours" v-bind:key="'filter' + index">
             <TourCard :tourData="item" :where_to_search="where_to_search" :traveler_number="traveler_number" :start_date="start_date.toString()" :adults_number="adults_number" :children_number="children_number"></TourCard>
           </div>
@@ -410,6 +410,7 @@ export default {
       start_date_state: "tourController/start_date",
       adults_number_state: "tourController/adults_number",
       children_number_state: "tourController/children_number",
+      traveler_number_state: "tourController/traveler_number",
 
       query_instore: "tourController/query_instore",
 

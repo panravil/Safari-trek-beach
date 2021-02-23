@@ -10,6 +10,8 @@
       <TourOperatorsSkelecton></TourOperatorsSkelecton>
       <TourOperatorsSkelecton></TourOperatorsSkelecton>
       <TourOperatorsSkelecton></TourOperatorsSkelecton>
+      <TourOperatorsSkelecton></TourOperatorsSkelecton>
+      <TourOperatorsSkelecton></TourOperatorsSkelecton>
     </div>
     <div v-else>
       <div class="card p-3 mt-5 tour-operator-card" v-for="(operator, index) in current_page_operators" v-bind:key="'operator' + index" data-aos="fade-up" @click="toOperatorDetail(operator.user_id)">
@@ -35,9 +37,10 @@
             </p>
             <h6>Learn More about this company</h6>
           </div>
-          <div class="logo-layout" :style="{
-              'background-image': 'url(' + operator.banner + ')',
-            }"></div>
+          <div class="logo-layout text-center">
+            <img :src="operator.banner"/>
+          </div>
+
         </div>
       </div>
     </div>
@@ -87,7 +90,11 @@ export default {
   },
   watch: {
     current_operator_page: function (newValue) {
-      this.$router.push('/tour-operators/page/' + newValue).catch(() =>{})
+      this.$router.push('/tour-operators/page/' + newValue)
+      .then(()=>{
+        this.getOperatorList();
+      })
+      .catch(() =>{})
     },
   },
   created() {
@@ -95,6 +102,7 @@ export default {
     document.title = page_title;
     this.current_operator_page = parseInt(this.page_id)
     this.getOperatorList();
+
   },
   methods: {
     getOperatorList() {
@@ -157,12 +165,17 @@ export default {
   justify-content: space-between;
 }
 
+#tour-operators-page .logo-layout {
+  min-width: 400px;
+  width: 400px;
+}
+
 #tour-operators-page .operator-logo img {
   min-width: 150px;
   height: 150px;
 }
 
-#tour-operators-page .logo-layout {
+/* #tour-operators-page .logo-layout {
   min-width: 400px;
   width: 400px;
   height: 0;
@@ -171,6 +184,11 @@ export default {
   background-size: cover;
   background-position: center;
   margin: auto;
+} */
+
+#tour-operators-page .logo-layout img {
+  width: 400px;
+  height: auto;
 }
 
 #tour-operators-page .operator-content {
@@ -184,7 +202,7 @@ export default {
 .operator-pagination {
   display: flex;
   justify-content: center;
-  margin-top: 20px;
+  margin-top: 40px;
 }
 
 @media (max-width: 1200px) {
@@ -204,11 +222,15 @@ export default {
   }
 }
 
-@media (max-width: 420px) {
-  #tour-operators-page .logo-layout {
+@media (max-width: 480px) {
+  #tour-operators-page .logo-layout img{
     min-width: 100%;
     width: 100%;
-    padding-top: 56.25%;
   }
+
+  #tour-operators-page .logo-layout {
+  min-width: 100%;
+  width: 100%;
+}
 }
 </style>

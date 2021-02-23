@@ -13,6 +13,7 @@ const state = {
 
     where_to_search: '',
     start_date: '',
+    traveler_number: '',
     adults_number: 1,
     children_number: 0,
 
@@ -36,6 +37,7 @@ const getters = {
     start_date: state => state.start_date,
     adults_number: state => state.adults_number,
     children_number: state => state.children_number,
+    traveler_number: state => state.traveler_number,
 
     query_instore: state => state.query_instore,
 
@@ -83,6 +85,7 @@ const mutations = {
         state.start_date = data.start_date;
         state.adults_number = data.adults_number;
         state.children_number = data.children_number;
+        state.traveler_number = data.traveler_number;
     },
 
     setTourInfo(state, data) {

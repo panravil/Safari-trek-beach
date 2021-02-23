@@ -1,12 +1,12 @@
 <template>
 <div id="app">
   <div>
-    <NavBar v-if="$route.name != '404 Page' && $route.name != 'Thank Review' && $route.name != 'Thank Quote'"></NavBar>
+    <NavBar v-if="$route.name != '404 Page' && $route.name != 'Thank Review' && $route.name != 'Thank Quote' && $route.name != 'Thank Partner'"></NavBar>
     <transition enter-active-class="animate__animated animate__fadeIn" leave-active-class="animate__animated animate__fadeOut">
       <router-view></router-view>
     </transition>
   </div>
-  <Footer v-if="$route.name != '404 Page' && $route.name != 'Thank Review' && $route.name != 'Thank Quote'"></Footer>
+  <Footer v-if="$route.name != '404 Page' && $route.name != 'Thank Review' && $route.name != 'Thank Quote' && $route.name != 'Thank Partner'"></Footer>
   <notifications group="success" classes="success-notify" />
   <notifications group="warning" classes="warning-notify" />
 </div>

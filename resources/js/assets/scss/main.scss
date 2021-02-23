@@ -87,8 +87,8 @@ h6 {
       to bottom,
       rgba(210, 211, 218, 0),
       rgba(0, 0, 0, 0.73)
-    ),
-    url("/images/reviews_testimonial.jpg");
+    );
+    // url("/images/reviews_testimonial.jpg");
   height: 400px;
   background-size: cover;
   background-attachment: fixed;
@@ -186,6 +186,8 @@ h6 {
   text-align: center;
   justify-content: center;
   background-color: rgba(15, 26, 46, 0.34);
+  padding-right: 10px;
+  padding-left: 10px;
 }
 
 #top-destination .fa-angle-right,

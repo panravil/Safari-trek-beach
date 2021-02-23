@@ -67,11 +67,13 @@
                   <div v-else-if="packageData != null" class="overview-description">
                     {{ packageData.description }}
                   </div>
-                  <hr/>
-                  <h4 class="fw-bold text-danger">
-                    <span class="fa fa-arrow-circle-right"></span>
-                    <span>Tour Summary</span>
-                  </h4>
+                  <div class="d-flex mt-5">
+                    <h4 class="fw-bold text-danger flex-shrink-0">
+                      <span class="fa fa-arrow-circle-right"></span>
+                      <span>Tour Summary</span>
+                    </h4>
+                    <div class="w-100" style="margin-top: 14px;height: 1px; margin-left: 5px;background: #b3b3b3"></div>
+                  </div>
                   <h6 class="my-1" v-if="packageData != null">
                     Tour Start from
                     <strong>{{ packageData.getting_there.start_city }} City</strong>
@@ -85,26 +87,26 @@
                           <span>Destination:
                             <strong>{{ item.destination }}</strong></span>
                         </h6>
-                        <h6 class="my-2" v-if="item.accom_name != null">
+                        <h6 class="my-2" v-if="item.accom_name != null && item.accom_name != ''">
                           <span class="me-2">✓</span>
                           <span>Accomodation:
                             <strong>{{ item.accom_name }}</strong></span>
                         </h6>
-                        <h6 class="my-2">
+                        <h6 class="my-2" v-if="item.accom_location != null && item.accom_location != ''">
                           <span class="me-2">✓</span>
                           <span>Location:
                             <strong>{{ item.accom_location }}</strong></span>
                         </h6>
-                        <h6 class="my-2">
+                        <h6 class="my-2" v-if="item.accom_level != null && item.accom_level != ''">
                           <span class="me-2">✓</span>
                           <span>Comfort:
                             <strong>{{ item.accom_level }}</strong></span>
                         </h6>
-                        <h6 class="my-2">
+                        <h6 class="my-2" v-if="item.accom_type != null && item.accom_type != ''">
                           <span class="me-2">✓</span>
                           <span>Type: <strong>{{ item.accom_type }}</strong></span>
                         </h6>
-                        <h6 class="my-2">
+                        <!-- <h6 class="my-2">
                           <span class="me-2">✓</span>
                           <span>BreakFast: <strong>Include</strong></span>
                         </h6>
@@ -119,39 +121,43 @@
                         <h6 class="my-2">
                           <span class="me-2">X</span>
                           <span>Drinks: <strong>Water, Beer and Wine</strong></span>
-                        </h6>
+                        </h6> -->
                       </div>
                     </div>
                   </div>
-                  <hr />
-                  <h4 class="fw-bold text-danger">
-                    <span class="fa fa-arrow-circle-right"></span>
-                    Inclusive
-                  </h4>
+                  <div class="d-flex mt-5">
+                    <h4 class="fw-bold text-danger flex-shrink-0">
+                      <span class="fa fa-arrow-circle-right"></span>
+                      <span>Inclusive</span>
+                    </h4>
+                    <div class="w-100" style="margin-top: 14px;height: 1px; margin-left: 5px;background: #b3b3b3"></div>
+                  </div>
                   <div class="row g-0">
                     <div class="col-md-6 col-sm-12" v-if="packageData != null">
                       <h4 class="fw-bold ms-2">Inclusion</h4>
-                      <h5 class="ms-5" v-for="(item, index2) in packageData.inclusion
+                      <h6 class="ms-2" v-for="(item, index2) in packageData.inclusion
                             .included" v-bind:key="'A' + index2">
                         <span class="fa fa-check me-3 text-danger"></span>
                         <span class="exclusion-inclusion">{{ item }}</span>
-                      </h5>
+                      </h6>
                     </div>
                     <div class="col-md-6 col-sm-12" v-if="packageData != null">
                       <h4 class="fw-bold ms-2">Exclusion</h4>
-                      <h5 class="ms-5" v-for="(item, index3) in packageData.inclusion
+                      <h6 class="ms-2" v-for="(item, index3) in packageData.inclusion
                             .excluded" v-bind:key="'B' + index3">
                         <span class="fa fa-times me-3 text-danger"></span>
                         <span class="exclusion-inclusion">{{ item }}</span>
-                      </h5>
+                      </h6>
                     </div>
                   </div>
-                  <hr />
-                  <h4 class="fw-bold text-danger">
-                    <span class="fa fa-arrow-circle-right"></span>
-                    Activities & Transpotation
-                  </h4>
-                  <h5 class="ms-5" v-if="packageData != null">
+                  <div class="d-flex mt-5">
+                    <h4 class="fw-bold text-danger flex-shrink-0">
+                      <span class="fa fa-arrow-circle-right"></span>
+                      <span>Activities & Transpotation</span>
+                    </h4>
+                    <div class="w-100" style="margin-top: 14px;height: 1px; margin-left: 5px;background: #b3b3b3"></div>
+                  </div>
+                  <h6 class="ms-2" v-if="packageData != null">
                     <span class="fa fa-check me-3 text-danger"></span>
                     <span class="exclusion-inclusion">
                       Activitiy:
@@ -159,8 +165,8 @@
                         {{ packageData.tour_focus }}
                       </strong>
                     </span>
-                  </h5>
-                  <h5 class="ms-5" v-if="packageData != null">
+                  </h6>
+                  <h6 class="ms-2" v-if="packageData != null">
                     <span class="fa fa-check me-3 text-danger"></span>
                     <span class="exclusion-inclusion">
                       Getting around:
@@ -170,38 +176,39 @@
                         </span>
                       </strong>
                     </span>
-                  </h5>
-                  <hr />
-                  <h4 class="fw-bold text-danger">
-                    <span class="fa fa-arrow-circle-right"></span>
-                    Getting There
-                  </h4>
-                  <h5 class="ms-5" v-if="packageData != null">
+                  </h6>
+                  <div class="d-flex mt-5">
+                    <h4 class="fw-bold text-danger flex-shrink-0">
+                      <span class="fa fa-arrow-circle-right"></span>
+                      <span>Getting There</span>
+                    </h4>
+                    <div class="w-100" style="margin-top: 14px;height: 1px; margin-left: 5px;background: #b3b3b3"></div>
+                  </div>
+                  <h6 class="ms-2" v-if="packageData != null">
                     <span class="fa fa-check me-3 text-danger"></span>
                     <span class="exclusion-inclusion">
                       The Tour Starts in:
                       <strong>
                         {{ packageData.getting_there.start_city }}</strong></span>
-                  </h5>
+                  </h6>
                   <div v-if="packageData != null">
-                    <h5 class="ms-5" v-if="packageData.getting_there.airport_transfer == 'yes'">
+                    <h6 class="ms-2" v-if="packageData.getting_there.airport_transfer == 'yes'">
                       <span class="fa fa-check me-3 text-danger"></span>
                       <span class="exclusion-inclusion">Airport transfer are included</span>
-                    </h5>
+                    </h6>
                   </div>
-                  <!-- <h5 class="ms-5">
+                  <!-- <h5 class="ms-2">
                     <span class="fa fa-check me-3 text-danger"></span>
                     <span class="exclusion-inclusion">Sleeping bag</span>
                   </h5> -->
-                  <h5 class="ms-5" v-if="packageData != null">
+                  <h6 class="ms-2" v-if="packageData != null">
                     <span class="fa fa-check me-3 text-danger"></span>
                     <span class="exclusion-inclusion">
                       The Tour Ends in:
                       <strong>{{
                           packageData.getting_there.end_city
                         }}</strong></span>
-                  </h5>
-                  <hr />
+                  </h6>
                 </div>
               </div>
               <div>
@@ -398,7 +405,13 @@
               </div>
             </div>
           </ejs-tab>
-          <h4 class="fw-bold ms-2 mt-3">Interested in this Tour ?</h4>
+
+          <div class="d-flex mt-4">
+            <h4 class="fw-bold flex-shrink-0">
+              Interested in this Tour ?
+            </h4>
+            <div class="w-100" style="margin-top: 14px;height: 1px; margin-left: 5px;background: #b3b3b3"></div>
+          </div>
           <div>
             <button class="btn btn-danger ms-2 mb-3" @click="getQuoteNow">Get a Free Quote <span class="fa fa-angle-right ms-2"></span></button>
           </div>
@@ -471,20 +484,26 @@
           </div>
         </div>
       </div>
-      <div class="col-lg-4 col-md-12">
+      <div class="col-lg-4 col-md-12 mobile">
         <div class="card p-4 mb-3" v-if="packageData != null">
           <h3 class="fw-bold text-success">
             $ {{ packageData.rate.adult_currency }}
-            <small class="fw-normal">pp</small>
+            <small class="fw-normal">USD</small>
           </h3>
           <h5 class="fw-bold">Request a Quote</h5>
           <div class="row">
             <div class="col-sm-12 mt-3">
-              <ejs-datepicker :placeholder="'Select a Date'" v-model="start_date"></ejs-datepicker>
+              <div class="d-flex text-danger align-items-center">
+                <div class="me-3"><span class="fa fa-calendar" style="font-size: 25px"></span></div>
+                <ejs-datepicker :placeholder="'Select a Date'" v-model="start_date" ref="dateObj" :focus='onFocus'></ejs-datepicker>
+              </div>
             </div>
             <div class="col-sm-12 mt-3" v-click-outside-dropdown="closeTravelerDropdown">
-              <div @click="showTravelerDropdown">
-                <ejs-textbox floatLabelType="Auto" autocomplete="off" type="text" placeholder="Travellers" v-model="traveler_number"></ejs-textbox>
+              <div class="d-flex text-danger align-items-center">
+                <div class="me-3"><span class="fa fa-users" style="font-size: 25px"></span></div>
+                <div @click="showTravelerDropdown" class="w-100">
+                  <ejs-textbox floatLabelType="Auto" autocomplete="off" type="text" placeholder="Travellers" v-model="traveler_number"></ejs-textbox>
+                </div>
               </div>
               <!-- <transition enter-active-class="animate__animated animate__fadeIn" leave-active-class="animate__animated animate__fadeOut"> -->
               <div v-if="visible_traveler_dropdown" class="shadow traveler-dropdown left-0 bg-white mt-3 triangule-where">
@@ -505,7 +524,7 @@
                   </div>
                 </div>
                 <div class="text-right">
-                  <button class="btn btn-danger mx-3 my-3" @click="setTravelerInfo">
+                  <button class="btn btn-warning mx-3 my-3" @click="setTravelerInfo">
                     Done
                   </button>
                 </div>
@@ -514,7 +533,7 @@
             </div>
             <div class="col-sm-12 mt-3"></div>
           </div>
-          <button class="btn btn-danger mb-3" @click="getQuoteNow">Enquire Now</button>
+          <button class="btn btn-danger mb-3 mt-2" @click="getQuoteNow">Enquire Now</button>
           <div class="d-flex ms-3">
             <div style="min-width: 25px">
               <span class="fa fa-check-circle"></span>
@@ -850,6 +869,10 @@ export default {
       this.$router.push('/tour-quote');
     },
 
+    onFocus: function (args) {
+      this.$refs.dateObj.show();
+    },
+
     submitReview() {
       let params = {};
 
@@ -915,7 +938,7 @@ export default {
 <style lang="scss" scoped>
 .package-inner-page {
   padding-top: 60px;
-  padding-bottom: 100px;
+  padding-bottom: 60px;
   background-color: #f2f2f2;
 }
 
@@ -982,7 +1005,11 @@ export default {
 }
 
 .exclusion-inclusion {
-  font-size: 18px;
+  font-size: 15px;
+}
+
+.package-inner-page .mobile {
+  display: block;
 }
 
 @media (min-width: 992px) and (max-width: 1400px) {
@@ -998,6 +1025,10 @@ export default {
     border-bottom-right-radius: 0;
     border-top-right-radius: 0.25rem;
     border-top-left-radius: 0.25rem;
+  }
+
+  .package-inner-page .mobile {
+    display: none;
   }
 
   .package-inner-page .package-inner-title {

@@ -152,6 +152,12 @@ const router = new Router({
             component: () => import("./views/ThankyouQuote.vue")
         },
         {
+            path: "/thankyou-partner",
+            name: "Thank Partner",
+            index: 16,
+            component: () => import("./views/ThankyouPartner.vue")
+        },
+        {
       path: "*",
       redirect: "/Error404",
     },

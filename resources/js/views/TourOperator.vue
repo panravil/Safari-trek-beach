@@ -6,13 +6,21 @@
         <content-placeholders-heading />
       </div>
       <h3 class="fw-bold mb-0" v-else-if="operatorData != null">{{ operatorData.company_name }}</h3>
-      <p class="mt-2" v-if="operatorData != null">
+      <p class="mt-2 mb-0" v-if="operatorData != null">
         <CustomStarRating :rating="operatorData.avg_review"></CustomStarRating>
         <span>{{ operatorData.avg_review }} ({{
               operatorData.sum_review
             }}
           Reviews)</span>
       </p>
+      <h6 class="mt-2 mb-0">
+        <strong>Office Address:</strong>
+        <span></span>
+      </h6>
+      <h6 class="mt-2 mb-0">
+        <strong>Number of Stuff:</strong>
+        <span></span>
+      </h6>
       <!-- <h6 class="mb-0">Learn More about this company</h6> -->
     </div>
     <div class="card mt-4 p-4">
@@ -31,8 +39,17 @@
             <h6 class="mt-2" v-else-if="operatorData != null" style="color: darkslategrey">
               {{ operatorData.brief }}
             </h6>
-            <hr />
+            <h6 class="fw-bold mb-0 mt-3">Company Description</h6>
+            <h6 class="mt-2" v-if="operatorData != null" v-html="operatorData.description" style="color: darkslategrey">
+            </h6>
+            <!-- <hr /> -->
             <div class="row g-0 align-items-center">
+              <div class="col-lg-4 col-md-6 col-sm-12">
+                <img :src="operatorData.banner" class="w-100" />
+              </div>
+              <div class="col-lg-8 col-md-6 col-sm-12"></div>
+            </div>
+            <!-- <div class="row g-0 align-items-center">
               <div v-if="loading" class="col-lg-4 col-md-6 col-sm-12">
                 <TourCardSkelecton></TourCardSkelecton>
               </div>
@@ -71,7 +88,6 @@
                   </button>
                 </div>
 
-                <!-- Modal -->
                 <div class="modal fade" id="writeareview" tabindex="-1" aria-labelledby="reviewLavel" aria-hidden="true">
                   <div class="modal-dialog modal-dialog-centered modal-fullscreen-sm-down">
                     <form class="modal-content" @submit.prevent="submitReview">
@@ -115,7 +131,7 @@
                   </div>
                 </div>
               </div>
-            </div>
+            </div> -->
           </div>
           <div>
             <div v-if="loading"></div>
@@ -130,22 +146,8 @@
             <div v-if="loading"></div>
             <div v-else-if="operatorData != null && operatorData.review.length > 0">
               <h3 class="fw-bold mb-0 mt-3">Reviews</h3>
-              <div class="review-section mt-3 p-3" v-for="(review, index) in current_page_reviews" v-bind:key="'r' + index">
-                <h4>{{ review.full_name }}</h4>
-                <h5>
-                  <strong>{{ review.title }}
-                    <span class="fa fa-quote-left ms-2"></span></strong>
-                  {{ review.description }}
-                </h5>
-              </div>
-              <div class="review-pagination">
-                <Pagination v-model="current_review_page" :records="operatorData.review.length" :per-page="reviews_per_page" :options="pagenation_options" />
-              </div>
-            </div>
-            <div v-else-if="operatorData.review.length == 0">
-              <h5 class="text-center my-3 fst-italic">There is no review yet. Be the first person who write a review.</h5>
               <div class="text-center">
-                <button type="button" class="btn btn-danger mt-3" data-bs-toggle="modal" data-bs-target="#writeareview2">
+                <button type="button" class="btn btn-danger my-3" data-bs-toggle="modal" data-bs-target="#writeareview2">
                   Write A Review
                 </button>
 
@@ -194,6 +196,32 @@
                 </div>
 
               </div>
+              <div class="review-section mt-3 p-3" v-for="(review, index) in current_page_reviews" v-bind:key="'r' + index">
+                <h4 class="fw-bold">{{ review.title }}</h4>
+                <h5>
+                  <span class="text-muted fa fa-user align-middle me-3" style="font-size: 45px"></span>
+                  <span class="align-middle">{{ review.full_name }}</span>
+                </h5>
+                <h6 class="reviews">
+                  <CustomStarRating :rating="review.rate"></CustomStarRating>
+                  <span v-if="review.rate == '5'" class="text-danger">
+                    &nbsp;5.0 / 5
+                  </span>
+                  <span v-else class="text-danger">
+                    &nbsp;{{ review.rate }} / 5
+                  </span>
+                </h6>
+                <div class="review-content">
+                  <read-more more-str="Read more" :text="review.description" less-str="Read less" :max-chars="200"></read-more>
+                </div>
+              </div>
+              <div class="review-pagination">
+                <Pagination v-model="current_review_page" :records="operatorData.review.length" :per-page="reviews_per_page" :options="pagenation_options" />
+              </div>
+            </div>
+            <div v-else-if="operatorData.review.length == 0">
+              <h5 class="text-center my-3 fst-italic">There is no review yet. Be the first person who write a review.</h5>
+
             </div>
           </div>
         </div>
@@ -277,7 +305,7 @@ export default {
         .dispatch("operatorController/getOperatorById", operator_id)
         .then(() => {
           this.getCurrentPageReviews(1);
-          // console.log('tag', this.operatorData)
+          console.log('tag', this.operatorData)
           let page_title = this.operatorData.company_name
           document.title = page_title;
         });
@@ -324,7 +352,7 @@ export default {
             this.review = ''
             this.rating = 5
 
-             this.$router.push('/thankyou-review')
+            this.$router.push('/thankyou-review')
           } else {
             this.$notify({
               group: 'warning',
@@ -362,12 +390,17 @@ export default {
 <style>
 .tour-operator-page {
   background-color: #f2f2f2;
-  padding-top: 150px;
+  padding-top: 120px;
   padding-bottom: 100px;
 }
 
 .review-section {
   background-color: #f5f5f5;
+}
+
+.review-content p,
+.review-content span {
+  font-size: 15px;
 }
 
 .review-pagination {
