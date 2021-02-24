@@ -33,10 +33,10 @@
                     Section {{ index + 1 }}. {{ item.title }}
                   </h3>
                 </div>
-                <div v-html="item.description"></div>
-                <div class="text-start mt-3">
-                  <a href="#" class="btn btn-danger">
-                    Tour that includes Section {{ index + 1 }}
+                <div class="section" v-html="item.description"></div>
+                <div class="text-start mt-3" v-if="item.button_name != null && item.button_url != null">
+                  <a :href="item.button_url" target="_blank" class="btn btn-danger">
+                    {{ item.button_name }}
                   </a>
                 </div>
               </div>
@@ -242,6 +242,10 @@ export default {
 
 .destination-package .e-multi-line-input textarea {
   height: 100px;
+}
+
+.destination-package .section h3 {
+  font-size: 20px;
 }
 
 .quick-link-section {

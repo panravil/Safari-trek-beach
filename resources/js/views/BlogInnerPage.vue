@@ -38,7 +38,7 @@
                     Section {{ index + 1 }}. {{ item.title }}
                   </h3>
                 </div>
-                <div v-html="item.description"></div>
+                <div class="section" v-html="item.description"></div>
                 <div class="text-start mt-3" v-if="item.button_url != null && item.button_name != null">
                   <a :href="item.button_url" target="_blank" class="btn btn-danger">
                     {{ item.button_name }}
@@ -179,6 +179,9 @@ export default {
         .then(() => {
           let page_title = this.blogData.title + " - Safari-Trek-Beach"
           document.title = page_title;
+
+          console.log('tag', this.blogData)
+
         });
     },
   },
@@ -257,6 +260,10 @@ export default {
 .blog-inner-page .vue-content-placeholders-img {
   height: 300px !important;
   background: white !important;
+}
+
+.blog-inner-page .section h3 {
+  font-size: 20px;
 }
 
 @media (max-width: 991px) {

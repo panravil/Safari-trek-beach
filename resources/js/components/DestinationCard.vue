@@ -31,7 +31,7 @@
       </p>
       <button
         type="button"
-        class="btn btn-white"
+        class="btn btn-warning"
       >
         Read More <span class="fa fa-angle-double-right ms-2"></span>
       </button>

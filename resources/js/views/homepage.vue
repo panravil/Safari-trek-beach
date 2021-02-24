@@ -26,7 +26,7 @@
                   " class="fa fa-times-circle-o" @click="setInitWhereTo"></span>
               <span v-else class="fa fa-search invisible"></span>
             </div>
-            <transition enter-active-class="animate__animated animate__fadeIn" leave-active-class="animate__animated animate__fadeOut">
+            <!-- <transition enter-active-class="animate__animated animate__fadeIn" leave-active-class="animate__animated animate__fadeOut"> -->
               <div class="shadow where_to_dropdown left-0 w-100 bg-white mt-3 triangule-where" v-if="visible_whereto_dropdown == true && search_result != ''">
                 <div class="bg-warning text-white p-2 d-flex justify-content-between align-items-center">
                   Start typing or select below
@@ -43,7 +43,7 @@
                   </div>
                 </div>
               </div>
-            </transition>
+            <!-- </transition> -->
           </div>
           <div class="col-md-8 col-xs-12">
             <div class="row gx-0 h-100">
@@ -66,20 +66,20 @@
                   <span v-if="traveler_number != ''" class="fa fa-times-circle-o" @click="setTravelerInit"></span>
                   <span v-else class="fa fa-times-circle-o invisible"></span>
                 </div>
-                <transition enter-active-class="animate__animated animate__fadeIn" leave-active-class="animate__animated animate__fadeOut">
+                <!-- <transition enter-active-class="animate__animated animate__fadeIn" leave-active-class="animate__animated animate__fadeOut"> -->
                   <div v-if="visible_traveler_dropdown" class="shadow traveler-dropdown left-0 bg-white mt-3 triangule-where">
                     <div class="bg-warning text-white p-2 text-center">
                       Travelers
                       <span class="fa fa-times-circle-o" style="float:right; font-size: 25px; color:black" @click="closeTravelerDropdown"></span>
                     </div>
                     <div class="py-2 px-3 mt-2 border-1 text-start d-flex justify-content-between">
-                      <div><strong>Adults </strong>(16+ years):</div>
+                      <div><strong>Adult </strong>(16+ years):</div>
                       <div>
                         <vue-numeric-input v-model="adults_number" :min="1" :max="100" :step="1"></vue-numeric-input>
                       </div>
                     </div>
                     <div class="py-2 px-3 mt-2 border-1 text-start d-flex justify-content-between">
-                      <div><strong>Children </strong>(0~15 years):</div>
+                      <div><strong>Child </strong>(0~15 years):</div>
                       <div>
                         <vue-numeric-input v-model="children_number" :min="0" :max="100" :step="1"></vue-numeric-input>
                       </div>
@@ -106,7 +106,7 @@
                       </button>
                     </div>
                   </div>
-                </transition>
+                <!-- </transition> -->
               </div>
               <div class="col-md-4 col-xs-12 ps-2 mobile-filter">
                 <button type="button" class="btn btn-danger w-100 h-100" @click="searchButton">

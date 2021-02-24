@@ -51,10 +51,15 @@
         <CustomStarRating :rating="avg_review"></CustomStarRating>
         <strong v-if="avg_review == '5'"> &nbsp;5.0/5&nbsp;</strong>
         <strong v-else> &nbsp;{{ avg_review }}/5&nbsp;</strong>
+        <!-- <span class="company-review">
         (
         <span v-if="sum_review == 1">{{ sum_review }} Review</span>
         <span v-else>{{ sum_review }} Reviews</span>
         )
+        </span>
+         <span class="company-review-small">
+        ({{ sum_review }})
+        </span> -->
       </p>
     </div>
     <div class="price">
@@ -89,7 +94,7 @@ export default {
       for (let i = 0; i < destination.length; i++) {
         route_data = route_data + destination[i] + ", ";
       }
-      if (route_data.length > 60) return route_data.substr(0, 60) + "...";
+      if (route_data.length > 45) return route_data.substr(0, 45) + "...";
       else return route_data;
     },
 
@@ -119,7 +124,7 @@ export default {
           id: this.tourData.package_id
         }
       });
-      
+
       window.open(routeData.href, '_blank');
     },
   },
@@ -189,5 +194,22 @@ export default {
 
 .trip-route {
   min-height: 75px;
+}
+
+.company-review-small{
+    display: none;
+}
+.company-review{
+    display: block;
+}
+@media (max-width: 1400px) {
+
+    .company-review-small{
+       display: block;
+    }
+    .company-review {
+        display: none;
+    }
+
 }
 </style>

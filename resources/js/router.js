@@ -20,7 +20,7 @@ const router = new Router({
             y: 0
             };
         }
-        
+
     },
     base: process.env.BASE_URL,
     routes: [

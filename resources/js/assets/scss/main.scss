@@ -354,7 +354,7 @@ input#traveler_input {
   .mobile-filter {
     margin: 7px 0px;
     height: 3.75rem;
-    padding: 0 30px !important;
+    padding: 0 10px !important;
   }
 
   .where_to_dropdown,
@@ -441,4 +441,14 @@ input#traveler_input {
 .warning-notify .notification-content {
   font-size: 15px;
   color:  white;
+}
+
+#e-item-element_3 {
+  display: inline-flex;
+}
+
+@media (max-width: 991px) {
+  #e-item-element_3 {
+    display: none;
+  }
 }

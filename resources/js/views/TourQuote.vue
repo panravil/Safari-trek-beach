@@ -1,97 +1,97 @@
 <template>
 <div class="tour-quote-page">
-  <div class="container">
-    <section>
-      <header class="section-header mt-5">
-        <h3>GET FREE QUOTE</h3>
-      </header>
+    <div class="container">
+        <section>
+            <header class="section-header mt-5">
+                <h3>GET FREE QUOTE</h3>
+            </header>
 
-      <div class="card p-4">
-        <form @submit.prevent="tourQuote">
-          <h2 class="mt-3">Fill the form so Operator can contact you!</h2>
-          <h6 class="text-danger"><span class="fa fa-smile-o me-2"></span>We advice you to compare quote from 3 Tour Operators.</h6>
-          <div class="mt-3 row quote">
-            <div class="col-lg-6 col-sm-12 mt-3">
-              <ejs-datepicker :placeholder="waterMark" v-model="start_date" ref="dateObj" :focus='onFocus'></ejs-datepicker>
+            <div class="card p-4">
+                <form @submit.prevent="tourQuote">
+                    <h2 class="mt-3">Fill the form so Operator can contact you!</h2>
+                    <h6 class="text-danger"><span class="fa fa-smile-o me-2"></span>We advice you to compare quote from 3 Tour Operators.</h6>
+                    <div class="mt-3 row quote">
+                        <div class="col-lg-6 col-sm-12 mt-3">
+                            <ejs-datepicker :placeholder="waterMark" v-model="start_date" ref="dateObj" :focus='onFocus' required></ejs-datepicker>
+                        </div>
+                        <div class="col-lg-6 col-sm-12 mt-3" v-click-outside-dropdown="closeTravelerDropdown">
+                            <div @click="showTravelerDropdown">
+                                <ejs-textbox floatLabelType="Auto" autocomplete="off" type="text" placeholder="Travellers" v-model="traveler_number"></ejs-textbox>
+                            </div>
+                            <!-- <transition enter-active-class="animate__animated animate__fadeIn" leave-active-class="animate__animated animate__fadeOut"> -->
+                            <div v-if="visible_traveler_dropdown" class="traveler-dropdown left-0 bg-white mt-3 triangule-where shadow">
+                                <div class="bg-warning text-white p-2 text-center">
+                                    Travelers
+                                    <span class="fa fa-times-circle-o" style="float:right; font-size: 25px; color:black" @click="closeTravelerDropdown"></span>
+                                </div>
+                                <div class="py-2 px-3 mt-2 border-1 text-start d-flex justify-content-between">
+                                    <div><strong>Adult </strong>(16+ yrs):</div>
+                                    <div>
+                                        <vue-numeric-input v-model="adults_number" :min="1" :max="100" :step="1"></vue-numeric-input>
+                                    </div>
+                                </div>
+                                <div class="py-2 px-3 mt-2 border-1 text-start d-flex justify-content-between">
+                                    <div><strong>Child </strong>(0~15 yrs):</div>
+                                    <div>
+                                        <vue-numeric-input v-model="children_number" :min="0" :max="100" :step="1"></vue-numeric-input>
+                                    </div>
+                                </div>
+                                <div class="text-right">
+                                    <button class="btn btn-warning mx-3 my-3" @click="setTravelerInfo">
+                                        Done
+                                    </button>
+                                </div>
+                            </div>
+                            <!-- </transition> -->
+                        </div>
+                        <div class="col-lg-6 col-sm-12 mt-3">
+                            <ejs-textbox v-model="fullname" floatLabelType="Auto" type="text" placeholder="Full Name" required></ejs-textbox>
+                        </div>
+                        <div class="col-lg-6 col-sm-12 mt-3">
+                            <ejs-textbox v-model="email" floatLabelType="Auto" type="email" placeholder="Email Address" required></ejs-textbox>
+                        </div>
+                        <div class="col-lg-6 col-sm-12 mt-3">
+                            <ejs-dropdownlist v-model="selected_country" :dataSource='countryData' :fields='fields' placeholder='Country' required></ejs-dropdownlist>
+                        </div>
+                        <div class="col-lg-6 col-sm-12 mt-3">
+                            <ejs-textbox v-model="mobileno" floatLabelType="Auto" type="phone" placeholder="Mobile Number" required></ejs-textbox>
+                        </div>
+                        <div class="col-lg-12 col-sm-12 mt-3">
+                            <ejs-textbox v-model="message" :multiline="true" floatLabelType="Auto" type="text" placeholder="Your Message" required></ejs-textbox>
+                        </div>
+                    </div>
+                    <h5 class="fw-bold mt-5">Additional activities:</h5>
+                    <div class="d-flex align-items-center mt-3 additional-activity">
+                        <div>
+                            <ejs-checkbox label="Zanzibar" v-model="zanzibar_activity"></ejs-checkbox>
+                        </div>
+                        <div class="ms-3" v-if="zanzibar_activity">
+                            <ejs-dropdownlist v-model="zanzibar_days" :dataSource='dayList' placeholder='No. of Days'></ejs-dropdownlist>
+                        </div>
+                    </div>
+                    <div class="d-flex align-items-center mt-3 additional-activity">
+                        <div>
+                            <ejs-checkbox label="Kilimanjaro" v-model="kiliman_activity"></ejs-checkbox>
+                        </div>
+                        <div class="ms-3" v-if="kiliman_activity">
+                            <ejs-dropdownlist v-model="kilimanjaro_days" :dataSource='dayList' placeholder='No. of Days'></ejs-dropdownlist>
+                        </div>
+                    </div>
+                    <div class="d-flex align-items-center mt-3 additional-activity">
+                        <div>
+                            <ejs-checkbox label="Safari" v-model="safari_activity"></ejs-checkbox>
+                        </div>
+                        <div class="ms-3" v-if="safari_activity">
+                            <ejs-dropdownlist v-model="safari_days" :dataSource='dayList' placeholder='No. of Days'></ejs-dropdownlist>
+                        </div>
+                    </div>
+                    <div class="text-right w-100 mt-5 d-flex justify-content-end">
+                        <button type="submit" class="btn btn-danger">Send Request <span class="fa fa-angle-right ms-2"></span></button>
+                    </div>
+                </form>
             </div>
-            <div class="col-lg-6 col-sm-12 mt-3" v-click-outside-dropdown="closeTravelerDropdown">
-              <div @click="showTravelerDropdown">
-                <ejs-textbox floatLabelType="Auto" autocomplete="off" type="text" placeholder="Travellers" v-model="traveler_number"></ejs-textbox>
-              </div>
-              <!-- <transition enter-active-class="animate__animated animate__fadeIn" leave-active-class="animate__animated animate__fadeOut"> -->
-              <div v-if="visible_traveler_dropdown" class="traveler-dropdown left-0 bg-white mt-3 triangule-where shadow">
-                <div class="bg-warning text-white p-2 text-center">
-                  Travelers
-                  <span class="fa fa-times-circle-o" style="float:right; font-size: 25px; color:black" @click="closeTravelerDropdown"></span>
-                </div>
-                <div class="py-2 px-3 mt-2 border-1 text-start d-flex justify-content-between">
-                  <div><strong>Adults</strong>(16+ years):</div>
-                  <div>
-                    <vue-numeric-input v-model="adults_number" :min="1" :max="100" :step="1"></vue-numeric-input>
-                  </div>
-                </div>
-                <div class="py-2 px-3 mt-2 border-1 text-start d-flex justify-content-between">
-                  <div><strong>Children</strong>(0~15 years):</div>
-                  <div>
-                    <vue-numeric-input v-model="children_number" :min="0" :max="100" :step="1"></vue-numeric-input>
-                  </div>
-                </div>
-                <div class="text-right">
-                  <button class="btn btn-warning mx-3 my-3" @click="setTravelerInfo">
-                    Done
-                  </button>
-                </div>
-              </div>
-              <!-- </transition> -->
-            </div>
-            <div class="col-lg-6 col-sm-12 mt-3">
-              <ejs-textbox v-model="fullname" floatLabelType="Auto" type="text" placeholder="Full Name" required></ejs-textbox>
-            </div>
-            <div class="col-lg-6 col-sm-12 mt-3">
-              <ejs-textbox v-model="email" floatLabelType="Auto" type="email" placeholder="Email Address" required></ejs-textbox>
-            </div>
-            <div class="col-lg-6 col-sm-12 mt-3">
-              <ejs-dropdownlist v-model="selected_country" :dataSource='countryData' :fields='fields' placeholder='Country' required></ejs-dropdownlist>
-            </div>
-            <div class="col-lg-6 col-sm-12 mt-3">
-              <ejs-textbox v-model="mobileno" floatLabelType="Auto" type="phone" placeholder="Mobile Number" required></ejs-textbox>
-            </div>
-            <div class="col-lg-12 col-sm-12 mt-3">
-              <ejs-textbox v-model="message" :multiline="true" floatLabelType="Auto" type="text" placeholder="Your Message" required></ejs-textbox>
-            </div>
-          </div>
-          <h5 class="fw-bold mt-5">Additional activities:</h5>
-          <div class="d-flex align-items-center mt-3 additional-activity">
-            <div>
-              <ejs-checkbox label="Zanzibar" v-model="zanzibar_activity"></ejs-checkbox>
-            </div>
-            <div class="ms-3" v-if="zanzibar_activity">
-              <ejs-dropdownlist v-model="zanzibar_days" :dataSource='dayList' placeholder='No. of Days'></ejs-dropdownlist>
-            </div>
-          </div>
-          <div class="d-flex align-items-center mt-3 additional-activity">
-            <div>
-              <ejs-checkbox label="Kilimanjaro" v-model="kiliman_activity"></ejs-checkbox>
-            </div>
-            <div class="ms-3" v-if="kiliman_activity">
-              <ejs-dropdownlist v-model="kilimanjaro_days" :dataSource='dayList' placeholder='No. of Days'></ejs-dropdownlist>
-            </div>
-          </div>
-          <div class="d-flex align-items-center mt-3 additional-activity">
-            <div>
-              <ejs-checkbox label="Safari" v-model="safari_activity"></ejs-checkbox>
-            </div>
-            <div class="ms-3" v-if="safari_activity">
-              <ejs-dropdownlist v-model="safari_days" :dataSource='dayList' placeholder='No. of Days'></ejs-dropdownlist>
-            </div>
-          </div>
-          <div class="text-right w-100 mt-5 d-flex justify-content-end">
-            <button type="submit" class="btn btn-danger">Send Request <span class="fa fa-angle-right ms-2"></span></button>
-          </div>
-        </form>
-      </div>
-    </section>
-  </div>
+        </section>
+    </div>
 </div>
 </template>
 
@@ -100,289 +100,292 @@ import Vue from "vue"
 import axios from "axios"
 
 import {
-  TextBoxPlugin
+    TextBoxPlugin
 } from '@syncfusion/ej2-vue-inputs';
 
 Vue.use(TextBoxPlugin);
 
 import {
-  DatePickerPlugin
+    DatePickerPlugin
 } from '@syncfusion/ej2-vue-calendars';
 
 Vue.use(DatePickerPlugin);
 
 import {
-  DropDownListPlugin
+    DropDownListPlugin
 } from '@syncfusion/ej2-vue-dropdowns';
 
 Vue.use(DropDownListPlugin);
 import countryData from "../components/country_list"
 
 import {
-  CheckBoxPlugin
+    CheckBoxPlugin
 } from "@syncfusion/ej2-vue-buttons";
 Vue.use(CheckBoxPlugin);
 
 import {
-  enableRipple
+    enableRipple
 } from '@syncfusion/ej2-base';
 
 enableRipple(true);
 
 import {
-  mapState,
-  mapGetters,
-  mapMutations
+    mapState,
+    mapGetters,
+    mapMutations
 } from "vuex";
 
 import VueNumericInput from "vue-numeric-input";
 
 export default {
-  name: "TourQuote",
-  components: {
-    VueNumericInput,
-  },
-  data() {
-    return {
-      waterMark: 'Select a date',
-      countryData: countryData.countryListAllIsoData,
-      fields: { text: 'name', value: 'code' },
-      dayList: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14],
-      zanzibar_activity: false,
-      kiliman_activity: false,
-      safari_activity: false,
+    name: "TourQuote",
+    components: {
+        VueNumericInput,
+    },
+    data() {
+        return {
+            waterMark: 'Select a date',
+            countryData: countryData.countryListAllIsoData,
+            fields: {
+                text: 'name',
+                value: 'code'
+            },
+            dayList: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14],
+            zanzibar_activity: false,
+            kiliman_activity: false,
+            safari_activity: false,
 
-      zanzibar_days: 0,
-      kilimanjaro_days: 0,
-      safari_days: 0,
+            zanzibar_days: 0,
+            kilimanjaro_days: 0,
+            safari_days: 0,
 
-      traveler_number: "",
-      visible_traveler_dropdown: false,
-      adults_number: 1,
-      children_number: 0,
-      fullname: '',
-      selected_country: 'US',
-      message: '',
-      email: '',
-      mobileno: '+1',
-      start_date: '',
+            traveler_number: "",
+            visible_traveler_dropdown: false,
+            adults_number: 1,
+            children_number: 0,
+            fullname: '',
+            selected_country: 'US',
+            message: '',
+            email: '',
+            mobileno: '+1',
+            start_date: '',
 
-      results:{},
-    };
-  },
-  computed: {
-    ...mapGetters({
-      where_to_search_state: "tourController/where_to_search",
-      start_date_state: "tourController/start_date",
-      adults_number_state: "tourController/adults_number",
-      children_number_state: "tourController/children_number",
-
-      package_data: "tourController/quoteData",
-
-      package_id: "tourController/package_id",
-      request_status: "request_status",
-
-      user_id: "tourController/user_id",
-    }),
-  },
-
-  watch: {
-    selected_country: function() {
-      this.mobileno = countryData.calling_code.find(obj => {
-        return obj.code == this.selected_country
-      }).dial_code;
-    }
-  },
-
-  directives: {
-    "click-outside-dropdown": {
-      bind: function (el, binding) {
-        // Define ourClickEventHandler
-        const ourClickEventHandler = (event) => {
-          if (!el.contains(event.target) && el !== event.target) {
-            // as we are attaching an click event listern to the document (below)
-            // ensure the events target is outside the element or a child of it
-            binding.value(event); // before binding it
-          }
+            results: {},
         };
-        // attached the handler to the element so we can remove it later easily
-        el.__vueClickEventHandler__ = ourClickEventHandler;
-
-        // attaching ourClickEventHandler to a listener on the document here
-        document.addEventListener("click", ourClickEventHandler);
-      },
-      unbind: function (el) {
-        // Remove Event Listeners
-        document.removeEventListener("click", el.__vueClickEventHandler__);
-      },
     },
-  },
+    computed: {
+        ...mapGetters({
+            where_to_search_state: "tourController/where_to_search",
+            start_date_state: "tourController/start_date",
+            adults_number_state: "tourController/adults_number",
+            children_number_state: "tourController/children_number",
 
-  created() {
-    this.traveler_number = this.traveler_number_state
-    this.start_date = this.start_date_state
-    this.adults_number = this.adults_number_state
-    this.children_number = this.children_number_state
+            package_data: "tourController/quoteData",
 
-    this.traveler_number_calc();
-    axios.get('https://extreme-ip-lookup.com/json/').then(response => {
-      this.selected_country = response.data.countryCode
-      this.mobileno = countryData.calling_code.find(obj => {
-        return obj.code == this.selected_country
-      }).dial_code;
-    })
+            package_id: "tourController/package_id",
+            request_status: "request_status",
 
-    document.title = "Request a Quote for the Tour " + this.package_data.no_of_day + "-Day " + this.package_data.title + "- Safari-Trek-Beach.com"
-  },
-
-  methods: {
-    traveler_number_calc() {
-      let traveler = this.adults_number + this.children_number;
-      if (traveler == 1) this.traveler_number = traveler + " Traveler";
-      else this.traveler_number = traveler + " Travelers";
+            user_id: "tourController/user_id",
+        }),
     },
 
-    showTravelerDropdown() {
-      var current_flag = this.visible_traveler_dropdown;
-      this.visible_traveler_dropdown = !current_flag;
+    watch: {
+        selected_country: function () {
+            this.mobileno = countryData.calling_code.find(obj => {
+                return obj.code == this.selected_country
+            }).dial_code;
+        }
     },
 
-    closeTravelerDropdown: function (event) {
-      this.visible_traveler_dropdown = false;
+    directives: {
+        "click-outside-dropdown": {
+            bind: function (el, binding) {
+                // Define ourClickEventHandler
+                const ourClickEventHandler = (event) => {
+                    if (!el.contains(event.target) && el !== event.target) {
+                        // as we are attaching an click event listern to the document (below)
+                        // ensure the events target is outside the element or a child of it
+                        binding.value(event); // before binding it
+                    }
+                };
+                // attached the handler to the element so we can remove it later easily
+                el.__vueClickEventHandler__ = ourClickEventHandler;
+
+                // attaching ourClickEventHandler to a listener on the document here
+                document.addEventListener("click", ourClickEventHandler);
+            },
+            unbind: function (el) {
+                // Remove Event Listeners
+                document.removeEventListener("click", el.__vueClickEventHandler__);
+            },
+        },
     },
 
-    setTravelerInfo(event) {
-      event.preventDefault();
-      let traveler = this.adults_number + this.children_number;
-      if (traveler == 1) this.traveler_number = traveler + " Traveler";
-      else this.traveler_number = traveler + " Travelers";
-      this.closeTravelerDropdown();
-    },
+    created() {
+        this.traveler_number = this.traveler_number_state
+        this.start_date = this.start_date_state
+        this.adults_number = this.adults_number_state
+        this.children_number = this.children_number_state
 
-     onFocus: function (args) {
-      this.$refs.dateObj.show();
-    },
-
-    tourQuote() {
-      let quoteData = {}
-
-      quoteData = {
-        'travellers': this.adults_number + this.children_number,
-        'adult': this.adults_number,
-        'children': this.children_number,
-        'date': this.start_date,
-        'fullname': this.fullname,
-        'emailAddress': this.email,
-        'country': this.selected_country,
-        'mobileno': this.mobileno,
-        'message': this.message,
-        'zanzibar_days': this.zanzibar_days,
-        'kilimanjaro_days': this.kilimanjaro_days,
-        'safari_days': this.safari_days,
-        'package_id': this.package_id,
-        'user_id': this.user_id,
-      }
-
-      console.log('tag', quoteData)
-
-      this.$store
-        .dispatch("operatorController/tourQuote", quoteData)
-        .then(() => {
-          if (this.request_status == true) {
-            // this.$notify({
-            //   group: 'success',
-            //   title: 'Quote Success',
-            //   text: 'Thank you! We have received your tour qutoe.'
-            // });
-
-            this.fullname = ''
-            this.email = ''
-            this.selected_country = ''
-            this.mobileno = ''
-            this.message = ''
-            this.zanzibar_days = ''
-            this.kilimanjaro_days = ''
-            this.safari_days = ''
-
-            this.$router.push('/thankyou-quote')
-
-          } else {
-            this.$notify({
-              group: 'warning',
-              title: 'Submit Error !',
-              text: 'Sorry, Something went wrong...'
-            });
-
-            this.fullname = ''
-            this.email = ''
-            this.selected_country = ''
-            this.mobileno = ''
-            this.message = ''
-            this.zanzibar_days = ''
-            this.kilimanjaro_days = ''
-            this.safari_days = ''
-          }
-
+        this.traveler_number_calc();
+        axios.get('https://extreme-ip-lookup.com/json/').then(response => {
+            this.selected_country = response.data.countryCode
+            this.mobileno = countryData.calling_code.find(obj => {
+                return obj.code == this.selected_country
+            }).dial_code;
         })
-        .catch(() => {
-          this.$notify({
-            group: 'warning',
-            title: 'Submit Error !',
-            text: 'Sorry, Something went wrong...'
-          });
 
-          this.fullname = ''
-          this.email = ''
-          this.selected_country = ''
-          this.mobileno = ''
-          this.message = ''
-          this.zanzibar_days = ''
-          this.kilimanjaro_days = ''
-          this.safari_days = ''
-        });
+        document.title = "Request a Quote for the Tour " + this.package_data.no_of_day + "-Day " + this.package_data.title + "- Safari-Trek-Beach.com"
+    },
 
-    }
-  },
+    methods: {
+        traveler_number_calc() {
+            let traveler = this.adults_number + this.children_number;
+            if (traveler == 1) this.traveler_number = traveler + " Traveler";
+            else this.traveler_number = traveler + " Travelers";
+        },
+
+        showTravelerDropdown() {
+            var current_flag = this.visible_traveler_dropdown;
+            this.visible_traveler_dropdown = !current_flag;
+        },
+
+        closeTravelerDropdown: function (event) {
+            this.visible_traveler_dropdown = false;
+        },
+
+        setTravelerInfo(event) {
+            event.preventDefault();
+            let traveler = this.adults_number + this.children_number;
+            if (traveler == 1) this.traveler_number = traveler + " Traveler";
+            else this.traveler_number = traveler + " Travelers";
+            this.closeTravelerDropdown();
+        },
+
+        onFocus: function (args) {
+            this.$refs.dateObj.show();
+        },
+
+        tourQuote() {
+            let quoteData = {}
+
+            quoteData = {
+                'travellers': this.adults_number + this.children_number,
+                'adult': this.adults_number,
+                'children': this.children_number,
+                'date': this.start_date,
+                'fullname': this.fullname,
+                'emailAddress': this.email,
+                'country': this.selected_country,
+                'mobileno': this.mobileno,
+                'message': this.message,
+                'zanzibar_days': this.zanzibar_days,
+                'kilimanjaro_days': this.kilimanjaro_days,
+                'safari_days': this.safari_days,
+                'package_id': this.package_id,
+                'user_id': this.user_id,
+            }
+
+            console.log('tag', quoteData)
+
+            this.$store
+                .dispatch("operatorController/tourQuote", quoteData)
+                .then(() => {
+                    if (this.request_status == true) {
+                        // this.$notify({
+                        //   group: 'success',
+                        //   title: 'Quote Success',
+                        //   text: 'Thank you! We have received your tour qutoe.'
+                        // });
+
+                        this.fullname = ''
+                        this.email = ''
+                        this.selected_country = ''
+                        this.mobileno = ''
+                        this.message = ''
+                        this.zanzibar_days = ''
+                        this.kilimanjaro_days = ''
+                        this.safari_days = ''
+
+                        this.$router.push('/thankyou-quote')
+
+                    } else {
+                        this.$notify({
+                            group: 'warning',
+                            title: 'Submit Error !',
+                            text: 'Sorry, Something went wrong...'
+                        });
+
+                        this.fullname = ''
+                        this.email = ''
+                        this.selected_country = ''
+                        this.mobileno = ''
+                        this.message = ''
+                        this.zanzibar_days = ''
+                        this.kilimanjaro_days = ''
+                        this.safari_days = ''
+                    }
+
+                })
+                .catch(() => {
+                    this.$notify({
+                        group: 'warning',
+                        title: 'Submit Error !',
+                        text: 'Sorry, Something went wrong...'
+                    });
+
+                    this.fullname = ''
+                    this.email = ''
+                    this.selected_country = ''
+                    this.mobileno = ''
+                    this.message = ''
+                    this.zanzibar_days = ''
+                    this.kilimanjaro_days = ''
+                    this.safari_days = ''
+                });
+
+        }
+    },
 };
 </script>
 
 <style>
 .tour-quote-page {
-  padding-top: 50px;
-  padding-bottom: 100px;
-  background-color: #f2f2f2;
+    padding-top: 50px;
+    padding-bottom: 100px;
+    background-color: #f2f2f2;
 }
 
 .tour-quote-page section {
-  margin-top: 100px;
+    margin-top: 100px;
 }
 
 .tour-quote-page .e-multi-line-input textarea {
-  height: 100px;
+    height: 100px;
 }
 
 .tour-quote-page .quote .e-date-wrapper,
 .tour-quote-page .quote .e-ddl {
-  margin-top: 16px;
+    margin-top: 16px;
 }
 
 .additional-activity div:first-child {
-  width: 150px;
+    width: 150px;
 }
 
 .additional-activity div:last-child {
-  width: 150px;
+    width: 150px;
 }
 
 .additional-activity {
-  margin-left: 30px;
+    margin-left: 30px;
 }
 
 @media (max-width: 540px) {
-  .additional-activity {
-    /* justify-content: center; */
-    margin-left: 0px;
-  }
+    .additional-activity {
+        /* justify-content: center; */
+        margin-left: 0px;
+    }
 }
 
 @import "@syncfusion/ej2-vue-inputs/styles/material.css";
