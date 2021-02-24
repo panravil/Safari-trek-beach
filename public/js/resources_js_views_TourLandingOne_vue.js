@@ -130,6 +130,50 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
  // import { mapState, mapGetters, mapMutations } from "vuex";
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
@@ -175,10 +219,10 @@ __webpack_require__.r(__webpack_exports__);
     toInnerPackage: function toInnerPackage() {
       var searchData = {};
       searchData = {
-        'where_to_search': this.where_to_search,
-        'start_date': this.start_date,
-        'adults_number': this.adults_number,
-        'children_number': this.children_number
+        where_to_search: this.where_to_search,
+        start_date: this.start_date,
+        adults_number: this.adults_number,
+        children_number: this.children_number
       };
       this.$store.dispatch("tourController/setSearchData", searchData); // this.$router
       //   .push("/tour-package/" + this.tourData.package_id)
@@ -190,7 +234,7 @@ __webpack_require__.r(__webpack_exports__);
           id: this.tourData.package_id
         }
       });
-      window.open(routeData.href, '_blank');
+      window.open(routeData.href, "_blank");
     }
   }
 });
@@ -305,10 +349,10 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 /***/ }),
 
-/***/ "./node_modules/css-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[2]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/TourCard.vue?vue&type=style&index=0&lang=css&":
-/*!***********************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/css-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[2]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/TourCard.vue?vue&type=style&index=0&lang=css& ***!
-  \***********************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+/***/ "./node_modules/css-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[2]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/TourCard.vue?vue&type=style&index=0&id=5583021a&scoped=true&lang=css&":
+/*!***********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/css-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[2]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/TourCard.vue?vue&type=style&index=0&id=5583021a&scoped=true&lang=css& ***!
+  \***********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
 /***/ ((module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -322,17 +366,17 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n#tour-card .price {\r\n  width: 90px;\r\n  color: #0f6d24;\r\n  right: 5px;\r\n  bottom: 0px;\r\n  top: 0px;\r\n  padding-left: 5px;\r\n  border-left: 1px dotted black;\r\n  position: absolute;\r\n  font-size: 18px;\r\n  display: flex;\r\n  align-items: center;\r\n  justify-content: center;\n}\n#tour-card .tag-image {\r\n  top: -12px;\r\n  position: absolute;\r\n  right: 10px;\n}\n#tour-card .bg-image {\r\n  background-size: cover;\r\n  position: relative;\r\n  width: 100%;\r\n  height: 0;\r\n  padding-top: 56.25%;\n}\n#tour-card .tour_title {\r\n  width: 100%;\r\n  position: absolute;\r\n  left: 0;\r\n  bottom: 0;\r\n  right: 0;\r\n  text-align: left;\r\n  padding: 15px 10px;\r\n  background: rgba(0, 0, 0, 0.4);\r\n  background: linear-gradient(to bottom,\r\n      rgba(0, 0, 0, 0) 0%,\r\n      rgba(0, 0, 0, 0.5) 45%,\r\n      rgba(0, 0, 0, 0.9) 100%);\r\n  color: white;\r\n  text-align: center;\r\n  font-weight: 700;\r\n  font-size: 20px;\r\n  margin: 40px 0 0px 0;\r\n  font-family: \"Montserrat\", sans-serif;\n}\n#tour-card.card {\r\n  transition: box-shadow 0.2s ease-in-out, transform 0.3s ease-in-out;\r\n  box-shadow: 0px 2px 3px rgb(0 0 0 / 18%);\r\n  cursor: pointer;\n}\n#tour-card.card:hover {\r\n  box-shadow: 0px 1px 13px #666;\n}\n.trip-route {\r\n  min-height: 75px;\n}\r\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n#tour-card .price[data-v-5583021a] {\n    width: 80px;\n    color: #0f6d24;\n    right: 5px;\n    bottom: 0px;\n    top: 0px;\n    padding-left: 2px;\n    border-left: 1px dotted black;\n    position: absolute;\n    font-size: 18px;\n    display: flex;\n    align-items: center;\n    justify-content: center;\n}\n#tour-card .tag-image[data-v-5583021a] {\n    top: -12px;\n    position: absolute;\n    right: 10px;\n}\n#tour-card .bg-image[data-v-5583021a] {\n    background-size: cover;\n    position: relative;\n    width: 100%;\n    height: 0;\n    padding-top: 56.25%;\n}\n#tour-card .tour_title[data-v-5583021a] {\n    width: 100%;\n    position: absolute;\n    left: 0;\n    bottom: 0;\n    right: 0;\n    text-align: left;\n    padding: 15px 10px;\n    background: rgba(0, 0, 0, 0.4);\n    background: linear-gradient(\n        to bottom,\n        rgba(0, 0, 0, 0) 0%,\n        rgba(0, 0, 0, 0.5) 45%,\n        rgba(0, 0, 0, 0.9) 100%\n    );\n    color: white;\n    text-align: center;\n    font-weight: 700;\n    font-size: 20px;\n    margin: 40px 0 0px 0;\n    font-family: \"Montserrat\", sans-serif;\n}\n#tour-card.card[data-v-5583021a] {\n    transition: box-shadow 0.2s ease-in-out, transform 0.3s ease-in-out;\n    box-shadow: 0px 2px 3px rgb(0 0 0 / 18%);\n    cursor: pointer;\n}\n#tour-card.card[data-v-5583021a]:hover {\n    box-shadow: 0px 1px 13px #666;\n}\n.trip-route[data-v-5583021a] {\n    min-height: 75px;\n}\n.company-name[data-v-5583021a] {\n    font-size: 18px;\n}\n@media (max-width: 1200px) {\n.company-name[data-v-5583021a] {\n        font-size: 14px;\n        padding-left: 8px !important;\n}\n.company-review[data-v-5583021a]{\n        font-size: 14px;\n        padding-left: 8px !important;\n}\n#tour-card .price[data-v-5583021a] {\n        font-size: 16px;\n}\n}\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
 
 /***/ }),
 
-/***/ "./node_modules/style-loader/dist/cjs.js!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[2]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/TourCard.vue?vue&type=style&index=0&lang=css&":
-/*!***************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/style-loader/dist/cjs.js!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[2]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/TourCard.vue?vue&type=style&index=0&lang=css& ***!
-  \***************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+/***/ "./node_modules/style-loader/dist/cjs.js!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[2]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/TourCard.vue?vue&type=style&index=0&id=5583021a&scoped=true&lang=css&":
+/*!***************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/style-loader/dist/cjs.js!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[2]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/TourCard.vue?vue&type=style&index=0&id=5583021a&scoped=true&lang=css& ***!
+  \***************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -342,7 +386,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! !../../../node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js */ "./node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js");
 /* harmony import */ var _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _node_modules_css_loader_dist_cjs_js_clonedRuleSet_9_0_rules_0_use_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_9_0_rules_0_use_2_node_modules_vue_loader_lib_index_js_vue_loader_options_TourCard_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! !!../../../node_modules/css-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[1]!../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[2]!../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./TourCard.vue?vue&type=style&index=0&lang=css& */ "./node_modules/css-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[2]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/TourCard.vue?vue&type=style&index=0&lang=css&");
+/* harmony import */ var _node_modules_css_loader_dist_cjs_js_clonedRuleSet_9_0_rules_0_use_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_9_0_rules_0_use_2_node_modules_vue_loader_lib_index_js_vue_loader_options_TourCard_vue_vue_type_style_index_0_id_5583021a_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! !!../../../node_modules/css-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[1]!../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[2]!../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./TourCard.vue?vue&type=style&index=0&id=5583021a&scoped=true&lang=css& */ "./node_modules/css-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[2]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/TourCard.vue?vue&type=style&index=0&id=5583021a&scoped=true&lang=css&");
 
             
 
@@ -351,11 +395,11 @@ var options = {};
 options.insert = "head";
 options.singleton = false;
 
-var update = _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default()(_node_modules_css_loader_dist_cjs_js_clonedRuleSet_9_0_rules_0_use_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_9_0_rules_0_use_2_node_modules_vue_loader_lib_index_js_vue_loader_options_TourCard_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_1__.default, options);
+var update = _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default()(_node_modules_css_loader_dist_cjs_js_clonedRuleSet_9_0_rules_0_use_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_9_0_rules_0_use_2_node_modules_vue_loader_lib_index_js_vue_loader_options_TourCard_vue_vue_type_style_index_0_id_5583021a_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_1__.default, options);
 
 
 
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_css_loader_dist_cjs_js_clonedRuleSet_9_0_rules_0_use_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_9_0_rules_0_use_2_node_modules_vue_loader_lib_index_js_vue_loader_options_TourCard_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_1__.default.locals || {});
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_css_loader_dist_cjs_js_clonedRuleSet_9_0_rules_0_use_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_9_0_rules_0_use_2_node_modules_vue_loader_lib_index_js_vue_loader_options_TourCard_vue_vue_type_style_index_0_id_5583021a_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_1__.default.locals || {});
 
 /***/ }),
 
@@ -409,9 +453,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => __WEBPACK_DEFAULT_EXPORT__
 /* harmony export */ });
-/* harmony import */ var _TourCard_vue_vue_type_template_id_5583021a___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./TourCard.vue?vue&type=template&id=5583021a& */ "./resources/js/components/TourCard.vue?vue&type=template&id=5583021a&");
+/* harmony import */ var _TourCard_vue_vue_type_template_id_5583021a_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./TourCard.vue?vue&type=template&id=5583021a&scoped=true& */ "./resources/js/components/TourCard.vue?vue&type=template&id=5583021a&scoped=true&");
 /* harmony import */ var _TourCard_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./TourCard.vue?vue&type=script&lang=js& */ "./resources/js/components/TourCard.vue?vue&type=script&lang=js&");
-/* harmony import */ var _TourCard_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./TourCard.vue?vue&type=style&index=0&lang=css& */ "./resources/js/components/TourCard.vue?vue&type=style&index=0&lang=css&");
+/* harmony import */ var _TourCard_vue_vue_type_style_index_0_id_5583021a_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./TourCard.vue?vue&type=style&index=0&id=5583021a&scoped=true&lang=css& */ "./resources/js/components/TourCard.vue?vue&type=style&index=0&id=5583021a&scoped=true&lang=css&");
 /* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! !../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
 
 
@@ -423,11 +467,11 @@ __webpack_require__.r(__webpack_exports__);
 
 var component = (0,_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__.default)(
   _TourCard_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__.default,
-  _TourCard_vue_vue_type_template_id_5583021a___WEBPACK_IMPORTED_MODULE_0__.render,
-  _TourCard_vue_vue_type_template_id_5583021a___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns,
+  _TourCard_vue_vue_type_template_id_5583021a_scoped_true___WEBPACK_IMPORTED_MODULE_0__.render,
+  _TourCard_vue_vue_type_template_id_5583021a_scoped_true___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns,
   false,
   null,
-  null,
+  "5583021a",
   null
   
 )
@@ -526,15 +570,15 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./resources/js/components/TourCard.vue?vue&type=style&index=0&lang=css&":
-/*!*******************************************************************************!*\
-  !*** ./resources/js/components/TourCard.vue?vue&type=style&index=0&lang=css& ***!
-  \*******************************************************************************/
+/***/ "./resources/js/components/TourCard.vue?vue&type=style&index=0&id=5583021a&scoped=true&lang=css&":
+/*!*******************************************************************************************************!*\
+  !*** ./resources/js/components/TourCard.vue?vue&type=style&index=0&id=5583021a&scoped=true&lang=css& ***!
+  \*******************************************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_style_loader_dist_cjs_js_node_modules_css_loader_dist_cjs_js_clonedRuleSet_9_0_rules_0_use_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_9_0_rules_0_use_2_node_modules_vue_loader_lib_index_js_vue_loader_options_TourCard_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/style-loader/dist/cjs.js!../../../node_modules/css-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[1]!../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[2]!../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./TourCard.vue?vue&type=style&index=0&lang=css& */ "./node_modules/style-loader/dist/cjs.js!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[2]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/TourCard.vue?vue&type=style&index=0&lang=css&");
+/* harmony import */ var _node_modules_style_loader_dist_cjs_js_node_modules_css_loader_dist_cjs_js_clonedRuleSet_9_0_rules_0_use_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_9_0_rules_0_use_2_node_modules_vue_loader_lib_index_js_vue_loader_options_TourCard_vue_vue_type_style_index_0_id_5583021a_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/style-loader/dist/cjs.js!../../../node_modules/css-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[1]!../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[2]!../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./TourCard.vue?vue&type=style&index=0&id=5583021a&scoped=true&lang=css& */ "./node_modules/style-loader/dist/cjs.js!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[2]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/TourCard.vue?vue&type=style&index=0&id=5583021a&scoped=true&lang=css&");
 
 
 /***/ }),
@@ -556,19 +600,19 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./resources/js/components/TourCard.vue?vue&type=template&id=5583021a&":
-/*!*****************************************************************************!*\
-  !*** ./resources/js/components/TourCard.vue?vue&type=template&id=5583021a& ***!
-  \*****************************************************************************/
+/***/ "./resources/js/components/TourCard.vue?vue&type=template&id=5583021a&scoped=true&":
+/*!*****************************************************************************************!*\
+  !*** ./resources/js/components/TourCard.vue?vue&type=template&id=5583021a&scoped=true& ***!
+  \*****************************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "render": () => /* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_TourCard_vue_vue_type_template_id_5583021a___WEBPACK_IMPORTED_MODULE_0__.render,
-/* harmony export */   "staticRenderFns": () => /* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_TourCard_vue_vue_type_template_id_5583021a___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns
+/* harmony export */   "render": () => /* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_TourCard_vue_vue_type_template_id_5583021a_scoped_true___WEBPACK_IMPORTED_MODULE_0__.render,
+/* harmony export */   "staticRenderFns": () => /* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_TourCard_vue_vue_type_template_id_5583021a_scoped_true___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns
 /* harmony export */ });
-/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_TourCard_vue_vue_type_template_id_5583021a___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./TourCard.vue?vue&type=template&id=5583021a& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/TourCard.vue?vue&type=template&id=5583021a&");
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_TourCard_vue_vue_type_template_id_5583021a_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./TourCard.vue?vue&type=template&id=5583021a&scoped=true& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/TourCard.vue?vue&type=template&id=5583021a&scoped=true&");
 
 
 /***/ }),
@@ -645,10 +689,10 @@ render._withStripped = true
 
 /***/ }),
 
-/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/TourCard.vue?vue&type=template&id=5583021a&":
-/*!********************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/TourCard.vue?vue&type=template&id=5583021a& ***!
-  \********************************************************************************************************************************************************************************************************************/
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/TourCard.vue?vue&type=template&id=5583021a&scoped=true&":
+/*!********************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/TourCard.vue?vue&type=template&id=5583021a&scoped=true& ***!
+  \********************************************************************************************************************************************************************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -687,11 +731,11 @@ var render = function() {
           _vm._v(" "),
           _c("div", { staticClass: "tour_title" }, [
             _vm._v(
-              "\r\n      " +
+              "\n            " +
                 _vm._s(_vm.tourData.no_of_day) +
                 "-Day " +
                 _vm._s(_vm.tourData.title) +
-                "\r\n    "
+                "\n        "
             )
           ]),
           _vm._v(" "),
@@ -760,22 +804,22 @@ var render = function() {
           _c("p", { staticClass: "card-text mb-1" }, [
             _c("strong", [_vm._v(" Tour Type: ")]),
             _vm._v(
-              "\r\n      " +
+              "\n            " +
                 _vm._s(_vm.getTourLevel(_vm.tourData.level)) +
-                "\r\n    "
+                "\n        "
             )
           ]),
           _vm._v(" "),
           _c("p", { staticClass: "card-text mb-1 trip-route" }, [
             _c("strong", [_vm._v(" Trip Route: ")]),
             _vm._v(
-              "\r\n      " +
+              "\n            " +
                 _vm._s(_vm.tourData.start_city) +
-                "(Start),\r\n      " +
+                "(Start),\n            " +
                 _vm._s(_vm.getMidRoute(_vm.tourData.destination)) +
-                "\r\n      " +
+                "\n            " +
                 _vm._s(_vm.tourData.end_city) +
-                " (End)\r\n    "
+                " (End)\n        "
             )
           ])
         ]
@@ -786,28 +830,32 @@ var render = function() {
         { staticClass: "row gx-0", staticStyle: { position: "relative" } },
         [
           _c("div", [
-            _c("p", { staticClass: "card-text mb-1 ps-3" }, [
+            _c("p", { staticClass: "card-text mb-1 ps-3 company-name" }, [
               _vm._v(
-                "\r\n        " +
+                "\n                " +
                   _vm._s(_vm.tourData.company_name) +
-                  "\r\n      "
+                  "\n            "
               )
             ]),
             _vm._v(" "),
             _c(
               "p",
-              { staticClass: "card-text ps-3 d-flex mb-2" },
+              { staticClass: "card-text ps-3 d-flex mb-2 company-review" },
               [
                 _c("CustomStarRating", {
                   attrs: { rating: _vm.tourData.avg_review }
                 }),
                 _vm._v(" "),
                 _vm.tourData.avg_review == "5"
-                  ? _c("strong", [_vm._v("  5.0/5 ")])
+                  ? _c("strong", [_vm._v("\n                     5.0/5 ")])
                   : _c("strong", [
-                      _vm._v("  " + _vm._s(_vm.tourData.avg_review) + "/5 ")
+                      _vm._v(
+                        "\n                     " +
+                          _vm._s(_vm.tourData.avg_review) +
+                          "/5 "
+                      )
                     ]),
-                _vm._v("\r\n        (\r\n        "),
+                _vm._v("\n                (\n                "),
                 _vm.tourData.sum_review == 1
                   ? _c("span", [
                       _vm._v(_vm._s(_vm.tourData.sum_review) + " Review")
@@ -815,7 +863,7 @@ var render = function() {
                   : _c("span", [
                       _vm._v(_vm._s(_vm.tourData.sum_review) + " Reviews")
                     ]),
-                _vm._v("\r\n        )\r\n      ")
+                _vm._v("\n                )\n            ")
               ],
               1
             )
@@ -892,7 +940,7 @@ var render = function() {
         { staticClass: "text-center mt-3", attrs: { "data-aos": "fade-up" } },
         [
           _vm._v(
-            "\r\n      Lorem ipsum dolor sit amet consectetur adipiscing elit. A quis\r\n      aspernatur tempora eos ad necessitatibus magni vertatis ateque!\r\n      Veritatis laudantium saepe molestiae nostrum in molestlas. Offlciis ut\r\n      debitis atque provident. Consectetur, blanditlls excepturl, reiciendis\r\n      vel lusto repudiandae at ut minima magnam sit quidem quaerat laudantium\r\n      sed, cum ex nesclunt facere. Alias sed harum accusamus rerum autem,\r\n      temporibus officiis distinctio ratione?\r\n    "
+            "\n      Lorem ipsum dolor sit amet consectetur adipiscing elit. A quis\n      aspernatur tempora eos ad necessitatibus magni vertatis ateque!\n      Veritatis laudantium saepe molestiae nostrum in molestlas. Offlciis ut\n      debitis atque provident. Consectetur, blanditlls excepturl, reiciendis\n      vel lusto repudiandae at ut minima magnam sit quidem quaerat laudantium\n      sed, cum ex nesclunt facere. Alias sed harum accusamus rerum autem,\n      temporibus officiis distinctio ratione?\n    "
           )
         ]
       )
@@ -926,7 +974,7 @@ var staticRenderFns = [
         { staticClass: "text-center", attrs: { "data-aos": "fade-up" } },
         [
           _vm._v(
-            "\r\n        Lorem ipsum dolor sit amet consectetur adipiscing elit. A quis\r\n        aspernatur tempora eos ad necessitatibus magni vertatis ateque!\r\n        Veritatis laudantium saepe molestiae nostrum in molestlas. Offlciis ut\r\n        debitis atque provident. Consectetur, blanditlls excepturl, reiciendis\r\n        vel lusto repudiandae at ut minima magnam sit quidem quaerat laudantium\r\n        sed, cum ex nesclunt facere. Alias sed harum accusamus rerum autem,\r\n        temporibus officiis distinctio ratione?\r\n      "
+            "\n        Lorem ipsum dolor sit amet consectetur adipiscing elit. A quis\n        aspernatur tempora eos ad necessitatibus magni vertatis ateque!\n        Veritatis laudantium saepe molestiae nostrum in molestlas. Offlciis ut\n        debitis atque provident. Consectetur, blanditlls excepturl, reiciendis\n        vel lusto repudiandae at ut minima magnam sit quidem quaerat laudantium\n        sed, cum ex nesclunt facere. Alias sed harum accusamus rerum autem,\n        temporibus officiis distinctio ratione?\n      "
           )
         ]
       )

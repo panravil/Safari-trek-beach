@@ -168,7 +168,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n#tour-card .bg-image {\r\n  background-size: cover;\r\n  position: relative;\r\n  width: 100%;\r\n  height: 0;\r\n  padding-top: 58.25%;\n}\n#tour-card.card {\r\n  transition: box-shadow 0.2s ease-in-out, transform 0.3s ease-in-out;\r\n  box-shadow: 0px 2px 3px rgb(0 0 0 / 18%);\r\n  cursor: pointer;\r\n  width: 75%;\n}\n#tour-card.card:hover {\r\n  box-shadow: 0px 1px 13px #666;\n}\n.trip-route {\r\n  min-height: 75px;\n}\n@media (max-width: 767px) {\n#tour-card.card {\r\n    width: 100%;\n}\n}\r\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n#tour-card .bg-image {\n  background-size: cover;\n  position: relative;\n  width: 100%;\n  height: 0;\n  padding-top: 58.25%;\n}\n#tour-card.card {\n  transition: box-shadow 0.2s ease-in-out, transform 0.3s ease-in-out;\n  box-shadow: 0px 2px 3px rgb(0 0 0 / 18%);\n  cursor: pointer;\n  width: 75%;\n}\n#tour-card.card:hover {\n  box-shadow: 0px 1px 13px #666;\n}\n.trip-route {\n  min-height: 75px;\n}\n@media (max-width: 767px) {\n#tour-card.card {\n    width: 100%;\n}\n}\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -450,7 +450,7 @@ var render = function() {
                 _vm._v(" "),
                 _c("div", { staticClass: "text-center pt-3 pb-5" }, [
                   _vm._v(
-                    "\r\n          Lorem ipsum dolor sit amet consectetur adipiscing elit. A quis\r\n          aspernatur tempora eos ad necessitatibus magni vertatis ateque!\r\n          Veritatis laudantium saepe molestiae nostrum in molestlas. Offlciis\r\n          ut debitis atque provident. Consectetur, blanditlls excepturl,\r\n          reiciendis vel lusto repudiandae at ut minima magnam sit quidem\r\n          quaerat laudantium sed, cum ex nesclunt facere. Alias sed harum\r\n          accusamus rerum autem, temporibus officiis distinctio ratione?\r\n        "
+                    "\n          Lorem ipsum dolor sit amet consectetur adipiscing elit. A quis\n          aspernatur tempora eos ad necessitatibus magni vertatis ateque!\n          Veritatis laudantium saepe molestiae nostrum in molestlas. Offlciis\n          ut debitis atque provident. Consectetur, blanditlls excepturl,\n          reiciendis vel lusto repudiandae at ut minima magnam sit quidem\n          quaerat laudantium sed, cum ex nesclunt facere. Alias sed harum\n          accusamus rerum autem, temporibus officiis distinctio ratione?\n        "
                   )
                 ])
               ],
@@ -485,7 +485,7 @@ var staticRenderFns = [
       _vm._v(" "),
       _c("div", { staticClass: "text-center" }, [
         _vm._v(
-          "\r\n        Lorem ipsum dolor sit amet consectetur adipiscing elit. A quis\r\n        aspernatur tempora eos ad necessitatibus magni vertatis ateque!\r\n        Veritatis laudantium saepe molestiae nostrum in molestlas. Offlciis ut\r\n        debitis atque provident. Consectetur, blanditlls excepturl, reiciendis\r\n        vel lusto repudiandae at ut minima magnam sit quidem quaerat laudantium\r\n        sed, cum ex nesclunt facere. Alias sed harum accusamus rerum autem,\r\n        temporibus officiis distinctio ratione?\r\n      "
+          "\n        Lorem ipsum dolor sit amet consectetur adipiscing elit. A quis\n        aspernatur tempora eos ad necessitatibus magni vertatis ateque!\n        Veritatis laudantium saepe molestiae nostrum in molestlas. Offlciis ut\n        debitis atque provident. Consectetur, blanditlls excepturl, reiciendis\n        vel lusto repudiandae at ut minima magnam sit quidem quaerat laudantium\n        sed, cum ex nesclunt facere. Alias sed harum accusamus rerum autem,\n        temporibus officiis distinctio ratione?\n      "
         )
       ])
     ])

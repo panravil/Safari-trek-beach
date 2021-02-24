@@ -195,7 +195,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n.terms-condition {\r\n  padding-top: 50px;\r\n  padding-bottom: 100px;\r\n  background-color: #f2f2f2;\n}\n.terms-condition section {\r\n  margin-top: 100px;\n}\r\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n.terms-condition {\n  padding-top: 50px;\n  padding-bottom: 100px;\n  background-color: #f2f2f2;\n}\n.terms-condition section {\n  margin-top: 100px;\n}\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 

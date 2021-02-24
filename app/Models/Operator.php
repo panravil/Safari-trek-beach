@@ -45,7 +45,7 @@ class Operator extends Model {
         $data = [];
 
         $operator = DB::select("
-            SELECT user_id, company_name, brief, description, banner, logo, tag
+            SELECT *
             FROM user WHERE status = 'active' AND role = 'operator' AND published = 1 AND user_id = $user_id
         ");
 
@@ -54,6 +54,10 @@ class Operator extends Model {
             $data['user_id']        = $operator[0]->user_id;
             $data['company_name']   = $operator[0]->company_name;
             $data['brief']          = $operator[0]->brief;
+            $data['num_of_staff']   = $operator[0]->no_of_staff;
+            $data['tour_type']      = $operator[0]->tour_type;
+            $data['address']        = $operator[0]->address;
+            $data['contact_person'] = $operator[0]->person_name;
             $data['description']    = $operator[0]->description;
             $data['banner']         = $operator[0]->banner;
             $data['logo']           = $operator[0]->logo;

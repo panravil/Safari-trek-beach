@@ -12446,7 +12446,7 @@ var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBP
 ___CSS_LOADER_EXPORT___.i(_node_modules_css_loader_dist_cjs_js_clonedRuleSet_9_0_rules_0_use_1_node_modules_syncfusion_ej2_vue_inputs_styles_material_css__WEBPACK_IMPORTED_MODULE_2__.default);
 ___CSS_LOADER_EXPORT___.i(_node_modules_css_loader_dist_cjs_js_clonedRuleSet_9_0_rules_0_use_1_node_modules_syncfusion_ej2_base_styles_material_css__WEBPACK_IMPORTED_MODULE_1__.default);
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n#contact-us-page {\r\n  background-color: #f2f2f2;\r\n  padding-top: 50px;\r\n  padding-bottom: 100px;\n}\n#contact-us-page section {\r\n  margin-top: 100px;\n}\n#contact-us-page .e-multi-line-input textarea {\r\n  height: 100px;\n}\n#contact-us-page .contact-form-card {\r\n  width: 75%;\n}\n#contact-us-page a {\r\n  color: #4f4f4f;\n}\n@media (max-width: 991px) {\n#contact-us-page .contact-form-card {\r\n    width: 100%;\n}\n#contact-us-page h3,\r\n  #contact-us-page h5 {\r\n    text-align: center;\n}\n#contact-us-page .contact-form-card h5 {\r\n    text-align: left;\r\n    font-size: 15px;\n}\n}\r\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n#contact-us-page {\n  background-color: #f2f2f2;\n  padding-top: 50px;\n  padding-bottom: 100px;\n}\n#contact-us-page section {\n  margin-top: 100px;\n}\n#contact-us-page .e-multi-line-input textarea {\n  height: 100px;\n}\n#contact-us-page .contact-form-card {\n  width: 75%;\n}\n#contact-us-page a {\n  color: #4f4f4f;\n}\n@media (max-width: 991px) {\n#contact-us-page .contact-form-card {\n    width: 100%;\n}\n#contact-us-page h3,\n  #contact-us-page h5 {\n    text-align: center;\n}\n#contact-us-page .contact-form-card h5 {\n    text-align: left;\n    font-size: 15px;\n}\n}\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -12598,7 +12598,7 @@ var render = function() {
           { staticClass: "text-center mt-5", attrs: { "data-aos": "fade-up" } },
           [
             _vm._v(
-              "\r\n        For queries about Safari-Trek-Beach Company\r\n      "
+              "\n        For queries about Safari-Trek-Beach Company\n      "
             )
           ]
         ),
@@ -12789,7 +12789,7 @@ var staticRenderFns = [
                 target: "_blank"
               }
             },
-            [_vm._v("\r\n                    Mafao House Arusha Tanzania")]
+            [_vm._v("\n                    Mafao House Arusha Tanzania")]
           )
         ])
       ]),

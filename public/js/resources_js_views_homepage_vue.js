@@ -180,6 +180,50 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
  // import { mapState, mapGetters, mapMutations } from "vuex";
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
@@ -225,10 +269,10 @@ __webpack_require__.r(__webpack_exports__);
     toInnerPackage: function toInnerPackage() {
       var searchData = {};
       searchData = {
-        'where_to_search': this.where_to_search,
-        'start_date': this.start_date,
-        'adults_number': this.adults_number,
-        'children_number': this.children_number
+        where_to_search: this.where_to_search,
+        start_date: this.start_date,
+        adults_number: this.adults_number,
+        children_number: this.children_number
       };
       this.$store.dispatch("tourController/setSearchData", searchData); // this.$router
       //   .push("/tour-package/" + this.tourData.package_id)
@@ -240,7 +284,7 @@ __webpack_require__.r(__webpack_exports__);
           id: this.tourData.package_id
         }
       });
-      window.open(routeData.href, '_blank');
+      window.open(routeData.href, "_blank");
     }
   }
 });
@@ -706,7 +750,26 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       highlighted: {
         dates: [new Date()]
       },
-      options: ["- Age -", "17 Years", "16 Years", "15 Years", "14 Years", "13 Years", "12 Years", "11 Years", "10 Years", "9 Years", "8 Years", "7 Years", "6 Years", "5 Years", "4 Years", "2 Years", "1 Year", "0 Years"],
+      // options: [
+      //   "- Age -",
+      //   "17 Years",
+      //   "16 Years",
+      //   "15 Years",
+      //   "14 Years",
+      //   "13 Years",
+      //   "12 Years",
+      //   "11 Years",
+      //   "10 Years",
+      //   "9 Years",
+      //   "8 Years",
+      //   "7 Years",
+      //   "6 Years",
+      //   "5 Years",
+      //   "4 Years",
+      //   "2 Years",
+      //   "1 Year",
+      //   "0 Years",
+      // ],
       where_to_search: "",
       search_result: []
     };
@@ -717,11 +780,22 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     popularBlogs: "blogController/popularBlogs",
     loading: "tourcard_loading",
     blog_loading: "blogcard_loading",
-    where_to_list: "tourController/tourActivity"
+    where_to_list: "tourController/tourActivity",
+    where_to_search_state: "tourController/where_to_search",
+    start_date_state: "tourController/start_date",
+    adults_number_state: "tourController/adults_number",
+    children_number_state: "tourController/children_number",
+    traveler_number_state: "tourController/traveler_number"
   })),
   created: function created() {
     this.search_result = this.where_to_list;
     this.getTourActivity();
+    this.where_to_search = this.where_to_search_state;
+    this.traveler_number = this.traveler_number_state;
+    this.start_date = this.start_date_state;
+    this.adults_number = this.adults_number_state;
+    this.children_number = this.children_number_state;
+    this.traveler_number_calc();
     this.getPopularTours();
     this.getTopDestinations();
     this.getPopularBlogs();
@@ -806,6 +880,10 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     getTopDestinations: function getTopDestinations() {
       this.$store.dispatch("destinationController/getTopDestinations");
     },
+    traveler_number_calc: function traveler_number_calc() {
+      var traveler = this.adults_number + this.children_number;
+      if (traveler == 1) this.traveler_number = traveler + " Traveler";else this.traveler_number = traveler + " Travelers";
+    },
     closeWhereToDropDown: function closeWhereToDropDown() {
       this.visible_whereto_dropdown = false;
     },
@@ -846,7 +924,8 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         'where_to_search': this.where_to_search,
         'start_date': this.start_date,
         'adults_number': this.adults_number,
-        'children_number': this.children_number
+        'children_number': this.children_number,
+        'traveler_number': this.traveler_number
       };
       this.$store.dispatch("tourController/setSearchData", searchData);
       this.$router.push('/our-tours');
@@ -873,17 +952,17 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n#blog-card .bg-image {\r\n  background-size: cover;\r\n  position: relative;\r\n  width: 100%;\r\n  height: 0;\r\n  padding-top: 56.25%;\n}\n#blog-card {\r\n  transition: box-shadow 0.2s ease-in-out, transform 0.3s ease-in-out;\r\n  box-shadow: 0px 2px 3px rgb(0 0 0 / 18%);\r\n  cursor: pointer;\n}\n#blog-card:hover {\r\nbox-shadow: 0px 1px 13px #666;\n}\n#blog-card .card-text {\r\n  display: -webkit-box;\r\n  -webkit-line-clamp: 3;\r\n  -webkit-box-orient: vertical;\r\n  position: relative;\r\n  --max-lines: 3;\r\n  min-height: 75px;\r\n  max-height: calc(var(--lh) * var(--max-lines));\r\n  overflow: hidden;\r\n  padding-right: 1rem;\n}\n#blog-card .card-title {\r\n  display: -webkit-box;\r\n  -webkit-line-clamp: 2;\r\n  -webkit-box-orient: vertical;\r\n  position: relative;\r\n  --max-lines: 2;\r\n  min-height: 48px;\r\n  max-height: calc(var(--lh) * var(--max-lines));\r\n  overflow: hidden;\r\n  padding-right: 1rem;\n}\r\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n#blog-card .bg-image {\n  background-size: cover;\n  position: relative;\n  width: 100%;\n  height: 0;\n  padding-top: 56.25%;\n}\n#blog-card {\n  transition: box-shadow 0.2s ease-in-out, transform 0.3s ease-in-out;\n  box-shadow: 0px 2px 3px rgb(0 0 0 / 18%);\n  cursor: pointer;\n}\n#blog-card:hover {\nbox-shadow: 0px 1px 13px #666;\n}\n#blog-card .card-text {\n  display: -webkit-box;\n  -webkit-line-clamp: 3;\n  -webkit-box-orient: vertical;\n  position: relative;\n  --max-lines: 3;\n  min-height: 75px;\n  max-height: calc(var(--lh) * var(--max-lines));\n  overflow: hidden;\n  padding-right: 1rem;\n}\n#blog-card .card-title {\n  display: -webkit-box;\n  -webkit-line-clamp: 2;\n  -webkit-box-orient: vertical;\n  position: relative;\n  --max-lines: 2;\n  min-height: 48px;\n  max-height: calc(var(--lh) * var(--max-lines));\n  overflow: hidden;\n  padding-right: 1rem;\n}\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
 
 /***/ }),
 
-/***/ "./node_modules/css-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[2]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/TourCard.vue?vue&type=style&index=0&lang=css&":
-/*!***********************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/css-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[2]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/TourCard.vue?vue&type=style&index=0&lang=css& ***!
-  \***********************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+/***/ "./node_modules/css-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[2]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/TourCard.vue?vue&type=style&index=0&id=5583021a&scoped=true&lang=css&":
+/*!***********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/css-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[2]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/TourCard.vue?vue&type=style&index=0&id=5583021a&scoped=true&lang=css& ***!
+  \***********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
 /***/ ((module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -897,7 +976,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n#tour-card .price {\r\n  width: 90px;\r\n  color: #0f6d24;\r\n  right: 5px;\r\n  bottom: 0px;\r\n  top: 0px;\r\n  padding-left: 5px;\r\n  border-left: 1px dotted black;\r\n  position: absolute;\r\n  font-size: 18px;\r\n  display: flex;\r\n  align-items: center;\r\n  justify-content: center;\n}\n#tour-card .tag-image {\r\n  top: -12px;\r\n  position: absolute;\r\n  right: 10px;\n}\n#tour-card .bg-image {\r\n  background-size: cover;\r\n  position: relative;\r\n  width: 100%;\r\n  height: 0;\r\n  padding-top: 56.25%;\n}\n#tour-card .tour_title {\r\n  width: 100%;\r\n  position: absolute;\r\n  left: 0;\r\n  bottom: 0;\r\n  right: 0;\r\n  text-align: left;\r\n  padding: 15px 10px;\r\n  background: rgba(0, 0, 0, 0.4);\r\n  background: linear-gradient(to bottom,\r\n      rgba(0, 0, 0, 0) 0%,\r\n      rgba(0, 0, 0, 0.5) 45%,\r\n      rgba(0, 0, 0, 0.9) 100%);\r\n  color: white;\r\n  text-align: center;\r\n  font-weight: 700;\r\n  font-size: 20px;\r\n  margin: 40px 0 0px 0;\r\n  font-family: \"Montserrat\", sans-serif;\n}\n#tour-card.card {\r\n  transition: box-shadow 0.2s ease-in-out, transform 0.3s ease-in-out;\r\n  box-shadow: 0px 2px 3px rgb(0 0 0 / 18%);\r\n  cursor: pointer;\n}\n#tour-card.card:hover {\r\n  box-shadow: 0px 1px 13px #666;\n}\n.trip-route {\r\n  min-height: 75px;\n}\r\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n#tour-card .price[data-v-5583021a] {\n    width: 80px;\n    color: #0f6d24;\n    right: 5px;\n    bottom: 0px;\n    top: 0px;\n    padding-left: 2px;\n    border-left: 1px dotted black;\n    position: absolute;\n    font-size: 18px;\n    display: flex;\n    align-items: center;\n    justify-content: center;\n}\n#tour-card .tag-image[data-v-5583021a] {\n    top: -12px;\n    position: absolute;\n    right: 10px;\n}\n#tour-card .bg-image[data-v-5583021a] {\n    background-size: cover;\n    position: relative;\n    width: 100%;\n    height: 0;\n    padding-top: 56.25%;\n}\n#tour-card .tour_title[data-v-5583021a] {\n    width: 100%;\n    position: absolute;\n    left: 0;\n    bottom: 0;\n    right: 0;\n    text-align: left;\n    padding: 15px 10px;\n    background: rgba(0, 0, 0, 0.4);\n    background: linear-gradient(\n        to bottom,\n        rgba(0, 0, 0, 0) 0%,\n        rgba(0, 0, 0, 0.5) 45%,\n        rgba(0, 0, 0, 0.9) 100%\n    );\n    color: white;\n    text-align: center;\n    font-weight: 700;\n    font-size: 20px;\n    margin: 40px 0 0px 0;\n    font-family: \"Montserrat\", sans-serif;\n}\n#tour-card.card[data-v-5583021a] {\n    transition: box-shadow 0.2s ease-in-out, transform 0.3s ease-in-out;\n    box-shadow: 0px 2px 3px rgb(0 0 0 / 18%);\n    cursor: pointer;\n}\n#tour-card.card[data-v-5583021a]:hover {\n    box-shadow: 0px 1px 13px #666;\n}\n.trip-route[data-v-5583021a] {\n    min-height: 75px;\n}\n.company-name[data-v-5583021a] {\n    font-size: 18px;\n}\n@media (max-width: 1200px) {\n.company-name[data-v-5583021a] {\n        font-size: 14px;\n        padding-left: 8px !important;\n}\n.company-review[data-v-5583021a]{\n        font-size: 14px;\n        padding-left: 8px !important;\n}\n#tour-card .price[data-v-5583021a] {\n        font-size: 16px;\n}\n}\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -921,7 +1000,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n.vue-content-placeholders-img,\r\n.vue-content-placeholders-text__line {\r\n    background: #c9c9c9 !important;\n}\n.vue-content-placeholders-img {\r\n  height: 200px !important;\n}\r\n\r\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n.vue-content-placeholders-img,\n.vue-content-placeholders-text__line {\n    background: #c9c9c9 !important;\n}\n.vue-content-placeholders-img {\n  height: 200px !important;\n}\n\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -958,10 +1037,10 @@ var update = _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js
 
 /***/ }),
 
-/***/ "./node_modules/style-loader/dist/cjs.js!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[2]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/TourCard.vue?vue&type=style&index=0&lang=css&":
-/*!***************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/style-loader/dist/cjs.js!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[2]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/TourCard.vue?vue&type=style&index=0&lang=css& ***!
-  \***************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+/***/ "./node_modules/style-loader/dist/cjs.js!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[2]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/TourCard.vue?vue&type=style&index=0&id=5583021a&scoped=true&lang=css&":
+/*!***************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/style-loader/dist/cjs.js!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[2]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/TourCard.vue?vue&type=style&index=0&id=5583021a&scoped=true&lang=css& ***!
+  \***************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -971,7 +1050,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! !../../../node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js */ "./node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js");
 /* harmony import */ var _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _node_modules_css_loader_dist_cjs_js_clonedRuleSet_9_0_rules_0_use_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_9_0_rules_0_use_2_node_modules_vue_loader_lib_index_js_vue_loader_options_TourCard_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! !!../../../node_modules/css-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[1]!../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[2]!../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./TourCard.vue?vue&type=style&index=0&lang=css& */ "./node_modules/css-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[2]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/TourCard.vue?vue&type=style&index=0&lang=css&");
+/* harmony import */ var _node_modules_css_loader_dist_cjs_js_clonedRuleSet_9_0_rules_0_use_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_9_0_rules_0_use_2_node_modules_vue_loader_lib_index_js_vue_loader_options_TourCard_vue_vue_type_style_index_0_id_5583021a_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! !!../../../node_modules/css-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[1]!../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[2]!../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./TourCard.vue?vue&type=style&index=0&id=5583021a&scoped=true&lang=css& */ "./node_modules/css-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[2]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/TourCard.vue?vue&type=style&index=0&id=5583021a&scoped=true&lang=css&");
 
             
 
@@ -980,11 +1059,11 @@ var options = {};
 options.insert = "head";
 options.singleton = false;
 
-var update = _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default()(_node_modules_css_loader_dist_cjs_js_clonedRuleSet_9_0_rules_0_use_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_9_0_rules_0_use_2_node_modules_vue_loader_lib_index_js_vue_loader_options_TourCard_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_1__.default, options);
+var update = _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default()(_node_modules_css_loader_dist_cjs_js_clonedRuleSet_9_0_rules_0_use_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_9_0_rules_0_use_2_node_modules_vue_loader_lib_index_js_vue_loader_options_TourCard_vue_vue_type_style_index_0_id_5583021a_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_1__.default, options);
 
 
 
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_css_loader_dist_cjs_js_clonedRuleSet_9_0_rules_0_use_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_9_0_rules_0_use_2_node_modules_vue_loader_lib_index_js_vue_loader_options_TourCard_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_1__.default.locals || {});
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_css_loader_dist_cjs_js_clonedRuleSet_9_0_rules_0_use_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_9_0_rules_0_use_2_node_modules_vue_loader_lib_index_js_vue_loader_options_TourCard_vue_vue_type_style_index_0_id_5583021a_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_1__.default.locals || {});
 
 /***/ }),
 
@@ -1109,9 +1188,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => __WEBPACK_DEFAULT_EXPORT__
 /* harmony export */ });
-/* harmony import */ var _TourCard_vue_vue_type_template_id_5583021a___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./TourCard.vue?vue&type=template&id=5583021a& */ "./resources/js/components/TourCard.vue?vue&type=template&id=5583021a&");
+/* harmony import */ var _TourCard_vue_vue_type_template_id_5583021a_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./TourCard.vue?vue&type=template&id=5583021a&scoped=true& */ "./resources/js/components/TourCard.vue?vue&type=template&id=5583021a&scoped=true&");
 /* harmony import */ var _TourCard_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./TourCard.vue?vue&type=script&lang=js& */ "./resources/js/components/TourCard.vue?vue&type=script&lang=js&");
-/* harmony import */ var _TourCard_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./TourCard.vue?vue&type=style&index=0&lang=css& */ "./resources/js/components/TourCard.vue?vue&type=style&index=0&lang=css&");
+/* harmony import */ var _TourCard_vue_vue_type_style_index_0_id_5583021a_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./TourCard.vue?vue&type=style&index=0&id=5583021a&scoped=true&lang=css& */ "./resources/js/components/TourCard.vue?vue&type=style&index=0&id=5583021a&scoped=true&lang=css&");
 /* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! !../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
 
 
@@ -1123,11 +1202,11 @@ __webpack_require__.r(__webpack_exports__);
 
 var component = (0,_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__.default)(
   _TourCard_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__.default,
-  _TourCard_vue_vue_type_template_id_5583021a___WEBPACK_IMPORTED_MODULE_0__.render,
-  _TourCard_vue_vue_type_template_id_5583021a___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns,
+  _TourCard_vue_vue_type_template_id_5583021a_scoped_true___WEBPACK_IMPORTED_MODULE_0__.render,
+  _TourCard_vue_vue_type_template_id_5583021a_scoped_true___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns,
   false,
   null,
-  null,
+  "5583021a",
   null
   
 )
@@ -1312,15 +1391,15 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./resources/js/components/TourCard.vue?vue&type=style&index=0&lang=css&":
-/*!*******************************************************************************!*\
-  !*** ./resources/js/components/TourCard.vue?vue&type=style&index=0&lang=css& ***!
-  \*******************************************************************************/
+/***/ "./resources/js/components/TourCard.vue?vue&type=style&index=0&id=5583021a&scoped=true&lang=css&":
+/*!*******************************************************************************************************!*\
+  !*** ./resources/js/components/TourCard.vue?vue&type=style&index=0&id=5583021a&scoped=true&lang=css& ***!
+  \*******************************************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_style_loader_dist_cjs_js_node_modules_css_loader_dist_cjs_js_clonedRuleSet_9_0_rules_0_use_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_9_0_rules_0_use_2_node_modules_vue_loader_lib_index_js_vue_loader_options_TourCard_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/style-loader/dist/cjs.js!../../../node_modules/css-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[1]!../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[2]!../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./TourCard.vue?vue&type=style&index=0&lang=css& */ "./node_modules/style-loader/dist/cjs.js!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[2]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/TourCard.vue?vue&type=style&index=0&lang=css&");
+/* harmony import */ var _node_modules_style_loader_dist_cjs_js_node_modules_css_loader_dist_cjs_js_clonedRuleSet_9_0_rules_0_use_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_9_0_rules_0_use_2_node_modules_vue_loader_lib_index_js_vue_loader_options_TourCard_vue_vue_type_style_index_0_id_5583021a_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/style-loader/dist/cjs.js!../../../node_modules/css-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[1]!../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[2]!../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./TourCard.vue?vue&type=style&index=0&id=5583021a&scoped=true&lang=css& */ "./node_modules/style-loader/dist/cjs.js!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[2]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/TourCard.vue?vue&type=style&index=0&id=5583021a&scoped=true&lang=css&");
 
 
 /***/ }),
@@ -1372,19 +1451,19 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./resources/js/components/TourCard.vue?vue&type=template&id=5583021a&":
-/*!*****************************************************************************!*\
-  !*** ./resources/js/components/TourCard.vue?vue&type=template&id=5583021a& ***!
-  \*****************************************************************************/
+/***/ "./resources/js/components/TourCard.vue?vue&type=template&id=5583021a&scoped=true&":
+/*!*****************************************************************************************!*\
+  !*** ./resources/js/components/TourCard.vue?vue&type=template&id=5583021a&scoped=true& ***!
+  \*****************************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "render": () => /* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_TourCard_vue_vue_type_template_id_5583021a___WEBPACK_IMPORTED_MODULE_0__.render,
-/* harmony export */   "staticRenderFns": () => /* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_TourCard_vue_vue_type_template_id_5583021a___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns
+/* harmony export */   "render": () => /* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_TourCard_vue_vue_type_template_id_5583021a_scoped_true___WEBPACK_IMPORTED_MODULE_0__.render,
+/* harmony export */   "staticRenderFns": () => /* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_TourCard_vue_vue_type_template_id_5583021a_scoped_true___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns
 /* harmony export */ });
-/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_TourCard_vue_vue_type_template_id_5583021a___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./TourCard.vue?vue&type=template&id=5583021a& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/TourCard.vue?vue&type=template&id=5583021a&");
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_TourCard_vue_vue_type_template_id_5583021a_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./TourCard.vue?vue&type=template&id=5583021a&scoped=true& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/TourCard.vue?vue&type=template&id=5583021a&scoped=true&");
 
 
 /***/ }),
@@ -1484,11 +1563,7 @@ var render = function() {
             staticClass: "card-text",
             attrs: { title: _vm.blog.short_description }
           },
-          [
-            _vm._v(
-              "\r\n      " + _vm._s(_vm.blog.short_description) + "\r\n    "
-            )
-          ]
+          [_vm._v("\n      " + _vm._s(_vm.blog.short_description) + "\n    ")]
         ),
         _vm._v(" "),
         _vm._m(1)
@@ -1511,7 +1586,7 @@ var staticRenderFns = [
       "button",
       { staticClass: "btn btn-warning", attrs: { type: "button" } },
       [
-        _vm._v("\r\n      Read More "),
+        _vm._v("\n      Read More "),
         _c("span", { staticClass: "fa fa-angle-double-right ms-2" })
       ]
     )
@@ -1578,10 +1653,10 @@ render._withStripped = true
 
 /***/ }),
 
-/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/TourCard.vue?vue&type=template&id=5583021a&":
-/*!********************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/TourCard.vue?vue&type=template&id=5583021a& ***!
-  \********************************************************************************************************************************************************************************************************************/
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/TourCard.vue?vue&type=template&id=5583021a&scoped=true&":
+/*!********************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/TourCard.vue?vue&type=template&id=5583021a&scoped=true& ***!
+  \********************************************************************************************************************************************************************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -1620,11 +1695,11 @@ var render = function() {
           _vm._v(" "),
           _c("div", { staticClass: "tour_title" }, [
             _vm._v(
-              "\r\n      " +
+              "\n            " +
                 _vm._s(_vm.tourData.no_of_day) +
                 "-Day " +
                 _vm._s(_vm.tourData.title) +
-                "\r\n    "
+                "\n        "
             )
           ]),
           _vm._v(" "),
@@ -1693,22 +1768,22 @@ var render = function() {
           _c("p", { staticClass: "card-text mb-1" }, [
             _c("strong", [_vm._v(" Tour Type: ")]),
             _vm._v(
-              "\r\n      " +
+              "\n            " +
                 _vm._s(_vm.getTourLevel(_vm.tourData.level)) +
-                "\r\n    "
+                "\n        "
             )
           ]),
           _vm._v(" "),
           _c("p", { staticClass: "card-text mb-1 trip-route" }, [
             _c("strong", [_vm._v(" Trip Route: ")]),
             _vm._v(
-              "\r\n      " +
+              "\n            " +
                 _vm._s(_vm.tourData.start_city) +
-                "(Start),\r\n      " +
+                "(Start),\n            " +
                 _vm._s(_vm.getMidRoute(_vm.tourData.destination)) +
-                "\r\n      " +
+                "\n            " +
                 _vm._s(_vm.tourData.end_city) +
-                " (End)\r\n    "
+                " (End)\n        "
             )
           ])
         ]
@@ -1719,28 +1794,32 @@ var render = function() {
         { staticClass: "row gx-0", staticStyle: { position: "relative" } },
         [
           _c("div", [
-            _c("p", { staticClass: "card-text mb-1 ps-3" }, [
+            _c("p", { staticClass: "card-text mb-1 ps-3 company-name" }, [
               _vm._v(
-                "\r\n        " +
+                "\n                " +
                   _vm._s(_vm.tourData.company_name) +
-                  "\r\n      "
+                  "\n            "
               )
             ]),
             _vm._v(" "),
             _c(
               "p",
-              { staticClass: "card-text ps-3 d-flex mb-2" },
+              { staticClass: "card-text ps-3 d-flex mb-2 company-review" },
               [
                 _c("CustomStarRating", {
                   attrs: { rating: _vm.tourData.avg_review }
                 }),
                 _vm._v(" "),
                 _vm.tourData.avg_review == "5"
-                  ? _c("strong", [_vm._v("  5.0/5 ")])
+                  ? _c("strong", [_vm._v("\n                     5.0/5 ")])
                   : _c("strong", [
-                      _vm._v("  " + _vm._s(_vm.tourData.avg_review) + "/5 ")
+                      _vm._v(
+                        "\n                     " +
+                          _vm._s(_vm.tourData.avg_review) +
+                          "/5 "
+                      )
                     ]),
-                _vm._v("\r\n        (\r\n        "),
+                _vm._v("\n                (\n                "),
                 _vm.tourData.sum_review == 1
                   ? _c("span", [
                       _vm._v(_vm._s(_vm.tourData.sum_review) + " Review")
@@ -1748,7 +1827,7 @@ var render = function() {
                   : _c("span", [
                       _vm._v(_vm._s(_vm.tourData.sum_review) + " Reviews")
                     ]),
-                _vm._v("\r\n        )\r\n      ")
+                _vm._v("\n                )\n            ")
               ],
               1
             )
@@ -1859,7 +1938,7 @@ var render = function() {
           _c(
             "h2",
             { staticClass: "text-center", attrs: { "data-wow-delay": "1" } },
-            [_vm._v("\r\n        Choose Best African Safaris\r\n      ")]
+            [_vm._v("\n        Choose Best African Safaris\n      ")]
           ),
           _vm._v(" "),
           _c("h4", { staticClass: "text-light text-center" }, [
@@ -1948,100 +2027,75 @@ var render = function() {
                       ]
                     ),
                     _vm._v(" "),
-                    _c(
-                      "transition",
-                      {
-                        attrs: {
-                          "enter-active-class":
-                            "animate__animated animate__fadeIn",
-                          "leave-active-class":
-                            "animate__animated animate__fadeOut"
-                        }
-                      },
-                      [
-                        _vm.visible_whereto_dropdown == true &&
-                        _vm.search_result != ""
-                          ? _c(
+                    _vm.visible_whereto_dropdown == true &&
+                    _vm.search_result != ""
+                      ? _c(
+                          "div",
+                          {
+                            staticClass:
+                              "shadow where_to_dropdown left-0 w-100 bg-white mt-3 triangule-where"
+                          },
+                          [
+                            _c(
                               "div",
                               {
                                 staticClass:
-                                  "shadow where_to_dropdown left-0 w-100 bg-white mt-3 triangule-where"
+                                  "bg-warning text-white p-2 d-flex justify-content-between align-items-center"
                               },
                               [
-                                _c(
-                                  "div",
-                                  {
-                                    staticClass:
-                                      "bg-warning text-white p-2 d-flex justify-content-between align-items-center"
-                                  },
-                                  [
-                                    _vm._v(
-                                      "\r\n                  Start typing or select below\r\n                  "
-                                    ),
-                                    _c("span", {
-                                      staticClass: "fa fa-times-circle-o",
-                                      staticStyle: { "font-size": "25px" },
-                                      on: {
-                                        click: function($event) {
-                                          _vm.visible_whereto_dropdown = false
-                                        }
-                                      }
-                                    })
-                                  ]
+                                _vm._v(
+                                  "\n                  Start typing or select below\n                  "
                                 ),
-                                _vm._v(" "),
-                                _vm._l(_vm.search_result, function(
-                                  item,
-                                  index
-                                ) {
-                                  return _c("div", { key: index }, [
-                                    index < 6
-                                      ? _c(
-                                          "div",
-                                          {
-                                            staticClass:
-                                              "py-1 px-3 border-bottom border-1 text-start",
-                                            on: {
-                                              click: function($event) {
-                                                return _vm.setCurrentWhereTo(
-                                                  item.title
-                                                )
-                                              }
-                                            }
-                                          },
-                                          [
-                                            _c(
-                                              "div",
-                                              { staticClass: "p-0 m-0" },
-                                              [
-                                                _c("strong", [
-                                                  _vm._v(_vm._s(item.title))
-                                                ])
-                                              ]
-                                            ),
-                                            _vm._v(" "),
-                                            _c(
-                                              "div",
-                                              { staticClass: "p-0 m-0" },
-                                              [
-                                                _c("small", [
-                                                  _vm._v(_vm._s(item.country))
-                                                ])
-                                              ]
-                                            )
-                                          ]
-                                        )
-                                      : _vm._e()
-                                  ])
+                                _c("span", {
+                                  staticClass: "fa fa-times-circle-o",
+                                  staticStyle: { "font-size": "25px" },
+                                  on: {
+                                    click: function($event) {
+                                      _vm.visible_whereto_dropdown = false
+                                    }
+                                  }
                                 })
-                              ],
-                              2
-                            )
-                          : _vm._e()
-                      ]
-                    )
-                  ],
-                  1
+                              ]
+                            ),
+                            _vm._v(" "),
+                            _vm._l(_vm.search_result, function(item, index) {
+                              return _c("div", { key: index }, [
+                                index < 6
+                                  ? _c(
+                                      "div",
+                                      {
+                                        staticClass:
+                                          "py-1 px-3 border-bottom border-1 text-start",
+                                        on: {
+                                          click: function($event) {
+                                            return _vm.setCurrentWhereTo(
+                                              item.title
+                                            )
+                                          }
+                                        }
+                                      },
+                                      [
+                                        _c("div", { staticClass: "p-0 m-0" }, [
+                                          _c("strong", [
+                                            _vm._v(_vm._s(item.title))
+                                          ])
+                                        ]),
+                                        _vm._v(" "),
+                                        _c("div", { staticClass: "p-0 m-0" }, [
+                                          _c("small", [
+                                            _vm._v(_vm._s(item.country))
+                                          ])
+                                        ])
+                                      ]
+                                    )
+                                  : _vm._e()
+                              ])
+                            })
+                          ],
+                          2
+                        )
+                      : _vm._e()
+                  ]
                 ),
                 _vm._v(" "),
                 _c("div", { staticClass: "col-md-8 col-xs-12" }, [
@@ -2161,141 +2215,110 @@ var render = function() {
                           ]
                         ),
                         _vm._v(" "),
-                        _c(
-                          "transition",
-                          {
-                            attrs: {
-                              "enter-active-class":
-                                "animate__animated animate__fadeIn",
-                              "leave-active-class":
-                                "animate__animated animate__fadeOut"
-                            }
-                          },
-                          [
-                            _vm.visible_traveler_dropdown
-                              ? _c(
+                        _vm.visible_traveler_dropdown
+                          ? _c(
+                              "div",
+                              {
+                                staticClass:
+                                  "shadow traveler-dropdown left-0 bg-white mt-3 triangule-where"
+                              },
+                              [
+                                _c(
                                   "div",
                                   {
                                     staticClass:
-                                      "shadow traveler-dropdown left-0 bg-white mt-3 triangule-where"
+                                      "bg-warning text-white p-2 text-center"
                                   },
                                   [
+                                    _vm._v(
+                                      "\n                      Travelers\n                      "
+                                    ),
+                                    _c("span", {
+                                      staticClass: "fa fa-times-circle-o",
+                                      staticStyle: {
+                                        float: "right",
+                                        "font-size": "25px",
+                                        color: "black"
+                                      },
+                                      on: { click: _vm.closeTravelerDropdown }
+                                    })
+                                  ]
+                                ),
+                                _vm._v(" "),
+                                _c(
+                                  "div",
+                                  {
+                                    staticClass:
+                                      "py-2 px-3 mt-2 border-1 text-start d-flex justify-content-between"
+                                  },
+                                  [
+                                    _vm._m(0),
+                                    _vm._v(" "),
                                     _c(
                                       "div",
-                                      {
-                                        staticClass:
-                                          "bg-warning text-white p-2 text-center"
-                                      },
                                       [
-                                        _vm._v(
-                                          "\r\n                      Travelers\r\n                      "
-                                        ),
-                                        _c("span", {
-                                          staticClass: "fa fa-times-circle-o",
-                                          staticStyle: {
-                                            float: "right",
-                                            "font-size": "25px",
-                                            color: "black"
-                                          },
-                                          on: {
-                                            click: _vm.closeTravelerDropdown
+                                        _c("vue-numeric-input", {
+                                          attrs: { min: 1, max: 100, step: 1 },
+                                          model: {
+                                            value: _vm.adults_number,
+                                            callback: function($$v) {
+                                              _vm.adults_number = $$v
+                                            },
+                                            expression: "adults_number"
                                           }
                                         })
-                                      ]
-                                    ),
-                                    _vm._v(" "),
-                                    _c(
-                                      "div",
-                                      {
-                                        staticClass:
-                                          "py-2 px-3 mt-2 border-1 text-start d-flex justify-content-between"
-                                      },
-                                      [
-                                        _c("div", [
-                                          _c("strong", [_vm._v("Adults ")]),
-                                          _vm._v("(16+ years):")
-                                        ]),
-                                        _vm._v(" "),
-                                        _c(
-                                          "div",
-                                          [
-                                            _c("vue-numeric-input", {
-                                              attrs: {
-                                                min: 1,
-                                                max: 100,
-                                                step: 1
-                                              },
-                                              model: {
-                                                value: _vm.adults_number,
-                                                callback: function($$v) {
-                                                  _vm.adults_number = $$v
-                                                },
-                                                expression: "adults_number"
-                                              }
-                                            })
-                                          ],
-                                          1
-                                        )
-                                      ]
-                                    ),
-                                    _vm._v(" "),
-                                    _c(
-                                      "div",
-                                      {
-                                        staticClass:
-                                          "py-2 px-3 mt-2 border-1 text-start d-flex justify-content-between"
-                                      },
-                                      [
-                                        _c("div", [
-                                          _c("strong", [_vm._v("Children ")]),
-                                          _vm._v("(0~15 years):")
-                                        ]),
-                                        _vm._v(" "),
-                                        _c(
-                                          "div",
-                                          [
-                                            _c("vue-numeric-input", {
-                                              attrs: {
-                                                min: 0,
-                                                max: 100,
-                                                step: 1
-                                              },
-                                              model: {
-                                                value: _vm.children_number,
-                                                callback: function($$v) {
-                                                  _vm.children_number = $$v
-                                                },
-                                                expression: "children_number"
-                                              }
-                                            })
-                                          ],
-                                          1
-                                        )
-                                      ]
-                                    ),
-                                    _vm._v(" "),
-                                    _c("div", { staticClass: "text-right" }, [
-                                      _c(
-                                        "button",
-                                        {
-                                          staticClass:
-                                            "btn btn-danger mx-3 my-3",
-                                          on: { click: _vm.setTravelerInfo }
-                                        },
-                                        [
-                                          _vm._v(
-                                            "\r\n                        Done\r\n                      "
-                                          )
-                                        ]
-                                      )
-                                    ])
+                                      ],
+                                      1
+                                    )
                                   ]
-                                )
-                              : _vm._e()
-                          ]
-                        )
-                      ],
-                      1
+                                ),
+                                _vm._v(" "),
+                                _c(
+                                  "div",
+                                  {
+                                    staticClass:
+                                      "py-2 px-3 mt-2 border-1 text-start d-flex justify-content-between"
+                                  },
+                                  [
+                                    _vm._m(1),
+                                    _vm._v(" "),
+                                    _c(
+                                      "div",
+                                      [
+                                        _c("vue-numeric-input", {
+                                          attrs: { min: 0, max: 100, step: 1 },
+                                          model: {
+                                            value: _vm.children_number,
+                                            callback: function($$v) {
+                                              _vm.children_number = $$v
+                                            },
+                                            expression: "children_number"
+                                          }
+                                        })
+                                      ],
+                                      1
+                                    )
+                                  ]
+                                ),
+                                _vm._v(" "),
+                                _c("div", { staticClass: "text-right" }, [
+                                  _c(
+                                    "button",
+                                    {
+                                      staticClass: "btn btn-warning mx-3 my-3",
+                                      on: { click: _vm.setTravelerInfo }
+                                    },
+                                    [
+                                      _vm._v(
+                                        "\n                        Done\n                      "
+                                      )
+                                    ]
+                                  )
+                                ])
+                              ]
+                            )
+                          : _vm._e()
+                      ]
                     ),
                     _vm._v(" "),
                     _c(
@@ -2311,7 +2334,7 @@ var render = function() {
                           },
                           [
                             _vm._v(
-                              "\r\n                  Search\r\n                "
+                              "\n                  Search\n                "
                             )
                           ]
                         )
@@ -2330,7 +2353,7 @@ var render = function() {
       "div",
       { staticClass: "container bg-gray", attrs: { id: "popular-tour" } },
       [
-        _vm._m(0),
+        _vm._m(2),
         _vm._v(" "),
         _vm.loading
           ? _c(
@@ -2363,7 +2386,7 @@ var render = function() {
               0
             ),
         _vm._v(" "),
-        _vm._m(1)
+        _vm._m(3)
       ]
     ),
     _vm._v(" "),
@@ -2373,12 +2396,10 @@ var render = function() {
           "div",
           { staticClass: "pt-5 why-us" },
           [
-            _vm._m(2),
+            _vm._m(4),
             _vm._v(" "),
             _c("h5", [
-              _vm._v(
-                "\r\n          8 Reasons why Safari-Trek-Beach\r\n        "
-              )
+              _vm._v("\n          8 Reasons why Safari-Trek-Beach\n        ")
             ]),
             _vm._v(" "),
             _c(
@@ -2409,9 +2430,9 @@ var render = function() {
                   _c("img", { attrs: { src: "./images/why_service.png" } }),
                   _vm._v(" "),
                   _c("p", [
-                    _vm._v("\r\n              Unbiased Reviews "),
+                    _vm._v("\n              Unbiased Reviews "),
                     _c("br"),
-                    _vm._v("from previous client.\r\n            ")
+                    _vm._v("from previous client.\n            ")
                   ])
                 ]),
                 _vm._v(" "),
@@ -2419,9 +2440,9 @@ var render = function() {
                   _c("img", { attrs: { src: "./images/why_dollar.png" } }),
                   _vm._v(" "),
                   _c("p", [
-                    _vm._v("\r\n              Connecting with "),
+                    _vm._v("\n              Connecting with "),
                     _c("br"),
-                    _vm._v("the best/licenced tour operator.\r\n            ")
+                    _vm._v("the best/licenced tour operator.\n            ")
                   ])
                 ]),
                 _vm._v(" "),
@@ -2429,9 +2450,9 @@ var render = function() {
                   _c("img", { attrs: { src: "./images/why_service.png" } }),
                   _vm._v(" "),
                   _c("p", [
-                    _vm._v("\r\n              Comparing quotes "),
+                    _vm._v("\n              Comparing quotes "),
                     _c("br"),
-                    _vm._v("from different tour operators.\r\n            ")
+                    _vm._v("from different tour operators.\n            ")
                   ])
                 ]),
                 _vm._v(" "),
@@ -2448,7 +2469,7 @@ var render = function() {
                 ]),
                 _vm._v(" "),
                 _c("slide", [
-                  _c("img", { attrs: { src: "./images/why_pool.png" } }),
+                  _c("img", { attrs: { src: "./images/why_service.png" } }),
                   _vm._v(" "),
                   _c("p", [
                     _vm._v("We ensure clients get "),
@@ -2473,11 +2494,11 @@ var render = function() {
                   _c("img", { attrs: { src: "./images/why_africa.png" } }),
                   _vm._v(" "),
                   _c("p", [
-                    _vm._v("\r\n              We offer packages "),
+                    _vm._v("\n              We offer packages "),
                     _c("br"),
                     _vm._v("that cover all destinations "),
                     _c("br"),
-                    _vm._v("in Tanzania and Zanzibar.\r\n            ")
+                    _vm._v("in Tanzania and Zanzibar.\n            ")
                   ])
                 ])
               ],
@@ -2493,7 +2514,7 @@ var render = function() {
       "div",
       { staticClass: "container bg-gray", attrs: { id: "top-destination" } },
       [
-        _vm._m(3),
+        _vm._m(5),
         _vm._v(" "),
         _c(
           "div",
@@ -2524,13 +2545,13 @@ var render = function() {
                       attrs: { "data-mdb-ripple-color": "light" }
                     },
                     [
-                      _vm._m(4, true),
+                      _vm._m(6, true),
                       _vm._v(" "),
                       _c("div", { staticClass: "overlay-text" }, [
                         _vm._v(
-                          "\r\n              " +
+                          "\n              " +
                             _vm._s(item.post_title) +
-                            "\r\n            "
+                            "\n            "
                         )
                       ])
                     ]
@@ -2542,7 +2563,7 @@ var render = function() {
           0
         ),
         _vm._v(" "),
-        _vm._m(5)
+        _vm._m(7)
       ]
     ),
     _vm._v(" "),
@@ -2576,7 +2597,7 @@ var render = function() {
                     _vm._v(" "),
                     _c("p", [
                       _vm._v(
-                        "\r\n                Thank you for the excellent organization, the driver is\r\n                professional, the food from the cook is delicious, our all all\r\n                all all all problems have been resolved! Special thanks to\r\n                Mohamed. Very nice person in communication !!!\r\n              "
+                        "\n                Thank you for the excellent organization, the driver is\n                professional, the food from the cook is delicious, our all all\n                all all all problems have been resolved! Special thanks to\n                Mohamed. Very nice person in communication !!!\n              "
                       )
                     ])
                   ])
@@ -2592,7 +2613,7 @@ var render = function() {
                     _vm._v(" "),
                     _c("p", [
                       _vm._v(
-                        '\r\n                Used to be part of Serengeti National Park. It is conservation\r\n                area because there are Maasai people living in this area, but\r\n                not in national park. The crater is "safer" for older animals,\r\n                so one may see old bull elephants, or cape buffaloes. Lion\r\n                prides are common, as well as bird species. One sees most of\r\n                the animal here, except for the elusive leopard. On the way\r\n                out of the ...\r\n              '
+                        '\n                Used to be part of Serengeti National Park. It is conservation\n                area because there are Maasai people living in this area, but\n                not in national park. The crater is "safer" for older animals,\n                so one may see old bull elephants, or cape buffaloes. Lion\n                prides are common, as well as bird species. One sees most of\n                the animal here, except for the elusive leopard. On the way\n                out of the ...\n              '
                       )
                     ])
                   ])
@@ -2608,7 +2629,7 @@ var render = function() {
                     _vm._v(" "),
                     _c("p", [
                       _vm._v(
-                        "\r\n                Thank you for the excellent organization, the driver is\r\n                professional, the food from the cook is delicious, our all all\r\n                all all all problems have been resolved! Special thanks to\r\n                Mohamed. Very nice person in communication !!!\r\n              "
+                        "\n                Thank you for the excellent organization, the driver is\n                professional, the food from the cook is delicious, our all all\n                all all all problems have been resolved! Special thanks to\n                Mohamed. Very nice person in communication !!!\n              "
                       )
                     ])
                   ])
@@ -2624,7 +2645,7 @@ var render = function() {
                     _vm._v(" "),
                     _c("p", [
                       _vm._v(
-                        '\r\n                Used to be part of Serengeti National Park. It is conservation\r\n                area because there are Maasai people living in this area, but\r\n                not in national park. The crater is "safer" for older animals,\r\n                so one may see old bull elephants, or cape buffaloes. Lion\r\n                prides are common, as well as bird species. One sees most of\r\n                the animal here, except for the elusive leopard. On the way\r\n                out of the ...\r\n              '
+                        '\n                Used to be part of Serengeti National Park. It is conservation\n                area because there are Maasai people living in this area, but\n                not in national park. The crater is "safer" for older animals,\n                so one may see old bull elephants, or cape buffaloes. Lion\n                prides are common, as well as bird species. One sees most of\n                the animal here, except for the elusive leopard. On the way\n                out of the ...\n              '
                       )
                     ])
                   ])
@@ -2639,15 +2660,15 @@ var render = function() {
     ]),
     _vm._v(" "),
     _c("div", { staticClass: "container bg-gray", attrs: { id: "about-us" } }, [
-      _vm._m(6),
+      _vm._m(8),
       _vm._v(" "),
-      _c("section", [
-        _vm._m(7),
+      _c("section", { staticClass: "mt-3" }, [
+        _vm._m(9),
         _vm._v(" "),
         _vm.blog_loading
           ? _c(
               "div",
-              { staticClass: "row gx-0" },
+              { staticClass: "row gx-0 mt-3" },
               _vm._l(3, function(blog, index) {
                 return _c(
                   "div",
@@ -2675,12 +2696,27 @@ var render = function() {
               0
             ),
         _vm._v(" "),
-        _vm._m(8)
+        _vm._m(10)
       ])
     ])
   ])
 }
 var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", [_c("strong", [_vm._v("Adult ")]), _vm._v("(16+ years):")])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", [
+      _c("strong", [_vm._v("Child ")]),
+      _vm._v("(0~15 years):")
+    ])
+  },
   function() {
     var _vm = this
     var _h = _vm.$createElement
@@ -2693,7 +2729,7 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "text-center" }, [
+    return _c("div", { staticClass: "text-center mt-3" }, [
       _c(
         "a",
         { staticClass: "btn btn-danger", attrs: { href: "/our-tours" } },
@@ -2706,7 +2742,7 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("header", { staticClass: "section-header" }, [
-      _c("h3", { staticClass: "text-light" }, [_vm._v("Why choose us?")])
+      _c("h3", { staticClass: "text-light" }, [_vm._v("Why Choose Us?")])
     ])
   },
   function() {
@@ -2729,7 +2765,7 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "text-center" }, [
+    return _c("div", { staticClass: "text-center mt-3" }, [
       _c(
         "a",
         {
@@ -2737,7 +2773,7 @@ var staticRenderFns = [
           attrs: { href: "/tour-destinations" }
         },
         [
-          _vm._v("\r\n        View All Destinations "),
+          _vm._v("\n        View All Destinations "),
           _c("span", { staticClass: "fa fa-angle-right ms-2" })
         ]
       )
@@ -2752,7 +2788,7 @@ var staticRenderFns = [
         _c("div", { staticClass: "row gx-0 text-center align-items-center" }, [
           _c("div", { staticClass: "col-md-6" }, [
             _c("div", {
-              staticClass: "bg-image",
+              staticClass: "bg-image shadow-lg",
               staticStyle: { "background-image": "url('./images/img5.jpg')" }
             })
           ]),
@@ -2763,17 +2799,17 @@ var staticRenderFns = [
             _c("div", [
               _c("p", [
                 _vm._v(
-                  "\r\n                Safari Trek Beach is the biggest market place for Tanzania tour packages. We help travellers find the best Tour Operators with the tour packages of their choice, to suit their budget and standard. We are the experts when it involves Tours and Holidays in Tanzania. Safari Trek Beach enables you to compare different tour operators on different categories such as Luxury, Lodge, Camping safaris or Mountain Climbing tours as well as Beach Holidays.\r\n              "
+                  "\n                Safari Trek Beach is the biggest market place for Tanzania tour packages. We help travellers find the best Tour Operators with the tour packages of their choice, to suit their budget and standard. We are the experts when it involves Tours and Holidays in Tanzania. Safari Trek Beach enables you to compare different tour operators on different categories such as Luxury, Lodge, Camping safaris or Mountain Climbing tours as well as Beach Holidays.\n              "
                 )
               ])
             ]),
             _vm._v(" "),
-            _c("div", [
+            _c("div", { staticClass: "mt-3" }, [
               _c(
                 "a",
                 { staticClass: "btn btn-danger", attrs: { href: "/about" } },
                 [
-                  _vm._v("\r\n                Read More "),
+                  _vm._v("\n                Read More "),
                   _c("span", { staticClass: "fa fa-angle-right ms-2" })
                 ]
               )
@@ -2795,9 +2831,9 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "text-center" }, [
+    return _c("div", { staticClass: "text-center mt-3" }, [
       _c("a", { staticClass: "btn btn-danger", attrs: { href: "/blog" } }, [
-        _vm._v("\r\n          View All "),
+        _vm._v("\n          View All BLOGS"),
         _c("span", { staticClass: "fa fa-angle-right ms-2" })
       ])
     ])

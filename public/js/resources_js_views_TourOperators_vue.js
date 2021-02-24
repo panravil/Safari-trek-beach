@@ -172,6 +172,9 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
 
 
 
@@ -204,7 +207,11 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
   })),
   watch: {
     current_operator_page: function current_operator_page(newValue) {
-      this.$router.push('/tour-operators/page/' + newValue)["catch"](function () {});
+      var _this = this;
+
+      this.$router.push('/tour-operators/page/' + newValue).then(function () {
+        _this.getOperatorList();
+      })["catch"](function () {});
     }
   },
   created: function created() {
@@ -215,10 +222,10 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
   },
   methods: {
     getOperatorList: function getOperatorList() {
-      var _this = this;
+      var _this2 = this;
 
       this.$store.dispatch("operatorController/getOperatorList").then(function () {
-        _this.getCurrentPageOperators(_this.current_operator_page);
+        _this2.getCurrentPageOperators(_this2.current_operator_page);
       });
     },
     toOperatorDetail: function toOperatorDetail(id) {
@@ -269,7 +276,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n.skelecton-operator .operator-logo .vue-content-placeholders-img {\r\n  height: 150px !important;\r\n  min-width: 150px;\r\n  width: 150px;\r\n  margin: auto;\n}\n.skelecton-operator .wrapper {\r\n  display: flex;\r\n  flex-direction: row;\r\n  justify-content: space-between;\n}\n.skelecton-operator .logo-layout-skelecton {\r\n  min-width: 400px;\r\n  width: 400px;\n}\n.skelecton-operator .logo-layout-skelecton .vue-content-placeholders-img {\r\n  height: 225px !important;\r\n  margin: auto;\n}\n.vue-content-placeholders-img,\r\n.vue-content-placeholders-text__line {\r\n  background: #c9c9c9 !important;\n}\n@media (max-width: 1200px) {\n.skelecton-operator .logo-layout-skelecton {\r\n    margin: auto;\n}\n}\n@media (max-width: 420px) {\n.skelecton-operator .logo-layout-skelecton {\r\n    width: 100%;\n}\n}\r\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n.skelecton-operator .operator-logo .vue-content-placeholders-img {\n  height: 150px !important;\n  min-width: 150px;\n  width: 150px;\n  margin: auto;\n}\n.skelecton-operator .wrapper {\n  display: flex;\n  flex-direction: row;\n  justify-content: space-between;\n}\n.skelecton-operator .logo-layout-skelecton {\n  min-width: 400px;\n  width: 400px;\n}\n.skelecton-operator .logo-layout-skelecton .vue-content-placeholders-img {\n  height: 225px !important;\n  margin: auto;\n}\n.vue-content-placeholders-img,\n.vue-content-placeholders-text__line {\n  background: #c9c9c9 !important;\n}\n@media (max-width: 1200px) {\n.skelecton-operator .logo-layout-skelecton {\n    margin: auto;\n}\n}\n@media (max-width: 420px) {\n.skelecton-operator .logo-layout-skelecton {\n    width: 100%;\n}\n}\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -293,7 +300,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n#tour-operators-page {\r\n  background-color: #f2f2f2;\r\n  padding-top: 50px;\r\n  padding-bottom: 100px;\n}\n#tour-operators-page section {\r\n  margin-top: 100px;\r\n  margin-bottom: 30px;\n}\n#tour-operators-page .wrapper {\r\n  display: flex;\r\n  flex-direction: row;\r\n  justify-content: space-between;\n}\n#tour-operators-page .operator-logo img {\r\n  min-width: 150px;\r\n  height: 150px;\n}\n#tour-operators-page .logo-layout {\r\n  min-width: 400px;\r\n  width: 400px;\r\n  height: 0;\r\n  padding-top: calc(0.5625 * 400px);\r\n  background-repeat: no-repeat;\r\n  background-size: cover;\r\n  background-position: center;\r\n  margin: auto;\n}\n#tour-operators-page .operator-content {\r\n  min-width: calc(100% - 550px);\n}\n.tour-operator-card {\r\n  cursor: pointer;\n}\n.operator-pagination {\r\n  display: flex;\r\n  justify-content: center;\r\n  margin-top: 20px;\n}\n@media (max-width: 1200px) {\n#tour-operators-page .wrapper {\r\n    display: flex;\r\n    flex-direction: column;\r\n    justify-content: center;\n}\n.operator-content {\r\n    margin-top: 20px;\r\n    margin-bottom: 20px;\n}\n#tour-operators-page .operator-content h4 {\r\n    text-align: center;\n}\n}\n@media (max-width: 420px) {\n#tour-operators-page .logo-layout {\r\n    min-width: 100%;\r\n    width: 100%;\r\n    padding-top: 56.25%;\n}\n}\r\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n#tour-operators-page {\n    background-color: #f2f2f2;\n    padding-top: 50px;\n    padding-bottom: 100px;\n}\n#tour-operators-page section {\n    margin-top: 100px;\n    margin-bottom: 30px;\n}\n#tour-operators-page .wrapper {\n    display: flex;\n    flex-direction: row;\n    justify-content: space-between;\n}\n#tour-operators-page .logo-layout {\n    min-width: 400px;\n    width: 400px;\n}\n#tour-operators-page .operator-logo img {\n    min-width: 150px;\n    height: 150px;\n}\n\n/* #tour-operators-page .logo-layout {\n  min-width: 400px;\n  width: 400px;\n  height: 0;\n  padding-top: calc(0.5625 * 400px);\n  background-repeat: no-repeat;\n  background-size: cover;\n  background-position: center;\n  margin: auto;\n} */\n#tour-operators-page .logo-layout img {\n    width: 400px;\n    height: auto;\n}\n#tour-operators-page .operator-content {\n    min-width: calc(100% - 550px);\n}\n.tour-operator-card {\n    cursor: pointer;\n}\n.operator-pagination {\n    display: flex;\n    justify-content: center;\n    margin-top: 40px;\n}\n@media (max-width: 1200px) {\n#tour-operators-page .wrapper {\n        display: flex;\n        flex-direction: column;\n        justify-content: center;\n}\n.operator-content {\n        margin-top: 20px;\n        margin-bottom: 20px;\n}\n#tour-operators-page .operator-content h4 {\n        text-align: center;\n}\n#tour-operators-page .logo-layout {\n        margin: auto;\n}\n}\n@media (max-width: 480px) {\n#tour-operators-page .logo-layout img {\n        min-width: 100%;\n        width: 100%;\n}\n#tour-operators-page .logo-layout {\n        min-width: 100%;\n        margin: auto;\n        width: 100%;\n}\n}\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -944,6 +951,10 @@ var render = function() {
               _vm._v(" "),
               _c("TourOperatorsSkelecton"),
               _vm._v(" "),
+              _c("TourOperatorsSkelecton"),
+              _vm._v(" "),
+              _c("TourOperatorsSkelecton"),
+              _vm._v(" "),
               _c("TourOperatorsSkelecton")
             ],
             1
@@ -956,7 +967,6 @@ var render = function() {
                 {
                   key: "operator" + index,
                   staticClass: "card p-3 mt-5 tour-operator-card",
-                  attrs: { "data-aos": "fade-up" },
                   on: {
                     click: function($event) {
                       return _vm.toOperatorDetail(operator.user_id)
@@ -976,9 +986,9 @@ var render = function() {
                       _vm._v(" "),
                       _c("h6", { staticClass: "description" }, [
                         _vm._v(
-                          "\r\n              " +
+                          "\n                            " +
                             _vm._s(_vm._f("limitText")(operator.brief)) +
-                            "\r\n            "
+                            "\n                        "
                         )
                       ]),
                       _vm._v(" "),
@@ -995,7 +1005,7 @@ var render = function() {
                                 _vm._v(
                                   "5.0 (" +
                                     _vm._s(operator.sum_review) +
-                                    "\r\n                Reviews)"
+                                    "\n                                Reviews)"
                                 )
                               ])
                             : _c("span", [
@@ -1003,7 +1013,7 @@ var render = function() {
                                   _vm._s(operator.avg_review) +
                                     " (" +
                                     _vm._s(operator.sum_review) +
-                                    "\r\n                Reviews)"
+                                    "\n                                Reviews)"
                                 )
                               ])
                         ],
@@ -1013,12 +1023,9 @@ var render = function() {
                       _c("h6", [_vm._v("Learn More about this company")])
                     ]),
                     _vm._v(" "),
-                    _c("div", {
-                      staticClass: "logo-layout",
-                      style: {
-                        "background-image": "url(" + operator.banner + ")"
-                      }
-                    })
+                    _c("div", { staticClass: "logo-layout text-center" }, [
+                      _c("img", { attrs: { src: operator.banner } })
+                    ])
                   ])
                 ]
               )

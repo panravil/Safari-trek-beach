@@ -374,9 +374,9 @@ var render = function() {
                       },
                       [
                         _vm._v(
-                          "\r\n            " +
+                          "\n            " +
                             _vm._s(item.description) +
-                            "\r\n          "
+                            "\n          "
                         )
                       ]
                     )
@@ -415,9 +415,9 @@ var render = function() {
                         _vm._v(" "),
                         _c("p", { staticClass: "card-text px-3" }, [
                           _vm._v(
-                            "\r\n                " +
+                            "\n                " +
                               _vm._s(item.description) +
-                              "\r\n              "
+                              "\n              "
                           )
                         ])
                       ]

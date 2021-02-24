@@ -13169,7 +13169,8 @@ vue__WEBPACK_IMPORTED_MODULE_0__.default.use(_syncfusion_ej2_vue_buttons__WEBPAC
       companyDescription: '',
       conditions: false,
       office_location: '',
-      website_url: ''
+      website_url: '',
+      updateCheckbox: 0
     };
   },
   created: function created() {
@@ -13200,11 +13201,12 @@ vue__WEBPACK_IMPORTED_MODULE_0__.default.use(_syncfusion_ej2_vue_buttons__WEBPAC
       };
       this.$store.dispatch("operatorController/becomePartner", companyData).then(function () {
         if (_this.request_status == true) {
-          _this.$notify({
-            group: 'success',
-            title: 'Submit Success !',
-            text: 'Thank you! We have received your company data.'
-          });
+          // this.$notify({
+          //   group: 'success',
+          //   title: 'Submit Success !',
+          //   text: 'Thank you! We have received your company data.'
+          // });
+          _this.$router.push('/thankyou-partner');
         } else {
           _this.$notify({
             group: 'warning',
@@ -13224,6 +13226,7 @@ vue__WEBPACK_IMPORTED_MODULE_0__.default.use(_syncfusion_ej2_vue_buttons__WEBPAC
         _this.companyBrief = '';
         _this.companyDescription = '';
         _this.conditions = false;
+        _this.updateCheckbox++;
       })["catch"](function () {
         _this.$notify({
           group: 'warning',
@@ -13242,6 +13245,7 @@ vue__WEBPACK_IMPORTED_MODULE_0__.default.use(_syncfusion_ej2_vue_buttons__WEBPAC
         _this.companyBrief = '';
         _this.companyDescription = '';
         _this.conditions = false;
+        _this.updateCheckbox++;
       });
     }
   }
@@ -13379,7 +13383,7 @@ ___CSS_LOADER_EXPORT___.i(_node_modules_css_loader_dist_cjs_js_clonedRuleSet_9_0
 ___CSS_LOADER_EXPORT___.i(_node_modules_css_loader_dist_cjs_js_clonedRuleSet_9_0_rules_0_use_1_node_modules_syncfusion_ej2_base_styles_material_css__WEBPACK_IMPORTED_MODULE_1__.default);
 ___CSS_LOADER_EXPORT___.i(_node_modules_css_loader_dist_cjs_js_clonedRuleSet_9_0_rules_0_use_1_node_modules_syncfusion_ej2_buttons_styles_material_css__WEBPACK_IMPORTED_MODULE_2__.default);
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n#become-partner-page {\r\n  background-color: #f2f2f2;\r\n  padding-top: 50px;\r\n  padding-bottom: 100px;\n}\n#become-partner-page section {\r\n  margin-top: 100px;\n}\n#become-partner-page .e-multi-line-input textarea {\r\n  height: 100px;\n}\r\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n#become-partner-page {\n  background-color: #f2f2f2;\n  padding-top: 50px;\n  padding-bottom: 100px;\n}\n#become-partner-page section {\n  margin-top: 100px;\n}\n#become-partner-page .e-multi-line-input textarea {\n  height: 100px;\n}\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -13521,7 +13525,7 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c("div", { attrs: { id: "become-partner-page" } }, [
     _c("div", { staticClass: "container" }, [
-      _c("section", { attrs: { "data-aos": "fade-up" } }, [
+      _c("section", [
         _vm._m(0),
         _vm._v(" "),
         _c("div", { staticClass: "card mt-5 p-3" }, [
@@ -13723,52 +13727,6 @@ var render = function() {
                 _vm._v(" "),
                 _c(
                   "div",
-                  { staticClass: "col-md-6 col-sm-12 px-3 mt-3" },
-                  [
-                    _c("ejs-textbox", {
-                      attrs: {
-                        floatLabelType: "Auto",
-                        type: "text",
-                        placeholder: "Office Location",
-                        required: ""
-                      },
-                      model: {
-                        value: _vm.office_location,
-                        callback: function($$v) {
-                          _vm.office_location = $$v
-                        },
-                        expression: "office_location"
-                      }
-                    })
-                  ],
-                  1
-                ),
-                _vm._v(" "),
-                _c(
-                  "div",
-                  { staticClass: "col-md-6 col-sm-12 px-3 mt-3" },
-                  [
-                    _c("ejs-textbox", {
-                      attrs: {
-                        floatLabelType: "Auto",
-                        type: "text",
-                        placeholder: "Website URL",
-                        required: ""
-                      },
-                      model: {
-                        value: _vm.website_url,
-                        callback: function($$v) {
-                          _vm.website_url = $$v
-                        },
-                        expression: "website_url"
-                      }
-                    })
-                  ],
-                  1
-                ),
-                _vm._v(" "),
-                _c(
-                  "div",
                   { staticClass: "col-sm-12 px-3 mt-3" },
                   [
                     _c("ejs-textbox", {
@@ -13815,7 +13773,7 @@ var render = function() {
                 _vm._v(" "),
                 _c(
                   "p",
-                  { staticClass: "px-3 mt-3" },
+                  { key: _vm.updateCheckbox, staticClass: "px-3 mt-3" },
                   [
                     _c("ejs-checkbox", {
                       attrs: {
@@ -13862,7 +13820,7 @@ var staticRenderFns = [
       _c(
         "span",
         {
-          staticClass: " text-decoration-underline text-dark",
+          staticClass: "text-decoration-underline text-dark",
           staticStyle: { "font-size": "13px" }
         },
         [_vm._v("Terms and Condition.")]

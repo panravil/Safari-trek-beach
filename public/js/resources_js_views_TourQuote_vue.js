@@ -30380,6 +30380,9 @@ vue__WEBPACK_IMPORTED_MODULE_1__.default.use(_syncfusion_ej2_vue_buttons__WEBPAC
       if (traveler == 1) this.traveler_number = traveler + " Traveler";else this.traveler_number = traveler + " Travelers";
       this.closeTravelerDropdown();
     },
+    onFocus: function onFocus(args) {
+      this.$refs.dateObj.show();
+    },
     tourQuote: function tourQuote() {
       var _this3 = this;
 
@@ -33651,7 +33654,7 @@ ___CSS_LOADER_EXPORT___.i(_node_modules_css_loader_dist_cjs_js_clonedRuleSet_9_0
 ___CSS_LOADER_EXPORT___.i(_node_modules_css_loader_dist_cjs_js_clonedRuleSet_9_0_rules_0_use_1_node_modules_syncfusion_ej2_popups_styles_material_css__WEBPACK_IMPORTED_MODULE_5__.default);
 ___CSS_LOADER_EXPORT___.i(_node_modules_css_loader_dist_cjs_js_clonedRuleSet_9_0_rules_0_use_1_node_modules_syncfusion_ej2_vue_calendars_styles_material_css__WEBPACK_IMPORTED_MODULE_6__.default);
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n.tour-quote-page {\r\n  padding-top: 50px;\r\n  padding-bottom: 100px;\r\n  background-color: #f2f2f2;\n}\n.tour-quote-page section {\r\n  margin-top: 100px;\n}\n.tour-quote-page .e-multi-line-input textarea {\r\n  height: 100px;\n}\n.tour-quote-page .quote .e-date-wrapper,\r\n.tour-quote-page .quote .e-ddl {\r\n  margin-top: 16px;\n}\n.additional-activity div:first-child {\r\n  width: 150px;\n}\n.additional-activity div:last-child {\r\n  width: 150px;\n}\n.additional-activity {\r\n  margin-left: 30px;\n}\n@media (max-width: 540px) {\n.additional-activity {\r\n    /* justify-content: center; */\r\n    margin-left: 0px;\n}\n}\r\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n.tour-quote-page {\n    padding-top: 50px;\n    padding-bottom: 100px;\n    background-color: #f2f2f2;\n}\n.tour-quote-page section {\n    margin-top: 100px;\n}\n.tour-quote-page .e-multi-line-input textarea {\n    height: 100px;\n}\n.tour-quote-page .quote .e-date-wrapper,\n.tour-quote-page .quote .e-ddl {\n    margin-top: 16px;\n}\n.additional-activity div:first-child {\n    width: 150px;\n}\n.additional-activity div:last-child {\n    width: 150px;\n}\n.additional-activity {\n    margin-left: 30px;\n}\n@media (max-width: 540px) {\n.additional-activity {\n        /* justify-content: center; */\n        margin-left: 0px;\n}\n}\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -33820,7 +33823,12 @@ var render = function() {
                   { staticClass: "col-lg-6 col-sm-12 mt-3" },
                   [
                     _c("ejs-datepicker", {
-                      attrs: { placeholder: _vm.waterMark },
+                      ref: "dateObj",
+                      attrs: {
+                        placeholder: _vm.waterMark,
+                        focus: _vm.onFocus,
+                        required: ""
+                      },
                       model: {
                         value: _vm.start_date,
                         callback: function($$v) {
@@ -33886,7 +33894,7 @@ var render = function() {
                               },
                               [
                                 _vm._v(
-                                  "\r\n                  Travelers\r\n                  "
+                                  "\n                                    Travelers\n                                    "
                                 ),
                                 _c("span", {
                                   staticClass: "fa fa-times-circle-o",
@@ -33960,12 +33968,12 @@ var render = function() {
                               _c(
                                 "button",
                                 {
-                                  staticClass: "btn btn-danger mx-3 my-3",
+                                  staticClass: "btn btn-warning mx-3 my-3",
                                   on: { click: _vm.setTravelerInfo }
                                 },
                                 [
                                   _vm._v(
-                                    "\r\n                    Done\r\n                  "
+                                    "\n                                        Done\n                                    "
                                   )
                                 ]
                               )
@@ -34274,16 +34282,13 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", [_c("strong", [_vm._v("Adults")]), _vm._v("(16+ years):")])
+    return _c("div", [_c("strong", [_vm._v("Adult ")]), _vm._v("(16+ yrs):")])
   },
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", [
-      _c("strong", [_vm._v("Children")]),
-      _vm._v("(0~15 years):")
-    ])
+    return _c("div", [_c("strong", [_vm._v("Child ")]), _vm._v("(0~15 yrs):")])
   },
   function() {
     var _vm = this
