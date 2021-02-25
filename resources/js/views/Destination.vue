@@ -58,7 +58,7 @@ export default {
     },
     data() {
         return {
-            current_destination_page: 1,
+            current_destination_page: null,
             destinations_per_page: 6,
             current_page_destinations: [],
             pagenation_options: {
@@ -66,7 +66,16 @@ export default {
             }
         };
     },
+    watch: {
+        current_blog_page: function(newValue) {
+            this.getCurrentPageBlogs(newValue);
+        }
+    },
     computed: {
+        page_id: function () {
+            var id = this.$route.params.id;
+            return id.slice(0, id.length);
+        },
         ...mapGetters({
             listDestinations: "destinationController/listDestinations",
             loading: "tourcard_loading"
@@ -75,13 +84,18 @@ export default {
 
     watch: {
         current_destination_page: function(newValue) {
-            this.getCurrentPageDestinations(newValue);
+            this.$router.push('/tour-destinations/page/' + newValue)
+                .then(() => {
+                    this.getListDestinations();
+                })
+                .catch(() => {})
         }
     },
 
     created() {
         let page_title = "Safari-Trek-Beach.com Destination";
         document.title = page_title;
+        this.current_destination_page = parseInt(this.page_id)
         this.getListDestinations();
     },
     methods: {

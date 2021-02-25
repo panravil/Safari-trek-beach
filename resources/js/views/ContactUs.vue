@@ -3,20 +3,25 @@
   <div class="container">
 
     <section>
-      <header class="section-header" data-aos="fade-up">
+      <header class="section-header" >
         <h3>QUERIES ABOUT SAFARI OR TOUR OPERATOR</h3>
       </header>
-      <h3 class="text-center mt-5" data-aos="fade-up">Safari Package from Safari-Treck-Beach are offered by individual tour operator and not Safari-Treck-Beach company!</h3>
-      <h5 class="mt-5" data-aos="fade-up">For questions/information about a specific tour, we recommend that you contact tour operator directly. Follow these two steps: </h5>
-      <h5 class="mt-4 mb-0" data-aos="fade-up">1. Select the tour package you like!</h5>
-      <h5 class="mt-1" data-aos="fade-up">2. <i>Then by using Get Free Quote button on tour page the tour operator contact after filling the form.</i></h5>
+      <h3 class="text-center mt-5" >Safari Packages in Safari-Trek-Beach are offered by individual tour operator and not Safari-Trek-Beach company.</h3>
+      <h4 class="mt-3 text-center" >For questions about a specific tour, we recommend that you contact tour operator directly.</h4>
+      <h4 class="mt-5 fw-bold text-center" >Follow these two steps:</h4>
+      <h5 class="mt-4 mb-0" >1. Select the tour package you like!</h5>
+      <h5 class="mt-3" >2. Then Click Get Free Quote button to contact.</h5>
+      <h5 class="mt-3" >3. Fill your emails and message then send.</h5>
+      <div class="text-center mt-5">
+        <a class="btn btn-danger text-light" href="/our-tours"> Start Here <span class="fa fa-angle-right ms-2"></span></a>
+      </div>
     </section>
 
     <section>
-      <header class="section-header" data-aos="fade-up">
+      <header class="section-header" >
         <h3>CONTACT US</h3>
       </header>
-      <h3 class="text-center mt-5" data-aos="fade-up">
+      <h3 class="text-center mt-5" >
         For queries about Safari-Trek-Beach Company
       </h3>
       <div class="card p-5 mx-auto contact-form-card">
@@ -63,10 +68,10 @@
             <h4 class="fw-bold mt-3">Follow Us On</h4>
             <div class="row gx-0 d-flex py-4 align-item-center">
               <div class="col-md-12 text-center">
-                <a href="#"><span class="fa fa-facebook-f fa-2x text-danger me-5"></span></a>
-                <a href="#"><span class="fa fa-instagram fa-2x text-danger me-5"></span></a>
-                <a href="#"><span class="fa fa-twitter fa-2x text-danger me-5"></span></a>
-                <a href="#"><span class="fa fa-youtube fa-2x text-danger"></span></a>
+                <a href="#" target="_blank"><span class="fa fa-facebook-f fa-2x text-danger me-5"></span></a>
+                <a href="#" target="_blank"><span class="fa fa-instagram fa-2x text-danger me-5"></span></a>
+                <a href="#" target="_blank"><span class="fa fa-twitter fa-2x text-danger me-5"></span></a>
+                <a href="#" target="_blank"><span class="fa fa-youtube fa-2x text-danger"></span></a>
               </div>
             </div>
           </div>

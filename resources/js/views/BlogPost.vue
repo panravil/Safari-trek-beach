@@ -10,7 +10,7 @@
                     <div
                         class="col-lg-4 col-md-6 col-xs-12"
                         v-for="(blog, index) in 6"
-                        v-bind:key="index + 'bloglist'"
+                        v-bind:key="index + 'blogskelecton'"
                     >
                         <TourCardSkelecton></TourCardSkelecton>
                     </div>
@@ -54,7 +54,7 @@ export default {
     },
     data() {
         return {
-            current_blog_page: 1,
+            current_blog_page: null,
             blogs_per_page: 6,
             current_page_blogs: [],
             pagenation_options: {
@@ -62,34 +62,51 @@ export default {
             }
         };
     },
-     watch: {
+    watch: {
         current_blog_page: function(newValue) {
-            this.getCurrentPageDestinations(newValue);
+            this.getCurrentPageBlogs(newValue);
         }
     },
     computed: {
+        page_id: function () {
+            var id = this.$route.params.id;
+            return id.slice(0, id.length);
+        },
         ...mapGetters({
             listBlog: "blogController/listBlog",
             loading: "tourcard_loading"
         })
     },
+
+    watch: {
+        current_blog_page: function (newValue) {
+            this.$router.push('/blog/page/' + newValue)
+                .then(() => {
+                    this.getlistBlog();
+                })
+                .catch(() => {})
+        },
+    },
+
     created() {
         let page_title = "Safari-Trek-Beach.com Blog";
         document.title = page_title;
+        this.current_blog_page = parseInt(this.page_id)
         this.getlistBlog();
     },
+    
     methods: {
         // toBlogInnerPage(slug) {
         //   this.$router.push('/blog-inner-page/' + slug);
         // },
         getlistBlog() {
             this.$store.dispatch("blogController/getListBlogs").then(() => {
-                    this.getCurrentPageDestinations(
+                    this.getCurrentPageBlogs(
                         this.current_blog_page
                     );
                 });
         },
-        getCurrentPageDestinations(page_num) {
+        getCurrentPageBlogs(page_num) {
             this.current_page_blogs = [];
             let index = 0;
             for (

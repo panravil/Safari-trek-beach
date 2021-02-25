@@ -1,47 +1,62 @@
 <template>
-<div class="destination-package">
-  <div class="container mt-5">
-    <div class="card">
-      <div class="position-relative overflow-hidden" v-if="destinationData != null">
-        <img :src="destinationData.post_inner_image" class="card-img-top" />
-        <div class="image_title">
-          {{ destinationData.title }}
+  <div class="destination-package">
+    <div class="container mt-5">
+      <div class="card">
+        <div
+          class="position-relative overflow-hidden"
+          v-if="destinationData != null"
+        >
+          <img :src="destinationData.post_inner_image" class="card-img-top" />
+          <div class="image_title">
+            {{ destinationData.title }}
+          </div>
         </div>
-      </div>
-      <div class="card-body px-0">
-        <div class="row gx-0">
-          <div class="col-lg-9 col-md-12 content-section px-4">
-            <div v-if="loading">
-              <content-placeholders-heading />
-            </div>
-            <div v-else class="mt-5" style="margin-bottom: -60px;">
-              <h3 class="section-title pt-3">
-                {{ destinationData.title }}
-              </h3>
-              <p>
-                {{ destinationData.description }}
-              </p>
-            </div>
+        <div class="card-body px-0">
+          <div class="row gx-0">
+            <div class="col-lg-9 col-md-12 content-section px-4">
+              <div v-if="loading">
+                <content-placeholders-heading />
+              </div>
+              <div v-else class="mt-5" style="margin-bottom: -60px">
+                <h3 class="section-title pt-3">
+                  {{ destinationData.title }}
+                </h3>
+                <p>
+                  {{ destinationData.description }}
+                </p>
+              </div>
 
-            <div v-if="loading">
-              <content-placeholders-heading />
-            </div>
-            <div v-else>
-              <div v-for="(item, index) in destinationData.section" v-bind:key="index" :id="'section' + index" class="pt-5">
-                <div class="pt-5">
-                  <h3 class="section-title-inner pb-3">
-                    Section {{ index + 1 }}. {{ item.title }}
-                  </h3>
-                </div>
-                <div class="section" v-html="item.description"></div>
-                <div class="text-start mt-3" v-if="item.button_name != null && item.button_url != null">
-                  <a :href="item.button_url" target="_blank" class="btn btn-danger">
-                    {{ item.button_name }}
-                  </a>
+              <div v-if="loading">
+                <content-placeholders-heading />
+              </div>
+              <div v-else>
+                <div
+                  v-for="(item, index) in destinationData.section"
+                  v-bind:key="index"
+                  :id="'section' + index"
+                  class="pt-5"
+                >
+                  <div class="pt-5">
+                    <h3 class="section-title-inner pb-3">
+                      Section {{ index + 1 }}. {{ item.title }}
+                    </h3>
+                  </div>
+                  <div class="section" v-html="item.description"></div>
+                  <div
+                    class="text-start mt-3"
+                    v-if="item.button_name != null && item.button_url != null"
+                  >
+                    <a
+                      :href="item.button_url"
+                      target="_blank"
+                      class="btn btn-danger"
+                    >
+                      {{ item.button_name }}
+                    </a>
+                  </div>
                 </div>
               </div>
-            </div>
-            <!-- <div class="mt-5">
+              <!-- <div class="mt-5">
               <h3 class="section-title-inner pb-3">Comments (234)</h3>
             </div>
             <form class="mt-5">
@@ -63,74 +78,103 @@
                 </div>
               </div>
             </form> -->
-          </div>
-          <div class="col-lg-3 col-md-12 quick-link-section px-4 position-relative">
-            <div style="position: sticky; top: 50px;">
-              <button class="btn-danger btn w-100 mt-5" @click="goToOurTourPage">
-                Our Tours <span class="fa fa-angle-right ms-2"></span>
-              </button>
-              <div class="w-100 p-3 blog-category mt-3">
-                <h6 class="fw-bolder text-center text-danger">
-                  Table Of Contents
-                </h6>
-                <ul class="m-0 ps-3" v-if="loading">
-                  <li v-for="(item, index) in 4" v-bind:key="'skelect'+index" class="mt-2">
-                    <a class="text-primary">
-                      <content-placeholders-text :lines="1" /></a>
-                  </li>
-                </ul>
-                <ul class="m-0 ps-3" v-else>
-                  <li v-for="(content, index) in destinationData.section" v-bind:key="index" class="mt-2">
-                    <a class="text-primary" :href="'#section'+ index">Section {{ index + 1 }}. {{ content.title }}</a>
-                  </li>
-                </ul>
-              </div>
-              <!-- <div class="w-100 p-3 blog-category mt-5">
-                <h6 class="fw-bolder text-center text-danger">Popular Links</h6>
-                <ul class="m-0 ps-3">
-                  <li v-for="index in 6" v-bind:key="index">
-                    <a class="text-primary"
-                      >efsdf sdf sdf sdaf sdfg dsfg dsfg dsfg dsfg dsfg dsfg
-                      sadf sdaf dsf</a
+            </div>
+            <div
+              class="col-lg-3 col-md-12 quick-link-section px-4 position-relative"
+            >
+              <div style="position: sticky; top: 50px">
+                <button
+                  class="btn-danger btn w-100 mt-5"
+                  @click="goToOurTourPage"
+                >
+                  Our Tours <span class="fa fa-angle-right ms-2"></span>
+                </button>
+                <div class="w-100 p-3 blog-category mt-3">
+                  <h6 class="fw-bolder text-center text-danger">
+                    Table Of Contents
+                  </h6>
+                  <ul class="m-0 ps-3" v-if="loading">
+                    <li
+                      v-for="(item, index) in 4"
+                      v-bind:key="'skelect' + index"
+                      class="mt-2"
                     >
-                  </li>
-                </ul>
-              </div> -->
+                      <a class="text-primary">
+                        <content-placeholders-text :lines="1"
+                      /></a>
+                    </li>
+                  </ul>
+                  <ul class="m-0 ps-3" v-else>
+                    <li
+                      v-for="(content, index) in destinationData.section"
+                      v-bind:key="index"
+                      class="mt-2"
+                    >
+                      <a class="text-primary" :href="'#section' + index"
+                        >Section {{ index + 1 }}. {{ content.title }}</a
+                      >
+                    </li>
+                  </ul>
+                </div>
+                <div
+                  class="w-100 p-3 blog-category mt-5"
+                  v-if="
+                    destinationData != null &&
+                    destinationData.destination.length > 0
+                  "
+                >
+                  <h6 class="fw-bolder text-center text-danger">
+                    Popular Links
+                  </h6>
+                  <ul class="m-0 ps-3">
+                    <li
+                      v-for="(item, index) in destinationData.destination"
+                      v-bind:key="'Destination' + index"
+                    >
+                      <a
+                        class="text-primary"
+                        :href="'/destination-package/' + item.post_slug"
+                        >{{ item.title }}</a
+                      >
+                    </li>
+                  </ul>
+                </div>
+              </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
-    <header class="section-header mt-5 pt-5">
-      <h3>Popular Tours</h3>
-    </header>
-    <div class="row gx-0" v-if="popularTours != null">
-      <div class="col-lg-4 col-md-6 col-xs-12" v-for="(item, index) in popularTours.slice(0, 3)" v-bind:key="index">
-        <TourCard :tourData="item"></TourCard>
+      <div v-if="destinationData != null && destinationData.package.length > 0">
+        <header class="section-header mt-5 pt-5">
+          <h3>Popular Tours</h3>
+        </header>
+        <div class="row gx-0" v-if="destinationData != null">
+          <div
+            class="col-lg-4 col-md-6 col-xs-12"
+            v-for="(item, index) in destinationData.package"
+            v-bind:key="index"
+          >
+            <TourCard :tourData="item"></TourCard>
+          </div>
+        </div>
+        <div class="text-center mt-5">
+          <a href="/our-tours" class="btn btn-danger">
+            View All Packages <span class="fa fa-angle-right ms-2"></span
+          ></a>
+        </div>
       </div>
     </div>
-    <div class="text-center mt-5">
-      <a href="/our-tours" class="btn btn-danger">
-        View All Packages <span class="fa fa-angle-right ms-2"></span></a>
-    </div>
   </div>
-</div>
 </template>
 
 <script>
 import Vue from "vue";
 
-import {
-  TextBoxPlugin
-} from "@syncfusion/ej2-vue-inputs";
+import { TextBoxPlugin } from "@syncfusion/ej2-vue-inputs";
 Vue.use(TextBoxPlugin);
 
 import TourCard from "../components/TourCard";
-import {
-  mapState,
-  mapGetters,
-  mapMutations
-} from "vuex";
+import { mapState, mapGetters, mapMutations } from "vuex";
 
 export default {
   name: "DestinationPackage",
@@ -148,27 +192,32 @@ export default {
     },
     ...mapGetters({
       destinationData: "destinationController/destinationData",
-      popularTours: "tourController/popularTours",
+      // popularTours: "tourController/popularTours",
       loading: "tourcard_loading",
     }),
   },
 
   created() {
     this.getDestinationData();
-    this.getPopularTours();
+    // this.getPopularTours();
   },
   methods: {
-    async getPopularTours() {
-      await this.$store
-        .dispatch("tourController/getPopularTours")
-        .then(() => {});
-    },
+    // async getPopularTours() {
+    //   await this.$store
+    //     .dispatch("tourController/getPopularTours")
+    //     .then(() => {});
+    // },
     async getDestinationData() {
       await this.$store
-        .dispatch("destinationController/getDestinationById", this.destination_id)
+        .dispatch(
+          "destinationController/getDestinationById",
+          this.destination_id
+        )
         .then(() => {
-          let page_title = this.destinationData.title + " - Safari-Trek-Beach"
+          let page_title = this.destinationData.title + " - Safari-Trek-Beach";
           document.title = page_title;
+
+          // console.log('destinationData', this.destinationData)
         });
     },
 
@@ -199,10 +248,12 @@ export default {
   font-family: "Gentium Basic", serif;
   text-shadow: 1px 1px 5px #000;
   z-index: 3;
-  background: linear-gradient(to bottom,
-      rgba(0, 0, 0, 0) 0%,
-      rgba(0, 0, 0, 0.5) 45%,
-      rgba(0, 0, 0, 0.9) 100%);
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0) 0%,
+    rgba(0, 0, 0, 0.5) 45%,
+    rgba(0, 0, 0, 0.9) 100%
+  );
 }
 
 .destination-package .content-section {

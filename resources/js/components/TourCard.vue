@@ -58,7 +58,7 @@
                 <span v-else-if="tourData.no_of_day > 2"
                     >{{ tourData.no_of_day - 1 }} Nights</span
                 >
-                <span v-else>No Accommodation</span>
+                <span v-else>Not Included</span>
             </p>
             <p class="card-text mb-1">
                 <strong> Tour Type: </strong>

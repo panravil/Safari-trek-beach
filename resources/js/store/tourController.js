@@ -14,7 +14,7 @@ const state = {
     where_to_search: '',
     start_date: '',
     traveler_number: '',
-    adults_number: 1,
+    adults_number: 0,
     children_number: 0,
 
     package_id: null,

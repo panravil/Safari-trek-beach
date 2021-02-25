@@ -66,13 +66,13 @@ const router = new Router({
                     component: () => import("./views/AboutUs.vue")
                 },
                 {
-                    path: "/blog",
+                    path: "/blog/page/:id",
                     name: "Blog Post",
                     index: 6,
                     component: () => import("./views/BlogPost.vue")
                 },
                 {
-                    path: "/tour-destinations",
+                    path: "/tour-destinations/page/:id",
                     name: "Destination",
                     index: 7,
                     component: () => import("./views/Destination.vue")
