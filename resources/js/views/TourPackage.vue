@@ -68,8 +68,20 @@
                   <strong v-if="packageData.avg_review == '5'"
                     >&nbsp;5.0/5</strong
                   >
+                  <strong v-else-if="packageData.avg_review == '4'"
+                    >&nbsp;4.0/5</strong
+                  >
+                  <strong v-else-if="packageData.avg_review == '3'"
+                    >&nbsp;3.0/5</strong
+                  >
+                  <strong v-else-if="packageData.avg_review == '2'"
+                    >&nbsp;2.0/5</strong
+                  >
+                  <strong v-else-if="packageData.avg_review == '1'"
+                    >&nbsp;1.0/5</strong
+                  >
                   <strong v-else>&nbsp;{{ packageData.avg_review }}/5</strong>
-                  <span>({{ packageData.sum_review }} Reviews)</span>
+                  <span>({{ packageData.num_review }} Reviews)</span>
                 </p>
                 <button class="btn btn-danger mobile mt-2" @click="getQuoteNow">
                   Get Free Quote Now
@@ -647,16 +659,47 @@
                         class="text-danger"
                       >
                         {{ packageData.avg_review }}.0 / 5
-                        <small class="text-muted"
-                          >({{ packageData.sum_review }} reviews)</small
-                        >
+                      </span>
+                      <span
+                        v-else-if="packageData.avg_review == '4'"
+                        class="text-danger"
+                      >
+                        {{ packageData.avg_review }}.0 / 5
+                      </span>
+                      <span
+                        v-else-if="packageData.avg_review == '3'"
+                        class="text-danger"
+                      >
+                        {{ packageData.avg_review }}.0 / 5
+                      </span>
+                      <span
+                        v-else-if="packageData.avg_review == '2'"
+                        class="text-danger"
+                      >
+                        {{ packageData.avg_review }}.0 / 5
+                      </span>
+                      <span
+                        v-else-if="packageData.avg_review == '1'"
+                        class="text-danger"
+                      >
+                        {{ packageData.avg_review }}.0 / 5
                       </span>
                       <span v-else class="text-danger">
                         {{ packageData.avg_review }} / 5
-                        <small class="text-muted"
-                          >({{ packageData.num_review }} reviews)</small
-                        >
                       </span>
+
+                      <span
+                        class="text-muted"
+                        v-if="packageData.num_review == '1'"
+                        ><small
+                          >({{ packageData.num_review }} Review)</small
+                        ></span
+                      >
+                      <span class="text-muted" v-else
+                        ><small
+                          >({{ packageData.num_review }} Reviews)</small
+                        ></span
+                      >
                     </h5>
                     <div class="rating-wrap" v-bind:key="update_checklist">
                       <div
@@ -1464,7 +1507,7 @@ export default {
 
           this.reviewFilter();
 
-        //   console.log("package", this.packageData);
+          //   console.log("package", this.packageData);
         });
     },
 

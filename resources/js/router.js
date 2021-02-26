@@ -12,7 +12,7 @@ const router = new Router({
         return result ? ('?' + result) : ''
     },
     scrollBehavior(to, from) {
-        if (to.name === from.name && to.name ==='Our Tours' )
+        if (to.name === from.name && (to.name ==='Our Tours' || to.name === "Our Tours2") )
             return false;
         else {
             return {
@@ -45,6 +45,12 @@ const router = new Router({
                     path: "/our-tours",
                     name: "Our Tours",
                     index: 2,
+                    component: () => import("./views/OurTours.vue")
+                },
+                {
+                    path: "/our-tours/:destination",
+                    name: "Our Tours2",
+                    index: 21,
                     component: () => import("./views/OurTours.vue")
                 },
                 {

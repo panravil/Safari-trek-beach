@@ -135,7 +135,7 @@
                     ></datepicker>
                   </div>
                   <span
-                    v-if="start_date != ''"
+                    v-if="start_date != '' && start_date != null"
                     class="fa fa-times-circle-o"
                     @click="initStartDate"
                   ></span>
@@ -458,7 +458,7 @@
                 :tourData="item"
                 :where_to_search="where_to_search"
                 :traveler_number="traveler_number"
-                :start_date="start_date.toString()"
+                :start_date="start_date != null ? start_date.toString() : ''"
                 :adults_number="adults_number"
                 :children_number="children_number"
               ></TourCard>
@@ -607,6 +607,14 @@ export default {
     router_query: function () {
       return this.$route.query;
     },
+    destination_id: function () {
+      var id = this.$route.params.destination;
+      if (id != undefined) {
+        return id.slice(0, id.length);
+      } else {
+        return "";
+      }
+    },
     ...mapGetters({
       filterTours: "tourController/filterTours",
       loading: "tourcard_loading",
@@ -681,22 +689,30 @@ export default {
 
     let temp_query = this.router_query;
 
-    // console.log('temp before', temp_query)
+    // console.log("temp before", temp_query);
+    // console.log("destination ID", this.destination_id);
+    var destination_url = this.destination_id;
+    // console.log("where to list", this.where_to_list);
 
-    if (temp_query["destination"] !== undefined) {
+    if (destination_url !== undefined && destination_url !== "") {
       let destination_item = this.where_to_list.find(function (el) {
-        return el.input_id == temp_query["destination"];
+        return el.input_id == destination_url;
       });
 
+      // console.log("desti item", destination_item);
+
       if (destination_item != undefined) {
-        temp_query["destination"] = destination_item.title;
+        temp_query = Object.assign(
+          { destination: destination_item.title },
+          temp_query
+        );
       } else {
-        temp_query["destination"] = temp_query["destination"]
-          .split("_")
-          .join(" ");
-        temp_query["destination"] = temp_query["destination"]
-          .split("~")
-          .join("&");
+        let temp_destination = this.destination_id.split("_").join(" ");
+        temp_destination = this.destination_id.split("~").join("&");
+        temp_query = Object.assign(
+          { destination: temp_destination },
+          temp_query
+        );
       }
     } else {
       this.where_to_search = "";
@@ -949,7 +965,7 @@ export default {
           this.check_group_filter = false;
           this.where_to_search = "";
           this.where_to_search_option = "";
-          this.adults_number = 1;
+          this.adults_number = 0;
           this.children_number = 0;
           this.traveler_number = "";
           this.start_date = "";
@@ -1224,11 +1240,29 @@ export default {
         }
       }
 
-      this.$router
-        .replace({
-          query: url_query,
-        })
-        .catch(() => {});
+      let destination_params =
+        url_query["destination"] != undefined ? url_query["destination"] : "";
+
+      if (url_query["destination"] !== undefined) {
+        delete url_query["destination"];
+      }
+
+      if (destination_params == "") {
+        this.$router
+          .replace({
+            name: "Our Tours",
+            query: url_query,
+          })
+          .catch(() => {});
+      } else {
+        this.$router
+          .replace({
+            name: "Our Tours2",
+            params: { destination: destination_params },
+            query: url_query,
+          })
+          .catch(() => {});
+      }
 
       this.$store
         .dispatch("tourController/getTourFilter", query)

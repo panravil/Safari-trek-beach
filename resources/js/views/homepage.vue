@@ -95,7 +95,7 @@
                       ></datepicker>
                     </div>
                     <span
-                      v-if="start_date != ''"
+                      v-if="start_date != '' && start_date != null"
                       class="fa fa-times-circle-o"
                       @click="initStartDate"
                     ></span>
@@ -705,7 +705,7 @@ export default {
     },
     setTravelerInit() {
       this.traveler_number = "";
-      this.adults_number = 1;
+      this.adults_number = 0;
       this.children_number = 0;
     },
     initStartDate() {
@@ -742,7 +742,7 @@ export default {
             .split("&")
             .join("~");
         }
-        this.$router.push({ path: "/our-tours", query: url_query });
+        this.$router.push("/our-tours/" + url_query["destination"]);
       } else {
         this.$router.push("/our-tours");
       }
