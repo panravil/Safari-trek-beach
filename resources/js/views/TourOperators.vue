@@ -25,7 +25,7 @@
               <img :src="operator.logo" />
             </div>
             <div class="px-3 operator-content">
-              <h4 class="fw-bold">{{ operator.company_name }}</h4>
+              <h4 class="fw-bold text-capitalize">{{ operator.company_name }}</h4>
               <h6 class="description">
                 {{ operator.brief | limitText }}
               </h6>
@@ -185,6 +185,10 @@ export default {
   height: 150px;
 }
 
+.tour-operator-card:hover {
+  box-shadow: 0px 1px 13px #666;
+  transition: box-shadow 0.2s ease-in-out, transform 0.3s ease-in-out;
+}
 /* #tour-operators-page .logo-layout {
   min-width: 400px;
   width: 400px;

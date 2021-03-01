@@ -463,18 +463,34 @@
                 :children_number="children_number"
               ></TourCard>
             </div>
-            <div class="ourtours-pagination my-3">
+            <!-- <div class="ourtours-pagination my-3">
               <Pagination
                 v-model="current_ourtour_page"
                 :records="filterTours.total_tours"
                 :per-page="ourtour_perpage"
                 :options="pagination_options"
               />
+            </div> -->
+
+            <div class="ourtours-pagination my-3">
+              <paginate
+                v-model="current_ourtour_page"
+                :page-count="filterTours.pages"
+                :prev-text="'Prev'"
+                :next-text="'Next'"
+                :container-class="'pagination'"
+                :page-class="'page-item'"
+                :prev-class="'page-link'"
+                :next-class="'page-link'"
+                :page-link-class="'page-link'"
+              >
+              >
+              </paginate>
             </div>
           </div>
           <p
             v-else-if="filterTours != null && filterTours.tours.length == 0"
-            class="text-center nosafari-search"
+            class="text-center mt-5 nosafari-search"
           >
             <span>Found 0 Safari Tours</span>
           </p>
@@ -1289,6 +1305,10 @@ export default {
 
 li {
   list-style: none;
+}
+
+.pagination a {
+  outline: none;
 }
 
 p.standard .e-checkbox-wrapper .e-frame + .e-label,

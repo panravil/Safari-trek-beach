@@ -23,7 +23,7 @@
                 <content-placeholders-heading />
               </div>
               <h3
-                class="card-title fw-bold mb-3"
+                class="card-title fw-bold mb-3 text-capitalize"
                 v-else-if="packageData != null"
               >
                 {{ packageData.no_of_day }}-Day {{ packageData.title }}
@@ -58,7 +58,7 @@
                   class="fw-bold text-success my-2"
                   :title="packageData.rate.child_currency + ' USD per Child'"
                 >
-                  ${{ packageData.rate.adult_currency }}
+                  {{ packageData.rate.adult_currency | currency}}
                   <small class="text-dark">USD</small>
                 </h4>
                 <p class="mt-2 mb-0" v-if="packageData != null">
@@ -411,6 +411,51 @@
                         </div>
                       </div>
                     </div>
+
+                    <div class="mobile" v-if="packageData != null">
+
+                      <div class="d-flex mt-5">
+                        <h4 class="fw-bold text-danger flex-shrink-0">
+                          <span class="fa fa-arrow-circle-right"></span>
+                          <span>Rates Per Person</span>
+                        </h4>
+                        <div class="w-100 horizontal-grayline"></div>
+                      </div>
+                      <!-- <h6 class="my-1" v-if="packageData != null">
+                                          Tour Start from
+                                          <strong>{{ packageData.getting_there.start_city }}</strong>
+                                      </h6> -->
+                      <div v-if="packageData != null" class="table-responsive">
+                        <table class="table text-center table-striped table-bordered align-middle">
+                          <thead>
+                            <tr>
+                              <th scope="col">Start Dates</th>
+                              <th scope="col">1 Person</th>
+                              <th scope="col">2 Person</th>
+                              <th scope="col">3 Person</th>
+                              <th scope="col">4 Person</th>
+                              <th scope="col">5 Person</th>
+                              <th scope="col">6 Person</th>
+                              <th scope="col"></th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr>
+                              <th scope="row">Mar 10 - <br>Dec 10</th>
+                              <td>{{ packageData.rate.adult_currency | currency }}</td>
+                              <td>{{ packageData.rate.adult_currency | currency }}</td>
+                              <td>{{ packageData.rate.adult_currency | currency }}</td>
+                              <td>{{ Math.round(packageData.rate.adult_currency * 0.98) | currency }}</td>
+                              <td>{{ Math.round(packageData.rate.adult_currency * 0.98) | currency }}</td>
+                              <td>{{ Math.round(packageData.rate.adult_currency * 0.97) | currency }}</td>
+                              <td class="text-primary" style="cursor: pointer;" @click="getQuoteNow">Get Quote</td>
+                            </tr>                          
+                          </tbody>
+                        </table>
+                      </div>
+
+                    </div>
+
                     <div class="d-flex mt-5">
                       <h4 class="fw-bold text-danger flex-shrink-0">
                         <span class="fa fa-arrow-circle-right"></span>
@@ -892,7 +937,7 @@
                             ></span>
                           </div>
                           <div>
-                            <h4 class="fw-bold text-muted my-0 ms-3">
+                            <h4 class="fw-bold text-muted my-0 ms-3 text-capitalize">
                               {{ item.full_name }}
                             </h4>
                           </div>
@@ -1039,7 +1084,7 @@
         <div class="col-lg-4 col-md-12 mobile">
           <div class="card p-4 mb-3" v-if="packageData != null">
             <h3 class="fw-bold text-success">
-              $ {{ packageData.rate.adult_currency }}
+              {{ packageData.rate.adult_currency | currency }}
               <small class="fw-normal">USD</small>
             </h3>
             <h5 class="fw-bold">Request a Quote</h5>
@@ -1175,9 +1220,9 @@
               :speed="1000"
               :loop="true"
               :autoplayTimeout="3000"
-              :autoplayDirection="'backward'"
               :paginationEnabled="false"
-              :autoplay="true"
+              v-model="current_reivew_number"
+              class="review-slider"
             >
               <slide
                 v-for="(item, indexsss) in packageData.review"
@@ -1191,14 +1236,16 @@
                     ></span>
                   </div>
                   <div>
-                    <h4 class="fw-bold text-dark my-0 ms-3">
+                    <h5 class="fw-bold text-dark my-0 ms-3 text-capitalize">
                       {{ item.full_name }}
-                    </h4>
-                    <!-- <h6 class="text-dark my-0 ms-3">Reviewed: <span class="text-muted">{{ new Date(item.created_at).toDateString() }}</span></h6> -->
+                    </h5>
+                    <!-- <h6 class="text-dark my-0 ms-3">{{ item.email }}</h6> -->
+                    <h6 class="text-dark my-0 ms-3">Reviewed: <span class="text-muted">{{ new Date(item.created_at).toDateString() }}</span></h6>
                   </div>
                 </div>
+                <div class="review-triangle"></div>
                 <div class="my-3 review-detail">
-                  <h5 class="text-muted fw-bold">
+                  <h5 class="text-muted fw-bold mb-2">
                     {{ item.title }}
                   </h5>
                   <h5 class="reviews">
@@ -1217,13 +1264,26 @@
                 </div>
               </slide>
             </carousel>
+            <div class="text-center mb-3" v-if="packageData.review.length != 0">
+              <div class="d-flex justify-content-center align-items-center">
+                <button class="btn btn-outline-danger px-3 py-1" @click="prevClick">
+                  <span class="fa fa-angle-left" style="font-size: 15px;"></span>
+                </button>
+                <span class="mx-3">{{ current_reivew_number + 1 }} of {{ packageData.review.length }}</span>
+                <button class="btn btn-outline-danger px-3 py-1" @click="nextClick">
+                  <span class="fa fa-angle-right" style="font-size: 15px;"></span>
+                </button>
+              </div>
+            </div>
+            <h6 v-else class="text-center">There are no reviews yet.</h6>
             <button
               type="button"
               class="btn btn-danger"
-              data-bs-toggle="modal"
-              data-bs-target="#writeareview"
+              data-mdb-toggle="modal"
+              data-mdb-target="#writeareview"
             >
               Write A Review
+              <span class="fa fa-edit ms-2"></span>
             </button>
 
             <!-- Modal -->
@@ -1243,7 +1303,7 @@
                     <button
                       type="button"
                       class="btn-close btn-close-white"
-                      data-bs-dismiss="modal"
+                      data-mdb-dismiss="modal"
                       aria-label="Close"
                     ></button>
                   </div>
@@ -1302,7 +1362,7 @@
                       type="button"
                       class="btn btn-light"
                       ref="closeButton"
-                      data-bs-dismiss="modal"
+                      data-mdb-dismiss="modal"
                     >
                       Close
                     </button>
@@ -1420,6 +1480,8 @@ export default {
       filtered_reviewList: [],
 
       update_checklist: 0,
+
+      current_reivew_number: 0,
     };
   },
   directives: {
@@ -1507,7 +1569,7 @@ export default {
 
           this.reviewFilter();
 
-          //   console.log("package", this.packageData);
+          console.log("package", this.packageData);
         });
     },
 
@@ -1612,11 +1674,27 @@ export default {
       };
       this.$store.dispatch("tourController/setTourInfo", quote_tourInfo);
 
-      this.$router.push("/tour-quote");
+      this.$router.push("/tour-quote").catch(() => {});
     },
 
     onFocus: function (args) {
       this.$refs.dateObj.show();
+    },
+
+    nextClick(){
+      if ( this.current_reivew_number == this.packageData.review.length - 1 ) {
+        return;
+      } else {
+        this.current_reivew_number ++
+      }
+    },
+
+    prevClick(){
+      if ( this.current_reivew_number == 0 ) {
+        return;
+      } else {
+        this.current_reivew_number --
+      }
     },
 
     submitReview() {
@@ -1773,6 +1851,22 @@ export default {
   background-color: #f1f1f1;
   border: 1px solid #f93154;
   padding: 20px;
+  position: relative;
+}
+
+.package-inner-page .review-detail::before {
+    position: absolute;
+    top: -9px;
+    left: 2.1875rem;
+    transform: rotate(-45deg);
+    content: "";
+    display: block;
+    width: 1rem;
+    height: 1rem;
+    border: 0.0625rem solid #f93154;
+    background-color: #f1f1f1;
+    border-bottom: none;
+    border-left: none;
 }
 
 .package-inner-page .e-multi-line-input textarea {
@@ -1820,6 +1914,15 @@ h4.flex-shrink-0 {
   margin-left: 5px;
   background: #b3b3b3;
 }
+
+.routine h6 {
+  font-size: 15px;
+}
+
+.routine-detail h6 {
+  text-transform: capitalize;
+}
+
 
 @media (min-width: 1201px) and (max-width: 1400px) {
   .package-inner-page .package-inner-image {

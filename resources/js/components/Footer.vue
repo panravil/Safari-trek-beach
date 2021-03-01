@@ -11,14 +11,14 @@
             <a href="/about" class="footerLink">About Us</a>
           </li>
           <li class="footerList">
-            <a href="/contact" class="footerLink">Contact us</a>
+            <a href="/contact" class="footerLink">Contact Us</a>
           </li>
           <li class="footerList">
             <a href="/become-a-partner" class="footerLink">Become a Partner</a>
           </li>
-          <!-- <li class="footerList">
-            <a href="#" class="footerLink">Operator Login</a>
-          </li> -->
+          <li class="footerList">
+            <a href="/tour-operators/page/1" class="footerLink">Tour Operators</a>
+          </li>
           <li class="footerList">
             <a href="/terms" class="footerLink">Terms &amp; Conditions</a>
           </li>
@@ -28,19 +28,19 @@
         <h6 class="text-uppercase font-weight-bold">Our Tours</h6>
         <ul class="list-unstyled">
           <li class="footerList">
-            <a href="#" class="footerLink">Serengeti</a>
+            <a href="/our-tours/Serengeti" class="footerLink">Serengeti</a>
           </li>
           <li class="footerList">
-            <a href="#" class="footerLink">Kilimanjaro</a>
+            <a href="/our-tours/Kilimanjaro" class="footerLink">Kilimanjaro</a>
           </li>
           <li class="footerList">
-            <a href="#" class="footerLink">Zanzibar</a>
+            <a href="/our-tours/Zanzibar" class="footerLink">Zanzibar</a>
           </li>
           <li class="footerList">
-            <a href="#" class="footerLink">Ngorongoro</a>
+            <a href="/our-tours/Ngorongoro" class="footerLink">Ngorongoro</a>
           </li>
           <li class="footerList">
-            <a href="#" class="footerLink">Ruaha</a>
+            <a href="/our-tours/ruaha-national-park" class="footerLink">Ruaha</a>
           </li>
         </ul>
       </div>
@@ -48,19 +48,19 @@
         <h6 class="text-uppercase font-weight-bold">Blog</h6>
         <ul class="list-unstyled">
           <li class="footerList">
-            <a href="#" class="footerLink">Serengeti</a>
+            <a href="/blog-inner-page/ukerewe-island" class="footerLink">UKEREWE ISLAND</a>
           </li>
           <li class="footerList">
-            <a href="#" class="footerLink">Kilimanjaro</a>
+            <a href="/blog-inner-page/rubondo-island-national-park" class="footerLink">RUBONDO ISLAND</a>
           </li>
           <li class="footerList">
-            <a href="#" class="footerLink">Zanzibar</a>
+            <a href="/blog-inner-page/mount-kilimanjaro" class="footerLink">Kilimanjaro</a>
           </li>
           <li class="footerList">
-            <a href="#" class="footerLink">Ngorongoro</a>
+            <a href="/blog-inner-page/kigosi-national-park" class="footerLink">KIGOSI</a>
           </li>
           <li class="footerList">
-            <a href="#" class="footerLink">Ruaha</a>
+            <a href="/blog-inner-page/saadani-national-park" class="footerLink">Saadani</a>
           </li>
         </ul>
       </div>
@@ -68,19 +68,19 @@
         <h6 class="text-uppercase font-weight-bold">Destination</h6>
         <ul class="list-unstyled">
           <li class="footerList">
-            <a href="#" class="footerLink">Serengeti</a>
+            <a href="/destination-package/tanzania" class="footerLink">Tanzania</a>
           </li>
           <li class="footerList">
-            <a href="#" class="footerLink">Kilimanjaro</a>
+            <a href="/destination-package/stone-town." class="footerLink">STONE TOWN</a>
           </li>
           <li class="footerList">
-            <a href="#" class="footerLink">Zanzibar</a>
+            <a href="/destination-package/materuni-watertfalls" class="footerLink">Materuni Watertfalls</a>
           </li>
           <li class="footerList">
-            <a href="#" class="footerLink">Ngorongoro</a>
+            <a href="/destination-package/dhow" class="footerLink">Dhow</a>
           </li>
           <li class="footerList">
-            <a href="#" class="footerLink">Ruaha</a>
+            <a href="/destination-package/spice" class="footerLink">Spice</a>
           </li>
         </ul>
       </div>
@@ -133,3 +133,9 @@ export default {
   },
 };
 </script>
+
+<style scoped>
+.footerLink:hover {
+  color: white;
+}
+</style>

@@ -8,10 +8,10 @@
       </header>
       <h3 class="text-center mt-5" >Safari Packages in Safari-Trek-Beach are offered by individual tour operator and not Safari-Trek-Beach company.</h3>
       <h4 class="mt-3 text-center" >For questions about a specific tour, we recommend that you contact tour operator directly.</h4>
-      <h4 class="mt-5 fw-bold text-center" >Follow these two steps:</h4>
+      <h4 class="mt-5 fw-bold text-center" >Follow these three steps:</h4>
       <h5 class="mt-4 mb-0" >1. Select the tour package you like!</h5>
       <h5 class="mt-3" >2. Then Click Get Free Quote button to contact.</h5>
-      <h5 class="mt-3" >3. Fill your emails and message then send.</h5>
+      <h5 class="mt-3" >3. Fill your email and message then send.</h5>
       <div class="text-center mt-5">
         <a class="btn btn-danger text-light" href="/our-tours"> Start Here <span class="fa fa-angle-right ms-2"></span></a>
       </div>

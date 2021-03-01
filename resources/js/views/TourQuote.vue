@@ -118,7 +118,7 @@
                 <ejs-textbox
                   v-model="mobileno"
                   floatLabelType="Auto"
-                  type="phone"
+                  type="tel"
                   placeholder="Mobile Number"
                   required
                 ></ejs-textbox>

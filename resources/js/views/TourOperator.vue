@@ -5,7 +5,7 @@
         <div v-if="loading">
           <content-placeholders-heading />
         </div>
-        <h3 class="fw-bold mb-2" v-else-if="operatorData != null">
+        <h3 class="fw-bold mb-2 text-capitalize" v-else-if="operatorData != null">
           {{ operatorData.company_name }}
         </h3>
         <h6 class="mt-2 mb-0" v-if="operatorData != null">
@@ -20,7 +20,7 @@
             Reviews)</span
           >
         </h6>
-        <h6 class="mt-2 mb-0">
+        <h6 class="mt-2 mb-0 text-capitalize">
           <strong>Tour Type: </strong>
           <span>{{ operatorData.tour_type }}</span>
         </h6>
@@ -115,7 +115,7 @@
                 <h5 v-else-if="operatorData.review.length == 0" class="text-center my-3 fst-italic">There is no review yet. Be the first person who write a review.</h5>
 
                 <div class="text-center">
-                  <button type="button" class="btn btn-danger mt-3" data-bs-toggle="modal" data-bs-target="#writeareview">
+                  <button type="button" class="btn btn-danger mt-3" data-mdb-toggle="modal" data-mdb-target="#writeareview">
                     Write A Review
                   </button>
                 </div>
@@ -127,7 +127,7 @@
                         <h5 class="modal-title" id="reviewLavel">
                           Write a Review
                         </h5>
-                        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                        <button type="button" class="btn-close btn-close-white" data-mdb-dismiss="modal" aria-label="Close"></button>
                       </div>
                       <div class="modal-body text-start">
                         <div class="row align-items-center">
@@ -152,7 +152,7 @@
                         </div>
                       </div>
                       <div class="modal-footer">
-                        <button type="button" ref="closeButton" class="btn btn-light" data-bs-dismiss="modal">
+                        <button type="button" ref="closeButton" class="btn btn-light" data-mdb-dismiss="modal">
                           Close
                         </button>
                         <button type="submit" class="btn btn-danger">
@@ -206,8 +206,8 @@
                   <button
                     type="button"
                     class="btn btn-danger my-3"
-                    data-bs-toggle="modal"
-                    data-bs-target="#writeareview2"
+                    data-mdb-toggle="modal"
+                    data-mdb-target="#writeareview2"
                   >
                     Write A Review
                   </button>
@@ -234,7 +234,7 @@
                           <button
                             type="button"
                             class="btn-close btn-close-white"
-                            data-bs-dismiss="modal"
+                            data-mdb-dismiss="modal"
                             aria-label="Close"
                           ></button>
                         </div>
@@ -293,7 +293,7 @@
                             type="button"
                             class="btn btn-light"
                             ref="closeButton"
-                            data-bs-dismiss="modal"
+                            data-mdb-dismiss="modal"
                           >
                             Close
                           </button>

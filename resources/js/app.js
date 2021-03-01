@@ -4,8 +4,8 @@ import App from "./App.vue";
 import store from "./store";
 // Vue Router
 import router from "./router";
-import "bootstrap";
-import "bootstrap/dist/css/bootstrap.min.css";
+// import "bootstrap";
+// import "bootstrap/dist/css/bootstrap.min.css";
 import * as mdb from "mdb-ui-kit"; // lib
 
 import "mdb-ui-kit/css/mdb.min.css";
@@ -38,6 +38,21 @@ import Notifications from 'vue-notification'
  
 Vue.use(Notifications)
 
+import Paginate from 'vuejs-paginate'
+Vue.component('paginate', Paginate)
+
+import VueCurrencyFilter from 'vue-currency-filter'
+Vue.use(VueCurrencyFilter,
+{
+  symbol : '$',
+  thousandsSeparator: ',',
+  fractionCount: 0,
+  fractionSeparator: '.',
+  symbolPosition: 'front',
+  symbolSpacing: true,
+  avoidEmptyDecimals: undefined,
+})
+
 new Vue({
     created() {
         AOS.init();
@@ -47,6 +62,7 @@ new Vue({
     mdb,
     render: h => h(App)
 }).$mount("#app");
+
 import "../js/assets/scss/main.scss";
 import "@syncfusion/ej2-vue-inputs/styles/material.css";
 import "@syncfusion/ej2-base/styles/material.css";

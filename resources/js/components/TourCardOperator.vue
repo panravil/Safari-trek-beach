@@ -73,7 +73,7 @@
     </div>
     <div class="row gx-0" style="position: relative; font-size: 1rem">
       <div>
-        <p class="card-text mb-1 ps-3">
+        <p class="card-text mb-1 ps-3 text-capitalize">
           {{ company_name }}
         </p>
         <p class="card-text ps-3">

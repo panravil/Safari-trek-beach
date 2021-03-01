@@ -73,7 +73,7 @@
     </div>
     <div class="row gx-0" style="position: relative">
       <div>
-        <p class="card-text mb-1 ps-3 company-name">
+        <p class="card-text mb-1 ps-3 company-name  text-capitalize">
           {{ tourData.company_name }}
         </p>
         <p class="card-text ps-3 d-flex mb-2 company-review">
