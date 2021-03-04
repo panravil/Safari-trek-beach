@@ -20,6 +20,7 @@
                   v-model="start_date"
                   ref="dateObj"
                   :focus="onFocus"
+                  :allowEdit="false"
                   required
                 ></ejs-datepicker>
               </div>
@@ -34,6 +35,7 @@
                     type="text"
                     placeholder="Travellers"
                     v-model="traveler_number"
+                    :readOnly="true"
                     required
                   ></ejs-textbox>
                 </div>
@@ -133,51 +135,59 @@
                   required
                 ></ejs-textbox>
               </div>
+              <div class="col-lg-12 col-sm-12 mt-3">
+                <ejs-checkbox
+                  label="Save Details For The Next Quote Request."
+                  v-model="remember_details"
+                ></ejs-checkbox>
+              </div>
             </div>
             <h5 class="fw-bold mt-5">Additional activities:</h5>
-            <div class="d-flex align-items-center mt-3 additional-activity">
-              <div>
-                <ejs-checkbox
-                  label="Zanzibar"
-                  v-model="zanzibar_activity"
-                ></ejs-checkbox>
+            <div v-bind:key="update_checkbox">
+              <div class="d-flex align-items-center mt-3 additional-activity">
+                <div>
+                  <ejs-checkbox
+                    label="Zanzibar"
+                    v-model="zanzibar_activity"
+                  ></ejs-checkbox>
+                </div>
+                <div class="ms-3" v-if="zanzibar_activity">
+                  <ejs-dropdownlist
+                    v-model="zanzibar_days"
+                    :dataSource="dayList"
+                    placeholder="No. of Days"
+                  ></ejs-dropdownlist>
+                </div>
               </div>
-              <div class="ms-3" v-if="zanzibar_activity">
-                <ejs-dropdownlist
-                  v-model="zanzibar_days"
-                  :dataSource="dayList"
-                  placeholder="No. of Days"
-                ></ejs-dropdownlist>
+              <div class="d-flex align-items-center mt-3 additional-activity">
+                <div>
+                  <ejs-checkbox
+                    label="Kilimanjaro"
+                    v-model="kiliman_activity"
+                  ></ejs-checkbox>
+                </div>
+                <div class="ms-3" v-if="kiliman_activity">
+                  <ejs-dropdownlist
+                    v-model="kilimanjaro_days"
+                    :dataSource="dayList"
+                    placeholder="No. of Days"
+                  ></ejs-dropdownlist>
+                </div>
               </div>
-            </div>
-            <div class="d-flex align-items-center mt-3 additional-activity">
-              <div>
-                <ejs-checkbox
-                  label="Kilimanjaro"
-                  v-model="kiliman_activity"
-                ></ejs-checkbox>
-              </div>
-              <div class="ms-3" v-if="kiliman_activity">
-                <ejs-dropdownlist
-                  v-model="kilimanjaro_days"
-                  :dataSource="dayList"
-                  placeholder="No. of Days"
-                ></ejs-dropdownlist>
-              </div>
-            </div>
-            <div class="d-flex align-items-center mt-3 additional-activity">
-              <div>
-                <ejs-checkbox
-                  label="Safari"
-                  v-model="safari_activity"
-                ></ejs-checkbox>
-              </div>
-              <div class="ms-3" v-if="safari_activity">
-                <ejs-dropdownlist
-                  v-model="safari_days"
-                  :dataSource="dayList"
-                  placeholder="No. of Days"
-                ></ejs-dropdownlist>
+              <div class="d-flex align-items-center mt-3 additional-activity">
+                <div>
+                  <ejs-checkbox
+                    label="Safari"
+                    v-model="safari_activity"
+                  ></ejs-checkbox>
+                </div>
+                <div class="ms-3" v-if="safari_activity">
+                  <ejs-dropdownlist
+                    v-model="safari_days"
+                    :dataSource="dayList"
+                    placeholder="No. of Days"
+                  ></ejs-dropdownlist>
+                </div>
               </div>
             </div>
             <div class="text-right w-100 mt-5 d-flex justify-content-end">
@@ -253,10 +263,13 @@ export default {
       mobileno: "+1",
       start_date: "",
 
+      remember_details: true,
+
       results: {},
 
       disabled: false,
       timeout: null,
+      update_checkbox: 0,
     };
   },
   computed: {
@@ -265,6 +278,8 @@ export default {
       start_date_state: "tourController/start_date",
       adults_number_state: "tourController/adults_number",
       children_number_state: "tourController/children_number",
+      
+      detailData: "tourController/detailData",
 
       package_data: "tourController/quoteData",
 
@@ -309,19 +324,57 @@ export default {
     },
   },
 
-  created() {
+  async created() {
     this.traveler_number = this.traveler_number_state;
     this.start_date = this.start_date_state;
     this.adults_number = this.adults_number_state;
     this.children_number = this.children_number_state;
 
     this.traveler_number_calc();
-    axios.get("https://extreme-ip-lookup.com/json/").then((response) => {
+    await axios.get("https://extreme-ip-lookup.com/json/").then((response) => {
       this.selected_country = response.data.countryCode;
       this.mobileno = countryData.calling_code.find((obj) => {
         return obj.code == this.selected_country;
       }).dial_code;
     });
+
+    if ( this.detailData != null ) {
+
+      if ( this.detailData.fullname != undefined ) {
+        this.fullname = this.detailData.fullname;
+      }
+
+      if ( this.detailData.emailAddress != undefined ) {
+        this.email = this.detailData.emailAddress;
+      }
+
+      if ( this.detailData.mobileno != undefined ) {
+        if (this.detailData.mobileno.includes(this.mobileno)) {
+          this.mobileno = this.detailData.mobileno;
+        }
+      }
+
+      if ( this.detailData.message != undefined ) {
+        this.message = this.detailData.message;
+      }
+
+      this.zanzibar_days = this.detailData.zanzibar_days;
+      this.kilimanjaro_days = this.detailData.kilimanjaro_days;
+      this.safari_days = this.detailData.safari_days;
+
+      if ( this.safari_days != undefined ) {
+        this.safari_activity = true;
+        this.update_checkbox ++;
+      }
+      if ( this.kilimanjaro_days != undefined ) {
+        this.kiliman_activity = true;
+        this.update_checkbox ++;
+      }
+      if ( this.zanzibar_days != undefined ) {
+        this.zanzibar_activity = true;
+        this.update_checkbox ++;
+      }
+    }
 
     document.title =
       "Request a Quote for the Tour " +
@@ -372,6 +425,18 @@ export default {
     },
 
     tourQuote() {
+      if ( this.safari_activity == false ) {
+        this.safari_days = undefined;
+      }
+
+      if ( this.kiliman_activity == false ) {
+        this.kilimanjaro_days = undefined;
+      }
+
+      if ( this.zanzibar_activity == false ) {
+        this.zanzibar_days = undefined;
+      }
+
       let quoteData = {};
 
       quoteData = {
@@ -407,24 +472,57 @@ export default {
             //   text: 'Thank you! We have received your tour qutoe.'
             // });
 
-            this.fullname = "";
-            this.email = "";
-            this.mobileno = "";
-            this.message = "";
-            this.zanzibar_days = "";
-            this.kilimanjaro_days = "";
-            this.safari_days = "";
+            if (this.remember_details == false) {
 
-            let searchData = {};
+              this.fullname = "";
+              this.email = "";
+              this.mobileno = "";
+              this.message = "";
+              this.zanzibar_days = "";
+              this.kilimanjaro_days = "";
+              this.safari_days = "";
 
-            searchData = {
-              where_to_search: "",
-              start_date: "",
-              adults_number: 0,
-              children_number: 0,
-            };
+              let searchData = {};
 
-            this.$store.dispatch("tourController/setSearchData", searchData);
+              searchData = {
+                where_to_search: "",
+                start_date: "",
+                adults_number: 0,
+                children_number: 0,
+              };
+
+              this.$store.dispatch("tourController/setSearchData", searchData);
+              this.$store.dispatch("tourController/setdetailData", {});
+
+            } else {
+
+              let searchData = {};
+
+              searchData = {
+                where_to_search: "",
+                start_date: this.start_date,
+                adults_number: this.adults_number,
+                children_number: this.children_number,
+              };
+
+              this.$store.dispatch("tourController/setSearchData", searchData);
+
+              let detail_data = {};
+
+              detail_data = {
+                fullname: this.fullname,
+                emailAddress: this.email,
+                mobileno: this.mobileno,
+                message: this.message,
+                zanzibar_days: this.zanzibar_days,
+                kilimanjaro_days: this.kilimanjaro_days,
+                safari_days: this.safari_days,
+              };
+
+              console.log('tag', detail_data)
+
+              this.$store.dispatch("tourController/setdetailData", detail_data);
+            } // if checked remember option
 
             this.$router.push("/thankyou-quote");
           } else {

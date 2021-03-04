@@ -133,7 +133,6 @@ export default {
       //   "&tf=cm";
       // window.open(url, "_blank");
 
-
     }
   }
 };

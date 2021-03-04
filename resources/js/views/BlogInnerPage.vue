@@ -15,7 +15,7 @@
         </div>
         <div class="card-body px-0">
           <div class="row gx-0">
-            <div class="col-lg-9 col-md-12 content-section px-4">
+            <div class="col-lg-8 col-md-12 content-section px-4">
               <div v-if="loading">
                 <content-placeholders-heading />
               </div>
@@ -40,7 +40,7 @@
                 >
                   <div class="pt-5">
                     <h3 class="section-title-inner pb-3">
-                      Section {{ index + 1 }}. {{ item.title }}
+                      {{ item.title }}
                     </h3>
                   </div>
                   <div class="section" v-html="item.description"></div>
@@ -61,7 +61,7 @@
               <!-- <div class="mt-5">
               <h3 class="section-title-inner pb-3">Comments (234)</h3>
             </div> -->
-              <form class="mt-5">
+              <!-- <form class="mt-5">
                 <h3 class="section-title-inner pb-3">Speak Your Mind</h3>
                 <div class="row">
                   <div class="col-md-6 col-sm-12 mt-3">
@@ -94,10 +94,10 @@
                     </button>
                   </div>
                 </div>
-              </form>
+              </form> -->
             </div>
             <div
-              class="col-lg-3 col-md-12 quick-link-section px-4 position-relative"
+              class="col-lg-4 col-md-12 quick-link-section px-4 position-relative"
             >
               <div style="position: sticky; top: 50px">
                 <button
@@ -128,7 +128,7 @@
                       class="mt-2"
                     >
                       <a class="text-primary" :href="'#section' + index"
-                        >Section {{ index + 1 }}. {{ content.title }}</a
+                        >{{ content.title }}</a
                       >
                     </li>
                   </ul>
@@ -165,7 +165,7 @@
         <div class="row gx-0" v-if="blogData != null">
           <div
             class="col-lg-4 col-md-6 col-xs-12"
-            v-for="(item, index) in blogData.blog"
+            v-for="(item, index) in blogData.package"
             v-bind:key="index"
           >
             <TourCard :tourData="item"></TourCard>
@@ -220,21 +220,21 @@ export default {
       this.$router.push("/our-tours");
     },
 
-    // async getPopularTours() {
-    //     await this.$store
-    //         .dispatch("tourController/getPopularTours")
-    //         .then(() => {});
-    // },
-
     async getBlogData() {
       await this.$store
         .dispatch("blogController/getBlogById", this.blog_id)
         .then(() => {
           let page_title = this.blogData.title + " - Safari-Trek-Beach";
           document.title = page_title;
-
+          this.scrollFix(this.$route.hash)
           // console.log('blog data', this.blogData)
         });
+    },
+
+    scrollFix(hashbang)
+    {
+      this.$router.replace({hash: ''}).catch(() => {})
+      this.$router.replace({hash: hashbang}).catch(() => {})
     },
   },
 };
@@ -268,17 +268,16 @@ export default {
   );
 }
 
-.blog-inner-page .content-section {
+/* .blog-inner-page .content-section {
   border-right: 1px solid #ccc;
-}
+} */
 
 .blog-inner-page .section-title {
-  border-top: 1px solid #ccc;
   width: 100%;
 }
 
 .blog-inner-page .section-title-inner {
-  border-bottom: 1px solid #ccc;
+  /* border-bottom: 1px solid #ccc; */
   width: 100%;
   font-weight: 700;
 }
@@ -297,7 +296,7 @@ export default {
 .blog-inner-page ul li:before {
   content: "›";
   font-weight: normal;
-  top: -8px;
+  top: -10px;
   font-size: 25px;
   position: absolute;
   left: -15px;

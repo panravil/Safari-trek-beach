@@ -16,6 +16,10 @@ h6 {
   padding: 0;
 }
 
+body {
+  color:black;
+}
+
 
 .main-banner {
   /* min-height: 600px; */
@@ -82,13 +86,18 @@ h6 {
   text-shadow: 2px 2px 5px #000;
 }
 
+.why-us p,
+.reviews_testimonial p {
+  font-size: 20px;
+}
+
 .reviews_testimonial {
   background-image: linear-gradient(
       to bottom,
       rgba(210, 211, 218, 0),
       rgba(0, 0, 0, 0.73)
-    );
-    // url("/images/reviews_testimonial.jpg");
+    ),
+    url("/images/reviews_testimonial.jpg");
   height: 400px;
   background-size: cover;
   background-attachment: fixed;
@@ -453,4 +462,11 @@ input#traveler_input {
   // #e-content-element_3 {
   //   display: none;
   // }
+}
+
+
+@media (max-width: 991px) {
+.reviews_testimonial {
+  height: 550px;
+}
 }

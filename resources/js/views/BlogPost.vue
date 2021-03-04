@@ -62,11 +62,6 @@ export default {
             }
         };
     },
-    watch: {
-        current_blog_page: function(newValue) {
-            this.getCurrentPageBlogs(newValue);
-        }
-    },
     computed: {
         page_id: function () {
             var id = this.$route.params.id;
@@ -86,6 +81,10 @@ export default {
                 })
                 .catch(() => {})
         },
+        page_id: function (newValue) {
+            this.current_blog_page = parseInt(newValue)
+            this.getlistBlog();
+        },
     },
 
     created() {
@@ -96,9 +95,6 @@ export default {
     },
     
     methods: {
-        // toBlogInnerPage(slug) {
-        //   this.$router.push('/blog-inner-page/' + slug);
-        // },
         getlistBlog() {
             this.$store.dispatch("blogController/getListBlogs").then(() => {
                     this.getCurrentPageBlogs(

@@ -140,7 +140,7 @@
 </div>
 </template>
 
-<style>
+<style scoped>
 .terms-condition {
   padding-top: 50px;
   padding-bottom: 100px;
@@ -150,11 +150,15 @@
 .terms-condition section {
   margin-top: 100px;
 }
+
+p {
+  text-align: justify;
+}
 </style>
 
 <script>
 export default {
-  name: "AboutUs",
+  name: "Terms",
   data() {
     return {};
   },

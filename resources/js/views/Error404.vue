@@ -9,7 +9,19 @@
   </div>
 </div>
 </template>
+<script>
+export default {
+  name: "Error404",
+  data() {
+    return {};
+  },
 
+  created() {
+    let page_title = "404 Error Page"
+    document.title = page_title;
+  }
+};
+</script>
 <style>
 #notfound {
   position: relative;

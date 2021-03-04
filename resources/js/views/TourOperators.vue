@@ -74,7 +74,7 @@ export default {
   data() {
     return {
       current_operator_page: null,
-      operators_per_page: 5,
+      operators_per_page: 10,
       current_page_operators: [],
       pagenation_options: {
         chunk: 5,

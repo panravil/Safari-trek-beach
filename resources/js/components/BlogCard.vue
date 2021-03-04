@@ -1,5 +1,5 @@
 <template>
-<div class="card mb-3 mx-2" id="blog-card" @click="$router.push('/blog-inner-page/' + blog.post_slug)">
+<div class="card mb-3 mx-2" id="blog-card" @click="toInnerPage">
   <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light" :style="{
                   'background-image': 'url(' + blog.post_image + ')',
                 }" :title="blog.post_title">
@@ -36,7 +36,16 @@ export default {
   },
   created() {},
   methods: {
+    toInnerPage() {
+      let routeData = this.$router.resolve({
+        name: "Blog Inner Page",
+        params: {
+          id: this.blog.post_slug
+        },
+      });
 
+      window.open(routeData.href, "_blank");
+    }
   },
 };
 </script>

@@ -5,7 +5,8 @@
       <h1>Thank you</h1>
       <h2>Your quote has been successfully sent!</h2>
     </div>
-    <a class="btn btn-danger" href="/">Go TO Homepage</a>
+    <a class="btn btn-danger m-2" href="/">Go TO Homepage</a>
+    <a class="btn btn-danger m-2" href="/our-tours">Our Tours</a>
   </div>
 </div>
 </template>

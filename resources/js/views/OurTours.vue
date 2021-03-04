@@ -159,6 +159,7 @@
                       type="text"
                       placeholder="Travelers"
                       class="w-100"
+                      readonly
                     />
                   </div>
                   <span
@@ -243,17 +244,21 @@
             </div>
 
             <h6 class="mt-5 fw-bold">Tour Price</h6>
-            <ejs-slider
-              :min="10"
-              :max="10000"
-              :type="'Range'"
-              v-model="price_range"
-              :changed="getFilterTours"
-            ></ejs-slider>
-            <div class="d-flex justify-content-between">
-              <div>${{ price_range[0] }}</div>
-              <div v-if="price_range[1] == 10000">${{ price_range[1] }}+</div>
-              <div v-else>${{ price_range[1] }}</div>
+            <div>
+              <ejs-slider
+                :min="10"
+                :max="10000"
+                :step="10"
+                :type="'Range'"
+                :enabled="!loading"
+                v-model="price_range"
+                :changed="getFilterToursBySlidePrice"
+              ></ejs-slider>
+              <div class="d-flex justify-content-between">
+                <div>${{ price_range[0] }}</div>
+                <div v-if="price_range[1] == 10000">${{ price_range[1] }}+</div>
+                <div v-else>${{ price_range[1] }}</div>
+              </div>
             </div>
 
             <h6 class="mt-5 fw-bold">Tour Days</h6>
@@ -261,8 +266,9 @@
               :min="1"
               :max="30"
               :type="'Range'"
+              :enabled="!loading"
               v-model="day_range"
-              :changed="getFilterTours"
+              :changed="getFilterToursBySlideDay"
             ></ejs-slider>
             <div class="d-flex justify-content-between">
               <div v-if="day_range[0] == 1">{{ day_range[0] }} Day</div>
@@ -426,7 +432,7 @@
               </e-chips>
             </ejs-chiplist>
           </ul>
-          <h6 class="my-3 fw-bold" v-if="filterTours != null">
+          <h6 class="my-3 fw-bold" v-if="filterTours != null && !loading">
             <span v-if="filterTours.total_tours > 1"
               >Showing {{ filterTours.tour_show_from }} -
               {{ filterTours.tour_show_to }} of
@@ -436,6 +442,7 @@
               >Showing 1 of 1 result</span
             >
           </h6>
+          <h6 v-else class="my-3 fw-bold">Searching...</h6>
           <div class="row gx-0" v-if="loading">
             <div
               class="col-md-6 col-xs-12"
@@ -541,7 +548,6 @@ export default {
       day_range: [1, 30],
       type: "Range",
       read_more: false,
-      ddd: "",
 
       where_to_search: "",
       traveler_number: "",
@@ -593,6 +599,8 @@ export default {
       page: 1,
 
       page_from_url: 0,
+
+      where_to_list: [],
     };
   },
   directives: {
@@ -631,6 +639,14 @@ export default {
         return "";
       }
     },
+    single_id: function () {
+      var id = this.$route.params.single;
+      if (id != undefined) {
+        return id.slice(0, id.length);
+      } else {
+        return "";
+      }
+    },
     ...mapGetters({
       filterTours: "tourController/filterTours",
       loading: "tourcard_loading",
@@ -645,7 +661,7 @@ export default {
 
       tourLevel: "tourController/tourLevel",
       tourFocus: "tourController/tourFocus",
-      where_to_list: "tourController/tourActivity",
+      where_to_list_state: "tourController/tourActivity",
     }),
   },
 
@@ -684,7 +700,6 @@ export default {
 
   async created() {
     document.title = "Search Tours of Safari-Trek-Beach.com";
-    this.search_result = this.where_to_list;
 
     this.where_to_search = this.where_to_search_state;
     this.traveler_number = this.traveler_number_state;
@@ -696,41 +711,171 @@ export default {
       this.where_to_search_option = this.where_to_search;
     }
 
+    this.$store.commit("tourController/initFilterData")
+
     await this.getTourFocus();
-    await this.getTourActivity();
     await this.getTourLevel();
+    await this.getTourActivity();
     this.traveler_number_calc();
 
     // this is for conversion from url query to normal text for api request
 
     let temp_query = this.router_query;
 
-    // console.log("temp before", temp_query);
-    // console.log("destination ID", this.destination_id);
-    var destination_url = this.destination_id;
-    // console.log("where to list", this.where_to_list);
+    // let possible_single = [];
 
-    if (destination_url !== undefined && destination_url !== "") {
+    // if ( temp_query['group'] == undefined ) possible_single.push('group')
+    // if ( temp_query['comfort'] == undefined ) possible_single.push('comfort')
+    // if ( temp_query['focus'] == undefined ) possible_single.push('focus')
+
+    // console.log('possible', possible_single)
+
+    var destination_url = this.destination_id;
+    var single_url = this.single_id;
+
+    if (destination_url !== undefined && destination_url !== "") { //if first param exists, i.e. if one of params exists at least
+
+      // Destination search if first string is the element of the pre-determined activity list
       let destination_item = this.where_to_list.find(function (el) {
         return el.input_id == destination_url;
       });
 
-      // console.log("desti item", destination_item);
-
       if (destination_item != undefined) {
+        
+        // if found, to query for api request, append this element
         temp_query = Object.assign(
           { destination: destination_item.title },
           temp_query
         );
+
+        if (single_url != "") {  //if the second single param is not empty, check what it is and append
+          let single = [];
+          single = this.checkSingleParam(single_url);
+
+          switch (single[0]) {
+            case 'group':
+              temp_query = Object.assign(
+                { group: single[1] },
+                temp_query
+              );
+              break;
+
+            case 'comfort':
+              temp_query = Object.assign(
+                { comfort: single[1] },
+                temp_query
+              );
+              break;
+
+            case 'focus':
+              temp_query = Object.assign(
+                { focus: single[1] },
+                temp_query
+              );
+              break;
+          
+            default:
+              break;
+
+          }
+        }
+
       } else {
-        let temp_destination = this.destination_id.split("_").join(" ");
-        temp_destination = this.destination_id.split("~").join("&");
-        temp_query = Object.assign(
-          { destination: temp_destination },
-          temp_query
-        );
+
+        //if can not found -  (two possible case, if typed input that not in the list, 
+        //                                     or if group, comfort or focus single item)
+
+        // so first check if it is single param...
+        // if is single param and single_id is empty => destination is empty and single param estimate...
+
+        if ( single_url != '' ) {
+
+          let single = this.checkSingleParam(single_url);
+
+          switch (single[0]) {
+            case 'group':
+              temp_query = Object.assign(
+                { group: single[1] },
+                temp_query
+              );
+              break;
+
+            case 'comfort':
+              temp_query = Object.assign(
+                { comfort: single[1] },
+                temp_query
+              );
+              break;
+
+            case 'focus':
+              temp_query = Object.assign(
+                { focus: single[1] },
+                temp_query
+              );
+              break;
+          
+            default:
+              break;
+
+          }
+
+          // append to temp query
+
+          let temp_destination = this.destination_id.split("_").join(" ");
+          temp_destination = this.destination_id.split("~").join("&");
+          temp_query = Object.assign(
+            { destination: temp_destination },
+            temp_query
+          );
+
+        } else {
+
+          let single = this.checkSingleParam(destination_url) 
+
+          if ( single != null ) {
+            // if single param, append this to temp query
+
+            switch (single[0]) {
+              case 'group':
+                temp_query = Object.assign(
+                  { group: single[1] },
+                  temp_query
+                );
+                break;
+
+              case 'comfort':
+                temp_query = Object.assign(
+                  { comfort: single[1] },
+                  temp_query
+                );
+                break;
+
+              case 'focus':
+                temp_query = Object.assign(
+                  { focus: single[1] },
+                  temp_query
+                );
+                break;
+            
+              default:
+                break;
+
+            }
+          } else {
+            // if not single parameter, detect it as a custom typed destination
+            let temp_destination = this.destination_id.split("_").join(" ");
+            temp_destination = this.destination_id.split("~").join("&");
+            temp_query = Object.assign(
+              { destination: temp_destination },
+              temp_query
+            );
+          }
+
+        }
+
+        
       }
-    } else {
+    } else { // if no params in URL ...
       this.where_to_search = "";
       this.where_to_search_option = "";
       this.saveFormtoStore();
@@ -752,7 +897,45 @@ export default {
     async getTourActivity() {
       await this.$store
         .dispatch("tourController/getTourActivity")
-        .then(() => {});
+        .then(() => {
+          let first_activity = [
+            {
+            "title": "Serengeti National Park",
+            "input_id": "serengeti-national-park",
+            },
+            {
+            "title": "Mount Kilimanjaro",
+            "input_id": "mount-kilimanjaro",
+            },
+            {
+            "title": "Zanzibar",
+            "input_id": "zanzibar",
+            },
+            {
+            "title": "Ngorongoro Crater",
+            "input_id": "ngorongoro-crater",
+            },
+            {
+            "title": "Tarangire National Park",
+            "input_id": "tarangire-national-park",
+            },
+            {
+            "title": "Ruaha National Park",
+            "input_id": "ruaha-national-park",
+            },
+          ];
+
+          let ar = this.where_to_list_state;
+
+          for(var i=0; i < ar.length; i++) {
+            if(ar[i].title == "Serengeti National Park" || ar[i].title == "Mount Kilimanjaro" || ar[i].title == "Ngorongoro Crater" || ar[i].title == "Tarangire National Park" || ar[i].title == "Zanzibar" || ar[i].title == "Ruaha National Park")
+            {
+                ar.splice(i,1);
+            }
+          }
+          this.where_to_list = first_activity.concat(ar);
+          this.search_result = this.where_to_list;
+        });
     },
 
     async getTourFocus() {
@@ -1123,23 +1306,84 @@ export default {
 
     // filter tours function
 
-    getFilterTours() {
+    getFilterToursBySlidePrice() {
+      // console.log('changed priceeeeee')
+      this.page = 1;
+      this.getFilterTours();
+    },
+
+    getFilterToursBySlideDay() {
+      // console.log('changed day')
+      this.page = 1;
+      this.getFilterTours();
+    },
+
+    checkSingleParam(single) {
+
+      if ( single == 'group' || single == 'private' ) {
+
+        return ['group', single]
+
+      } else {
+
+        // focus check ...
+
+        let focus = this.tourFocus.find(function (el) {
+          return el.input_id == single;
+        });
+
+        if ( focus != undefined ) {
+          return ['focus', focus.input_id]
+        } else {
+
+          //level check ...
+
+          single = single.split("_").join(" ");
+          single = single.split("@").join("+");
+
+          let level = this.tourLevel.find(function (el) {
+            return el.title == single;
+          });
+
+          if ( level != undefined ) {
+            return ['comfort', level.title]
+          }
+        }
+
+      }
+      return [];
+    },
+
+    async getFilterTours() {
       let group_filter = "";
       let level_filter = "";
       let specialized_filter = "";
 
       let focus_for_url = "";
 
+      let group_number = 0;
+      let comfort_number = 0;
+      let focus_number = 0;
+
       if (this.check_private_filter) {
         group_filter = "private";
-        if (this.check_group_filter) group_filter = group_filter + "|group";
-      } else if (this.check_group_filter) group_filter += "group";
+        group_number = 1;
+      } else if (this.check_group_filter) {
+        group_filter = "group";
+        group_number = 1;
+      }
+
+      comfort_number = this.checked_standard_filter_options.length;
+      focus_number = this.checked_specialized_filter_options.length;
+
       for (let i = 0; i < this.checked_standard_filter_options.length; i++) {
         level_filter += this.checked_standard_filter_options[i].title + "|";
       }
+
       if (level_filter != "") {
         level_filter = level_filter.substring(0, level_filter.length - 1);
       }
+
       for (let i = 0; i < this.checked_specialized_filter_options.length; i++) {
         specialized_filter +=
           this.checked_specialized_filter_options[i].title + "|";
@@ -1263,7 +1507,29 @@ export default {
         delete url_query["destination"];
       }
 
-      if (destination_params == "") {
+      let single = "";  //this is for single router params
+
+      switch (true) {
+        case (focus_number == 1):
+          single = url_query["focus"];
+          delete url_query["focus"];
+          break;
+      
+        case (group_number == 1):
+          single = url_query["group"];
+          delete url_query["group"];
+          break;
+
+        case (comfort_number == 1):
+          single = url_query["comfort"];
+          delete url_query["comfort"];
+          break;
+
+        default:
+          break;
+      }
+
+      if (destination_params == "" && single == "") { // query only
         this.$router
           .replace({
             name: "Our Tours",
@@ -1271,16 +1537,27 @@ export default {
           })
           .catch(() => {});
       } else {
+
+        let params = {};
+        if ( destination_params != "" ) {
+          params["destination"] = destination_params;
+        }
+        if ( single != "" ) {
+          params["single"] = single;
+        }
+
+        // console.log('parmas', params)
+
         this.$router
           .replace({
             name: "Our Tours2",
-            params: { destination: destination_params },
+            params: params,
             query: url_query,
           })
           .catch(() => {});
-      }
+      } // with params amd query
 
-      this.$store
+      await this.$store
         .dispatch("tourController/getTourFilter", query)
         .then(() => {
           this.current_ourtour_page = parseInt(this.filterTours.page);
@@ -1336,6 +1613,33 @@ p.standard .e-checkbox-wrapper .e-frame + .e-label,
   font-size: 20px;
   padding: 10px 20px;
 }
+
+/* .e-control-wrapper.e-slider-container .e-slider .e-handle {
+  width: 24px;
+  height: 24px;
+  cursor: pointer;
+}
+
+.e-control-wrapper.e-slider-container.e-horizontal .e-handle {
+  margin-left: -12px;
+  top: calc(50% - 12px);
+  cursor: pointer;
+}
+
+.e-control-wrapper.e-slider-container.e-horizontal .e-slider-track,
+.e-control-wrapper.e-slider-container.e-horizontal .e-range {
+  height: 4px;
+  top: calc(50% - 2px);
+}
+
+.e-control-wrapper.e-slider-container.e-horizontal .e-slider {
+  height: 4px;
+  top: calc(50% - 2px);
+}
+
+.e-control-wrapper.e-slider-container.e-disabled .e-slider .e-handle {
+  transform: scale(1.2) !important;
+} */
 
 @media (max-width: 450px) {
   .mobile-filter-traveler {

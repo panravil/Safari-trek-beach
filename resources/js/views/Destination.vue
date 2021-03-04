@@ -66,11 +66,7 @@ export default {
             }
         };
     },
-    watch: {
-        current_blog_page: function(newValue) {
-            this.getCurrentPageBlogs(newValue);
-        }
-    },
+
     computed: {
         page_id: function () {
             var id = this.$route.params.id;
@@ -89,7 +85,11 @@ export default {
                     this.getListDestinations();
                 })
                 .catch(() => {})
-        }
+        },
+        page_id: function (newValue) {
+            this.current_destination_page = parseInt(newValue)
+            this.getListDestinations();
+        },
     },
 
     created() {

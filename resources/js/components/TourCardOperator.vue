@@ -84,7 +84,7 @@
           <strong v-else-if="avg_review == '2'"> &nbsp;2.0/5&nbsp;</strong>
           <strong v-else-if="avg_review == '1'"> &nbsp;1.0/5&nbsp;</strong>
           <strong v-else> &nbsp;{{ avg_review }}/5&nbsp;</strong>
-          <span>({{ sum_review }})</span>
+          <span>({{ sum_review }} Rvw)</span>
           <!-- <span class="company-review">
                     (
                     <span v-if="sum_review == 1">{{ sum_review }} Review</span>

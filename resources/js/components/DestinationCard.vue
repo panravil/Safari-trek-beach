@@ -1,5 +1,5 @@
 <template>
-  <div class="card mb-3 mx-2" id="destination-card" @click="$router.push('/destination-package/' + destination.post_slug)">
+  <div class="card mb-3 mx-2" id="destination-card" @click="toInnerPage">
     <div
       class="bg-image hover-overlay ripple"
       data-mdb-ripple-color="light"
@@ -51,9 +51,16 @@ export default {
   },
   created() {},
   methods: {
-    // goToDestinationDetailPage() {
-    //   this.$router.push("/destination-package/" + this.destination.post_slug);
-    // },
+    toInnerPage() {
+      let routeData = this.$router.resolve({
+        name: "Destination Package",
+        params: {
+          id: this.destination.post_slug
+        },
+      });
+
+      window.open(routeData.href, "_blank");
+    }
   },
 };
 </script>

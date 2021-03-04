@@ -21,6 +21,7 @@ const state = {
     user_id: null,
 
     quoteData: {},
+    detailData: {},
 };
 
 const getters = {
@@ -42,6 +43,7 @@ const getters = {
     query_instore: state => state.query_instore,
 
     quoteData: state => state.quoteData,
+    detailData: state => state.detailData,
     
     package_id: state => state.package_id,
     user_id: state => state.user_id,
@@ -96,6 +98,14 @@ const mutations = {
     setQuotePackage(state, data) {
         state.quoteData = data;
     },
+    
+    setdetailData(state, data) {
+        state.detailData = data;
+    },
+
+    initFilterData(state) {
+        state.filterTours = null
+    }
 };
 
 const actions = {
@@ -145,6 +155,7 @@ const actions = {
 
     async getTourFilter(context, query) {
         context.commit("setRequestLoadingStatus", true, {root: true,});
+        context.commit("initFilterData");
         await axios
             .get("/api/tour/filter", { params: query })
             .then(res => {
@@ -189,6 +200,11 @@ const actions = {
     //save quote data in store (package name, etc)
     setQuotePackage(context, quoteData) {
         context.commit("setQuotePackage", quoteData);
+    },
+
+    //save quote data in store (package name, etc)
+    setdetailData(context, detailData) {
+        context.commit("setdetailData", detailData);
     }
 };
 

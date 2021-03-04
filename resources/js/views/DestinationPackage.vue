@@ -13,13 +13,13 @@
         </div>
         <div class="card-body px-0">
           <div class="row gx-0">
-            <div class="col-lg-9 col-md-12 content-section px-4">
+            <div class="col-lg-8 col-md-12 content-section px-4">
               <div v-if="loading">
                 <content-placeholders-heading />
               </div>
               <div v-else class="mt-5" style="margin-bottom: -60px">
                 <h3 class="section-title pt-3">
-                  {{ destinationData.title }}
+                  {{ destinationData.sub_title }}
                 </h3>
                 <p>
                   {{ destinationData.description }}
@@ -38,7 +38,7 @@
                 >
                   <div class="pt-5">
                     <h3 class="section-title-inner pb-3">
-                      Section {{ index + 1 }}. {{ item.title }}
+                      {{ item.title }}
                     </h3>
                   </div>
                   <div class="section" v-html="item.description"></div>
@@ -80,7 +80,7 @@
             </form> -->
             </div>
             <div
-              class="col-lg-3 col-md-12 quick-link-section px-4 position-relative"
+              class="col-lg-4 col-md-12 quick-link-section px-4 position-relative"
             >
               <div style="position: sticky; top: 50px">
                 <button
@@ -111,7 +111,7 @@
                       class="mt-2"
                     >
                       <a class="text-primary" :href="'#section' + index"
-                        >Section {{ index + 1 }}. {{ content.title }}</a
+                        >{{ content.title }}</a
                       >
                     </li>
                   </ul>
@@ -199,14 +199,9 @@ export default {
 
   created() {
     this.getDestinationData();
-    // this.getPopularTours();
   },
   methods: {
-    // async getPopularTours() {
-    //   await this.$store
-    //     .dispatch("tourController/getPopularTours")
-    //     .then(() => {});
-    // },
+
     async getDestinationData() {
       await this.$store
         .dispatch(
@@ -216,9 +211,15 @@ export default {
         .then(() => {
           let page_title = this.destinationData.title + " - Safari-Trek-Beach";
           document.title = page_title;
-
+          this.scrollFix(this.$route.hash)
           // console.log('destinationData', this.destinationData)
         });
+    },
+
+    scrollFix(hashbang)
+    {
+      this.$router.replace({hash: ''}).catch(() => {})
+      this.$router.replace({hash: hashbang}).catch(() => {})
     },
 
     goToOurTourPage() {
@@ -256,17 +257,17 @@ export default {
   );
 }
 
-.destination-package .content-section {
+/* .destination-package .content-section {
   border-right: 1px solid #ccc;
-}
+} */
 
 .destination-package .section-title {
-  border-top: 1px solid #ccc;
+  /* border-top: 1px solid #ccc; */
   width: 100%;
 }
 
 .destination-package .section-title-inner {
-  border-bottom: 1px solid #ccc;
+  /* border-bottom: 1px solid #ccc; */
   width: 100%;
   font-weight: 700;
 }
@@ -285,7 +286,7 @@ export default {
 .destination-package ul li:before {
   content: "›";
   font-weight: normal;
-  top: -8px;
+  top: -10px;
   font-size: 25px;
   position: absolute;
   left: -15px;

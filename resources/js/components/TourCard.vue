@@ -187,7 +187,7 @@ export default {
 
 <style scoped>
 #tour-card .price {
-  width: 80px;
+  width: 90px;
   color: #0f6d24;
   right: 5px;
   bottom: 0px;

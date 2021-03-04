@@ -7,7 +7,7 @@
             <div
               class="package-inner-image"
               :style="[
-                packageData != null
+                packageData != null && !loading
                   ? {
                       'background-image': 'url(' + packageData.image_url + ')',
                     }
@@ -22,12 +22,12 @@
               <div v-if="loading">
                 <content-placeholders-heading />
               </div>
-              <h3
+              <h5
                 class="card-title fw-bold mb-3 text-capitalize"
                 v-else-if="packageData != null"
               >
                 {{ packageData.no_of_day }}-Day {{ packageData.title }}
-              </h3>
+              </h5>
               <h6 class="card-title">
                 <span class="fa fa-location-arrow mx-2"></span> Cancellation Up
                 to 24 Hrs
@@ -113,8 +113,8 @@
                     <div
                       v-else-if="packageData != null"
                       class="overview-description"
+                      v-html="packageData.description"
                     >
-                      {{ packageData.description }}
                     </div>
                     <div class="d-flex mt-5">
                       <h4 class="fw-bold text-danger flex-shrink-0">
@@ -441,7 +441,7 @@
                           </thead>
                           <tbody>
                             <tr>
-                              <th scope="row">Mar 10 - <br>Dec 10</th>
+                              <th scope="row">Mar 10 - Dec 10</th>
                               <td>{{ packageData.rate.adult_currency | currency }}</td>
                               <td>{{ packageData.rate.adult_currency | currency }}</td>
                               <td>{{ packageData.rate.adult_currency | currency }}</td>
@@ -972,7 +972,7 @@
                     <viewer :images="packageData.gallery">
                       <div class="row g-0" v-if="packageData != null">
                         <div
-                          class="col-lg-4 col-md-6 col-sm-12 p-2"
+                          class="col-lg-4 col-md-6 col-sm-12 p-2  gallery-viewer"
                           v-for="(item, index8) in packageData.gallery"
                           v-bind:key="'G' + index8"
                         >
@@ -1099,6 +1099,7 @@
                     v-model="start_date"
                     ref="dateObj"
                     :focus="onFocus"
+                    :allowEdit="false"
                   ></ejs-datepicker>
                 </div>
               </div>
@@ -1117,6 +1118,7 @@
                       type="text"
                       placeholder="Travellers"
                       v-model="traveler_number"
+                      :readOnly="true"
                     ></ejs-textbox>
                   </div>
                 </div>
@@ -1231,7 +1233,7 @@
                 <div class="d-flex align-items-center">
                   <div>
                     <span
-                      class="fa fa-user text-muted"
+                      class="fa fa-user text-muted ms-1"
                       style="font-size: 45px"
                     ></span>
                   </div>
@@ -1243,9 +1245,8 @@
                     <h6 class="text-dark my-0 ms-3">Reviewed: <span class="text-muted">{{ new Date(item.created_at).toDateString() }}</span></h6>
                   </div>
                 </div>
-                <div class="review-triangle"></div>
                 <div class="my-3 review-detail">
-                  <h5 class="text-muted fw-bold mb-2">
+                  <h5 class="fw-bold mb-2">
                     {{ item.title }}
                   </h5>
                   <h5 class="reviews">
@@ -1769,7 +1770,7 @@ export default {
 .package-inner-page .package-inner-image {
   height: 0;
   width: 100%;
-  padding-top: 52%;
+  padding-top: 45%;
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
@@ -1848,10 +1849,14 @@ export default {
 }
 
 .package-inner-page .review-detail {
-  background-color: #f1f1f1;
+  // background-color: #f1f1f1;
   border: 1px solid #f93154;
   padding: 20px;
   position: relative;
+}
+
+.gallery-viewer img{
+  cursor: pointer;
 }
 
 .package-inner-page .review-detail::before {
@@ -1864,7 +1869,7 @@ export default {
     width: 1rem;
     height: 1rem;
     border: 0.0625rem solid #f93154;
-    background-color: #f1f1f1;
+    background-color: white;
     border-bottom: none;
     border-left: none;
 }
@@ -1923,16 +1928,26 @@ h4.flex-shrink-0 {
   text-transform: capitalize;
 }
 
+table th, table td {
+  padding: 10px 15px;
+  vertical-align: middle;
+}
+
+table thead th:first-child {
+  min-width: 150px;
+}
+
+
 
 @media (min-width: 1201px) and (max-width: 1400px) {
   .package-inner-page .package-inner-image {
-    padding-top: 60%;
+    padding-top: 55%;
   }
 }
 
 @media (min-width: 992px) and (max-width: 1200px) {
   .package-inner-page .package-inner-image {
-    padding-top: 80%;
+    padding-top: 70%;
   }
 }
 
@@ -1945,12 +1960,18 @@ h4.flex-shrink-0 {
     border-top-left-radius: 0.25rem;
   }
 
+  .package-inner-page .price-rate {
+    position: relative;
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+  }
+
   .package-inner-page .mobile {
     display: none;
   }
 
   .package-inner-page .package-inner-title {
-    height: 370px;
+    height: auto;
   }
 
   .package-inner-page .package-inner-title h3 {

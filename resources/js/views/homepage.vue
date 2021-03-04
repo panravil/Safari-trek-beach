@@ -118,6 +118,7 @@
                         type="text"
                         placeholder="Travelers"
                         class="w-100"
+                        readonly
                       />
                     </div>
                     <span
@@ -239,7 +240,7 @@
       </div>
 
       <div class="text-center mt-3">
-        <a href="/our-tours" class="btn btn-danger"> View All Packages </a>
+        <a href="/our-tours" class="btn btn-danger" target="_blank"> View All Packages </a>
       </div>
     </div>
 
@@ -249,20 +250,20 @@
 
     <section class="why-us">
       <div class="text-center text-light">
-        <div class="pt-5 why-us">
+        <div class="pt-5 why-us position-relative">
           <header class="section-header">
             <h3 class="text-light">Why Choose Us?</h3>
           </header>
-          <h5>8 Reasons why Safari-Trek-Beach</h5>
+          <h4>8 Reasons why Safari-Trek-Beach</h4>
 
           <carousel
             :per-page="1"
-            :speed="1000"
+            :speed="2000"
             :loop="true"
-            :autoplayTimeout="3000"
-            :autoplayDirection="'backward'"
-            :paginationEnabled="false"
+            :autoplayTimeout="6000"
             :autoplay="true"
+            :paginationEnabled="false"
+            v-model="whyus_value"
           >
             <slide>
               <img :src="'./images/why_pool.png'" />
@@ -311,6 +312,8 @@
               </p>
             </slide>
           </carousel>
+          <span class="fa fa-angle-left whyus-prev" @click="prevClick"></span>
+          <span class="fa fa-angle-right whyus-next" @click="nextClick"></span>
         </div>
       </div>
     </section>
@@ -328,7 +331,7 @@
           class="col-lg-3 col-md-4 col-xs-12"
           v-for="item in topDestinations"
           v-bind:key="item.post_id"
-          @click="$router.push('/destination-package/' + item.post_slug)"
+          @click="toDestinationInner(item.post_slug)"
         >
           <div class="card mb-3 mx-2">
             <div
@@ -349,7 +352,7 @@
         </div>
       </div>
       <div class="text-center mt-3">
-        <a href="/tour-destinations/page/1" class="btn btn-danger">
+        <a href="/tour-destinations/page/1" class="btn btn-danger" target="_blank">
           View All Destinations <span class="fa fa-angle-right ms-2"></span
         ></a>
       </div>
@@ -361,7 +364,7 @@
 
     <section class="reviews_testimonial">
       <div class="text-center text-light">
-        <div class="pt-5 why-us">
+        <div class="pt-5 review-testimonial-section">
           <carousel
             :per-page="1"
             :speed="1000"
@@ -377,14 +380,14 @@
                   <h3 class="text-light">REVIEWS & TESTIMONIES</h3>
                 </header>
                 <p>
-                  Thank you for the excellent organization, the driver is
-                  professional, the food from the cook is delicious, our all all
-                  all all all problems have been resolved! Special thanks to
-                  Mohamed. Very nice person in communication !!!
+                  We booked a safari with Travel Africa Safari Agency through Safari Trek Beach platform after comparing many 
+                  offers from tour operators in the platform. Through Safari trek beach we got a reliable operator very easily 
+                  and guidance on the questions to ask tour operators so we can get the best deals. I recommend the use of this 
+                  platform in your search for a good tour operator and best prices.
                 </p>
               </div>
             </slide>
-            <slide>
+            <!-- <slide>
               <div class="wrap">
                 <header class="section-header">
                   <h3 class="text-light">REVIEWS & TESTIMONIES</h3>
@@ -428,7 +431,7 @@
                   out of the ...
                 </p>
               </div>
-            </slide>
+            </slide> -->
           </carousel>
         </div>
       </div>
@@ -463,7 +466,7 @@
                 </p>
               </div>
               <div class="mt-3">
-                <a class="btn btn-danger" href="/about">
+                <a class="btn btn-danger" href="/about" target="_blank">
                   Read More <span class="fa fa-angle-right ms-2"></span>
                 </a>
               </div>
@@ -495,7 +498,7 @@
           </div>
         </div>
         <div class="text-center mt-3">
-          <a href="/blog/page/1" class="btn btn-danger">
+          <a href="/blog/page/1" class="btn btn-danger"  target="_blank">
             View All BLOGS<span class="fa fa-angle-right ms-2"></span
           ></a>
         </div>
@@ -540,28 +543,9 @@ export default {
       highlighted: {
         dates: [new Date()],
       },
-      // options: [
-      //   "- Age -",
-      //   "17 Years",
-      //   "16 Years",
-      //   "15 Years",
-      //   "14 Years",
-      //   "13 Years",
-      //   "12 Years",
-      //   "11 Years",
-      //   "10 Years",
-      //   "9 Years",
-      //   "8 Years",
-      //   "7 Years",
-      //   "6 Years",
-      //   "5 Years",
-      //   "4 Years",
-      //   "2 Years",
-      //   "1 Year",
-      //   "0 Years",
-      // ],
       where_to_search: "",
       search_result: [],
+      whyus_value: 0,
     };
   },
 
@@ -572,7 +556,7 @@ export default {
       popularBlogs: "blogController/popularBlogs",
       loading: "tourcard_loading",
       blog_loading: "blogcard_loading",
-      where_to_list: "tourController/tourActivity",
+      where_to_list_state: "tourController/tourActivity",
 
       where_to_search_state: "tourController/where_to_search",
       start_date_state: "tourController/start_date",
@@ -583,7 +567,6 @@ export default {
   },
 
   created() {
-    this.search_result = this.where_to_list;
 
     this.getTourActivity();
 
@@ -635,7 +618,7 @@ export default {
       }
     },
     where_to_search: function () {
-      if (this.where_to_search) {
+      if (this.where_to_search && this.where_to_list != undefined) {
         this.search_result = this.where_to_list.filter((item) => {
           return this.where_to_search
             .toLowerCase()
@@ -650,7 +633,45 @@ export default {
 
   methods: {
     getTourActivity() {
-      this.$store.dispatch("tourController/getTourActivity").then(() => {});
+      this.$store.dispatch("tourController/getTourActivity").then(() => {
+        let first_activity = [
+            {
+            "title": "Serengeti National Park",
+            "input_id": "serengeti-national-park",
+            },
+            {
+            "title": "Mount Kilimanjaro",
+            "input_id": "mount-kilimanjaro",
+            },
+            {
+            "title": "Zanzibar",
+            "input_id": "zanzibar",
+            },
+            {
+            "title": "Ngorongoro Crater",
+            "input_id": "ngorongoro-crater",
+            },
+            {
+            "title": "Tarangire National Park",
+            "input_id": "tarangire-national-park",
+            },
+            {
+            "title": "Ruaha National Park",
+            "input_id": "ruaha-national-park",
+            },
+          ];
+
+          let ar = this.where_to_list_state;
+
+          for(var i=0; i < ar.length; i++) {
+            if(ar[i].title == "Serengeti National Park" || ar[i].title == "Mount Kilimanjaro" || ar[i].title == "Ngorongoro Crater" || ar[i].title == "Tarangire National Park" || ar[i].title == "Zanzibar" || ar[i].title == "Ruaha National Park")
+            {
+                ar.splice(i,1);
+            }
+          }
+          this.where_to_list = first_activity.concat(ar);
+          this.search_result = this.where_to_list;
+      });
     },
     getTourFilter() {
       this.$store.dispatch("tourController/getTourFilter");
@@ -711,6 +732,31 @@ export default {
     initStartDate() {
       this.start_date = "";
     },
+    prevClick() {
+      if (this.whyus_value == 0) {
+        this.whyus_value = 7;
+      } else {
+        this.whyus_value--
+      }
+    },
+    nextClick() {
+      if (this.whyus_value == 7) {
+        this.whyus_value = 0;
+      } else {
+        this.whyus_value++
+      }
+    },
+
+    toDestinationInner(slug){
+      let routeData = this.$router.resolve({
+        name: "Destination Package",
+        params: {
+          id: slug
+        },
+      });
+
+      window.open(routeData.href, "_blank");
+    },
     searchButton() {
       let searchData = {};
       searchData = {
@@ -750,3 +796,22 @@ export default {
   },
 };
 </script>
+
+<style scoped>
+.whyus-prev,
+.whyus-next {
+  position: absolute;
+  top: 50%;
+  font-size: 40px;
+  cursor: pointer;
+  transform: translateY(-50%);
+}
+
+.whyus-prev {
+  left: 10%;
+}
+
+.whyus-next {
+  right: 10%;
+}
+</style>
