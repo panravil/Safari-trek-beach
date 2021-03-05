@@ -27,12 +27,24 @@
                         class="d-flex justify-content-center mt-4"
                         v-if="listBlog != null"
                     >
-                        <Pagination
+                        <!-- <Pagination
                             v-model="current_blog_page"
                             :records="listBlog.length"
                             :per-page="blogs_per_page"
                             :options="pagenation_options"
-                        />
+                        /> -->
+                        <paginate
+                          v-model="current_blog_page"
+                          :page-count="total_page_number"
+                          :prev-text="'Prev'"
+                          :next-text="'Next'"
+                          :container-class="'pagination'"
+                          :page-class="'page-item'"
+                          :prev-class="'page-link'"
+                          :next-class="'page-link'"
+                          :page-link-class="'page-link'"
+                        >
+                        </paginate>
                     </div>
                 </div>
             </section>
@@ -44,22 +56,22 @@
 import BlogCard from "../components/BlogCard";
 import { mapState, mapGetters, mapMutations } from "vuex";
 import TourCardSkelecton from "../components/TourCardSkelecton";
-import Pagination from "vue-pagination-2";
+// import Pagination from "vue-pagination-2";
 export default {
     name: "BlogPost",
     components: {
         BlogCard,
         TourCardSkelecton,
-        Pagination
+        // Pagination
     },
     data() {
         return {
             current_blog_page: null,
             blogs_per_page: 6,
             current_page_blogs: [],
-            pagenation_options: {
-                chunk: 5
-            },
+            // pagenation_options: {
+            //     chunk: 5
+            // },
             total_page_number: 1,
         };
     },
@@ -113,7 +125,12 @@ export default {
                     this.getCurrentPageBlogs(
                         this.current_blog_page
                     );
-                    this.total_page_number = Math.floor(this.listBlog.length / this.blogs_per_page) + 1
+                    
+                    this.total_page_number = Math.floor(this.listBlog.length / this.blogs_per_page) ;
+
+                    if ( this.listBlog.length % this.blogs_per_page > 0 ) {
+                        this.total_page_number = this.total_page_number + 1;
+                    }
 
                     let page_title = "Safari-Trek-Beach Blog - Page " 
                        + this.current_blog_page

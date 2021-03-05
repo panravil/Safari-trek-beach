@@ -30,12 +30,24 @@
                         class="d-flex justify-content-center mt-4"
                         v-if="listDestinations != null"
                     >
-                        <Pagination
+                        <!-- <Pagination
                             v-model="current_destination_page"
                             :records="listDestinations.length"
                             :per-page="destinations_per_page"
                             :options="pagenation_options"
-                        />
+                        /> -->
+                        <paginate
+                          v-model="current_destination_page"
+                          :page-count="total_page_number"
+                          :prev-text="'Prev'"
+                          :next-text="'Next'"
+                          :container-class="'pagination'"
+                          :page-class="'page-item'"
+                          :prev-class="'page-link'"
+                          :next-class="'page-link'"
+                          :page-link-class="'page-link'"
+                        >
+                        </paginate>
                     </div>
                 </div>
             </section>
@@ -47,23 +59,23 @@
 import DestinationCard from "../components/DestinationCard";
 import { mapState, mapGetters, mapMutations } from "vuex";
 import TourCardSkelecton from "../components/TourCardSkelecton";
-import Pagination from "vue-pagination-2";
+// import Pagination from "vue-pagination-2";
 
 export default {
     name: "DestinationPage",
     components: {
         DestinationCard,
         TourCardSkelecton,
-        Pagination
+        // Pagination
     },
     data() {
         return {
             current_destination_page: null,
             destinations_per_page: 6,
             current_page_destinations: [],
-            pagenation_options: {
-                chunk: 5
-            },
+            // pagenation_options: {
+            //     chunk: 5
+            // },
             total_page_number: 1,
         };
     },
@@ -119,7 +131,11 @@ export default {
                     this.getCurrentPageDestinations(
                         this.current_destination_page
                     );
-                    this.total_page_number = Math.floor(this.listDestinations.length / this.destinations_per_page) + 1
+                    this.total_page_number = Math.floor(this.listDestinations.length / this.destinations_per_page) ;
+
+                    if ( this.listDestinations.length % this.destinations_per_page > 0 ) {
+                        this.total_page_number = this.total_page_number + 1;
+                    }
 
                     let page_title = "Safari-Trek-Beach Destination - Page " 
                        + this.current_destination_page

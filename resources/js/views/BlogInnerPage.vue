@@ -226,7 +226,9 @@ export default {
         .then(() => {
           let page_title = this.blogData.title + " - Safari-Trek-Beach";
           document.title = page_title;
-          this.scrollFix(this.$route.hash)
+          setTimeout(() => {
+            this.scrollFix(this.$route.hash)
+          }, 10);
           // console.log('blog data', this.blogData)
         });
     },

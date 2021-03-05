@@ -491,7 +491,6 @@
                 :next-class="'page-link'"
                 :page-link-class="'page-link'"
               >
-              >
               </paginate>
             </div>
           </div>
@@ -512,7 +511,7 @@ import TourCard from "../components/TourCard";
 import VueNumericInput from "vue-numeric-input";
 import Datepicker from "vuejs-datepicker";
 import TourCardSkelecton from "../components/TourCardSkelecton";
-import Pagination from "vue-pagination-2";
+// import Pagination from "vue-pagination-2";
 
 import Vue from "vue";
 import { SliderPlugin } from "@syncfusion/ej2-vue-inputs";
@@ -539,7 +538,7 @@ export default {
     VueNumericInput,
     Datepicker,
     TourCardSkelecton,
-    Pagination,
+    // Pagination,
   },
   data() {
     return {

@@ -500,14 +500,29 @@
                       ></read-more>
                     </div>
                   </div>
-                  <div class="review-pagination">
+                  <!-- <div class="review-pagination">
                     <Pagination
                       v-model="current_review_page"
                       :records="filtered_reviewList.length"
                       :per-page="reviews_per_page"
                       :options="pagenation_options"
                     />
+                  </div> -->
+                  <div class="review-pagination">
+                    <paginate
+                      v-model="current_review_page"
+                      :page-count="total_page_number"
+                      :prev-text="'Prev'"
+                      :next-text="'Next'"
+                      :container-class="'pagination'"
+                      :page-class="'page-item'"
+                      :prev-class="'page-link'"
+                      :next-class="'page-link'"
+                      :page-link-class="'page-link'"
+                    >
+                    </paginate>
                   </div>
+                  
                 </div>
                 <h5 v-else class="text-center">No reviews to display...</h5>
               </div>
@@ -547,7 +562,7 @@ import TourCardOperator from "../components/TourCardOperator";
 import StarRating from "vue-star-rating";
 import { mapState, mapGetters, mapMutations } from "vuex";
 import CustomStarRating from "../components/CustomStarRating";
-import Pagination from "vue-pagination-2";
+// import Pagination from "vue-pagination-2";
 
 export default {
   name: "TourOperator",
@@ -555,7 +570,7 @@ export default {
     TourCardOperator,
     StarRating,
     CustomStarRating,
-    Pagination,
+    // Pagination,
     TourCardSkelecton,
   },
   data() {
@@ -563,9 +578,9 @@ export default {
       current_review_page: 1,
       reviews_per_page: 5,
       current_page_reviews: [],
-      pagenation_options: {
-        chunk: 5,
-      },
+      // pagenation_options: {
+      //   chunk: 5,
+      // },
       name: "",
       email: "",
       title: "",
@@ -587,6 +602,7 @@ export default {
       filtered_reviewList: [],
 
       update_checklist: 0,
+      total_page_number: 1,
     };
   },
   computed: {
@@ -670,6 +686,12 @@ export default {
       this.update_checklist++;
 
       this.current_review_page = 1;
+
+      this.total_page_number = Math.floor(this.filtered_reviewList.length / this.reviews_per_page);
+
+      if ( this.filtered_reviewList.length % this.reviews_per_page > 0 ) {
+        this.total_page_number = this.total_page_number + 1;
+      }
 
       this.getCurrentPageReviews(1);
     },

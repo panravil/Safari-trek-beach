@@ -352,7 +352,7 @@
         </div>
       </div>
       <div class="text-center mt-3">
-        <a href="/destination/page/1" class="btn btn-danger" target="_blank">
+        <a href="/destination" class="btn btn-danger" target="_blank">
           View All Destinations <span class="fa fa-angle-right ms-2"></span
         ></a>
       </div>
@@ -498,7 +498,7 @@
           </div>
         </div>
         <div class="text-center mt-3">
-          <a href="/blog/page/1" class="btn btn-danger"  target="_blank">
+          <a href="/blog" class="btn btn-danger"  target="_blank">
             View All BLOGS<span class="fa fa-angle-right ms-2"></span
           ></a>
         </div>

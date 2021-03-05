@@ -17,7 +17,7 @@
             <a href="/become-a-partner" class="footerLink">Become a Partner</a>
           </li>
           <li class="footerList">
-            <a href="/tour-operators/page/1" class="footerLink">Tour Operators</a>
+            <a href="https://operators.safari-trek-beach.com/" class="footerLink" target="_blank">Operator Login</a>
           </li>
           <li class="footerList">
             <a href="/terms" class="footerLink">Terms &amp; Conditions</a>

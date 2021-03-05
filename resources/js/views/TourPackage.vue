@@ -641,8 +641,7 @@
                         <h5 class="fw-bold my-0">{{ item.title }}</h5>
                       </div>
                       <div class="mt-3">
-                        <div class="itinery-content">
-                          {{ item.day_description }}
+                        <div class="itinery-content" v-html="item.day_description">
                         </div>
                       </div>
                       <div class="d-flex align-items-start mt-3 mb-0">
@@ -650,7 +649,7 @@
                           <h6 class="fw-bold">Accommodation:</h6>
                         </div>
                         <div>
-                          <h6 v-if="item.accom_level != null">
+                          <h6 v-if="item.accom_level != null && item.accom_level != 'null' && item.accom_type != null && item.accom_type != 'null'">
                             {{ item.accom_type }} ({{ item.accom_level }})
                           </h6>
                           <h6 v-else>Not Included</h6>
@@ -954,13 +953,27 @@
                         </div>
                         <hr class="my-3" />
                       </div>
-                      <div class="review-pagination">
+                      <!-- <div class="review-pagination">
                         <Pagination
                           v-model="current_review_page"
                           :records="filtered_reviewList.length"
                           :per-page="reviews_per_page"
                           :options="pagenation_options"
                         />
+                      </div> -->
+                      <div class="review-pagination">
+                        <paginate
+                          v-model="current_review_page"
+                          :page-count="total_page_number"
+                          :prev-text="'Prev'"
+                          :next-text="'Next'"
+                          :container-class="'pagination'"
+                          :page-class="'page-item'"
+                          :prev-class="'page-link'"
+                          :next-class="'page-link'"
+                          :page-link-class="'page-link'"
+                        >
+                        </paginate>
                       </div>
                     </div>
                     <h5 v-else class="text-center">No reviews to display...</h5>
@@ -1437,14 +1450,14 @@ import { mapState, mapGetters, mapMutations } from "vuex";
 import VueNumericInput from "vue-numeric-input";
 import StarRating from "vue-star-rating";
 import CustomStarRating from "../components/CustomStarRating";
-import Pagination from "vue-pagination-2";
+// import Pagination from "vue-pagination-2";
 
 export default {
   name: "TourPackage",
   components: {
     StarRating,
     CustomStarRating,
-    Pagination,
+    // Pagination,
     VueNumericInput,
   },
   data() {
@@ -1452,9 +1465,9 @@ export default {
       current_review_page: 1,
       reviews_per_page: 5,
       current_page_reviews: [],
-      pagenation_options: {
-        chunk: 5,
-      },
+      // pagenation_options: {
+      //   chunk: 5,
+      // },
       name: "",
       email: "",
       title: "",
@@ -1483,6 +1496,7 @@ export default {
       update_checklist: 0,
 
       current_reivew_number: 0,
+      total_page_number: 1,
     };
   },
   directives: {
@@ -1606,6 +1620,12 @@ export default {
       this.update_checklist++;
 
       this.current_review_page = 1;
+
+      this.total_page_number = Math.floor(this.filtered_reviewList.length / this.reviews_per_page);
+
+      if ( this.filtered_reviewList.length % this.reviews_per_page > 0 ) {
+        this.total_page_number = this.total_page_number + 1;
+      }
 
       this.getCurrentPageReviews(1);
     },

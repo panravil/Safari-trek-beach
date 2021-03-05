@@ -51,13 +51,27 @@
           </div>
         </div>
       </div>
-      <div class="operator-pagination" v-if="operatorList != null">
+      <!-- <div class="operator-pagination" v-if="operatorList != null">
         <Pagination
           v-model="current_operator_page"
           :records="operatorList.length"
           :per-page="operators_per_page"
           :options="pagenation_options"
         />
+      </div> -->
+      <div class="operator-pagination" v-if="operatorList != null">
+        <paginate
+          v-model="current_operator_page"
+          :page-count="Math.floor(operatorList.length/operators_per_page) + 1"
+          :prev-text="'Prev'"
+          :next-text="'Next'"
+          :container-class="'pagination'"
+          :page-class="'page-item'"
+          :prev-class="'page-link'"
+          :next-class="'page-link'"
+          :page-link-class="'page-link'"
+        >
+        </paginate>
       </div>
     </div>
   </div>
@@ -65,7 +79,7 @@
 
 <script>
 import { mapState, mapGetters, mapMutations } from "vuex";
-import Pagination from "vue-pagination-2";
+// import Pagination from "vue-pagination-2";
 import CustomStarRating from "../components/CustomStarRating";
 import TourOperatorsSkelecton from "../components/TourOperatorsSkelecton";
 
@@ -82,7 +96,7 @@ export default {
     };
   },
   components: {
-    Pagination,
+    // Pagination,
     CustomStarRating,
     TourOperatorsSkelecton,
   },
