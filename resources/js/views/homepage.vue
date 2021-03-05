@@ -352,7 +352,7 @@
         </div>
       </div>
       <div class="text-center mt-3">
-        <a href="/tour-destinations/page/1" class="btn btn-danger" target="_blank">
+        <a href="/destination/page/1" class="btn btn-danger" target="_blank">
           View All Destinations <span class="fa fa-angle-right ms-2"></span
         ></a>
       </div>

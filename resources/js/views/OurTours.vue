@@ -722,6 +722,8 @@ export default {
 
     let temp_query = this.router_query;
 
+    // console.log('temp query', temp_query )
+
     // let possible_single = [];
 
     // if ( temp_query['group'] == undefined ) possible_single.push('group')
@@ -773,6 +775,14 @@ export default {
                 temp_query
               );
               break;
+
+            case 'day':
+              temp_query = Object.assign(
+                { min_day: single[1] },
+                { max_day: single[1] },
+                temp_query
+              );
+              break;
           
             default:
               break;
@@ -810,6 +820,14 @@ export default {
             case 'focus':
               temp_query = Object.assign(
                 { focus: single[1] },
+                temp_query
+              );
+              break;
+
+            case 'day':
+              temp_query = Object.assign(
+                { min_day: single[1] },
+                { max_day: single[1] },
                 temp_query
               );
               break;
@@ -856,6 +874,14 @@ export default {
                   temp_query
                 );
                 break;
+
+              case 'day':
+              temp_query = Object.assign(
+                { min_day: single[1] },
+                { max_day: single[1] },
+                temp_query
+              );
+              break;
             
               default:
                 break;
@@ -1259,6 +1285,10 @@ export default {
       } else if (this.day_range[1] != 30) {
         day_range_text = "Up to " + this.day_range[1] + " days";
       }
+
+      if ( this.day_range[0] == this.day_range[1]) {
+        day_range_text = ( this.day_range[0] == 1 ) ? "1 day" : this.day_range[0] + " days";
+      }
       return day_range_text;
     },
 
@@ -1273,6 +1303,11 @@ export default {
       } else if (this.price_range[1] != 10000) {
         price_range_text = "Up to " + this.price_range[1] + "$";
       }
+
+      if ( this.price_range[0] == this.price_range[1]) {
+        price_range_text = this.price_range[0] + "$";
+      }
+
       return price_range_text;
     },
 
@@ -1324,33 +1359,39 @@ export default {
 
         return ['group', single]
 
-      } else {
+      }
 
-        // focus check ...
+      // this is the single day ...
 
-        let focus = this.tourFocus.find(function (el) {
-          return el.input_id == single;
-        });
+      if ( single.substr(single.length - 4) == '-Day' ) {
 
-        if ( focus != undefined ) {
-          return ['focus', focus.input_id]
-        } else {
-
-          //level check ...
-
-          single = single.split("_").join(" ");
-          single = single.split("@").join("+");
-
-          let level = this.tourLevel.find(function (el) {
-            return el.title == single;
-          });
-
-          if ( level != undefined ) {
-            return ['comfort', level.title]
-          }
-        }
+        return ['day', single.substring(0, single.length - 4)]
 
       }
+
+      // focus check ...
+
+      let focus = this.tourFocus.find(function (el) {
+        return el.input_id == single;
+      });
+
+      if ( focus != undefined ) {
+        return ['focus', focus.input_id]
+      }
+
+      //level check ...
+
+      single = single.split("_").join(" ");
+      single = single.split("@").join("+");
+
+      let level = this.tourLevel.find(function (el) {
+        return el.title == single;
+      });
+
+      if ( level != undefined ) {
+        return ['comfort', level.title]
+      }
+
       return [];
     },
 
@@ -1364,6 +1405,7 @@ export default {
       let group_number = 0;
       let comfort_number = 0;
       let focus_number = 0;
+      let day_number = 0;
 
       if (this.check_private_filter) {
         group_filter = "private";
@@ -1371,6 +1413,10 @@ export default {
       } else if (this.check_group_filter) {
         group_filter = "group";
         group_number = 1;
+      }
+
+      if ( this.day_range[0] == this.day_range[1] ) {
+        day_number = 1;
       }
 
       comfort_number = this.checked_standard_filter_options.length;
@@ -1524,6 +1570,17 @@ export default {
           single = url_query["comfort"];
           delete url_query["comfort"];
           break;
+
+        case (day_number == 1):
+          single = url_query["min_day"] + '-Day';
+
+          if ( url_query["min_day"] != undefined )
+            delete url_query["min_day"];
+          if ( url_query["max_day"] != undefined )
+            delete url_query["max_day"];
+
+          break;
+
 
         default:
           break;

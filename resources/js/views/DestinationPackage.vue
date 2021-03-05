@@ -133,7 +133,7 @@
                     >
                       <a
                         class="text-primary"
-                        :href="'/destination-package/' + item.post_slug"
+                        :href="'/destination/' + item.post_slug"
                         >{{ item.title }}</a
                       >
                     </li>

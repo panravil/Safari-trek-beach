@@ -63,14 +63,18 @@ export default {
             current_page_destinations: [],
             pagenation_options: {
                 chunk: 5
-            }
+            },
+            total_page_number: 1,
         };
     },
 
     computed: {
         page_id: function () {
             var id = this.$route.params.id;
-            return id.slice(0, id.length);
+            if ( id != undefined )
+                return id.slice(0, id.length);
+            else 
+                return ''
         },
         ...mapGetters({
             listDestinations: "destinationController/listDestinations",
@@ -80,23 +84,32 @@ export default {
 
     watch: {
         current_destination_page: function(newValue) {
-            this.$router.push('/tour-destinations/page/' + newValue)
-                .then(() => {
-                    this.getListDestinations();
-                })
-                .catch(() => {})
-        },
-        page_id: function (newValue) {
-            this.current_destination_page = parseInt(newValue)
-            this.getListDestinations();
+
+            if ( newValue > 1 ) {
+                this.$router.push({name: 'Destination', params: {id: newValue, page: 'page'}})
+                    .then(() => {
+                        this.getListDestinations();
+                    })
+                    .catch(() => {})
+            } else if (newValue == 1) {
+                this.$router.push({name: 'Destination', params: {}})
+                    .then(()=>{
+                        this.getListDestinations();
+                    })
+                    .catch(()=>{})
+            }
         },
     },
 
-    created() {
-        let page_title = "Safari-Trek-Beach.com Destination";
-        document.title = page_title;
-        this.current_destination_page = parseInt(this.page_id)
+    created() {        
+
+        if ( this.page_id != '' )
+            this.current_destination_page = parseInt(this.page_id);
+        else 
+            this.current_destination_page = 1;
+
         this.getListDestinations();
+
     },
     methods: {
         getListDestinations() {
@@ -106,6 +119,13 @@ export default {
                     this.getCurrentPageDestinations(
                         this.current_destination_page
                     );
+                    this.total_page_number = Math.floor(this.listDestinations.length / this.destinations_per_page) + 1
+
+                    let page_title = "Safari-Trek-Beach Destination - Page " 
+                       + this.current_destination_page
+                       + " of " + this.total_page_number;
+
+                    document.title = page_title;
                 });
         },
 
@@ -127,7 +147,7 @@ export default {
         }
 
         // toDestinationInnerPage(slug) {
-        //   this.$router.push('/destination-package/' + slug);
+        //   this.$router.push('/destination/' + slug);
         // },
     }
 };

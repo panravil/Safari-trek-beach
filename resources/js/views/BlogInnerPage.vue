@@ -147,7 +147,7 @@
                     >
                       <a
                         class="text-primary"
-                        :href="'/blog-inner-page/' + item.post_slug"
+                        :href="'/blog/' + item.post_slug"
                         >{{ item.title }}</a
                       >
                     </li>

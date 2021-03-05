@@ -59,13 +59,17 @@ export default {
             current_page_blogs: [],
             pagenation_options: {
                 chunk: 5
-            }
+            },
+            total_page_number: 1,
         };
     },
     computed: {
         page_id: function () {
             var id = this.$route.params.id;
-            return id.slice(0, id.length);
+            if ( id != undefined )
+                return id.slice(0, id.length);
+            else 
+                return ''
         },
         ...mapGetters({
             listBlog: "blogController/listBlog",
@@ -75,23 +79,32 @@ export default {
 
     watch: {
         current_blog_page: function (newValue) {
-            this.$router.push('/blog/page/' + newValue)
-                .then(() => {
-                    this.getlistBlog();
-                })
-                .catch(() => {})
-        },
-        page_id: function (newValue) {
-            this.current_blog_page = parseInt(newValue)
-            this.getlistBlog();
+            if ( newValue > 1 ) {
+                this.$router.push({name: 'Blog Post', params: {id: newValue, page: 'page'}})
+                    .then(() => {
+                        this.getlistBlog();
+                    })
+                    .catch(() => {})
+            } else if (newValue == 1) {
+                this.$router.push({name: 'Blog Post', params: {}})
+                    .then(()=>{
+                        this.getlistBlog();
+                    })
+                    .catch(()=>{})
+                        
+            }
         },
     },
 
-    created() {
-        let page_title = "Safari-Trek-Beach.com Blog";
-        document.title = page_title;
-        this.current_blog_page = parseInt(this.page_id)
+    created() {        
+
+        if ( this.page_id != '' )
+            this.current_blog_page = parseInt(this.page_id);
+        else 
+            this.current_blog_page = 1;
+
         this.getlistBlog();
+
     },
     
     methods: {
@@ -100,6 +113,13 @@ export default {
                     this.getCurrentPageBlogs(
                         this.current_blog_page
                     );
+                    this.total_page_number = Math.floor(this.listBlog.length / this.blogs_per_page) + 1
+
+                    let page_title = "Safari-Trek-Beach Blog - Page " 
+                       + this.current_blog_page
+                       + " of " + this.total_page_number;
+
+                    document.title = page_title;
                 });
         },
         getCurrentPageBlogs(page_num) {

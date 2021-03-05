@@ -75,25 +75,25 @@ const router = new Router({
                     component: () => import("./views/AboutUs.vue")
                 },
                 {
-                    path: "/blog/page/:id",
+                    path: "/blog/:page?/:id?",
                     name: "Blog Post",
                     index: 6,
                     component: () => import("./views/BlogPost.vue")
                 },
                 {
-                    path: "/tour-destinations/page/:id",
+                    path: "/destination/:page?/:id?",
                     name: "Destination",
                     index: 7,
                     component: () => import("./views/Destination.vue")
                 },
                 {
-                    path: "/blog-inner-page/:id",
+                    path: "/blog/:id",
                     name: "Blog Inner Page",
                     index: 8,
                     component: () => import("./views/BlogInnerPage.vue")
                 },
                 {
-                    path: "/destination-package/:id",
+                    path: "/destination/:id",
                     name: "Destination Package",
                     index: 9,
                     component: () => import("./views/DestinationPackage.vue")

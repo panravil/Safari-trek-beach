@@ -48,19 +48,19 @@
         <h6 class="text-uppercase font-weight-bold">Blog</h6>
         <ul class="list-unstyled">
           <li class="footerList">
-            <a href="/blog-inner-page/ukerewe-island" class="footerLink">UKEREWE ISLAND</a>
+            <a href="/blog/ukerewe-island" class="footerLink">UKEREWE ISLAND</a>
           </li>
           <li class="footerList">
-            <a href="/blog-inner-page/rubondo-island-national-park" class="footerLink">RUBONDO ISLAND</a>
+            <a href="/blog/rubondo-island-national-park" class="footerLink">RUBONDO ISLAND</a>
           </li>
           <li class="footerList">
-            <a href="/blog-inner-page/mount-kilimanjaro" class="footerLink">Kilimanjaro</a>
+            <a href="/blog/mount-kilimanjaro" class="footerLink">Kilimanjaro</a>
           </li>
           <li class="footerList">
-            <a href="/blog-inner-page/kigosi-national-park" class="footerLink">KIGOSI</a>
+            <a href="/blog/kigosi-national-park" class="footerLink">KIGOSI</a>
           </li>
           <li class="footerList">
-            <a href="/blog-inner-page/saadani-national-park" class="footerLink">Saadani</a>
+            <a href="/blog/saadani-national-park" class="footerLink">Saadani</a>
           </li>
         </ul>
       </div>
@@ -68,19 +68,19 @@
         <h6 class="text-uppercase font-weight-bold">Destination</h6>
         <ul class="list-unstyled">
           <li class="footerList">
-            <a href="/destination-package/tanzania" class="footerLink">Tanzania</a>
+            <a href="/destination/tanzania" class="footerLink">Tanzania</a>
           </li>
           <li class="footerList">
-            <a href="/destination-package/stone-town." class="footerLink">STONE TOWN</a>
+            <a href="/destination/stone-town." class="footerLink">STONE TOWN</a>
           </li>
           <li class="footerList">
-            <a href="/destination-package/materuni-watertfalls" class="footerLink">Materuni Watertfalls</a>
+            <a href="/destination/materuni-watertfalls" class="footerLink">Materuni Watertfalls</a>
           </li>
           <li class="footerList">
-            <a href="/destination-package/dhow" class="footerLink">Dhow</a>
+            <a href="/destination/dhow" class="footerLink">Dhow</a>
           </li>
           <li class="footerList">
-            <a href="/destination-package/spice" class="footerLink">Spice</a>
+            <a href="/destination/spice" class="footerLink">Spice</a>
           </li>
         </ul>
       </div>
