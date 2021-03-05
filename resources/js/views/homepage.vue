@@ -751,7 +751,7 @@ export default {
       let routeData = this.$router.resolve({
         name: "Destination Package",
         params: {
-          id: slug
+          slug: slug
         },
       });
 

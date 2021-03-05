@@ -75,29 +75,29 @@ const router = new Router({
                     component: () => import("./views/AboutUs.vue")
                 },
                 {
+                    path: "/blog/:slug",
+                    name: "Blog Inner Page",
+                    index: 8,
+                    component: () => import("./views/BlogInnerPage.vue")
+                },
+                {
                     path: "/blog/:page?/:id?",
                     name: "Blog Post",
                     index: 6,
                     component: () => import("./views/BlogPost.vue")
                 },
                 {
-                    path: "/destination/:page?/:id?",
-                    name: "Destination",
-                    index: 7,
-                    component: () => import("./views/Destination.vue")
-                },
-                {
-                    path: "/blog/:id",
-                    name: "Blog Inner Page",
-                    index: 8,
-                    component: () => import("./views/BlogInnerPage.vue")
-                },
-                {
-                    path: "/destination/:id",
+                    path: "/destination/:slug",
                     name: "Destination Package",
                     index: 9,
                     component: () => import("./views/DestinationPackage.vue")
                 },
+                {
+                    path: "/destination/:page?/:id?",
+                    name: "Destination",
+                    index: 7,
+                    component: () => import("./views/Destination.vue")
+                },                
                 {
                     path: "/tour-quote",
                     name: "Tour Quote",

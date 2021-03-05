@@ -55,7 +55,7 @@ export default {
       let routeData = this.$router.resolve({
         name: "Destination Package",
         params: {
-          id: this.destination.post_slug
+          slug: this.destination.post_slug
         },
       });
 

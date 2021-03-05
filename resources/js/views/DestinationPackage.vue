@@ -187,7 +187,7 @@ export default {
 
   computed: {
     destination_id: function () {
-      var id = this.$route.params.id;
+      var id = this.$route.params.slug;
       return id.slice(0, id.length);
     },
     ...mapGetters({

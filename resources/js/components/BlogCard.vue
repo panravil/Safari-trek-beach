@@ -40,7 +40,7 @@ export default {
       let routeData = this.$router.resolve({
         name: "Blog Inner Page",
         params: {
-          id: this.blog.post_slug
+          slug: this.blog.post_slug
         },
       });
 
