@@ -34,6 +34,7 @@
         "@syncfusion/ej2-vue-popups": "^18.4.41",
         "animate.css": "^4.1.1",
         "aos": "^2.3.4",
+        "emailjs-com": "^2.6.4",
         "mdb-ui-kit": "^3.2.0",
         "qs": "^6.9.6",
         "v-viewer": "^1.5.1",

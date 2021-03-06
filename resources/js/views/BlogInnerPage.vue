@@ -226,9 +226,7 @@ export default {
         .then(() => {
           let page_title = this.blogData.title + " - Safari-Trek-Beach";
           document.title = page_title;
-          setTimeout(() => {
-            this.scrollFix(this.$route.hash)
-          }, 10);
+          this.scrollFix(this.$route.hash)
           // console.log('blog data', this.blogData)
         });
     },
@@ -236,7 +234,9 @@ export default {
     scrollFix(hashbang)
     {
       this.$router.replace({hash: ''}).catch(() => {})
-      this.$router.replace({hash: hashbang}).catch(() => {})
+      setTimeout(() => {
+        this.$router.replace({hash: hashbang}).catch(() => {})
+      }, 50);
     },
   },
 };
