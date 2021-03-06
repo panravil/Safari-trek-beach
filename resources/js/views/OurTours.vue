@@ -325,7 +325,7 @@
         </div>
         <div class="col-lg-9 col-xs-12">
           <section class="section-header">
-            <h3>Our Tours</h3>
+            <h3>{{ search_name }}</h3>
             <span class="read-more"
               >Tanzania is Africa’s number one safari destination. The wildlife
               viewing is amazing and big cats are easy to see. Africa Big Five
@@ -600,6 +600,7 @@ export default {
       page_from_url: 0,
 
       where_to_list: [],
+      search_name: "Our Tours"
     };
   },
   directives: {
@@ -697,8 +698,7 @@ export default {
     },
   },
 
-  async created() {
-    document.title = "Search Tours of Safari-Trek-Beach.com";
+  async created() {    
 
     this.where_to_search = this.where_to_search_state;
     this.traveler_number = this.traveler_number_state;
@@ -1517,7 +1517,12 @@ export default {
         delete url_query["max_day"];
       }
 
+      this.search_name = "";
+
       if (url_query["destination"] != undefined) {
+
+        this.search_name = url_query["destination"];
+
         let destination_item = this.where_to_list.find(function (el) {
           return el.title == url_query["destination"];
         });
@@ -1557,22 +1562,25 @@ export default {
       switch (true) {
         case (focus_number == 1):
           single = url_query["focus"];
+          // this.search_name = query["focus"] + " " + this.search_name;
           delete url_query["focus"];
           break;
       
         case (group_number == 1):
           single = url_query["group"];
+          this.search_name = query["group"] + " " + this.search_name;
           delete url_query["group"];
           break;
 
         case (comfort_number == 1):
           single = url_query["comfort"];
+          this.search_name = query["comfort"] + " " + this.search_name;
           delete url_query["comfort"];
           break;
 
         case (day_number == 1):
           single = url_query["min_day"] + '-Day';
-
+          this.search_name = single + " " + this.search_name;
           if ( url_query["min_day"] != undefined )
             delete url_query["min_day"];
           if ( url_query["max_day"] != undefined )
@@ -1584,6 +1592,13 @@ export default {
         default:
           break;
       }
+
+      if ( this.search_name != '' ){
+        this.search_name = this.search_name + " Tours";
+      } else {
+        this.search_name = "Our Tours";
+      }
+      
 
       if (destination_params == "" && single == "") { // query only
         this.$router
@@ -1617,6 +1632,7 @@ export default {
         .dispatch("tourController/getTourFilter", query)
         .then(() => {
           this.current_ourtour_page = parseInt(this.filterTours.page);
+          document.title = this.search_name + " ( " + this.filterTours.total_tours + " Tours )";
         })
         .catch(() => {});
 
