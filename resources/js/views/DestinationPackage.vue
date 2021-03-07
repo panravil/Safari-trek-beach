@@ -261,7 +261,7 @@ export default {
       // This is the function for convert normal section title to non-space 
       // string to use it as a ID of the section block
 
-      title = title.replace(/[^a-zA-Z ]/g, "")
+      title = title.replace(/[^a-z\d\s]+/gi, "");
       title = title.split(" ").join("-");
 
       return title;
