@@ -64,7 +64,7 @@
         <strong> Tour Type: </strong>
         {{ getTourLevel(tourData.level) }}
       </p>
-      <p class="card-text mb-1 trip-route">
+      <p class="card-text mb-0 trip-route">
         <strong> Trip Route: </strong>
         {{ tourData.start_city }}(Start),
         {{ getMidRoute(tourData.destination) }}
@@ -83,8 +83,8 @@
           <strong v-else-if="avg_review == '3'"> &nbsp;3.0/5&nbsp;</strong>
           <strong v-else-if="avg_review == '2'"> &nbsp;2.0/5&nbsp;</strong>
           <strong v-else-if="avg_review == '1'"> &nbsp;1.0/5&nbsp;</strong>
-          <strong v-else> &nbsp;{{ avg_review }}/5&nbsp;</strong>
-          <span>({{ sum_review }} Rvw)</span>
+          <strong v-else> &nbsp;{{ avg_review }}/5</strong>
+          <span>({{ sum_review }}Rvw)</span>
           <!-- <span class="company-review">
                     (
                     <span v-if="sum_review == 1">{{ sum_review }} Review</span>
@@ -231,8 +231,13 @@ export default {
   box-shadow: 0px 1px 13px #666;
 }
 
+.card-body p.card-text {
+  font-size: 15px;
+  line-height: 20px;
+}
+
 .trip-route {
-  min-height: 75px;
+  min-height: 60px;
 }
 
 .company-review-small {

@@ -43,7 +43,11 @@
                       {{ item.title }}
                     </h3>
                   </div>
-                  <div class="section" v-html="item.description"></div>
+                  <div v-bind:key="read_update">
+                    <div class="section" :class="tag_counts[index] > 2 && !read_status[index] ? 'read-more' : ''" v-html="item.description"></div>
+                    <div v-if="tag_counts[index] > 2 && !read_status[index]" class="text-primary read-more-button" @click="readMore(index)">Read more</div>
+                    <div v-if="tag_counts[index] > 2 && read_status[index]" class="text-primary read-more-button" @click="readMore(index)">Read less</div>
+                  </div>
                   <div
                     class="text-start mt-3"
                     v-if="item.button_url != null && item.button_name != null"
@@ -196,12 +200,15 @@ export default {
   },
 
   data() {
-    return {};
+    return {
+      tag_counts: [],
+      read_status: [],
+      read_update: 0,
+    };
   },
 
   created() {
     this.getBlogData();
-    // this.getPopularTours();
   },
 
   computed: {
@@ -211,7 +218,6 @@ export default {
     },
     ...mapGetters({
       blogData: "blogController/blogData",
-      // popularTours: "tourController/popularTours",
       loading: "tourcard_loading",
     }),
   },
@@ -227,8 +233,19 @@ export default {
           let page_title = this.blogData.title + " - Safari-Trek-Beach";
           document.title = page_title;
           this.scrollFix(this.$route.hash)
-          // console.log('blog data', this.blogData)
+          this.countCollect();
         });
+    },
+
+    countCollect() {
+      setTimeout(() => {
+        for (let i = 0; i < this.blogData.section.length; i++) {
+          let selectionCount = document.querySelector("#section" + i + " .section").childElementCount;
+          this.tag_counts.push(selectionCount);
+          this.read_status.push(false);
+        }
+      }, 10);
+
     },
 
     scrollFix(hashbang)
@@ -236,7 +253,13 @@ export default {
       this.$router.replace({hash: ''}).catch(() => {})
       setTimeout(() => {
         this.$router.replace({hash: hashbang}).catch(() => {})
-      }, 50);
+      }, 100);
+    },
+
+    readMore(index){
+      this.read_status[index] = !this.read_status[index];
+      this.read_status.slice(0, this.read_status.length)
+      this.read_update++ ;
     },
   },
 };
@@ -321,6 +344,14 @@ export default {
   font-size: 20px;
 }
 
+.read-more *:nth-child(n+3) {
+    display: block;
+  }
+
+.read-more-button {
+  display: none;
+}
+
 @media (max-width: 991px) {
   .blog-inner-page .quick-link-section {
     display: none;
@@ -349,6 +380,14 @@ export default {
     border-top-right-radius: 0.25rem;
     border-top-left-radius: 0.25rem;
     height: 300px;
+  }
+
+  .read-more *:nth-child(n+3) {
+    display: none;
+  }
+
+  .read-more-button {
+    display: block;
   }
 }
 

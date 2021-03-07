@@ -64,9 +64,9 @@
         <strong> Tour Type: </strong>
         {{ getTourLevel(tourData.level) }}
       </p>
-      <p class="card-text mb-1 trip-route">
+      <p class="card-text trip-route mb-0">
         <strong> Trip Route: </strong>
-        {{ tourData.start_city }}(Start),
+        {{ tourData.start_city }} (Start),
         {{ getMidRoute(tourData.destination) }}
         {{ tourData.end_city }} (End)
       </p>
@@ -126,10 +126,22 @@ export default {
   },
   computed: {},
   data() {
-    return {};
+    return {
+      // windowWidth: window.innerWidth
+    };
   },
 
-  created() {},
+  created() {
+    window.onresize = () => {
+          this.windowWidth = window.innerWidth
+      } 
+  },
+
+  // mounted() {
+  //     window.onresize = () => {
+  //         this.windowWidth = window.innerWidth
+  //     }
+  // },
 
   methods: {
     getMidRoute(destination) {
@@ -138,7 +150,19 @@ export default {
       for (let i = 0; i < destination.length; i++) {
         route_data = route_data + destination[i] + ", ";
       }
-      if (route_data.length > 60) return route_data.substr(0, 60) + "...";
+      // if ( this.windowWidth > 1400 ) {
+
+      //   if (route_data.length > 110) return route_data.substr(0, 110) + "...";
+      //   else return route_data;
+
+      // } else if( this.windowWidth > 1200 ) {
+      //   if (route_data.length > 80) return route_data.substr(0, 80) + "...";
+      //   else return route_data;
+      // } else {
+        
+      // }
+
+      if (route_data.length > 70) return route_data.substr(0, 70) + "...";
       else return route_data;
     },
 
@@ -248,12 +272,19 @@ export default {
   box-shadow: 0px 1px 13px #666;
 }
 
+.card-body p.card-text {
+  font-size: 15px;
+  line-height: 20px;
+}
+
+p.company-name {
+  font-size: 16px;
+}
+
 .trip-route {
-  min-height: 75px;
+  min-height: 60px;
 }
-.company-name {
-  font-size: 18px;
-}
+
 @media (max-width: 1200px) {
   .company-name {
     font-size: 14px;

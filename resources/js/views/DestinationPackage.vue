@@ -41,7 +41,13 @@
                       {{ item.title }}
                     </h3>
                   </div>
-                  <div class="section" v-html="item.description"></div>
+
+                  <div v-bind:key="read_update">
+                    <div class="section" :class="tag_counts[index] > 2 && !read_status[index] ? 'read-more' : ''" v-html="item.description"></div>
+                    <div v-if="tag_counts[index] > 2 && !read_status[index]" class="text-primary read-more-button" @click="readMore(index)">Read more</div>
+                    <div v-if="tag_counts[index] > 2 && read_status[index]" class="text-primary read-more-button" @click="readMore(index)">Read less</div>
+                  </div>
+
                   <div
                     class="text-start mt-3"
                     v-if="item.button_name != null && item.button_url != null"
@@ -182,7 +188,11 @@ export default {
     TourCard,
   },
   data() {
-    return {};
+    return {
+      tag_counts: [],
+      read_status: [],
+      read_update: 0,
+    };
   },
 
   computed: {
@@ -192,7 +202,6 @@ export default {
     },
     ...mapGetters({
       destinationData: "destinationController/destinationData",
-      // popularTours: "tourController/popularTours",
       loading: "tourcard_loading",
     }),
   },
@@ -213,13 +222,33 @@ export default {
           document.title = page_title;
           this.scrollFix(this.$route.hash)
           // console.log('destinationData', this.destinationData)
+          this.countCollect();
         });
+    },
+
+    countCollect() {
+      setTimeout(() => {
+        for (let i = 0; i < this.destinationData.section.length; i++) {
+          let selectionCount = document.querySelector("#section" + i + " .section").childElementCount;
+          this.tag_counts.push(selectionCount);
+          this.read_status.push(false);
+        }
+      }, 10);
+
+    },
+
+    readMore(index){
+      this.read_status[index] = !this.read_status[index];
+      this.read_status.slice(0, this.read_status.length)
+      this.read_update++ ;
     },
 
     scrollFix(hashbang)
     {
       this.$router.replace({hash: ''}).catch(() => {})
-      this.$router.replace({hash: hashbang}).catch(() => {})
+      setTimeout(() => {
+        this.$router.replace({hash: hashbang}).catch(() => {})
+      }, 100);
     },
 
     goToOurTourPage() {
@@ -309,6 +338,14 @@ export default {
   height: auto !important;
 }
 
+.read-more *:nth-child(n+3) {
+  display: block;
+}
+
+.read-more-button {
+  display: none;
+}
+
 @media (max-width: 991px) {
   .destination-package .quick-link-section {
     display: none;
@@ -337,6 +374,14 @@ export default {
     border-top-right-radius: 0.25rem;
     border-top-left-radius: 0.25rem;
     height: 300px;
+  }
+
+  .read-more *:nth-child(n+3) {
+    display: none;
+  }
+
+  .read-more-button {
+    display: block;
   }
 }
 
