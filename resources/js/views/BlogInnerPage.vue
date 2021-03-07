@@ -35,30 +35,32 @@
                 <div
                   v-for="(item, index) in blogData.section"
                   v-bind:key="index"
-                  :id="'section' + index"
+                  :id="hashString(item.title)"
                   class="pt-5"
                 >
-                  <div class="pt-5">
-                    <h3 class="section-title-inner pb-3">
-                      {{ item.title }}
-                    </h3>
-                  </div>
-                  <div v-bind:key="read_update">
-                    <div class="section" :class="tag_counts[index] > 2 && !read_status[index] ? 'read-more' : ''" v-html="item.description"></div>
-                    <div v-if="tag_counts[index] > 2 && !read_status[index]" class="text-primary read-more-button" @click="readMore(index)">Read more</div>
-                    <div v-if="tag_counts[index] > 2 && read_status[index]" class="text-primary read-more-button" @click="readMore(index)">Read less</div>
-                  </div>
-                  <div
-                    class="text-start mt-3"
-                    v-if="item.button_url != null && item.button_name != null"
-                  >
-                    <a
-                      :href="item.button_url"
-                      target="_blank"
-                      class="btn btn-danger"
+                  <div :id="'section' + index">
+                    <div class="pt-5">
+                      <h3 class="section-title-inner pb-3">
+                        {{ item.title }}
+                      </h3>
+                    </div>
+                    <div v-bind:key="read_update">
+                      <div class="section" :class="tag_counts[index] > 2 && !read_status[index] ? 'read-more' : ''" v-html="item.description"></div>
+                      <div v-if="tag_counts[index] > 2 && !read_status[index]" class="text-primary read-more-button" @click="readMore(index)">Read more</div>
+                      <div v-if="tag_counts[index] > 2 && read_status[index]" class="text-primary read-more-button" @click="readMore(index)">Read less</div>
+                    </div>
+                    <div
+                      class="text-start mt-3"
+                      v-if="item.button_url != null && item.button_name != null"
                     >
-                      {{ item.button_name }}
-                    </a>
+                      <a
+                        :href="item.button_url"
+                        target="_blank"
+                        class="btn btn-danger"
+                      >
+                        {{ item.button_name }}
+                      </a>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -131,7 +133,7 @@
                       v-bind:key="index"
                       class="mt-2"
                     >
-                      <a class="text-primary" :href="'#section' + index"
+                      <a class="text-primary" :href="'#' + hashString(content.title)"
                         >{{ content.title }}</a
                       >
                     </li>
@@ -261,6 +263,16 @@ export default {
       this.read_status.slice(0, this.read_status.length)
       this.read_update++ ;
     },
+
+    hashString(title) {
+      // This is the function for convert normal section title to non-space 
+      // string to use it as a ID of the section block
+
+      title = title.replace(/[^a-zA-Z ]/g, "")
+      title = title.split(" ").join("-");
+
+      return title;
+    }
   },
 };
 </script>

@@ -33,9 +33,10 @@
                 <div
                   v-for="(item, index) in destinationData.section"
                   v-bind:key="index"
-                  :id="'section' + index"
+                  :id="hashString(item.title)"
                   class="pt-5"
                 >
+                <div :id="'section' + index">
                   <div class="pt-5">
                     <h3 class="section-title-inner pb-3">
                       {{ item.title }}
@@ -60,6 +61,7 @@
                       {{ item.button_name }}
                     </a>
                   </div>
+                </div>
                 </div>
               </div>
               <!-- <div class="mt-5">
@@ -116,7 +118,7 @@
                       v-bind:key="index"
                       class="mt-2"
                     >
-                      <a class="text-primary" :href="'#section' + index"
+                      <a class="text-primary" :href="'#' + hashString(content.title)"
                         >{{ content.title }}</a
                       >
                     </li>
@@ -221,7 +223,6 @@ export default {
           let page_title = this.destinationData.title + " - Safari-Trek-Beach";
           document.title = page_title;
           this.scrollFix(this.$route.hash)
-          // console.log('destinationData', this.destinationData)
           this.countCollect();
         });
     },
@@ -248,12 +249,23 @@ export default {
       this.$router.push({hash: ''}).catch(() => {})
       setTimeout(() => {
         this.$router.push({hash: hashbang}).catch(() => {})
+        // location.href = hashbang
       }, 200);
     },
 
     goToOurTourPage() {
       this.$router.push("/our-tours");
     },
+
+    hashString(title) {
+      // This is the function for convert normal section title to non-space 
+      // string to use it as a ID of the section block
+
+      title = title.replace(/[^a-zA-Z ]/g, "")
+      title = title.split(" ").join("-");
+
+      return title;
+    }
   },
 };
 </script>
