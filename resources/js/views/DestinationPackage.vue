@@ -317,7 +317,7 @@ export default {
 .destination-package ul li:before {
   content: "›";
   font-weight: normal;
-  top: -10px;
+  top: -3px;
   font-size: 25px;
   position: absolute;
   left: -15px;
