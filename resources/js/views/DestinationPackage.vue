@@ -245,10 +245,10 @@ export default {
 
     scrollFix(hashbang)
     {
-      this.$router.replace({hash: ''}).catch(() => {})
+      this.$router.push({hash: ''}).catch(() => {})
       setTimeout(() => {
-        this.$router.replace({hash: hashbang}).catch(() => {})
-      }, 100);
+        this.$router.push({hash: hashbang}).catch(() => {})
+      }, 200);
     },
 
     goToOurTourPage() {
@@ -346,6 +346,7 @@ export default {
 
 .read-more-button {
   display: none;
+  cursor: pointer;
 }
 
 @media (max-width: 991px) {
