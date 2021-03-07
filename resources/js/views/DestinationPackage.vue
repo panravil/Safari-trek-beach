@@ -263,6 +263,8 @@ export default {
   padding-top: 60px;
   padding-bottom: 100px;
   background-color: #f2f2f2;
+  font-size: 16px;
+  line-height: 22px;
 }
 
 .destination-package .image_title {
@@ -272,7 +274,7 @@ export default {
   width: 100%;
   padding: 4.375rem 1.875rem 1.875rem 1.5625rem;
   color: white;
-  font-size: 2.375rem;
+  font-size: 38px;
   line-height: 2.5rem;
   font-weight: 600;
   font-family: "Gentium Basic", serif;

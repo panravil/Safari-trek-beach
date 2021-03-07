@@ -248,7 +248,7 @@
               <ejs-slider
                 :min="10"
                 :max="10000"
-                :step="300"
+                :step="250"
                 :type="'Range'"
                 :enabled="!loading"
                 v-model="price_range"
