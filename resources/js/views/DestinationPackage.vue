@@ -118,7 +118,7 @@
                       v-bind:key="index"
                       class="mt-2"
                     >
-                      <a class="text-primary" :href="'#' + hashString(content.title)"
+                      <a class="text-primary"  @click="customScroll(hashString(content.title))"
                         >{{ content.title }}</a
                       >
                     </li>
@@ -184,6 +184,9 @@ Vue.use(TextBoxPlugin);
 import TourCard from "../components/TourCard";
 import { mapState, mapGetters, mapMutations } from "vuex";
 
+import VueScrollTo from 'vue-scrollto'
+Vue.use(VueScrollTo)
+
 export default {
   name: "DestinationPackage",
   components: {
@@ -201,6 +204,13 @@ export default {
     destination_id: function () {
       var id = this.$route.params.slug;
       return id.slice(0, id.length);
+    },
+    hash: function () {
+      var id = this.$route.params.hash;
+      if ( id != undefined )
+        return id.slice(0, id.length);
+      else 
+        return ''
     },
     ...mapGetters({
       destinationData: "destinationController/destinationData",
@@ -222,8 +232,9 @@ export default {
         .then(() => {
           let page_title = this.destinationData.title + " - Safari-Trek-Beach";
           document.title = page_title;
-          this.scrollFix(this.$route.hash)
+          // this.scrollFix(this.$route.hash)
           this.countCollect();
+          this.scrollToId();
         });
     },
 
@@ -238,20 +249,38 @@ export default {
 
     },
 
+    customScroll(hash){
+      this.$router.replace(
+        {
+          name: "Destination Package1",
+          params: {
+            slug: this.destination_id,
+            hash: hash,
+          }
+        }).catch(()=>{});
+        this.$scrollTo(document.getElementById(hash), 0)
+    },
+
+    scrollToId() {
+      setTimeout(() => {
+        this.$scrollTo(document.getElementById(this.hash), 0)
+      }, 100);
+    },
+
     readMore(index){
       this.read_status[index] = !this.read_status[index];
       this.read_status.slice(0, this.read_status.length)
       this.read_update++ ;
     },
 
-    scrollFix(hashbang)
-    {
-      this.$router.push({hash: ''}).catch(() => {})
-      setTimeout(() => {
-        this.$router.push({hash: hashbang}).catch(() => {})
-        // location.href = hashbang
-      }, 200);
-    },
+    // scrollFix(hashbang)
+    // {
+    //   this.$router.push({hash: ''}).catch(() => {})
+    //   setTimeout(() => {
+    //     this.$router.push({hash: hashbang}).catch(() => {})
+    //     // location.href = hashbang
+    //   }, 200);
+    // },
 
     goToOurTourPage() {
       this.$router.push("/our-tours");

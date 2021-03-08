@@ -5,7 +5,6 @@
     -->
     <section
       class="main-banner"
-      style="background-image: url('/images/mainbanner2.png')"
     >
       <div class="wrapper">
         <h2 class="text-center" data-wow-delay="1">

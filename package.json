@@ -46,6 +46,7 @@
         "vue-pagination-2": "^3.0.8",
         "vue-read-more": "^1.1.1",
         "vue-router": "^3.5.1",
+        "vue-scrollto": "^2.20.0",
         "vue-select": "^3.11.2",
         "vue-star-rating": "^1.7.0",
         "vuejs-datepicker": "^1.6.2",

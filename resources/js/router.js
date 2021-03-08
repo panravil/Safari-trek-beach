@@ -23,7 +23,6 @@ const router = new Router({
                 y: 0
             };
         }
-
     },
     base: process.env.BASE_URL,
     routes: [
@@ -81,6 +80,12 @@ const router = new Router({
                     component: () => import("./views/BlogInnerPage.vue")
                 },
                 {
+                    path: "/blog/:slug/:hash?",
+                    name: "Blog Inner Page1",
+                    index: 81,
+                    component: () => import("./views/BlogInnerPage.vue")
+                },
+                {
                     path: "/blog/:page?/:id?",
                     name: "Blog Post",
                     index: 6,
@@ -90,6 +95,12 @@ const router = new Router({
                     path: "/destination/:slug",
                     name: "Destination Package",
                     index: 9,
+                    component: () => import("./views/DestinationPackage.vue")
+                },
+                {
+                    path: "/destination/:slug/:hash?",
+                    name: "Destination Package1",
+                    index: 91,
                     component: () => import("./views/DestinationPackage.vue")
                 },
                 {

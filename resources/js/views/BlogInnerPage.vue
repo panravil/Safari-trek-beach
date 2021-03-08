@@ -133,7 +133,8 @@
                       v-bind:key="index"
                       class="mt-2"
                     >
-                      <a class="text-primary" :href="'#' + hashString(content.title)"
+                      <a class="text-primary"
+                        @click="customScroll(hashString(content.title))"
                         >{{ content.title }}</a
                       >
                     </li>
@@ -192,6 +193,8 @@ import Vue from "vue";
 import { mapState, mapGetters, mapMutations } from "vuex";
 import { TextBoxPlugin } from "@syncfusion/ej2-vue-inputs";
 Vue.use(TextBoxPlugin);
+import VueScrollTo from 'vue-scrollto'
+Vue.use(VueScrollTo)
 
 import TourCard from "../components/TourCard";
 export default {
@@ -218,6 +221,13 @@ export default {
       var id = this.$route.params.slug;
       return id.slice(0, id.length);
     },
+    hash: function () {
+      var id = this.$route.params.hash;
+      if ( id != undefined )
+        return id.slice(0, id.length);
+      else 
+        return ''
+    },
     ...mapGetters({
       blogData: "blogController/blogData",
       loading: "tourcard_loading",
@@ -234,8 +244,9 @@ export default {
         .then(() => {
           let page_title = this.blogData.title + " - Safari-Trek-Beach";
           document.title = page_title;
-          this.scrollFix(this.$route.hash)
+          // this.scrollFix(this.$route.hash)
           this.countCollect();
+          this.scrollToId();
         });
     },
 
@@ -250,12 +261,30 @@ export default {
 
     },
 
-    scrollFix(hashbang)
-    {
-      this.$router.push({hash: ''}).catch(() => {})
+    // scrollFix(hashbang)
+    // {
+    //   this.$router.push({hash: ''}).catch(() => {})
+    //   setTimeout(() => {
+    //     this.$router.push({hash: hashbang}).catch(() => {})
+    //   }, 200);
+    // },
+
+    customScroll(hash){
+      this.$router.replace(
+        {
+          name: "Blog Inner Page1",
+          params: {
+            slug: this.blog_id,
+            hash: hash,
+          }
+        }).catch(()=>{});
+        this.$scrollTo(document.getElementById(hash), 0)
+    },
+
+    scrollToId() {
       setTimeout(() => {
-        this.$router.push({hash: hashbang}).catch(() => {})
-      }, 200);
+        this.$scrollTo(document.getElementById(this.hash), 0)
+      }, 100);
     },
 
     readMore(index){
