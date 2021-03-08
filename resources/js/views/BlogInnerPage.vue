@@ -284,7 +284,7 @@ export default {
     scrollToId() {
       setTimeout(() => {
         this.$scrollTo(document.getElementById(this.hash), 0)
-      }, 100);
+      }, 200);
     },
 
     readMore(index){
