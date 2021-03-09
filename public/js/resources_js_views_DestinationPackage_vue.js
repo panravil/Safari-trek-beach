@@ -12416,6 +12416,12 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
  // import { mapState, mapGetters, mapMutations } from "vuex";
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
@@ -12431,9 +12437,21 @@ __webpack_require__.r(__webpack_exports__);
   },
   computed: {},
   data: function data() {
-    return {};
+    return {// windowWidth: window.innerWidth
+    };
   },
-  created: function created() {},
+  created: function created() {
+    var _this = this;
+
+    window.onresize = function () {
+      _this.windowWidth = window.innerWidth;
+    };
+  },
+  // mounted() {
+  //     window.onresize = () => {
+  //         this.windowWidth = window.innerWidth
+  //     }
+  // },
   methods: {
     getMidRoute: function getMidRoute(destination) {
       if (destination == undefined || destination == null) return "";
@@ -12441,9 +12459,17 @@ __webpack_require__.r(__webpack_exports__);
 
       for (var i = 0; i < destination.length; i++) {
         route_data = route_data + destination[i] + ", ";
-      }
+      } // if ( this.windowWidth > 1400 ) {
+      //   if (route_data.length > 110) return route_data.substr(0, 110) + "...";
+      //   else return route_data;
+      // } else if( this.windowWidth > 1200 ) {
+      //   if (route_data.length > 80) return route_data.substr(0, 80) + "...";
+      //   else return route_data;
+      // } else {
+      // }
 
-      if (route_data.length > 60) return route_data.substr(0, 60) + "...";else return route_data;
+
+      if (route_data.length > 70) return route_data.substr(0, 70) + "...";else return route_data;
     },
     getTourLevel: function getTourLevel(level) {
       if (level == undefined || level == null) return "";
@@ -12499,7 +12525,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm.js");
 /* harmony import */ var _syncfusion_ej2_vue_inputs__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @syncfusion/ej2-vue-inputs */ "./node_modules/@syncfusion/ej2-vue-inputs/src/textbox/textbox.component.js");
 /* harmony import */ var _components_TourCard__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../components/TourCard */ "./resources/js/components/TourCard.vue");
-/* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
+/* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
+/* harmony import */ var vue_scrollto__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! vue-scrollto */ "./node_modules/vue-scrollto/vue-scrollto.js");
+/* harmony import */ var vue_scrollto__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(vue_scrollto__WEBPACK_IMPORTED_MODULE_4__);
 
 
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
@@ -12631,35 +12659,101 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 vue__WEBPACK_IMPORTED_MODULE_1__.default.use(_syncfusion_ej2_vue_inputs__WEBPACK_IMPORTED_MODULE_2__.TextBoxPlugin);
 
 
+
+vue__WEBPACK_IMPORTED_MODULE_1__.default.use((vue_scrollto__WEBPACK_IMPORTED_MODULE_4___default()));
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: "DestinationPackage",
   components: {
     TourCard: _components_TourCard__WEBPACK_IMPORTED_MODULE_3__.default
   },
   data: function data() {
-    return {};
+    return {
+      tag_counts: [],
+      read_status: [],
+      read_update: 0
+    };
   },
   computed: _objectSpread({
     destination_id: function destination_id() {
-      var id = this.$route.params.id;
+      var id = this.$route.params.slug;
       return id.slice(0, id.length);
+    },
+    hash: function hash() {
+      var id = this.$route.params.hash;
+      if (id != undefined) return id.slice(0, id.length);else return '';
     }
-  }, (0,vuex__WEBPACK_IMPORTED_MODULE_4__.mapGetters)({
+  }, (0,vuex__WEBPACK_IMPORTED_MODULE_5__.mapGetters)({
     destinationData: "destinationController/destinationData",
-    popularTours: "tourController/popularTours",
     loading: "tourcard_loading"
   })),
   created: function created() {
     this.getDestinationData();
-    this.getPopularTours();
   },
   methods: {
-    getPopularTours: function getPopularTours() {
+    getDestinationData: function getDestinationData() {
       var _this = this;
 
       return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee() {
@@ -12668,7 +12762,14 @@ vue__WEBPACK_IMPORTED_MODULE_1__.default.use(_syncfusion_ej2_vue_inputs__WEBPACK
             switch (_context.prev = _context.next) {
               case 0:
                 _context.next = 2;
-                return _this.$store.dispatch("tourController/getPopularTours").then(function () {});
+                return _this.$store.dispatch("destinationController/getDestinationById", _this.destination_id).then(function () {
+                  var page_title = _this.destinationData.title + " - Safari-Trek-Beach";
+                  document.title = page_title; // this.scrollFix(this.$route.hash)
+
+                  _this.countCollect();
+
+                  _this.scrollToId();
+                });
 
               case 2:
               case "end":
@@ -12678,30 +12779,58 @@ vue__WEBPACK_IMPORTED_MODULE_1__.default.use(_syncfusion_ej2_vue_inputs__WEBPACK
         }, _callee);
       }))();
     },
-    getDestinationData: function getDestinationData() {
+    countCollect: function countCollect() {
       var _this2 = this;
 
-      return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee2() {
-        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee2$(_context2) {
-          while (1) {
-            switch (_context2.prev = _context2.next) {
-              case 0:
-                _context2.next = 2;
-                return _this2.$store.dispatch("destinationController/getDestinationById", _this2.destination_id).then(function () {
-                  var page_title = _this2.destinationData.title + " - Safari-Trek-Beach";
-                  document.title = page_title;
-                });
+      setTimeout(function () {
+        for (var i = 0; i < _this2.destinationData.section.length; i++) {
+          var selectionCount = document.querySelector("#section" + i + " .section").childElementCount;
 
-              case 2:
-              case "end":
-                return _context2.stop();
-            }
-          }
-        }, _callee2);
-      }))();
+          _this2.tag_counts.push(selectionCount);
+
+          _this2.read_status.push(false);
+        }
+      }, 10);
     },
+    customScroll: function customScroll(hash) {
+      this.$router.replace({
+        name: "Destination Package1",
+        params: {
+          slug: this.destination_id,
+          hash: hash
+        }
+      })["catch"](function () {});
+      this.$scrollTo(document.getElementById(hash), 0);
+    },
+    scrollToId: function scrollToId() {
+      var _this3 = this;
+
+      setTimeout(function () {
+        _this3.$scrollTo(document.getElementById(_this3.hash), 0);
+      }, 200);
+    },
+    readMore: function readMore(index) {
+      this.read_status[index] = !this.read_status[index];
+      this.read_status.slice(0, this.read_status.length);
+      this.read_update++;
+    },
+    // scrollFix(hashbang)
+    // {
+    //   this.$router.push({hash: ''}).catch(() => {})
+    //   setTimeout(() => {
+    //     this.$router.push({hash: hashbang}).catch(() => {})
+    //     // location.href = hashbang
+    //   }, 200);
+    // },
     goToOurTourPage: function goToOurTourPage() {
       this.$router.push("/our-tours");
+    },
+    hashString: function hashString(title) {
+      // This is the function for convert normal section title to non-space 
+      // string to use it as a ID of the section block
+      title = title.replace(/[^a-z\d\s]+/gi, "");
+      title = title.split(" ").join("-");
+      return title;
     }
   }
 });
@@ -12775,7 +12904,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n#tour-card .price[data-v-5583021a] {\n    width: 80px;\n    color: #0f6d24;\n    right: 5px;\n    bottom: 0px;\n    top: 0px;\n    padding-left: 2px;\n    border-left: 1px dotted black;\n    position: absolute;\n    font-size: 18px;\n    display: flex;\n    align-items: center;\n    justify-content: center;\n}\n#tour-card .tag-image[data-v-5583021a] {\n    top: -12px;\n    position: absolute;\n    right: 10px;\n}\n#tour-card .bg-image[data-v-5583021a] {\n    background-size: cover;\n    position: relative;\n    width: 100%;\n    height: 0;\n    padding-top: 56.25%;\n}\n#tour-card .tour_title[data-v-5583021a] {\n    width: 100%;\n    position: absolute;\n    left: 0;\n    bottom: 0;\n    right: 0;\n    text-align: left;\n    padding: 15px 10px;\n    background: rgba(0, 0, 0, 0.4);\n    background: linear-gradient(\n        to bottom,\n        rgba(0, 0, 0, 0) 0%,\n        rgba(0, 0, 0, 0.5) 45%,\n        rgba(0, 0, 0, 0.9) 100%\n    );\n    color: white;\n    text-align: center;\n    font-weight: 700;\n    font-size: 20px;\n    margin: 40px 0 0px 0;\n    font-family: \"Montserrat\", sans-serif;\n}\n#tour-card.card[data-v-5583021a] {\n    transition: box-shadow 0.2s ease-in-out, transform 0.3s ease-in-out;\n    box-shadow: 0px 2px 3px rgb(0 0 0 / 18%);\n    cursor: pointer;\n}\n#tour-card.card[data-v-5583021a]:hover {\n    box-shadow: 0px 1px 13px #666;\n}\n.trip-route[data-v-5583021a] {\n    min-height: 75px;\n}\n.company-name[data-v-5583021a] {\n    font-size: 18px;\n}\n@media (max-width: 1200px) {\n.company-name[data-v-5583021a] {\n        font-size: 14px;\n        padding-left: 8px !important;\n}\n.company-review[data-v-5583021a]{\n        font-size: 14px;\n        padding-left: 8px !important;\n}\n#tour-card .price[data-v-5583021a] {\n        font-size: 16px;\n}\n}\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n#tour-card .price[data-v-5583021a] {\n  width: 90px;\n  color: #0f6d24;\n  right: 5px;\n  bottom: 0px;\n  top: 0px;\n  padding-left: 2px;\n  border-left: 1px dotted black;\n  position: absolute;\n  font-size: 18px;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n}\n#tour-card .tag-image[data-v-5583021a] {\n  top: -12px;\n  position: absolute;\n  right: 10px;\n}\n#tour-card .bg-image[data-v-5583021a] {\n  background-size: cover;\n  position: relative;\n  width: 100%;\n  height: 0;\n  padding-top: 56.25%;\n}\n#tour-card .tour_title[data-v-5583021a] {\n  width: 100%;\n  position: absolute;\n  left: 0;\n  bottom: 0;\n  right: 0;\n  text-align: left;\n  padding: 15px 10px;\n  background: rgba(0, 0, 0, 0.4);\n  background: linear-gradient(\n    to bottom,\n    rgba(0, 0, 0, 0) 0%,\n    rgba(0, 0, 0, 0.5) 45%,\n    rgba(0, 0, 0, 0.9) 100%\n  );\n  color: white;\n  text-align: center;\n  font-weight: 700;\n  font-size: 20px;\n  margin: 40px 0 0px 0;\n  font-family: \"Montserrat\", sans-serif;\n}\n#tour-card.card[data-v-5583021a] {\n  transition: box-shadow 0.2s ease-in-out, transform 0.3s ease-in-out;\n  box-shadow: 0px 2px 3px rgb(0 0 0 / 18%);\n  cursor: pointer;\n}\n#tour-card.card[data-v-5583021a]:hover {\n  box-shadow: 0px 1px 13px #666;\n}\n.card-body p.card-text[data-v-5583021a] {\n  font-size: 15px;\n  line-height: 20px;\n}\np.company-name[data-v-5583021a] {\n  font-size: 16px;\n}\n.trip-route[data-v-5583021a] {\n  min-height: 60px;\n}\n@media (max-width: 1200px) {\n.company-name[data-v-5583021a] {\n    font-size: 14px;\n    padding-left: 8px !important;\n}\n.company-review[data-v-5583021a] {\n    font-size: 14px;\n    padding-left: 8px !important;\n}\n#tour-card .price[data-v-5583021a] {\n    font-size: 16px;\n}\n}\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -12805,7 +12934,7 @@ var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBP
 ___CSS_LOADER_EXPORT___.i(_node_modules_css_loader_dist_cjs_js_clonedRuleSet_9_0_rules_0_use_1_node_modules_syncfusion_ej2_vue_inputs_styles_material_css__WEBPACK_IMPORTED_MODULE_2__.default);
 ___CSS_LOADER_EXPORT___.i(_node_modules_css_loader_dist_cjs_js_clonedRuleSet_9_0_rules_0_use_1_node_modules_syncfusion_ej2_base_styles_material_css__WEBPACK_IMPORTED_MODULE_1__.default);
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n.destination-package {\n  padding-top: 60px;\n  padding-bottom: 100px;\n  background-color: #f2f2f2;\n}\n.destination-package .image_title {\n  position: absolute;\n  bottom: 0px;\n  left: 0;\n  width: 100%;\n  padding: 4.375rem 1.875rem 1.875rem 1.5625rem;\n  color: white;\n  font-size: 2.375rem;\n  line-height: 2.5rem;\n  font-weight: 600;\n  font-family: \"Gentium Basic\", serif;\n  text-shadow: 1px 1px 5px #000;\n  z-index: 3;\n  background: linear-gradient(to bottom,\n      rgba(0, 0, 0, 0) 0%,\n      rgba(0, 0, 0, 0.5) 45%,\n      rgba(0, 0, 0, 0.9) 100%);\n}\n.destination-package .content-section {\n  border-right: 1px solid #ccc;\n}\n.destination-package .section-title {\n  border-top: 1px solid #ccc;\n  width: 100%;\n}\n.destination-package .section-title-inner {\n  border-bottom: 1px solid #ccc;\n  width: 100%;\n  font-weight: 700;\n}\n.destination-package .blog-category {\n  border: 1px solid #ccc;\n  border-bottom: 5px solid #ccc;\n}\n.destination-package ul li {\n  list-style: none;\n  position: relative;\n  cursor: pointer;\n}\n.destination-package ul li:before {\n  content: \"›\";\n  font-weight: normal;\n  top: -8px;\n  font-size: 25px;\n  position: absolute;\n  left: -15px;\n}\n.destination-package .e-multi-line-input textarea {\n  height: 100px;\n}\n.destination-package .section h3 {\n  font-size: 20px;\n}\n.quick-link-section {\n  display: block;\n}\n.destination-package .content-section p img {\n  width: 100% !important;\n  height: auto !important;\n}\n@media (max-width: 991px) {\n.destination-package .quick-link-section {\n    display: none;\n}\n.destination-package .content-section {\n    border: none;\n}\n.destination-package .image_title {\n    font-size: 25px;\n    line-height: 35px;\n    padding: 10px 20px;\n}\n.destination-package .card-img-top {\n    height: 100%;\n    width: auto;\n    position: absolute;\n    left: 50%;\n    top: 50%;\n    transform: translateY(-50%) translateX(-50%);\n}\n.destination-package .position-relative.overflow-hidden {\n    border-top-right-radius: 0.25rem;\n    border-top-left-radius: 0.25rem;\n    height: 300px;\n}\n}\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n.destination-package {\n  padding-top: 60px;\n  padding-bottom: 100px;\n  background-color: #f2f2f2;\n  font-size: 16px;\n  line-height: 22px;\n}\n.destination-package .image_title {\n  position: absolute;\n  bottom: 0px;\n  left: 0;\n  width: 100%;\n  padding: 4.375rem 1.875rem 1.875rem 1.5625rem;\n  color: white;\n  font-size: 38px;\n  line-height: 2.5rem;\n  font-weight: 600;\n  font-family: \"Gentium Basic\", serif;\n  text-shadow: 1px 1px 5px #000;\n  z-index: 3;\n  background: linear-gradient(\n    to bottom,\n    rgba(0, 0, 0, 0) 0%,\n    rgba(0, 0, 0, 0.5) 45%,\n    rgba(0, 0, 0, 0.9) 100%\n  );\n}\n\n/* .destination-package .content-section {\n  border-right: 1px solid #ccc;\n} */\n.destination-package .section-title {\n  /* border-top: 1px solid #ccc; */\n  width: 100%;\n}\n.destination-package .section-title-inner {\n  /* border-bottom: 1px solid #ccc; */\n  width: 100%;\n  font-weight: 700;\n}\n.destination-package .blog-category {\n  border: 1px solid #ccc;\n  border-bottom: 5px solid #ccc;\n}\n.destination-package ul li {\n  list-style: none;\n  position: relative;\n  cursor: pointer;\n}\n.destination-package ul li:before {\n  content: \"›\";\n  font-weight: normal;\n  top: -3px;\n  font-size: 25px;\n  position: absolute;\n  left: -15px;\n}\n.destination-package .e-multi-line-input textarea {\n  height: 100px;\n}\n.destination-package .section h3 {\n  font-size: 20px;\n}\n.quick-link-section {\n  display: block;\n}\n.destination-package .content-section p img {\n  width: 100% !important;\n  height: auto !important;\n}\n.read-more *:nth-child(n+3) {\n  display: block;\n}\n.read-more-button {\n  display: none;\n  cursor: pointer;\n}\n@media (max-width: 991px) {\n.destination-package .quick-link-section {\n    display: none;\n}\n.destination-package .content-section {\n    border: none;\n}\n.destination-package .image_title {\n    font-size: 25px;\n    line-height: 35px;\n    padding: 10px 20px;\n}\n.destination-package .card-img-top {\n    height: 100%;\n    width: auto;\n    position: absolute;\n    left: 50%;\n    top: 50%;\n    transform: translateY(-50%) translateX(-50%);\n}\n.destination-package .position-relative.overflow-hidden {\n    border-top-right-radius: 0.25rem;\n    border-top-left-radius: 0.25rem;\n    height: 300px;\n}\n.read-more *:nth-child(n+3) {\n    display: none;\n}\n.read-more-button {\n    display: block;\n}\n}\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -13141,25 +13270,25 @@ var render = function() {
       ? _c("span", { staticClass: "fa fa-star-half-full checked" })
       : _c("span", { staticClass: "fa fa-star checked" }),
     _vm._v(" "),
-    _vm.rating < 1
+    _vm.rating <= 1
       ? _c("span", { staticClass: "fa fa-star-o" })
       : _vm.rating < 1.5
       ? _c("span", { staticClass: "fa fa-star-half-full checked" })
       : _c("span", { staticClass: "fa fa-star checked" }),
     _vm._v(" "),
-    _vm.rating < 2
+    _vm.rating <= 2
       ? _c("span", { staticClass: "fa fa-star-o" })
       : _vm.rating < 2.5
       ? _c("span", { staticClass: "fa fa-star-half-full checked" })
       : _c("span", { staticClass: "fa fa-star checked" }),
     _vm._v(" "),
-    _vm.rating < 3
+    _vm.rating <= 3
       ? _c("span", { staticClass: "fa fa-star-o" })
       : _vm.rating < 3.5
       ? _c("span", { staticClass: "fa fa-star-half-full checked" })
       : _c("span", { staticClass: "fa fa-star checked" }),
     _vm._v(" "),
-    _vm.rating < 4
+    _vm.rating <= 4
       ? _c("span", { staticClass: "fa fa-star-o" })
       : _vm.rating < 4.5
       ? _c("span", { staticClass: "fa fa-star-half-full checked" })
@@ -13215,11 +13344,11 @@ var render = function() {
           _vm._v(" "),
           _c("div", { staticClass: "tour_title" }, [
             _vm._v(
-              "\n            " +
+              "\n      " +
                 _vm._s(_vm.tourData.no_of_day) +
                 "-Day " +
                 _vm._s(_vm.tourData.title) +
-                "\n        "
+                "\n    "
             )
           ]),
           _vm._v(" "),
@@ -13282,28 +13411,28 @@ var render = function() {
               ? _c("span", [
                   _vm._v(_vm._s(_vm.tourData.no_of_day - 1) + " Nights")
                 ])
-              : _c("span", [_vm._v("No Accommodation")])
+              : _c("span", [_vm._v("Not Included")])
           ]),
           _vm._v(" "),
           _c("p", { staticClass: "card-text mb-1" }, [
             _c("strong", [_vm._v(" Tour Type: ")]),
             _vm._v(
-              "\n            " +
+              "\n      " +
                 _vm._s(_vm.getTourLevel(_vm.tourData.level)) +
-                "\n        "
+                "\n    "
             )
           ]),
           _vm._v(" "),
-          _c("p", { staticClass: "card-text mb-1 trip-route" }, [
+          _c("p", { staticClass: "card-text trip-route mb-0" }, [
             _c("strong", [_vm._v(" Trip Route: ")]),
             _vm._v(
-              "\n            " +
+              "\n      " +
                 _vm._s(_vm.tourData.start_city) +
-                "(Start),\n            " +
+                " (Start),\n      " +
                 _vm._s(_vm.getMidRoute(_vm.tourData.destination)) +
-                "\n            " +
+                "\n      " +
                 _vm._s(_vm.tourData.end_city) +
-                " (End)\n        "
+                " (End)\n    "
             )
           ])
         ]
@@ -13314,13 +13443,17 @@ var render = function() {
         { staticClass: "row gx-0", staticStyle: { position: "relative" } },
         [
           _c("div", [
-            _c("p", { staticClass: "card-text mb-1 ps-3 company-name" }, [
-              _vm._v(
-                "\n                " +
-                  _vm._s(_vm.tourData.company_name) +
-                  "\n            "
-              )
-            ]),
+            _c(
+              "p",
+              {
+                staticClass: "card-text mb-1 ps-3 company-name  text-capitalize"
+              },
+              [
+                _vm._v(
+                  "\n        " + _vm._s(_vm.tourData.company_name) + "\n      "
+                )
+              ]
+            ),
             _vm._v(" "),
             _c(
               "p",
@@ -13331,23 +13464,27 @@ var render = function() {
                 }),
                 _vm._v(" "),
                 _vm.tourData.avg_review == "5"
-                  ? _c("strong", [_vm._v("\n                     5.0/5 ")])
+                  ? _c("strong", [_vm._v("  5.0/5 ")])
+                  : _vm.tourData.avg_review == "4"
+                  ? _c("strong", [_vm._v("\n           4.0/5 ")])
+                  : _vm.tourData.avg_review == "3"
+                  ? _c("strong", [_vm._v("\n           3.0/5 ")])
+                  : _vm.tourData.avg_review == "2"
+                  ? _c("strong", [_vm._v("\n           2.0/5 ")])
+                  : _vm.tourData.avg_review == "1"
+                  ? _c("strong", [_vm._v("\n           1.0/5 ")])
                   : _c("strong", [
-                      _vm._v(
-                        "\n                     " +
-                          _vm._s(_vm.tourData.avg_review) +
-                          "/5 "
-                      )
+                      _vm._v("  " + _vm._s(_vm.tourData.avg_review) + "/5 ")
                     ]),
-                _vm._v("\n                (\n                "),
-                _vm.tourData.sum_review == 1
+                _vm._v("\n        (\n        "),
+                _vm.tourData.num_review == 1
                   ? _c("span", [
-                      _vm._v(_vm._s(_vm.tourData.sum_review) + " Review")
+                      _vm._v(_vm._s(_vm.tourData.num_review) + " Review")
                     ])
                   : _c("span", [
-                      _vm._v(_vm._s(_vm.tourData.sum_review) + " Reviews")
+                      _vm._v(_vm._s(_vm.tourData.num_review) + " Reviews")
                     ]),
-                _vm._v("\n                )\n            ")
+                _vm._v("\n        )\n      ")
               ],
               1
             )
@@ -13425,7 +13562,7 @@ var render = function() {
           _c("div", { staticClass: "row gx-0" }, [
             _c(
               "div",
-              { staticClass: "col-lg-9 col-md-12 content-section px-4" },
+              { staticClass: "col-lg-8 col-md-12 content-section px-4" },
               [
                 _vm.loading
                   ? _c("div", [_c("content-placeholders-heading")], 1)
@@ -13439,7 +13576,7 @@ var render = function() {
                         _c("h3", { staticClass: "section-title pt-3" }, [
                           _vm._v(
                             "\n                " +
-                              _vm._s(_vm.destinationData.title) +
+                              _vm._s(_vm.destinationData.sub_title) +
                               "\n              "
                           )
                         ]),
@@ -13467,51 +13604,99 @@ var render = function() {
                           {
                             key: index,
                             staticClass: "pt-5",
-                            attrs: { id: "section" + index }
+                            attrs: { id: _vm.hashString(item.title) }
                           },
                           [
-                            _c("div", { staticClass: "pt-5" }, [
-                              _c(
-                                "h3",
-                                { staticClass: "section-title-inner pb-3" },
-                                [
-                                  _vm._v(
-                                    "\n                    Section " +
-                                      _vm._s(index + 1) +
-                                      ". " +
-                                      _vm._s(item.title) +
-                                      "\n                  "
-                                  )
-                                ]
-                              )
-                            ]),
-                            _vm._v(" "),
-                            _c("div", {
-                              staticClass: "section",
-                              domProps: { innerHTML: _vm._s(item.description) }
-                            }),
-                            _vm._v(" "),
-                            item.button_name != null && item.button_url != null
-                              ? _c("div", { staticClass: "text-start mt-3" }, [
-                                  _c(
-                                    "a",
-                                    {
-                                      staticClass: "btn btn-danger",
-                                      attrs: {
-                                        href: item.button_url,
-                                        target: "_blank"
-                                      }
-                                    },
+                            _c("div", { attrs: { id: "section" + index } }, [
+                              _c("div", { staticClass: "pt-5" }, [
+                                _c(
+                                  "h3",
+                                  { staticClass: "section-title-inner pb-3" },
+                                  [
+                                    _vm._v(
+                                      "\n                    " +
+                                        _vm._s(item.title) +
+                                        "\n                  "
+                                    )
+                                  ]
+                                )
+                              ]),
+                              _vm._v(" "),
+                              _c("div", { key: _vm.read_update }, [
+                                _c("div", {
+                                  staticClass: "section",
+                                  class:
+                                    _vm.tag_counts[index] > 2 &&
+                                    !_vm.read_status[index]
+                                      ? "read-more"
+                                      : "",
+                                  domProps: {
+                                    innerHTML: _vm._s(item.description)
+                                  }
+                                }),
+                                _vm._v(" "),
+                                _vm.tag_counts[index] > 2 &&
+                                !_vm.read_status[index]
+                                  ? _c(
+                                      "div",
+                                      {
+                                        staticClass:
+                                          "text-primary read-more-button",
+                                        on: {
+                                          click: function($event) {
+                                            return _vm.readMore(index)
+                                          }
+                                        }
+                                      },
+                                      [_vm._v("Read more")]
+                                    )
+                                  : _vm._e(),
+                                _vm._v(" "),
+                                _vm.tag_counts[index] > 2 &&
+                                _vm.read_status[index]
+                                  ? _c(
+                                      "div",
+                                      {
+                                        staticClass:
+                                          "text-primary read-more-button",
+                                        on: {
+                                          click: function($event) {
+                                            return _vm.readMore(index)
+                                          }
+                                        }
+                                      },
+                                      [_vm._v("Read less")]
+                                    )
+                                  : _vm._e()
+                              ]),
+                              _vm._v(" "),
+                              item.button_name != null &&
+                              item.button_url != null
+                                ? _c(
+                                    "div",
+                                    { staticClass: "text-start mt-3" },
                                     [
-                                      _vm._v(
-                                        "\n                    " +
-                                          _vm._s(item.button_name) +
-                                          "\n                  "
+                                      _c(
+                                        "a",
+                                        {
+                                          staticClass: "btn btn-danger",
+                                          attrs: {
+                                            href: item.button_url,
+                                            target: "_blank"
+                                          }
+                                        },
+                                        [
+                                          _vm._v(
+                                            "\n                    " +
+                                              _vm._s(item.button_name) +
+                                              "\n                  "
+                                          )
+                                        ]
                                       )
                                     ]
                                   )
-                                ])
-                              : _vm._e()
+                                : _vm._e()
+                            ])
                           ]
                         )
                       }),
@@ -13524,7 +13709,7 @@ var render = function() {
               "div",
               {
                 staticClass:
-                  "col-lg-3 col-md-12 quick-link-section px-4 position-relative"
+                  "col-lg-4 col-md-12 quick-link-section px-4 position-relative"
               },
               [
                 _c(
@@ -13593,23 +13778,70 @@ var render = function() {
                                     "a",
                                     {
                                       staticClass: "text-primary",
-                                      attrs: { href: "#section" + index }
+                                      on: {
+                                        click: function($event) {
+                                          _vm.customScroll(
+                                            _vm.hashString(content.title)
+                                          )
+                                        }
+                                      }
                                     },
-                                    [
-                                      _vm._v(
-                                        "Section " +
-                                          _vm._s(index + 1) +
-                                          ". " +
-                                          _vm._s(content.title)
-                                      )
-                                    ]
+                                    [_vm._v(_vm._s(content.title))]
                                   )
                                 ]
                               )
                             }),
                             0
                           )
-                    ])
+                    ]),
+                    _vm._v(" "),
+                    _vm.destinationData != null &&
+                    _vm.destinationData.destination.length > 0
+                      ? _c(
+                          "div",
+                          { staticClass: "w-100 p-3 blog-category mt-5" },
+                          [
+                            _c(
+                              "h6",
+                              {
+                                staticClass: "fw-bolder text-center text-danger"
+                              },
+                              [
+                                _vm._v(
+                                  "\n                  Popular Links\n                "
+                                )
+                              ]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "ul",
+                              { staticClass: "m-0 ps-3" },
+                              _vm._l(_vm.destinationData.destination, function(
+                                item,
+                                index
+                              ) {
+                                return _c(
+                                  "li",
+                                  { key: "Destination" + index },
+                                  [
+                                    _c(
+                                      "a",
+                                      {
+                                        staticClass: "text-primary",
+                                        attrs: {
+                                          href: "/destination/" + item.post_slug
+                                        }
+                                      },
+                                      [_vm._v(_vm._s(item.title))]
+                                    )
+                                  ]
+                                )
+                              }),
+                              0
+                            )
+                          ]
+                        )
+                      : _vm._e()
                   ]
                 )
               ]
@@ -13618,25 +13850,32 @@ var render = function() {
         ])
       ]),
       _vm._v(" "),
-      _vm._m(0),
-      _vm._v(" "),
-      _vm.popularTours != null
-        ? _c(
-            "div",
-            { staticClass: "row gx-0" },
-            _vm._l(_vm.popularTours.slice(0, 3), function(item, index) {
-              return _c(
-                "div",
-                { key: index, staticClass: "col-lg-4 col-md-6 col-xs-12" },
-                [_c("TourCard", { attrs: { tourData: item } })],
-                1
-              )
-            }),
-            0
-          )
-        : _vm._e(),
-      _vm._v(" "),
-      _vm._m(1)
+      _vm.destinationData != null && _vm.destinationData.package.length > 0
+        ? _c("div", [
+            _vm._m(0),
+            _vm._v(" "),
+            _vm.destinationData != null
+              ? _c(
+                  "div",
+                  { staticClass: "row gx-0" },
+                  _vm._l(_vm.destinationData.package, function(item, index) {
+                    return _c(
+                      "div",
+                      {
+                        key: index,
+                        staticClass: "col-lg-4 col-md-6 col-xs-12"
+                      },
+                      [_c("TourCard", { attrs: { tourData: item } })],
+                      1
+                    )
+                  }),
+                  0
+                )
+              : _vm._e(),
+            _vm._v(" "),
+            _vm._m(1)
+          ])
+        : _vm._e()
     ])
   ])
 }
@@ -13658,7 +13897,7 @@ var staticRenderFns = [
         "a",
         { staticClass: "btn btn-danger", attrs: { href: "/our-tours" } },
         [
-          _vm._v("\n        View All Packages "),
+          _vm._v("\n          View All Packages "),
           _c("span", { staticClass: "fa fa-angle-right ms-2" })
         ]
       )
@@ -13667,6 +13906,568 @@ var staticRenderFns = [
 ]
 render._withStripped = true
 
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-scrollto/vue-scrollto.js":
+/*!***************************************************!*\
+  !*** ./node_modules/vue-scrollto/vue-scrollto.js ***!
+  \***************************************************/
+/***/ (function(module) {
+
+/*!
+  * vue-scrollto v2.20.0
+  * (c) 2019 Randjelovic Igor
+  * @license MIT
+  */
+(function (global, factory) {
+   true ? module.exports = factory() :
+  0;
+}(this, (function () { 'use strict';
+
+  function _typeof(obj) {
+    "@babel/helpers - typeof";
+
+    if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") {
+      _typeof = function (obj) {
+        return typeof obj;
+      };
+    } else {
+      _typeof = function (obj) {
+        return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj;
+      };
+    }
+
+    return _typeof(obj);
+  }
+
+  function _extends() {
+    _extends = Object.assign || function (target) {
+      for (var i = 1; i < arguments.length; i++) {
+        var source = arguments[i];
+
+        for (var key in source) {
+          if (Object.prototype.hasOwnProperty.call(source, key)) {
+            target[key] = source[key];
+          }
+        }
+      }
+
+      return target;
+    };
+
+    return _extends.apply(this, arguments);
+  }
+
+  /**
+   * https://github.com/gre/bezier-easing
+   * BezierEasing - use bezier curve for transition easing function
+   * by Gaëtan Renaudeau 2014 - 2015 – MIT License
+   */
+
+  // These values are established by empiricism with tests (tradeoff: performance VS precision)
+  var NEWTON_ITERATIONS = 4;
+  var NEWTON_MIN_SLOPE = 0.001;
+  var SUBDIVISION_PRECISION = 0.0000001;
+  var SUBDIVISION_MAX_ITERATIONS = 10;
+
+  var kSplineTableSize = 11;
+  var kSampleStepSize = 1.0 / (kSplineTableSize - 1.0);
+
+  var float32ArraySupported = typeof Float32Array === 'function';
+
+  function A (aA1, aA2) { return 1.0 - 3.0 * aA2 + 3.0 * aA1; }
+  function B (aA1, aA2) { return 3.0 * aA2 - 6.0 * aA1; }
+  function C (aA1)      { return 3.0 * aA1; }
+
+  // Returns x(t) given t, x1, and x2, or y(t) given t, y1, and y2.
+  function calcBezier (aT, aA1, aA2) { return ((A(aA1, aA2) * aT + B(aA1, aA2)) * aT + C(aA1)) * aT; }
+
+  // Returns dx/dt given t, x1, and x2, or dy/dt given t, y1, and y2.
+  function getSlope (aT, aA1, aA2) { return 3.0 * A(aA1, aA2) * aT * aT + 2.0 * B(aA1, aA2) * aT + C(aA1); }
+
+  function binarySubdivide (aX, aA, aB, mX1, mX2) {
+    var currentX, currentT, i = 0;
+    do {
+      currentT = aA + (aB - aA) / 2.0;
+      currentX = calcBezier(currentT, mX1, mX2) - aX;
+      if (currentX > 0.0) {
+        aB = currentT;
+      } else {
+        aA = currentT;
+      }
+    } while (Math.abs(currentX) > SUBDIVISION_PRECISION && ++i < SUBDIVISION_MAX_ITERATIONS);
+    return currentT;
+  }
+
+  function newtonRaphsonIterate (aX, aGuessT, mX1, mX2) {
+   for (var i = 0; i < NEWTON_ITERATIONS; ++i) {
+     var currentSlope = getSlope(aGuessT, mX1, mX2);
+     if (currentSlope === 0.0) {
+       return aGuessT;
+     }
+     var currentX = calcBezier(aGuessT, mX1, mX2) - aX;
+     aGuessT -= currentX / currentSlope;
+   }
+   return aGuessT;
+  }
+
+  function LinearEasing (x) {
+    return x;
+  }
+
+  var src = function bezier (mX1, mY1, mX2, mY2) {
+    if (!(0 <= mX1 && mX1 <= 1 && 0 <= mX2 && mX2 <= 1)) {
+      throw new Error('bezier x values must be in [0, 1] range');
+    }
+
+    if (mX1 === mY1 && mX2 === mY2) {
+      return LinearEasing;
+    }
+
+    // Precompute samples table
+    var sampleValues = float32ArraySupported ? new Float32Array(kSplineTableSize) : new Array(kSplineTableSize);
+    for (var i = 0; i < kSplineTableSize; ++i) {
+      sampleValues[i] = calcBezier(i * kSampleStepSize, mX1, mX2);
+    }
+
+    function getTForX (aX) {
+      var intervalStart = 0.0;
+      var currentSample = 1;
+      var lastSample = kSplineTableSize - 1;
+
+      for (; currentSample !== lastSample && sampleValues[currentSample] <= aX; ++currentSample) {
+        intervalStart += kSampleStepSize;
+      }
+      --currentSample;
+
+      // Interpolate to provide an initial guess for t
+      var dist = (aX - sampleValues[currentSample]) / (sampleValues[currentSample + 1] - sampleValues[currentSample]);
+      var guessForT = intervalStart + dist * kSampleStepSize;
+
+      var initialSlope = getSlope(guessForT, mX1, mX2);
+      if (initialSlope >= NEWTON_MIN_SLOPE) {
+        return newtonRaphsonIterate(aX, guessForT, mX1, mX2);
+      } else if (initialSlope === 0.0) {
+        return guessForT;
+      } else {
+        return binarySubdivide(aX, intervalStart, intervalStart + kSampleStepSize, mX1, mX2);
+      }
+    }
+
+    return function BezierEasing (x) {
+      // Because JavaScript number are imprecise, we should guarantee the extremes are right.
+      if (x === 0) {
+        return 0;
+      }
+      if (x === 1) {
+        return 1;
+      }
+      return calcBezier(getTForX(x), mY1, mY2);
+    };
+  };
+
+  var easings = {
+    ease: [0.25, 0.1, 0.25, 1.0],
+    linear: [0.0, 0.0, 1.0, 1.0],
+    'ease-in': [0.42, 0.0, 1.0, 1.0],
+    'ease-out': [0.0, 0.0, 0.58, 1.0],
+    'ease-in-out': [0.42, 0.0, 0.58, 1.0]
+  };
+
+  // https://github.com/WICG/EventListenerOptions/blob/gh-pages/explainer.md#feature-detection
+  var supportsPassive = false;
+
+  try {
+    var opts = Object.defineProperty({}, 'passive', {
+      get: function get() {
+        supportsPassive = true;
+      }
+    });
+    window.addEventListener('test', null, opts);
+  } catch (e) {}
+
+  var _ = {
+    $: function $(selector) {
+      if (typeof selector !== 'string') {
+        return selector;
+      }
+
+      return document.querySelector(selector);
+    },
+    on: function on(element, events, handler) {
+      var opts = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : {
+        passive: false
+      };
+
+      if (!(events instanceof Array)) {
+        events = [events];
+      }
+
+      for (var i = 0; i < events.length; i++) {
+        element.addEventListener(events[i], handler, supportsPassive ? opts : false);
+      }
+    },
+    off: function off(element, events, handler) {
+      if (!(events instanceof Array)) {
+        events = [events];
+      }
+
+      for (var i = 0; i < events.length; i++) {
+        element.removeEventListener(events[i], handler);
+      }
+    },
+    cumulativeOffset: function cumulativeOffset(element) {
+      var top = 0;
+      var left = 0;
+
+      do {
+        top += element.offsetTop || 0;
+        left += element.offsetLeft || 0;
+        element = element.offsetParent;
+      } while (element);
+
+      return {
+        top: top,
+        left: left
+      };
+    }
+  };
+
+  var abortEvents = ['mousedown', 'wheel', 'DOMMouseScroll', 'mousewheel', 'keyup', 'touchmove'];
+  var defaults = {
+    container: 'body',
+    duration: 500,
+    lazy: true,
+    easing: 'ease',
+    offset: 0,
+    force: true,
+    cancelable: true,
+    onStart: false,
+    onDone: false,
+    onCancel: false,
+    x: false,
+    y: true
+  };
+  function setDefaults(options) {
+    defaults = _extends({}, defaults, options);
+  }
+  var scroller = function scroller() {
+    var element; // element to scroll to
+
+    var container; // container to scroll
+
+    var duration; // duration of the scrolling
+
+    var easing; // easing to be used when scrolling
+
+    var lazy; // checks the target position at each step
+
+    var offset; // offset to be added (subtracted)
+
+    var force; // force scroll, even if element is visible
+
+    var cancelable; // indicates if user can cancel the scroll or not.
+
+    var onStart; // callback when scrolling is started
+
+    var onDone; // callback when scrolling is done
+
+    var onCancel; // callback when scrolling is canceled / aborted
+
+    var x; // scroll on x axis
+
+    var y; // scroll on y axis
+
+    var initialX; // initial X of container
+
+    var targetX; // target X of container
+
+    var initialY; // initial Y of container
+
+    var targetY; // target Y of container
+
+    var diffX; // difference
+
+    var diffY; // difference
+
+    var abort; // is scrolling aborted
+
+    var cumulativeOffsetContainer;
+    var cumulativeOffsetElement;
+    var abortEv; // event that aborted scrolling
+
+    var abortFn = function abortFn(e) {
+      if (!cancelable) return;
+      abortEv = e;
+      abort = true;
+    };
+
+    var easingFn;
+    var timeStart; // time when scrolling started
+
+    var timeElapsed; // time elapsed since scrolling started
+
+    var progress; // progress
+
+    function scrollTop(container) {
+      var scrollTop = container.scrollTop;
+
+      if (container.tagName.toLowerCase() === 'body') {
+        // in firefox body.scrollTop always returns 0
+        // thus if we are trying to get scrollTop on a body tag
+        // we need to get it from the documentElement
+        scrollTop = scrollTop || document.documentElement.scrollTop;
+      }
+
+      return scrollTop;
+    }
+
+    function scrollLeft(container) {
+      var scrollLeft = container.scrollLeft;
+
+      if (container.tagName.toLowerCase() === 'body') {
+        // in firefox body.scrollLeft always returns 0
+        // thus if we are trying to get scrollLeft on a body tag
+        // we need to get it from the documentElement
+        scrollLeft = scrollLeft || document.documentElement.scrollLeft;
+      }
+
+      return scrollLeft;
+    }
+
+    function recalculateTargets() {
+      cumulativeOffsetContainer = _.cumulativeOffset(container);
+      cumulativeOffsetElement = _.cumulativeOffset(element);
+
+      if (x) {
+        targetX = cumulativeOffsetElement.left - cumulativeOffsetContainer.left + offset;
+        diffX = targetX - initialX;
+      }
+
+      if (y) {
+        targetY = cumulativeOffsetElement.top - cumulativeOffsetContainer.top + offset;
+        diffY = targetY - initialY;
+      }
+    }
+
+    function step(timestamp) {
+      if (abort) return done();
+      if (!timeStart) timeStart = timestamp; // When a site has a lot of media that can be loaded asynchronously,
+      // the targetY/targetX may end up in the wrong place during scrolling.
+      // So we will check this at each step
+
+      if (!lazy) {
+        recalculateTargets();
+      }
+
+      timeElapsed = timestamp - timeStart;
+      progress = Math.min(timeElapsed / duration, 1);
+      progress = easingFn(progress);
+      topLeft(container, initialY + diffY * progress, initialX + diffX * progress);
+      timeElapsed < duration ? window.requestAnimationFrame(step) : done();
+    }
+
+    function done() {
+      if (!abort) topLeft(container, targetY, targetX);
+      timeStart = false;
+
+      _.off(container, abortEvents, abortFn);
+
+      if (abort && onCancel) onCancel(abortEv, element);
+      if (!abort && onDone) onDone(element);
+    }
+
+    function topLeft(element, top, left) {
+      if (y) element.scrollTop = top;
+      if (x) element.scrollLeft = left;
+
+      if (element.tagName.toLowerCase() === 'body') {
+        // in firefox body.scrollTop doesn't scroll the page
+        // thus if we are trying to scrollTop on a body tag
+        // we need to scroll on the documentElement
+        if (y) document.documentElement.scrollTop = top;
+        if (x) document.documentElement.scrollLeft = left;
+      }
+    }
+
+    function scrollTo(target, _duration) {
+      var options = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {};
+
+      if (_typeof(_duration) === 'object') {
+        options = _duration;
+      } else if (typeof _duration === 'number') {
+        options.duration = _duration;
+      }
+
+      element = _.$(target);
+
+      if (!element) {
+        return console.warn('[vue-scrollto warn]: Trying to scroll to an element that is not on the page: ' + target);
+      }
+
+      container = _.$(options.container || defaults.container);
+      duration = options.hasOwnProperty('duration') ? options.duration : defaults.duration;
+      lazy = options.hasOwnProperty('lazy') ? options.lazy : defaults.lazy;
+      easing = options.easing || defaults.easing;
+      offset = options.hasOwnProperty('offset') ? options.offset : defaults.offset;
+      force = options.hasOwnProperty('force') ? options.force !== false : defaults.force;
+      cancelable = options.hasOwnProperty('cancelable') ? options.cancelable !== false : defaults.cancelable;
+      onStart = options.onStart || defaults.onStart;
+      onDone = options.onDone || defaults.onDone;
+      onCancel = options.onCancel || defaults.onCancel;
+      x = options.x === undefined ? defaults.x : options.x;
+      y = options.y === undefined ? defaults.y : options.y;
+
+      if (typeof offset === 'function') {
+        offset = offset(element, container);
+      }
+
+      initialX = scrollLeft(container);
+      initialY = scrollTop(container); // calculates cumulative offsets and targetX/Y + diffX/Y
+
+      recalculateTargets();
+      abort = false;
+
+      if (!force) {
+        // When the container is the default (body) we need to use the viewport
+        // height, not the entire body height
+        var containerHeight = container.tagName.toLowerCase() === 'body' ? document.documentElement.clientHeight || window.innerHeight : container.offsetHeight;
+        var containerTop = initialY;
+        var containerBottom = containerTop + containerHeight;
+        var elementTop = targetY - offset;
+        var elementBottom = elementTop + element.offsetHeight;
+
+        if (elementTop >= containerTop && elementBottom <= containerBottom) {
+          // make sure to call the onDone callback even if there is no need to
+          // scroll the container. Fixes #111 (ref #118)
+          if (onDone) onDone(element);
+          return;
+        }
+      }
+
+      if (onStart) onStart(element);
+
+      if (!diffY && !diffX) {
+        if (onDone) onDone(element);
+        return;
+      }
+
+      if (typeof easing === 'string') {
+        easing = easings[easing] || easings['ease'];
+      }
+
+      easingFn = src.apply(src, easing);
+
+      _.on(container, abortEvents, abortFn, {
+        passive: true
+      });
+
+      window.requestAnimationFrame(step);
+      return function () {
+        abortEv = null;
+        abort = true;
+      };
+    }
+
+    return scrollTo;
+  };
+
+  var _scroller = scroller();
+
+  var bindings = []; // store binding data
+
+  function deleteBinding(el) {
+    for (var i = 0; i < bindings.length; ++i) {
+      if (bindings[i].el === el) {
+        bindings.splice(i, 1);
+        return true;
+      }
+    }
+
+    return false;
+  }
+
+  function findBinding(el) {
+    for (var i = 0; i < bindings.length; ++i) {
+      if (bindings[i].el === el) {
+        return bindings[i];
+      }
+    }
+  }
+
+  function getBinding(el) {
+    var binding = findBinding(el);
+
+    if (binding) {
+      return binding;
+    }
+
+    bindings.push(binding = {
+      el: el,
+      binding: {}
+    });
+    return binding;
+  }
+
+  function handleClick(e) {
+    var ctx = getBinding(this).binding;
+    if (!ctx.value) return;
+    e.preventDefault();
+
+    if (typeof ctx.value === 'string') {
+      return _scroller(ctx.value);
+    }
+
+    _scroller(ctx.value.el || ctx.value.element, ctx.value);
+  }
+
+  var directiveHooks = {
+    bind: function bind(el, binding) {
+      getBinding(el).binding = binding;
+
+      _.on(el, 'click', handleClick);
+    },
+    unbind: function unbind(el) {
+      deleteBinding(el);
+
+      _.off(el, 'click', handleClick);
+    },
+    update: function update(el, binding) {
+      getBinding(el).binding = binding;
+    }
+  };
+  var VueScrollTo = {
+    bind: directiveHooks.bind,
+    unbind: directiveHooks.unbind,
+    update: directiveHooks.update,
+    beforeMount: directiveHooks.bind,
+    unmounted: directiveHooks.unbind,
+    updated: directiveHooks.update,
+    scrollTo: _scroller,
+    bindings: bindings
+  };
+
+  var install = function install(Vue, options) {
+    if (options) setDefaults(options);
+    Vue.directive('scroll-to', VueScrollTo);
+    var properties = Vue.config.globalProperties || Vue.prototype;
+    properties.$scrollTo = VueScrollTo.scrollTo;
+  };
+
+  if (typeof window !== 'undefined' && window.Vue) {
+    window.VueScrollTo = VueScrollTo;
+    window.VueScrollTo.setDefaults = setDefaults;
+    window.VueScrollTo.scroller = scroller;
+    if (window.Vue.use) window.Vue.use(install);
+  }
+
+  VueScrollTo.install = install;
+
+  return VueScrollTo;
+
+})));
 
 
 /***/ })

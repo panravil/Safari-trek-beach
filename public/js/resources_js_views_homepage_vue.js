@@ -45,7 +45,17 @@ __webpack_require__.r(__webpack_exports__);
     return {};
   },
   created: function created() {},
-  methods: {}
+  methods: {
+    toInnerPage: function toInnerPage() {
+      var routeData = this.$router.resolve({
+        name: "Blog Inner Page",
+        params: {
+          slug: this.blog.post_slug
+        }
+      });
+      window.open(routeData.href, "_blank");
+    }
+  }
 });
 
 /***/ }),
@@ -224,6 +234,12 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
  // import { mapState, mapGetters, mapMutations } from "vuex";
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
@@ -239,9 +255,21 @@ __webpack_require__.r(__webpack_exports__);
   },
   computed: {},
   data: function data() {
-    return {};
+    return {// windowWidth: window.innerWidth
+    };
   },
-  created: function created() {},
+  created: function created() {
+    var _this = this;
+
+    window.onresize = function () {
+      _this.windowWidth = window.innerWidth;
+    };
+  },
+  // mounted() {
+  //     window.onresize = () => {
+  //         this.windowWidth = window.innerWidth
+  //     }
+  // },
   methods: {
     getMidRoute: function getMidRoute(destination) {
       if (destination == undefined || destination == null) return "";
@@ -249,9 +277,17 @@ __webpack_require__.r(__webpack_exports__);
 
       for (var i = 0; i < destination.length; i++) {
         route_data = route_data + destination[i] + ", ";
-      }
+      } // if ( this.windowWidth > 1400 ) {
+      //   if (route_data.length > 110) return route_data.substr(0, 110) + "...";
+      //   else return route_data;
+      // } else if( this.windowWidth > 1200 ) {
+      //   if (route_data.length > 80) return route_data.substr(0, 80) + "...";
+      //   else return route_data;
+      // } else {
+      // }
 
-      if (route_data.length > 60) return route_data.substr(0, 60) + "...";else return route_data;
+
+      if (route_data.length > 70) return route_data.substr(0, 70) + "...";else return route_data;
     },
     getTourLevel: function getTourLevel(level) {
       if (level == undefined || level == null) return "";
@@ -715,6 +751,153 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -733,7 +916,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     return {
       visible_whereto_dropdown: false,
       visible_traveler_dropdown: false,
-      adults_number: 1,
+      adults_number: 0,
       children_number: 0,
       traveler_number: "",
       start_date: "",
@@ -750,28 +933,9 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       highlighted: {
         dates: [new Date()]
       },
-      // options: [
-      //   "- Age -",
-      //   "17 Years",
-      //   "16 Years",
-      //   "15 Years",
-      //   "14 Years",
-      //   "13 Years",
-      //   "12 Years",
-      //   "11 Years",
-      //   "10 Years",
-      //   "9 Years",
-      //   "8 Years",
-      //   "7 Years",
-      //   "6 Years",
-      //   "5 Years",
-      //   "4 Years",
-      //   "2 Years",
-      //   "1 Year",
-      //   "0 Years",
-      // ],
       where_to_search: "",
-      search_result: []
+      search_result: [],
+      whyus_value: 0
     };
   },
   computed: _objectSpread({}, (0,vuex__WEBPACK_IMPORTED_MODULE_6__.mapGetters)({
@@ -780,7 +944,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     popularBlogs: "blogController/popularBlogs",
     loading: "tourcard_loading",
     blog_loading: "blogcard_loading",
-    where_to_list: "tourController/tourActivity",
+    where_to_list_state: "tourController/tourActivity",
     where_to_search_state: "tourController/where_to_search",
     start_date_state: "tourController/start_date",
     adults_number_state: "tourController/adults_number",
@@ -788,7 +952,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     traveler_number_state: "tourController/traveler_number"
   })),
   created: function created() {
-    this.search_result = this.where_to_list;
     this.getTourActivity();
     this.where_to_search = this.where_to_search_state;
     this.traveler_number = this.traveler_number_state;
@@ -836,7 +999,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     where_to_search: function where_to_search() {
       var _this = this;
 
-      if (this.where_to_search) {
+      if (this.where_to_search && this.where_to_list != undefined) {
         this.search_result = this.where_to_list.filter(function (item) {
           return _this.where_to_search.toLowerCase().split(" ").every(function (v) {
             return item.title.toLowerCase().includes(v);
@@ -849,7 +1012,39 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
   },
   methods: {
     getTourActivity: function getTourActivity() {
-      this.$store.dispatch("tourController/getTourActivity").then(function () {});
+      var _this2 = this;
+
+      this.$store.dispatch("tourController/getTourActivity").then(function () {
+        var first_activity = [{
+          "title": "Serengeti National Park",
+          "input_id": "serengeti-national-park"
+        }, {
+          "title": "Mount Kilimanjaro",
+          "input_id": "mount-kilimanjaro"
+        }, {
+          "title": "Zanzibar",
+          "input_id": "zanzibar"
+        }, {
+          "title": "Ngorongoro Crater",
+          "input_id": "ngorongoro-crater"
+        }, {
+          "title": "Tarangire National Park",
+          "input_id": "tarangire-national-park"
+        }, {
+          "title": "Ruaha National Park",
+          "input_id": "ruaha-national-park"
+        }];
+        var ar = _this2.where_to_list_state;
+
+        for (var i = 0; i < ar.length; i++) {
+          if (ar[i].title == "Serengeti National Park" || ar[i].title == "Mount Kilimanjaro" || ar[i].title == "Ngorongoro Crater" || ar[i].title == "Tarangire National Park" || ar[i].title == "Zanzibar" || ar[i].title == "Ruaha National Park") {
+            ar.splice(i, 1);
+          }
+        }
+
+        _this2.where_to_list = first_activity.concat(ar);
+        _this2.search_result = _this2.where_to_list;
+      });
     },
     getTourFilter: function getTourFilter() {
       this.$store.dispatch("tourController/getTourFilter");
@@ -858,7 +1053,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       this.$store.dispatch("blogController/getPopularBlogs");
     },
     getPopularTours: function getPopularTours() {
-      var _this2 = this;
+      var _this3 = this;
 
       return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee() {
         return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee$(_context) {
@@ -866,7 +1061,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
             switch (_context.prev = _context.next) {
               case 0:
                 _context.next = 2;
-                return _this2.$store.dispatch("tourController/getPopularTours").then(function () {// console.log('tag', this.popularTours)
+                return _this3.$store.dispatch("tourController/getPopularTours").then(function () {// console.log('tag', this.popularTours)
                 });
 
               case 2:
@@ -882,7 +1077,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     },
     traveler_number_calc: function traveler_number_calc() {
       var traveler = this.adults_number + this.children_number;
-      if (traveler == 1) this.traveler_number = traveler + " Traveler";else this.traveler_number = traveler + " Travelers";
+      if (traveler == 1) this.traveler_number = traveler + " Traveler";else if (traveler == 0) this.traveler_number = "";else this.traveler_number = traveler + " Travelers";
     },
     closeWhereToDropDown: function closeWhereToDropDown() {
       this.visible_whereto_dropdown = false;
@@ -912,23 +1107,65 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     },
     setTravelerInit: function setTravelerInit() {
       this.traveler_number = "";
-      this.adults_number = 1;
+      this.adults_number = 0;
       this.children_number = 0;
     },
     initStartDate: function initStartDate() {
       this.start_date = "";
     },
+    prevClick: function prevClick() {
+      if (this.whyus_value == 0) {
+        this.whyus_value = 7;
+      } else {
+        this.whyus_value--;
+      }
+    },
+    nextClick: function nextClick() {
+      if (this.whyus_value == 7) {
+        this.whyus_value = 0;
+      } else {
+        this.whyus_value++;
+      }
+    },
+    toDestinationInner: function toDestinationInner(slug) {
+      var routeData = this.$router.resolve({
+        name: "Destination Package",
+        params: {
+          slug: slug
+        }
+      });
+      window.open(routeData.href, "_blank");
+    },
     searchButton: function searchButton() {
       var searchData = {};
       searchData = {
-        'where_to_search': this.where_to_search,
-        'start_date': this.start_date,
-        'adults_number': this.adults_number,
-        'children_number': this.children_number,
-        'traveler_number': this.traveler_number
+        where_to_search: this.where_to_search,
+        start_date: this.start_date,
+        adults_number: this.adults_number,
+        children_number: this.children_number,
+        traveler_number: this.traveler_number
       };
       this.$store.dispatch("tourController/setSearchData", searchData);
-      this.$router.push('/our-tours');
+      var url_query = {
+        destination: this.where_to_search
+      };
+
+      if (url_query["destination"] != "") {
+        var destination_item = this.where_to_list.find(function (el) {
+          return el.title == url_query["destination"];
+        });
+
+        if (destination_item != undefined) {
+          url_query["destination"] = destination_item.input_id;
+        } else {
+          url_query["destination"] = url_query["destination"].split(" ").join("_");
+          url_query["destination"] = url_query["destination"].split("&").join("~");
+        }
+
+        this.$router.push("/our-tours/" + url_query["destination"]);
+      } else {
+        this.$router.push("/our-tours");
+      }
     }
   }
 });
@@ -976,7 +1213,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n#tour-card .price[data-v-5583021a] {\n    width: 80px;\n    color: #0f6d24;\n    right: 5px;\n    bottom: 0px;\n    top: 0px;\n    padding-left: 2px;\n    border-left: 1px dotted black;\n    position: absolute;\n    font-size: 18px;\n    display: flex;\n    align-items: center;\n    justify-content: center;\n}\n#tour-card .tag-image[data-v-5583021a] {\n    top: -12px;\n    position: absolute;\n    right: 10px;\n}\n#tour-card .bg-image[data-v-5583021a] {\n    background-size: cover;\n    position: relative;\n    width: 100%;\n    height: 0;\n    padding-top: 56.25%;\n}\n#tour-card .tour_title[data-v-5583021a] {\n    width: 100%;\n    position: absolute;\n    left: 0;\n    bottom: 0;\n    right: 0;\n    text-align: left;\n    padding: 15px 10px;\n    background: rgba(0, 0, 0, 0.4);\n    background: linear-gradient(\n        to bottom,\n        rgba(0, 0, 0, 0) 0%,\n        rgba(0, 0, 0, 0.5) 45%,\n        rgba(0, 0, 0, 0.9) 100%\n    );\n    color: white;\n    text-align: center;\n    font-weight: 700;\n    font-size: 20px;\n    margin: 40px 0 0px 0;\n    font-family: \"Montserrat\", sans-serif;\n}\n#tour-card.card[data-v-5583021a] {\n    transition: box-shadow 0.2s ease-in-out, transform 0.3s ease-in-out;\n    box-shadow: 0px 2px 3px rgb(0 0 0 / 18%);\n    cursor: pointer;\n}\n#tour-card.card[data-v-5583021a]:hover {\n    box-shadow: 0px 1px 13px #666;\n}\n.trip-route[data-v-5583021a] {\n    min-height: 75px;\n}\n.company-name[data-v-5583021a] {\n    font-size: 18px;\n}\n@media (max-width: 1200px) {\n.company-name[data-v-5583021a] {\n        font-size: 14px;\n        padding-left: 8px !important;\n}\n.company-review[data-v-5583021a]{\n        font-size: 14px;\n        padding-left: 8px !important;\n}\n#tour-card .price[data-v-5583021a] {\n        font-size: 16px;\n}\n}\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n#tour-card .price[data-v-5583021a] {\n  width: 90px;\n  color: #0f6d24;\n  right: 5px;\n  bottom: 0px;\n  top: 0px;\n  padding-left: 2px;\n  border-left: 1px dotted black;\n  position: absolute;\n  font-size: 18px;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n}\n#tour-card .tag-image[data-v-5583021a] {\n  top: -12px;\n  position: absolute;\n  right: 10px;\n}\n#tour-card .bg-image[data-v-5583021a] {\n  background-size: cover;\n  position: relative;\n  width: 100%;\n  height: 0;\n  padding-top: 56.25%;\n}\n#tour-card .tour_title[data-v-5583021a] {\n  width: 100%;\n  position: absolute;\n  left: 0;\n  bottom: 0;\n  right: 0;\n  text-align: left;\n  padding: 15px 10px;\n  background: rgba(0, 0, 0, 0.4);\n  background: linear-gradient(\n    to bottom,\n    rgba(0, 0, 0, 0) 0%,\n    rgba(0, 0, 0, 0.5) 45%,\n    rgba(0, 0, 0, 0.9) 100%\n  );\n  color: white;\n  text-align: center;\n  font-weight: 700;\n  font-size: 20px;\n  margin: 40px 0 0px 0;\n  font-family: \"Montserrat\", sans-serif;\n}\n#tour-card.card[data-v-5583021a] {\n  transition: box-shadow 0.2s ease-in-out, transform 0.3s ease-in-out;\n  box-shadow: 0px 2px 3px rgb(0 0 0 / 18%);\n  cursor: pointer;\n}\n#tour-card.card[data-v-5583021a]:hover {\n  box-shadow: 0px 1px 13px #666;\n}\n.card-body p.card-text[data-v-5583021a] {\n  font-size: 15px;\n  line-height: 20px;\n}\np.company-name[data-v-5583021a] {\n  font-size: 16px;\n}\n.trip-route[data-v-5583021a] {\n  min-height: 60px;\n}\n@media (max-width: 1200px) {\n.company-name[data-v-5583021a] {\n    font-size: 14px;\n    padding-left: 8px !important;\n}\n.company-review[data-v-5583021a] {\n    font-size: 14px;\n    padding-left: 8px !important;\n}\n#tour-card .price[data-v-5583021a] {\n    font-size: 16px;\n}\n}\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -1001,6 +1238,30 @@ __webpack_require__.r(__webpack_exports__);
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
 ___CSS_LOADER_EXPORT___.push([module.id, "\n.vue-content-placeholders-img,\n.vue-content-placeholders-text__line {\n    background: #c9c9c9 !important;\n}\n.vue-content-placeholders-img {\n  height: 200px !important;\n}\n\n", ""]);
+// Exports
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
+
+
+/***/ }),
+
+/***/ "./node_modules/css-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[2]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/views/homepage.vue?vue&type=style&index=0&id=b3be4e26&scoped=true&lang=css&":
+/*!******************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/css-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[2]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/views/homepage.vue?vue&type=style&index=0&id=b3be4e26&scoped=true&lang=css& ***!
+  \******************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+/***/ ((module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => __WEBPACK_DEFAULT_EXPORT__
+/* harmony export */ });
+/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../node_modules/css-loader/dist/runtime/api.js */ "./node_modules/css-loader/dist/runtime/api.js");
+/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0__);
+// Imports
+
+var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
+// Module
+___CSS_LOADER_EXPORT___.push([module.id, "\n.whyus-prev[data-v-b3be4e26],\n.whyus-next[data-v-b3be4e26] {\n  position: absolute;\n  top: 50%;\n  font-size: 40px;\n  cursor: pointer;\n  transform: translateY(-50%);\n}\n.whyus-prev[data-v-b3be4e26] {\n  left: 10%;\n}\n.whyus-next[data-v-b3be4e26] {\n  right: 10%;\n}\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -1094,6 +1355,36 @@ var update = _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js
 
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_css_loader_dist_cjs_js_clonedRuleSet_9_0_rules_0_use_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_9_0_rules_0_use_2_node_modules_vue_loader_lib_index_js_vue_loader_options_TourCardSkelecton_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_1__.default.locals || {});
+
+/***/ }),
+
+/***/ "./node_modules/style-loader/dist/cjs.js!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[2]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/views/homepage.vue?vue&type=style&index=0&id=b3be4e26&scoped=true&lang=css&":
+/*!**********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/style-loader/dist/cjs.js!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[2]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/views/homepage.vue?vue&type=style&index=0&id=b3be4e26&scoped=true&lang=css& ***!
+  \**********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => __WEBPACK_DEFAULT_EXPORT__
+/* harmony export */ });
+/* harmony import */ var _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! !../../../node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js */ "./node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js");
+/* harmony import */ var _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _node_modules_css_loader_dist_cjs_js_clonedRuleSet_9_0_rules_0_use_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_9_0_rules_0_use_2_node_modules_vue_loader_lib_index_js_vue_loader_options_homepage_vue_vue_type_style_index_0_id_b3be4e26_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! !!../../../node_modules/css-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[1]!../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[2]!../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./homepage.vue?vue&type=style&index=0&id=b3be4e26&scoped=true&lang=css& */ "./node_modules/css-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[2]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/views/homepage.vue?vue&type=style&index=0&id=b3be4e26&scoped=true&lang=css&");
+
+            
+
+var options = {};
+
+options.insert = "head";
+options.singleton = false;
+
+var update = _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default()(_node_modules_css_loader_dist_cjs_js_clonedRuleSet_9_0_rules_0_use_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_9_0_rules_0_use_2_node_modules_vue_loader_lib_index_js_vue_loader_options_homepage_vue_vue_type_style_index_0_id_b3be4e26_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_1__.default, options);
+
+
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_css_loader_dist_cjs_js_clonedRuleSet_9_0_rules_0_use_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_9_0_rules_0_use_2_node_modules_vue_loader_lib_index_js_vue_loader_options_homepage_vue_vue_type_style_index_0_id_b3be4e26_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_1__.default.locals || {});
 
 /***/ }),
 
@@ -1270,23 +1561,25 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => __WEBPACK_DEFAULT_EXPORT__
 /* harmony export */ });
-/* harmony import */ var _homepage_vue_vue_type_template_id_b3be4e26___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./homepage.vue?vue&type=template&id=b3be4e26& */ "./resources/js/views/homepage.vue?vue&type=template&id=b3be4e26&");
+/* harmony import */ var _homepage_vue_vue_type_template_id_b3be4e26_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./homepage.vue?vue&type=template&id=b3be4e26&scoped=true& */ "./resources/js/views/homepage.vue?vue&type=template&id=b3be4e26&scoped=true&");
 /* harmony import */ var _homepage_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./homepage.vue?vue&type=script&lang=js& */ "./resources/js/views/homepage.vue?vue&type=script&lang=js&");
-/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! !../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+/* harmony import */ var _homepage_vue_vue_type_style_index_0_id_b3be4e26_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./homepage.vue?vue&type=style&index=0&id=b3be4e26&scoped=true&lang=css& */ "./resources/js/views/homepage.vue?vue&type=style&index=0&id=b3be4e26&scoped=true&lang=css&");
+/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! !../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
 
 
 
+;
 
 
 /* normalize component */
-;
-var component = (0,_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__.default)(
+
+var component = (0,_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__.default)(
   _homepage_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__.default,
-  _homepage_vue_vue_type_template_id_b3be4e26___WEBPACK_IMPORTED_MODULE_0__.render,
-  _homepage_vue_vue_type_template_id_b3be4e26___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns,
+  _homepage_vue_vue_type_template_id_b3be4e26_scoped_true___WEBPACK_IMPORTED_MODULE_0__.render,
+  _homepage_vue_vue_type_template_id_b3be4e26_scoped_true___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns,
   false,
   null,
-  null,
+  "b3be4e26",
   null
   
 )
@@ -1417,6 +1710,19 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./resources/js/views/homepage.vue?vue&type=style&index=0&id=b3be4e26&scoped=true&lang=css&":
+/*!**************************************************************************************************!*\
+  !*** ./resources/js/views/homepage.vue?vue&type=style&index=0&id=b3be4e26&scoped=true&lang=css& ***!
+  \**************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_style_loader_dist_cjs_js_node_modules_css_loader_dist_cjs_js_clonedRuleSet_9_0_rules_0_use_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_9_0_rules_0_use_2_node_modules_vue_loader_lib_index_js_vue_loader_options_homepage_vue_vue_type_style_index_0_id_b3be4e26_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/style-loader/dist/cjs.js!../../../node_modules/css-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[1]!../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[2]!../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./homepage.vue?vue&type=style&index=0&id=b3be4e26&scoped=true&lang=css& */ "./node_modules/style-loader/dist/cjs.js!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[2]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/views/homepage.vue?vue&type=style&index=0&id=b3be4e26&scoped=true&lang=css&");
+
+
+/***/ }),
+
 /***/ "./resources/js/components/BlogCard.vue?vue&type=template&id=73695a3d&":
 /*!*****************************************************************************!*\
   !*** ./resources/js/components/BlogCard.vue?vue&type=template&id=73695a3d& ***!
@@ -1485,19 +1791,19 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./resources/js/views/homepage.vue?vue&type=template&id=b3be4e26&":
-/*!************************************************************************!*\
-  !*** ./resources/js/views/homepage.vue?vue&type=template&id=b3be4e26& ***!
-  \************************************************************************/
+/***/ "./resources/js/views/homepage.vue?vue&type=template&id=b3be4e26&scoped=true&":
+/*!************************************************************************************!*\
+  !*** ./resources/js/views/homepage.vue?vue&type=template&id=b3be4e26&scoped=true& ***!
+  \************************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "render": () => /* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_homepage_vue_vue_type_template_id_b3be4e26___WEBPACK_IMPORTED_MODULE_0__.render,
-/* harmony export */   "staticRenderFns": () => /* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_homepage_vue_vue_type_template_id_b3be4e26___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns
+/* harmony export */   "render": () => /* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_homepage_vue_vue_type_template_id_b3be4e26_scoped_true___WEBPACK_IMPORTED_MODULE_0__.render,
+/* harmony export */   "staticRenderFns": () => /* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_homepage_vue_vue_type_template_id_b3be4e26_scoped_true___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns
 /* harmony export */ });
-/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_homepage_vue_vue_type_template_id_b3be4e26___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./homepage.vue?vue&type=template&id=b3be4e26& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/views/homepage.vue?vue&type=template&id=b3be4e26&");
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_homepage_vue_vue_type_template_id_b3be4e26_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./homepage.vue?vue&type=template&id=b3be4e26&scoped=true& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/views/homepage.vue?vue&type=template&id=b3be4e26&scoped=true&");
 
 
 /***/ }),
@@ -1523,11 +1829,7 @@ var render = function() {
     {
       staticClass: "card mb-3 mx-2",
       attrs: { id: "blog-card" },
-      on: {
-        click: function($event) {
-          return _vm.$router.push("/blog-inner-page/" + _vm.blog.post_slug)
-        }
-      }
+      on: { click: _vm.toInnerPage }
     },
     [
       _c(
@@ -1621,25 +1923,25 @@ var render = function() {
       ? _c("span", { staticClass: "fa fa-star-half-full checked" })
       : _c("span", { staticClass: "fa fa-star checked" }),
     _vm._v(" "),
-    _vm.rating < 1
+    _vm.rating <= 1
       ? _c("span", { staticClass: "fa fa-star-o" })
       : _vm.rating < 1.5
       ? _c("span", { staticClass: "fa fa-star-half-full checked" })
       : _c("span", { staticClass: "fa fa-star checked" }),
     _vm._v(" "),
-    _vm.rating < 2
+    _vm.rating <= 2
       ? _c("span", { staticClass: "fa fa-star-o" })
       : _vm.rating < 2.5
       ? _c("span", { staticClass: "fa fa-star-half-full checked" })
       : _c("span", { staticClass: "fa fa-star checked" }),
     _vm._v(" "),
-    _vm.rating < 3
+    _vm.rating <= 3
       ? _c("span", { staticClass: "fa fa-star-o" })
       : _vm.rating < 3.5
       ? _c("span", { staticClass: "fa fa-star-half-full checked" })
       : _c("span", { staticClass: "fa fa-star checked" }),
     _vm._v(" "),
-    _vm.rating < 4
+    _vm.rating <= 4
       ? _c("span", { staticClass: "fa fa-star-o" })
       : _vm.rating < 4.5
       ? _c("span", { staticClass: "fa fa-star-half-full checked" })
@@ -1695,11 +1997,11 @@ var render = function() {
           _vm._v(" "),
           _c("div", { staticClass: "tour_title" }, [
             _vm._v(
-              "\n            " +
+              "\n      " +
                 _vm._s(_vm.tourData.no_of_day) +
                 "-Day " +
                 _vm._s(_vm.tourData.title) +
-                "\n        "
+                "\n    "
             )
           ]),
           _vm._v(" "),
@@ -1762,28 +2064,28 @@ var render = function() {
               ? _c("span", [
                   _vm._v(_vm._s(_vm.tourData.no_of_day - 1) + " Nights")
                 ])
-              : _c("span", [_vm._v("No Accommodation")])
+              : _c("span", [_vm._v("Not Included")])
           ]),
           _vm._v(" "),
           _c("p", { staticClass: "card-text mb-1" }, [
             _c("strong", [_vm._v(" Tour Type: ")]),
             _vm._v(
-              "\n            " +
+              "\n      " +
                 _vm._s(_vm.getTourLevel(_vm.tourData.level)) +
-                "\n        "
+                "\n    "
             )
           ]),
           _vm._v(" "),
-          _c("p", { staticClass: "card-text mb-1 trip-route" }, [
+          _c("p", { staticClass: "card-text trip-route mb-0" }, [
             _c("strong", [_vm._v(" Trip Route: ")]),
             _vm._v(
-              "\n            " +
+              "\n      " +
                 _vm._s(_vm.tourData.start_city) +
-                "(Start),\n            " +
+                " (Start),\n      " +
                 _vm._s(_vm.getMidRoute(_vm.tourData.destination)) +
-                "\n            " +
+                "\n      " +
                 _vm._s(_vm.tourData.end_city) +
-                " (End)\n        "
+                " (End)\n    "
             )
           ])
         ]
@@ -1794,13 +2096,17 @@ var render = function() {
         { staticClass: "row gx-0", staticStyle: { position: "relative" } },
         [
           _c("div", [
-            _c("p", { staticClass: "card-text mb-1 ps-3 company-name" }, [
-              _vm._v(
-                "\n                " +
-                  _vm._s(_vm.tourData.company_name) +
-                  "\n            "
-              )
-            ]),
+            _c(
+              "p",
+              {
+                staticClass: "card-text mb-1 ps-3 company-name  text-capitalize"
+              },
+              [
+                _vm._v(
+                  "\n        " + _vm._s(_vm.tourData.company_name) + "\n      "
+                )
+              ]
+            ),
             _vm._v(" "),
             _c(
               "p",
@@ -1811,23 +2117,27 @@ var render = function() {
                 }),
                 _vm._v(" "),
                 _vm.tourData.avg_review == "5"
-                  ? _c("strong", [_vm._v("\n                     5.0/5 ")])
+                  ? _c("strong", [_vm._v("  5.0/5 ")])
+                  : _vm.tourData.avg_review == "4"
+                  ? _c("strong", [_vm._v("\n           4.0/5 ")])
+                  : _vm.tourData.avg_review == "3"
+                  ? _c("strong", [_vm._v("\n           3.0/5 ")])
+                  : _vm.tourData.avg_review == "2"
+                  ? _c("strong", [_vm._v("\n           2.0/5 ")])
+                  : _vm.tourData.avg_review == "1"
+                  ? _c("strong", [_vm._v("\n           1.0/5 ")])
                   : _c("strong", [
-                      _vm._v(
-                        "\n                     " +
-                          _vm._s(_vm.tourData.avg_review) +
-                          "/5 "
-                      )
+                      _vm._v("  " + _vm._s(_vm.tourData.avg_review) + "/5 ")
                     ]),
-                _vm._v("\n                (\n                "),
-                _vm.tourData.sum_review == 1
+                _vm._v("\n        (\n        "),
+                _vm.tourData.num_review == 1
                   ? _c("span", [
-                      _vm._v(_vm._s(_vm.tourData.sum_review) + " Review")
+                      _vm._v(_vm._s(_vm.tourData.num_review) + " Review")
                     ])
                   : _c("span", [
-                      _vm._v(_vm._s(_vm.tourData.sum_review) + " Reviews")
+                      _vm._v(_vm._s(_vm.tourData.num_review) + " Reviews")
                     ]),
-                _vm._v("\n                )\n            ")
+                _vm._v("\n        )\n      ")
               ],
               1
             )
@@ -1910,10 +2220,10 @@ render._withStripped = true
 
 /***/ }),
 
-/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/views/homepage.vue?vue&type=template&id=b3be4e26&":
-/*!***************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/views/homepage.vue?vue&type=template&id=b3be4e26& ***!
-  \***************************************************************************************************************************************************************************************************************/
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/views/homepage.vue?vue&type=template&id=b3be4e26&scoped=true&":
+/*!***************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/views/homepage.vue?vue&type=template&id=b3be4e26&scoped=true& ***!
+  \***************************************************************************************************************************************************************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -1927,427 +2237,415 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", [
-    _c(
-      "section",
-      {
-        staticClass: "main-banner",
-        staticStyle: { "background-image": "url('/images/mainbanner2.png')" }
-      },
-      [
-        _c("div", { staticClass: "wrapper" }, [
-          _c(
-            "h2",
-            { staticClass: "text-center", attrs: { "data-wow-delay": "1" } },
-            [_vm._v("\n        Choose Best African Safaris\n      ")]
-          ),
-          _vm._v(" "),
-          _c("h4", { staticClass: "text-light text-center" }, [
-            _vm._v("Offered by Top Tour Operators")
-          ]),
-          _vm._v(" "),
-          _c(
-            "form",
-            {
-              staticClass: "row search-form",
-              attrs: { autocomplete: "off", method: "GET" }
-            },
-            [
-              _c("div", { staticClass: "row gx-0" }, [
-                _c(
-                  "div",
-                  {
-                    directives: [
-                      {
-                        name: "click-outside-dropdown",
-                        rawName: "v-click-outside-dropdown",
-                        value: _vm.closeWhereToDropDown,
-                        expression: "closeWhereToDropDown"
-                      }
-                    ],
-                    staticClass:
-                      "col-md-4 col-xs-12 mobile-filter position-relative onepixel-padding"
-                  },
-                  [
-                    _c(
-                      "div",
-                      {
-                        staticClass:
-                          "bg-white h-100 align-items-center d-flex justify-content-between px-3 shadow-sm"
-                      },
-                      [
-                        _c("span", { staticClass: "fa fa-map-marker" }),
-                        _vm._v(" "),
-                        _c(
-                          "div",
-                          {
-                            staticClass: "w-100 px-2",
+    _c("section", { staticClass: "main-banner" }, [
+      _c("div", { staticClass: "wrapper" }, [
+        _c(
+          "h2",
+          { staticClass: "text-center", attrs: { "data-wow-delay": "1" } },
+          [_vm._v("\n        Choose Best African Safaris\n      ")]
+        ),
+        _vm._v(" "),
+        _c("h4", { staticClass: "text-light text-center" }, [
+          _vm._v("Offered by Top Tour Operators")
+        ]),
+        _vm._v(" "),
+        _c(
+          "form",
+          {
+            staticClass: "row search-form",
+            attrs: { autocomplete: "off", method: "GET" }
+          },
+          [
+            _c("div", { staticClass: "row gx-0" }, [
+              _c(
+                "div",
+                {
+                  directives: [
+                    {
+                      name: "click-outside-dropdown",
+                      rawName: "v-click-outside-dropdown",
+                      value: _vm.closeWhereToDropDown,
+                      expression: "closeWhereToDropDown"
+                    }
+                  ],
+                  staticClass:
+                    "col-md-4 col-xs-12 mobile-filter position-relative onepixel-padding"
+                },
+                [
+                  _c(
+                    "div",
+                    {
+                      staticClass:
+                        "bg-white h-100 align-items-center d-flex justify-content-between px-3 shadow-sm"
+                    },
+                    [
+                      _c("span", { staticClass: "fa fa-map-marker" }),
+                      _vm._v(" "),
+                      _c(
+                        "div",
+                        {
+                          staticClass: "w-100 px-2",
+                          on: {
+                            click: function($event) {
+                              return _vm.showWhereToDropdown(true)
+                            }
+                          }
+                        },
+                        [
+                          _c("input", {
+                            directives: [
+                              {
+                                name: "model",
+                                rawName: "v-model",
+                                value: _vm.where_to_search,
+                                expression: "where_to_search"
+                              }
+                            ],
+                            ref: "whereTo",
+                            staticClass: "w-100",
+                            attrs: { placeholder: "Where To", type: "text" },
+                            domProps: { value: _vm.where_to_search },
                             on: {
-                              click: function($event) {
-                                return _vm.showWhereToDropdown(true)
+                              input: function($event) {
+                                if ($event.target.composing) {
+                                  return
+                                }
+                                _vm.where_to_search = $event.target.value
                               }
                             }
-                          },
-                          [
+                          })
+                        ]
+                      ),
+                      _vm._v(" "),
+                      _vm.visible_whereto_dropdown == true
+                        ? _c("span", { staticClass: "fa fa-search" })
+                        : _vm.where_to_search != "" &&
+                          _vm.visible_whereto_dropdown == false
+                        ? _c("span", {
+                            staticClass: "fa fa-times-circle-o",
+                            on: { click: _vm.setInitWhereTo }
+                          })
+                        : _c("span", { staticClass: "fa fa-search invisible" })
+                    ]
+                  ),
+                  _vm._v(" "),
+                  _vm.visible_whereto_dropdown == true &&
+                  _vm.search_result != ""
+                    ? _c(
+                        "div",
+                        {
+                          staticClass:
+                            "shadow where_to_dropdown left-0 w-100 bg-white mt-3 triangule-where"
+                        },
+                        [
+                          _c(
+                            "div",
+                            {
+                              staticClass:
+                                "bg-warning text-white p-2 d-flex justify-content-between align-items-center"
+                            },
+                            [
+                              _vm._v(
+                                "\n                Start typing or select below\n                "
+                              ),
+                              _c("span", {
+                                staticClass: "fa fa-times-circle-o",
+                                staticStyle: { "font-size": "25px" },
+                                on: {
+                                  click: function($event) {
+                                    _vm.visible_whereto_dropdown = false
+                                  }
+                                }
+                              })
+                            ]
+                          ),
+                          _vm._v(" "),
+                          _vm._l(_vm.search_result, function(item, index) {
+                            return _c("div", { key: index }, [
+                              index < 6
+                                ? _c(
+                                    "div",
+                                    {
+                                      staticClass:
+                                        "py-1 px-3 border-bottom border-1 text-start",
+                                      on: {
+                                        click: function($event) {
+                                          return _vm.setCurrentWhereTo(
+                                            item.title
+                                          )
+                                        }
+                                      }
+                                    },
+                                    [
+                                      _c("div", { staticClass: "p-0 m-0" }, [
+                                        _c("strong", [
+                                          _vm._v(_vm._s(item.title))
+                                        ])
+                                      ]),
+                                      _vm._v(" "),
+                                      _c("div", { staticClass: "p-0 m-0" }, [
+                                        _c("small", [
+                                          _vm._v(_vm._s(item.country))
+                                        ])
+                                      ])
+                                    ]
+                                  )
+                                : _vm._e()
+                            ])
+                          })
+                        ],
+                        2
+                      )
+                    : _vm._e()
+                ]
+              ),
+              _vm._v(" "),
+              _c("div", { staticClass: "col-md-8 col-xs-12" }, [
+                _c("div", { staticClass: "row gx-0 h-100" }, [
+                  _c(
+                    "div",
+                    {
+                      staticClass:
+                        "col-md-4 col-xs-12 mobile-filter onepixel-padding"
+                    },
+                    [
+                      _c(
+                        "div",
+                        {
+                          staticClass:
+                            "bg-white w-100 h-100 align-items-center d-flex justify-content-between px-3 shadow-sm"
+                        },
+                        [
+                          _c("span", { staticClass: "fa fa-calendar" }),
+                          _vm._v(" "),
+                          _c(
+                            "div",
+                            { staticClass: "w-100 px-2" },
+                            [
+                              _c("datepicker", {
+                                attrs: {
+                                  disabledDates: _vm.disabledFn,
+                                  placeholder: "Start Date",
+                                  highlighted: _vm.highlighted
+                                },
+                                model: {
+                                  value: _vm.start_date,
+                                  callback: function($$v) {
+                                    _vm.start_date = $$v
+                                  },
+                                  expression: "start_date"
+                                }
+                              })
+                            ],
+                            1
+                          ),
+                          _vm._v(" "),
+                          _vm.start_date != "" && _vm.start_date != null
+                            ? _c("span", {
+                                staticClass: "fa fa-times-circle-o",
+                                on: { click: _vm.initStartDate }
+                              })
+                            : _c("span", {
+                                staticClass: "fa fa-times-circle-o invisible"
+                              })
+                        ]
+                      )
+                    ]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "div",
+                    {
+                      directives: [
+                        {
+                          name: "click-outside-dropdown",
+                          rawName: "v-click-outside-dropdown",
+                          value: _vm.closeTravelerDropdown,
+                          expression: "closeTravelerDropdown"
+                        }
+                      ],
+                      staticClass:
+                        "col-md-4 col-xs-12 mobile-filter position-relative onepixel-padding"
+                    },
+                    [
+                      _c(
+                        "div",
+                        {
+                          staticClass:
+                            "bg-white w-100 h-100 align-items-center d-flex justify-content-between px-3 shadow-sm",
+                          on: { click: _vm.showTravelerDropdown }
+                        },
+                        [
+                          _c("span", { staticClass: "fa fa-users" }),
+                          _vm._v(" "),
+                          _c("div", { staticClass: "w-100 px-2" }, [
                             _c("input", {
                               directives: [
                                 {
                                   name: "model",
                                   rawName: "v-model",
-                                  value: _vm.where_to_search,
-                                  expression: "where_to_search"
+                                  value: _vm.traveler_number,
+                                  expression: "traveler_number"
                                 }
                               ],
-                              ref: "whereTo",
                               staticClass: "w-100",
-                              attrs: { placeholder: "Where To", type: "text" },
-                              domProps: { value: _vm.where_to_search },
+                              attrs: {
+                                id: "traveler_input",
+                                type: "text",
+                                placeholder: "Travelers",
+                                readonly: ""
+                              },
+                              domProps: { value: _vm.traveler_number },
                               on: {
                                 input: function($event) {
                                   if ($event.target.composing) {
                                     return
                                   }
-                                  _vm.where_to_search = $event.target.value
+                                  _vm.traveler_number = $event.target.value
                                 }
                               }
                             })
-                          ]
-                        ),
-                        _vm._v(" "),
-                        _vm.visible_whereto_dropdown == true
-                          ? _c("span", { staticClass: "fa fa-search" })
-                          : _vm.where_to_search != "" &&
-                            _vm.visible_whereto_dropdown == false
-                          ? _c("span", {
-                              staticClass: "fa fa-times-circle-o",
-                              on: { click: _vm.setInitWhereTo }
-                            })
-                          : _c("span", {
-                              staticClass: "fa fa-search invisible"
-                            })
-                      ]
-                    ),
-                    _vm._v(" "),
-                    _vm.visible_whereto_dropdown == true &&
-                    _vm.search_result != ""
-                      ? _c(
-                          "div",
-                          {
-                            staticClass:
-                              "shadow where_to_dropdown left-0 w-100 bg-white mt-3 triangule-where"
-                          },
-                          [
-                            _c(
-                              "div",
-                              {
-                                staticClass:
-                                  "bg-warning text-white p-2 d-flex justify-content-between align-items-center"
-                              },
-                              [
-                                _vm._v(
-                                  "\n                  Start typing or select below\n                  "
-                                ),
-                                _c("span", {
-                                  staticClass: "fa fa-times-circle-o",
-                                  staticStyle: { "font-size": "25px" },
-                                  on: {
-                                    click: function($event) {
-                                      _vm.visible_whereto_dropdown = false
-                                    }
-                                  }
-                                })
-                              ]
-                            ),
-                            _vm._v(" "),
-                            _vm._l(_vm.search_result, function(item, index) {
-                              return _c("div", { key: index }, [
-                                index < 6
-                                  ? _c(
-                                      "div",
-                                      {
-                                        staticClass:
-                                          "py-1 px-3 border-bottom border-1 text-start",
-                                        on: {
-                                          click: function($event) {
-                                            return _vm.setCurrentWhereTo(
-                                              item.title
-                                            )
-                                          }
-                                        }
-                                      },
-                                      [
-                                        _c("div", { staticClass: "p-0 m-0" }, [
-                                          _c("strong", [
-                                            _vm._v(_vm._s(item.title))
-                                          ])
-                                        ]),
-                                        _vm._v(" "),
-                                        _c("div", { staticClass: "p-0 m-0" }, [
-                                          _c("small", [
-                                            _vm._v(_vm._s(item.country))
-                                          ])
-                                        ])
-                                      ]
-                                    )
-                                  : _vm._e()
-                              ])
-                            })
-                          ],
-                          2
-                        )
-                      : _vm._e()
-                  ]
-                ),
-                _vm._v(" "),
-                _c("div", { staticClass: "col-md-8 col-xs-12" }, [
-                  _c("div", { staticClass: "row gx-0 h-100" }, [
-                    _c(
-                      "div",
-                      {
-                        staticClass:
-                          "col-md-4 col-xs-12 mobile-filter onepixel-padding"
-                      },
-                      [
-                        _c(
-                          "div",
-                          {
-                            staticClass:
-                              "bg-white w-100 h-100 align-items-center d-flex justify-content-between px-3 shadow-sm"
-                          },
-                          [
-                            _c("span", { staticClass: "fa fa-calendar" }),
-                            _vm._v(" "),
-                            _c(
-                              "div",
-                              { staticClass: "w-100 px-2" },
-                              [
-                                _c("datepicker", {
-                                  attrs: {
-                                    disabledDates: _vm.disabledFn,
-                                    placeholder: "Start Date",
-                                    highlighted: _vm.highlighted
-                                  },
-                                  model: {
-                                    value: _vm.start_date,
-                                    callback: function($$v) {
-                                      _vm.start_date = $$v
-                                    },
-                                    expression: "start_date"
-                                  }
-                                })
-                              ],
-                              1
-                            ),
-                            _vm._v(" "),
-                            _vm.start_date != ""
-                              ? _c("span", {
-                                  staticClass: "fa fa-times-circle-o",
-                                  on: { click: _vm.initStartDate }
-                                })
-                              : _c("span", {
-                                  staticClass: "fa fa-times-circle-o invisible"
-                                })
-                          ]
-                        )
-                      ]
-                    ),
-                    _vm._v(" "),
-                    _c(
-                      "div",
-                      {
-                        directives: [
-                          {
-                            name: "click-outside-dropdown",
-                            rawName: "v-click-outside-dropdown",
-                            value: _vm.closeTravelerDropdown,
-                            expression: "closeTravelerDropdown"
-                          }
-                        ],
-                        staticClass:
-                          "col-md-4 col-xs-12 mobile-filter position-relative onepixel-padding"
-                      },
-                      [
-                        _c(
-                          "div",
-                          {
-                            staticClass:
-                              "bg-white w-100 h-100 align-items-center d-flex justify-content-between px-3 shadow-sm",
-                            on: { click: _vm.showTravelerDropdown }
-                          },
-                          [
-                            _c("span", { staticClass: "fa fa-users" }),
-                            _vm._v(" "),
-                            _c("div", { staticClass: "w-100 px-2" }, [
-                              _c("input", {
-                                directives: [
-                                  {
-                                    name: "model",
-                                    rawName: "v-model",
-                                    value: _vm.traveler_number,
-                                    expression: "traveler_number"
-                                  }
-                                ],
-                                staticClass: "w-100",
-                                attrs: {
-                                  id: "traveler_input",
-                                  type: "text",
-                                  placeholder: "Travelers"
-                                },
-                                domProps: { value: _vm.traveler_number },
-                                on: {
-                                  input: function($event) {
-                                    if ($event.target.composing) {
-                                      return
-                                    }
-                                    _vm.traveler_number = $event.target.value
-                                  }
-                                }
+                          ]),
+                          _vm._v(" "),
+                          _vm.traveler_number != ""
+                            ? _c("span", {
+                                staticClass: "fa fa-times-circle-o",
+                                on: { click: _vm.setTravelerInit }
                               })
-                            ]),
-                            _vm._v(" "),
-                            _vm.traveler_number != ""
-                              ? _c("span", {
-                                  staticClass: "fa fa-times-circle-o",
-                                  on: { click: _vm.setTravelerInit }
-                                })
-                              : _c("span", {
-                                  staticClass: "fa fa-times-circle-o invisible"
-                                })
-                          ]
-                        ),
-                        _vm._v(" "),
-                        _vm.visible_traveler_dropdown
-                          ? _c(
-                              "div",
-                              {
-                                staticClass:
-                                  "shadow traveler-dropdown left-0 bg-white mt-3 triangule-where"
-                              },
-                              [
+                            : _c("span", {
+                                staticClass: "fa fa-times-circle-o invisible"
+                              })
+                        ]
+                      ),
+                      _vm._v(" "),
+                      _vm.visible_traveler_dropdown
+                        ? _c(
+                            "div",
+                            {
+                              staticClass:
+                                "shadow traveler-dropdown left-0 bg-white mt-3 triangule-where"
+                            },
+                            [
+                              _c(
+                                "div",
+                                {
+                                  staticClass:
+                                    "bg-warning text-white p-2 text-center"
+                                },
+                                [
+                                  _vm._v(
+                                    "\n                    Travelers\n                    "
+                                  ),
+                                  _c("span", {
+                                    staticClass: "fa fa-times-circle-o",
+                                    staticStyle: {
+                                      float: "right",
+                                      "font-size": "25px",
+                                      color: "black"
+                                    },
+                                    on: { click: _vm.closeTravelerDropdown }
+                                  })
+                                ]
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "div",
+                                {
+                                  staticClass:
+                                    "py-2 px-3 mt-2 border-1 text-start d-flex justify-content-between"
+                                },
+                                [
+                                  _vm._m(0),
+                                  _vm._v(" "),
+                                  _c(
+                                    "div",
+                                    [
+                                      _c("vue-numeric-input", {
+                                        attrs: { min: 1, max: 100, step: 1 },
+                                        model: {
+                                          value: _vm.adults_number,
+                                          callback: function($$v) {
+                                            _vm.adults_number = $$v
+                                          },
+                                          expression: "adults_number"
+                                        }
+                                      })
+                                    ],
+                                    1
+                                  )
+                                ]
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "div",
+                                {
+                                  staticClass:
+                                    "py-2 px-3 mt-2 border-1 text-start d-flex justify-content-between"
+                                },
+                                [
+                                  _vm._m(1),
+                                  _vm._v(" "),
+                                  _c(
+                                    "div",
+                                    [
+                                      _c("vue-numeric-input", {
+                                        attrs: { min: 0, max: 100, step: 1 },
+                                        model: {
+                                          value: _vm.children_number,
+                                          callback: function($$v) {
+                                            _vm.children_number = $$v
+                                          },
+                                          expression: "children_number"
+                                        }
+                                      })
+                                    ],
+                                    1
+                                  )
+                                ]
+                              ),
+                              _vm._v(" "),
+                              _c("div", { staticClass: "text-right" }, [
                                 _c(
-                                  "div",
+                                  "button",
                                   {
-                                    staticClass:
-                                      "bg-warning text-white p-2 text-center"
+                                    staticClass: "btn btn-warning mx-3 my-3",
+                                    on: { click: _vm.setTravelerInfo }
                                   },
                                   [
                                     _vm._v(
-                                      "\n                      Travelers\n                      "
-                                    ),
-                                    _c("span", {
-                                      staticClass: "fa fa-times-circle-o",
-                                      staticStyle: {
-                                        float: "right",
-                                        "font-size": "25px",
-                                        color: "black"
-                                      },
-                                      on: { click: _vm.closeTravelerDropdown }
-                                    })
-                                  ]
-                                ),
-                                _vm._v(" "),
-                                _c(
-                                  "div",
-                                  {
-                                    staticClass:
-                                      "py-2 px-3 mt-2 border-1 text-start d-flex justify-content-between"
-                                  },
-                                  [
-                                    _vm._m(0),
-                                    _vm._v(" "),
-                                    _c(
-                                      "div",
-                                      [
-                                        _c("vue-numeric-input", {
-                                          attrs: { min: 1, max: 100, step: 1 },
-                                          model: {
-                                            value: _vm.adults_number,
-                                            callback: function($$v) {
-                                              _vm.adults_number = $$v
-                                            },
-                                            expression: "adults_number"
-                                          }
-                                        })
-                                      ],
-                                      1
+                                      "\n                      Done\n                    "
                                     )
                                   ]
-                                ),
-                                _vm._v(" "),
-                                _c(
-                                  "div",
-                                  {
-                                    staticClass:
-                                      "py-2 px-3 mt-2 border-1 text-start d-flex justify-content-between"
-                                  },
-                                  [
-                                    _vm._m(1),
-                                    _vm._v(" "),
-                                    _c(
-                                      "div",
-                                      [
-                                        _c("vue-numeric-input", {
-                                          attrs: { min: 0, max: 100, step: 1 },
-                                          model: {
-                                            value: _vm.children_number,
-                                            callback: function($$v) {
-                                              _vm.children_number = $$v
-                                            },
-                                            expression: "children_number"
-                                          }
-                                        })
-                                      ],
-                                      1
-                                    )
-                                  ]
-                                ),
-                                _vm._v(" "),
-                                _c("div", { staticClass: "text-right" }, [
-                                  _c(
-                                    "button",
-                                    {
-                                      staticClass: "btn btn-warning mx-3 my-3",
-                                      on: { click: _vm.setTravelerInfo }
-                                    },
-                                    [
-                                      _vm._v(
-                                        "\n                        Done\n                      "
-                                      )
-                                    ]
-                                  )
-                                ])
-                              ]
-                            )
-                          : _vm._e()
-                      ]
-                    ),
-                    _vm._v(" "),
-                    _c(
-                      "div",
-                      { staticClass: "col-md-4 col-xs-12 ps-2 mobile-filter" },
-                      [
-                        _c(
-                          "button",
-                          {
-                            staticClass: "btn btn-danger w-100 h-100",
-                            attrs: { type: "button" },
-                            on: { click: _vm.searchButton }
-                          },
-                          [
-                            _vm._v(
-                              "\n                  Search\n                "
-                            )
-                          ]
-                        )
-                      ]
-                    )
-                  ])
+                                )
+                              ])
+                            ]
+                          )
+                        : _vm._e()
+                    ]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "div",
+                    { staticClass: "col-md-4 col-xs-12 ps-2 mobile-filter" },
+                    [
+                      _c(
+                        "button",
+                        {
+                          staticClass: "btn btn-danger w-100 h-100",
+                          attrs: { type: "button" },
+                          on: { click: _vm.searchButton }
+                        },
+                        [_vm._v("\n                  Search\n                ")]
+                      )
+                    ]
+                  )
                 ])
               ])
-            ]
-          )
-        ])
-      ]
-    ),
+            ])
+          ]
+        )
+      ])
+    ]),
     _vm._v(" "),
     _c(
       "div",
@@ -2394,25 +2692,29 @@ var render = function() {
       _c("div", { staticClass: "text-center text-light" }, [
         _c(
           "div",
-          { staticClass: "pt-5 why-us" },
+          { staticClass: "pt-5 why-us position-relative" },
           [
             _vm._m(4),
             _vm._v(" "),
-            _c("h5", [
-              _vm._v("\n          8 Reasons why Safari-Trek-Beach\n        ")
-            ]),
+            _c("h4", [_vm._v("8 Reasons why Safari-Trek-Beach")]),
             _vm._v(" "),
             _c(
               "carousel",
               {
                 attrs: {
                   "per-page": 1,
-                  speed: 1000,
+                  speed: 2000,
                   loop: true,
-                  autoplayTimeout: 3000,
-                  autoplayDirection: "backward",
-                  paginationEnabled: false,
-                  autoplay: true
+                  autoplayTimeout: 6000,
+                  autoplay: true,
+                  paginationEnabled: false
+                },
+                model: {
+                  value: _vm.whyus_value,
+                  callback: function($$v) {
+                    _vm.whyus_value = $$v
+                  },
+                  expression: "whyus_value"
                 }
               },
               [
@@ -2430,9 +2732,9 @@ var render = function() {
                   _c("img", { attrs: { src: "./images/why_service.png" } }),
                   _vm._v(" "),
                   _c("p", [
-                    _vm._v("\n              Unbiased Reviews "),
+                    _vm._v("Unbiased Reviews "),
                     _c("br"),
-                    _vm._v("from previous client.\n            ")
+                    _vm._v("from previous client.")
                   ])
                 ]),
                 _vm._v(" "),
@@ -2440,9 +2742,9 @@ var render = function() {
                   _c("img", { attrs: { src: "./images/why_dollar.png" } }),
                   _vm._v(" "),
                   _c("p", [
-                    _vm._v("\n              Connecting with "),
+                    _vm._v("Connecting with "),
                     _c("br"),
-                    _vm._v("the best/licenced tour operator.\n            ")
+                    _vm._v("the best/licenced tour operator.")
                   ])
                 ]),
                 _vm._v(" "),
@@ -2450,9 +2752,9 @@ var render = function() {
                   _c("img", { attrs: { src: "./images/why_service.png" } }),
                   _vm._v(" "),
                   _c("p", [
-                    _vm._v("\n              Comparing quotes "),
+                    _vm._v("Comparing quotes "),
                     _c("br"),
-                    _vm._v("from different tour operators.\n            ")
+                    _vm._v("from different tour operators.")
                   ])
                 ]),
                 _vm._v(" "),
@@ -2460,11 +2762,11 @@ var render = function() {
                   _c("img", { attrs: { src: "./images/why_pool.png" } }),
                   _vm._v(" "),
                   _c("p", [
-                    _vm._v("Advise clients on questions "),
+                    _vm._v("\n              Advise clients on questions "),
                     _c("br"),
-                    _vm._v("to ask before booking and "),
+                    _vm._v("to ask before booking and\n              "),
                     _c("br"),
-                    _vm._v("how to get best details.")
+                    _vm._v("how to get best details.\n            ")
                   ])
                 ]),
                 _vm._v(" "),
@@ -2472,9 +2774,11 @@ var render = function() {
                   _c("img", { attrs: { src: "./images/why_service.png" } }),
                   _vm._v(" "),
                   _c("p", [
-                    _vm._v("We ensure clients get "),
+                    _vm._v("\n              We ensure clients get "),
                     _c("br"),
-                    _vm._v("large pool of Tour Operator of their choice!")
+                    _vm._v(
+                      "large pool of Tour Operator of their\n              choice!\n            "
+                    )
                   ])
                 ]),
                 _vm._v(" "),
@@ -2482,11 +2786,17 @@ var render = function() {
                   _c("img", { attrs: { src: "./images/why_pool.png" } }),
                   _vm._v(" "),
                   _c("p", [
-                    _vm._v("Very competitive offers (packages)"),
+                    _vm._v(
+                      "\n              Very competitive offers (packages)"
+                    ),
                     _c("br"),
-                    _vm._v(" to choose from over 10,000 packages "),
+                    _vm._v(
+                      "\n              to choose from over 10,000 packages "
+                    ),
                     _c("br"),
-                    _vm._v("from different Tour Operators.")
+                    _vm._v(
+                      "from different Tour\n              Operators.\n            "
+                    )
                   ])
                 ]),
                 _vm._v(" "),
@@ -2498,12 +2808,24 @@ var render = function() {
                     _c("br"),
                     _vm._v("that cover all destinations "),
                     _c("br"),
-                    _vm._v("in Tanzania and Zanzibar.\n            ")
+                    _vm._v(
+                      "in\n              Tanzania and Zanzibar.\n            "
+                    )
                   ])
                 ])
               ],
               1
-            )
+            ),
+            _vm._v(" "),
+            _c("span", {
+              staticClass: "fa fa-angle-left whyus-prev",
+              on: { click: _vm.prevClick }
+            }),
+            _vm._v(" "),
+            _c("span", {
+              staticClass: "fa fa-angle-right whyus-next",
+              on: { click: _vm.nextClick }
+            })
           ],
           1
         )
@@ -2527,9 +2849,7 @@ var render = function() {
                 staticClass: "col-lg-3 col-md-4 col-xs-12",
                 on: {
                   click: function($event) {
-                    return _vm.$router.push(
-                      "/destination-package/" + item.post_slug
-                    )
+                    return _vm.toDestinationInner(item.post_slug)
                   }
                 }
               },
@@ -2571,7 +2891,7 @@ var render = function() {
       _c("div", { staticClass: "text-center text-light" }, [
         _c(
           "div",
-          { staticClass: "pt-5 why-us" },
+          { staticClass: "pt-5 review-testimonial-section" },
           [
             _c(
               "carousel",
@@ -2597,55 +2917,7 @@ var render = function() {
                     _vm._v(" "),
                     _c("p", [
                       _vm._v(
-                        "\n                Thank you for the excellent organization, the driver is\n                professional, the food from the cook is delicious, our all all\n                all all all problems have been resolved! Special thanks to\n                Mohamed. Very nice person in communication !!!\n              "
-                      )
-                    ])
-                  ])
-                ]),
-                _vm._v(" "),
-                _c("slide", [
-                  _c("div", { staticClass: "wrap" }, [
-                    _c("header", { staticClass: "section-header" }, [
-                      _c("h3", { staticClass: "text-light" }, [
-                        _vm._v("REVIEWS & TESTIMONIES")
-                      ])
-                    ]),
-                    _vm._v(" "),
-                    _c("p", [
-                      _vm._v(
-                        '\n                Used to be part of Serengeti National Park. It is conservation\n                area because there are Maasai people living in this area, but\n                not in national park. The crater is "safer" for older animals,\n                so one may see old bull elephants, or cape buffaloes. Lion\n                prides are common, as well as bird species. One sees most of\n                the animal here, except for the elusive leopard. On the way\n                out of the ...\n              '
-                      )
-                    ])
-                  ])
-                ]),
-                _vm._v(" "),
-                _c("slide", [
-                  _c("div", { staticClass: "wrap" }, [
-                    _c("header", { staticClass: "section-header" }, [
-                      _c("h3", { staticClass: "text-light" }, [
-                        _vm._v("REVIEWS & TESTIMONIES")
-                      ])
-                    ]),
-                    _vm._v(" "),
-                    _c("p", [
-                      _vm._v(
-                        "\n                Thank you for the excellent organization, the driver is\n                professional, the food from the cook is delicious, our all all\n                all all all problems have been resolved! Special thanks to\n                Mohamed. Very nice person in communication !!!\n              "
-                      )
-                    ])
-                  ])
-                ]),
-                _vm._v(" "),
-                _c("slide", [
-                  _c("div", { staticClass: "wrap" }, [
-                    _c("header", { staticClass: "section-header" }, [
-                      _c("h3", { staticClass: "text-light" }, [
-                        _vm._v("REVIEWS & TESTIMONIES")
-                      ])
-                    ]),
-                    _vm._v(" "),
-                    _c("p", [
-                      _vm._v(
-                        '\n                Used to be part of Serengeti National Park. It is conservation\n                area because there are Maasai people living in this area, but\n                not in national park. The crater is "safer" for older animals,\n                so one may see old bull elephants, or cape buffaloes. Lion\n                prides are common, as well as bird species. One sees most of\n                the animal here, except for the elusive leopard. On the way\n                out of the ...\n              '
+                        "\n                We booked a safari with Travel Africa Safari Agency through Safari Trek Beach platform after comparing many \n                offers from tour operators in the platform. Through Safari trek beach we got a reliable operator very easily \n                and guidance on the questions to ask tour operators so we can get the best deals. I recommend the use of this \n                platform in your search for a good tour operator and best prices.\n              "
                       )
                     ])
                   ])
@@ -2732,7 +3004,10 @@ var staticRenderFns = [
     return _c("div", { staticClass: "text-center mt-3" }, [
       _c(
         "a",
-        { staticClass: "btn btn-danger", attrs: { href: "/our-tours" } },
+        {
+          staticClass: "btn btn-danger",
+          attrs: { href: "/our-tours", target: "_blank" }
+        },
         [_vm._v(" View All Packages ")]
       )
     ])
@@ -2770,7 +3045,7 @@ var staticRenderFns = [
         "a",
         {
           staticClass: "btn btn-danger",
-          attrs: { href: "/tour-destinations" }
+          attrs: { href: "/destination", target: "_blank" }
         },
         [
           _vm._v("\n        View All Destinations "),
@@ -2799,7 +3074,7 @@ var staticRenderFns = [
             _c("div", [
               _c("p", [
                 _vm._v(
-                  "\n                Safari Trek Beach is the biggest market place for Tanzania tour packages. We help travellers find the best Tour Operators with the tour packages of their choice, to suit their budget and standard. We are the experts when it involves Tours and Holidays in Tanzania. Safari Trek Beach enables you to compare different tour operators on different categories such as Luxury, Lodge, Camping safaris or Mountain Climbing tours as well as Beach Holidays.\n              "
+                  "\n                Safari Trek Beach is the biggest market place for Tanzania\n                tour packages. We help travellers find the best Tour Operators\n                with the tour packages of their choice, to suit their budget\n                and standard. We are the experts when it involves Tours and\n                Holidays in Tanzania. Safari Trek Beach enables you to compare\n                different tour operators on different categories such as\n                Luxury, Lodge, Camping safaris or Mountain Climbing tours as\n                well as Beach Holidays.\n              "
                 )
               ])
             ]),
@@ -2807,7 +3082,10 @@ var staticRenderFns = [
             _c("div", { staticClass: "mt-3" }, [
               _c(
                 "a",
-                { staticClass: "btn btn-danger", attrs: { href: "/about" } },
+                {
+                  staticClass: "btn btn-danger",
+                  attrs: { href: "/about", target: "_blank" }
+                },
                 [
                   _vm._v("\n                Read More "),
                   _c("span", { staticClass: "fa fa-angle-right ms-2" })
@@ -2832,10 +3110,17 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "text-center mt-3" }, [
-      _c("a", { staticClass: "btn btn-danger", attrs: { href: "/blog" } }, [
-        _vm._v("\n          View All BLOGS"),
-        _c("span", { staticClass: "fa fa-angle-right ms-2" })
-      ])
+      _c(
+        "a",
+        {
+          staticClass: "btn btn-danger",
+          attrs: { href: "/blog", target: "_blank" }
+        },
+        [
+          _vm._v("\n          View All BLOGS"),
+          _c("span", { staticClass: "fa fa-angle-right ms-2" })
+        ]
+      )
     ])
   }
 ]

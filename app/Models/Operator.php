@@ -104,7 +104,10 @@ class Operator extends Model {
                 $data['package'][$key]['end_city']      = $getting_there[0]->end_city;
 
                 $rate = DB::select("
-                    SELECT adult_currency FROM package_rate WHERE package_id = $package->package_id
+                    SELECT LEAST(adult_currency_winter, adult_currency_spring, adult_currency_summer, adult_currency_autumn) AS adult_currency 
+                    FROM package_rate
+                    WHERE package_id = $package->package_id
+                    AND no_of_person = 1
                 ");
                 $data['package'][$key]['adult_currency'] = $rate[0]->adult_currency;
 

@@ -12255,6 +12255,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm.js");
 /* harmony import */ var _syncfusion_ej2_vue_inputs__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @syncfusion/ej2-vue-inputs */ "./node_modules/@syncfusion/ej2-vue-inputs/src/textbox/textbox.component.js");
+/* harmony import */ var emailjs_com__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! emailjs-com */ "./node_modules/emailjs-com/source/index.js");
+//
+//
+//
+//
+//
 //
 //
 //
@@ -12337,6 +12343,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 vue__WEBPACK_IMPORTED_MODULE_0__.default.use(_syncfusion_ej2_vue_inputs__WEBPACK_IMPORTED_MODULE_1__.TextBoxPlugin);
+
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: "ContactUs",
   data: function data() {
@@ -12351,22 +12358,59 @@ vue__WEBPACK_IMPORTED_MODULE_0__.default.use(_syncfusion_ej2_vue_inputs__WEBPACK
     document.title = page_title;
   },
   methods: {
-    submitContactInfo: function submitContactInfo() {
-      // this is for mail app
-      var url = "mailto:";
-      url += "info@safari-trek-beach.com" + "?subject=" + this.name + "&body=" + this.message.replace(/\n/g, "%0D%0A");
-      "%0D%0A%0D%0A This is my email:%0D%0A" + this.email + window.open(url, "_blank"); // this is for gmail in browser
-      //   let url = "https://mail.google.com/mail/u/0/?fs=1&to=";
-      // url +=
-      //   "info@safari-trek-beach.com" +
-      //   "&su=" +
-      //   this.name +
-      //   "&body=" +
-      //   this.message.replace(/\n/g, "%0D%0A") +
-      //   "%0D%0A%0D%0A This is my email:%0D%0A" +
-      //   this.email +
-      //   "&tf=cm";
-      // window.open(url, "_blank");
+    // submitContactInfo() {
+    //   // this is for mail app
+    //   let url = "mailto:";
+    //   url +=
+    //     "info@safari-trek-beach.com" +
+    //     "?subject=" +
+    //     this.name +
+    //     "&body=" +
+    //     this.message.replace(/\n/g, "%0D%0A");
+    //   "%0D%0A%0D%0A This is my email:%0D%0A" +
+    //   this.email +
+    //   window.open(url, "_blank");
+    //   // this is for gmail in browser
+    //   //   let url = "https://mail.google.com/mail/u/0/?fs=1&to=";
+    //   // url +=
+    //   //   "info@safari-trek-beach.com" +
+    //   //   "&su=" +
+    //   //   this.name +
+    //   //   "&body=" +
+    //   //   this.message.replace(/\n/g, "%0D%0A") +
+    //   //   "%0D%0A%0D%0A This is my email:%0D%0A" +
+    //   //   this.email +
+    //   //   "&tf=cm";
+    //   // window.open(url, "_blank");
+    // },
+    sendEmail: function sendEmail(e) {
+      try {
+        emailjs_com__WEBPACK_IMPORTED_MODULE_2__.default.sendForm('service_5wlzkqg', 'template_vgycw1m', e.target, 'user_K5HSyHWK6LhDHg35fCPQz', {
+          name: this.name,
+          email: this.email,
+          message: this.meessage
+        });
+        this.$notify({
+          group: 'success',
+          title: 'Email Sent!',
+          text: 'Thank you! We have received your email. We will soon reply.'
+        });
+        console.log('it works!!!');
+      } catch (error) {
+        this.$notify({
+          group: "warning",
+          title: "Sending Error !",
+          text: "Sorry, Something went wrong..."
+        });
+        console.log({
+          error: error
+        });
+      } // Reset form field
+
+
+      this.name = '';
+      this.email = '';
+      this.message = '';
     }
   }
 });
@@ -12449,6 +12493,191 @@ ___CSS_LOADER_EXPORT___.i(_node_modules_css_loader_dist_cjs_js_clonedRuleSet_9_0
 ___CSS_LOADER_EXPORT___.push([module.id, "\n#contact-us-page {\n  background-color: #f2f2f2;\n  padding-top: 50px;\n  padding-bottom: 100px;\n}\n#contact-us-page section {\n  margin-top: 100px;\n}\n#contact-us-page .e-multi-line-input textarea {\n  height: 100px;\n}\n#contact-us-page .contact-form-card {\n  width: 75%;\n}\n#contact-us-page a {\n  color: #4f4f4f;\n}\n@media (max-width: 991px) {\n#contact-us-page .contact-form-card {\n    width: 100%;\n}\n#contact-us-page h3,\n  #contact-us-page h5 {\n    text-align: center;\n}\n#contact-us-page .contact-form-card h5 {\n    text-align: left;\n    font-size: 15px;\n}\n}\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
+
+
+/***/ }),
+
+/***/ "./node_modules/emailjs-com/source/index.js":
+/*!**************************************************!*\
+  !*** ./node_modules/emailjs-com/source/index.js ***!
+  \**************************************************/
+/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.EmailJSResponseStatus = exports.sendForm = exports.send = exports.init = void 0;
+var EmailJSResponseStatus_1 = __webpack_require__(/*! ./models/EmailJSResponseStatus */ "./node_modules/emailjs-com/source/models/EmailJSResponseStatus.js");
+Object.defineProperty(exports, "EmailJSResponseStatus", ({ enumerable: true, get: function () { return EmailJSResponseStatus_1.EmailJSResponseStatus; } }));
+var UI_1 = __webpack_require__(/*! ./services/ui/UI */ "./node_modules/emailjs-com/source/services/ui/UI.js");
+var _userID = null;
+var _origin = 'https://api.emailjs.com';
+function sendPost(url, data, headers) {
+    if (headers === void 0) { headers = {}; }
+    return new Promise(function (resolve, reject) {
+        var xhr = new XMLHttpRequest();
+        xhr.addEventListener('load', function (event) {
+            var responseStatus = new EmailJSResponseStatus_1.EmailJSResponseStatus(event.target);
+            if (responseStatus.status === 200 || responseStatus.text === 'OK') {
+                resolve(responseStatus);
+            }
+            else {
+                reject(responseStatus);
+            }
+        });
+        xhr.addEventListener('error', function (event) {
+            reject(new EmailJSResponseStatus_1.EmailJSResponseStatus(event.target));
+        });
+        xhr.open('POST', url, true);
+        for (var key in headers) {
+            xhr.setRequestHeader(key, headers[key]);
+        }
+        xhr.send(data);
+    });
+}
+function appendGoogleCaptcha(templatePrams) {
+    var element = document && document.getElementById('g-recaptcha-response');
+    if (element && element.value) {
+        templatePrams['g-recaptcha-response'] = element.value;
+    }
+    element = null;
+    return templatePrams;
+}
+function fixIdSelector(selector) {
+    if (selector[0] !== '#' && selector[0] !== '.') {
+        return '#' + selector;
+    }
+    return selector;
+}
+/**
+ * Initiation
+ * @param {string} userID - set the EmailJS user ID
+ * @param {string} origin - set the EmailJS origin
+ */
+function init(userID, origin) {
+    _userID = userID;
+    _origin = origin || 'https://api.emailjs.com';
+}
+exports.init = init;
+/**
+ * Send a template to the specific EmailJS service
+ * @param {string} serviceID - the EmailJS service ID
+ * @param {string} templateID - the EmailJS template ID
+ * @param {Object} templatePrams - the template params, what will be set to the EmailJS template
+ * @param {string} userID - the EmailJS user ID
+ * @returns {Promise<EmailJSResponseStatus>}
+ */
+function send(serviceID, templateID, templatePrams, userID) {
+    var params = {
+        lib_version: '2.6.4',
+        user_id: userID || _userID,
+        service_id: serviceID,
+        template_id: templateID,
+        template_params: appendGoogleCaptcha(templatePrams)
+    };
+    return sendPost(_origin + '/api/v1.0/email/send', JSON.stringify(params), {
+        'Content-type': 'application/json'
+    });
+}
+exports.send = send;
+/**
+ * Send a form the specific EmailJS service
+ * @param {string} serviceID - the EmailJS service ID
+ * @param {string} templateID - the EmailJS template ID
+ * @param {string | HTMLFormElement} form - the form element or selector
+ * @param {string} userID - the EmailJS user ID
+ * @returns {Promise<EmailJSResponseStatus>}
+ */
+function sendForm(serviceID, templateID, form, userID) {
+    if (typeof form === 'string') {
+        form = document.querySelector(fixIdSelector(form));
+    }
+    if (!form || form.nodeName !== 'FORM') {
+        throw 'Expected the HTML form element or the style selector of form';
+    }
+    UI_1.UI.progressState(form);
+    var formData = new FormData(form);
+    formData.append('lib_version', '2.6.4');
+    formData.append('service_id', serviceID);
+    formData.append('template_id', templateID);
+    formData.append('user_id', userID || _userID);
+    return sendPost(_origin + '/api/v1.0/email/send-form', formData)
+        .then(function (response) {
+        UI_1.UI.successState(form);
+        return response;
+    }, function (error) {
+        UI_1.UI.errorState(form);
+        return Promise.reject(error);
+    });
+}
+exports.sendForm = sendForm;
+exports.default = {
+    init: init,
+    send: send,
+    sendForm: sendForm
+};
+
+
+/***/ }),
+
+/***/ "./node_modules/emailjs-com/source/models/EmailJSResponseStatus.js":
+/*!*************************************************************************!*\
+  !*** ./node_modules/emailjs-com/source/models/EmailJSResponseStatus.js ***!
+  \*************************************************************************/
+/***/ ((__unused_webpack_module, exports) => {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.EmailJSResponseStatus = void 0;
+var EmailJSResponseStatus = /** @class */ (function () {
+    function EmailJSResponseStatus(httpResponse) {
+        this.status = httpResponse.status;
+        this.text = httpResponse.responseText;
+    }
+    return EmailJSResponseStatus;
+}());
+exports.EmailJSResponseStatus = EmailJSResponseStatus;
+
+
+/***/ }),
+
+/***/ "./node_modules/emailjs-com/source/services/ui/UI.js":
+/*!***********************************************************!*\
+  !*** ./node_modules/emailjs-com/source/services/ui/UI.js ***!
+  \***********************************************************/
+/***/ ((__unused_webpack_module, exports) => {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.UI = void 0;
+var UI = /** @class */ (function () {
+    function UI() {
+    }
+    UI.clearAll = function (form) {
+        form.classList.remove(this.PROGRESS);
+        form.classList.remove(this.DONE);
+        form.classList.remove(this.ERROR);
+    };
+    UI.progressState = function (form) {
+        this.clearAll(form);
+        form.classList.add(this.PROGRESS);
+    };
+    UI.successState = function (form) {
+        form.classList.remove(this.PROGRESS);
+        form.classList.add(this.DONE);
+    };
+    UI.errorState = function (form) {
+        form.classList.remove(this.PROGRESS);
+        form.classList.add(this.ERROR);
+    };
+    UI.PROGRESS = 'emailjs-sending';
+    UI.DONE = 'emailjs-success';
+    UI.ERROR = 'emailjs-error';
+    return UI;
+}());
+exports.UI = UI;
 
 
 /***/ }),
@@ -12593,15 +12822,11 @@ var render = function() {
       _c("section", [
         _vm._m(1),
         _vm._v(" "),
-        _c(
-          "h3",
-          { staticClass: "text-center mt-5", attrs: { "data-aos": "fade-up" } },
-          [
-            _vm._v(
-              "\n        For queries about Safari-Trek-Beach Company\n      "
-            )
-          ]
-        ),
+        _c("h3", { staticClass: "text-center mt-5" }, [
+          _vm._v(
+            "\n        For queries about Safari-Trek-Beach Company\n      "
+          )
+        ]),
         _vm._v(" "),
         _c("div", { staticClass: "card p-5 mx-auto contact-form-card" }, [
           _c(
@@ -12610,7 +12835,7 @@ var render = function() {
               on: {
                 submit: function($event) {
                   $event.preventDefault()
-                  return _vm.submitContactInfo($event)
+                  return _vm.sendEmail($event)
                 }
               }
             },
@@ -12708,39 +12933,50 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("section", [
-      _c(
-        "header",
-        { staticClass: "section-header", attrs: { "data-aos": "fade-up" } },
-        [_c("h3", [_vm._v("QUERIES ABOUT SAFARI OR TOUR OPERATOR")])]
-      ),
+      _c("header", { staticClass: "section-header" }, [
+        _c("h3", [_vm._v("QUERIES ABOUT SAFARI OR TOUR OPERATOR")])
+      ]),
       _vm._v(" "),
-      _c(
-        "h3",
-        { staticClass: "text-center mt-5", attrs: { "data-aos": "fade-up" } },
-        [
-          _vm._v(
-            "Safari Package from Safari-Treck-Beach are offered by individual tour operator and not Safari-Treck-Beach company!"
-          )
-        ]
-      ),
-      _vm._v(" "),
-      _c("h5", { staticClass: "mt-5", attrs: { "data-aos": "fade-up" } }, [
+      _c("h3", { staticClass: "text-center mt-5" }, [
         _vm._v(
-          "For questions/information about a specific tour, we recommend that you contact tour operator directly. Follow these two steps: "
+          "Safari Packages in Safari-Trek-Beach are offered by individual tour operator and not Safari-Trek-Beach company."
         )
       ]),
       _vm._v(" "),
-      _c("h5", { staticClass: "mt-4 mb-0", attrs: { "data-aos": "fade-up" } }, [
+      _c("h4", { staticClass: "mt-3 text-center" }, [
+        _vm._v(
+          "For questions about a specific tour, we recommend that you contact tour operator directly."
+        )
+      ]),
+      _vm._v(" "),
+      _c("h4", { staticClass: "mt-5 fw-bold text-center" }, [
+        _vm._v("Follow these three steps:")
+      ]),
+      _vm._v(" "),
+      _c("h5", { staticClass: "mt-4 mb-0" }, [
         _vm._v("1. Select the tour package you like!")
       ]),
       _vm._v(" "),
-      _c("h5", { staticClass: "mt-1", attrs: { "data-aos": "fade-up" } }, [
-        _vm._v("2. "),
-        _c("i", [
-          _vm._v(
-            "Then by using Get Free Quote button on tour page the tour operator contact after filling the form."
-          )
-        ])
+      _c("h5", { staticClass: "mt-3" }, [
+        _vm._v("2. Then Click Get Free Quote button to contact.")
+      ]),
+      _vm._v(" "),
+      _c("h5", { staticClass: "mt-3" }, [
+        _vm._v("3. Fill your email and message then send.")
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "text-center mt-5" }, [
+        _c(
+          "a",
+          {
+            staticClass: "btn btn-danger text-light",
+            attrs: { href: "/our-tours" }
+          },
+          [
+            _vm._v(" Start Here "),
+            _c("span", { staticClass: "fa fa-angle-right ms-2" })
+          ]
+        )
       ])
     ])
   },
@@ -12748,11 +12984,9 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c(
-      "header",
-      { staticClass: "section-header", attrs: { "data-aos": "fade-up" } },
-      [_c("h3", [_vm._v("CONTACT US")])]
-    )
+    return _c("header", { staticClass: "section-header" }, [
+      _c("h3", [_vm._v("CONTACT US")])
+    ])
   },
   function() {
     var _vm = this
@@ -12832,23 +13066,23 @@ var staticRenderFns = [
       { staticClass: "row gx-0 d-flex py-4 align-item-center" },
       [
         _c("div", { staticClass: "col-md-12 text-center" }, [
-          _c("a", { attrs: { href: "#" } }, [
+          _c("a", { attrs: { href: "#", target: "_blank" } }, [
             _c("span", {
               staticClass: "fa fa-facebook-f fa-2x text-danger me-5"
             })
           ]),
           _vm._v(" "),
-          _c("a", { attrs: { href: "#" } }, [
+          _c("a", { attrs: { href: "#", target: "_blank" } }, [
             _c("span", {
               staticClass: "fa fa-instagram fa-2x text-danger me-5"
             })
           ]),
           _vm._v(" "),
-          _c("a", { attrs: { href: "#" } }, [
+          _c("a", { attrs: { href: "#", target: "_blank" } }, [
             _c("span", { staticClass: "fa fa-twitter fa-2x text-danger me-5" })
           ]),
           _vm._v(" "),
-          _c("a", { attrs: { href: "#" } }, [
+          _c("a", { attrs: { href: "#", target: "_blank" } }, [
             _c("span", { staticClass: "fa fa-youtube fa-2x text-danger" })
           ])
         ])

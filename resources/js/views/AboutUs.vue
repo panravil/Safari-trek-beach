@@ -165,9 +165,9 @@ export default {
         role: 'Front-end designer',
         description: 'Donald is also our front end developer, He specialize in design user interfaces and experience on the website.  He is passionate about designing responsive user interfaces, time management in delivering work projects and a tone of knowledge on CSS3, Laravel, Bootstrap and JavaScript. +255 672 426 411',
       },{
-        image: './images/team_photo/isack.jpg',
+        image: './images/team_photo/isaac.jpg',
         role: 'Back-end developer',
-        description: 'Isaac is our lead developer, caption of team; He built his first web application in 2018, and has never looked back since then. He works on diverse technologies and has successfully delivered a number of complex mobile and Web application projects. He manages our hosting server ensuring everything works perfectly. +255 752 988 988',
+        description: 'Isaac is our lead developer, captain of team; He built his first web application in 2018, and has never looked back since then. He works on diverse technologies and has successfully delivered a number of complex mobile and Web application projects. He manages our hosting server ensuring everything works perfectly. +255 752 988 988',
       },  ],
 
       our_vision: "Ensure the whole process of planning and finding the right tour operator for your safari is as easy as Possible.",

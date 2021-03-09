@@ -174,6 +174,12 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
  // import { mapState, mapGetters, mapMutations } from "vuex";
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
@@ -189,9 +195,21 @@ __webpack_require__.r(__webpack_exports__);
   },
   computed: {},
   data: function data() {
-    return {};
+    return {// windowWidth: window.innerWidth
+    };
   },
-  created: function created() {},
+  created: function created() {
+    var _this = this;
+
+    window.onresize = function () {
+      _this.windowWidth = window.innerWidth;
+    };
+  },
+  // mounted() {
+  //     window.onresize = () => {
+  //         this.windowWidth = window.innerWidth
+  //     }
+  // },
   methods: {
     getMidRoute: function getMidRoute(destination) {
       if (destination == undefined || destination == null) return "";
@@ -199,9 +217,17 @@ __webpack_require__.r(__webpack_exports__);
 
       for (var i = 0; i < destination.length; i++) {
         route_data = route_data + destination[i] + ", ";
-      }
+      } // if ( this.windowWidth > 1400 ) {
+      //   if (route_data.length > 110) return route_data.substr(0, 110) + "...";
+      //   else return route_data;
+      // } else if( this.windowWidth > 1200 ) {
+      //   if (route_data.length > 80) return route_data.substr(0, 80) + "...";
+      //   else return route_data;
+      // } else {
+      // }
 
-      if (route_data.length > 60) return route_data.substr(0, 60) + "...";else return route_data;
+
+      if (route_data.length > 70) return route_data.substr(0, 70) + "...";else return route_data;
     },
     getTourLevel: function getTourLevel(level) {
       if (level == undefined || level == null) return "";
@@ -366,7 +392,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n#tour-card .price[data-v-5583021a] {\n    width: 80px;\n    color: #0f6d24;\n    right: 5px;\n    bottom: 0px;\n    top: 0px;\n    padding-left: 2px;\n    border-left: 1px dotted black;\n    position: absolute;\n    font-size: 18px;\n    display: flex;\n    align-items: center;\n    justify-content: center;\n}\n#tour-card .tag-image[data-v-5583021a] {\n    top: -12px;\n    position: absolute;\n    right: 10px;\n}\n#tour-card .bg-image[data-v-5583021a] {\n    background-size: cover;\n    position: relative;\n    width: 100%;\n    height: 0;\n    padding-top: 56.25%;\n}\n#tour-card .tour_title[data-v-5583021a] {\n    width: 100%;\n    position: absolute;\n    left: 0;\n    bottom: 0;\n    right: 0;\n    text-align: left;\n    padding: 15px 10px;\n    background: rgba(0, 0, 0, 0.4);\n    background: linear-gradient(\n        to bottom,\n        rgba(0, 0, 0, 0) 0%,\n        rgba(0, 0, 0, 0.5) 45%,\n        rgba(0, 0, 0, 0.9) 100%\n    );\n    color: white;\n    text-align: center;\n    font-weight: 700;\n    font-size: 20px;\n    margin: 40px 0 0px 0;\n    font-family: \"Montserrat\", sans-serif;\n}\n#tour-card.card[data-v-5583021a] {\n    transition: box-shadow 0.2s ease-in-out, transform 0.3s ease-in-out;\n    box-shadow: 0px 2px 3px rgb(0 0 0 / 18%);\n    cursor: pointer;\n}\n#tour-card.card[data-v-5583021a]:hover {\n    box-shadow: 0px 1px 13px #666;\n}\n.trip-route[data-v-5583021a] {\n    min-height: 75px;\n}\n.company-name[data-v-5583021a] {\n    font-size: 18px;\n}\n@media (max-width: 1200px) {\n.company-name[data-v-5583021a] {\n        font-size: 14px;\n        padding-left: 8px !important;\n}\n.company-review[data-v-5583021a]{\n        font-size: 14px;\n        padding-left: 8px !important;\n}\n#tour-card .price[data-v-5583021a] {\n        font-size: 16px;\n}\n}\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n#tour-card .price[data-v-5583021a] {\n  width: 90px;\n  color: #0f6d24;\n  right: 5px;\n  bottom: 0px;\n  top: 0px;\n  padding-left: 2px;\n  border-left: 1px dotted black;\n  position: absolute;\n  font-size: 18px;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n}\n#tour-card .tag-image[data-v-5583021a] {\n  top: -12px;\n  position: absolute;\n  right: 10px;\n}\n#tour-card .bg-image[data-v-5583021a] {\n  background-size: cover;\n  position: relative;\n  width: 100%;\n  height: 0;\n  padding-top: 56.25%;\n}\n#tour-card .tour_title[data-v-5583021a] {\n  width: 100%;\n  position: absolute;\n  left: 0;\n  bottom: 0;\n  right: 0;\n  text-align: left;\n  padding: 15px 10px;\n  background: rgba(0, 0, 0, 0.4);\n  background: linear-gradient(\n    to bottom,\n    rgba(0, 0, 0, 0) 0%,\n    rgba(0, 0, 0, 0.5) 45%,\n    rgba(0, 0, 0, 0.9) 100%\n  );\n  color: white;\n  text-align: center;\n  font-weight: 700;\n  font-size: 20px;\n  margin: 40px 0 0px 0;\n  font-family: \"Montserrat\", sans-serif;\n}\n#tour-card.card[data-v-5583021a] {\n  transition: box-shadow 0.2s ease-in-out, transform 0.3s ease-in-out;\n  box-shadow: 0px 2px 3px rgb(0 0 0 / 18%);\n  cursor: pointer;\n}\n#tour-card.card[data-v-5583021a]:hover {\n  box-shadow: 0px 1px 13px #666;\n}\n.card-body p.card-text[data-v-5583021a] {\n  font-size: 15px;\n  line-height: 20px;\n}\np.company-name[data-v-5583021a] {\n  font-size: 16px;\n}\n.trip-route[data-v-5583021a] {\n  min-height: 60px;\n}\n@media (max-width: 1200px) {\n.company-name[data-v-5583021a] {\n    font-size: 14px;\n    padding-left: 8px !important;\n}\n.company-review[data-v-5583021a] {\n    font-size: 14px;\n    padding-left: 8px !important;\n}\n#tour-card .price[data-v-5583021a] {\n    font-size: 16px;\n}\n}\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -657,25 +683,25 @@ var render = function() {
       ? _c("span", { staticClass: "fa fa-star-half-full checked" })
       : _c("span", { staticClass: "fa fa-star checked" }),
     _vm._v(" "),
-    _vm.rating < 1
+    _vm.rating <= 1
       ? _c("span", { staticClass: "fa fa-star-o" })
       : _vm.rating < 1.5
       ? _c("span", { staticClass: "fa fa-star-half-full checked" })
       : _c("span", { staticClass: "fa fa-star checked" }),
     _vm._v(" "),
-    _vm.rating < 2
+    _vm.rating <= 2
       ? _c("span", { staticClass: "fa fa-star-o" })
       : _vm.rating < 2.5
       ? _c("span", { staticClass: "fa fa-star-half-full checked" })
       : _c("span", { staticClass: "fa fa-star checked" }),
     _vm._v(" "),
-    _vm.rating < 3
+    _vm.rating <= 3
       ? _c("span", { staticClass: "fa fa-star-o" })
       : _vm.rating < 3.5
       ? _c("span", { staticClass: "fa fa-star-half-full checked" })
       : _c("span", { staticClass: "fa fa-star checked" }),
     _vm._v(" "),
-    _vm.rating < 4
+    _vm.rating <= 4
       ? _c("span", { staticClass: "fa fa-star-o" })
       : _vm.rating < 4.5
       ? _c("span", { staticClass: "fa fa-star-half-full checked" })
@@ -731,11 +757,11 @@ var render = function() {
           _vm._v(" "),
           _c("div", { staticClass: "tour_title" }, [
             _vm._v(
-              "\n            " +
+              "\n      " +
                 _vm._s(_vm.tourData.no_of_day) +
                 "-Day " +
                 _vm._s(_vm.tourData.title) +
-                "\n        "
+                "\n    "
             )
           ]),
           _vm._v(" "),
@@ -798,28 +824,28 @@ var render = function() {
               ? _c("span", [
                   _vm._v(_vm._s(_vm.tourData.no_of_day - 1) + " Nights")
                 ])
-              : _c("span", [_vm._v("No Accommodation")])
+              : _c("span", [_vm._v("Not Included")])
           ]),
           _vm._v(" "),
           _c("p", { staticClass: "card-text mb-1" }, [
             _c("strong", [_vm._v(" Tour Type: ")]),
             _vm._v(
-              "\n            " +
+              "\n      " +
                 _vm._s(_vm.getTourLevel(_vm.tourData.level)) +
-                "\n        "
+                "\n    "
             )
           ]),
           _vm._v(" "),
-          _c("p", { staticClass: "card-text mb-1 trip-route" }, [
+          _c("p", { staticClass: "card-text trip-route mb-0" }, [
             _c("strong", [_vm._v(" Trip Route: ")]),
             _vm._v(
-              "\n            " +
+              "\n      " +
                 _vm._s(_vm.tourData.start_city) +
-                "(Start),\n            " +
+                " (Start),\n      " +
                 _vm._s(_vm.getMidRoute(_vm.tourData.destination)) +
-                "\n            " +
+                "\n      " +
                 _vm._s(_vm.tourData.end_city) +
-                " (End)\n        "
+                " (End)\n    "
             )
           ])
         ]
@@ -830,13 +856,17 @@ var render = function() {
         { staticClass: "row gx-0", staticStyle: { position: "relative" } },
         [
           _c("div", [
-            _c("p", { staticClass: "card-text mb-1 ps-3 company-name" }, [
-              _vm._v(
-                "\n                " +
-                  _vm._s(_vm.tourData.company_name) +
-                  "\n            "
-              )
-            ]),
+            _c(
+              "p",
+              {
+                staticClass: "card-text mb-1 ps-3 company-name  text-capitalize"
+              },
+              [
+                _vm._v(
+                  "\n        " + _vm._s(_vm.tourData.company_name) + "\n      "
+                )
+              ]
+            ),
             _vm._v(" "),
             _c(
               "p",
@@ -847,23 +877,27 @@ var render = function() {
                 }),
                 _vm._v(" "),
                 _vm.tourData.avg_review == "5"
-                  ? _c("strong", [_vm._v("\n                     5.0/5 ")])
+                  ? _c("strong", [_vm._v("  5.0/5 ")])
+                  : _vm.tourData.avg_review == "4"
+                  ? _c("strong", [_vm._v("\n           4.0/5 ")])
+                  : _vm.tourData.avg_review == "3"
+                  ? _c("strong", [_vm._v("\n           3.0/5 ")])
+                  : _vm.tourData.avg_review == "2"
+                  ? _c("strong", [_vm._v("\n           2.0/5 ")])
+                  : _vm.tourData.avg_review == "1"
+                  ? _c("strong", [_vm._v("\n           1.0/5 ")])
                   : _c("strong", [
-                      _vm._v(
-                        "\n                     " +
-                          _vm._s(_vm.tourData.avg_review) +
-                          "/5 "
-                      )
+                      _vm._v("  " + _vm._s(_vm.tourData.avg_review) + "/5 ")
                     ]),
-                _vm._v("\n                (\n                "),
-                _vm.tourData.sum_review == 1
+                _vm._v("\n        (\n        "),
+                _vm.tourData.num_review == 1
                   ? _c("span", [
-                      _vm._v(_vm._s(_vm.tourData.sum_review) + " Review")
+                      _vm._v(_vm._s(_vm.tourData.num_review) + " Review")
                     ])
                   : _c("span", [
-                      _vm._v(_vm._s(_vm.tourData.sum_review) + " Reviews")
+                      _vm._v(_vm._s(_vm.tourData.num_review) + " Reviews")
                     ]),
-                _vm._v("\n                )\n            ")
+                _vm._v("\n        )\n      ")
               ],
               1
             )

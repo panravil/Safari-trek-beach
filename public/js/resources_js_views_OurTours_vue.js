@@ -18844,6 +18844,12 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
  // import { mapState, mapGetters, mapMutations } from "vuex";
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
@@ -18859,9 +18865,21 @@ __webpack_require__.r(__webpack_exports__);
   },
   computed: {},
   data: function data() {
-    return {};
+    return {// windowWidth: window.innerWidth
+    };
   },
-  created: function created() {},
+  created: function created() {
+    var _this = this;
+
+    window.onresize = function () {
+      _this.windowWidth = window.innerWidth;
+    };
+  },
+  // mounted() {
+  //     window.onresize = () => {
+  //         this.windowWidth = window.innerWidth
+  //     }
+  // },
   methods: {
     getMidRoute: function getMidRoute(destination) {
       if (destination == undefined || destination == null) return "";
@@ -18869,9 +18887,17 @@ __webpack_require__.r(__webpack_exports__);
 
       for (var i = 0; i < destination.length; i++) {
         route_data = route_data + destination[i] + ", ";
-      }
+      } // if ( this.windowWidth > 1400 ) {
+      //   if (route_data.length > 110) return route_data.substr(0, 110) + "...";
+      //   else return route_data;
+      // } else if( this.windowWidth > 1200 ) {
+      //   if (route_data.length > 80) return route_data.substr(0, 80) + "...";
+      //   else return route_data;
+      // } else {
+      // }
 
-      if (route_data.length > 60) return route_data.substr(0, 60) + "...";else return route_data;
+
+      if (route_data.length > 70) return route_data.substr(0, 70) + "...";else return route_data;
     },
     getTourLevel: function getTourLevel(level) {
       if (level == undefined || level == null) return "";
@@ -18960,15 +18986,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vue_numeric_input__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(vue_numeric_input__WEBPACK_IMPORTED_MODULE_2__);
 /* harmony import */ var vuejs_datepicker__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! vuejs-datepicker */ "./node_modules/vuejs-datepicker/dist/vuejs-datepicker.esm.js");
 /* harmony import */ var _components_TourCardSkelecton__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../components/TourCardSkelecton */ "./resources/js/components/TourCardSkelecton.vue");
-/* harmony import */ var vue_pagination_2__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! vue-pagination-2 */ "./node_modules/vue-pagination-2/compiled/main.js");
-/* harmony import */ var vue_pagination_2__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(vue_pagination_2__WEBPACK_IMPORTED_MODULE_5__);
-/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm.js");
-/* harmony import */ var _syncfusion_ej2_vue_inputs__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @syncfusion/ej2-vue-inputs */ "./node_modules/@syncfusion/ej2-vue-inputs/src/slider/slider.component.js");
-/* harmony import */ var _syncfusion_ej2_vue_buttons__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @syncfusion/ej2-vue-buttons */ "./node_modules/@syncfusion/ej2-vue-buttons/src/check-box/checkbox.component.js");
-/* harmony import */ var _syncfusion_ej2_vue_buttons__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @syncfusion/ej2-vue-buttons */ "./node_modules/@syncfusion/ej2-vue-buttons/src/radio-button/radiobutton.component.js");
-/* harmony import */ var _syncfusion_ej2_vue_buttons__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! @syncfusion/ej2-vue-buttons */ "./node_modules/@syncfusion/ej2-vue-buttons/src/chips/chiplist.component.js");
-/* harmony import */ var _syncfusion_ej2_base__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! @syncfusion/ej2-base */ "./node_modules/@syncfusion/ej2-base/index.js");
-/* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
+/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm.js");
+/* harmony import */ var _syncfusion_ej2_vue_inputs__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @syncfusion/ej2-vue-inputs */ "./node_modules/@syncfusion/ej2-vue-inputs/src/slider/slider.component.js");
+/* harmony import */ var _syncfusion_ej2_vue_buttons__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @syncfusion/ej2-vue-buttons */ "./node_modules/@syncfusion/ej2-vue-buttons/src/check-box/checkbox.component.js");
+/* harmony import */ var _syncfusion_ej2_vue_buttons__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @syncfusion/ej2-vue-buttons */ "./node_modules/@syncfusion/ej2-vue-buttons/src/radio-button/radiobutton.component.js");
+/* harmony import */ var _syncfusion_ej2_vue_buttons__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @syncfusion/ej2-vue-buttons */ "./node_modules/@syncfusion/ej2-vue-buttons/src/chips/chiplist.component.js");
+/* harmony import */ var _syncfusion_ej2_base__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! @syncfusion/ej2-base */ "./node_modules/@syncfusion/ej2-base/index.js");
+/* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
 
 
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
@@ -19245,22 +19269,266 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
+ // import Pagination from "vue-pagination-2";
 
 
 
+vue__WEBPACK_IMPORTED_MODULE_5__.default.use(_syncfusion_ej2_vue_inputs__WEBPACK_IMPORTED_MODULE_6__.SliderPlugin);
 
-vue__WEBPACK_IMPORTED_MODULE_6__.default.use(_syncfusion_ej2_vue_inputs__WEBPACK_IMPORTED_MODULE_7__.SliderPlugin);
+vue__WEBPACK_IMPORTED_MODULE_5__.default.use(_syncfusion_ej2_vue_buttons__WEBPACK_IMPORTED_MODULE_7__.CheckBoxPlugin);
 
-vue__WEBPACK_IMPORTED_MODULE_6__.default.use(_syncfusion_ej2_vue_buttons__WEBPACK_IMPORTED_MODULE_8__.CheckBoxPlugin);
+vue__WEBPACK_IMPORTED_MODULE_5__.default.use(_syncfusion_ej2_vue_buttons__WEBPACK_IMPORTED_MODULE_8__.RadioButtonPlugin);
 
-vue__WEBPACK_IMPORTED_MODULE_6__.default.use(_syncfusion_ej2_vue_buttons__WEBPACK_IMPORTED_MODULE_9__.RadioButtonPlugin);
+vue__WEBPACK_IMPORTED_MODULE_5__.default.use(_syncfusion_ej2_vue_buttons__WEBPACK_IMPORTED_MODULE_9__.ChipListPlugin);
 
-vue__WEBPACK_IMPORTED_MODULE_6__.default.use(_syncfusion_ej2_vue_buttons__WEBPACK_IMPORTED_MODULE_10__.ChipListPlugin);
-
-(0,_syncfusion_ej2_base__WEBPACK_IMPORTED_MODULE_11__.enableRipple)(true);
+(0,_syncfusion_ej2_base__WEBPACK_IMPORTED_MODULE_10__.enableRipple)(true);
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: "OurTours",
@@ -19268,8 +19536,8 @@ vue__WEBPACK_IMPORTED_MODULE_6__.default.use(_syncfusion_ej2_vue_buttons__WEBPAC
     TourCard: _components_TourCard__WEBPACK_IMPORTED_MODULE_1__.default,
     VueNumericInput: (vue_numeric_input__WEBPACK_IMPORTED_MODULE_2___default()),
     Datepicker: vuejs_datepicker__WEBPACK_IMPORTED_MODULE_3__.default,
-    TourCardSkelecton: _components_TourCardSkelecton__WEBPACK_IMPORTED_MODULE_4__.default,
-    Pagination: (vue_pagination_2__WEBPACK_IMPORTED_MODULE_5___default())
+    TourCardSkelecton: _components_TourCardSkelecton__WEBPACK_IMPORTED_MODULE_4__.default // Pagination,
+
   },
   data: function data() {
     var _ref;
@@ -19278,7 +19546,7 @@ vue__WEBPACK_IMPORTED_MODULE_6__.default.use(_syncfusion_ej2_vue_buttons__WEBPAC
       type: "Range",
       price_range: [10, 10000],
       day_range: [1, 30]
-    }, _defineProperty(_ref, "type", "Range"), _defineProperty(_ref, "read_more", false), _defineProperty(_ref, "ddd", ""), _defineProperty(_ref, "where_to_search", ""), _defineProperty(_ref, "traveler_number", ""), _defineProperty(_ref, "start_date", ""), _defineProperty(_ref, "adults_number", 1), _defineProperty(_ref, "children_number", 0), _defineProperty(_ref, "visible_whereto_dropdown", false), _defineProperty(_ref, "visible_traveler_dropdown", false), _defineProperty(_ref, "disabledFn", {
+    }, _defineProperty(_ref, "type", "Range"), _defineProperty(_ref, "read_more", false), _defineProperty(_ref, "where_to_search", ""), _defineProperty(_ref, "traveler_number", ""), _defineProperty(_ref, "start_date", ""), _defineProperty(_ref, "adults_number", 0), _defineProperty(_ref, "children_number", 0), _defineProperty(_ref, "visible_whereto_dropdown", false), _defineProperty(_ref, "visible_traveler_dropdown", false), _defineProperty(_ref, "disabledFn", {
       customPredictor: function customPredictor(date) {
         var current_date = new Date();
 
@@ -19289,9 +19557,10 @@ vue__WEBPACK_IMPORTED_MODULE_6__.default.use(_syncfusion_ej2_vue_buttons__WEBPAC
     }), _defineProperty(_ref, "highlighted", {
       dates: [// your date
       new Date()]
-    }), _defineProperty(_ref, "day_range_chip", ""), _defineProperty(_ref, "search_result", []), _defineProperty(_ref, "isSidebar", false), _defineProperty(_ref, "standard_check_list", []), _defineProperty(_ref, "specialized_check_list", []), _defineProperty(_ref, "checked_specialized_filter_options", []), _defineProperty(_ref, "checked_standard_filter_options", []), _defineProperty(_ref, "where_to_search_option", ''), _defineProperty(_ref, "update_checklist", 0), _defineProperty(_ref, "check_private_filter", false), _defineProperty(_ref, "check_group_filter", false), _defineProperty(_ref, "update_private_check", 0), _defineProperty(_ref, "update_group_check", 0), _defineProperty(_ref, "pagination_options", {
-      chunk: 5
-    }), _defineProperty(_ref, "current_ourtour_page", 1), _defineProperty(_ref, "ourtour_perpage", 40), _defineProperty(_ref, "page", 1), _ref;
+    }), _defineProperty(_ref, "day_range_chip", ""), _defineProperty(_ref, "search_result", []), _defineProperty(_ref, "isSidebar", false), _defineProperty(_ref, "standard_check_list", []), _defineProperty(_ref, "specialized_check_list", []), _defineProperty(_ref, "checked_specialized_filter_options", []), _defineProperty(_ref, "checked_standard_filter_options", []), _defineProperty(_ref, "where_to_search_option", ""), _defineProperty(_ref, "update_checklist", 0), _defineProperty(_ref, "check_private_filter", false), _defineProperty(_ref, "check_group_filter", false), _defineProperty(_ref, "update_private_check", 0), _defineProperty(_ref, "update_group_check", 0), _defineProperty(_ref, "pagination_options", {
+      chunk: 5,
+      edgeNavigation: true
+    }), _defineProperty(_ref, "current_ourtour_page", 1), _defineProperty(_ref, "ourtour_perpage", 40), _defineProperty(_ref, "page", 1), _defineProperty(_ref, "page_from_url", 0), _defineProperty(_ref, "where_to_list", []), _defineProperty(_ref, "search_name", "Our Tours"), _ref;
   },
   directives: {
     "click-outside-dropdown": {
@@ -19319,8 +19588,26 @@ vue__WEBPACK_IMPORTED_MODULE_6__.default.use(_syncfusion_ej2_vue_buttons__WEBPAC
   computed: _objectSpread({
     router_query: function router_query() {
       return this.$route.query;
+    },
+    destination_id: function destination_id() {
+      var id = this.$route.params.destination;
+
+      if (id != undefined) {
+        return id.slice(0, id.length);
+      } else {
+        return "";
+      }
+    },
+    single_id: function single_id() {
+      var id = this.$route.params.single;
+
+      if (id != undefined) {
+        return id.slice(0, id.length);
+      } else {
+        return "";
+      }
     }
-  }, (0,vuex__WEBPACK_IMPORTED_MODULE_12__.mapGetters)({
+  }, (0,vuex__WEBPACK_IMPORTED_MODULE_11__.mapGetters)({
     filterTours: "tourController/filterTours",
     loading: "tourcard_loading",
     where_to_search_state: "tourController/where_to_search",
@@ -19331,29 +19618,9 @@ vue__WEBPACK_IMPORTED_MODULE_6__.default.use(_syncfusion_ej2_vue_buttons__WEBPAC
     query_instore: "tourController/query_instore",
     tourLevel: "tourController/tourLevel",
     tourFocus: "tourController/tourFocus",
-    where_to_list: "tourController/tourActivity"
+    where_to_list_state: "tourController/tourActivity"
   })),
   watch: {
-    //   filter when click private checkbox checked
-    check_private_filter: function check_private_filter(newValue) {
-      if (newValue) {
-        this.check_group_filter = false;
-        this.update_group_check++;
-      }
-
-      this.page = 1;
-      this.getFilterTours();
-    },
-    // filter when click group checkbox  checked
-    check_group_filter: function check_group_filter(newValue) {
-      if (newValue) {
-        this.check_private_filter = false;
-        this.update_private_check++;
-      }
-
-      this.page = 1;
-      this.getFilterTours();
-    },
     where_to_search: function where_to_search() {
       var _this = this;
 
@@ -19386,41 +19653,241 @@ vue__WEBPACK_IMPORTED_MODULE_6__.default.use(_syncfusion_ej2_vue_buttons__WEBPAC
     var _this2 = this;
 
     return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee() {
+      var temp_query, destination_url, single_url, destination_item, single, _single, temp_destination, _single2, _temp_destination;
+
       return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee$(_context) {
         while (1) {
           switch (_context.prev = _context.next) {
             case 0:
-              document.title = "Search Tours of Safari-Trek-Beach.com";
-              _this2.search_result = _this2.where_to_list;
               _this2.where_to_search = _this2.where_to_search_state;
               _this2.traveler_number = _this2.traveler_number_state;
               _this2.start_date = _this2.start_date_state;
               _this2.adults_number = _this2.adults_number_state;
               _this2.children_number = _this2.children_number_state;
 
-              if (_this2.where_to_search != '') {
+              if (_this2.where_to_search != "") {
                 _this2.where_to_search_option = _this2.where_to_search;
               }
 
-              _context.next = 10;
+              _this2.$store.commit("tourController/initFilterData");
+
+              _context.next = 9;
               return _this2.getTourFocus();
 
-            case 10:
-              _context.next = 12;
-              return _this2.getTourActivity();
-
-            case 12:
-              _context.next = 14;
+            case 9:
+              _context.next = 11;
               return _this2.getTourLevel();
 
-            case 14:
-              _this2.traveler_number_calc();
+            case 11:
+              _context.next = 13;
+              return _this2.getTourActivity();
 
-              _this2.$store.dispatch("tourController/setQuery", _this2.router_query);
+            case 13:
+              _this2.traveler_number_calc(); // this is for conversion from url query to normal text for api request
+
+
+              temp_query = _this2.router_query; // console.log('temp query', temp_query )
+              // let possible_single = [];
+              // if ( temp_query['group'] == undefined ) possible_single.push('group')
+              // if ( temp_query['comfort'] == undefined ) possible_single.push('comfort')
+              // if ( temp_query['focus'] == undefined ) possible_single.push('focus')
+              // console.log('possible', possible_single)
+
+              destination_url = _this2.destination_id;
+              single_url = _this2.single_id;
+
+              if (!(destination_url !== undefined && destination_url !== "")) {
+                _context.next = 78;
+                break;
+              }
+
+              //if first param exists, i.e. if one of params exists at least
+              // Destination search if first string is the element of the pre-determined activity list
+              destination_item = _this2.where_to_list.find(function (el) {
+                return el.input_id == destination_url;
+              });
+
+              if (!(destination_item != undefined)) {
+                _context.next = 38;
+                break;
+              }
+
+              // if found, to query for api request, append this element
+              temp_query = Object.assign({
+                destination: destination_item.title
+              }, temp_query);
+
+              if (!(single_url != "")) {
+                _context.next = 36;
+                break;
+              }
+
+              //if the second single param is not empty, check what it is and append
+              single = [];
+              single = _this2.checkSingleParam(single_url);
+              _context.t0 = single[0];
+              _context.next = _context.t0 === 'group' ? 27 : _context.t0 === 'comfort' ? 29 : _context.t0 === 'focus' ? 31 : _context.t0 === 'day' ? 33 : 35;
+              break;
+
+            case 27:
+              temp_query = Object.assign({
+                group: single[1]
+              }, temp_query);
+              return _context.abrupt("break", 36);
+
+            case 29:
+              temp_query = Object.assign({
+                comfort: single[1]
+              }, temp_query);
+              return _context.abrupt("break", 36);
+
+            case 31:
+              temp_query = Object.assign({
+                focus: single[1]
+              }, temp_query);
+              return _context.abrupt("break", 36);
+
+            case 33:
+              temp_query = Object.assign({
+                min_day: single[1]
+              }, {
+                max_day: single[1]
+              }, temp_query);
+              return _context.abrupt("break", 36);
+
+            case 35:
+              return _context.abrupt("break", 36);
+
+            case 36:
+              _context.next = 76;
+              break;
+
+            case 38:
+              if (!(single_url != '')) {
+                _context.next = 57;
+                break;
+              }
+
+              _single = _this2.checkSingleParam(single_url);
+              _context.t1 = _single[0];
+              _context.next = _context.t1 === 'group' ? 43 : _context.t1 === 'comfort' ? 45 : _context.t1 === 'focus' ? 47 : _context.t1 === 'day' ? 49 : 51;
+              break;
+
+            case 43:
+              temp_query = Object.assign({
+                group: _single[1]
+              }, temp_query);
+              return _context.abrupt("break", 52);
+
+            case 45:
+              temp_query = Object.assign({
+                comfort: _single[1]
+              }, temp_query);
+              return _context.abrupt("break", 52);
+
+            case 47:
+              temp_query = Object.assign({
+                focus: _single[1]
+              }, temp_query);
+              return _context.abrupt("break", 52);
+
+            case 49:
+              temp_query = Object.assign({
+                min_day: _single[1]
+              }, {
+                max_day: _single[1]
+              }, temp_query);
+              return _context.abrupt("break", 52);
+
+            case 51:
+              return _context.abrupt("break", 52);
+
+            case 52:
+              // append to temp query
+              temp_destination = _this2.destination_id.split("_").join(" ");
+              temp_destination = _this2.destination_id.split("~").join("&");
+              temp_query = Object.assign({
+                destination: temp_destination
+              }, temp_query);
+              _context.next = 76;
+              break;
+
+            case 57:
+              _single2 = _this2.checkSingleParam(destination_url);
+
+              if (!(_single2 != null)) {
+                _context.next = 73;
+                break;
+              }
+
+              _context.t2 = _single2[0];
+              _context.next = _context.t2 === 'group' ? 62 : _context.t2 === 'comfort' ? 64 : _context.t2 === 'focus' ? 66 : _context.t2 === 'day' ? 68 : 70;
+              break;
+
+            case 62:
+              temp_query = Object.assign({
+                group: _single2[1]
+              }, temp_query);
+              return _context.abrupt("break", 71);
+
+            case 64:
+              temp_query = Object.assign({
+                comfort: _single2[1]
+              }, temp_query);
+              return _context.abrupt("break", 71);
+
+            case 66:
+              temp_query = Object.assign({
+                focus: _single2[1]
+              }, temp_query);
+              return _context.abrupt("break", 71);
+
+            case 68:
+              temp_query = Object.assign({
+                min_day: _single2[1]
+              }, {
+                max_day: _single2[1]
+              }, temp_query);
+              return _context.abrupt("break", 71);
+
+            case 70:
+              return _context.abrupt("break", 71);
+
+            case 71:
+              _context.next = 76;
+              break;
+
+            case 73:
+              // if not single parameter, detect it as a custom typed destination
+              _temp_destination = _this2.destination_id.split("_").join(" ");
+              _temp_destination = _this2.destination_id.split("~").join("&");
+              temp_query = Object.assign({
+                destination: _temp_destination
+              }, temp_query);
+
+            case 76:
+              _context.next = 81;
+              break;
+
+            case 78:
+              // if no params in URL ...
+              _this2.where_to_search = "";
+              _this2.where_to_search_option = "";
+
+              _this2.saveFormtoStore();
+
+            case 81:
+              if (temp_query["comfort"] !== undefined) {
+                temp_query["comfort"] = temp_query["comfort"].split("_").join(" ");
+                temp_query["comfort"] = temp_query["comfort"].split("@").join("+");
+              } // console.log('temp after', temp_query)
+
+
+              _this2.$store.dispatch("tourController/setQuery", temp_query);
 
               _this2.setCurrentCheck();
 
-            case 17:
+            case 84:
             case "end":
               return _context.stop();
           }
@@ -19438,7 +19905,37 @@ vue__WEBPACK_IMPORTED_MODULE_6__.default.use(_syncfusion_ej2_vue_buttons__WEBPAC
             switch (_context2.prev = _context2.next) {
               case 0:
                 _context2.next = 2;
-                return _this3.$store.dispatch("tourController/getTourActivity").then(function () {});
+                return _this3.$store.dispatch("tourController/getTourActivity").then(function () {
+                  var first_activity = [{
+                    "title": "Serengeti National Park",
+                    "input_id": "serengeti-national-park"
+                  }, {
+                    "title": "Mount Kilimanjaro",
+                    "input_id": "mount-kilimanjaro"
+                  }, {
+                    "title": "Zanzibar",
+                    "input_id": "zanzibar"
+                  }, {
+                    "title": "Ngorongoro Crater",
+                    "input_id": "ngorongoro-crater"
+                  }, {
+                    "title": "Tarangire National Park",
+                    "input_id": "tarangire-national-park"
+                  }, {
+                    "title": "Ruaha National Park",
+                    "input_id": "ruaha-national-park"
+                  }];
+                  var ar = _this3.where_to_list_state;
+
+                  for (var i = 0; i < ar.length; i++) {
+                    if (ar[i].title == "Serengeti National Park" || ar[i].title == "Mount Kilimanjaro" || ar[i].title == "Ngorongoro Crater" || ar[i].title == "Tarangire National Park" || ar[i].title == "Zanzibar" || ar[i].title == "Ruaha National Park") {
+                      ar.splice(i, 1);
+                    }
+                  }
+
+                  _this3.where_to_list = first_activity.concat(ar);
+                  _this3.search_result = _this3.where_to_list;
+                });
 
               case 2:
               case "end":
@@ -19502,10 +19999,16 @@ vue__WEBPACK_IMPORTED_MODULE_6__.default.use(_syncfusion_ej2_vue_buttons__WEBPAC
       var comfort_list = this.query_instore["comfort"] !== undefined ? this.query_instore.comfort.split("|") : [];
       var focus_list = this.query_instore["focus"] !== undefined ? this.query_instore.focus.split("|") : [];
       var destination = this.query_instore["destination"] !== undefined ? this.query_instore.destination : this.where_to_search;
-      var group = this.query_instore["group"] !== undefined ? this.query_instore.group : '';
+      var group = this.query_instore["group"] !== undefined ? this.query_instore.group : "";
+      var page = this.query_instore["p"] !== undefined ? this.query_instore.p : "";
 
-      if (group != '') {
-        if (group == 'group') {
+      if (page != "") {
+        // console.log("page", page);
+        this.page_from_url = parseInt(page);
+      }
+
+      if (group != "") {
+        if (group == "group") {
           this.check_group_filter = true;
         } else {
           this.check_private_filter = true;
@@ -19527,7 +20030,7 @@ vue__WEBPACK_IMPORTED_MODULE_6__.default.use(_syncfusion_ej2_vue_buttons__WEBPAC
       }
 
       for (var _i = 0; _i < this.specialized_check_list.length; _i++) {
-        if (focus_list.includes(this.specialized_check_list[_i].title)) {
+        if (focus_list.includes(this.specialized_check_list[_i].input_id)) {
           this.specialized_check_list[_i].checked_state = true;
         }
       }
@@ -19576,10 +20079,10 @@ vue__WEBPACK_IMPORTED_MODULE_6__.default.use(_syncfusion_ej2_vue_buttons__WEBPAC
     saveFormtoStore: function saveFormtoStore() {
       var searchData = {};
       searchData = {
-        'where_to_search': this.where_to_search,
-        'start_date': this.start_date,
-        'adults_number': this.adults_number,
-        'children_number': this.children_number
+        where_to_search: this.where_to_search,
+        start_date: this.start_date,
+        adults_number: this.adults_number,
+        children_number: this.children_number
       };
       this.$store.dispatch("tourController/setSearchData", searchData);
     },
@@ -19605,15 +20108,17 @@ vue__WEBPACK_IMPORTED_MODULE_6__.default.use(_syncfusion_ej2_vue_buttons__WEBPAC
     },
     traveler_number_calc: function traveler_number_calc() {
       var traveler = this.adults_number + this.children_number;
-      if (traveler == 1) this.traveler_number = traveler + " Traveler";else this.traveler_number = traveler + " Travelers";
+      if (traveler == 1) this.traveler_number = traveler + " Traveler";else if (traveler == 0) this.traveler_number = "";else this.traveler_number = traveler + " Travelers";
     },
     setTravelerInit: function setTravelerInit() {
       this.traveler_number = "";
-      this.adults_number = 1;
+      this.adults_number = 0;
       this.children_number = 0;
+      this.saveFormtoStore();
     },
     initStartDate: function initStartDate() {
       this.start_date = "";
+      this.saveFormtoStore();
     },
     deleteFilterOption: function deleteFilterOption(e) {
       var lastChar = e.data.text[e.data.text.length - 1];
@@ -19628,8 +20133,8 @@ vue__WEBPACK_IMPORTED_MODULE_6__.default.use(_syncfusion_ej2_vue_buttons__WEBPAC
       }
 
       if (check_first_string == "To: ") {
-        this.where_to_search = '';
-        this.where_to_search_option = '';
+        this.where_to_search = "";
+        this.where_to_search_option = "";
         this.page = 1;
         this.getFilterTours();
         return;
@@ -19650,8 +20155,20 @@ vue__WEBPACK_IMPORTED_MODULE_6__.default.use(_syncfusion_ej2_vue_buttons__WEBPAC
           this.price_range = [10, 10000];
           this.check_private_filter = false;
           this.check_group_filter = false;
-          this.where_to_search = '';
-          this.where_to_search_option = '';
+          this.where_to_search = "";
+          this.where_to_search_option = "";
+          this.adults_number = 0;
+          this.children_number = 0;
+          this.traveler_number = "";
+          this.start_date = "";
+          var searchData = {
+            where_to_search: "",
+            start_date: "",
+            adults_number: 0,
+            children_number: 0,
+            traveler_number: ""
+          };
+          this.$store.dispatch("tourController/setSearchData", searchData);
           this.update_private_check++;
           this.update_group_check++;
           this.initCheckList();
@@ -19729,6 +20246,10 @@ vue__WEBPACK_IMPORTED_MODULE_6__.default.use(_syncfusion_ej2_vue_buttons__WEBPAC
         day_range_text = "Up to " + this.day_range[1] + " days";
       }
 
+      if (this.day_range[0] == this.day_range[1]) {
+        day_range_text = this.day_range[0] == 1 ? "1 day" : this.day_range[0] + " days";
+      }
+
       return day_range_text;
     },
     getPriceRangeChip: function getPriceRangeChip() {
@@ -19740,110 +20261,314 @@ vue__WEBPACK_IMPORTED_MODULE_6__.default.use(_syncfusion_ej2_vue_buttons__WEBPAC
         price_range_text = "Up to " + this.price_range[1] + "$";
       }
 
+      if (this.price_range[0] == this.price_range[1]) {
+        price_range_text = this.price_range[0] + "$";
+      }
+
       return price_range_text;
+    },
+    groupChange: function groupChange(index) {
+      if (index == 1) {
+        if (this.check_private_filter) {
+          this.check_group_filter = false;
+          this.update_group_check++;
+        }
+
+        this.page = 1;
+        this.getFilterTours();
+        return;
+      }
+
+      if (index == 2) {
+        if (this.check_group_filter) {
+          this.check_private_filter = false;
+          this.update_private_check++;
+        }
+
+        this.page = 1;
+        this.getFilterTours();
+      }
     },
     searchEnter: function searchEnter() {
       this.where_to_search_option = this.where_to_search;
       this.saveFormtoStore();
       this.getFilterTours();
     },
-    radioTest: function radioTest() {
-      console.log('private', this.check_private_filter);
-      console.log('group', this.check_group_filter);
-    },
     // filter tours function
+    getFilterToursBySlidePrice: function getFilterToursBySlidePrice() {
+      // console.log('changed priceeeeee')
+      this.page = 1;
+      this.getFilterTours();
+    },
+    getFilterToursBySlideDay: function getFilterToursBySlideDay() {
+      // console.log('changed day')
+      this.page = 1;
+      this.getFilterTours();
+    },
+    checkSingleParam: function checkSingleParam(single) {
+      if (single == 'group' || single == 'private') {
+        return ['group', single];
+      } // this is the single day ...
+
+
+      if (single.substr(single.length - 4) == '-Day') {
+        return ['day', single.substring(0, single.length - 4)];
+      } // focus check ...
+
+
+      var focus = this.tourFocus.find(function (el) {
+        return el.input_id == single;
+      });
+
+      if (focus != undefined) {
+        return ['focus', focus.input_id];
+      } //level check ...
+
+
+      single = single.split("_").join(" ");
+      single = single.split("@").join("+");
+      var level = this.tourLevel.find(function (el) {
+        return el.title == single;
+      });
+
+      if (level != undefined) {
+        return ['comfort', level.title];
+      }
+
+      return [];
+    },
     getFilterTours: function getFilterTours() {
       var _this6 = this;
 
-      var group_filter = "";
-      var level_filter = "";
-      var specialized_filter = "";
+      return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee5() {
+        var group_filter, level_filter, specialized_filter, focus_for_url, group_number, comfort_number, focus_number, day_number, i, _i6, query, url_query, key, destination_item, destination_params, single, params;
 
-      if (this.check_private_filter) {
-        group_filter = "private";
-        if (this.check_group_filter) group_filter = group_filter + "|group";
-      } else if (this.check_group_filter) group_filter += "group";
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee5$(_context5) {
+          while (1) {
+            switch (_context5.prev = _context5.next) {
+              case 0:
+                group_filter = "";
+                level_filter = "";
+                specialized_filter = "";
+                focus_for_url = "";
+                group_number = 0;
+                comfort_number = 0;
+                focus_number = 0;
+                day_number = 0;
 
-      for (var i = 0; i < this.checked_standard_filter_options.length; i++) {
-        level_filter += this.checked_standard_filter_options[i].title + "|";
-      }
+                if (_this6.check_private_filter) {
+                  group_filter = "private";
+                  group_number = 1;
+                } else if (_this6.check_group_filter) {
+                  group_filter = "group";
+                  group_number = 1;
+                }
 
-      if (level_filter != "") {
-        level_filter = level_filter.substring(0, level_filter.length - 1);
-      }
+                if (_this6.day_range[0] == _this6.day_range[1]) {
+                  day_number = 1;
+                }
 
-      for (var _i6 = 0; _i6 < this.checked_specialized_filter_options.length; _i6++) {
-        specialized_filter += this.checked_specialized_filter_options[_i6].title + "|";
-      }
+                comfort_number = _this6.checked_standard_filter_options.length;
+                focus_number = _this6.checked_specialized_filter_options.length;
 
-      if (specialized_filter != "") {
-        specialized_filter = specialized_filter.substring(0, specialized_filter.length - 1);
-      }
+                for (i = 0; i < _this6.checked_standard_filter_options.length; i++) {
+                  level_filter += _this6.checked_standard_filter_options[i].title + "|";
+                }
 
-      var query = {
-        destination: this.where_to_search,
-        min_price: this.price_range[0],
-        max_price: this.price_range[1],
-        min_day: this.day_range[0],
-        max_day: this.day_range[1],
-        group: group_filter,
-        comfort: level_filter,
-        focus: specialized_filter,
-        p: this.page
-      }; // let filtered_query = query
+                if (level_filter != "") {
+                  level_filter = level_filter.substring(0, level_filter.length - 1);
+                }
 
-      for (var key in query) {
-        if (query[key] === '') {
-          delete query[key];
-        }
-      }
+                for (_i6 = 0; _i6 < _this6.checked_specialized_filter_options.length; _i6++) {
+                  specialized_filter += _this6.checked_specialized_filter_options[_i6].title + "|";
+                  focus_for_url += _this6.checked_specialized_filter_options[_i6].input_id + "|";
+                }
 
-      this.$store.dispatch("tourController/setQuery", query); //for URL query
+                if (specialized_filter != "") {
+                  specialized_filter = specialized_filter.substring(0, specialized_filter.length - 1);
+                }
 
-      var url_query = query;
-      console.log('url query', url_query);
-
-      if (url_query["min_price"] == 10) {
-        delete url_query["min_price"];
-      }
-
-      if (url_query["max_price"] == 10000) {
-        delete url_query["max_price"];
-      }
-
-      if (url_query["min_day"] == 1) {
-        delete url_query["min_day"];
-      }
-
-      if (url_query["max_day"] == 30) {
-        delete url_query["max_day"];
-      } // Object.keys(url_query).length == 1 &&
+                if (focus_for_url != "") {
+                  focus_for_url = focus_for_url.substring(0, focus_for_url.length - 1);
+                } // console.log('focusurl', focus_for_url)
 
 
-      if (url_query["destination"] !== undefined) {
-        url_query["destination"] = url_query["destination"].split(' ').join('_');
-      }
+                query = {
+                  destination: _this6.where_to_search,
+                  min_price: _this6.price_range[0],
+                  max_price: _this6.price_range[1],
+                  min_day: _this6.day_range[0],
+                  max_day: _this6.day_range[1],
+                  group: group_filter,
+                  comfort: level_filter,
+                  focus: specialized_filter,
+                  p: _this6.page
+                }; //for URL query
 
-      if (url_query["comfort"] !== undefined) {
-        url_query["comfort"] = url_query["comfort"].split(' ').join('_');
-      }
+                url_query = {
+                  destination: _this6.where_to_search,
+                  min_price: _this6.price_range[0],
+                  max_price: _this6.price_range[1],
+                  min_day: _this6.day_range[0],
+                  max_day: _this6.day_range[1],
+                  group: group_filter,
+                  comfort: level_filter,
+                  focus: focus_for_url,
+                  p: _this6.page
+                };
 
-      if (url_query["focus"] !== undefined) {
-        url_query["focus"] = url_query["focus"].split(' ').join('_');
-      }
+                if (_this6.page_from_url > 1) {
+                  query.p = _this6.page_from_url;
+                  url_query.p = _this6.page_from_url;
+                  _this6.page_from_url = 0;
+                } // let filtered_query = query
 
-      if (url_query["p"] !== undefined) {
-        if (url_query["p"] == 1) {
-          delete url_query["p"];
-        }
-      }
 
-      this.$router.replace({
-        query: url_query
-      })["catch"](function () {});
-      this.$store.dispatch("tourController/getTourFilter", query).then(function () {
-        _this6.current_ourtour_page = parseInt(_this6.filterTours.page);
-      })["catch"](function () {});
+                for (key in query) {
+                  if (query[key] === "") {
+                    delete query[key];
+                  }
+                }
+
+                _this6.$store.dispatch("tourController/setQuery", query); // let filtered_query = query
+
+
+                for (key in url_query) {
+                  if (url_query[key] === "") {
+                    delete url_query[key];
+                  }
+                } // console.log('url query', url_query)
+
+
+                if (url_query["min_price"] == 10) {
+                  delete url_query["min_price"];
+                }
+
+                if (url_query["max_price"] == 10000) {
+                  delete url_query["max_price"];
+                }
+
+                if (url_query["min_day"] == 1) {
+                  delete url_query["min_day"];
+                }
+
+                if (url_query["max_day"] == 30) {
+                  delete url_query["max_day"];
+                }
+
+                _this6.search_name = "";
+
+                if (url_query["destination"] != undefined) {
+                  _this6.search_name = url_query["destination"];
+                  destination_item = _this6.where_to_list.find(function (el) {
+                    return el.title == url_query["destination"];
+                  });
+
+                  if (destination_item != undefined) {
+                    url_query["destination"] = destination_item.input_id;
+                  } else {
+                    url_query["destination"] = url_query["destination"].split(" ").join("_");
+                    url_query["destination"] = url_query["destination"].split("&").join("~");
+                  }
+                }
+
+                if (url_query["comfort"] !== undefined) {
+                  url_query["comfort"] = url_query["comfort"].split(" ").join("_");
+                  url_query["comfort"] = url_query["comfort"].split("+").join("@");
+                }
+
+                if (url_query["p"] !== undefined) {
+                  if (url_query["p"] == 1) {
+                    delete url_query["p"];
+                  }
+                }
+
+                destination_params = url_query["destination"] != undefined ? url_query["destination"] : "";
+
+                if (url_query["destination"] !== undefined) {
+                  delete url_query["destination"];
+                }
+
+                single = ""; //this is for single router params
+
+                _context5.t0 = true;
+                _context5.next = _context5.t0 === (focus_number == 1) ? 37 : _context5.t0 === (group_number == 1) ? 40 : _context5.t0 === (comfort_number == 1) ? 44 : _context5.t0 === (day_number == 1) ? 48 : 53;
+                break;
+
+              case 37:
+                single = url_query["focus"]; // this.search_name = query["focus"] + " " + this.search_name;
+
+                delete url_query["focus"];
+                return _context5.abrupt("break", 54);
+
+              case 40:
+                single = url_query["group"];
+                _this6.search_name = query["group"] + " " + _this6.search_name;
+                delete url_query["group"];
+                return _context5.abrupt("break", 54);
+
+              case 44:
+                single = url_query["comfort"];
+                _this6.search_name = query["comfort"] + " " + _this6.search_name;
+                delete url_query["comfort"];
+                return _context5.abrupt("break", 54);
+
+              case 48:
+                single = url_query["min_day"] + '-Day';
+                _this6.search_name = single + " " + _this6.search_name;
+                if (url_query["min_day"] != undefined) delete url_query["min_day"];
+                if (url_query["max_day"] != undefined) delete url_query["max_day"];
+                return _context5.abrupt("break", 54);
+
+              case 53:
+                return _context5.abrupt("break", 54);
+
+              case 54:
+                if (_this6.search_name != '') {
+                  _this6.search_name = _this6.search_name + " Tours";
+                } else {
+                  _this6.search_name = "Our Tours";
+                }
+
+                if (destination_params == "" && single == "") {
+                  // query only
+                  _this6.$router.replace({
+                    name: "Our Tours",
+                    query: url_query
+                  })["catch"](function () {});
+                } else {
+                  params = {};
+
+                  if (destination_params != "") {
+                    params["destination"] = destination_params;
+                  }
+
+                  if (single != "") {
+                    params["single"] = single;
+                  } // console.log('parmas', params)
+
+
+                  _this6.$router.replace({
+                    name: "Our Tours2",
+                    params: params,
+                    query: url_query
+                  })["catch"](function () {});
+                } // with params amd query
+
+
+                _context5.next = 58;
+                return _this6.$store.dispatch("tourController/getTourFilter", query).then(function () {
+                  _this6.current_ourtour_page = parseInt(_this6.filterTours.page);
+                  document.title = _this6.search_name + " ( " + _this6.filterTours.total_tours + " Tours )";
+                })["catch"](function () {});
+
+              case 58:
+              case "end":
+                return _context5.stop();
+            }
+          }
+        }, _callee5);
+      }))();
     }
   }
 });
@@ -19967,7 +20692,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n#tour-card .price[data-v-5583021a] {\n    width: 80px;\n    color: #0f6d24;\n    right: 5px;\n    bottom: 0px;\n    top: 0px;\n    padding-left: 2px;\n    border-left: 1px dotted black;\n    position: absolute;\n    font-size: 18px;\n    display: flex;\n    align-items: center;\n    justify-content: center;\n}\n#tour-card .tag-image[data-v-5583021a] {\n    top: -12px;\n    position: absolute;\n    right: 10px;\n}\n#tour-card .bg-image[data-v-5583021a] {\n    background-size: cover;\n    position: relative;\n    width: 100%;\n    height: 0;\n    padding-top: 56.25%;\n}\n#tour-card .tour_title[data-v-5583021a] {\n    width: 100%;\n    position: absolute;\n    left: 0;\n    bottom: 0;\n    right: 0;\n    text-align: left;\n    padding: 15px 10px;\n    background: rgba(0, 0, 0, 0.4);\n    background: linear-gradient(\n        to bottom,\n        rgba(0, 0, 0, 0) 0%,\n        rgba(0, 0, 0, 0.5) 45%,\n        rgba(0, 0, 0, 0.9) 100%\n    );\n    color: white;\n    text-align: center;\n    font-weight: 700;\n    font-size: 20px;\n    margin: 40px 0 0px 0;\n    font-family: \"Montserrat\", sans-serif;\n}\n#tour-card.card[data-v-5583021a] {\n    transition: box-shadow 0.2s ease-in-out, transform 0.3s ease-in-out;\n    box-shadow: 0px 2px 3px rgb(0 0 0 / 18%);\n    cursor: pointer;\n}\n#tour-card.card[data-v-5583021a]:hover {\n    box-shadow: 0px 1px 13px #666;\n}\n.trip-route[data-v-5583021a] {\n    min-height: 75px;\n}\n.company-name[data-v-5583021a] {\n    font-size: 18px;\n}\n@media (max-width: 1200px) {\n.company-name[data-v-5583021a] {\n        font-size: 14px;\n        padding-left: 8px !important;\n}\n.company-review[data-v-5583021a]{\n        font-size: 14px;\n        padding-left: 8px !important;\n}\n#tour-card .price[data-v-5583021a] {\n        font-size: 16px;\n}\n}\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n#tour-card .price[data-v-5583021a] {\n  width: 90px;\n  color: #0f6d24;\n  right: 5px;\n  bottom: 0px;\n  top: 0px;\n  padding-left: 2px;\n  border-left: 1px dotted black;\n  position: absolute;\n  font-size: 18px;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n}\n#tour-card .tag-image[data-v-5583021a] {\n  top: -12px;\n  position: absolute;\n  right: 10px;\n}\n#tour-card .bg-image[data-v-5583021a] {\n  background-size: cover;\n  position: relative;\n  width: 100%;\n  height: 0;\n  padding-top: 56.25%;\n}\n#tour-card .tour_title[data-v-5583021a] {\n  width: 100%;\n  position: absolute;\n  left: 0;\n  bottom: 0;\n  right: 0;\n  text-align: left;\n  padding: 15px 10px;\n  background: rgba(0, 0, 0, 0.4);\n  background: linear-gradient(\n    to bottom,\n    rgba(0, 0, 0, 0) 0%,\n    rgba(0, 0, 0, 0.5) 45%,\n    rgba(0, 0, 0, 0.9) 100%\n  );\n  color: white;\n  text-align: center;\n  font-weight: 700;\n  font-size: 20px;\n  margin: 40px 0 0px 0;\n  font-family: \"Montserrat\", sans-serif;\n}\n#tour-card.card[data-v-5583021a] {\n  transition: box-shadow 0.2s ease-in-out, transform 0.3s ease-in-out;\n  box-shadow: 0px 2px 3px rgb(0 0 0 / 18%);\n  cursor: pointer;\n}\n#tour-card.card[data-v-5583021a]:hover {\n  box-shadow: 0px 1px 13px #666;\n}\n.card-body p.card-text[data-v-5583021a] {\n  font-size: 15px;\n  line-height: 20px;\n}\np.company-name[data-v-5583021a] {\n  font-size: 16px;\n}\n.trip-route[data-v-5583021a] {\n  min-height: 60px;\n}\n@media (max-width: 1200px) {\n.company-name[data-v-5583021a] {\n    font-size: 14px;\n    padding-left: 8px !important;\n}\n.company-review[data-v-5583021a] {\n    font-size: 14px;\n    padding-left: 8px !important;\n}\n#tour-card .price[data-v-5583021a] {\n    font-size: 16px;\n}\n}\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -20027,197 +20752,10 @@ ___CSS_LOADER_EXPORT___.i(_node_modules_css_loader_dist_cjs_js_clonedRuleSet_9_0
 ___CSS_LOADER_EXPORT___.i(_node_modules_css_loader_dist_cjs_js_clonedRuleSet_9_0_rules_0_use_1_node_modules_syncfusion_ej2_popups_styles_material_css__WEBPACK_IMPORTED_MODULE_3__.default);
 ___CSS_LOADER_EXPORT___.i(_node_modules_css_loader_dist_cjs_js_clonedRuleSet_9_0_rules_0_use_1_node_modules_syncfusion_ej2_vue_inputs_styles_material_css__WEBPACK_IMPORTED_MODULE_4__.default);
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n.e-radio-wrapper {\n    margin-top: 18px;\n}\nli {\n    list-style: none;\n}\np.standard .e-checkbox-wrapper .e-frame+.e-label,\n.e-css.e-checkbox-wrapper .e-frame+.e-label {\n    text-transform: capitalize;\n}\n.e-chip-text::first-letter {\n    text-transform: uppercase;\n}\n.ourtours-pagination {\n    display: flex;\n    justify-content: center;\n}\n@media (max-width: 450px) {\n.mobile-filter-traveler {\n    margin-left: -20px;\n    margin-right: -20px;\n}\n}\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n.e-radio-wrapper {\n  margin-top: 18px;\n}\nli {\n  list-style: none;\n}\n.pagination a {\n  outline: none;\n}\np.standard .e-checkbox-wrapper .e-frame + .e-label,\n.e-css.e-checkbox-wrapper .e-frame + .e-label {\n  text-transform: capitalize;\n}\n.e-chip-text::first-letter {\n  text-transform: uppercase;\n}\n.ourtours-pagination {\n  display: flex;\n  justify-content: center;\n}\n.nosafari-search {\n  margin-top: 30px;\n  line-height: 1px;\n  background-color: #8f8e8e;\n}\n.nosafari-search span {\n  background-color: #f2f2f2;\n  font-size: 20px;\n  padding: 10px 20px;\n}\n\n/* .e-control-wrapper.e-slider-container .e-slider .e-handle {\n  width: 24px;\n  height: 24px;\n  cursor: pointer;\n}\n\n.e-control-wrapper.e-slider-container.e-horizontal .e-handle {\n  margin-left: -12px;\n  top: calc(50% - 12px);\n  cursor: pointer;\n}\n\n.e-control-wrapper.e-slider-container.e-horizontal .e-slider-track,\n.e-control-wrapper.e-slider-container.e-horizontal .e-range {\n  height: 4px;\n  top: calc(50% - 2px);\n}\n\n.e-control-wrapper.e-slider-container.e-horizontal .e-slider {\n  height: 4px;\n  top: calc(50% - 2px);\n}\n\n.e-control-wrapper.e-slider-container.e-disabled .e-slider .e-handle {\n  transform: scale(1.2) !important;\n} */\n@media (max-width: 450px) {\n.mobile-filter-traveler {\n    margin-left: -20px;\n    margin-right: -20px;\n}\n}\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
-
-/***/ }),
-
-/***/ "./node_modules/merge/merge.js":
-/*!*************************************!*\
-  !*** ./node_modules/merge/merge.js ***!
-  \*************************************/
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
-
-/* module decorator */ module = __webpack_require__.nmd(module);
-/*!
- * @name JavaScript/NodeJS Merge v1.2.1
- * @author yeikos
- * @repository https://github.com/yeikos/js.merge
-
- * Copyright 2014 yeikos - MIT license
- * https://raw.github.com/yeikos/js.merge/master/LICENSE
- */
-
-;(function(isNode) {
-
-	/**
-	 * Merge one or more objects 
-	 * @param bool? clone
-	 * @param mixed,... arguments
-	 * @return object
-	 */
-
-	var Public = function(clone) {
-
-		return merge(clone === true, false, arguments);
-
-	}, publicName = 'merge';
-
-	/**
-	 * Merge two or more objects recursively 
-	 * @param bool? clone
-	 * @param mixed,... arguments
-	 * @return object
-	 */
-
-	Public.recursive = function(clone) {
-
-		return merge(clone === true, true, arguments);
-
-	};
-
-	/**
-	 * Clone the input removing any reference
-	 * @param mixed input
-	 * @return mixed
-	 */
-
-	Public.clone = function(input) {
-
-		var output = input,
-			type = typeOf(input),
-			index, size;
-
-		if (type === 'array') {
-
-			output = [];
-			size = input.length;
-
-			for (index=0;index<size;++index)
-
-				output[index] = Public.clone(input[index]);
-
-		} else if (type === 'object') {
-
-			output = {};
-
-			for (index in input)
-
-				output[index] = Public.clone(input[index]);
-
-		}
-
-		return output;
-
-	};
-
-	/**
-	 * Merge two objects recursively
-	 * @param mixed input
-	 * @param mixed extend
-	 * @return mixed
-	 */
-
-	function merge_recursive(base, extend) {
-
-		if (typeOf(base) !== 'object')
-
-			return extend;
-
-		for (var key in extend) {
-
-			if (typeOf(base[key]) === 'object' && typeOf(extend[key]) === 'object') {
-
-				base[key] = merge_recursive(base[key], extend[key]);
-
-			} else {
-
-				base[key] = extend[key];
-
-			}
-
-		}
-
-		return base;
-
-	}
-
-	/**
-	 * Merge two or more objects
-	 * @param bool clone
-	 * @param bool recursive
-	 * @param array argv
-	 * @return object
-	 */
-
-	function merge(clone, recursive, argv) {
-
-		var result = argv[0],
-			size = argv.length;
-
-		if (clone || typeOf(result) !== 'object')
-
-			result = {};
-
-		for (var index=0;index<size;++index) {
-
-			var item = argv[index],
-
-				type = typeOf(item);
-
-			if (type !== 'object') continue;
-
-			for (var key in item) {
-
-				if (key === '__proto__') continue;
-
-				var sitem = clone ? Public.clone(item[key]) : item[key];
-
-				if (recursive) {
-
-					result[key] = merge_recursive(result[key], sitem);
-
-				} else {
-
-					result[key] = sitem;
-
-				}
-
-			}
-
-		}
-
-		return result;
-
-	}
-
-	/**
-	 * Get type of variable
-	 * @param mixed input
-	 * @return string
-	 *
-	 * @see http://jsperf.com/typeofvar
-	 */
-
-	function typeOf(input) {
-
-		return ({}).toString.call(input).slice(8, -1).toLowerCase();
-
-	}
-
-	if (isNode) {
-
-		module.exports = Public;
-
-	} else {
-
-		window[publicName] = Public;
-
-	}
-
-})( true && module && typeof module.exports === 'object' && module.exports);
 
 /***/ }),
 
@@ -20667,25 +21205,25 @@ var render = function() {
       ? _c("span", { staticClass: "fa fa-star-half-full checked" })
       : _c("span", { staticClass: "fa fa-star checked" }),
     _vm._v(" "),
-    _vm.rating < 1
+    _vm.rating <= 1
       ? _c("span", { staticClass: "fa fa-star-o" })
       : _vm.rating < 1.5
       ? _c("span", { staticClass: "fa fa-star-half-full checked" })
       : _c("span", { staticClass: "fa fa-star checked" }),
     _vm._v(" "),
-    _vm.rating < 2
+    _vm.rating <= 2
       ? _c("span", { staticClass: "fa fa-star-o" })
       : _vm.rating < 2.5
       ? _c("span", { staticClass: "fa fa-star-half-full checked" })
       : _c("span", { staticClass: "fa fa-star checked" }),
     _vm._v(" "),
-    _vm.rating < 3
+    _vm.rating <= 3
       ? _c("span", { staticClass: "fa fa-star-o" })
       : _vm.rating < 3.5
       ? _c("span", { staticClass: "fa fa-star-half-full checked" })
       : _c("span", { staticClass: "fa fa-star checked" }),
     _vm._v(" "),
-    _vm.rating < 4
+    _vm.rating <= 4
       ? _c("span", { staticClass: "fa fa-star-o" })
       : _vm.rating < 4.5
       ? _c("span", { staticClass: "fa fa-star-half-full checked" })
@@ -20741,11 +21279,11 @@ var render = function() {
           _vm._v(" "),
           _c("div", { staticClass: "tour_title" }, [
             _vm._v(
-              "\n            " +
+              "\n      " +
                 _vm._s(_vm.tourData.no_of_day) +
                 "-Day " +
                 _vm._s(_vm.tourData.title) +
-                "\n        "
+                "\n    "
             )
           ]),
           _vm._v(" "),
@@ -20808,28 +21346,28 @@ var render = function() {
               ? _c("span", [
                   _vm._v(_vm._s(_vm.tourData.no_of_day - 1) + " Nights")
                 ])
-              : _c("span", [_vm._v("No Accommodation")])
+              : _c("span", [_vm._v("Not Included")])
           ]),
           _vm._v(" "),
           _c("p", { staticClass: "card-text mb-1" }, [
             _c("strong", [_vm._v(" Tour Type: ")]),
             _vm._v(
-              "\n            " +
+              "\n      " +
                 _vm._s(_vm.getTourLevel(_vm.tourData.level)) +
-                "\n        "
+                "\n    "
             )
           ]),
           _vm._v(" "),
-          _c("p", { staticClass: "card-text mb-1 trip-route" }, [
+          _c("p", { staticClass: "card-text trip-route mb-0" }, [
             _c("strong", [_vm._v(" Trip Route: ")]),
             _vm._v(
-              "\n            " +
+              "\n      " +
                 _vm._s(_vm.tourData.start_city) +
-                "(Start),\n            " +
+                " (Start),\n      " +
                 _vm._s(_vm.getMidRoute(_vm.tourData.destination)) +
-                "\n            " +
+                "\n      " +
                 _vm._s(_vm.tourData.end_city) +
-                " (End)\n        "
+                " (End)\n    "
             )
           ])
         ]
@@ -20840,13 +21378,17 @@ var render = function() {
         { staticClass: "row gx-0", staticStyle: { position: "relative" } },
         [
           _c("div", [
-            _c("p", { staticClass: "card-text mb-1 ps-3 company-name" }, [
-              _vm._v(
-                "\n                " +
-                  _vm._s(_vm.tourData.company_name) +
-                  "\n            "
-              )
-            ]),
+            _c(
+              "p",
+              {
+                staticClass: "card-text mb-1 ps-3 company-name  text-capitalize"
+              },
+              [
+                _vm._v(
+                  "\n        " + _vm._s(_vm.tourData.company_name) + "\n      "
+                )
+              ]
+            ),
             _vm._v(" "),
             _c(
               "p",
@@ -20857,23 +21399,27 @@ var render = function() {
                 }),
                 _vm._v(" "),
                 _vm.tourData.avg_review == "5"
-                  ? _c("strong", [_vm._v("\n                     5.0/5 ")])
+                  ? _c("strong", [_vm._v("  5.0/5 ")])
+                  : _vm.tourData.avg_review == "4"
+                  ? _c("strong", [_vm._v("\n           4.0/5 ")])
+                  : _vm.tourData.avg_review == "3"
+                  ? _c("strong", [_vm._v("\n           3.0/5 ")])
+                  : _vm.tourData.avg_review == "2"
+                  ? _c("strong", [_vm._v("\n           2.0/5 ")])
+                  : _vm.tourData.avg_review == "1"
+                  ? _c("strong", [_vm._v("\n           1.0/5 ")])
                   : _c("strong", [
-                      _vm._v(
-                        "\n                     " +
-                          _vm._s(_vm.tourData.avg_review) +
-                          "/5 "
-                      )
+                      _vm._v("  " + _vm._s(_vm.tourData.avg_review) + "/5 ")
                     ]),
-                _vm._v("\n                (\n                "),
-                _vm.tourData.sum_review == 1
+                _vm._v("\n        (\n        "),
+                _vm.tourData.num_review == 1
                   ? _c("span", [
-                      _vm._v(_vm._s(_vm.tourData.sum_review) + " Review")
+                      _vm._v(_vm._s(_vm.tourData.num_review) + " Review")
                     ])
                   : _c("span", [
-                      _vm._v(_vm._s(_vm.tourData.sum_review) + " Reviews")
+                      _vm._v(_vm._s(_vm.tourData.num_review) + " Reviews")
                     ]),
-                _vm._v("\n                )\n            ")
+                _vm._v("\n        )\n      ")
               ],
               1
             )
@@ -21169,7 +21715,7 @@ var render = function() {
                             "div",
                             {
                               staticClass:
-                                "shadow  where_to_dropdown left-0 w-100 bg-white mt-3 triangule-where"
+                                "shadow where_to_dropdown left-0 w-100 bg-white mt-3 triangule-where"
                             },
                             [
                               _c(
@@ -21180,7 +21726,7 @@ var render = function() {
                                 },
                                 [
                                   _vm._v(
-                                    "\n                                    Start typing or select below\n                                    "
+                                    "\n                  Start typing or select below\n                  "
                                   ),
                                   _c("span", {
                                     staticClass: "fa fa-times-circle-o",
@@ -21279,7 +21825,7 @@ var render = function() {
                             1
                           ),
                           _vm._v(" "),
-                          _vm.start_date != ""
+                          _vm.start_date != "" && _vm.start_date != null
                             ? _c("span", {
                                 staticClass: "fa fa-times-circle-o",
                                 on: { click: _vm.initStartDate }
@@ -21331,7 +21877,8 @@ var render = function() {
                                 autocomplete: "off",
                                 id: "traveler_input",
                                 type: "text",
-                                placeholder: "Travelers"
+                                placeholder: "Travelers",
+                                readonly: ""
                               },
                               domProps: { value: _vm.traveler_number },
                               on: {
@@ -21372,7 +21919,7 @@ var render = function() {
                                 },
                                 [
                                   _vm._v(
-                                    "\n                                    Travelers\n                                    "
+                                    "\n                  Travelers\n                  "
                                   ),
                                   _c("span", {
                                     staticClass: "fa fa-times-circle-o",
@@ -21451,7 +21998,7 @@ var render = function() {
                                   },
                                   [
                                     _vm._v(
-                                      "\n                                        Done\n                                    "
+                                      "\n                    Done\n                  "
                                     )
                                   ]
                                 )
@@ -21467,31 +22014,45 @@ var render = function() {
                   _vm._v("Tour Price")
                 ]),
                 _vm._v(" "),
-                _c("ejs-slider", {
-                  attrs: {
-                    min: 10,
-                    max: 10000,
-                    type: "Range",
-                    changed: _vm.getFilterTours
-                  },
-                  model: {
-                    value: _vm.price_range,
-                    callback: function($$v) {
-                      _vm.price_range = $$v
-                    },
-                    expression: "price_range"
-                  }
-                }),
-                _vm._v(" "),
-                _c("div", { staticClass: "d-flex justify-content-between" }, [
-                  _c("div", [_vm._v("$" + _vm._s(_vm.price_range[0]))]),
-                  _vm._v(" "),
-                  _vm.price_range[1] == 10000
-                    ? _c("div", [
-                        _vm._v("$" + _vm._s(_vm.price_range[1]) + "+")
-                      ])
-                    : _c("div", [_vm._v("$" + _vm._s(_vm.price_range[1]))])
-                ]),
+                _c(
+                  "div",
+                  [
+                    _c("ejs-slider", {
+                      attrs: {
+                        min: 10,
+                        max: 10000,
+                        step: 250,
+                        type: "Range",
+                        enabled: !_vm.loading,
+                        changed: _vm.getFilterToursBySlidePrice
+                      },
+                      model: {
+                        value: _vm.price_range,
+                        callback: function($$v) {
+                          _vm.price_range = $$v
+                        },
+                        expression: "price_range"
+                      }
+                    }),
+                    _vm._v(" "),
+                    _c(
+                      "div",
+                      { staticClass: "d-flex justify-content-between" },
+                      [
+                        _c("div", [_vm._v("$" + _vm._s(_vm.price_range[0]))]),
+                        _vm._v(" "),
+                        _vm.price_range[1] == 10000
+                          ? _c("div", [
+                              _vm._v("$" + _vm._s(_vm.price_range[1]) + "+")
+                            ])
+                          : _c("div", [
+                              _vm._v("$" + _vm._s(_vm.price_range[1]))
+                            ])
+                      ]
+                    )
+                  ],
+                  1
+                ),
                 _vm._v(" "),
                 _c("h6", { staticClass: "mt-5 fw-bold" }, [
                   _vm._v("Tour Days")
@@ -21502,7 +22063,8 @@ var render = function() {
                     min: 1,
                     max: 30,
                     type: "Range",
-                    changed: _vm.getFilterTours
+                    enabled: !_vm.loading,
+                    changed: _vm.getFilterToursBySlideDay
                   },
                   model: {
                     value: _vm.day_range,
@@ -21533,6 +22095,11 @@ var render = function() {
                   [
                     _c("ejs-checkbox", {
                       attrs: { label: "Private", name: "default" },
+                      on: {
+                        change: function($event) {
+                          return _vm.groupChange(1)
+                        }
+                      },
                       model: {
                         value: _vm.check_private_filter,
                         callback: function($$v) {
@@ -21551,6 +22118,11 @@ var render = function() {
                   [
                     _c("ejs-checkbox", {
                       attrs: { label: "Group", name: "default" },
+                      on: {
+                        change: function($event) {
+                          return _vm.groupChange(2)
+                        }
+                      },
                       model: {
                         value: _vm.check_group_filter,
                         callback: function($$v) {
@@ -21630,11 +22202,11 @@ var render = function() {
             "section",
             { staticClass: "section-header" },
             [
-              _c("h3", [_vm._v("Our Tours")]),
+              _c("h3", [_vm._v(_vm._s(_vm.search_name))]),
               _vm._v(" "),
               _c("span", { staticClass: "read-more" }, [
                 _vm._v(
-                  "Tanzania is Africa’s number one safari destination. The wildlife\n                        viewing is amazing and big cats are easy to see. Africa Big Five\n                        can be found in many Tanzanian parks and reserves."
+                  "Tanzania is Africa’s number one safari destination. The wildlife\n            viewing is amazing and big cats are easy to see. Africa Big Five\n            can be found in many Tanzanian parks and reserves."
                 )
               ]),
               _vm._v(" "),
@@ -21652,7 +22224,7 @@ var render = function() {
                   _vm.read_more
                     ? _c("span", { staticClass: "read-more" }, [
                         _vm._v(
-                          "\n                            The most famous parks are Ngorongoro Crater and Serengeti\n                            National Park. More than a quarter of the country is set aside\n                            for conservation. Tanzania is also home to Africa tallest\n                            Mountain, Mt. Kilimanjaro and has the best white sand beaches at\n                            Zanzibar Island."
+                          "\n              The most famous parks are Ngorongoro Crater and Serengeti\n              National Park. More than a quarter of the country is set aside\n              for conservation. Tanzania is also home to Africa tallest\n              Mountain, Mt. Kilimanjaro and has the best white sand beaches at\n              Zanzibar Island."
                         )
                       ])
                     : _vm._e()
@@ -21704,7 +22276,7 @@ var render = function() {
                 },
                 [
                   _c("span", { staticClass: "fa fa-filter me-2" }),
-                  _vm._v(" Search Filter\n                    ")
+                  _vm._v(" Search Filter\n          ")
                 ]
               )
             ]
@@ -21814,16 +22386,16 @@ var render = function() {
             1
           ),
           _vm._v(" "),
-          _vm.filterTours != null
+          _vm.filterTours != null && !_vm.loading
             ? _c("h6", { staticClass: "my-3 fw-bold" }, [
                 _vm.filterTours.total_tours > 1
                   ? _c("span", [
                       _vm._v(
                         "Showing " +
                           _vm._s(_vm.filterTours.tour_show_from) +
-                          " - " +
+                          " -\n            " +
                           _vm._s(_vm.filterTours.tour_show_to) +
-                          " of " +
+                          " of\n            " +
                           _vm._s(_vm.filterTours.total_tours) +
                           " results"
                       )
@@ -21834,7 +22406,9 @@ var render = function() {
                   ? _c("span", [_vm._v("Showing 1 of 1 result")])
                   : _vm._e()
               ])
-            : _vm._e(),
+            : _c("h6", { staticClass: "my-3 fw-bold" }, [
+                _vm._v("Searching...")
+              ]),
           _vm._v(" "),
           _vm.loading
             ? _c(
@@ -21853,7 +22427,7 @@ var render = function() {
                 }),
                 0
               )
-            : _vm.filterTours != null
+            : _vm.filterTours != null && _vm.filterTours.tours.length > 0
             ? _c(
                 "div",
                 { staticClass: "row gx-0" },
@@ -21871,7 +22445,10 @@ var render = function() {
                             tourData: item,
                             where_to_search: _vm.where_to_search,
                             traveler_number: _vm.traveler_number,
-                            start_date: _vm.start_date.toString(),
+                            start_date:
+                              _vm.start_date != null
+                                ? _vm.start_date.toString()
+                                : "",
                             adults_number: _vm.adults_number,
                             children_number: _vm.children_number
                           }
@@ -21885,11 +22462,16 @@ var render = function() {
                     "div",
                     { staticClass: "ourtours-pagination my-3" },
                     [
-                      _c("Pagination", {
+                      _c("paginate", {
                         attrs: {
-                          records: _vm.filterTours.total_tours,
-                          "per-page": _vm.ourtour_perpage,
-                          options: _vm.pagination_options
+                          "page-count": _vm.filterTours.pages,
+                          "prev-text": "Prev",
+                          "next-text": "Next",
+                          "container-class": "pagination",
+                          "page-class": "page-item",
+                          "prev-class": "page-link",
+                          "next-class": "page-link",
+                          "page-link-class": "page-link"
                         },
                         model: {
                           value: _vm.current_ourtour_page,
@@ -21905,6 +22487,10 @@ var render = function() {
                 ],
                 2
               )
+            : _vm.filterTours != null && _vm.filterTours.tours.length == 0
+            ? _c("p", { staticClass: "text-center mt-5 nosafari-search" }, [
+                _c("span", [_vm._v("Found 0 Safari Tours")])
+              ])
             : _vm._e()
         ])
       ])
@@ -21949,694 +22535,6 @@ render._withStripped = true
 /***/ (function(module) {
 
 !function(t,e){ true?module.exports=e():0}(this,function(){return function(t){function e(r){if(n[r])return n[r].exports;var i=n[r]={i:r,l:!1,exports:{}};return t[r].call(i.exports,i,i.exports,e),i.l=!0,i.exports}var n={};return e.m=t,e.c=n,e.d=function(t,n,r){e.o(t,n)||Object.defineProperty(t,n,{configurable:!1,enumerable:!0,get:r})},e.n=function(t){var n=t&&t.__esModule?function(){return t.default}:function(){return t};return e.d(n,"a",n),n},e.o=function(t,e){return Object.prototype.hasOwnProperty.call(t,e)},e.p="/",e(e.s=7)}([function(t,e){t.exports=function(t){return"object"==typeof t?null!==t:"function"==typeof t}},function(t,e,n){t.exports=!n(6)(function(){return 7!=Object.defineProperty({},"a",{get:function(){return 7}}).a})},function(t,e,n){(function(e){t.exports=function(t){var n=[];return n.toString=function(){return this.map(function(n){var r=function(t,n){var r=t[1]||"",i=t[3];if(!i)return r;if(n){var o=(u=i,"/*# sourceMappingURL=data:application/json;charset=utf-8;base64,"+new e(JSON.stringify(u)).toString("base64")+" */");return[r].concat(i.sources.map(function(t){return"/*# sourceURL="+i.sourceRoot+t+" */"})).concat([o]).join("\n")}var u;return[r].join("\n")}(n,t);return n[2]?"@media "+n[2]+"{"+r+"}":r}).join("")},n.i=function(t,e){"string"==typeof t&&(t=[[null,t,""]]);for(var r={},i=0;i<this.length;i++){var o=this[i][0];"number"==typeof o&&(r[o]=!0)}for(i=0;i<t.length;i++){var u=t[i];"number"==typeof u[0]&&r[u[0]]||(e&&!u[2]?u[2]=e:e&&(u[2]="("+u[2]+") and ("+e+")"),n.push(u))}},n}}).call(e,n(11).Buffer)},function(t,e,n){function r(t){for(var e=0;e<t.length;e++){var n=t[e],r=f[n.id];if(r){r.refs++;for(var i=0;i<r.parts.length;i++)r.parts[i](n.parts[i]);for(;i<n.parts.length;i++)r.parts.push(o(n.parts[i]));r.parts.length>n.parts.length&&(r.parts.length=n.parts.length)}else{var u=[];for(i=0;i<n.parts.length;i++)u.push(o(n.parts[i]));f[n.id]={id:n.id,refs:1,parts:u}}}}function i(){var t=document.createElement("style");return t.type="text/css",c.appendChild(t),t}function o(t){var e,n,r=document.querySelector('style[data-vue-ssr-id~="'+t.id+'"]');if(r){if(l)return d;r.parentNode.removeChild(r)}if(g){var o=p++;r=h||(h=i()),e=u.bind(null,r,o,!1),n=u.bind(null,r,o,!0)}else r=i(),e=function(t,e){var n=e.css,r=e.media,i=e.sourceMap;if(r&&t.setAttribute("media",r),i&&(n+="\n/*# sourceURL="+i.sources[0]+" */",n+="\n/*# sourceMappingURL=data:application/json;base64,"+btoa(unescape(encodeURIComponent(JSON.stringify(i))))+" */"),t.styleSheet)t.styleSheet.cssText=n;else{for(;t.firstChild;)t.removeChild(t.firstChild);t.appendChild(document.createTextNode(n))}}.bind(null,r),n=function(){r.parentNode.removeChild(r)};return e(t),function(r){if(r){if(r.css===t.css&&r.media===t.media&&r.sourceMap===t.sourceMap)return;e(t=r)}else n()}}function u(t,e,n,r){var i=n?"":r.css;if(t.styleSheet)t.styleSheet.cssText=y(e,i);else{var o=document.createTextNode(i),u=t.childNodes;u[e]&&t.removeChild(u[e]),u.length?t.insertBefore(o,u[e]):t.appendChild(o)}}var s="undefined"!=typeof document;if("undefined"!=typeof DEBUG&&DEBUG&&!s)throw new Error("vue-style-loader cannot be used in a non-browser environment. Use { target: 'node' } in your Webpack config to indicate a server-rendering environment.");var a=n(16),f={},c=s&&(document.head||document.getElementsByTagName("head")[0]),h=null,p=0,l=!1,d=function(){},g="undefined"!=typeof navigator&&/msie [6-9]\b/.test(navigator.userAgent.toLowerCase());t.exports=function(t,e,n){l=n;var i=a(t,e);return r(i),function(e){for(var n=[],o=0;o<i.length;o++){var u=i[o];(s=f[u.id]).refs--,n.push(s)}for(e?r(i=a(t,e)):i=[],o=0;o<n.length;o++){var s;if(0===(s=n[o]).refs){for(var c=0;c<s.parts.length;c++)s.parts[c]();delete f[s.id]}}}};var b,y=(b=[],function(t,e){return b[t]=e,b.filter(Boolean).join("\n")})},function(t,e){var n=t.exports="undefined"!=typeof window&&window.Math==Math?window:"undefined"!=typeof self&&self.Math==Math?self:Function("return this")();"number"==typeof __g&&(__g=n)},function(t,e){var n=t.exports={version:"2.6.11"};"number"==typeof __e&&(__e=n)},function(t,e){t.exports=function(t){try{return!!t()}catch(t){return!0}}},function(t,e,n){"use strict";Object.defineProperty(e,"__esModule",{value:!0});var r=n(8),i=function(t,e){t.component(r.a.name,r.a)};r.a.install=i,e.default=r.a},function(t,e,n){"use strict";var r=n(20),i=n(36),o=function(t){n(9),n(17)},u=n(19)(r.a,i.a,!1,o,"data-v-4015f724",null);e.a=u.exports},function(t,e,n){var r=n(10);"string"==typeof r&&(r=[[t.i,r,""]]),r.locals&&(t.exports=r.locals),n(3)("1bbd3224",r,!0)},function(t,e,n){(t.exports=n(2)(!1)).push([t.i,"input[type=number][data-v-4015f724]::-webkit-inner-spin-button,input[type=number][data-v-4015f724]::-webkit-outer-spin-button{-webkit-appearance:none;margin:0}input[type=number][data-v-4015f724]{-moz-appearance:textfield}button[data-v-4015f724]:focus{outline:none}",""])},function(t,e,n){"use strict";(function(t){function r(){return o.TYPED_ARRAY_SUPPORT?2147483647:1073741823}function i(t,e){if(r()<e)throw new RangeError("Invalid typed array length");return o.TYPED_ARRAY_SUPPORT?(t=new Uint8Array(e)).__proto__=o.prototype:(null===t&&(t=new o(e)),t.length=e),t}function o(t,e,n){if(!(o.TYPED_ARRAY_SUPPORT||this instanceof o))return new o(t,e,n);if("number"==typeof t){if("string"==typeof e)throw new Error("If encoding is specified then the first argument must be a string");return a(this,t)}return u(this,t,e,n)}function u(t,e,n,r){if("number"==typeof e)throw new TypeError('"value" argument must not be a number');return"undefined"!=typeof ArrayBuffer&&e instanceof ArrayBuffer?function(t,e,n,r){if(e.byteLength,n<0||e.byteLength<n)throw new RangeError("'offset' is out of bounds");if(e.byteLength<n+(r||0))throw new RangeError("'length' is out of bounds");return e=void 0===n&&void 0===r?new Uint8Array(e):void 0===r?new Uint8Array(e,n):new Uint8Array(e,n,r),o.TYPED_ARRAY_SUPPORT?(t=e).__proto__=o.prototype:t=f(t,e),t}(t,e,n,r):"string"==typeof e?function(t,e,n){if("string"==typeof n&&""!==n||(n="utf8"),!o.isEncoding(n))throw new TypeError('"encoding" must be a valid string encoding');var r=0|h(e,n),u=(t=i(t,r)).write(e,n);return u!==r&&(t=t.slice(0,u)),t}(t,e,n):function(t,e){if(o.isBuffer(e)){var n=0|c(e.length);return 0===(t=i(t,n)).length?t:(e.copy(t,0,0,n),t)}if(e){if("undefined"!=typeof ArrayBuffer&&e.buffer instanceof ArrayBuffer||"length"in e)return"number"!=typeof e.length||(r=e.length)!=r?i(t,0):f(t,e);if("Buffer"===e.type&&j(e.data))return f(t,e.data)}var r;throw new TypeError("First argument must be a string, Buffer, ArrayBuffer, Array, or array-like object.")}(t,e)}function s(t){if("number"!=typeof t)throw new TypeError('"size" argument must be a number');if(t<0)throw new RangeError('"size" argument must not be negative')}function a(t,e){if(s(e),t=i(t,e<0?0:0|c(e)),!o.TYPED_ARRAY_SUPPORT)for(var n=0;n<e;++n)t[n]=0;return t}function f(t,e){var n=e.length<0?0:0|c(e.length);t=i(t,n);for(var r=0;r<n;r+=1)t[r]=255&e[r];return t}function c(t){if(t>=r())throw new RangeError("Attempt to allocate Buffer larger than maximum size: 0x"+r().toString(16)+" bytes");return 0|t}function h(t,e){if(o.isBuffer(t))return t.length;if("undefined"!=typeof ArrayBuffer&&"function"==typeof ArrayBuffer.isView&&(ArrayBuffer.isView(t)||t instanceof ArrayBuffer))return t.byteLength;"string"!=typeof t&&(t=""+t);var n=t.length;if(0===n)return 0;for(var r=!1;;)switch(e){case"ascii":case"latin1":case"binary":return n;case"utf8":case"utf-8":case void 0:return Y(t).length;case"ucs2":case"ucs-2":case"utf16le":case"utf-16le":return 2*n;case"hex":return n>>>1;case"base64":return N(t).length;default:if(r)return Y(t).length;e=(""+e).toLowerCase(),r=!0}}function p(t,e,n){var r=t[e];t[e]=t[n],t[n]=r}function l(t,e,n,r,i){if(0===t.length)return-1;if("string"==typeof n?(r=n,n=0):n>2147483647?n=2147483647:n<-2147483648&&(n=-2147483648),n=+n,isNaN(n)&&(n=i?0:t.length-1),n<0&&(n=t.length+n),n>=t.length){if(i)return-1;n=t.length-1}else if(n<0){if(!i)return-1;n=0}if("string"==typeof e&&(e=o.from(e,r)),o.isBuffer(e))return 0===e.length?-1:d(t,e,n,r,i);if("number"==typeof e)return e&=255,o.TYPED_ARRAY_SUPPORT&&"function"==typeof Uint8Array.prototype.indexOf?i?Uint8Array.prototype.indexOf.call(t,e,n):Uint8Array.prototype.lastIndexOf.call(t,e,n):d(t,[e],n,r,i);throw new TypeError("val must be string, number or Buffer")}function d(t,e,n,r,i){function o(t,e){return 1===s?t[e]:t.readUInt16BE(e*s)}var u,s=1,a=t.length,f=e.length;if(void 0!==r&&("ucs2"===(r=String(r).toLowerCase())||"ucs-2"===r||"utf16le"===r||"utf-16le"===r)){if(t.length<2||e.length<2)return-1;s=2,a/=2,f/=2,n/=2}if(i){var c=-1;for(u=n;u<a;u++)if(o(t,u)===o(e,-1===c?0:u-c)){if(-1===c&&(c=u),u-c+1===f)return c*s}else-1!==c&&(u-=u-c),c=-1}else for(n+f>a&&(n=a-f),u=n;u>=0;u--){for(var h=!0,p=0;p<f;p++)if(o(t,u+p)!==o(e,p)){h=!1;break}if(h)return u}return-1}function g(t,e,n,r){n=Number(n)||0;var i=t.length-n;r?(r=Number(r))>i&&(r=i):r=i;var o=e.length;if(o%2!=0)throw new TypeError("Invalid hex string");r>o/2&&(r=o/2);for(var u=0;u<r;++u){var s=parseInt(e.substr(2*u,2),16);if(isNaN(s))return u;t[n+u]=s}return u}function b(t,e,n,r){return L(Y(e,t.length-n),t,n,r)}function y(t,e,n,r){return L(function(t){for(var e=[],n=0;n<t.length;++n)e.push(255&t.charCodeAt(n));return e}(e),t,n,r)}function m(t,e,n,r){return y(t,e,n,r)}function v(t,e,n,r){return L(N(e),t,n,r)}function w(t,e,n,r){return L(function(t,e){for(var n,r,i,o=[],u=0;u<t.length&&!((e-=2)<0);++u)n=t.charCodeAt(u),r=n>>8,i=n%256,o.push(i),o.push(r);return o}(e,t.length-n),t,n,r)}function x(t,e,n){return 0===e&&n===t.length?D.fromByteArray(t):D.fromByteArray(t.slice(e,n))}function _(t,e,n){n=Math.min(t.length,n);for(var r=[],i=e;i<n;){var o,u,s,a,f=t[i],c=null,h=f>239?4:f>223?3:f>191?2:1;if(i+h<=n)switch(h){case 1:f<128&&(c=f);break;case 2:128==(192&(o=t[i+1]))&&(a=(31&f)<<6|63&o)>127&&(c=a);break;case 3:o=t[i+1],u=t[i+2],128==(192&o)&&128==(192&u)&&(a=(15&f)<<12|(63&o)<<6|63&u)>2047&&(a<55296||a>57343)&&(c=a);break;case 4:o=t[i+1],u=t[i+2],s=t[i+3],128==(192&o)&&128==(192&u)&&128==(192&s)&&(a=(15&f)<<18|(63&o)<<12|(63&u)<<6|63&s)>65535&&a<1114112&&(c=a)}null===c?(c=65533,h=1):c>65535&&(c-=65536,r.push(c>>>10&1023|55296),c=56320|1023&c),r.push(c),i+=h}return function(t){var e=t.length;if(e<=F)return String.fromCharCode.apply(String,t);for(var n="",r=0;r<e;)n+=String.fromCharCode.apply(String,t.slice(r,r+=F));return n}(r)}function E(t,e,n){var r="";n=Math.min(t.length,n);for(var i=e;i<n;++i)r+=String.fromCharCode(127&t[i]);return r}function A(t,e,n){var r="";n=Math.min(t.length,n);for(var i=e;i<n;++i)r+=String.fromCharCode(t[i]);return r}function R(t,e,n){var r=t.length;(!e||e<0)&&(e=0),(!n||n<0||n>r)&&(n=r);for(var i="",o=e;o<n;++o)i+=O(t[o]);return i}function T(t,e,n){for(var r=t.slice(e,n),i="",o=0;o<r.length;o+=2)i+=String.fromCharCode(r[o]+256*r[o+1]);return i}function P(t,e,n){if(t%1!=0||t<0)throw new RangeError("offset is not uint");if(t+e>n)throw new RangeError("Trying to access beyond buffer length")}function B(t,e,n,r,i,u){if(!o.isBuffer(t))throw new TypeError('"buffer" argument must be a Buffer instance');if(e>i||e<u)throw new RangeError('"value" argument is out of bounds');if(n+r>t.length)throw new RangeError("Index out of range")}function S(t,e,n,r){e<0&&(e=65535+e+1);for(var i=0,o=Math.min(t.length-n,2);i<o;++i)t[n+i]=(e&255<<8*(r?i:1-i))>>>8*(r?i:1-i)}function U(t,e,n,r){e<0&&(e=4294967295+e+1);for(var i=0,o=Math.min(t.length-n,4);i<o;++i)t[n+i]=e>>>8*(r?i:3-i)&255}function C(t,e,n,r,i,o){if(n+r>t.length)throw new RangeError("Index out of range");if(n<0)throw new RangeError("Index out of range")}function I(t,e,n,r,i){return i||C(t,0,n,4),k.write(t,e,n,r,23,4),n+4}function M(t,e,n,r,i){return i||C(t,0,n,8),k.write(t,e,n,r,52,8),n+8}function O(t){return t<16?"0"+t.toString(16):t.toString(16)}function Y(t,e){var n;e=e||1/0;for(var r=t.length,i=null,o=[],u=0;u<r;++u){if((n=t.charCodeAt(u))>55295&&n<57344){if(!i){if(n>56319){(e-=3)>-1&&o.push(239,191,189);continue}if(u+1===r){(e-=3)>-1&&o.push(239,191,189);continue}i=n;continue}if(n<56320){(e-=3)>-1&&o.push(239,191,189),i=n;continue}n=65536+(i-55296<<10|n-56320)}else i&&(e-=3)>-1&&o.push(239,191,189);if(i=null,n<128){if((e-=1)<0)break;o.push(n)}else if(n<2048){if((e-=2)<0)break;o.push(n>>6|192,63&n|128)}else if(n<65536){if((e-=3)<0)break;o.push(n>>12|224,n>>6&63|128,63&n|128)}else{if(!(n<1114112))throw new Error("Invalid code point");if((e-=4)<0)break;o.push(n>>18|240,n>>12&63|128,n>>6&63|128,63&n|128)}}return o}function N(t){return D.toByteArray(function(t){if((t=function(t){return t.trim?t.trim():t.replace(/^\s+|\s+$/g,"")}(t).replace(V,"")).length<2)return"";for(;t.length%4!=0;)t+="=";return t}(t))}function L(t,e,n,r){for(var i=0;i<r&&!(i+n>=e.length||i>=t.length);++i)e[i+n]=t[i];return i}var D=n(13),k=n(14),j=n(15);e.Buffer=o,e.SlowBuffer=function(t){return+t!=t&&(t=0),o.alloc(+t)},e.INSPECT_MAX_BYTES=50,o.TYPED_ARRAY_SUPPORT=void 0!==t.TYPED_ARRAY_SUPPORT?t.TYPED_ARRAY_SUPPORT:function(){try{var t=new Uint8Array(1);return t.__proto__={__proto__:Uint8Array.prototype,foo:function(){return 42}},42===t.foo()&&"function"==typeof t.subarray&&0===t.subarray(1,1).byteLength}catch(t){return!1}}(),e.kMaxLength=r(),o.poolSize=8192,o._augment=function(t){return t.__proto__=o.prototype,t},o.from=function(t,e,n){return u(null,t,e,n)},o.TYPED_ARRAY_SUPPORT&&(o.prototype.__proto__=Uint8Array.prototype,o.__proto__=Uint8Array,"undefined"!=typeof Symbol&&Symbol.species&&o[Symbol.species]===o&&Object.defineProperty(o,Symbol.species,{value:null,configurable:!0})),o.alloc=function(t,e,n){return function(t,e,n,r){return s(e),e<=0?i(t,e):void 0!==n?"string"==typeof r?i(t,e).fill(n,r):i(t,e).fill(n):i(t,e)}(null,t,e,n)},o.allocUnsafe=function(t){return a(null,t)},o.allocUnsafeSlow=function(t){return a(null,t)},o.isBuffer=function(t){return!(null==t||!t._isBuffer)},o.compare=function(t,e){if(!o.isBuffer(t)||!o.isBuffer(e))throw new TypeError("Arguments must be Buffers");if(t===e)return 0;for(var n=t.length,r=e.length,i=0,u=Math.min(n,r);i<u;++i)if(t[i]!==e[i]){n=t[i],r=e[i];break}return n<r?-1:r<n?1:0},o.isEncoding=function(t){switch(String(t).toLowerCase()){case"hex":case"utf8":case"utf-8":case"ascii":case"latin1":case"binary":case"base64":case"ucs2":case"ucs-2":case"utf16le":case"utf-16le":return!0;default:return!1}},o.concat=function(t,e){if(!j(t))throw new TypeError('"list" argument must be an Array of Buffers');if(0===t.length)return o.alloc(0);var n;if(void 0===e)for(e=0,n=0;n<t.length;++n)e+=t[n].length;var r=o.allocUnsafe(e),i=0;for(n=0;n<t.length;++n){var u=t[n];if(!o.isBuffer(u))throw new TypeError('"list" argument must be an Array of Buffers');u.copy(r,i),i+=u.length}return r},o.byteLength=h,o.prototype._isBuffer=!0,o.prototype.swap16=function(){var t=this.length;if(t%2!=0)throw new RangeError("Buffer size must be a multiple of 16-bits");for(var e=0;e<t;e+=2)p(this,e,e+1);return this},o.prototype.swap32=function(){var t=this.length;if(t%4!=0)throw new RangeError("Buffer size must be a multiple of 32-bits");for(var e=0;e<t;e+=4)p(this,e,e+3),p(this,e+1,e+2);return this},o.prototype.swap64=function(){var t=this.length;if(t%8!=0)throw new RangeError("Buffer size must be a multiple of 64-bits");for(var e=0;e<t;e+=8)p(this,e,e+7),p(this,e+1,e+6),p(this,e+2,e+5),p(this,e+3,e+4);return this},o.prototype.toString=function(){var t=0|this.length;return 0===t?"":0===arguments.length?_(this,0,t):function(t,e,n){var r=!1;if((void 0===e||e<0)&&(e=0),e>this.length)return"";if((void 0===n||n>this.length)&&(n=this.length),n<=0)return"";if((n>>>=0)<=(e>>>=0))return"";for(t||(t="utf8");;)switch(t){case"hex":return R(this,e,n);case"utf8":case"utf-8":return _(this,e,n);case"ascii":return E(this,e,n);case"latin1":case"binary":return A(this,e,n);case"base64":return x(this,e,n);case"ucs2":case"ucs-2":case"utf16le":case"utf-16le":return T(this,e,n);default:if(r)throw new TypeError("Unknown encoding: "+t);t=(t+"").toLowerCase(),r=!0}}.apply(this,arguments)},o.prototype.equals=function(t){if(!o.isBuffer(t))throw new TypeError("Argument must be a Buffer");return this===t||0===o.compare(this,t)},o.prototype.inspect=function(){var t="",n=e.INSPECT_MAX_BYTES;return this.length>0&&(t=this.toString("hex",0,n).match(/.{2}/g).join(" "),this.length>n&&(t+=" ... ")),"<Buffer "+t+">"},o.prototype.compare=function(t,e,n,r,i){if(!o.isBuffer(t))throw new TypeError("Argument must be a Buffer");if(void 0===e&&(e=0),void 0===n&&(n=t?t.length:0),void 0===r&&(r=0),void 0===i&&(i=this.length),e<0||n>t.length||r<0||i>this.length)throw new RangeError("out of range index");if(r>=i&&e>=n)return 0;if(r>=i)return-1;if(e>=n)return 1;if(e>>>=0,n>>>=0,r>>>=0,i>>>=0,this===t)return 0;for(var u=i-r,s=n-e,a=Math.min(u,s),f=this.slice(r,i),c=t.slice(e,n),h=0;h<a;++h)if(f[h]!==c[h]){u=f[h],s=c[h];break}return u<s?-1:s<u?1:0},o.prototype.includes=function(t,e,n){return-1!==this.indexOf(t,e,n)},o.prototype.indexOf=function(t,e,n){return l(this,t,e,n,!0)},o.prototype.lastIndexOf=function(t,e,n){return l(this,t,e,n,!1)},o.prototype.write=function(t,e,n,r){if(void 0===e)r="utf8",n=this.length,e=0;else if(void 0===n&&"string"==typeof e)r=e,n=this.length,e=0;else{if(!isFinite(e))throw new Error("Buffer.write(string, encoding, offset[, length]) is no longer supported");e|=0,isFinite(n)?(n|=0,void 0===r&&(r="utf8")):(r=n,n=void 0)}var i=this.length-e;if((void 0===n||n>i)&&(n=i),t.length>0&&(n<0||e<0)||e>this.length)throw new RangeError("Attempt to write outside buffer bounds");r||(r="utf8");for(var o=!1;;)switch(r){case"hex":return g(this,t,e,n);case"utf8":case"utf-8":return b(this,t,e,n);case"ascii":return y(this,t,e,n);case"latin1":case"binary":return m(this,t,e,n);case"base64":return v(this,t,e,n);case"ucs2":case"ucs-2":case"utf16le":case"utf-16le":return w(this,t,e,n);default:if(o)throw new TypeError("Unknown encoding: "+r);r=(""+r).toLowerCase(),o=!0}},o.prototype.toJSON=function(){return{type:"Buffer",data:Array.prototype.slice.call(this._arr||this,0)}};var F=4096;o.prototype.slice=function(t,e){var n,r=this.length;if(t=~~t,e=void 0===e?r:~~e,t<0?(t+=r)<0&&(t=0):t>r&&(t=r),e<0?(e+=r)<0&&(e=0):e>r&&(e=r),e<t&&(e=t),o.TYPED_ARRAY_SUPPORT)(n=this.subarray(t,e)).__proto__=o.prototype;else{var i=e-t;n=new o(i,void 0);for(var u=0;u<i;++u)n[u]=this[u+t]}return n},o.prototype.readUIntLE=function(t,e,n){t|=0,e|=0,n||P(t,e,this.length);for(var r=this[t],i=1,o=0;++o<e&&(i*=256);)r+=this[t+o]*i;return r},o.prototype.readUIntBE=function(t,e,n){t|=0,e|=0,n||P(t,e,this.length);for(var r=this[t+--e],i=1;e>0&&(i*=256);)r+=this[t+--e]*i;return r},o.prototype.readUInt8=function(t,e){return e||P(t,1,this.length),this[t]},o.prototype.readUInt16LE=function(t,e){return e||P(t,2,this.length),this[t]|this[t+1]<<8},o.prototype.readUInt16BE=function(t,e){return e||P(t,2,this.length),this[t]<<8|this[t+1]},o.prototype.readUInt32LE=function(t,e){return e||P(t,4,this.length),(this[t]|this[t+1]<<8|this[t+2]<<16)+16777216*this[t+3]},o.prototype.readUInt32BE=function(t,e){return e||P(t,4,this.length),16777216*this[t]+(this[t+1]<<16|this[t+2]<<8|this[t+3])},o.prototype.readIntLE=function(t,e,n){t|=0,e|=0,n||P(t,e,this.length);for(var r=this[t],i=1,o=0;++o<e&&(i*=256);)r+=this[t+o]*i;return r>=(i*=128)&&(r-=Math.pow(2,8*e)),r},o.prototype.readIntBE=function(t,e,n){t|=0,e|=0,n||P(t,e,this.length);for(var r=e,i=1,o=this[t+--r];r>0&&(i*=256);)o+=this[t+--r]*i;return o>=(i*=128)&&(o-=Math.pow(2,8*e)),o},o.prototype.readInt8=function(t,e){return e||P(t,1,this.length),128&this[t]?-1*(255-this[t]+1):this[t]},o.prototype.readInt16LE=function(t,e){e||P(t,2,this.length);var n=this[t]|this[t+1]<<8;return 32768&n?4294901760|n:n},o.prototype.readInt16BE=function(t,e){e||P(t,2,this.length);var n=this[t+1]|this[t]<<8;return 32768&n?4294901760|n:n},o.prototype.readInt32LE=function(t,e){return e||P(t,4,this.length),this[t]|this[t+1]<<8|this[t+2]<<16|this[t+3]<<24},o.prototype.readInt32BE=function(t,e){return e||P(t,4,this.length),this[t]<<24|this[t+1]<<16|this[t+2]<<8|this[t+3]},o.prototype.readFloatLE=function(t,e){return e||P(t,4,this.length),k.read(this,t,!0,23,4)},o.prototype.readFloatBE=function(t,e){return e||P(t,4,this.length),k.read(this,t,!1,23,4)},o.prototype.readDoubleLE=function(t,e){return e||P(t,8,this.length),k.read(this,t,!0,52,8)},o.prototype.readDoubleBE=function(t,e){return e||P(t,8,this.length),k.read(this,t,!1,52,8)},o.prototype.writeUIntLE=function(t,e,n,r){t=+t,e|=0,n|=0,r||B(this,t,e,n,Math.pow(2,8*n)-1,0);var i=1,o=0;for(this[e]=255&t;++o<n&&(i*=256);)this[e+o]=t/i&255;return e+n},o.prototype.writeUIntBE=function(t,e,n,r){t=+t,e|=0,n|=0,r||B(this,t,e,n,Math.pow(2,8*n)-1,0);var i=n-1,o=1;for(this[e+i]=255&t;--i>=0&&(o*=256);)this[e+i]=t/o&255;return e+n},o.prototype.writeUInt8=function(t,e,n){return t=+t,e|=0,n||B(this,t,e,1,255,0),o.TYPED_ARRAY_SUPPORT||(t=Math.floor(t)),this[e]=255&t,e+1},o.prototype.writeUInt16LE=function(t,e,n){return t=+t,e|=0,n||B(this,t,e,2,65535,0),o.TYPED_ARRAY_SUPPORT?(this[e]=255&t,this[e+1]=t>>>8):S(this,t,e,!0),e+2},o.prototype.writeUInt16BE=function(t,e,n){return t=+t,e|=0,n||B(this,t,e,2,65535,0),o.TYPED_ARRAY_SUPPORT?(this[e]=t>>>8,this[e+1]=255&t):S(this,t,e,!1),e+2},o.prototype.writeUInt32LE=function(t,e,n){return t=+t,e|=0,n||B(this,t,e,4,4294967295,0),o.TYPED_ARRAY_SUPPORT?(this[e+3]=t>>>24,this[e+2]=t>>>16,this[e+1]=t>>>8,this[e]=255&t):U(this,t,e,!0),e+4},o.prototype.writeUInt32BE=function(t,e,n){return t=+t,e|=0,n||B(this,t,e,4,4294967295,0),o.TYPED_ARRAY_SUPPORT?(this[e]=t>>>24,this[e+1]=t>>>16,this[e+2]=t>>>8,this[e+3]=255&t):U(this,t,e,!1),e+4},o.prototype.writeIntLE=function(t,e,n,r){if(t=+t,e|=0,!r){var i=Math.pow(2,8*n-1);B(this,t,e,n,i-1,-i)}var o=0,u=1,s=0;for(this[e]=255&t;++o<n&&(u*=256);)t<0&&0===s&&0!==this[e+o-1]&&(s=1),this[e+o]=(t/u>>0)-s&255;return e+n},o.prototype.writeIntBE=function(t,e,n,r){if(t=+t,e|=0,!r){var i=Math.pow(2,8*n-1);B(this,t,e,n,i-1,-i)}var o=n-1,u=1,s=0;for(this[e+o]=255&t;--o>=0&&(u*=256);)t<0&&0===s&&0!==this[e+o+1]&&(s=1),this[e+o]=(t/u>>0)-s&255;return e+n},o.prototype.writeInt8=function(t,e,n){return t=+t,e|=0,n||B(this,t,e,1,127,-128),o.TYPED_ARRAY_SUPPORT||(t=Math.floor(t)),t<0&&(t=255+t+1),this[e]=255&t,e+1},o.prototype.writeInt16LE=function(t,e,n){return t=+t,e|=0,n||B(this,t,e,2,32767,-32768),o.TYPED_ARRAY_SUPPORT?(this[e]=255&t,this[e+1]=t>>>8):S(this,t,e,!0),e+2},o.prototype.writeInt16BE=function(t,e,n){return t=+t,e|=0,n||B(this,t,e,2,32767,-32768),o.TYPED_ARRAY_SUPPORT?(this[e]=t>>>8,this[e+1]=255&t):S(this,t,e,!1),e+2},o.prototype.writeInt32LE=function(t,e,n){return t=+t,e|=0,n||B(this,t,e,4,2147483647,-2147483648),o.TYPED_ARRAY_SUPPORT?(this[e]=255&t,this[e+1]=t>>>8,this[e+2]=t>>>16,this[e+3]=t>>>24):U(this,t,e,!0),e+4},o.prototype.writeInt32BE=function(t,e,n){return t=+t,e|=0,n||B(this,t,e,4,2147483647,-2147483648),t<0&&(t=4294967295+t+1),o.TYPED_ARRAY_SUPPORT?(this[e]=t>>>24,this[e+1]=t>>>16,this[e+2]=t>>>8,this[e+3]=255&t):U(this,t,e,!1),e+4},o.prototype.writeFloatLE=function(t,e,n){return I(this,t,e,!0,n)},o.prototype.writeFloatBE=function(t,e,n){return I(this,t,e,!1,n)},o.prototype.writeDoubleLE=function(t,e,n){return M(this,t,e,!0,n)},o.prototype.writeDoubleBE=function(t,e,n){return M(this,t,e,!1,n)},o.prototype.copy=function(t,e,n,r){if(n||(n=0),r||0===r||(r=this.length),e>=t.length&&(e=t.length),e||(e=0),r>0&&r<n&&(r=n),r===n)return 0;if(0===t.length||0===this.length)return 0;if(e<0)throw new RangeError("targetStart out of bounds");if(n<0||n>=this.length)throw new RangeError("sourceStart out of bounds");if(r<0)throw new RangeError("sourceEnd out of bounds");r>this.length&&(r=this.length),t.length-e<r-n&&(r=t.length-e+n);var i,u=r-n;if(this===t&&n<e&&e<r)for(i=u-1;i>=0;--i)t[i+e]=this[i+n];else if(u<1e3||!o.TYPED_ARRAY_SUPPORT)for(i=0;i<u;++i)t[i+e]=this[i+n];else Uint8Array.prototype.set.call(t,this.subarray(n,n+u),e);return u},o.prototype.fill=function(t,e,n,r){if("string"==typeof t){if("string"==typeof e?(r=e,e=0,n=this.length):"string"==typeof n&&(r=n,n=this.length),1===t.length){var i=t.charCodeAt(0);i<256&&(t=i)}if(void 0!==r&&"string"!=typeof r)throw new TypeError("encoding must be a string");if("string"==typeof r&&!o.isEncoding(r))throw new TypeError("Unknown encoding: "+r)}else"number"==typeof t&&(t&=255);if(e<0||this.length<e||this.length<n)throw new RangeError("Out of range index");if(n<=e)return this;var u;if(e>>>=0,n=void 0===n?this.length:n>>>0,t||(t=0),"number"==typeof t)for(u=e;u<n;++u)this[u]=t;else{var s=o.isBuffer(t)?t:Y(new o(t,r).toString()),a=s.length;for(u=0;u<n-e;++u)this[u+e]=s[u%a]}return this};var V=/[^+\/0-9A-Za-z-_]/g}).call(e,n(12))},function(t,e){var n;n=function(){return this}();try{n=n||Function("return this")()||(0,eval)("this")}catch(t){"object"==typeof window&&(n=window)}t.exports=n},function(t,e,n){"use strict";function r(t){var e=t.length;if(e%4>0)throw new Error("Invalid string. Length must be a multiple of 4");var n=t.indexOf("=");return-1===n&&(n=e),[n,n===e?0:4-n%4]}function i(t,e,n){for(var r,i,u=[],s=e;s<n;s+=3)r=(t[s]<<16&16711680)+(t[s+1]<<8&65280)+(255&t[s+2]),u.push(o[(i=r)>>18&63]+o[i>>12&63]+o[i>>6&63]+o[63&i]);return u.join("")}e.byteLength=function(t){var e=r(t),n=e[0],i=e[1];return 3*(n+i)/4-i},e.toByteArray=function(t){var e,n,i=r(t),o=i[0],a=i[1],f=new s(function(t,e,n){return 3*(e+n)/4-n}(0,o,a)),c=0,h=a>0?o-4:o;for(n=0;n<h;n+=4)e=u[t.charCodeAt(n)]<<18|u[t.charCodeAt(n+1)]<<12|u[t.charCodeAt(n+2)]<<6|u[t.charCodeAt(n+3)],f[c++]=e>>16&255,f[c++]=e>>8&255,f[c++]=255&e;return 2===a&&(e=u[t.charCodeAt(n)]<<2|u[t.charCodeAt(n+1)]>>4,f[c++]=255&e),1===a&&(e=u[t.charCodeAt(n)]<<10|u[t.charCodeAt(n+1)]<<4|u[t.charCodeAt(n+2)]>>2,f[c++]=e>>8&255,f[c++]=255&e),f},e.fromByteArray=function(t){for(var e,n=t.length,r=n%3,u=[],s=0,a=n-r;s<a;s+=16383)u.push(i(t,s,s+16383>a?a:s+16383));return 1===r?(e=t[n-1],u.push(o[e>>2]+o[e<<4&63]+"==")):2===r&&(e=(t[n-2]<<8)+t[n-1],u.push(o[e>>10]+o[e>>4&63]+o[e<<2&63]+"=")),u.join("")};for(var o=[],u=[],s="undefined"!=typeof Uint8Array?Uint8Array:Array,a="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/",f=0,c=a.length;f<c;++f)o[f]=a[f],u[a.charCodeAt(f)]=f;u["-".charCodeAt(0)]=62,u["_".charCodeAt(0)]=63},function(t,e){e.read=function(t,e,n,r,i){var o,u,s=8*i-r-1,a=(1<<s)-1,f=a>>1,c=-7,h=n?i-1:0,p=n?-1:1,l=t[e+h];for(h+=p,o=l&(1<<-c)-1,l>>=-c,c+=s;c>0;o=256*o+t[e+h],h+=p,c-=8);for(u=o&(1<<-c)-1,o>>=-c,c+=r;c>0;u=256*u+t[e+h],h+=p,c-=8);if(0===o)o=1-f;else{if(o===a)return u?NaN:1/0*(l?-1:1);u+=Math.pow(2,r),o-=f}return(l?-1:1)*u*Math.pow(2,o-r)},e.write=function(t,e,n,r,i,o){var u,s,a,f=8*o-i-1,c=(1<<f)-1,h=c>>1,p=23===i?Math.pow(2,-24)-Math.pow(2,-77):0,l=r?0:o-1,d=r?1:-1,g=e<0||0===e&&1/e<0?1:0;for(e=Math.abs(e),isNaN(e)||e===1/0?(s=isNaN(e)?1:0,u=c):(u=Math.floor(Math.log(e)/Math.LN2),e*(a=Math.pow(2,-u))<1&&(u--,a*=2),(e+=u+h>=1?p/a:p*Math.pow(2,1-h))*a>=2&&(u++,a/=2),u+h>=c?(s=0,u=c):u+h>=1?(s=(e*a-1)*Math.pow(2,i),u+=h):(s=e*Math.pow(2,h-1)*Math.pow(2,i),u=0));i>=8;t[n+l]=255&s,l+=d,s/=256,i-=8);for(u=u<<i|s,f+=i;f>0;t[n+l]=255&u,l+=d,u/=256,f-=8);t[n+l-d]|=128*g}},function(t,e){var n={}.toString;t.exports=Array.isArray||function(t){return"[object Array]"==n.call(t)}},function(t,e){t.exports=function(t,e){for(var n=[],r={},i=0;i<e.length;i++){var o=e[i],u=o[0],s={id:t+":"+i,css:o[1],media:o[2],sourceMap:o[3]};r[u]?r[u].parts.push(s):n.push(r[u]={id:u,parts:[s]})}return n}},function(t,e,n){var r=n(18);"string"==typeof r&&(r=[[t.i,r,""]]),r.locals&&(t.exports=r.locals),n(3)("ab02cf70",r,!0)},function(t,e,n){(t.exports=n(2)(!1)).push([t.i,'.vue-numeric-input{position:relative;display:inline-block;-webkit-box-sizing:border-box;box-sizing:border-box}.vue-numeric-input .numeric-input{padding-right:1.8rem;padding-left:1.8rem;-webkit-box-sizing:border-box;box-sizing:border-box;font-size:inherit;border:1px solid #ccc;border-radius:2px;display:block;line-height:1.5rem;width:100%}.vue-numeric-input .btn,.vue-numeric-input .numeric-input{-webkit-transition:all .1s ease 0s;transition:all .1s ease 0s}.vue-numeric-input .btn{position:absolute;width:1.5rem;margin:0;cursor:default;text-align:center;background:rgba(0,0,0,.1);border:solid rgba(0,0,0,.1);-webkit-box-shadow:rgba(0,0,0,.1) -1px -1px 3px inset,hsla(0,0%,100%,.7) 1px 1px 3px inset;box-shadow:inset -1px -1px 3px rgba(0,0,0,.1),inset 1px 1px 3px hsla(0,0%,100%,.7)}.vue-numeric-input .btn:hover{background:rgba(0,0,0,.2)}.vue-numeric-input .btn:active{-webkit-box-shadow:rgba(0,0,0,.2) 0 1px 3px inset,hsla(0,0%,100%,.5) -1px -1px 4px inset;box-shadow:inset 0 1px 3px rgba(0,0,0,.2),inset -1px -1px 4px hsla(0,0%,100%,.5)}.vue-numeric-input .btn:disabled{opacity:.5;-webkit-box-shadow:none;box-shadow:none;cursor:not-allowed}.vue-numeric-input .numeric-input.no-control{padding:2px 5px}.vue-numeric-input .btn-increment{right:2px;top:2px;bottom:2px;border-radius:2px;border-width:1px}.vue-numeric-input .btn-increment .btn-icon{position:absolute;width:100%;height:100%;top:0;left:0}.vue-numeric-input .btn-increment .btn-icon:before{height:.0625rem;width:50%}.vue-numeric-input .btn-increment .btn-icon:after,.vue-numeric-input .btn-increment .btn-icon:before{position:absolute;visibility:visible;background-color:#111;content:"";left:50%;top:50%;-webkit-transform:translate(-50%,-50%);transform:translate(-50%,-50%)}.vue-numeric-input .btn-increment .btn-icon:after{height:50%;width:.0625rem}.vue-numeric-input .btn-decrement{left:2px;top:2px;bottom:2px;border-radius:2px;border-width:1px}.vue-numeric-input .btn-decrement .btn-icon{position:absolute;width:100%;height:100%;top:0;left:0}.vue-numeric-input .btn-decrement .btn-icon:before{position:absolute;visibility:visible;height:.0625rem;width:50%;background-color:#111;content:"";left:50%;top:50%;-webkit-transform:translate(-50%,-50%);transform:translate(-50%,-50%)}.vue-numeric-input .btn-decrement .btn-icon:after{visibility:hidden;content:"";clear:both;height:0}.vue-numeric-input.updown .numeric-input{padding-right:1.8rem;padding-left:5px}.vue-numeric-input.updown .btn-increment{right:2px;top:2px;bottom:50%;border-radius:2px 2px 0 0;border-width:1px 1px 0}.vue-numeric-input.updown .btn-increment .btn-icon{top:50%;left:50%;width:0;height:0;border-width:0 .45rem .45rem;border-color:transparent transparent #111;border-style:solid;margin:-.25rem 0 0 -.4rem}.vue-numeric-input.updown .btn-increment .btn-icon:after,.vue-numeric-input.updown .btn-increment .btn-icon:before{visibility:hidden;display:block;content:"";clear:both;height:0}.vue-numeric-input.updown .btn-decrement{right:2px;top:50%;bottom:2px;left:auto;border-radius:0 0 2px 2px;border-width:0 1px 1px}.vue-numeric-input.updown .btn-decrement .btn-icon{top:50%;left:50%;width:0;height:0;border-width:.45rem .45rem 0;border-color:#111 transparent transparent;border-style:solid;margin:-.25rem 0 0 -.4rem}',""])},function(t,e){t.exports=function(t,e,n,r,i,o){var u,s=t=t||{},a=typeof t.default;"object"!==a&&"function"!==a||(u=t,s=t.default);var f,c="function"==typeof s?s.options:s;if(e&&(c.render=e.render,c.staticRenderFns=e.staticRenderFns,c._compiled=!0),n&&(c.functional=!0),i&&(c._scopeId=i),o?(f=function(t){(t=t||this.$vnode&&this.$vnode.ssrContext||this.parent&&this.parent.$vnode&&this.parent.$vnode.ssrContext)||"undefined"==typeof __VUE_SSR_CONTEXT__||(t=__VUE_SSR_CONTEXT__),r&&r.call(this,t),t&&t._registeredComponents&&t._registeredComponents.add(o)},c._ssrRegister=f):r&&(f=r),f){var h=c.functional,p=h?c.render:c.beforeCreate;h?(c._injectStyles=f,c.render=function(t,e){return f.call(e),p(t,e)}):c.beforeCreate=p?[].concat(p,f):[f]}return{esModule:u,exports:s,options:c}}},function(t,e,n){"use strict";var r=n(21),i=n.n(r);e.a={name:"vue-numeric-input",props:{name:String,value:Number,placeholder:String,min:{type:Number,default:-1/0},max:{type:Number,default:1/0},step:{type:Number,default:1},align:{type:String,default:"left"},size:{type:String,default:"150px"},precision:{type:Number,validator:function(t){return t>=0&&i()(t)}},autofocus:{type:Boolean,default:!1},readonly:{type:Boolean,default:!1},disabled:{type:Boolean,default:!1},controls:{type:Boolean,default:!0},controlsType:{type:String,default:"plusminus"}},data:function(){return{numericValue:null,interval:null,startTime:null,handler:Function}},watch:{value:{immediate:!0,handler:function(t){var e=t;e&&((e=this.toPrecision(e,this.precision))>=this.max&&(e=this.max),e<=this.min&&(e=this.min),e!==t&&this.$emit("input",e)),this.numericValue=e}}},methods:{toNumber:function(t){var e=parseFloat(t);return!isNaN(t)&&isFinite(t)||(e=0),e},toPrecision:function(t,e){return void 0!==e?parseFloat(t.toFixed(e)):t},increment:function(){this.readonly||this.updateValue(this.toNumber(this.numericValue)+this.step)},decrement:function(){this.readonly||this.updateValue(this.toNumber(this.numericValue)-this.step)},inputHandler:function(t){this.updateValue(this.toNumber(t),t)},updateValue:function(t){var e=arguments.length>1&&void 0!==arguments[1]?arguments[1]:null,n=this.numericValue;(t=this.toPrecision(t,this.precision))>=this.max&&(t=this.max),t<=this.min&&(t=this.min),t!==n?(this.numericValue=t,this.$emit("input",t)):this.$refs.input.value=e&&t===this.toNumber(e)?e:t},start:function(t){document.addEventListener("mouseup",this.stop),this.startTime=new Date,this.handler=t,clearInterval(this.interval),this.interval=setInterval(t,100)},stop:function(t){document.removeEventListener(t.type,this.stop),new Date-this.startTime<100&&this.handler(),clearInterval(this.interval),this.interval=null,this.handler=null,this.startTime=null,this.value!==this.numericValue&&this.$emit("change",this.numericValue)},onBlur:function(t){this.$emit("blur",t)},onFocus:function(t){this.$emit("focus",t)},onChange:function(t){this.$emit("change",this.numericValue)},focus:function(){this.disabled||this.$refs.input.focus()},blur:function(){this.$refs.input.blur()}},beforeDestroy:function(){clearInterval(this.interval),this.interval=null,this.handler=null,this.startTime=null}}},function(t,e,n){t.exports={default:n(22),__esModule:!0}},function(t,e,n){n(23),t.exports=n(5).Number.isInteger},function(t,e,n){var r=n(24);r(r.S,"Number",{isInteger:n(35)})},function(t,e,n){var r=n(4),i=n(5),o=n(25),u=n(27),s=n(34),a=function(t,e,n){var f,c,h,p=t&a.F,l=t&a.G,d=t&a.S,g=t&a.P,b=t&a.B,y=t&a.W,m=l?i:i[e]||(i[e]={}),v=m.prototype,w=l?r:d?r[e]:(r[e]||{}).prototype;for(f in l&&(n=e),n)(c=!p&&w&&void 0!==w[f])&&s(m,f)||(h=c?w[f]:n[f],m[f]=l&&"function"!=typeof w[f]?n[f]:b&&c?o(h,r):y&&w[f]==h?function(t){var e=function(e,n,r){if(this instanceof t){switch(arguments.length){case 0:return new t;case 1:return new t(e);case 2:return new t(e,n)}return new t(e,n,r)}return t.apply(this,arguments)};return e.prototype=t.prototype,e}(h):g&&"function"==typeof h?o(Function.call,h):h,g&&((m.virtual||(m.virtual={}))[f]=h,t&a.R&&v&&!v[f]&&u(v,f,h)))};a.F=1,a.G=2,a.S=4,a.P=8,a.B=16,a.W=32,a.U=64,a.R=128,t.exports=a},function(t,e,n){var r=n(26);t.exports=function(t,e,n){if(r(t),void 0===e)return t;switch(n){case 1:return function(n){return t.call(e,n)};case 2:return function(n,r){return t.call(e,n,r)};case 3:return function(n,r,i){return t.call(e,n,r,i)}}return function(){return t.apply(e,arguments)}}},function(t,e){t.exports=function(t){if("function"!=typeof t)throw TypeError(t+" is not a function!");return t}},function(t,e,n){var r=n(28),i=n(33);t.exports=n(1)?function(t,e,n){return r.f(t,e,i(1,n))}:function(t,e,n){return t[e]=n,t}},function(t,e,n){var r=n(29),i=n(30),o=n(32),u=Object.defineProperty;e.f=n(1)?Object.defineProperty:function(t,e,n){if(r(t),e=o(e,!0),r(n),i)try{return u(t,e,n)}catch(t){}if("get"in n||"set"in n)throw TypeError("Accessors not supported!");return"value"in n&&(t[e]=n.value),t}},function(t,e,n){var r=n(0);t.exports=function(t){if(!r(t))throw TypeError(t+" is not an object!");return t}},function(t,e,n){t.exports=!n(1)&&!n(6)(function(){return 7!=Object.defineProperty(n(31)("div"),"a",{get:function(){return 7}}).a})},function(t,e,n){var r=n(0),i=n(4).document,o=r(i)&&r(i.createElement);t.exports=function(t){return o?i.createElement(t):{}}},function(t,e,n){var r=n(0);t.exports=function(t,e){if(!r(t))return t;var n,i;if(e&&"function"==typeof(n=t.toString)&&!r(i=n.call(t)))return i;if("function"==typeof(n=t.valueOf)&&!r(i=n.call(t)))return i;if(!e&&"function"==typeof(n=t.toString)&&!r(i=n.call(t)))return i;throw TypeError("Can't convert object to primitive value")}},function(t,e){t.exports=function(t,e){return{enumerable:!(1&t),configurable:!(2&t),writable:!(4&t),value:e}}},function(t,e){var n={}.hasOwnProperty;t.exports=function(t,e){return n.call(t,e)}},function(t,e,n){var r=n(0),i=Math.floor;t.exports=function(t){return!r(t)&&isFinite(t)&&i(t)===t}},function(t,e,n){"use strict";var r={render:function(){var t=this,e=t.$createElement,n=t._self._c||e;return n("div",{class:["vue-numeric-input","updown"===t.controlsType?"updown":""],style:{width:t.size?""+t.size:"Inherit"}},[n("input",{ref:"input",class:["numeric-input",this.controls?"":"no-control"],style:{textAlign:this.align},attrs:{name:t.name,type:"number",placeholder:t.placeholder,max:t.max,min:t.min,autofocus:t.autofocus,disabled:t.disabled,readonly:t.readonly},domProps:{value:t.numericValue},on:{input:function(e){t.inputHandler(e.target.value)},change:t.onChange,blur:t.onBlur,focus:t.onFocus}}),t._v(" "),t.controls?n("button",{staticClass:"btn btn-decrement",attrs:{type:"button",disabled:t.disabled||t.numericValue<=t.min},on:{mousedown:function(e){t.start(t.decrement)},touchstart:function(e){e.preventDefault(),t.start(t.decrement)},touchend:function(e){e.preventDefault(),t.stop(e)}}},[n("i",{staticClass:"btn-icon"})]):t._e(),t._v(" "),t.controls?n("button",{staticClass:"btn btn-increment",attrs:{type:"button",disabled:t.disabled||t.numericValue>=t.max},on:{mousedown:function(e){t.start(t.increment)},touchstart:function(e){e.preventDefault(),t.start(t.increment)},touchend:function(e){e.preventDefault(),t.stop(e)}}},[n("i",{staticClass:"btn-icon"})]):t._e()])},staticRenderFns:[]};e.a=r}])});
-
-/***/ }),
-
-/***/ "./node_modules/vue-pagination-2/compiled/Pagination.js":
-/*!**************************************************************!*\
-  !*** ./node_modules/vue-pagination-2/compiled/Pagination.js ***!
-  \**************************************************************/
-/***/ ((module, exports, __webpack_require__) => {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", ({
-    value: true
-}));
-
-var _template = __webpack_require__(/*! ./template */ "./node_modules/vue-pagination-2/compiled/template.js");
-
-var _template2 = _interopRequireDefault(_template);
-
-var _RenderlessPagination = __webpack_require__(/*! ./RenderlessPagination */ "./node_modules/vue-pagination-2/compiled/RenderlessPagination.js");
-
-var _RenderlessPagination2 = _interopRequireDefault(_RenderlessPagination);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-exports.default = {
-    name: 'Pagination',
-    components: { RenderlessPagination: _RenderlessPagination2.default },
-    provide: function provide() {
-        var _this = this;
-
-        return {
-            Page: function Page() {
-                return _this.value;
-            },
-            perPage: function perPage() {
-                return _this.perPage;
-            },
-            records: function records() {
-                return _this.records;
-            }
-        };
-    },
-    render: function render(h) {
-        return h('renderless-pagination', { scopedSlots: {
-                default: function _default(props) {
-                    return props.override ? h(props.override, {
-                        attrs: { props: props }
-                    }) : (0, _template2.default)(props)(h);
-                }
-            }
-        });
-    },
-
-    props: {
-        value: {
-            type: Number,
-            required: true,
-            validator: function validator(val) {
-                return val > 0;
-            }
-        },
-        records: {
-            type: Number,
-            required: true
-        },
-        perPage: {
-            type: Number,
-            default: 25
-        },
-        options: {
-            type: Object
-        }
-    },
-    data: function data() {
-        return {
-            aProps: {
-                role: "button"
-            }
-        };
-    }
-};
-module.exports = exports['default'];
-
-/***/ }),
-
-/***/ "./node_modules/vue-pagination-2/compiled/RenderlessPagination.js":
-/*!************************************************************************!*\
-  !*** ./node_modules/vue-pagination-2/compiled/RenderlessPagination.js ***!
-  \************************************************************************/
-/***/ ((module, exports, __webpack_require__) => {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", ({
-    value: true
-}));
-
-var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
-
-var _config = __webpack_require__(/*! ./config */ "./node_modules/vue-pagination-2/compiled/config.js");
-
-var _config2 = _interopRequireDefault(_config);
-
-var _merge = __webpack_require__(/*! merge */ "./node_modules/merge/merge.js");
-
-var _merge2 = _interopRequireDefault(_merge);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-exports.default = {
-    inject: ['Page', 'records', 'perPage'],
-    props: {
-        itemClass: {
-            required: false,
-            default: 'VuePagination__pagination-item'
-        }
-    },
-    render: function render() {
-        var _this = this;
-
-        return this.$scopedSlots.default({
-            override: this.opts.template,
-            showPagination: this.totalPages > 1,
-            pages: this.pages,
-            pageEvents: function pageEvents(page) {
-                return {
-                    click: function click() {
-                        return _this.setPage(page);
-                    },
-                    keydown: function keydown(e) {
-                        if (e.key === 'ArrowRight') {
-                            _this.next();
-                        }
-
-                        if (e.key === 'ArrowLeft') {
-                            _this.prev();
-                        }
-                    }
-                };
-            },
-            activeClass: this.activeClass,
-            hasEdgeNav: this.opts.edgeNavigation && this.totalChunks > 1,
-            setPage: this.setPage,
-            setFirstPage: this.setPage.bind(this, 1),
-            setLastPage: this.setPage.bind(this, this.totalPages),
-            hasChunksNav: this.opts.chunksNavigation === 'fixed',
-            setPrevChunk: this.prevChunk,
-            setNextChunk: this.nextChunk,
-            setPrevPage: this.prev,
-            firstPageProps: {
-                class: this.Theme.link,
-                disabled: this.page === 1
-            },
-            lastPageProps: {
-                class: this.Theme.link,
-                disabled: this.page === this.totalPages
-            },
-            prevProps: {
-                class: this.Theme.link,
-                disabled: !!this.allowedPageClass(this.page - 1)
-            },
-            nextProps: {
-                class: this.Theme.link,
-                disabled: !!this.allowedPageClass(this.page + 1)
-            },
-            pageClasses: function pageClasses(page) {
-                return _this.itemClass + ' ' + _this.Theme.item + ' ' + _this.activeClass(page);
-            },
-            prevChunkProps: {
-                class: this.Theme.link,
-                disabled: !this.allowedChunk(-1)
-            },
-            nextChunkProps: {
-                class: this.Theme.link,
-                disabled: !this.allowedChunk(1)
-            },
-            setNextPage: this.next,
-            theme: {
-                nav: this.Theme.nav,
-                list: 'VuePagination__pagination ' + this.Theme.list,
-                item: this.Theme.item,
-                disabled: this.Theme.disabled,
-                prev: this.itemClass + ' ' + this.itemClass + '-prev-page ' + this.Theme.item + ' ' + this.Theme.prev + ' ' + this.allowedPageClass(this.page - 1),
-                next: this.itemClass + '  ' + this.itemClass + '-next-page ' + this.Theme.item + ' ' + this.Theme.next + ' ' + this.allowedPageClass(this.page + 1),
-                prevChunk: this.itemClass + ' ' + this.Theme.item + ' ' + this.Theme.prev + ' ' + this.itemClass + '-prev-chunk ' + this.allowedChunkClass(-1),
-                nextChunk: this.itemClass + ' ' + this.Theme.item + ' ' + this.Theme.next + ' ' + this.itemClass + '-next-chunk ' + this.allowedChunkClass(1),
-                firstPage: this.itemClass + ' ' + this.Theme.item + ' ' + (this.page === 1 ? this.Theme.disabled : '') + ' ' + this.itemClass + '-first-page',
-                lastPage: this.itemClass + ' ' + this.Theme.item + ' ' + (this.page === this.totalPages ? this.Theme.disabled : '') + ' ' + this.itemClass + '-last-page',
-                link: this.Theme.link,
-                page: this.itemClass + ' ' + this.Theme.item,
-                wrapper: this.Theme.wrapper,
-                count: 'VuePagination__count ' + this.Theme.count
-            },
-            hasRecords: this.hasRecords,
-            count: this.count,
-            texts: this.opts.texts,
-            opts: this.opts,
-            allowedChunkClass: this.allowedChunkClass,
-            allowedPageClass: this.allowedPageClass,
-            setChunk: this.setChunk,
-            prev: this.prev,
-            next: this.next,
-            totalPages: this.totalPages,
-            totalChunks: this.totalChunks,
-            page: this.Page(),
-            records: this.records(),
-            perPage: this.perPage(),
-            formatNumber: this.formatNumber
-        });
-    },
-
-    data: function data() {
-        return {
-            firstPage: this.$parent.value,
-            For: this.$parent.for,
-            Options: this.$parent.options
-        };
-    },
-    watch: {
-        page: function page(val) {
-            if (this.opts.chunksNavigation === 'scroll' && this.allowedPage(val) && !this.inDisplay(val)) {
-                if (val === this.totalPages) {
-                    var first = val - this.opts.chunk + 1;
-                    this.firstPage = first >= 1 ? first : 1;
-                } else {
-                    this.firstPage = val;
-                }
-            }
-
-            this.$parent.$emit('paginate', val);
-        }
-    },
-    computed: {
-        Records: function Records() {
-            return this.records();
-        },
-        PerPage: function PerPage() {
-            return this.perPage();
-        },
-        opts: function opts() {
-            return _merge2.default.recursive((0, _config2.default)(), this.Options);
-        },
-        Theme: function Theme() {
-
-            if (_typeof(this.opts.theme) === 'object') {
-                return this.opts.theme;
-            }
-
-            var themes = {
-                bootstrap3: __webpack_require__(/*! ./themes/bootstrap3 */ "./node_modules/vue-pagination-2/compiled/themes/bootstrap3.js"),
-                bootstrap4: __webpack_require__(/*! ./themes/bootstrap4 */ "./node_modules/vue-pagination-2/compiled/themes/bootstrap4.js"),
-                bulma: __webpack_require__(/*! ./themes/bulma */ "./node_modules/vue-pagination-2/compiled/themes/bulma.js")
-            };
-
-            if (_typeof(themes[this.opts.theme]) === undefined) {
-                throw 'vue-pagination-2: the theme ' + this.opts.theme + ' does not exist';
-            }
-
-            return themes[this.opts.theme];
-        },
-        page: function page() {
-            return this.Page();
-        },
-
-        pages: function pages() {
-
-            if (!this.Records) return [];
-
-            return range(this.paginationStart, this.pagesInCurrentChunk);
-        },
-        totalPages: function totalPages() {
-            return this.Records ? Math.ceil(this.Records / this.PerPage) : 1;
-        },
-        totalChunks: function totalChunks() {
-            return Math.ceil(this.totalPages / this.opts.chunk);
-        },
-        currentChunk: function currentChunk() {
-            return Math.ceil(this.page / this.opts.chunk);
-        },
-        paginationStart: function paginationStart() {
-            if (this.opts.chunksNavigation === 'scroll') {
-                return this.firstPage;
-            }
-
-            return (this.currentChunk - 1) * this.opts.chunk + 1;
-        },
-        pagesInCurrentChunk: function pagesInCurrentChunk() {
-            return this.paginationStart + this.opts.chunk <= this.totalPages ? this.opts.chunk : this.totalPages - this.paginationStart + 1;
-        },
-        hasRecords: function hasRecords() {
-            return parseInt(this.Records) > 0;
-        },
-
-        count: function count() {
-
-            if (/{page}/.test(this.opts.texts.count)) {
-
-                if (this.totalPages <= 1) return '';
-
-                return this.opts.texts.count.replace('{page}', this.page).replace('{pages}', this.totalPages);
-            }
-
-            var parts = this.opts.texts.count.split('|');
-            var from = (this.page - 1) * this.PerPage + 1;
-            var to = this.page == this.totalPages ? this.Records : from + this.PerPage - 1;
-            var i = Math.min(this.Records == 1 ? 2 : this.totalPages == 1 ? 1 : 0, parts.length - 1);
-
-            return parts[i].replace('{count}', this.formatNumber(this.Records)).replace('{from}', this.formatNumber(from)).replace('{to}', this.formatNumber(to));
-        }
-    },
-    methods: {
-        setPage: function setPage(page) {
-            if (this.allowedPage(page)) {
-                this.paginate(page);
-            }
-        },
-        paginate: function paginate(page) {
-            var _this2 = this;
-
-            this.$parent.$emit('input', page);
-
-            this.$nextTick(function () {
-                if (_this2.$el) {
-                    _this2.$el.querySelector('li.active a').focus();
-                }
-            });
-        },
-
-        next: function next() {
-            return this.setPage(this.page + 1);
-        },
-        prev: function prev() {
-            return this.setPage(this.page - 1);
-        },
-        inDisplay: function inDisplay(page) {
-
-            var start = this.firstPage;
-            var end = start + this.opts.chunk - 1;
-
-            return page >= start && page <= end;
-        },
-
-        nextChunk: function nextChunk() {
-            return this.setChunk(1);
-        },
-        prevChunk: function prevChunk() {
-            return this.setChunk(-1);
-        },
-        setChunk: function setChunk(direction) {
-            this.setPage((this.currentChunk - 1 + direction) * this.opts.chunk + 1);
-        },
-        allowedPage: function allowedPage(page) {
-            return page >= 1 && page <= this.totalPages;
-        },
-        allowedChunk: function allowedChunk(direction) {
-            return direction == 1 && this.currentChunk < this.totalChunks || direction == -1 && this.currentChunk > 1;
-        },
-        allowedPageClass: function allowedPageClass(direction) {
-            return this.allowedPage(direction) ? '' : this.Theme.disabled;
-        },
-        allowedChunkClass: function allowedChunkClass(direction) {
-            return this.allowedChunk(direction) ? '' : this.Theme.disabled;
-        },
-        activeClass: function activeClass(page) {
-            return this.page == page ? this.Theme.active : '';
-        },
-        formatNumber: function formatNumber(num) {
-
-            if (!this.opts.format) return num;
-
-            return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-        }
-    }
-};
-
-
-function range(start, count) {
-    return Array.apply(0, Array(count)).map(function (element, index) {
-        return index + start;
-    });
-}
-module.exports = exports['default'];
-
-/***/ }),
-
-/***/ "./node_modules/vue-pagination-2/compiled/config.js":
-/*!**********************************************************!*\
-  !*** ./node_modules/vue-pagination-2/compiled/config.js ***!
-  \**********************************************************/
-/***/ ((module, exports) => {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", ({
-    value: true
-}));
-
-exports.default = function () {
-    return {
-        format: true,
-        chunk: 10,
-        chunksNavigation: 'fixed',
-        edgeNavigation: false,
-        theme: 'bootstrap3',
-        template: null,
-        texts: {
-            count: 'Showing {from} to {to} of {count} records|{count} records|One record',
-            first: 'First',
-            last: 'Last',
-            nextPage: '>',
-            nextChunk: '>>',
-            prevPage: '<',
-            prevChunk: '<<'
-        }
-    };
-};
-
-module.exports = exports['default'];
-
-/***/ }),
-
-/***/ "./node_modules/vue-pagination-2/compiled/main.js":
-/*!********************************************************!*\
-  !*** ./node_modules/vue-pagination-2/compiled/main.js ***!
-  \********************************************************/
-/***/ ((module, exports, __webpack_require__) => {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", ({
-  value: true
-}));
-
-var _Pagination = __webpack_require__(/*! ./Pagination */ "./node_modules/vue-pagination-2/compiled/Pagination.js");
-
-var _Pagination2 = _interopRequireDefault(_Pagination);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-exports.default = _Pagination2.default;
-module.exports = exports['default'];
-
-/***/ }),
-
-/***/ "./node_modules/vue-pagination-2/compiled/template.js":
-/*!************************************************************!*\
-  !*** ./node_modules/vue-pagination-2/compiled/template.js ***!
-  \************************************************************/
-/***/ ((module) => {
-
-"use strict";
-
-
-module.exports = function (props) {
-
-    return function (h) {
-
-        var theme = this.theme;
-        var prevChunk = '';
-        var nextChunk = '';
-        var firstPage = '';
-        var lastPage = '';
-        var items = this.pages.map(function (page) {
-
-            return h(
-                'li',
-                { 'class': 'VuePagination__pagination-item ' + theme.item + ' ' + this.activeClass(page),
-                    on: {
-                        'click': this.setPage.bind(this, page)
-                    }
-                },
-                [h(
-                    'a',
-                    { 'class': theme.link + ' ' + this.activeClass(page),
-                        attrs: { role: 'button' }
-                    },
-                    [this.formatNumber(page)]
-                )]
-            );
-        }.bind(this));
-
-        if (this.opts.edgeNavigation && this.totalChunks > 1) {
-            firstPage = h(
-                'li',
-                { 'class': 'VuePagination__pagination-item ' + theme.item + ' ' + (this.page === 1 ? theme.disabled : '') + ' VuePagination__pagination-item-first-page',
-                    on: {
-                        'click': this.setPage.bind(this, 1)
-                    }
-                },
-                [h(
-                    'a',
-                    { 'class': theme.link,
-                        attrs: { disabled: this.page === 1 }
-                    },
-                    [this.opts.texts.first]
-                )]
-            );
-
-            lastPage = h(
-                'li',
-                { 'class': 'VuePagination__pagination-item ' + theme.item + ' ' + (this.page === this.totalPages ? theme.disabled : '') + ' VuePagination__pagination-item-last-page',
-                    on: {
-                        'click': this.setPage.bind(this, this.totalPages)
-                    }
-                },
-                [h(
-                    'a',
-                    { 'class': theme.link,
-                        attrs: { disabled: this.page === this.totalPages }
-                    },
-                    [this.opts.texts.last]
-                )]
-            );
-        }
-
-        if (this.opts.chunksNavigation === 'fixed') {
-
-            prevChunk = h(
-                'li',
-                { 'class': 'VuePagination__pagination-item ' + theme.item + ' ' + theme.prev + ' VuePagination__pagination-item-prev-chunk ' + this.allowedChunkClass(-1),
-                    on: {
-                        'click': this.setChunk.bind(this, -1)
-                    }
-                },
-                [h(
-                    'a',
-                    { 'class': theme.link,
-                        attrs: { disabled: !!this.allowedChunkClass(-1) }
-                    },
-                    [this.opts.texts.prevChunk]
-                )]
-            );
-
-            nextChunk = h(
-                'li',
-                { 'class': 'VuePagination__pagination-item ' + theme.item + ' ' + theme.next + ' VuePagination__pagination-item-next-chunk ' + this.allowedChunkClass(1),
-                    on: {
-                        'click': this.setChunk.bind(this, 1)
-                    }
-                },
-                [h(
-                    'a',
-                    { 'class': theme.link,
-                        attrs: { disabled: !!this.allowedChunkClass(1) }
-                    },
-                    [this.opts.texts.nextChunk]
-                )]
-            );
-        }
-
-        return h(
-            'div',
-            { 'class': 'VuePagination ' + theme.wrapper },
-            [h(
-                'nav',
-                { 'class': '' + theme.nav },
-                [h(
-                    'ul',
-                    {
-                        directives: [{
-                            name: 'show',
-                            value: this.totalPages > 1
-                        }],
-
-                        'class': theme.list + ' VuePagination__pagination' },
-                    [firstPage, prevChunk, h(
-                        'li',
-                        { 'class': 'VuePagination__pagination-item ' + theme.item + ' ' + theme.prev + ' VuePagination__pagination-item-prev-page ' + this.allowedPageClass(this.page - 1),
-                            on: {
-                                'click': this.prev.bind(this)
-                            }
-                        },
-                        [h(
-                            'a',
-                            { 'class': theme.link,
-                                attrs: { disabled: !!this.allowedPageClass(this.page - 1)
-                                }
-                            },
-                            [this.opts.texts.prevPage]
-                        )]
-                    ), items, h(
-                        'li',
-                        { 'class': 'VuePagination__pagination-item ' + theme.item + ' ' + theme.next + ' VuePagination__pagination-item-next-page ' + this.allowedPageClass(this.page + 1),
-                            on: {
-                                'click': this.next.bind(this)
-                            }
-                        },
-                        [h(
-                            'a',
-                            { 'class': theme.link,
-                                attrs: { disabled: !!this.allowedPageClass(this.page + 1)
-                                }
-                            },
-                            [this.opts.texts.nextPage]
-                        )]
-                    ), nextChunk, lastPage]
-                ), h(
-                    'p',
-                    {
-                        directives: [{
-                            name: 'show',
-                            value: parseInt(this.records)
-                        }],
-
-                        'class': 'VuePagination__count ' + theme.count },
-                    [this.count]
-                )]
-            )]
-        );
-    }.bind(props);
-};
-
-/***/ }),
-
-/***/ "./node_modules/vue-pagination-2/compiled/themes/bootstrap3.js":
-/*!*********************************************************************!*\
-  !*** ./node_modules/vue-pagination-2/compiled/themes/bootstrap3.js ***!
-  \*********************************************************************/
-/***/ ((module) => {
-
-"use strict";
-
-
-module.exports = {
-    nav: '',
-    count: '',
-    wrapper: '',
-    list: 'pagination',
-    item: 'page-item',
-    link: 'page-link',
-    next: '',
-    prev: '',
-    active: 'active',
-    disabled: 'disabled'
-};
-
-/***/ }),
-
-/***/ "./node_modules/vue-pagination-2/compiled/themes/bootstrap4.js":
-/*!*********************************************************************!*\
-  !*** ./node_modules/vue-pagination-2/compiled/themes/bootstrap4.js ***!
-  \*********************************************************************/
-/***/ ((module) => {
-
-"use strict";
-
-
-module.exports = {
-    nav: '',
-    count: '',
-    wrapper: '',
-    list: 'pagination',
-    item: 'page-item',
-    link: 'page-link',
-    next: '',
-    prev: '',
-    active: 'active',
-    disabled: 'disabled'
-};
-
-/***/ }),
-
-/***/ "./node_modules/vue-pagination-2/compiled/themes/bulma.js":
-/*!****************************************************************!*\
-  !*** ./node_modules/vue-pagination-2/compiled/themes/bulma.js ***!
-  \****************************************************************/
-/***/ ((module) => {
-
-"use strict";
-
-
-module.exports = {
-    nav: '',
-    count: '',
-    wrapper: 'pagination',
-    list: 'pagination-list',
-    item: '',
-    link: 'pagination-link',
-    next: '',
-    prev: '',
-    active: 'is-current',
-    disabled: '' // uses the disabled HTML attirbute
-};
 
 /***/ }),
 

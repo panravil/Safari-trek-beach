@@ -36,18 +36,19 @@ class TourController extends Controller
   public function filterTours(Request $request) {
     // filter data
     $destination   = ($request->input('destination') != '') ? $request->input('destination') : '';
-    $min_price     = ($request->input('min_price') != '') ? $request->input('min_price') : 100;
-    $max_price     = ($request->input('max_price') != '') ? $request->input('max_price') : 10000;
+    $min_price     = ($request->input('min_price') != '') ? $request->input('min_price') : 10;
+    $max_price     = ($request->input('max_price') != '') ? (($request->input('max_price') >= 10000) ? 100000 : $request->input('max_price')) : 100000;
     $min_day       = ($request->input('min_day') != '') ? $request->input('min_day') : 1;
-    $max_day       = ($request->input('max_day') != '') ? $request->input('max_day') : 30;
+    $max_day       = ($request->input('max_day') != '') ? (($request->input('max_day') >= 30) ? 75 : $request->input('max_day')) : 30;
     $group         = ($request->input('group') != '') ? $request->input('group') : '';
     $level         = ($request->input('comfort') != '') ? explode("|", $request->input('comfort')) : [];
     $focus         = ($request->input('focus') != '') ? explode("|", $request->input('focus')) : [];
 
     // data query
-    $sql = "SELECT package.package_id, package.image_url, package.no_of_day, package.title as title, package.tour_group, tour_focus.title as tour_focus, package_level.level_title as tour_level, tour_activity.title as tour_destination, package_rate.adult_currency
+    $sql = "SELECT package.package_id, package.image_url, package.no_of_day, package.title as title, package.tour_group, tour_focus.title as tour_focus, package_level.level_title as tour_level, tour_activity.title as tour_destination, LEAST(package_rate.adult_currency_winter, package_rate.adult_currency_spring, package_rate.adult_currency_summer, package_rate.adult_currency_autumn) AS adult_currency
             FROM package, package_rate, package_level, tour_focus, tour_activity, package_activity
             WHERE package.package_id = package_rate.package_id
+            AND package_rate.no_of_person = 1
             AND package.package_id = package_level.package_id
             AND package.tour_focus_id = tour_focus.tour_focus_id
             AND package.package_id = package_activity.package_id
@@ -55,7 +56,7 @@ class TourController extends Controller
             AND package.tour_group LIKE '%$group'
             AND tour_activity.title LIKE '%$destination'
             AND package.no_of_day BETWEEN $min_day AND $max_day
-            AND package_rate.adult_currency BETWEEN $min_price AND $max_price";
+            AND LEAST(package_rate.adult_currency_winter, package_rate.adult_currency_spring, package_rate.adult_currency_summer, package_rate.adult_currency_autumn) BETWEEN $min_price AND $max_price";
 
     if (count($level) > 0) { // filter by tour level
       $sql .= " AND package_level.level_title IN(";

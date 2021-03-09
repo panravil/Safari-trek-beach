@@ -81,6 +81,7 @@ class Destination extends Model {
                 foreach($package_detail as $row) {
                     $data['package'][$key]['package_id']    = $row->package_id;
                     $data['package'][$key]['no_of_day']     = $row->no_of_day;
+                    $data['package'][$key]['no_of_night']   = $row->no_of_night;
                     $data['package'][$key]['title']         = $row->title;
                     $data['package'][$key]['tour_group']    = $row->tour_group;
                     $data['package'][$key]['image_url']     = $row->image_url;
@@ -104,7 +105,10 @@ class Destination extends Model {
                 }
 
                 $rate = DB::select("
-                    SELECT adult_currency FROM package_rate WHERE package_id = $package_id
+                    SELECT LEAST(adult_currency_winter, adult_currency_spring, adult_currency_summer, adult_currency_autumn) AS adult_currency
+                    FROM package_rate
+                    WHERE package_id = $package_id
+                    AND no_of_person = 1
                 ");
                 foreach($rate as $row) {
                     $data['package'][$key]['adult_currency'] = $row->adult_currency;

@@ -51,7 +51,9 @@ class Tour extends Model {
                 }
 
                 $rate = DB::select("
-                    SELECT adult_currency FROM package_rate WHERE package_id = $package->package_id
+                    SELECT LEAST(adult_currency_winter, adult_currency_spring, adult_currency_summer, adult_currency_autumn) AS adult_currency
+                    FROM package_rate WHERE package_id = $package->package_id
+                    AND no_of_person = 1
                 ");
                 foreach ($rate as $row) {
                     $data_rate = (array) $row;
@@ -176,7 +178,9 @@ class Tour extends Model {
                 }
 
                 $rate = DB::select("
-                    SELECT adult_currency FROM package_rate WHERE package_id = $package->package_id
+                    SELECT LEAST(adult_currency_winter, adult_currency_spring, adult_currency_summer, adult_currency_autumn) AS adult_currency
+                    FROM package_rate WHERE package_id = $package->package_id
+                    AND no_of_person = 1
                 ");
                 foreach ($rate as $row) {
                     $data_rate = (array) $row;
@@ -273,11 +277,11 @@ class Tour extends Model {
             AND p.user_id = u.user_id
         ");
 
-        if (count($package)) {
+        if(count($package)) {
             $data = [];
             $user_id = $package[0]->user_id;
 
-            foreach ($package as $pac) {
+            foreach($package as $pac) {
                 $data['package_id']      = $pac->package_id;
                 $data['no_of_day']       = $pac->no_of_day;
                 $data['title']           = $pac->title;
@@ -297,7 +301,7 @@ class Tour extends Model {
                 WHERE pact.package_id = $id
                 AND pact.tour_activity_id = act.tour_activity_id
             ");
-            foreach ($activity as $ac) {
+            foreach($activity as $ac) {
                 $data['activity'][] = $ac->title;
             }
 
@@ -306,7 +310,7 @@ class Tour extends Model {
                 ->where('package_id', $id)
                 ->get();
 
-            foreach ($country as $co) {
+            foreach($country as $co) {
                 $data['country'][] = $co->country_name;
             }
 
@@ -315,7 +319,7 @@ class Tour extends Model {
                 ->where('package_id', $id)
                 ->get();
 
-            foreach ($day as $d) {
+            foreach($day as $d) {
                 $data['day'][$d->day_no] = (array) $d;
             }
 
@@ -325,7 +329,7 @@ class Tour extends Model {
                 WHERE pm.package_id = $id
                 AND pm.tour_meal_id = m.tour_meal_id
             ");
-            foreach ($day_meal as $meal) {
+            foreach($day_meal as $meal) {
                 $data['day_meal'][$meal->day_no][] = $meal->title;
             }
 
@@ -334,7 +338,7 @@ class Tour extends Model {
                 ->where('package_id', $id)
                 ->get();
 
-            foreach ($disclaimer as $dis) {
+            foreach($disclaimer as $dis) {
                 $data['disclaimer'][$dis->tour_note_id] = $dis->title;
             }
 
@@ -343,7 +347,7 @@ class Tour extends Model {
                 ->where('package_id', $id)
                 ->get();
 
-            foreach ($gallery as $gal) {
+            foreach($gallery as $gal) {
                 $data['gallery'][] = $gal->image_url;
             }
 
@@ -352,7 +356,7 @@ class Tour extends Model {
                 ->where('package_id', $id)
                 ->get();
 
-            foreach ($getting_there as $gt) {
+            foreach($getting_there as $gt) {
                 $data['getting_there']['accommodation_beforeafter'] = $gt->accommodation_beforeafter;
                 $data['getting_there']['airport_transfer']          = $gt->airport_transfer;
                 $data['getting_there']['start_city']                = $gt->start_city;
@@ -366,11 +370,11 @@ class Tour extends Model {
                             AND pi.tour_note_id = tn.tour_note_id
                         ");
 
-            if (count($inclusion) > 0) {
+            if(count($inclusion) > 0) {
                 $data['inclusion']['included'] = [];
                 $data['inclusion']['excluded'] = [];
 
-                foreach ($inclusion as $inc) {
+                foreach($inclusion as $inc) {
                     $data['inclusion'][$inc->choice][] = $inc->title;
                 }
             } else {
@@ -378,15 +382,12 @@ class Tour extends Model {
                 $data['inclusion']['excluded'] = [];
             }
 
-            $rate = DB::table('package_rate')
-                ->select('*')
-                ->where('package_id', $id)
-                ->get();
-
-            foreach ($rate as $r) {
+            $rate = DB::select("SELECT start_date, end_date, LEAST(adult_currency_winter, adult_currency_spring, adult_currency_summer, adult_currency_autumn) AS adult_currency
+                FROM package_rate WHERE package_id = $id
+                AND no_of_person = 1
+            ");
+            foreach($rate as $r) {
                 $data['rate']['adult_currency'] = $r->adult_currency;
-                $data['rate']['child_currency'] = $r->child_currency;
-                $data['rate']['free_currency']  = $r->free_currency;
                 $data['rate']['start_date']     = $r->start_date;
                 $data['rate']['end_date']       = $r->end_date;
             }
@@ -397,8 +398,42 @@ class Tour extends Model {
                 WHERE pt.package_id = $id
                 AND pt.tour_transport_id = t.tour_transport_id
             ");
-            foreach ($transport as $tra) {
+            foreach($transport as $tra) {
                 $data['transport'][] = $tra->title;
+            }
+
+            $additional_info = DB::table('package_additional_info')
+                ->select('*')
+                ->where('package_id', $id)
+                ->get();
+
+            // add default data for old packages with no data of additional info
+            $data['additional_info']['cancellation']    = '24-hrs';
+            $data['additional_info']['advance_payment'] = '5%';
+            $data['additional_info']['departure']       = 'yes';
+            $data['additional_info']['arrival_visa']    = 'yes';
+            foreach($additional_info as $info) {
+                $data['additional_info']['cancellation']    = $info->cancellation;
+                $data['additional_info']['advance_payment'] = $info->advance_payment;
+                $data['additional_info']['departure']       = $info->departure;
+                $data['additional_info']['arrival_visa']    = $info->arrival_visa;
+            }
+
+            $package_rates = DB::table('package_rate')
+                            ->select('*')
+                            ->where('package_id', $id)
+                            ->get();
+
+            foreach($package_rates as $rate) {
+                $data['adult_currency_rate']['adult_currency_autumn'][] = $rate->adult_currency_autumn;
+                $data['adult_currency_rate']['adult_currency_spring'][] = $rate->adult_currency_spring;
+                $data['adult_currency_rate']['adult_currency_summer'][] = $rate->adult_currency_summer;
+                $data['adult_currency_rate']['adult_currency_winter'][] = $rate->adult_currency_winter;
+
+                $data['child_currency_rate']['child_currency_winter'][] = $rate->child_currency_winter;
+                $data['child_currency_rate']['child_currency_summer'][] = $rate->child_currency_summer;
+                $data['child_currency_rate']['child_currency_spring'][] = $rate->child_currency_spring;
+                $data['child_currency_rate']['child_currency_autumn'][] = $rate->child_currency_autumn;
             }
 
             $data['review'] = [];
@@ -411,7 +446,7 @@ class Tour extends Model {
             $data['sum_review'] = 0;
             $data['num_review'] = 0;
             $data['avg_review'] = 0;
-            foreach ($reviews as $key => $review) {
+            foreach($reviews as $key => $review) {
                 $data['review'][$key] = (array) $review;
                 $data['sum_review'] += $review->rate;
                 $data['num_review'] = $key+1;
@@ -444,14 +479,74 @@ class Tour extends Model {
 
     public static function tourActivity() {
         /**
-         * Fetch all tour activities that shown in tour inner page (filter)
+         * Fetch all tour activities that shown in tour inner and home page (filter)
          */
 
-        $activities = DB::select("
+        $data = [];
+        $count = 0;
+
+        $activity = DB::select("
             SELECT * FROM tour_activity ORDER BY title ASC
         ");
+        foreach($activity as $row) {
+            $data[$count]['title']      = $row->title;
+            $data[$count]['input_id']   = $row->input_id;
 
-        return $activities;
+            $count++;
+        }
+
+        $destination = DB::select("
+            SELECT * FROM tour_destination ORDER BY title ASC
+        ");
+        foreach($destination as $row) {
+            $data[$count]['title']      = $row->title;
+            $data[$count]['input_id']   = $row->input_id;
+
+            $count++;
+        }
+
+        $query = DB::table('tour_other_activity')
+                    ->select('*')
+                    ->get();
+
+        $other_activity = [];
+        if($query) {
+            // Tanzania Safari
+            $other_activity[0]['title']    = $query[0]->title;
+            $other_activity[0]['input_id'] = $query[0]->input_id;
+
+            // Tanzania Safari and Kilimanjaro
+            $other_activity[1]['title']    = $query[0]->title.' and '.$query[1]->title;
+            $other_activity[1]['input_id'] = $query[0]->input_id.'-'.$query[1]->input_id;
+
+            // Tanzania Safari and Zanzibar
+            $other_activity[2]['title']    = $query[0]->title.' and '.$query[2]->title;
+            $other_activity[2]['input_id'] = $query[0]->input_id.'-'.$query[2]->input_id;
+
+            // Tanzania safari, Kilimanjaro And Zanzibar
+            $other_activity[3]['title']    = $query[0]->title.', '.$query[1]->title.' and '.$query[2]->title;
+            $other_activity[3]['input_id'] = $query[0]->input_id.'-'.$query[1]->input_id.'-'.$query[2]->input_id;
+
+            // Kilimanjaro
+            $other_activity[4]['title']    = $query[1]->title;
+            $other_activity[4]['input_id'] = $query[1]->input_id;
+
+            // Kilimanjaro And Zanzibar
+            $other_activity[5]['title']    = $query[1]->title.' and '.$query[2]->title;
+            $other_activity[5]['input_id'] = $query[1]->input_id.'-'.$query[2]->input_id;
+
+            // Zanzibar
+            $other_activity[6]['title']    = $query[2]->title;
+            $other_activity[6]['input_id'] = $query[2]->input_id;
+        }
+        foreach($other_activity as $row) {
+            $data[$count]['title']      = $row['title'];
+            $data[$count]['input_id']   = $row['input_id'];
+
+            $count++;
+        }
+
+        return $data;
     }
 
     public static function tourFocus() {

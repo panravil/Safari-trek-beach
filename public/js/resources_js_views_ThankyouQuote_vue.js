@@ -23,6 +23,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: "ThankyouQuote",
   data: function data() {
@@ -208,9 +209,15 @@ var staticRenderFns = [
           _c("h2", [_vm._v("Your quote has been successfully sent!")])
         ]),
         _vm._v(" "),
-        _c("a", { staticClass: "btn btn-danger", attrs: { href: "/" } }, [
+        _c("a", { staticClass: "btn btn-danger m-2", attrs: { href: "/" } }, [
           _vm._v("Go TO Homepage")
-        ])
+        ]),
+        _vm._v(" "),
+        _c(
+          "a",
+          { staticClass: "btn btn-danger m-2", attrs: { href: "/our-tours" } },
+          [_vm._v("Our Tours")]
+        )
       ])
     ])
   }

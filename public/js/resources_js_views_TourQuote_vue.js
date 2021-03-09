@@ -30141,18 +30141,26 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => __WEBPACK_DEFAULT_EXPORT__
 /* harmony export */ });
-/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm.js");
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _syncfusion_ej2_vue_inputs__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @syncfusion/ej2-vue-inputs */ "./node_modules/@syncfusion/ej2-vue-inputs/src/textbox/textbox.component.js");
-/* harmony import */ var _syncfusion_ej2_vue_calendars__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @syncfusion/ej2-vue-calendars */ "./node_modules/@syncfusion/ej2-vue-calendars/src/datepicker/datepicker.component.js");
-/* harmony import */ var _syncfusion_ej2_vue_dropdowns__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @syncfusion/ej2-vue-dropdowns */ "./node_modules/@syncfusion/ej2-vue-dropdowns/src/drop-down-list/dropdownlist.component.js");
-/* harmony import */ var _components_country_list__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../components/country_list */ "./resources/js/components/country_list.js");
-/* harmony import */ var _syncfusion_ej2_vue_buttons__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @syncfusion/ej2-vue-buttons */ "./node_modules/@syncfusion/ej2-vue-buttons/src/check-box/checkbox.component.js");
-/* harmony import */ var _syncfusion_ej2_base__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @syncfusion/ej2-base */ "./node_modules/@syncfusion/ej2-base/index.js");
-/* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
-/* harmony import */ var vue_numeric_input__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! vue-numeric-input */ "./node_modules/vue-numeric-input/dist/vue-numeric-input.min.js");
-/* harmony import */ var vue_numeric_input__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(vue_numeric_input__WEBPACK_IMPORTED_MODULE_8__);
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _syncfusion_ej2_vue_inputs__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @syncfusion/ej2-vue-inputs */ "./node_modules/@syncfusion/ej2-vue-inputs/src/textbox/textbox.component.js");
+/* harmony import */ var _syncfusion_ej2_vue_calendars__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @syncfusion/ej2-vue-calendars */ "./node_modules/@syncfusion/ej2-vue-calendars/src/datepicker/datepicker.component.js");
+/* harmony import */ var _syncfusion_ej2_vue_dropdowns__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @syncfusion/ej2-vue-dropdowns */ "./node_modules/@syncfusion/ej2-vue-dropdowns/src/drop-down-list/dropdownlist.component.js");
+/* harmony import */ var _components_country_list__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../components/country_list */ "./resources/js/components/country_list.js");
+/* harmony import */ var _syncfusion_ej2_vue_buttons__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @syncfusion/ej2-vue-buttons */ "./node_modules/@syncfusion/ej2-vue-buttons/src/check-box/checkbox.component.js");
+/* harmony import */ var _syncfusion_ej2_base__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @syncfusion/ej2-base */ "./node_modules/@syncfusion/ej2-base/index.js");
+/* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
+/* harmony import */ var vue_numeric_input__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! vue-numeric-input */ "./node_modules/vue-numeric-input/dist/vue-numeric-input.min.js");
+/* harmony import */ var vue_numeric_input__WEBPACK_IMPORTED_MODULE_9___default = /*#__PURE__*/__webpack_require__.n(vue_numeric_input__WEBPACK_IMPORTED_MODULE_9__);
+
+
+function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
+
+function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
+
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
 
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
@@ -30256,33 +30264,140 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
-vue__WEBPACK_IMPORTED_MODULE_1__.default.use(_syncfusion_ej2_vue_inputs__WEBPACK_IMPORTED_MODULE_2__.TextBoxPlugin);
+vue__WEBPACK_IMPORTED_MODULE_2__.default.use(_syncfusion_ej2_vue_inputs__WEBPACK_IMPORTED_MODULE_3__.TextBoxPlugin);
 
-vue__WEBPACK_IMPORTED_MODULE_1__.default.use(_syncfusion_ej2_vue_calendars__WEBPACK_IMPORTED_MODULE_3__.DatePickerPlugin);
+vue__WEBPACK_IMPORTED_MODULE_2__.default.use(_syncfusion_ej2_vue_calendars__WEBPACK_IMPORTED_MODULE_4__.DatePickerPlugin);
 
-vue__WEBPACK_IMPORTED_MODULE_1__.default.use(_syncfusion_ej2_vue_dropdowns__WEBPACK_IMPORTED_MODULE_4__.DropDownListPlugin);
+vue__WEBPACK_IMPORTED_MODULE_2__.default.use(_syncfusion_ej2_vue_dropdowns__WEBPACK_IMPORTED_MODULE_5__.DropDownListPlugin);
 
 
-vue__WEBPACK_IMPORTED_MODULE_1__.default.use(_syncfusion_ej2_vue_buttons__WEBPACK_IMPORTED_MODULE_6__.CheckBoxPlugin);
+vue__WEBPACK_IMPORTED_MODULE_2__.default.use(_syncfusion_ej2_vue_buttons__WEBPACK_IMPORTED_MODULE_7__.CheckBoxPlugin);
 
-(0,_syncfusion_ej2_base__WEBPACK_IMPORTED_MODULE_7__.enableRipple)(true);
+(0,_syncfusion_ej2_base__WEBPACK_IMPORTED_MODULE_8__.enableRipple)(true);
 
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: "TourQuote",
   components: {
-    VueNumericInput: (vue_numeric_input__WEBPACK_IMPORTED_MODULE_8___default())
+    VueNumericInput: (vue_numeric_input__WEBPACK_IMPORTED_MODULE_9___default())
   },
   data: function data() {
     return {
-      waterMark: 'Select a date',
-      countryData: _components_country_list__WEBPACK_IMPORTED_MODULE_5__.default.countryListAllIsoData,
+      waterMark: "Select a date",
+      countryData: _components_country_list__WEBPACK_IMPORTED_MODULE_6__.default.countryListAllIsoData,
       fields: {
-        text: 'name',
-        value: 'code'
+        text: "name",
+        value: "code"
       },
       dayList: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14],
       zanzibar_activity: false,
@@ -30293,22 +30408,27 @@ vue__WEBPACK_IMPORTED_MODULE_1__.default.use(_syncfusion_ej2_vue_buttons__WEBPAC
       safari_days: 0,
       traveler_number: "",
       visible_traveler_dropdown: false,
-      adults_number: 1,
+      adults_number: 0,
       children_number: 0,
-      fullname: '',
-      selected_country: 'US',
-      message: '',
-      email: '',
-      mobileno: '+1',
-      start_date: '',
-      results: {}
+      fullname: "",
+      selected_country: "US",
+      message: "",
+      email: "",
+      mobileno: "+1",
+      start_date: "",
+      remember_details: true,
+      results: {},
+      disabled: false,
+      timeout: null,
+      update_checkbox: 0
     };
   },
-  computed: _objectSpread({}, (0,vuex__WEBPACK_IMPORTED_MODULE_9__.mapGetters)({
+  computed: _objectSpread({}, (0,vuex__WEBPACK_IMPORTED_MODULE_10__.mapGetters)({
     where_to_search_state: "tourController/where_to_search",
     start_date_state: "tourController/start_date",
     adults_number_state: "tourController/adults_number",
     children_number_state: "tourController/children_number",
+    detailData: "tourController/detailData",
     package_data: "tourController/quoteData",
     package_id: "tourController/package_id",
     request_status: "request_status",
@@ -30318,9 +30438,11 @@ vue__WEBPACK_IMPORTED_MODULE_1__.default.use(_syncfusion_ej2_vue_buttons__WEBPAC
     selected_country: function selected_country() {
       var _this = this;
 
-      this.mobileno = _components_country_list__WEBPACK_IMPORTED_MODULE_5__.default.calling_code.find(function (obj) {
-        return obj.code == _this.selected_country;
-      }).dial_code;
+      if (this.selected_country != undefined && this.selected_country != "") {
+        this.mobileno = _components_country_list__WEBPACK_IMPORTED_MODULE_6__.default.calling_code.find(function (obj) {
+          return obj.code == _this.selected_country;
+        }).dial_code;
+      }
     }
   },
   directives: {
@@ -30349,23 +30471,80 @@ vue__WEBPACK_IMPORTED_MODULE_1__.default.use(_syncfusion_ej2_vue_buttons__WEBPAC
   created: function created() {
     var _this2 = this;
 
-    this.traveler_number = this.traveler_number_state;
-    this.start_date = this.start_date_state;
-    this.adults_number = this.adults_number_state;
-    this.children_number = this.children_number_state;
-    this.traveler_number_calc();
-    axios__WEBPACK_IMPORTED_MODULE_0___default().get('https://extreme-ip-lookup.com/json/').then(function (response) {
-      _this2.selected_country = response.data.countryCode;
-      _this2.mobileno = _components_country_list__WEBPACK_IMPORTED_MODULE_5__.default.calling_code.find(function (obj) {
-        return obj.code == _this2.selected_country;
-      }).dial_code;
-    });
-    document.title = "Request a Quote for the Tour " + this.package_data.no_of_day + "-Day " + this.package_data.title + "- Safari-Trek-Beach.com";
+    return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee() {
+      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee$(_context) {
+        while (1) {
+          switch (_context.prev = _context.next) {
+            case 0:
+              _this2.traveler_number = _this2.traveler_number_state;
+              _this2.start_date = _this2.start_date_state;
+              _this2.adults_number = _this2.adults_number_state;
+              _this2.children_number = _this2.children_number_state;
+
+              _this2.traveler_number_calc();
+
+              _context.next = 7;
+              return axios__WEBPACK_IMPORTED_MODULE_1___default().get("https://extreme-ip-lookup.com/json/").then(function (response) {
+                _this2.selected_country = response.data.countryCode;
+                _this2.mobileno = _components_country_list__WEBPACK_IMPORTED_MODULE_6__.default.calling_code.find(function (obj) {
+                  return obj.code == _this2.selected_country;
+                }).dial_code;
+              });
+
+            case 7:
+              if (_this2.detailData != null) {
+                if (_this2.detailData.fullname != undefined) {
+                  _this2.fullname = _this2.detailData.fullname;
+                }
+
+                if (_this2.detailData.emailAddress != undefined) {
+                  _this2.email = _this2.detailData.emailAddress;
+                }
+
+                if (_this2.detailData.mobileno != undefined) {
+                  if (_this2.detailData.mobileno.includes(_this2.mobileno)) {
+                    _this2.mobileno = _this2.detailData.mobileno;
+                  }
+                }
+
+                if (_this2.detailData.message != undefined) {
+                  _this2.message = _this2.detailData.message;
+                }
+
+                _this2.zanzibar_days = _this2.detailData.zanzibar_days;
+                _this2.kilimanjaro_days = _this2.detailData.kilimanjaro_days;
+                _this2.safari_days = _this2.detailData.safari_days;
+
+                if (_this2.safari_days != undefined) {
+                  _this2.safari_activity = true;
+                  _this2.update_checkbox++;
+                }
+
+                if (_this2.kilimanjaro_days != undefined) {
+                  _this2.kiliman_activity = true;
+                  _this2.update_checkbox++;
+                }
+
+                if (_this2.zanzibar_days != undefined) {
+                  _this2.zanzibar_activity = true;
+                  _this2.update_checkbox++;
+                }
+              }
+
+              document.title = "Request a Quote for the Tour " + _this2.package_data.no_of_day + "-Day " + _this2.package_data.title + "- Safari-Trek-Beach.com";
+
+            case 9:
+            case "end":
+              return _context.stop();
+          }
+        }
+      }, _callee);
+    }))();
   },
   methods: {
     traveler_number_calc: function traveler_number_calc() {
       var traveler = this.adults_number + this.children_number;
-      if (traveler == 1) this.traveler_number = traveler + " Traveler";else this.traveler_number = traveler + " Travelers";
+      if (traveler == 1) this.traveler_number = traveler + " Traveler";else if (traveler == 0) this.traveler_number = "";else this.traveler_number = traveler + " Travelers";
     },
     showTravelerDropdown: function showTravelerDropdown() {
       var current_flag = this.visible_traveler_dropdown;
@@ -30383,77 +30562,141 @@ vue__WEBPACK_IMPORTED_MODULE_1__.default.use(_syncfusion_ej2_vue_buttons__WEBPAC
     onFocus: function onFocus(args) {
       this.$refs.dateObj.show();
     },
-    tourQuote: function tourQuote() {
+    delay: function delay() {
       var _this3 = this;
+
+      this.disabled = true; // Re-enable after 5 seconds
+
+      this.timeout = setTimeout(function () {
+        _this3.disabled = false;
+      }, 5000);
+      this.tourQuote();
+    },
+    tourQuote: function tourQuote() {
+      var _this4 = this;
+
+      if (this.safari_activity == false) {
+        this.safari_days = undefined;
+      }
+
+      if (this.kiliman_activity == false) {
+        this.kilimanjaro_days = undefined;
+      }
+
+      if (this.zanzibar_activity == false) {
+        this.zanzibar_days = undefined;
+      }
 
       var quoteData = {};
       quoteData = {
-        'travellers': this.adults_number + this.children_number,
-        'adult': this.adults_number,
-        'children': this.children_number,
-        'date': this.start_date,
-        'fullname': this.fullname,
-        'emailAddress': this.email,
-        'country': this.selected_country,
-        'mobileno': this.mobileno,
-        'message': this.message,
-        'zanzibar_days': this.zanzibar_days,
-        'kilimanjaro_days': this.kilimanjaro_days,
-        'safari_days': this.safari_days,
-        'package_id': this.package_id,
-        'user_id': this.user_id
+        travellers: this.adults_number + this.children_number,
+        adult: this.adults_number,
+        children: this.children_number,
+        date: this.start_date,
+        fullname: this.fullname,
+        emailAddress: this.email,
+        country: this.selected_country,
+        mobileno: this.mobileno,
+        message: this.message,
+        zanzibar_days: this.zanzibar_days,
+        kilimanjaro_days: this.kilimanjaro_days,
+        safari_days: this.safari_days,
+        package_id: this.package_id,
+        user_id: this.user_id
       };
-      console.log('tag', quoteData);
+      quoteData["country"] = _components_country_list__WEBPACK_IMPORTED_MODULE_6__.default.calling_code.find(function (obj) {
+        return obj.code == _this4.selected_country;
+      }).name; // console.log('tag', quoteData)
+
       this.$store.dispatch("operatorController/tourQuote", quoteData).then(function () {
-        if (_this3.request_status == true) {
+        if (_this4.request_status == true) {
           // this.$notify({
           //   group: 'success',
           //   title: 'Quote Success',
           //   text: 'Thank you! We have received your tour qutoe.'
           // });
-          _this3.fullname = '';
-          _this3.email = '';
-          _this3.selected_country = '';
-          _this3.mobileno = '';
-          _this3.message = '';
-          _this3.zanzibar_days = '';
-          _this3.kilimanjaro_days = '';
-          _this3.safari_days = '';
+          if (_this4.remember_details == false) {
+            _this4.fullname = "";
+            _this4.email = "";
+            _this4.mobileno = "";
+            _this4.message = "";
+            _this4.zanzibar_days = "";
+            _this4.kilimanjaro_days = "";
+            _this4.safari_days = "";
+            var searchData = {};
+            searchData = {
+              where_to_search: "",
+              start_date: "",
+              adults_number: 0,
+              children_number: 0
+            };
 
-          _this3.$router.push('/thankyou-quote');
+            _this4.$store.dispatch("tourController/setSearchData", searchData);
+
+            _this4.$store.dispatch("tourController/setdetailData", {});
+          } else {
+            var _searchData = {};
+            _searchData = {
+              where_to_search: "",
+              start_date: _this4.start_date,
+              adults_number: _this4.adults_number,
+              children_number: _this4.children_number
+            };
+
+            _this4.$store.dispatch("tourController/setSearchData", _searchData);
+
+            var detail_data = {};
+            detail_data = {
+              fullname: _this4.fullname,
+              emailAddress: _this4.email,
+              mobileno: _this4.mobileno,
+              message: _this4.message,
+              zanzibar_days: _this4.zanzibar_days,
+              kilimanjaro_days: _this4.kilimanjaro_days,
+              safari_days: _this4.safari_days
+            };
+            console.log('tag', detail_data);
+
+            _this4.$store.dispatch("tourController/setdetailData", detail_data);
+          } // if checked remember option
+
+
+          _this4.$router.push("/thankyou-quote");
         } else {
-          _this3.$notify({
-            group: 'warning',
-            title: 'Submit Error !',
-            text: 'Sorry, Something went wrong...'
+          _this4.$notify({
+            group: "warning",
+            title: "Submit Error !",
+            text: "Sorry, Something went wrong..."
           });
 
-          _this3.fullname = '';
-          _this3.email = '';
-          _this3.selected_country = '';
-          _this3.mobileno = '';
-          _this3.message = '';
-          _this3.zanzibar_days = '';
-          _this3.kilimanjaro_days = '';
-          _this3.safari_days = '';
+          _this4.fullname = "";
+          _this4.email = "";
+          _this4.mobileno = "";
+          _this4.message = "";
+          _this4.zanzibar_days = "";
+          _this4.kilimanjaro_days = "";
+          _this4.safari_days = "";
         }
       })["catch"](function () {
-        _this3.$notify({
-          group: 'warning',
-          title: 'Submit Error !',
-          text: 'Sorry, Something went wrong...'
+        _this4.$notify({
+          group: "warning",
+          title: "Submit Error !",
+          text: "Sorry, Something went wrong..."
         });
 
-        _this3.fullname = '';
-        _this3.email = '';
-        _this3.selected_country = '';
-        _this3.mobileno = '';
-        _this3.message = '';
-        _this3.zanzibar_days = '';
-        _this3.kilimanjaro_days = '';
-        _this3.safari_days = '';
+        _this4.fullname = "";
+        _this4.email = "";
+        _this4.mobileno = "";
+        _this4.message = "";
+        _this4.zanzibar_days = "";
+        _this4.kilimanjaro_days = "";
+        _this4.safari_days = "";
       });
     }
+  },
+  beforeDestroy: function beforeDestroy() {
+    // clear the timeout before the component is destroyed
+    clearTimeout(this.timeout);
   }
 });
 
@@ -33654,7 +33897,7 @@ ___CSS_LOADER_EXPORT___.i(_node_modules_css_loader_dist_cjs_js_clonedRuleSet_9_0
 ___CSS_LOADER_EXPORT___.i(_node_modules_css_loader_dist_cjs_js_clonedRuleSet_9_0_rules_0_use_1_node_modules_syncfusion_ej2_popups_styles_material_css__WEBPACK_IMPORTED_MODULE_5__.default);
 ___CSS_LOADER_EXPORT___.i(_node_modules_css_loader_dist_cjs_js_clonedRuleSet_9_0_rules_0_use_1_node_modules_syncfusion_ej2_vue_calendars_styles_material_css__WEBPACK_IMPORTED_MODULE_6__.default);
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n.tour-quote-page {\n    padding-top: 50px;\n    padding-bottom: 100px;\n    background-color: #f2f2f2;\n}\n.tour-quote-page section {\n    margin-top: 100px;\n}\n.tour-quote-page .e-multi-line-input textarea {\n    height: 100px;\n}\n.tour-quote-page .quote .e-date-wrapper,\n.tour-quote-page .quote .e-ddl {\n    margin-top: 16px;\n}\n.additional-activity div:first-child {\n    width: 150px;\n}\n.additional-activity div:last-child {\n    width: 150px;\n}\n.additional-activity {\n    margin-left: 30px;\n}\n@media (max-width: 540px) {\n.additional-activity {\n        /* justify-content: center; */\n        margin-left: 0px;\n}\n}\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n.tour-quote-page {\n  padding-top: 50px;\n  padding-bottom: 100px;\n  background-color: #f2f2f2;\n}\n.tour-quote-page section {\n  margin-top: 100px;\n}\n.tour-quote-page .e-multi-line-input textarea {\n  height: 100px;\n}\n.tour-quote-page .quote .e-date-wrapper,\n.tour-quote-page .quote .e-ddl {\n  margin-top: 16px;\n}\n.additional-activity div:first-child {\n  width: 150px;\n}\n.additional-activity div:last-child {\n  width: 150px;\n}\n.additional-activity {\n  margin-left: 30px;\n}\n@media (max-width: 540px) {\n.additional-activity {\n    /* justify-content: center; */\n    margin-left: 0px;\n}\n}\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -33806,7 +34049,7 @@ var render = function() {
               on: {
                 submit: function($event) {
                   $event.preventDefault()
-                  return _vm.tourQuote($event)
+                  return _vm.delay($event)
                 }
               }
             },
@@ -33827,6 +34070,7 @@ var render = function() {
                       attrs: {
                         placeholder: _vm.waterMark,
                         focus: _vm.onFocus,
+                        allowEdit: false,
                         required: ""
                       },
                       model: {
@@ -33864,7 +34108,9 @@ var render = function() {
                             floatLabelType: "Auto",
                             autocomplete: "off",
                             type: "text",
-                            placeholder: "Travellers"
+                            placeholder: "Travellers",
+                            readOnly: true,
+                            required: ""
                           },
                           model: {
                             value: _vm.traveler_number,
@@ -33894,7 +34140,7 @@ var render = function() {
                               },
                               [
                                 _vm._v(
-                                  "\n                                    Travelers\n                                    "
+                                  "\n                  Travelers\n                  "
                                 ),
                                 _c("span", {
                                   staticClass: "fa fa-times-circle-o",
@@ -33973,7 +34219,7 @@ var render = function() {
                                 },
                                 [
                                   _vm._v(
-                                    "\n                                        Done\n                                    "
+                                    "\n                    Done\n                  "
                                   )
                                 ]
                               )
@@ -34060,7 +34306,7 @@ var render = function() {
                     _c("ejs-textbox", {
                       attrs: {
                         floatLabelType: "Auto",
-                        type: "phone",
+                        type: "tel",
                         placeholder: "Mobile Number",
                         required: ""
                       },
@@ -34098,6 +34344,26 @@ var render = function() {
                     })
                   ],
                   1
+                ),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  { staticClass: "col-lg-12 col-sm-12 mt-3" },
+                  [
+                    _c("ejs-checkbox", {
+                      attrs: {
+                        label: "Save Details For The Next Quote Request."
+                      },
+                      model: {
+                        value: _vm.remember_details,
+                        callback: function($$v) {
+                          _vm.remember_details = $$v
+                        },
+                        expression: "remember_details"
+                      }
+                    })
+                  ],
+                  1
                 )
               ]),
               _vm._v(" "),
@@ -34105,154 +34371,175 @@ var render = function() {
                 _vm._v("Additional activities:")
               ]),
               _vm._v(" "),
-              _c(
-                "div",
-                {
-                  staticClass:
-                    "d-flex align-items-center mt-3 additional-activity"
-                },
-                [
-                  _c(
-                    "div",
-                    [
-                      _c("ejs-checkbox", {
-                        attrs: { label: "Zanzibar" },
-                        model: {
-                          value: _vm.zanzibar_activity,
-                          callback: function($$v) {
-                            _vm.zanzibar_activity = $$v
-                          },
-                          expression: "zanzibar_activity"
-                        }
-                      })
-                    ],
-                    1
-                  ),
-                  _vm._v(" "),
-                  _vm.zanzibar_activity
-                    ? _c(
-                        "div",
-                        { staticClass: "ms-3" },
-                        [
-                          _c("ejs-dropdownlist", {
-                            attrs: {
-                              dataSource: _vm.dayList,
-                              placeholder: "No. of Days"
+              _c("div", { key: _vm.update_checkbox }, [
+                _c(
+                  "div",
+                  {
+                    staticClass:
+                      "d-flex align-items-center mt-3 additional-activity"
+                  },
+                  [
+                    _c(
+                      "div",
+                      [
+                        _c("ejs-checkbox", {
+                          attrs: { label: "Zanzibar" },
+                          model: {
+                            value: _vm.zanzibar_activity,
+                            callback: function($$v) {
+                              _vm.zanzibar_activity = $$v
                             },
-                            model: {
-                              value: _vm.zanzibar_days,
-                              callback: function($$v) {
-                                _vm.zanzibar_days = $$v
+                            expression: "zanzibar_activity"
+                          }
+                        })
+                      ],
+                      1
+                    ),
+                    _vm._v(" "),
+                    _vm.zanzibar_activity
+                      ? _c(
+                          "div",
+                          { staticClass: "ms-3" },
+                          [
+                            _c("ejs-dropdownlist", {
+                              attrs: {
+                                dataSource: _vm.dayList,
+                                placeholder: "No. of Days"
                               },
-                              expression: "zanzibar_days"
-                            }
-                          })
-                        ],
-                        1
-                      )
-                    : _vm._e()
-                ]
-              ),
+                              model: {
+                                value: _vm.zanzibar_days,
+                                callback: function($$v) {
+                                  _vm.zanzibar_days = $$v
+                                },
+                                expression: "zanzibar_days"
+                              }
+                            })
+                          ],
+                          1
+                        )
+                      : _vm._e()
+                  ]
+                ),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  {
+                    staticClass:
+                      "d-flex align-items-center mt-3 additional-activity"
+                  },
+                  [
+                    _c(
+                      "div",
+                      [
+                        _c("ejs-checkbox", {
+                          attrs: { label: "Kilimanjaro" },
+                          model: {
+                            value: _vm.kiliman_activity,
+                            callback: function($$v) {
+                              _vm.kiliman_activity = $$v
+                            },
+                            expression: "kiliman_activity"
+                          }
+                        })
+                      ],
+                      1
+                    ),
+                    _vm._v(" "),
+                    _vm.kiliman_activity
+                      ? _c(
+                          "div",
+                          { staticClass: "ms-3" },
+                          [
+                            _c("ejs-dropdownlist", {
+                              attrs: {
+                                dataSource: _vm.dayList,
+                                placeholder: "No. of Days"
+                              },
+                              model: {
+                                value: _vm.kilimanjaro_days,
+                                callback: function($$v) {
+                                  _vm.kilimanjaro_days = $$v
+                                },
+                                expression: "kilimanjaro_days"
+                              }
+                            })
+                          ],
+                          1
+                        )
+                      : _vm._e()
+                  ]
+                ),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  {
+                    staticClass:
+                      "d-flex align-items-center mt-3 additional-activity"
+                  },
+                  [
+                    _c(
+                      "div",
+                      [
+                        _c("ejs-checkbox", {
+                          attrs: { label: "Safari" },
+                          model: {
+                            value: _vm.safari_activity,
+                            callback: function($$v) {
+                              _vm.safari_activity = $$v
+                            },
+                            expression: "safari_activity"
+                          }
+                        })
+                      ],
+                      1
+                    ),
+                    _vm._v(" "),
+                    _vm.safari_activity
+                      ? _c(
+                          "div",
+                          { staticClass: "ms-3" },
+                          [
+                            _c("ejs-dropdownlist", {
+                              attrs: {
+                                dataSource: _vm.dayList,
+                                placeholder: "No. of Days"
+                              },
+                              model: {
+                                value: _vm.safari_days,
+                                callback: function($$v) {
+                                  _vm.safari_days = $$v
+                                },
+                                expression: "safari_days"
+                              }
+                            })
+                          ],
+                          1
+                        )
+                      : _vm._e()
+                  ]
+                )
+              ]),
               _vm._v(" "),
               _c(
                 "div",
                 {
                   staticClass:
-                    "d-flex align-items-center mt-3 additional-activity"
+                    "text-right w-100 mt-5 d-flex justify-content-end"
                 },
                 [
                   _c(
-                    "div",
+                    "button",
+                    {
+                      staticClass: "btn btn-danger",
+                      attrs: { type: "submit", disabled: _vm.disabled }
+                    },
                     [
-                      _c("ejs-checkbox", {
-                        attrs: { label: "Kilimanjaro" },
-                        model: {
-                          value: _vm.kiliman_activity,
-                          callback: function($$v) {
-                            _vm.kiliman_activity = $$v
-                          },
-                          expression: "kiliman_activity"
-                        }
-                      })
-                    ],
-                    1
-                  ),
-                  _vm._v(" "),
-                  _vm.kiliman_activity
-                    ? _c(
-                        "div",
-                        { staticClass: "ms-3" },
-                        [
-                          _c("ejs-dropdownlist", {
-                            attrs: {
-                              dataSource: _vm.dayList,
-                              placeholder: "No. of Days"
-                            },
-                            model: {
-                              value: _vm.kilimanjaro_days,
-                              callback: function($$v) {
-                                _vm.kilimanjaro_days = $$v
-                              },
-                              expression: "kilimanjaro_days"
-                            }
-                          })
-                        ],
-                        1
-                      )
-                    : _vm._e()
+                      _vm._v("\n              Send Request "),
+                      _c("span", { staticClass: "fa fa-angle-right ms-2" })
+                    ]
+                  )
                 ]
-              ),
-              _vm._v(" "),
-              _c(
-                "div",
-                {
-                  staticClass:
-                    "d-flex align-items-center mt-3 additional-activity"
-                },
-                [
-                  _c(
-                    "div",
-                    [
-                      _c("ejs-checkbox", {
-                        attrs: { label: "Safari" },
-                        model: {
-                          value: _vm.safari_activity,
-                          callback: function($$v) {
-                            _vm.safari_activity = $$v
-                          },
-                          expression: "safari_activity"
-                        }
-                      })
-                    ],
-                    1
-                  ),
-                  _vm._v(" "),
-                  _vm.safari_activity
-                    ? _c(
-                        "div",
-                        { staticClass: "ms-3" },
-                        [
-                          _c("ejs-dropdownlist", {
-                            attrs: {
-                              dataSource: _vm.dayList,
-                              placeholder: "No. of Days"
-                            },
-                            model: {
-                              value: _vm.safari_days,
-                              callback: function($$v) {
-                                _vm.safari_days = $$v
-                              },
-                              expression: "safari_days"
-                            }
-                          })
-                        ],
-                        1
-                      )
-                    : _vm._e()
-                ]
-              ),
-              _vm._v(" "),
-              _vm._m(4)
+              )
             ]
           )
         ])
@@ -34266,7 +34553,7 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("header", { staticClass: "section-header mt-5" }, [
-      _c("h3", [_vm._v("GET FREE QUOTE")])
+      _c("h3", [_vm._v("GET A FREE QUOTE")])
     ])
   },
   function() {
@@ -34275,7 +34562,9 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("h6", { staticClass: "text-danger" }, [
       _c("span", { staticClass: "fa fa-smile-o me-2" }),
-      _vm._v("We advice you to compare quote from 3 Tour Operators.")
+      _vm._v(
+        "We advice you to compare\n            quote from 3 Tour Operators.\n          "
+      )
     ])
   },
   function() {
@@ -34289,25 +34578,6 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("div", [_c("strong", [_vm._v("Child ")]), _vm._v("(0~15 yrs):")])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "div",
-      { staticClass: "text-right w-100 mt-5 d-flex justify-content-end" },
-      [
-        _c(
-          "button",
-          { staticClass: "btn btn-danger", attrs: { type: "submit" } },
-          [
-            _vm._v("Send Request "),
-            _c("span", { staticClass: "fa fa-angle-right ms-2" })
-          ]
-        )
-      ]
-    )
   }
 ]
 render._withStripped = true
