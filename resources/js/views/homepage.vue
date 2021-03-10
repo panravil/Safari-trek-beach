@@ -624,6 +624,14 @@ export default {
             .split(" ")
             .every((v) => item.title.toLowerCase().includes(v));
         });
+
+        var start_filtered = this.search_result.filter(p => p.title.toLowerCase().startsWith(this.where_to_search.toLowerCase()));
+        var not_start_filtered = this.search_result.filter(p => !p.title.toLowerCase().startsWith(this.where_to_search.toLowerCase()));
+
+        Array.prototype.push.apply(start_filtered, not_start_filtered);
+
+        this.search_result = start_filtered;
+
       } else {
         this.search_result = this.where_to_list;
       }
@@ -787,9 +795,24 @@ export default {
             .split("&")
             .join("~");
         }
-        this.$router.push("/our-tours/" + url_query["destination"]);
+        // this.$router.push("/our-tours/" + url_query["destination"]);
+
+        let routeData = this.$router.resolve({
+          name: "Our Tours2",
+          params: {
+            destination: url_query["destination"]
+          },
+        });
+
+        window.open(routeData.href, "_blank");
+
       } else {
-        this.$router.push("/our-tours");
+        // this.$router.push("/our-tours");
+        let routeData = this.$router.resolve({
+          name: "Our Tours",
+        });
+
+        window.open(routeData.href, "_blank");
       }
     },
   },

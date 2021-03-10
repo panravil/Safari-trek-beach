@@ -28,13 +28,13 @@
         <form @submit.prevent="sendEmail">
           <div class="row align-items-center">
             <div class="col-sm-12">
-              <ejs-textbox floatLabelType="Auto" type="text" placeholder="Name" v-model="name" required></ejs-textbox>
+              <ejs-textbox floatLabelType="Auto" type="text" placeholder="Name" name="user_name" v-model="name" required></ejs-textbox>
             </div>
             <div class="col-sm-12 mt-3">
-              <ejs-textbox floatLabelType="Auto" type="email" placeholder="Email" v-model="email" required></ejs-textbox>
+              <ejs-textbox floatLabelType="Auto" type="email" placeholder="Email" name="user_email" v-model="email" required></ejs-textbox>
             </div>
             <div class="col-sm-12 mt-3">
-              <ejs-textbox :multiline="true" floatLabelType="Auto" placeholder="Write a message" v-model="message" required></ejs-textbox>
+              <ejs-textbox :multiline="true" floatLabelType="Auto" name="message" placeholder="Write a message" v-model="message" required></ejs-textbox>
             </div>
             <div>
               <button type="submit" class="btn btn-danger mt-3">Submit</button>
@@ -137,18 +137,24 @@ export default {
     // },
 
     sendEmail(e) {
+      console.log('tag', e.target)
       try {
-        emailjs.sendForm('service_5wlzkqg', 'template_vgycw1m', e.target, 'user_K5HSyHWK6LhDHg35fCPQz', {
-          name: this.name,
-          email: this.email,
-          message: this.meessage
+        emailjs.sendForm('service_5wlzkqg', 'template_39c1z2t', e.target, 'user_K5HSyHWK6LhDHg35fCPQz').then(() => {
+           this.$notify({
+            group: 'success',
+            title: 'Email Sent!',
+            text: 'Thank you! We have received your email. We will soon reply.'
+          });
+          console.log('it works!!!')
         })
-        this.$notify({
-          group: 'success',
-          title: 'Email Sent!',
-          text: 'Thank you! We have received your email. We will soon reply.'
-        });
-        console.log('it works!!!')
+        .catch(() => {
+          this.$notify({
+            group: "warning",
+            title: "Sending Error !",
+            text: "Sorry, Something went wrong...",
+          });
+        })
+       
       } catch (error) {
         this.$notify({
           group: "warning",
@@ -162,6 +168,32 @@ export default {
       this.email = ''
       this.message = ''
     },
+
+    // sendEmail: (e) => {
+    //    this.$notify({
+    //           group: "warning",
+    //           title: "Sending Error !",
+    //           text: "Sorry, Something went wrong...",
+    //         });
+    //       console.log('tag', e.target)
+    //   emailjs.sendForm('service_5wlzkqg', 'template_vgycw1m', e.target, 'user_K5HSyHWK6LhDHg35fCPQz')
+    //     .then((result) => {
+    //         console.log('SUCCESS!', result.status, result.text);
+    //         this.$notify({
+    //           group: 'success',
+    //           title: 'Email Sent!',
+    //           text: 'Thank you! We have received your email. We will soon reply.'
+    //         });
+            
+    //     }, (error) => {
+    //         console.log('FAILED...', error);
+    //         this.$notify({
+    //           group: "warning",
+    //           title: "Sending Error !",
+    //           text: "Sorry, Something went wrong...",
+    //         });
+    //     });
+    // }
 
 
   }

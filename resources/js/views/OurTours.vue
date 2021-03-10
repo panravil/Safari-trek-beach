@@ -674,6 +674,13 @@ export default {
             .split(" ")
             .every((v) => item.title.toLowerCase().includes(v));
         });
+        var start_filtered = this.search_result.filter(p => p.title.toLowerCase().startsWith(this.where_to_search.toLowerCase()));
+        var not_start_filtered = this.search_result.filter(p => !p.title.toLowerCase().startsWith(this.where_to_search.toLowerCase()));
+
+        Array.prototype.push.apply(start_filtered, not_start_filtered);
+
+        this.search_result = start_filtered;
+
       } else {
         this.search_result = this.where_to_list;
       }
@@ -1159,7 +1166,8 @@ export default {
     deleteFilterOption: function (e) {
       var lastChar = e.data.text[e.data.text.length - 1];
       var check_first_string = e.data.text.substr(0, 4);
-      var check_last_string = e.data.text.substr(e.data.text.length - 4, 4);
+      var check_last_string = e.data.text.substr(e.data.text.length - 5, 5);
+      var check_last_string_4 = e.data.text.substr(e.data.text.length - 4, 4);
       if (lastChar == "$") {
         this.price_range = [10, 10000];
         this.page = 1;
@@ -1173,7 +1181,7 @@ export default {
         this.getFilterTours();
         return;
       }
-      if (check_last_string == "days") {
+      if (check_last_string == " days" || check_last_string_4 ==" day") {
         this.day_range = [1, 30];
         this.page = 1;
         this.getFilterTours();
@@ -1579,7 +1587,13 @@ export default {
           break;
 
         case (day_number == 1):
-          single = url_query["min_day"] + '-Day';
+          if ( url_query["min_day"] != undefined)
+            single = url_query["min_day"] + '-Day';
+          else if ( url_query["max_day"] != undefined)
+            single = url_query["max_day"] + '-Day';
+
+          // console.log('tag', single)
+
           this.search_name = single + " " + this.search_name;
           if ( url_query["min_day"] != undefined )
             delete url_query["min_day"];

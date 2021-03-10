@@ -14,7 +14,7 @@
                         <a class="nav-link" href="/home" :class="$route.name =='Home Page' ? 'active' : ''">HOME</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/our-tours" :class="$route.name =='Our Tours' || $route.name =='Our Tours2' ? 'active' : ''">OUR TOURS</a>
+                        <a class="nav-link" href="/our-tours" :class="$route.name =='Our Tours' || $route.name =='Our Tours2' ? 'active' : ''" target="_blank">OUR TOURS</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="/tour-operators/page/1" :class="$route.name =='Tour Operators' ? 'active' : ''">TOUR OPERATORS</a>

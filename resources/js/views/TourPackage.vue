@@ -1695,7 +1695,13 @@ export default {
       };
       this.$store.dispatch("tourController/setTourInfo", quote_tourInfo);
 
-      this.$router.push("/tour-quote").catch(() => {});
+      // this.$router.push("/tour-quote").catch(() => {});
+
+      let routeData = this.$router.resolve({
+          name: "Tour Quote",
+        });
+
+        window.open(routeData.href, "_blank");
     },
 
     onFocus: function (args) {

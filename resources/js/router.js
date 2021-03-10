@@ -12,17 +12,17 @@ const router = new Router({
         return result ? ('?' + result) : ''
     },
     scrollBehavior(to, from) {
-        if (to.name ==='Our Tours' || to.name === "Our Tours2")
-            return false;
-        else if (to.hash) {
-            return { selector: to.hash }
-        }
-        else {
+        // if (to.name ==='Our Tours' || to.name === "Our Tours2")
+        //     return false;
+        // else if (to.hash) {
+        //     return { selector: to.hash }
+        // }
+        // else {
             return {
                 x: 0,
                 y: 0
             };
-        }
+        // }
     },
     base: process.env.BASE_URL,
     routes: [
