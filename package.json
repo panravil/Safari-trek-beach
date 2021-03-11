@@ -36,6 +36,7 @@
         "aos": "^2.3.4",
         "emailjs-com": "^2.6.4",
         "mdb-ui-kit": "^3.2.0",
+        "nprogress": "^0.2.0",
         "qs": "^6.9.6",
         "v-viewer": "^1.5.1",
         "vue-carousel": "^0.18.0",

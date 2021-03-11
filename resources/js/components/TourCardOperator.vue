@@ -52,7 +52,7 @@
       </div>
       <p class="card-text mb-1">
         <strong> Accommodation: </strong>
-        <span v-if="tourData.no_of_day == 1"
+        <span v-if="tourData.no_of_night == 1"
           >{{ tourData.no_of_night }} Night</span
         >
         <span v-else-if="tourData.no_of_night > 1"

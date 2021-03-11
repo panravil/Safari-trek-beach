@@ -55,7 +55,7 @@
         <span v-if="tourData.no_of_night == 1"
           >{{ tourData.no_of_night }} Night</span
         >
-        <span v-else-if="tourData.no_of_day > 1"
+        <span v-else-if="tourData.no_of_night > 1"
           >{{ tourData.no_of_night }} Nights</span
         >
         <span v-else>Not Included</span>

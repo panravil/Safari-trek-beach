@@ -138,6 +138,7 @@
                     <li
                       v-for="(item, index) in destinationData.destination"
                       v-bind:key="'Destination' + index"
+                      class="mt-2"
                     >
                       <a
                         class="text-primary"

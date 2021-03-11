@@ -666,6 +666,12 @@ export default {
   },
 
   watch: {
+    $route (to, from){
+      this.preProcess();
+      // console.log('to', to)
+      // console.log('from', from)
+    },
+
     where_to_search: function () {
       if (this.where_to_search) {
         this.search_result = this.where_to_list.filter((item) => {
@@ -705,159 +711,64 @@ export default {
     },
   },
 
-  async created() {    
+  created() {
+    this.preProcess();
+  },
 
-    this.where_to_search = this.where_to_search_state;
-    this.traveler_number = this.traveler_number_state;
-    this.start_date = this.start_date_state;
-    this.adults_number = this.adults_number_state;
-    this.children_number = this.children_number_state;
+  methods: {
+    async preProcess() {
+      this.where_to_search = this.where_to_search_state;
+      this.traveler_number = this.traveler_number_state;
+      this.start_date = this.start_date_state;
+      this.adults_number = this.adults_number_state;
+      this.children_number = this.children_number_state;
 
-    if (this.where_to_search != "") {
-      this.where_to_search_option = this.where_to_search;
-    }
+      if (this.where_to_search != "") {
+        this.where_to_search_option = this.where_to_search;
+      }
 
-    this.$store.commit("tourController/initFilterData")
+      this.$store.commit("tourController/initFilterData")
 
-    await this.getTourFocus();
-    await this.getTourLevel();
-    await this.getTourActivity();
-    this.traveler_number_calc();
+      await this.getTourFocus();
+      await this.getTourLevel();
+      await this.getTourActivity();
+      this.traveler_number_calc();
 
-    // this is for conversion from url query to normal text for api request
+      // this is for conversion from url query to normal text for api request
 
-    let temp_query = this.router_query;
+      let temp_query = this.router_query;
 
-    // console.log('temp query', temp_query )
+      // console.log('temp query', temp_query )
 
-    // let possible_single = [];
+      // let possible_single = [];
 
-    // if ( temp_query['group'] == undefined ) possible_single.push('group')
-    // if ( temp_query['comfort'] == undefined ) possible_single.push('comfort')
-    // if ( temp_query['focus'] == undefined ) possible_single.push('focus')
+      // if ( temp_query['group'] == undefined ) possible_single.push('group')
+      // if ( temp_query['comfort'] == undefined ) possible_single.push('comfort')
+      // if ( temp_query['focus'] == undefined ) possible_single.push('focus')
 
-    // console.log('possible', possible_single)
+      // console.log('possible', possible_single)
 
-    var destination_url = this.destination_id;
-    var single_url = this.single_id;
+      var destination_url = this.destination_id;
+      var single_url = this.single_id;
 
-    if (destination_url !== undefined && destination_url !== "") { //if first param exists, i.e. if one of params exists at least
+      if (destination_url !== undefined && destination_url !== "") { //if first param exists, i.e. if one of params exists at least
 
-      // Destination search if first string is the element of the pre-determined activity list
-      let destination_item = this.where_to_list.find(function (el) {
-        return el.input_id == destination_url;
-      });
+        // Destination search if first string is the element of the pre-determined activity list
+        let destination_item = this.where_to_list.find(function (el) {
+          return el.input_id == destination_url;
+        });
 
-      if (destination_item != undefined) {
-        
-        // if found, to query for api request, append this element
-        temp_query = Object.assign(
-          { destination: destination_item.title },
-          temp_query
-        );
-
-        if (single_url != "") {  //if the second single param is not empty, check what it is and append
-          let single = [];
-          single = this.checkSingleParam(single_url);
-
-          switch (single[0]) {
-            case 'group':
-              temp_query = Object.assign(
-                { group: single[1] },
-                temp_query
-              );
-              break;
-
-            case 'comfort':
-              temp_query = Object.assign(
-                { comfort: single[1] },
-                temp_query
-              );
-              break;
-
-            case 'focus':
-              temp_query = Object.assign(
-                { focus: single[1] },
-                temp_query
-              );
-              break;
-
-            case 'day':
-              temp_query = Object.assign(
-                { min_day: single[1] },
-                { max_day: single[1] },
-                temp_query
-              );
-              break;
+        if (destination_item != undefined) {
           
-            default:
-              break;
-
-          }
-        }
-
-      } else {
-
-        //if can not found -  (two possible case, if typed input that not in the list, 
-        //                                     or if group, comfort or focus single item)
-
-        // so first check if it is single param...
-        // if is single param and single_id is empty => destination is empty and single param estimate...
-
-        if ( single_url != '' ) {
-
-          let single = this.checkSingleParam(single_url);
-
-          switch (single[0]) {
-            case 'group':
-              temp_query = Object.assign(
-                { group: single[1] },
-                temp_query
-              );
-              break;
-
-            case 'comfort':
-              temp_query = Object.assign(
-                { comfort: single[1] },
-                temp_query
-              );
-              break;
-
-            case 'focus':
-              temp_query = Object.assign(
-                { focus: single[1] },
-                temp_query
-              );
-              break;
-
-            case 'day':
-              temp_query = Object.assign(
-                { min_day: single[1] },
-                { max_day: single[1] },
-                temp_query
-              );
-              break;
-          
-            default:
-              break;
-
-          }
-
-          // append to temp query
-
-          let temp_destination = this.destination_id.split("_").join(" ");
-          temp_destination = this.destination_id.split("~").join("&");
+          // if found, to query for api request, append this element
           temp_query = Object.assign(
-            { destination: temp_destination },
+            { destination: destination_item.title },
             temp_query
           );
 
-        } else {
-
-          let single = this.checkSingleParam(destination_url) 
-
-          if ( single != null ) {
-            // if single param, append this to temp query
+          if (single_url != "") {  //if the second single param is not empty, check what it is and append
+            let single = [];
+            single = this.checkSingleParam(single_url);
 
             switch (single[0]) {
               case 'group':
@@ -882,50 +793,158 @@ export default {
                 break;
 
               case 'day':
-              temp_query = Object.assign(
-                { min_day: single[1] },
-                { max_day: single[1] },
-                temp_query
-              );
-              break;
+                temp_query = Object.assign(
+                  { min_day: single[1] },
+                  { max_day: single[1] },
+                  temp_query
+                );
+                break;
             
               default:
                 break;
 
             }
-          } else {
-            // if not single parameter, detect it as a custom typed destination
+          }
+
+        } else {
+
+          //if can not found -  (two possible case, if typed input that not in the list, 
+          //                                     or if group, comfort or focus - single item)
+
+          // so first check if it is single param...
+          // if is single param and single_id is empty => destination is empty and single param estimate...
+
+          if ( single_url != '' ) {
+
+            let single = this.checkSingleParam(single_url);
+
+            switch (single[0]) {
+              case 'group':
+                temp_query = Object.assign(
+                  { group: single[1] },
+                  temp_query
+                );
+                break;
+
+              case 'comfort':
+                temp_query = Object.assign(
+                  { comfort: single[1] },
+                  temp_query
+                );
+                break;
+
+              case 'focus':
+                temp_query = Object.assign(
+                  { focus: single[1] },
+                  temp_query
+                );
+                break;
+
+              case 'day':
+                temp_query = Object.assign(
+                  { min_day: single[1] },
+                  { max_day: single[1] },
+                  temp_query
+                );
+                break;
+            
+              default:
+                break;
+
+            }
+
+            // append to temp query
+
             let temp_destination = this.destination_id.split("_").join(" ");
             temp_destination = this.destination_id.split("~").join("&");
             temp_query = Object.assign(
               { destination: temp_destination },
               temp_query
             );
+
+          } else {
+
+            let single = this.checkSingleParam(destination_url)
+
+            if ( single != null && single.length != 0 ) {
+              // if single param, append this to temp query
+
+              switch (single[0]) {
+                case 'group':
+                  temp_query = Object.assign(
+                    { group: single[1] },
+                    temp_query
+                  );
+                  break;
+
+                case 'comfort':
+                  temp_query = Object.assign(
+                    { comfort: single[1] },
+                    temp_query
+                  );
+                  break;
+
+                case 'focus':
+                  temp_query = Object.assign(
+                    { focus: single[1] },
+                    temp_query
+                  );
+                  break;
+
+                case 'day':
+                temp_query = Object.assign(
+                  { min_day: single[1] },
+                  { max_day: single[1] },
+                  temp_query
+                );
+                break;
+              
+                default:
+                  break;
+
+              }
+            } else {
+              // if not single parameter, detect it as a custom typed destination
+              let temp_destination = this.destination_id.split("_").join(" ");
+              temp_destination = this.destination_id.split("~").join("&");
+              temp_query = Object.assign(
+                { destination: temp_destination },
+                temp_query
+              );
+            }
+
           }
 
+          
         }
-
-        
+      } else { // if no params in URL ...
+        this.where_to_search = "";
+        this.where_to_search_option = "";
+        this.saveFormtoStore();
       }
-    } else { // if no params in URL ...
-      this.where_to_search = "";
-      this.where_to_search_option = "";
-      this.saveFormtoStore();
-    }
 
-    if (temp_query["comfort"] !== undefined) {
-      temp_query["comfort"] = temp_query["comfort"].split("_").join(" ");
-      temp_query["comfort"] = temp_query["comfort"].split("@").join("+");
-    }
+      if (temp_query["comfort"] !== undefined) {
+        temp_query["comfort"] = temp_query["comfort"].split("_").join(" ");
+        temp_query["comfort"] = temp_query["comfort"].split("@").join("+");
+      }
 
-    // console.log('temp after', temp_query)
+      // console.log('temp after', temp_query)
 
-    this.$store.dispatch("tourController/setQuery", temp_query);
+      this.$store.dispatch("tourController/setQuery", temp_query);
+ 
 
-    this.setCurrentCheck();
-  },
+      this.setCurrentCheck();
 
-  methods: {
+      await this.$store
+        .dispatch("tourController/getTourFilter", temp_query)
+        .then(() => {
+          this.current_ourtour_page = parseInt(this.filterTours.page);
+          document.title = this.search_name + " ( " + this.filterTours.total_tours + " Tours )";
+        })
+        .catch(() => {});
+
+    },
+
     async getTourActivity() {
       await this.$store
         .dispatch("tourController/getTourActivity")
@@ -1642,13 +1661,13 @@ export default {
           .catch(() => {});
       } // with params amd query
 
-      await this.$store
-        .dispatch("tourController/getTourFilter", query)
-        .then(() => {
-          this.current_ourtour_page = parseInt(this.filterTours.page);
-          document.title = this.search_name + " ( " + this.filterTours.total_tours + " Tours )";
-        })
-        .catch(() => {});
+      // await this.$store
+      //   .dispatch("tourController/getTourFilter", query)
+      //   .then(() => {
+      //     this.current_ourtour_page = parseInt(this.filterTours.page);
+      //     document.title = this.search_name + " ( " + this.filterTours.total_tours + " Tours )";
+      //   })
+      //   .catch(() => {});
 
       // console.log("???", "");
     },

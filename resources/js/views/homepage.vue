@@ -580,6 +580,7 @@ export default {
     this.getPopularTours();
     this.getTopDestinations();
     this.getPopularBlogs();
+    document.title = 'Safari Trek Beach';
   },
 
   directives: {
@@ -689,7 +690,7 @@ export default {
 
     async getPopularTours() {
       await this.$store.dispatch("tourController/getPopularTours").then(() => {
-        // console.log('tag', this.popularTours)
+        console.log('tag', this.popularTours)
       });
     },
 

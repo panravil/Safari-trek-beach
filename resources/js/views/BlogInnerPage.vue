@@ -151,6 +151,7 @@
                     <li
                       v-for="(item, index) in blogData.blog"
                       v-bind:key="'Blog' + index"
+                      class="mt-2"
                     >
                       <a
                         class="text-primary"

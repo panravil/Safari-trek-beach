@@ -9,18 +9,22 @@
         <ul class="list-unstyled">
           <li class="footerList">
             <a href="/about" class="footerLink">About Us</a>
+            <!-- <router-link :to="{ name: 'About Us' }" class="footerLink">About Us</router-link> -->
           </li>
           <li class="footerList">
             <a href="/contact" class="footerLink">Contact Us</a>
+            <!-- <router-link :to="{ name: 'Contact Us' }" class="footerLink" >Contact Us</router-link> -->
           </li>
           <li class="footerList">
             <a href="/become-a-partner" class="footerLink">Become a Partner</a>
+            <!-- <router-link :to="{ name: 'Become A Partner' }" class="footerLink" >Become a Partner</router-link> -->
           </li>
           <li class="footerList">
             <a href="https://operators.safari-trek-beach.com/" class="footerLink" target="_blank">Operator Login</a>
           </li>
           <li class="footerList">
             <a href="/terms" class="footerLink">Terms &amp; Conditions</a>
+            <!-- <router-link :to="{ name: 'Terms and Condition' }" class="footerLink">Terms &amp; Conditions</router-link> -->
           </li>
         </ul>
       </div>
@@ -29,18 +33,23 @@
         <ul class="list-unstyled">
           <li class="footerList">
             <a href="/our-tours/Serengeti" class="footerLink">Serengeti</a>
+            <!-- <router-link :to="{ name: 'Our Tours2', params: {destination: 'Serengeti'} }" class="footerLink">Serengeti</router-link> -->
           </li>
           <li class="footerList">
             <a href="/our-tours/Kilimanjaro" class="footerLink">Kilimanjaro</a>
+            <!-- <router-link :to="{ name: 'Our Tours2', params: {destination: 'kilimanjaro'} }" class="footerLink">Kilimanjaro</router-link> -->
           </li>
           <li class="footerList">
             <a href="/our-tours/Zanzibar" class="footerLink">Zanzibar</a>
+            <!-- <router-link :to="{ name: 'Our Tours2', params: {destination: 'zanzibar'} }" class="footerLink">Zanzibar</router-link> -->
           </li>
           <li class="footerList">
             <a href="/our-tours/Ngorongoro" class="footerLink">Ngorongoro</a>
+            <!-- <router-link :to="{ name: 'Our Tours2', params: {destination: 'Ngorongoro'} }" class="footerLink">Ngorongoro</router-link> -->
           </li>
           <li class="footerList">
             <a href="/our-tours/ruaha-national-park" class="footerLink">Ruaha</a>
+            <!-- <router-link :to="{ name: 'Our Tours2', params: {destination: 'ruaha-national-park'} }" class="footerLink">Ruaha National Park</router-link> -->
           </li>
         </ul>
       </div>

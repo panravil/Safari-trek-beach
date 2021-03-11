@@ -19,32 +19,51 @@
             class="col-lg-4 col-md-12 p-2 position-relative package-inner-title"
           >
             <div class="card-body">
-              <div v-if="loading">
+              <h5 v-if="loading"  class="card-title mb-3">
                 <content-placeholders-heading />
-              </div>
+              </h5>
               <h5
                 class="card-title fw-bold mb-3 text-capitalize"
                 v-else-if="packageData != null"
               >
                 {{ packageData.no_of_day }}-Day {{ packageData.title }}
               </h5>
-              <h6 class="card-title">
+              <h6 class="card-title" v-if="loading">
+                <content-placeholders-text :lines="1"/>
+              </h6>
+              <h6 class="card-title" v-else-if="packageData.additional_info.cancellation == '24-hrs'">
                 <span class="fa fa-location-arrow mx-2"></span> Cancellation Up
                 to 24 Hrs
               </h6>
-              <h6 class="card-title">
-                <span class="fa fa-location-arrow mx-2"></span> Only 5% Advance
+
+              <h6 class="card-title" v-if="loading">
+                <content-placeholders-text :lines="1"/>
+              </h6>
+              <h6 class="card-title" v-else-if="packageData.additional_info.advance_payment == ''">
+                <span class="fa fa-location-arrow mx-2"></span> Only {{ packageData.additional_info.advance_payment }} Advance
                 Payment
               </h6>
-              <h6 class="card-title">
+
+              <h6 class="card-title" v-if="loading">
+                <content-placeholders-text :lines="1"/>
+              </h6>
+              <h6 class="card-title" v-else-if="packageData.customizable == 1">
                 <span class="fa fa-location-arrow mx-2"></span> Can be
                 customized
               </h6>
-              <h6 class="card-title">
+
+              <h6 class="card-title" v-if="loading">
+                <content-placeholders-text :lines="1"/>
+              </h6>
+              <h6 class="card-title" v-else-if="packageData.additional_info.departure == 'yes'">
                 <span class="fa fa-location-arrow mx-2"></span> Guaranteed
                 Departure
               </h6>
-              <h6 class="card-title">
+
+              <h6 class="card-title" v-if="loading">
+                <content-placeholders-text :lines="1"/>
+              </h6>
+              <h6 class="card-title" v-else-if="packageData.additional_info.arrival_visa == 'yes'">
                 <span class="fa fa-location-arrow mx-2"></span> Get Visa On
                 Arrival (Available)
               </h6>
@@ -425,31 +444,43 @@
                                           Tour Start from
                                           <strong>{{ packageData.getting_there.start_city }}</strong>
                                       </h6> -->
-                      <div v-if="packageData != null" class="table-responsive">
+                      <div v-if="packageData != null && packageData.adult_currency_rate != undefined " class="table-responsive">
                         <table class="table text-center table-striped table-bordered align-middle">
                           <thead>
                             <tr>
                               <th scope="col">Start Dates</th>
-                              <th scope="col">1 Person</th>
-                              <th scope="col">2 Person</th>
-                              <th scope="col">3 Person</th>
-                              <th scope="col">4 Person</th>
-                              <th scope="col">5 Person</th>
-                              <th scope="col">6 Person</th>
+                              <th v-for="(item, index) in packageData.adult_currency_rate.adult_currency_autumn" v-bind:key="index + 'rate header'" scope="col">{{ index + 1 }} Person</th>
                               <th scope="col"></th>
                             </tr>
                           </thead>
                           <tbody>
+                            <!-- winter -->
                             <tr>
-                              <th scope="row">Mar 10 - Dec 10</th>
-                              <td>{{ packageData.rate.adult_currency | currency }}</td>
-                              <td>{{ packageData.rate.adult_currency | currency }}</td>
-                              <td>{{ packageData.rate.adult_currency | currency }}</td>
-                              <td>{{ Math.round(packageData.rate.adult_currency * 0.98) | currency }}</td>
-                              <td>{{ Math.round(packageData.rate.adult_currency * 0.98) | currency }}</td>
-                              <td>{{ Math.round(packageData.rate.adult_currency * 0.97) | currency }}</td>
+                              <th scope="row">Dec 1 - Feb 28</th>
+                              <td v-for="(item, index) in packageData.adult_currency_rate.adult_currency_winter" v-bind:key="index + 'rate ff'">{{ item | currency }}</td>
                               <td class="text-primary" style="cursor: pointer;" @click="getQuoteNow">Get Quote</td>
-                            </tr>                          
+                            </tr>    
+                            
+                            <!-- spring -->
+                            <tr>
+                              <th scope="row">Mar 1 - May 31</th>
+                              <td v-for="(item, index) in packageData.adult_currency_rate.adult_currency_spring" v-bind:key="index + 'rate w'">{{ item | currency }}</td>
+                              <td class="text-primary" style="cursor: pointer;" @click="getQuoteNow">Get Quote</td>
+                            </tr>
+
+                            <!-- summer -->
+                            <tr>
+                              <th scope="row">Jun 1 - Aug 31</th>
+                              <td v-for="(item, index) in packageData.adult_currency_rate.adult_currency_summer" v-bind:key="index + 'rate s'">{{ item | currency }}</td>
+                              <td class="text-primary" style="cursor: pointer;" @click="getQuoteNow">Get Quote</td>
+                            </tr>
+
+                            <!-- autumn -->
+                            <tr>
+                              <th scope="row">Sep 1 - Nov 30</th>
+                              <td v-for="(item, index) in packageData.adult_currency_rate.adult_currency_autumn" v-bind:key="index + 'rate ss'">{{ item | currency }}</td>
+                              <td class="text-primary" style="cursor: pointer;" @click="getQuoteNow">Get Quote</td>
+                            </tr>
                           </tbody>
                         </table>
                       </div>

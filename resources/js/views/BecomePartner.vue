@@ -48,7 +48,8 @@
 
             <p class="px-3 mt-3" v-bind:key="updateCheckbox">
               <ejs-checkbox v-model="conditions" label="I agree to the Safari-Trek-Beach" required></ejs-checkbox>
-              <a href="/terms" target="_blank"><span class="text-decoration-underline text-dark" style="font-size: 13px">Terms and Condition.</span></a>
+              <!-- <a href="/terms" target="_blank"><span class="text-decoration-underline text-dark" style="font-size: 13px">Terms and Condition.</span></a> -->
+              <router-link :to="{ name: 'Terms and Condition' }" target="_blank"><span class="text-decoration-underline text-dark" style="font-size: 13px">Terms and Condition.</span></router-link>
             </p>
 
             <div class="px-3 my-3">
