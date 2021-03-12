@@ -71,13 +71,13 @@
                 <div class="col-lg-4 col-md-6 col-sm-12">
                   <div class="text-center">
                     <h6>License</h6>
-                    <img :src="operatorData.logo" class="logo" />
+                    <img v-lazy="operatorData.logo" class="logo" />
                   </div>
                 </div>
                 <div class="col-lg-8 col-md-6 col-sm-12">
                   <div class="text-center">
                     <h6>Certificate</h6>
-                    <img :src="operatorData.banner" class="certificate" />
+                    <img v-lazy="operatorData.banner" class="certificate" />
                   </div>
                 </div>
               </div>
@@ -776,7 +776,7 @@ export default {
 
 <style>
 .tour-operator-page {
-  background-color: #f2f2f2;
+  /* background-color: #f2f2f2; */
   padding-top: 120px;
   padding-bottom: 100px;
 }

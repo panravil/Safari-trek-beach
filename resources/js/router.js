@@ -31,14 +31,10 @@ const router = new Router({
         // ======================
         {
             path: "",
-            component: () => import("./layout/blank/Blank.vue"),
+            component: () => import("./layout/main/MainContainer.vue"),
             children: [
                 {
                     path: "/",
-                    redirect: "/home"
-                },
-                {
-                    path: "/home",
                     name: "Home Page",
                     index: 1,
                     component: () => import("./views/homepage.vue")
@@ -153,34 +149,42 @@ const router = new Router({
                 },
             ]
         },
+
         {
-            path: "/Error404",
-            name: "404 Page",
-            index: 15,
-            component: () => import("./views/Error404.vue")
-        },
-        {
-            path: "/thankyou-review",
-            name: "Thank Review",
-            index: 16,
-            component: () => import("./views/ThankyouReview.vue")
-        },
-        {
-            path: "/thankyou-quote",
-            name: "Thank Quote",
-            index: 16,
-            component: () => import("./views/ThankyouQuote.vue")
-        },
-        {
-            path: "/thankyou-partner",
-            name: "Thank Partner",
-            index: 16,
-            component: () => import("./views/ThankyouPartner.vue")
-        },
-        {
-      path: "*",
-      redirect: "/Error404",
-    },
+            path: "",
+            component: () => import("./layout/blank/Blank.vue"),
+            children: [
+                {
+                    path: "/Error404",
+                    name: "404 Page",
+                    index: 15,
+                    component: () => import("./views/Error404.vue")
+                },
+                {
+                    path: "/thankyou-review",
+                    name: "Thank Review",
+                    index: 16,
+                    component: () => import("./views/ThankyouReview.vue")
+                },
+                {
+                    path: "/thankyou-quote",
+                    name: "Thank Quote",
+                    index: 16,
+                    component: () => import("./views/ThankyouQuote.vue")
+                },
+                {
+                    path: "/thankyou-partner",
+                    name: "Thank Partner",
+                    index: 16,
+                    component: () => import("./views/ThankyouPartner.vue")
+                },
+                {
+                    path: "*",
+                    redirect: "/Error404",
+                },
+            ]
+        }
+        
     ],
 });
 

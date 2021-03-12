@@ -5,7 +5,8 @@
       <h1>Oops!</h1>
       <h2>404 - The Page can't be found</h2>
     </div>
-    <a class="btn btn-danger" href="/">Go TO Homepage</a>
+    <router-link :to="{ name: 'Home Page' }" class="btn btn-danger m-2">Homepage</router-link>
+    <router-link :to="{ name: 'Our Tours' }" class="btn btn-danger m-2">OUR TOURS</router-link>
   </div>
 </div>
 </template>
@@ -51,7 +52,7 @@ export default {
 .notfound .notfound-404 h1 {
     font-family: 'Montserrat', sans-serif;
     font-size: 236px;
-    font-weight: 200;
+    font-weight: 400;
     margin: 0px;
     color: #211b19;
     text-transform: uppercase;
@@ -68,7 +69,7 @@ export default {
     font-weight: 400;
     text-transform: uppercase;
     color: #211b19;
-    background: #fff;
+    background: #f2f2f2;
     padding: 10px 5px;
     margin: auto;
     display: inline-block;

@@ -8,23 +8,23 @@
         <h6 class="text-uppercase font-weight-bold">General</h6>
         <ul class="list-unstyled">
           <li class="footerList">
-            <a href="/about" class="footerLink">About Us</a>
-            <!-- <router-link :to="{ name: 'About Us' }" class="footerLink">About Us</router-link> -->
+            <!-- <a href="/about" class="footerLink">About Us</a> -->
+            <router-link :to="{ name: 'About Us' }" class="footerLink">About Us</router-link>
           </li>
           <li class="footerList">
-            <a href="/contact" class="footerLink">Contact Us</a>
-            <!-- <router-link :to="{ name: 'Contact Us' }" class="footerLink" >Contact Us</router-link> -->
+            <!-- <a href="/contact" class="footerLink">Contact Us</a> -->
+            <router-link :to="{ name: 'Contact Us' }" class="footerLink" >Contact Us</router-link>
           </li>
           <li class="footerList">
-            <a href="/become-a-partner" class="footerLink">Become a Partner</a>
-            <!-- <router-link :to="{ name: 'Become A Partner' }" class="footerLink" >Become a Partner</router-link> -->
+            <!-- <a href="/become-a-partner" class="footerLink">Become a Partner</a> -->
+            <router-link :to="{ name: 'Become A Partner' }" class="footerLink" >Become a Partner</router-link>
           </li>
           <li class="footerList">
             <a href="https://operators.safari-trek-beach.com/" class="footerLink" target="_blank">Operator Login</a>
           </li>
           <li class="footerList">
-            <a href="/terms" class="footerLink">Terms &amp; Conditions</a>
-            <!-- <router-link :to="{ name: 'Terms and Condition' }" class="footerLink">Terms &amp; Conditions</router-link> -->
+            <!-- <a href="/terms" class="footerLink">Terms &amp; Conditions</a> -->
+            <router-link :to="{ name: 'Terms and Condition' }" class="footerLink">Terms &amp; Conditions</router-link>
           </li>
         </ul>
       </div>
@@ -58,18 +58,23 @@
         <ul class="list-unstyled">
           <li class="footerList">
             <a href="/blog/ukerewe-island" class="footerLink">UKEREWE ISLAND</a>
+            <!-- <router-link :to="{ name: 'Blog Inner Page', params: {slug: 'ukerewe-island'} }" class="footerLink">UKEREWE ISLAND</router-link> -->
           </li>
           <li class="footerList">
             <a href="/blog/rubondo-island-national-park" class="footerLink">RUBONDO ISLAND</a>
+            <!-- <router-link :to="{ name: 'Blog Inner Page', params: {slug: 'rubondo-island-national-park'} }" class="footerLink">RUBONDO ISLAND</router-link> -->
           </li>
           <li class="footerList">
             <a href="/blog/mount-kilimanjaro" class="footerLink">Kilimanjaro</a>
+            <!-- <router-link :to="{ name: 'Blog Inner Page', params: {slug: 'mount-kilimanjaro'} }" class="footerLink">Kilimanjaro</router-link> -->
           </li>
           <li class="footerList">
             <a href="/blog/kigosi-national-park" class="footerLink">KIGOSI</a>
+            <!-- <router-link :to="{ name: 'Blog Inner Page', params: {slug: 'kigosi-national-park'} }" class="footerLink">KIGOSI</router-link> -->
           </li>
           <li class="footerList">
             <a href="/blog/saadani-national-park" class="footerLink">Saadani</a>
+            <!-- <router-link :to="{ name: 'Blog Inner Page', params: {slug: 'saadani-national-park'} }" class="footerLink">Saadani</router-link> -->
           </li>
         </ul>
       </div>
@@ -78,18 +83,23 @@
         <ul class="list-unstyled">
           <li class="footerList">
             <a href="/destination/tanzania" class="footerLink">Tanzania</a>
+            <!-- <router-link :to="{ name: 'Destination Package', params: {slug: 'tanzania'} }" class="footerLink">Tanzania</router-link> -->
           </li>
           <li class="footerList">
             <a href="/destination/stone-town." class="footerLink">STONE TOWN</a>
+            <!-- <router-link :to="{ name: 'Destination Package', params: {slug: 'stone-town.'} }" class="footerLink">STONE TOWN</router-link> -->
           </li>
           <li class="footerList">
             <a href="/destination/materuni-watertfalls" class="footerLink">Materuni Watertfalls</a>
+            <!-- <router-link :to="{ name: 'Destination Package', params: {slug: 'materuni-watertfalls'} }" class="footerLink">Materuni Watertfalls</router-link> -->
           </li>
           <li class="footerList">
             <a href="/destination/dhow" class="footerLink">Dhow</a>
+            <!-- <router-link :to="{ name: 'Destination Package', params: {slug: 'dhow'} }" class="footerLink">Dhow</router-link> -->
           </li>
           <li class="footerList">
             <a href="/destination/spice" class="footerLink">Spice</a>
+            <!-- <router-link :to="{ name: 'Destination Package', params: {slug: 'spice'} }" class="footerLink">Spice</router-link> -->
           </li>
         </ul>
       </div>

@@ -655,8 +655,8 @@
                         v-if="item.image_url != null"
                       >
                         <img
-                          :src="
-                            'http://operators.safari-trek-beach.com' +
+                          v-lazy="
+                            'https://operators.safari-trek-beach.com' +
                             item.image_url
                           "
                           class="w-100"
@@ -1020,7 +1020,7 @@
                           v-for="(item, index8) in packageData.gallery"
                           v-bind:key="'G' + index8"
                         >
-                          <img :src="item" style="width: 100%; height: auto" />
+                          <img v-lazy="item" style="width: 100%; height: auto" />
                         </div>
                       </div>
                     </viewer>
@@ -1244,7 +1244,7 @@
           </div>
           <div class="card p-4 mb-3" v-if="packageData != null">
             <img
-              :src="packageData.logo"
+              v-lazy="packageData.logo"
               v-if="packageData.logo != null"
               class="mx-auto w-50"
             />
@@ -1821,7 +1821,7 @@ export default {
 .package-inner-page {
   padding-top: 60px;
   padding-bottom: 60px;
-  background-color: #f2f2f2;
+  // background-color: #f2f2f2;
 }
 
 .package-inner-page .package-inner-image {
@@ -1856,7 +1856,7 @@ export default {
 .package-inner-page .overview-description,
 .package-inner-page .itinery-content {
   font-size: 15px;
-  font-family: "Open Sans", sans-serif;
+  font-family: sans-serif;
   font-weight: 400;
   line-height: 1.5;
   text-align: justify;
@@ -1871,7 +1871,7 @@ export default {
   color: white;
   font-size: 2rem;
   line-height: 2.5rem;
-  font-weight: 600;
+  font-weight: 700;
   font-family: "Gentium Basic", serif;
   text-shadow: 1px 1px 5px #000;
   z-index: 3;

@@ -13,7 +13,7 @@
       <h5 class="mt-3" >2. Then Click Get Free Quote button to contact.</h5>
       <h5 class="mt-3" >3. Fill your email and message then send.</h5>
       <div class="text-center mt-5">
-        <a class="btn btn-danger text-light" href="/our-tours"> Start Here <span class="fa fa-angle-right ms-2"></span></a>
+        <router-link class="btn btn-danger text-light" :to="{ name: 'Our Tours' }"> Start Here <span class="fa fa-angle-right ms-2"></span></router-link>
       </div>
     </section>
 
@@ -202,7 +202,7 @@ export default {
 
 <style>
 #contact-us-page {
-  background-color: #f2f2f2;
+  /* background-color: #f2f2f2; */
   padding-top: 50px;
   padding-bottom: 100px;
 }

@@ -3,21 +3,21 @@
     <div
       class="bg-image hover-overlay ripple"
       data-mdb-ripple-color="light"
-      :style="{
-        'background-image': 'url(' + tourData.image_url + ')',
-      }"
+      style="max-height: 280px;"
     >
-      <div>
-        <div
-          class="mask"
-          style="background-color: rgba(251, 251, 251, 0.15)"
-        ></div>
-      </div>
+      <img
+        v-lazy="tourData.image_url"
+        class="img-fluid w-100"
+      />
+      <div
+        class="mask"
+        style="background-color: rgba(251, 251, 251, 0.15)"
+      ></div>
       <div class="tour_title">
         {{ tourData.no_of_day }}-Day {{ tourData.title }}
       </div>
       <img
-        :src="tourData.operator_logo"
+        v-lazy="tourData.operator_logo"
         style="width: 70px; height: auto; top: 0px; left: 30px"
         class="position-absolute"
       />
@@ -36,17 +36,17 @@
       >
         <img
           v-if="tag == 'review'"
-          :src="'/images/best-review.png'"
+          v-lazy="'/images/best-review.png'"
           style="margin-top: -3px; width: 60px; height: auto"
         />
         <img
           v-else-if="tag == 'seller'"
-          :src="'/images/bestseller.png'"
+          v-lazy="'/images/bestseller.png'"
           style="width: 80px; height: auto"
         />
         <img
           v-else
-          :src="'/images/toprated2.png'"
+          v-lazy="'/images/toprated2.png'"
           style="width: 100px; height: auto"
         />
       </div>

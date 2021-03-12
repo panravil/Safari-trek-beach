@@ -231,7 +231,7 @@
       <div v-else class="row gx-0">
         <div
           class="col-lg-4 col-md-6 col-xs-12"
-          v-for="(item, index) in popularTours"
+          v-for="(item, index) in fake_popular"
           v-bind:key="index"
         >
           <TourCard :tourData="item"></TourCard>
@@ -265,38 +265,38 @@
             v-model="whyus_value"
           >
             <slide>
-              <img :src="'./images/why_pool.png'" />
+              <img v-lazy="'./images/why_pool.png'" />
               <p>We set <br />compliance standards.</p>
             </slide>
             <slide>
-              <img :src="'./images/why_service.png'" />
+              <img v-lazy="'./images/why_service.png'" />
               <p>Unbiased Reviews <br />from previous client.</p>
             </slide>
             <slide>
-              <img :src="'./images/why_dollar.png'" />
+              <img v-lazy="'./images/why_dollar.png'" />
               <p>Connecting with <br />the best/licenced tour operator.</p>
             </slide>
 
             <slide>
-              <img :src="'./images/why_service.png'" />
+              <img v-lazy="'./images/why_service.png'" />
               <p>Comparing quotes <br />from different tour operators.</p>
             </slide>
             <slide>
-              <img :src="'./images/why_pool.png'" />
+              <img v-lazy="'./images/why_pool.png'" />
               <p>
                 Advise clients on questions <br />to ask before booking and
                 <br />how to get best details.
               </p>
             </slide>
             <slide>
-              <img :src="'./images/why_service.png'" />
+              <img v-lazy="'./images/why_service.png'" />
               <p>
                 We ensure clients get <br />large pool of Tour Operator of their
                 choice!
               </p>
             </slide>
             <slide>
-              <img :src="'./images/why_pool.png'" />
+              <img v-lazy="'./images/why_pool.png'" />
               <p>
                 Very competitive offers (packages)<br />
                 to choose from over 10,000 packages <br />from different Tour
@@ -304,7 +304,7 @@
               </p>
             </slide>
             <slide>
-              <img :src="'./images/why_africa.png'" />
+              <img v-lazy="'./images/why_africa.png'" />
               <p>
                 We offer packages <br />that cover all destinations <br />in
                 Tanzania and Zanzibar.
@@ -328,7 +328,7 @@
       <div class="row gx-0">
         <div
           class="col-lg-3 col-md-4 col-xs-12"
-          v-for="item in topDestinations"
+          v-for="item in fake_destination"
           v-bind:key="item.post_id"
           @click="toDestinationInner(item.post_slug)"
         >
@@ -336,13 +336,9 @@
             <div
               class="bg-image hover-overlay ripple"
               data-mdb-ripple-color="light"
-              :style="{
-                'background-image': 'url(' + item.post_image + ')',
-              }"
             >
-              <a href="">
-                <div class="mask"></div>
-              </a>
+              <img v-lazy="item.post_image" class="w-100" />
+              <div class="mask"></div>
               <div class="overlay-text">
                 {{ item.post_title }}
               </div>
@@ -444,11 +440,8 @@
       <section>
         <div class="container">
           <div class="row gx-0 text-center align-items-center">
-            <div class="col-md-6">
-              <div
-                class="bg-image shadow-lg"
-                style="background-image: url('./images/img5.jpg')"
-              ></div>
+            <div class="col-md-6 px-2">
+              <img v-lazy="'./images/img5.jpg'" class="w-100"/>
             </div>
             <div class="col-md-6 px-3 mt-5 mt-md-0">
               <h2 class="">About Us</h2>
@@ -490,7 +483,7 @@
         <div class="row gx-0" v-else>
           <div
             class="col-lg-4 col-md-6 col-xs-12"
-            v-for="(blog, index) in popularBlogs"
+            v-for="(blog, index) in fake_blog"
             v-bind:key="index"
           >
             <BlogCard :blog="blog"></BlogCard>
@@ -513,6 +506,8 @@ import Datepicker from "vuejs-datepicker";
 import TourCard from "../components/TourCard";
 import BlogCard from "../components/BlogCard";
 import TourCardSkelecton from "../components/TourCardSkelecton";
+
+import fakedata from "../components/fakedata"
 
 export default {
   components: {
@@ -545,6 +540,10 @@ export default {
       where_to_search: "",
       search_result: [],
       whyus_value: 0,
+
+      fake_popular: fakedata.popularTour,
+      fake_blog: fakedata.homepageBlog,
+      fake_destination: fakedata.topDestinations,
     };
   },
 
@@ -577,9 +576,9 @@ export default {
 
     this.traveler_number_calc();
 
-    this.getPopularTours();
-    this.getTopDestinations();
-    this.getPopularBlogs();
+    // this.getPopularTours();
+    // this.getTopDestinations();
+    // this.getPopularBlogs();
     document.title = 'Safari Trek Beach';
   },
 

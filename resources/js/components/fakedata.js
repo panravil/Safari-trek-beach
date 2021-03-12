@@ -1,0 +1,351 @@
+export default {
+    popularTour: [
+        {
+            "package_id": 402,
+            "no_of_day": 1,
+            "no_of_night": 0,
+            "title": "Stone Town & Prison Island",
+            "description": "<p>Immerse yourself in Zanzibar&rsquo;s culture &ndash; history on a full-day guided tour of Stone Town and Prison Island. Explore on foot and by boat for a comprehensive overview of the area. Bring your swimsuit along for swimming or snorkeling in Prison Island</p>",
+            "tour_focus_id": 16,
+            "image_url": "https://operators.safari-trek-beach.com/images/gallery/tanzania/tour/PRISON_ISLAND_5.jpg",
+            "customizable": "1",
+            "tour_group": "private",
+            "status": 1,
+            "position": 1,
+            "published": 1,
+            "user_id": 13,
+            "created_at": "2020-11-30 05:23:31",
+            "updated_at": "2021-02-23 13:45:17",
+            "start_city": "Zanzibar City",
+            "end_city": "Zanzibar City",
+            "adult_currency": 12169,
+            "company_name": "See Endless Adventures",
+            "tag": "review",
+            "operator_logo": "https://operators.safari-trek-beach.com/images/user/13_1612774884.jpg",
+            "num_review": 12,
+            "sum_review": "60",
+            "avg_review": 5,
+            "destination": [
+                "Prison Island"
+            ],
+            "level": [
+                "mid range"
+            ]
+        },
+        {
+            "package_id": 322,
+            "no_of_day": 5,
+            "no_of_night": 0,
+            "title": "Private Tour",
+            "description": "The safari takes you around the best places in Tanzania, visiting places such as Tarangire for huge herds of elephants, Lake Manyara which is famous for its tree climbing lions, The Ngorongoro Crater which is known also as the Garden of Eden, Serengeti National Park which will give you the chance to experience the big five.",
+            "tour_focus_id": 1,
+            "image_url": "https://operators.safari-trek-beach.com/images/gallery/tanzania/tour/TARANGIRE_NATIONAL_PARK_7.jpg",
+            "customizable": "1",
+            "tour_group": "private",
+            "status": 1,
+            "position": 1,
+            "published": 1,
+            "user_id": 14,
+            "created_at": "2020-11-28 03:41:33",
+            "updated_at": "2020-11-28 04:45:10",
+            "start_city": "Arusha",
+            "end_city": "Arusha",
+            "adult_currency": 2996,
+            "company_name": "wildlife oasis tours",
+            "tag": "review",
+            "operator_logo": "https://operators.safari-trek-beach.com/images/user/14_1613634167.jpg",
+            "num_review": 60,
+            "sum_review": "296",
+            "avg_review": 4.9,
+            "destination": [
+                "Ngorongoro crater",
+                "Serengeti National Park",
+                "Tarangire National Park"
+            ],
+            "level": [
+                "mid range"
+            ]
+        },
+        {
+            "package_id": 208,
+            "no_of_day": 3,
+            "no_of_night": 0,
+            "title": "Multi-Activities - Ngorongoro | Tarangire",
+            "description": "<p>The 3 days/ 2 Nights Special Package is ideal to visitors who prefer to more than one activity during a tour. You will visit Tarangire National park, Lake Manyara National Park &amp; Ngorongoro Crater, Activities to be done in this tour are walking safari, game drive, Canoeing, Treetop Walkway, and cultural visit. You will be picked up from your hotel and dropped off in your hotel Arusha town.</p>",
+            "tour_focus_id": 4,
+            "image_url": "https://operators.safari-trek-beach.com/images/gallery/tanzania/tour/TARANGIRE_NATIONAL_PARK_29.jpg",
+            "customizable": "1",
+            "tour_group": "private",
+            "status": 1,
+            "position": 2,
+            "published": 1,
+            "user_id": 13,
+            "created_at": "2020-11-25 20:13:22",
+            "updated_at": "2021-02-17 11:46:02",
+            "start_city": "Arusha",
+            "end_city": "Arusha",
+            "adult_currency": 1356,
+            "company_name": "See Endless Adventures",
+            "tag": "review",
+            "operator_logo": "https://operators.safari-trek-beach.com/images/user/13_1612774884.jpg",
+            "num_review": 12,
+            "sum_review": "60",
+            "avg_review": 5,
+            "destination": [
+                "Lake Manyara National Park",
+                "Ngorongoro crater",
+                "Tarangire National Park"
+            ],
+            "level": [
+                "lodge",
+                "mid range"
+            ]
+        },
+        {
+            "package_id": 66,
+            "no_of_day": 6,
+            "no_of_night": 0,
+            "title": "Kilimanjaro hike via Rongai Route.",
+            "description": "The Rongai route is the only route that approaches Kilimanjaro from the north, close to the Kenyan border. Though gaining popularity amongst climbers, this route still experiences low crowds. Rongai has a more gradual slope than the mountain’s other routes.\r\nIt is the preferred route for those looking for an alternative to the popular Marangu route, for those who would like a more remote hike, and for those who are climbing during the rainy season (the north side receives less precipitation). Ro",
+            "tour_focus_id": 21,
+            "image_url": "https://operators.safari-trek-beach.com/images/gallery/tanzania/tour/MOUNT_KILIMANJARO_NATIONAL_PARK_6.jpg",
+            "customizable": "0",
+            "tour_group": "group",
+            "status": 1,
+            "position": 3,
+            "published": 1,
+            "user_id": 19,
+            "created_at": "2020-10-27 08:01:52",
+            "updated_at": "2020-11-24 00:55:45",
+            "start_city": "Arusha",
+            "end_city": "Arusha",
+            "adult_currency": 2100,
+            "company_name": "Safari soles tours",
+            "tag": "seller",
+            "operator_logo": "https://operators.safari-trek-beach.com/images/user/19_1613634215.jpg",
+            "num_review": 46,
+            "sum_review": "228",
+            "avg_review": 5,
+            "destination": [
+                "Kilimanjaro Mountain",
+                "Kilimanjaro Mountain."
+            ],
+            "level": [
+                "camping"
+            ]
+        },
+        {
+            "package_id": 63,
+            "no_of_day": 6,
+            "no_of_night": 0,
+            "title": "Kilimanjaro hike via Marangu route.",
+            "description": "<p style=\"text-align: justify;\">This multi-day hike takes you up the Kilimanjaro through the Marangu Route with an extra acclimatization day, unlike the 5-day trek you will have even more chances of reaching the summit with this route considered one of the easiest, however, its has the least success rate. Trip Highlights Hut accommodation on the Mountain</p>",
+            "tour_focus_id": 21,
+            "image_url": "https://operators.safari-trek-beach.com/images/gallery/tanzania/tour/MARANGU_ROUTE_4.jpg",
+            "customizable": "0",
+            "tour_group": "group",
+            "status": 1,
+            "position": 1,
+            "published": 1,
+            "user_id": 19,
+            "created_at": "2020-10-27 06:26:43",
+            "updated_at": "2021-03-05 11:03:56",
+            "start_city": "Arusha",
+            "end_city": "Arusha",
+            "adult_currency": 2041,
+            "company_name": "Safari soles tours",
+            "tag": "seller",
+            "operator_logo": "https://operators.safari-trek-beach.com/images/user/19_1613634215.jpg",
+            "num_review": 46,
+            "sum_review": "228",
+            "avg_review": 5,
+            "destination": [
+                "Mount Kilimanjaro"
+            ],
+            "level": [
+                "budget",
+                "camping"
+            ]
+        },
+        {
+            "package_id": 119,
+            "no_of_day": 2,
+            "no_of_night": 0,
+            "title": "joined group safari in Ngorongoro and Tarangaire",
+            "description": "While in a window seat(max 6 clients) you'll be taken to 2 great National Parks in Northern circuit. Your adventure starts from the moment you land till you exit with your flight.Complementaey offers such as airport transfers, free hotel accomodations will make you feel comfort and avoid all kind of inconveniences. 2 days in Tarangire and Ngongoro exepect to spot the big 5 in accordance with other such as cheetah, wildebeest, giraffe, many antelope species,many birds species and many others.",
+            "tour_focus_id": 1,
+            "image_url": "https://operators.safari-trek-beach.com/images/gallery/tanzania/tour/TARANGIRE_NATIONAL_PARK_9.jpg",
+            "customizable": "1",
+            "tour_group": "group",
+            "status": 1,
+            "position": 2,
+            "published": 1,
+            "user_id": 48,
+            "created_at": "2020-11-23 07:46:22",
+            "updated_at": "2020-11-24 02:43:20",
+            "start_city": "Arusha",
+            "end_city": "Arusha",
+            "adult_currency": 380,
+            "company_name": "Serengeti Safari Booking",
+            "tag": null,
+            "operator_logo": "https://operators.safari-trek-beach.com/images/user/48_1613634310.jpg",
+            "num_review": 47,
+            "sum_review": "234",
+            "avg_review": 5,
+            "destination": [
+                "Ngorongoro crater",
+                "Tarangire National Park"
+            ],
+            "level": [
+                "budget",
+                "lodge"
+            ]
+        }
+  ],
+
+  homepageBlog: [
+        {
+            "post_id": 7,
+            "post_title": "UKEREWE ISLAND",
+            "post_slug": "ukerewe-island",
+            "short_description": "Ukerewe is known for having a large population of Africans with albinism.",
+            "post_image": "https://operators.safari-trek-beach.com/images/gallery/tanzania/tour/SELOUS_GAME_RESERVE_19.jpg",
+            "post_page_image": "https://operators.safari-trek-beach.com/images/gallery/tanzania/tour_inner/SELOUS_GAME_RESERVE_19.jpg",
+            "published": 1,
+            "position": 1,
+            "created_at": "2020-12-28 20:07:51",
+            "updated_at": "2021-02-16 12:27:45"
+        },
+        {
+            "post_id": 5,
+            "post_title": "RUBONDO ISLAND NATIONAL PARK",
+            "post_slug": "rubondo-island-national-park",
+            "short_description": "It is located in the northern parts of Tanzania Mwanza (region).",
+            "post_image": "https://operators.safari-trek-beach.com/images/gallery/tanzania/tour/LAKE_MANYARA_NATIONAL_PARK_5.jpg",
+            "post_page_image": "https://operators.safari-trek-beach.com/images/gallery/tanzania/tour_inner/LAKE_MANYARA_NATIONAL_PARK_5.jpg",
+            "published": 1,
+            "position": 2,
+            "created_at": "2020-12-28 19:49:32",
+            "updated_at": "2020-12-28 19:49:32"
+        },
+        {
+            "post_id": 3,
+            "post_title": "Exclusive Safaris In Tanzania",
+            "post_slug": "exclusive-safaris-in-tanzania",
+            "short_description": "This makes Tanzania an ideal country for combining a luxury safari with a relaxing beach holiday!",
+            "post_image": "https://operators.safari-trek-beach.com/images/gallery/tanzania/tour/NGORONGORO_CRATER_3.jpg",
+            "post_page_image": "https://operators.safari-trek-beach.com/images/gallery/tanzania/tour_inner/NGORONGORO_CRATER_3.jpg",
+            "published": 1,
+            "position": 3,
+            "created_at": "2020-12-27 12:09:56",
+            "updated_at": "2020-12-30 08:37:25"
+        }
+  ],
+  
+   topDestinations: [
+        {
+            "post_id": 11,
+            "post_title": "Places In Africa 2020",
+            "post_sub_title": "Top 10 Best Places To Visit In Africa in 2020",
+            "post_slug": "places-in-africa-2020",
+            "short_description": "Africa is home to dozens make that hundreds  of national parks, game reserves and other safari destinations.",
+            "post_image": "https://cloudfront.safaribookings.com/lib/tanzania/tour/744x372/Katavi_National_Park_021.jpg",
+            "post_page_image": "https://www.safaribookings.com/blog/wp-content/uploads/2018/05/0.10-Best-Places-To-Visit-in-Africa-400BW.jpg",
+            "published": 1,
+            "position": 1,
+            "created_at": "2021-02-16 12:50:44",
+            "updated_at": "2021-02-16 12:50:44"
+        },
+        {
+            "post_id": 2,
+            "post_title": "Tanzania",
+            "post_sub_title": "Here are some of my favorite islands of Tanzania",
+            "post_slug": "tanzania",
+            "short_description": "Dreaming of an island holiday? Maybe some sun, sand and sea are exactly what you need.",
+            "post_image": "https://www.safaribookings.com/blog/wp-content/uploads/2020/10/00-top-best-islands-on-the-coast-of-tanzania-BW-600px-723x362.jpg",
+            "post_page_image": "https://www.safaribookings.com/blog/wp-content/uploads/2020/10/00-top-best-islands-on-the-coast-of-tanzania-BW-400px.jpg",
+            "published": 1,
+            "position": 2,
+            "created_at": "2020-12-30 19:50:02",
+            "updated_at": "2021-02-04 17:22:58"
+        },
+        {
+            "post_id": 4,
+            "post_title": "SCUBA DIVING",
+            "post_sub_title": "(i)\tDiving Mask best",
+            "post_slug": "scuba-diving",
+            "short_description": "Scuba Diving is the diving with the help of Self Contained Underwater Breathing Apparatus called SCUBA. The eq",
+            "post_image": "https://www.safaribookings.com/blog/wp-content/uploads/2020/12/00-what-you-should-bring-on-a-safari-BW-header600px-723x362.jpg",
+            "post_page_image": "https://www.safaribookings.com/blog/wp-content/uploads/2020/12/00-what-you-should-bring-on-a-safari-BW-header400px.jpg",
+            "published": 1,
+            "position": 4,
+            "created_at": "2021-02-04 17:28:49",
+            "updated_at": "2021-02-04 18:04:10"
+        },
+        {
+            "post_id": 5,
+            "post_title": "Dolphine",
+            "post_sub_title": "SWIM WITH DOLPHIN IN ZANZIBAR.",
+            "post_slug": "dolphine",
+            "short_description": "Apart from being the spice Island, Zanzibar also offer the tour such as to swim with dolphins in the wild. You",
+            "post_image": "https://www.safaribookings.com/blog/wp-content/uploads/2020/10/00-top-best-islands-on-the-coast-of-tanzania-BW-600px-723x362.jpg",
+            "post_page_image": "https://www.safaribookings.com/blog/wp-content/uploads/2020/10/00-top-best-islands-on-the-coast-of-tanzania-BW-400px.jpg",
+            "published": 1,
+            "position": 5,
+            "created_at": "2021-02-04 17:30:33",
+            "updated_at": "2021-02-04 18:04:44"
+        },
+        {
+            "post_id": 6,
+            "post_title": "Spice",
+            "post_sub_title": "3. SPICE ISLAND / SPICE TOUR.",
+            "post_slug": "spice",
+            "short_description": "Zanzibar is such a small island  but it one among the best spice producers in the world.spices such as clove,",
+            "post_image": "https://www.safaribookings.com/blog/wp-content/uploads/2020/12/00-what-you-should-bring-on-a-safari-BW-header600px-723x362.jpg",
+            "post_page_image": "https://www.safaribookings.com/blog/wp-content/uploads/2020/12/00-what-you-should-bring-on-a-safari-BW-header400px.jpg",
+            "published": 1,
+            "position": 6,
+            "created_at": "2021-02-04 17:31:55",
+            "updated_at": "2021-02-04 18:05:21"
+        },
+        {
+            "post_id": 7,
+            "post_title": "Dhow",
+            "post_sub_title": "DHOW SUNSET SAILING IN ZANZIBAR.",
+            "post_slug": "dhow",
+            "short_description": "All these starts at stone town and normaly is around 9am if not 10am according to your flexibility. Your tour",
+            "post_image": "https://www.safaribookings.com/blog/wp-content/uploads/2020/10/00-top-best-islands-on-the-coast-of-tanzania-BW-600px-723x362.jpg",
+            "post_page_image": "https://www.safaribookings.com/blog/wp-content/uploads/2020/10/00-top-best-islands-on-the-coast-of-tanzania-BW-400px.jpg",
+            "published": 1,
+            "position": 7,
+            "created_at": "2021-02-04 17:34:03",
+            "updated_at": "2021-02-04 18:06:03"
+        },
+        {
+            "post_id": 8,
+            "post_title": "STONE TOWN.",
+            "post_sub_title": "(i)\tForodhani garden food market.",
+            "post_slug": "stone-town.",
+            "short_description": "It’s the old part of Zanzibar city. It’s found in Western Coast of Unguja. It was once the capital area where",
+            "post_image": "https://www.safaribookings.com/blog/wp-content/uploads/2020/12/00-what-you-should-bring-on-a-safari-BW-header600px-723x362.jpg",
+            "post_page_image": "https://www.safaribookings.com/blog/wp-content/uploads/2020/12/00-what-you-should-bring-on-a-safari-BW-header400px.jpg",
+            "published": 1,
+            "position": 8,
+            "created_at": "2021-02-04 17:35:20",
+            "updated_at": "2021-02-04 18:06:36"
+        },
+        {
+            "post_id": 10,
+            "post_title": "Materuni Watertfalls",
+            "post_sub_title": "be st tour ever in moshi",
+            "post_slug": "materuni-watertfalls",
+            "short_description": "https://operators.safari-trek-beach.com/images/blog/3%20Days%20Join%20Group%20Tour%20Tanzania.jpg",
+            "post_image": "https://www.safaribookings.com/blog/wp-content/uploads/2020/10/00-top-best-islands-on-the-coast-of-tanzania-BW-600px-723x362.jpg",
+            "post_page_image": "https://www.safaribookings.com/blog/wp-content/uploads/2020/10/00-top-best-islands-on-the-coast-of-tanzania-BW-400px.jpg",
+            "published": 1,
+            "position": 9,
+            "created_at": "2021-02-04 17:44:59",
+            "updated_at": "2021-02-04 18:13:48"
+        }
+    ]
+}

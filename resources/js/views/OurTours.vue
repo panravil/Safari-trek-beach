@@ -305,7 +305,7 @@
                 <ejs-checkbox
                   :label="check_data.title"
                   v-model="check_data.checked_state"
-                  v-on:change="updateCheckedFilterOptions"
+                  @change="updateCheckedFilterOptions"
                 ></ejs-checkbox>
               </p>
 
@@ -317,7 +317,7 @@
                 <ejs-checkbox
                   :label="check_data.title"
                   v-model="check_data.checked_state"
-                  v-on:change="updateCheckedFilterOptions"
+                  @change="updateCheckedFilterOptions"
                 ></ejs-checkbox>
               </p>
             </div>
@@ -666,11 +666,12 @@ export default {
   },
 
   watch: {
-    $route (to, from){
-      this.preProcess();
-      // console.log('to', to)
-      // console.log('from', from)
-    },
+    // $route (to, from){
+    //   console.log('router change')
+    //   // this.preProcess();
+    //   // console.log('to', to)
+    //   // console.log('from', from)
+    // },
 
     where_to_search: function () {
       if (this.where_to_search) {
@@ -711,7 +712,7 @@ export default {
     },
   },
 
-  created() {
+  async created() {
     this.preProcess();
   },
 
@@ -766,7 +767,7 @@ export default {
             temp_query
           );
 
-          if (single_url != "") {  //if the second single param is not empty, check what it is and append
+          if (single_url != "" && single_url != null) {  //if the second single param is not empty, check what it is and append
             let single = [];
             single = this.checkSingleParam(single_url);
 
@@ -814,7 +815,7 @@ export default {
           // so first check if it is single param...
           // if is single param and single_id is empty => destination is empty and single param estimate...
 
-          if ( single_url != '' ) {
+          if ( single_url != '' && single_url != null ) {
 
             let single = this.checkSingleParam(single_url);
 
@@ -935,13 +936,15 @@ export default {
 
       this.setCurrentCheck();
 
-      await this.$store
-        .dispatch("tourController/getTourFilter", temp_query)
-        .then(() => {
-          this.current_ourtour_page = parseInt(this.filterTours.page);
-          document.title = this.search_name + " ( " + this.filterTours.total_tours + " Tours )";
-        })
-        .catch(() => {});
+      // console.log('query requested----------')
+
+      // await this.$store
+      //   .dispatch("tourController/getTourFilter", temp_query)
+      //   .then(() => {
+      //     this.current_ourtour_page = parseInt(this.filterTours.page);
+      //     document.title = this.search_name + " ( " + this.filterTours.total_tours + " Tours )";
+      //   })
+      //   .catch(() => {});
 
     },
 
@@ -1659,15 +1662,15 @@ export default {
             query: url_query,
           })
           .catch(() => {});
-      } // with params amd query
+      } // with params and query
 
-      // await this.$store
-      //   .dispatch("tourController/getTourFilter", query)
-      //   .then(() => {
-      //     this.current_ourtour_page = parseInt(this.filterTours.page);
-      //     document.title = this.search_name + " ( " + this.filterTours.total_tours + " Tours )";
-      //   })
-      //   .catch(() => {});
+      await this.$store
+        .dispatch("tourController/getTourFilter", query)
+        .then(() => {
+          this.current_ourtour_page = parseInt(this.filterTours.page);
+          document.title = this.search_name + " ( " + this.filterTours.total_tours + " Tours )";
+        })
+        .catch(() => {});
 
       // console.log("???", "");
     },

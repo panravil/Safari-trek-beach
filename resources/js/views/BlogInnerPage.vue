@@ -8,7 +8,7 @@
           </content-placeholders>
         </div>
         <div class="position-relative overflow-hidden" v-else>
-          <img :src="blogData.post_inner_image" class="card-img-top" />
+          <img v-lazy="blogData.post_inner_image" class="card-img-top" />
           <div class="image_title">
             {{ blogData.title }}
           </div>
@@ -106,12 +106,7 @@
               class="col-lg-4 col-md-12 quick-link-section px-4 position-relative"
             >
               <div style="position: sticky; top: 50px">
-                <button
-                  class="btn-danger btn w-100 mt-5"
-                  @click="goToOurTourPage"
-                >
-                  Our Tours <span class="fa fa-angle-right ms-2"></span>
-                </button>
+                <router-link class="btn-danger btn w-100 mt-5" :to="{ name: 'Our Tours' }">OUR TOURS <span class="fa fa-angle-right ms-2"></span></router-link>
                 <div class="w-100 p-3 blog-category mt-3">
                   <h6 class="fw-bolder text-center text-danger">
                     Table Of Contents
@@ -158,6 +153,7 @@
                         :href="'/blog/' + item.post_slug"
                         >{{ item.title }}</a
                       >
+                      <!-- <router-link class="text-primary" :to="{ name: 'Blog Inner Page', params: {slug: item.post_slug} }">{{ item.title }}</router-link> -->
                     </li>
                   </ul>
                 </div>
@@ -311,7 +307,7 @@ export default {
 .blog-inner-page {
   padding-top: 60px;
   padding-bottom: 100px;
-  background-color: #f2f2f2;
+  /* background-color: #f2f2f2; */
   font-size: 16px;
   line-height: 22px;
 }
@@ -325,7 +321,7 @@ export default {
   color: white;
   font-size: 38px;
   line-height: 2.5rem;
-  font-weight: 600;
+  font-weight: 700;
   font-family: "Gentium Basic", serif;
   text-shadow: 1px 1px 5px #000;
   z-index: 3;

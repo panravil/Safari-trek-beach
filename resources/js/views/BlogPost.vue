@@ -163,7 +163,7 @@ export default {
 .blog-post-page {
     padding-top: 50px;
     padding-bottom: 100px;
-    background-color: #f2f2f2;
+    /* background-color: #f2f2f2; */
 }
 
 .blog-post-page section {

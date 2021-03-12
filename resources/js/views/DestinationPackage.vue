@@ -6,7 +6,7 @@
           class="position-relative overflow-hidden"
           v-if="destinationData != null"
         >
-          <img :src="destinationData.post_inner_image" class="card-img-top" />
+          <img v-lazy="destinationData.post_inner_image" class="card-img-top" />
           <div class="image_title">
             {{ destinationData.title }}
           </div>
@@ -91,12 +91,7 @@
               class="col-lg-4 col-md-12 quick-link-section px-4 position-relative"
             >
               <div style="position: sticky; top: 50px">
-                <button
-                  class="btn-danger btn w-100 mt-5"
-                  @click="goToOurTourPage"
-                >
-                  Our Tours <span class="fa fa-angle-right ms-2"></span>
-                </button>
+                <router-link class="btn-danger btn w-100 mt-5" :to="{ name: 'Our Tours' }">OUR TOURS <span class="fa fa-angle-right ms-2"></span></router-link>
                 <div class="w-100 p-3 blog-category mt-3">
                   <h6 class="fw-bolder text-center text-danger">
                     Table Of Contents
@@ -145,6 +140,7 @@
                         :href="'/destination/' + item.post_slug"
                         >{{ item.title }}</a
                       >
+                      <!-- <router-link class="text-primary" :to="{ name: 'Destination Package', params: {slug: item.post_slug} }">{{ item.title }}</router-link> -->
                     </li>
                   </ul>
                 </div>
@@ -283,9 +279,9 @@ export default {
     //   }, 200);
     // },
 
-    goToOurTourPage() {
-      this.$router.push("/our-tours");
-    },
+    // goToOurTourPage() {
+    //   this.$router.push("/our-tours");
+    // },
 
     hashString(title) {
       // This is the function for convert normal section title to non-space 
@@ -304,7 +300,7 @@ export default {
 .destination-package {
   padding-top: 60px;
   padding-bottom: 100px;
-  background-color: #f2f2f2;
+  /* background-color: #f2f2f2; */
   font-size: 16px;
   line-height: 22px;
 }
@@ -318,7 +314,7 @@ export default {
   color: white;
   font-size: 38px;
   line-height: 2.5rem;
-  font-weight: 600;
+  font-weight: 700;
   font-family: "Gentium Basic", serif;
   text-shadow: 1px 1px 5px #000;
   z-index: 3;

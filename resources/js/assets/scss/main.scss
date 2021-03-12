@@ -18,12 +18,12 @@ h6 {
 
 body {
   color:black;
+  background-color: #f2f2f2;
 }
-
 
 .main-banner {
   /* min-height: 600px; */
-  background-image: url("/images/mainbanner2.png");
+  background-image: url("/images/mainbanner2.jpg");
   position: relative;
   height: 80vh;
   display: table;
@@ -158,24 +158,16 @@ body {
 
 #top-destination .mask,
 #about-us .mask {
-  background-color: rgba(251, 251, 251, 0.15);
+  background-color: rgba(248, 120, 120, 0.15);
 }
 
-#about-us .bg-image {
-  background-size: cover;
-  position: relative;
-  width: 100%;
-  height: 0;
-  padding-top: 56.25%;
-}
-
-#top-destination .bg-image {
-  background-size: cover;
-  position: relative;
-  width: 100%;
-  height: 0;
-  padding-top: 100%;
-}
+// #top-destination .bg-image {
+//   background-size: cover;
+//   position: relative;
+//   width: 100%;
+//   height: 0;
+//   padding-top: 100%;
+// }
 
 #top-destination .overlay-text {
   position: absolute;
@@ -452,6 +444,8 @@ input#traveler_input {
   color:  white;
 }
 
+
+
 // #e-item-element_3,
 // #e-content-element_3 {
 //   display: inline-flex;
@@ -466,7 +460,37 @@ input#traveler_input {
 
 
 @media (max-width: 991px) {
-.reviews_testimonial {
-  height: 550px;
+  .reviews_testimonial {
+    height: 550px;
+  }
 }
+
+@media (max-width: 500px) {
+
+  .main-banner {
+    background-image: url("/images/mainbanner_mobile.jpg");
+  }
+
+  #about-us .bg-image {
+    background-image: url('/images/img5_mobile.jpg')
+  }
+
+  .reviews_testimonial {
+    background-image: linear-gradient(
+        to bottom,
+        rgba(210, 211, 218, 0),
+        rgba(0, 0, 0, 0.73)
+      ),
+      url('/images/reviews_testimonial_mobile.jpg')
+  }
+
+  .why-us {
+    background-image: linear-gradient(
+      to bottom,
+      rgba(210, 211, 218, 0),
+      rgba(0, 0, 0, 0.73)
+    ),
+      url('/images/why_us_mobile.jpg')
+  }
+
 }

@@ -22,7 +22,7 @@
         >
           <div class="wrapper">
             <div class="operator-logo text-center">
-              <img :src="operator.logo" />
+              <img v-lazy="operator.logo" />
             </div>
             <div class="px-3 operator-content">
               <h4 class="fw-bold text-capitalize">{{ operator.company_name }}</h4>
@@ -46,7 +46,7 @@
               <h6>Learn More about this company</h6>
             </div>
             <div class="logo-layout text-center">
-              <img :src="operator.banner" />
+              <img v-lazy="operator.banner" />
             </div>
           </div>
         </div>
@@ -173,7 +173,7 @@ export default {
 
 <style>
 #tour-operators-page {
-  background-color: #f2f2f2;
+  /* background-color: #f2f2f2; */
   padding-top: 50px;
   padding-bottom: 100px;
 }
