@@ -519,7 +519,7 @@ export default {
                 safari_days: this.safari_days,
               };
 
-              console.log('tag', detail_data)
+              // console.log('tag', detail_data)
 
               this.$store.dispatch("tourController/setdetailData", detail_data);
             } // if checked remember option

@@ -47,6 +47,9 @@ Vue.use(VueCurrencyFilter,
   avoidEmptyDecimals: undefined,
 })
 
+import VueLazyload from 'vue-lazyload'
+Vue.use(VueLazyload)
+
 new Vue({
     // created() {
     //     AOS.init();
@@ -58,7 +61,3 @@ new Vue({
 }).$mount("#app");
 
 import "../js/assets/scss/main.scss";
-// import "@syncfusion/ej2-vue-inputs/styles/material.css";
-// import "@syncfusion/ej2-base/styles/material.css";
-// import "@syncfusion/ej2-buttons/styles/material.css";
-// import "@syncfusion/ej2-popups/styles/material.css";

@@ -3,12 +3,8 @@
     <div
       class="bg-image hover-overlay ripple"
       data-mdb-ripple-color="light"
-      style="max-height: 280px;"
+      v-lazy:background-image="tourData.image_url"
     >
-      <img
-        v-lazy="tourData.image_url"
-        class="img-fluid w-100"
-      />
       <div
         class="mask"
         style="background-color: rgba(251, 251, 251, 0.15)"

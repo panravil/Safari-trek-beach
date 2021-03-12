@@ -1,11 +1,8 @@
 <template>
 <div class="card mb-3 mx-2" id="blog-card" @click="toInnerPage">
-  <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light" :title="blog.post_title" style="max-height: 280px;">
-    <img
-      v-lazy="blog.post_image"
-      class="img-fluid w-100"
-    />
-    <div class="mask"></div>
+  <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light" 
+  :title="blog.post_title" v-lazy:background-image="blog.post_image">
+    <div class="mask" style="background-color: rgba(251, 251, 251, 0.15)"></div>
   </div>
   <div class="card-body">
     <h5 class="card-title fw-bold text-center" :title="blog.post_title">
@@ -51,13 +48,13 @@ export default {
 </script>
 
 <style>
-/* #blog-card .bg-image {
+#blog-card .bg-image {
   background-size: cover;
   position: relative;
   width: 100%;
   height: 0;
   padding-top: 56.25%;
-} */
+}
 
 #blog-card {
   transition: box-shadow 0.2s ease-in-out, transform 0.3s ease-in-out;

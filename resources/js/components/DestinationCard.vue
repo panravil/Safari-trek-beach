@@ -3,9 +3,7 @@
     <div
       class="bg-image hover-overlay ripple"
       data-mdb-ripple-color="light"
-      :style="{
-        'background-image': 'url(' + destination.post_image + ')',
-      }"
+      v-lazy:background-image="destination.post_image"
       :title="destination.post_title"
     >
       <a>

@@ -1615,7 +1615,7 @@ export default {
 
           this.reviewFilter();
 
-          console.log("package", this.packageData);
+          // console.log("package", this.packageData);
         });
     },
 

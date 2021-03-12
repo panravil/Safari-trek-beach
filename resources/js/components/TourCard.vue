@@ -3,13 +3,8 @@
     <div
       class="bg-image hover-overlay ripple"
       data-mdb-ripple-color="light"
-      style="max-height: 280px;"
-    >
-    <img
-      v-lazy="tourData.image_url"
-      class="img-fluid w-100"
-    />
- 
+      v-lazy:background-image="tourData.image_url"
+    > 
         <div
           class="mask"
           style="background-color: rgba(251, 251, 251, 0.15)"
@@ -234,11 +229,11 @@ export default {
 }
 
 #tour-card .bg-image {
-  /* background-size: cover; */
+  background-size: cover;
   position: relative;
-  /* width: 100%;
+  width: 100%;
   height: 0;
-  padding-top: 56.25%; */
+  padding-top: 56.25%;
 }
 
 #tour-card .tour_title {

@@ -247,9 +247,9 @@
     Why Us banner
     -->
 
-    <section class="why-us">
+    <section>
       <div class="text-center text-light">
-        <div class="pt-5 why-us position-relative">
+        <div class="pt-5 why-us position-relative" v-lazy:background-image="'./images/why_us.jpg'">
           <header class="section-header">
             <h3 class="text-light">Why Choose Us?</h3>
           </header>
@@ -336,8 +336,8 @@
             <div
               class="bg-image hover-overlay ripple"
               data-mdb-ripple-color="light"
+              v-lazy:background-image="item.post_image"
             >
-              <img v-lazy="item.post_image" class="w-100" />
               <div class="mask"></div>
               <div class="overlay-text">
                 {{ item.post_title }}
@@ -357,7 +357,7 @@
     Reviews and testimonial
     -->
 
-    <section class="reviews_testimonial">
+    <section class="reviews_testimonial" v-lazy:background-image="'./images/reviews_testimonial.jpg'">
       <div class="text-center text-light">
         <div class="pt-5 review-testimonial-section">
           <carousel
@@ -689,7 +689,7 @@ export default {
 
     async getPopularTours() {
       await this.$store.dispatch("tourController/getPopularTours").then(() => {
-        console.log('tag', this.popularTours)
+        // console.log('tag', this.popularTours)
       });
     },
 

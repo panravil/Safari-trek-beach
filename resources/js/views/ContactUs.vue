@@ -137,7 +137,7 @@ export default {
     // },
 
     sendEmail(e) {
-      console.log('tag', e.target)
+      // console.log('tag', e.target)
       try {
         emailjs.sendForm('service_5wlzkqg', 'template_39c1z2t', e.target, 'user_K5HSyHWK6LhDHg35fCPQz').then(() => {
            this.$notify({
@@ -145,7 +145,7 @@ export default {
             title: 'Email Sent!',
             text: 'Thank you! We have received your email. We will soon reply.'
           });
-          console.log('it works!!!')
+          // console.log('it works!!!')
         })
         .catch(() => {
           this.$notify({
@@ -161,7 +161,7 @@ export default {
           title: "Sending Error !",
           text: "Sorry, Something went wrong...",
         });
-          console.log({error})
+          // console.log({error})
       }
       // Reset form field
       this.name = ''
