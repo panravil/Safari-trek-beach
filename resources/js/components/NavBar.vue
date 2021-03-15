@@ -27,24 +27,12 @@
                     <li class="nav-item">
                         <router-link :to="{ name: 'About Us' }" class="nav-link" :class="$route.name =='About Us' ? 'active' : ''">ABOUT US</router-link>
                     </li>
-                    <li class="nav-item d-flex align-items-center">
+                    <!-- <li class="nav-item d-flex align-items-center">
                         <div id="google_translate_element"></div>
-                    </li>
+                    </li> -->
                 </ul>
             </div>
         </div>
     </nav>
 </div>
 </template>
-
-<script>
-export default {
-    name: "NavBar",
-    data() {
-        return {};
-    },
-    methods: {
-        
-    }
-};
-</script>

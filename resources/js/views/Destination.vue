@@ -80,6 +80,16 @@ export default {
         };
     },
 
+    metaInfo() {
+        return {
+            title: `Destination - Page ${this.current_destination_page} of ${this.total_page_number} | Safari-Trek-Beach`,
+            meta: [
+                {property: 'og:title', content: 'Safari-Trek-Beach Destination'},    
+                {name: 'twitter:title', content: 'Safari-Trek-Beach Destination'} 
+            ]
+        }
+    },
+
     computed: {
         page_id: function () {
             var id = this.$route.params.id;
@@ -137,11 +147,11 @@ export default {
                         this.total_page_number = this.total_page_number + 1;
                     }
 
-                    let page_title = "Safari-Trek-Beach Destination - Page " 
-                       + this.current_destination_page
-                       + " of " + this.total_page_number;
+                    // let page_title = "Safari-Trek-Beach Destination - Page " 
+                    //    + this.current_destination_page
+                    //    + " of " + this.total_page_number;
 
-                    document.title = page_title;
+                    // document.title = page_title;
                 });
         },
 

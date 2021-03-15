@@ -248,71 +248,73 @@
     -->
 
     <section>
-      <div class="text-center text-light">
-        <div class="pt-5 why-us position-relative" v-lazy:background-image="'./images/why_us.jpg'">
-          <header class="section-header">
-            <h3 class="text-light">Why Choose Us?</h3>
-          </header>
-          <h4>8 Reasons why Safari-Trek-Beach</h4>
+      <div class="text-center text-light" >
+        <div class="why-us position-relative pt-3" v-lazy:background-image="'./images/why_us.jpg'" >
+          <!-- <div class="position-absolute h-100" style="background-image: linear-gradient( to bottom,rgba(210, 211, 218, 0),rgba(0, 0, 0, 0.73));"> -->
+            <header class="section-header">
+              <h3 class="mt-5 text-light">Why Choose Us?</h3>
+            </header>
+            <h4>8 Reasons why Safari-Trek-Beach</h4>
 
-          <carousel
-            :per-page="1"
-            :speed="2000"
-            :loop="true"
-            :autoplayTimeout="6000"
-            :autoplay="true"
-            :paginationEnabled="false"
-            v-model="whyus_value"
-          >
-            <slide>
-              <img v-lazy="'./images/why_pool.png'" />
-              <p>We set <br />compliance standards.</p>
-            </slide>
-            <slide>
-              <img v-lazy="'./images/why_service.png'" />
-              <p>Unbiased Reviews <br />from previous client.</p>
-            </slide>
-            <slide>
-              <img v-lazy="'./images/why_dollar.png'" />
-              <p>Connecting with <br />the best/licenced tour operator.</p>
-            </slide>
+            <carousel
+              :per-page="1"
+              :speed="2000"
+              :loop="true"
+              :autoplayTimeout="6000"
+              :autoplay="true"
+              :paginationEnabled="false"
+              v-model="whyus_value"
+            >
+              <slide>
+                <img v-lazy="'./images/why_pool.png'" />
+                <p>We set <br />compliance standards.</p>
+              </slide>
+              <slide>
+                <img v-lazy="'./images/why_service.png'" />
+                <p>Unbiased Reviews <br />from previous client.</p>
+              </slide>
+              <slide>
+                <img v-lazy="'./images/why_dollar.png'" />
+                <p>Connecting with <br />the best/licenced tour operator.</p>
+              </slide>
 
-            <slide>
-              <img v-lazy="'./images/why_service.png'" />
-              <p>Comparing quotes <br />from different tour operators.</p>
-            </slide>
-            <slide>
-              <img v-lazy="'./images/why_pool.png'" />
-              <p>
-                Advise clients on questions <br />to ask before booking and
-                <br />how to get best details.
-              </p>
-            </slide>
-            <slide>
-              <img v-lazy="'./images/why_service.png'" />
-              <p>
-                We ensure clients get <br />large pool of Tour Operator of their
-                choice!
-              </p>
-            </slide>
-            <slide>
-              <img v-lazy="'./images/why_pool.png'" />
-              <p>
-                Very competitive offers (packages)<br />
-                to choose from over 10,000 packages <br />from different Tour
-                Operators.
-              </p>
-            </slide>
-            <slide>
-              <img v-lazy="'./images/why_africa.png'" />
-              <p>
-                We offer packages <br />that cover all destinations <br />in
-                Tanzania and Zanzibar.
-              </p>
-            </slide>
-          </carousel>
-          <span class="fa fa-angle-left whyus-prev" @click="prevClick"></span>
-          <span class="fa fa-angle-right whyus-next" @click="nextClick"></span>
+              <slide>
+                <img v-lazy="'./images/why_service.png'" />
+                <p>Comparing quotes <br />from different tour operators.</p>
+              </slide>
+              <slide>
+                <img v-lazy="'./images/why_pool.png'" />
+                <p>
+                  Advise clients on questions <br />to ask before booking and
+                  <br />how to get best details.
+                </p>
+              </slide>
+              <slide>
+                <img v-lazy="'./images/why_service.png'" />
+                <p>
+                  We ensure clients get <br />large pool of Tour Operator of their
+                  choice!
+                </p>
+              </slide>
+              <slide>
+                <img v-lazy="'./images/why_pool.png'" />
+                <p>
+                  Very competitive offers (packages)<br />
+                  to choose from over 10,000 packages <br />from different Tour
+                  Operators.
+                </p>
+              </slide>
+              <slide>
+                <img v-lazy="'./images/why_africa.png'" />
+                <p>
+                  We offer packages <br />that cover all destinations <br />in
+                  Tanzania and Zanzibar.
+                </p>
+              </slide>
+            </carousel>
+            <span class="fa fa-angle-left whyus-prev" @click="prevClick"></span>
+            <span class="fa fa-angle-right whyus-next" @click="nextClick"></span>
+          <!-- </div> -->
         </div>
       </div>
     </section>
@@ -357,7 +359,8 @@
     Reviews and testimonial
     -->
 
-    <section class="reviews_testimonial" v-lazy:background-image="'./images/reviews_testimonial.jpg'">
+    <section class="position-relative reviews_testimonial" v-lazy:background-image="'./images/reviews_testimonial.jpg'">
+      <!-- <div class="position-absolute h-100" style="background-image: linear-gradient( to bottom,rgba(210, 211, 218, 0),rgba(0, 0, 0, 0.73));"> -->
       <div class="text-center text-light">
         <div class="pt-5 review-testimonial-section">
           <carousel
@@ -429,6 +432,7 @@
             </slide> -->
           </carousel>
         </div>
+      <!-- </div> -->
       </div>
     </section>
 
@@ -547,6 +551,21 @@ export default {
     };
   },
 
+   metaInfo() {
+        return {
+            title: `Safari Trek Beach`,
+            meta: [
+                { name: 'description', content: 'Safari Trek Beach is the biggest market place for Tanzania tour packages. We help travellers find the best Tour Operators with the tour packages of their choice, to suit their budget and standard. We are the experts when it involves Tours and Holidays in Tanzania. Safari Trek Beach enables you to compare different tour operators on different categories such as Luxury, Lodge, Camping safaris or Mountain Climbing tours as well as Beach Holidays.'},
+                { property: 'og:title', content: 'Safari Trek Beach'},
+                // { property: 'og:site_name', content: 'Epiloge'},
+                // { property: 'og:description', content: 'Connect and follow ' + this.userData.name + ' on Epiloge - ' + this.userData.tagline},
+                // { property: 'og:type', content: 'profile'},
+                // { property: 'og:url', content: 'https://epiloge.com/@' + this.userData.username},
+                // { property: 'og:image', content: this.aws_url + '/users/' + this.userData.profileurl + '-main.jpg' }    
+            ]
+        }
+    },
+
   computed: {
     ...mapGetters({
       popularTours: "tourController/popularTours",
@@ -579,7 +598,7 @@ export default {
     // this.getPopularTours();
     // this.getTopDestinations();
     // this.getPopularBlogs();
-    document.title = 'Safari Trek Beach';
+    // document.title = 'Safari Trek Beach';
   },
 
   directives: {

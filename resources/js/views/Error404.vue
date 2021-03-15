@@ -17,10 +17,18 @@ export default {
     return {};
   },
 
-  created() {
-    let page_title = "404 Error Page"
-    document.title = page_title;
-  }
+  metaInfo() {
+      return {
+          title: `Page Not Found on Safari-Trek-Beach.com`,
+          meta: [
+              {property: 'og:title', content: 'Page Not Found on Safari-Trek-Beach.com'},    
+              {name: 'twitter:title', content: 'Page Not Found on Safari-Trek-Beach.com'},
+              // {property: 'og:image', content: this.blogData.post_inner_image},
+              // {property: 'twitter:image', content: this.blogData.post_inner_image}, 
+              // {property: 'og:url', content: window.location.href}, 
+          ]
+      }
+  },
 };
 </script>
 <style>

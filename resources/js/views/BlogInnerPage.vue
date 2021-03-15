@@ -8,10 +8,10 @@
           </content-placeholders>
         </div>
         <div class="position-relative overflow-hidden" v-else>
-          <img v-lazy="blogData.post_inner_image" class="card-img-top" />
-          <div class="image_title">
+          <img :src="blogData.post_inner_image" class="card-img-top" />
+          <h1 class="image_title mb-0">
             {{ blogData.title }}
-          </div>
+          </h1>
         </div>
         <div class="card-body px-0">
           <div class="row gx-0">
@@ -209,8 +209,23 @@ export default {
     };
   },
 
+  metaInfo() {
+      return {
+          title: `${this.blogData.title} | Safari-Trek-Beach`,
+          meta: [
+              {name: 'description', content: this.blogData.description},    
+              {property: 'og:title', content: this.blogData.title},    
+              {name: 'twitter:title', content: this.blogData.title},
+              {property: 'og:image', content: this.blogData.post_inner_image},
+              {property: 'twitter:image', content: this.blogData.post_inner_image}, 
+              {property: 'og:url', content: window.location.href}, 
+          ]
+      }
+  },
+
   created() {
     this.getBlogData();
+    console.log('tag', window.location.href)
   },
 
   computed: {
@@ -239,8 +254,8 @@ export default {
       await this.$store
         .dispatch("blogController/getBlogById", this.blog_id)
         .then(() => {
-          let page_title = this.blogData.title + " - Safari-Trek-Beach";
-          document.title = page_title;
+          // let page_title = this.blogData.title + " - Safari-Trek-Beach";
+          // document.title = page_title;
           // this.scrollFix(this.$route.hash)
           this.countCollect();
           this.scrollToId();

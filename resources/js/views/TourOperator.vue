@@ -605,6 +605,21 @@ export default {
       total_page_number: 1,
     };
   },
+
+   metaInfo() {
+      return {
+          title: `${this.operatorData.company_name} | Safari-Trek-Beach.com`,
+          meta: [
+              {name: 'description', content: 'This is Tour Landing Pages of Safari-Trek-Beach.com'},
+              {property: 'og:title', content: 'Tour Landing Pages of Safari-Trek-Beach.com'},    
+              {name: 'twitter:title', content: 'Tour Landing Pages of Safari-Trek-Beach.com'},
+              // {property: 'og:image', content: this.blogData.post_inner_image},
+              // {property: 'twitter:image', content: this.blogData.post_inner_image}, 
+              // {property: 'og:url', content: window.location.href}, 
+          ]
+      }
+  },
+
   computed: {
     operator_id: function () {
       var id = this.$route.params.id;
@@ -631,8 +646,8 @@ export default {
         .then(() => {
           this.getCurrentPageReviews(1);
           // console.log('tag', this.operatorData)
-          let page_title = this.operatorData.company_name;
-          document.title = page_title;
+          // let page_title = this.operatorData.company_name;
+          // document.title = page_title;
 
           for (let i = 0; i < this.operatorData.review.length; i++) {
             if (this.operatorData.review[i].rate == 5) this.review_5++;

@@ -1530,6 +1530,19 @@ export default {
       total_page_number: 1,
     };
   },
+  metaInfo() {
+      return {
+          title: `${this.packageData.company_name}: ${this.packageData.no_of_day}-Day ${this.packageData.title}`,
+          meta: [
+              // {name: 'description', content: this.packageData.description},    
+              {property: 'og:title', content: this.packageData.title},    
+              {name: 'twitter:title', content: this.packageData.title},
+              {property: 'og:image', content: this.packageData.image_url},
+              {property: 'twitter:image', content: this.packageData.image_url},
+              {property: 'og:url', content: window.location.href}, 
+          ]
+      }
+  },
   directives: {
     "click-outside-dropdown": {
       bind: function (el, binding) {
@@ -1589,13 +1602,13 @@ export default {
       this.$store
         .dispatch("tourController/getTourById", package_id)
         .then(() => {
-          let page_title =
-            this.packageData.company_name +
-            ": " +
-            this.packageData.no_of_day +
-            "-Day " +
-            this.packageData.title;
-          document.title = page_title;
+          // let page_title =
+          //   this.packageData.company_name +
+          //   ": " +
+          //   this.packageData.no_of_day +
+          //   "-Day " +
+          //   this.packageData.title;
+          // document.title = page_title;
 
           for (let i = 0; i < this.packageData.review.length; i++) {
             if (this.packageData.review[i].rate == 5) this.review_5++;

@@ -46,7 +46,7 @@
           style="width: 100px; height: auto"
         />
       </div>
-      <p class="card-text mb-1">
+      <p class="card-text mb-0">
         <strong> Accommodation: </strong>
         <span v-if="tourData.no_of_night == 1"
           >{{ tourData.no_of_night }} Night</span
@@ -56,7 +56,7 @@
         >
         <span v-else>Not Included</span>
       </p>
-      <p class="card-text mb-1">
+      <p class="card-text my-2">
         <strong> Tour Type: </strong>
         {{ getTourLevel(tourData.level) }}
       </p>
@@ -93,9 +93,8 @@
         </p>
       </div>
       <div class="price">
-        <strong
-          ><span class="fa fa-dollar"></span
-          >{{ tourData.adult_currency }}</strong
+        <strong>
+          {{ tourData.adult_currency | currency }}</strong
         >&nbsp;<small>pp</small>
       </div>
     </div>
@@ -166,7 +165,7 @@ export default {
 
 <style>
 #tour-card .price {
-  width: 90px;
+  width: 100px;
   color: #0f6d24;
   right: 5px;
   bottom: 0px;

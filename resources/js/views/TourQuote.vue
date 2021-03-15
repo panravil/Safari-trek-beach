@@ -375,13 +375,20 @@ export default {
         this.update_checkbox ++;
       }
     }
+  },
 
-    document.title =
-      "Request a Quote for the Tour " +
-      this.package_data.no_of_day +
-      "-Day " +
-      this.package_data.title +
-      "- Safari-Trek-Beach.com";
+  metaInfo() {
+      return {
+          title: `Request a Quote for the Tour ${this.package_data.no_of_day}-Day ${this.package_data.title} - Safari-Trek-Beach.com`,
+          meta: [
+              {name: 'description', content: 'We strive to ensure that the number of women employed in tourism sector improves. We encourage tour companies to employ more women. One among our raking factors for tour companies is the number of women they have employed.'},
+              {property: 'og:title', content: 'Safari-Trek-Beach.com'},    
+              {name: 'twitter:title', content: 'Safari-Trek-Beach.com'},
+              // {property: 'og:image', content: this.blogData.post_inner_image},
+              // {property: 'twitter:image', content: this.blogData.post_inner_image}, 
+              // {property: 'og:url', content: window.location.href}, 
+          ]
+      }
   },
 
   methods: {

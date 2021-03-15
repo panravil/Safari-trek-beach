@@ -101,9 +101,22 @@ export default {
       message: '',
     };
   },
+
+  metaInfo() {
+      return {
+          title: `Contact Safari-Trek-Beach.com`,
+          meta: [
+              {name: 'description', content: 'Contact Safri-Trek-Beach.com info@safari-trek-beach.com'},
+              {property: 'og:title', content: 'Contact Safari-Trek-Beach.com'},    
+              {name: 'twitter:title', content: 'Contact Safari-Trek-Beach.com'},
+              // {property: 'og:image', content: this.blogData.post_inner_image},
+              // {property: 'twitter:image', content: this.blogData.post_inner_image}, 
+              // {property: 'og:url', content: window.location.href}, 
+          ]
+      }
+  },
+
   created() {
-    let page_title = "Contact Safari-Trek-Beach.com"
-    document.title = page_title;
   },
   methods: {
     // submitContactInfo() {

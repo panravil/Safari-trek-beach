@@ -57,6 +57,20 @@ export default {
     };
   },
 
+  metaInfo() {
+      return {
+          title: `Tour Landing Pages of Safari-Trek-Beach.com`,
+          meta: [
+              {name: 'description', content: 'This is Tour Landing Pages of Safari-Trek-Beach.com'},
+              {property: 'og:title', content: 'Tour Landing Pages of Safari-Trek-Beach.com'},    
+              {name: 'twitter:title', content: 'Tour Landing Pages of Safari-Trek-Beach.com'},
+              // {property: 'og:image', content: this.blogData.post_inner_image},
+              // {property: 'twitter:image', content: this.blogData.post_inner_image}, 
+              // {property: 'og:url', content: window.location.href}, 
+          ]
+      }
+  },
+
   created() {
     this.getPopularTours();
   },

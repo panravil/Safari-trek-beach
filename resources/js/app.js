@@ -50,6 +50,9 @@ Vue.use(VueCurrencyFilter,
 import VueLazyload from 'vue-lazyload'
 Vue.use(VueLazyload)
 
+import VueMeta from 'vue-meta'
+Vue.use(VueMeta)
+
 new Vue({
     // created() {
     //     AOS.init();

@@ -176,10 +176,19 @@ export default {
     };
   },
 
-  created() {
-    let page_title = "About Safari-Trek-Beach.com"
-    document.title = page_title;
-  }
+  metaInfo() {
+      return {
+          title: `About Safari-Trek-Beach.com`,
+          meta: [
+              {name: 'description', content: 'We strive to ensure that the number of women employed in tourism sector improves. We encourage tour companies to employ more women. One among our raking factors for tour companies is the number of women they have employed.'},
+              {property: 'og:title', content: 'About Safari-Trek-Beach.com'},    
+              {name: 'twitter:title', content: 'About Safari-Trek-Beach.com'},
+              // {property: 'og:image', content: this.blogData.post_inner_image},
+              // {property: 'twitter:image', content: this.blogData.post_inner_image}, 
+              // {property: 'og:url', content: window.location.href}, 
+          ]
+      }
+  },
 };
 </script>
 

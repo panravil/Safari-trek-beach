@@ -163,9 +163,21 @@ export default {
     return {};
   },
 
+  metaInfo() {
+      return {
+          title: `Terms and Conditions of Safari-Trek-Beach.com`,
+          meta: [
+              {name: 'description', content: 'We strive to ensure that the number of women employed in tourism sector improves. We encourage tour companies to employ more women. One among our raking factors for tour companies is the number of women they have employed.'},
+              {property: 'og:title', content: 'Terms and Conditions of Safari-Trek-Beach.com'},    
+              {name: 'twitter:title', content: 'Terms and Conditions of Safari-Trek-Beach.com'},
+              // {property: 'og:image', content: this.blogData.post_inner_image},
+              // {property: 'twitter:image', content: this.blogData.post_inner_image}, 
+              // {property: 'og:url', content: window.location.href}, 
+          ]
+      }
+  },
+
   created() {
-    let page_title = "Terms and Conditions of Safari-Trek-Beach.com"
-    document.title = page_title;
   }
 };
 </script>

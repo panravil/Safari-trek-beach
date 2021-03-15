@@ -443,7 +443,7 @@
             >
           </h6>
           <h6 v-else class="my-3 fw-bold">Searching...</h6>
-          <div class="row gx-0" v-if="loading">
+          <div class="row gx-0" v-if="package_loading || loading">
             <div
               class="col-md-6 col-xs-12"
               v-for="(item, index) in 10"
@@ -600,9 +600,25 @@ export default {
       page_from_url: 0,
 
       where_to_list: [],
-      search_name: "Our Tours"
+      search_name: "Our Tours",
+      package_loading: true,
     };
   },
+
+  metaInfo() {
+      return {
+          // title: `${this.search_name} (${this.filterTours.total_tours}Tours)`,
+          meta: [
+              {name: 'description', content: 'We strive to ensure that the number of women employed in tourism sector improves. We encourage tour companies to employ more women. One among our raking factors for tour companies is the number of women they have employed.'},
+              {property: 'og:title', content: 'About Safari-Trek-Beach.com'},    
+              {name: 'twitter:title', content: 'About Safari-Trek-Beach.com'},
+              // {property: 'og:image', content: this.blogData.post_inner_image},
+              // {property: 'twitter:image', content: this.blogData.post_inner_image}, 
+              // {property: 'og:url', content: window.location.href}, 
+          ]
+      }
+  },
+
   directives: {
     "click-outside-dropdown": {
       bind: function (el, binding) {
@@ -1669,6 +1685,7 @@ export default {
         .then(() => {
           this.current_ourtour_page = parseInt(this.filterTours.page);
           document.title = this.search_name + " ( " + this.filterTours.total_tours + " Tours )";
+          this.package_loading = false;
         })
         .catch(() => {});
 

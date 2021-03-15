@@ -95,6 +95,19 @@ export default {
       },
     };
   },
+   metaInfo() {
+      return {
+          title: `Tour Operators of Safari-Trek-Beach.com`,
+          meta: [
+              {name: 'description', content: 'This is Tour Operators of Safari-Trek-Beach.com'},
+              {property: 'og:title', content: 'Tour Operators of Safari-Trek-Beach.com'},    
+              {name: 'twitter:title', content: 'Tour Operators of Safari-Trek-Beach.com'},
+              // {property: 'og:image', content: this.blogData.post_inner_image},
+              // {property: 'twitter:image', content: this.blogData.post_inner_image}, 
+              // {property: 'og:url', content: window.location.href}, 
+          ]
+      }
+  },
   components: {
     // Pagination,
     CustomStarRating,
@@ -121,8 +134,8 @@ export default {
     },
   },
   created() {
-    let page_title = "Tour Operators of Safari-Trek-Beach.com";
-    document.title = page_title;
+    // let page_title = "Tour Operators of Safari-Trek-Beach.com";
+    // document.title = page_title;
     this.current_operator_page = parseInt(this.page_id);
     this.getOperatorList();
   },

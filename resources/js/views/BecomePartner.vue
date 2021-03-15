@@ -108,8 +108,22 @@ export default {
       updateCheckbox: 0,
     };
   },
+
+  metaInfo() {
+      return {
+          title: `Become a Partner | Safari-Trek-Beach`,
+          meta: [
+              {name: 'description', content: this.blogData.description},    
+              {property: 'og:title', content: 'Become a Partner | Safari-Trek-Beach'},    
+              {name: 'twitter:title', content: 'Become a Partner | Safari-Trek-Beach'},
+              // {property: 'og:image', content: this.blogData.post_inner_image},
+              // {property: 'twitter:image', content: this.blogData.post_inner_image}, 
+              // {property: 'og:url', content: window.location.href}, 
+          ]
+      }
+  },
+
   created() {
-    document.title = "Become a Partner of Safari-Trek-Beach.com"
     this.search_result = this.where_to_list;
   },
   computed: {

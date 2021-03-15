@@ -6,10 +6,10 @@
           class="position-relative overflow-hidden"
           v-if="destinationData != null"
         >
-          <img v-lazy="destinationData.post_inner_image" class="card-img-top" />
-          <div class="image_title">
+          <img :src="destinationData.post_inner_image" class="card-img-top" />
+          <h1 class="image_title mb-0">
             {{ destinationData.title }}
-          </div>
+          </h1>
         </div>
         <div class="card-body px-0">
           <div class="row gx-0">
@@ -195,6 +195,20 @@ export default {
       read_status: [],
       read_update: 0,
     };
+  },
+
+  metaInfo() {
+      return {
+          title: `${this.destinationData.title} of ${this.total_page_number} | Safari-Trek-Beach`,
+          meta: [
+              {name: 'description', content: this.destinationData.description},    
+              {property: 'og:title', content: this.destinationData.title},    
+              {name: 'twitter:title', content: this.destinationData.title},
+              {property: 'og:image', content: this.destinationData.post_inner_image},
+              {property: 'twitter:image', content: this.destinationData.post_inner_image},
+              {property: 'og:url', content: window.location.href}, 
+          ]
+      }
   },
 
   computed: {
