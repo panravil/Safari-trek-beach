@@ -30845,10 +30845,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   props: {
@@ -31920,7 +31916,7 @@ ___CSS_LOADER_EXPORT___.i(_node_modules_css_loader_dist_cjs_js_clonedRuleSet_9_0
 ___CSS_LOADER_EXPORT___.i(_node_modules_css_loader_dist_cjs_js_clonedRuleSet_9_0_rules_0_use_1_node_modules_syncfusion_ej2_vue_popups_styles_material_css__WEBPACK_IMPORTED_MODULE_4__.default);
 ___CSS_LOADER_EXPORT___.i(_node_modules_css_loader_dist_cjs_js_clonedRuleSet_9_0_rules_0_use_1_node_modules_syncfusion_ej2_vue_inputs_styles_material_css__WEBPACK_IMPORTED_MODULE_5__.default);
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n.tour-operator-page {\n  background-color: #f2f2f2;\n  padding-top: 120px;\n  padding-bottom: 100px;\n}\n.review-section {\n  background-color: #f5f5f5;\n}\n.review-content p,\n.review-content span {\n  font-size: 15px;\n}\n.review-pagination {\n  display: flex;\n  justify-content: center;\n  margin-top: 20px;\n}\n.tour-operator-page .e-multi-line-input textarea {\n  height: 150px;\n}\n.logo-certificate .logo {\n  width: 150px;\n  margin: auto;\n}\n.logo-certificate .certificate {\n  width: 300px;\n  margin: auto;\n}\n.rating-wrap {\n  display: table;\n  max-width: 400px;\n  width: 100%;\n  position: relative;\n}\n.rating-item {\n  display: table-row;\n}\n.rating-item span {\n  font-size: 15px;\n}\n.rating-item .progress {\n  height: 15px;\n}\n.rating-grade {\n  display: table-cell;\n  white-space: nowrap;\n  vertical-align: middle;\n}\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n.tour-operator-page {\n  /* background-color: #f2f2f2; */\n  padding-top: 120px;\n  padding-bottom: 100px;\n}\n.review-section {\n  background-color: #f5f5f5;\n}\n.review-content p,\n.review-content span {\n  font-size: 15px;\n}\n.review-pagination {\n  display: flex;\n  justify-content: center;\n  margin-top: 20px;\n}\n.tour-operator-page .e-multi-line-input textarea {\n  height: 150px;\n}\n.logo-certificate .logo {\n  width: 150px;\n  margin: auto;\n}\n.logo-certificate .certificate {\n  width: 300px;\n  margin: auto;\n}\n.rating-wrap {\n  display: table;\n  max-width: 400px;\n  width: 100%;\n  position: relative;\n}\n.rating-item {\n  display: table-row;\n}\n.rating-item span {\n  font-size: 15px;\n}\n.rating-item .progress {\n  height: 15px;\n}\n.rating-grade {\n  display: table-cell;\n  white-space: nowrap;\n  vertical-align: middle;\n}\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -32436,14 +32432,23 @@ var render = function() {
       _c(
         "div",
         {
+          directives: [
+            {
+              name: "lazy",
+              rawName: "v-lazy:background-image",
+              value: _vm.tourData.image_url,
+              expression: "tourData.image_url",
+              arg: "background-image"
+            }
+          ],
           staticClass: "bg-image hover-overlay ripple",
-          style: {
-            "background-image": "url(" + _vm.tourData.image_url + ")"
-          },
           attrs: { "data-mdb-ripple-color": "light" }
         },
         [
-          _vm._m(0),
+          _c("div", {
+            staticClass: "mask",
+            staticStyle: { "background-color": "rgba(251, 251, 251, 0.15)" }
+          }),
           _vm._v(" "),
           _c("div", { staticClass: "tour_title" }, [
             _vm._v(
@@ -32456,14 +32461,21 @@ var render = function() {
           ]),
           _vm._v(" "),
           _c("img", {
+            directives: [
+              {
+                name: "lazy",
+                rawName: "v-lazy",
+                value: _vm.tourData.operator_logo,
+                expression: "tourData.operator_logo"
+              }
+            ],
             staticClass: "position-absolute",
             staticStyle: {
               width: "70px",
               height: "auto",
               top: "0px",
               left: "30px"
-            },
-            attrs: { src: _vm.tourData.operator_logo }
+            }
           })
         ]
       ),
@@ -32483,21 +32495,42 @@ var render = function() {
             ? _c("div", { staticClass: "tag-image" }, [
                 _vm.tag == "review"
                   ? _c("img", {
+                      directives: [
+                        {
+                          name: "lazy",
+                          rawName: "v-lazy",
+                          value: "/images/best-review.png",
+                          expression: "'/images/best-review.png'"
+                        }
+                      ],
                       staticStyle: {
                         "margin-top": "-3px",
                         width: "60px",
                         height: "auto"
-                      },
-                      attrs: { src: "/images/best-review.png" }
+                      }
                     })
                   : _vm.tag == "seller"
                   ? _c("img", {
-                      staticStyle: { width: "80px", height: "auto" },
-                      attrs: { src: "/images/bestseller.png" }
+                      directives: [
+                        {
+                          name: "lazy",
+                          rawName: "v-lazy",
+                          value: "/images/bestseller.png",
+                          expression: "'/images/bestseller.png'"
+                        }
+                      ],
+                      staticStyle: { width: "80px", height: "auto" }
                     })
                   : _c("img", {
-                      staticStyle: { width: "100px", height: "auto" },
-                      attrs: { src: "/images/toprated2.png" }
+                      directives: [
+                        {
+                          name: "lazy",
+                          rawName: "v-lazy",
+                          value: "/images/toprated2.png",
+                          expression: "'/images/toprated2.png'"
+                        }
+                      ],
+                      staticStyle: { width: "100px", height: "auto" }
                     })
               ])
             : _vm._e(),
@@ -32505,13 +32538,13 @@ var render = function() {
           _c("p", { staticClass: "card-text mb-1" }, [
             _c("strong", [_vm._v(" Accommodation: ")]),
             _vm._v(" "),
-            _vm.tourData.no_of_day == 2
+            _vm.tourData.no_of_night == 1
               ? _c("span", [
-                  _vm._v(_vm._s(_vm.tourData.no_of_day - 1) + " Night")
+                  _vm._v(_vm._s(_vm.tourData.no_of_night) + " Night")
                 ])
-              : _vm.tourData.no_of_day > 2
+              : _vm.tourData.no_of_night > 1
               ? _c("span", [
-                  _vm._v(_vm._s(_vm.tourData.no_of_day - 1) + " Nights")
+                  _vm._v(_vm._s(_vm.tourData.no_of_night) + " Nights")
                 ])
               : _c("span", [_vm._v("Not Included")])
           ]),
@@ -32591,19 +32624,7 @@ var render = function() {
     ]
   )
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", [
-      _c("div", {
-        staticClass: "mask",
-        staticStyle: { "background-color": "rgba(251, 251, 251, 0.15)" }
-      })
-    ])
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 
 
@@ -32791,8 +32812,15 @@ var render = function() {
                       _c("h6", [_vm._v("License")]),
                       _vm._v(" "),
                       _c("img", {
-                        staticClass: "logo",
-                        attrs: { src: _vm.operatorData.logo }
+                        directives: [
+                          {
+                            name: "lazy",
+                            rawName: "v-lazy",
+                            value: _vm.operatorData.logo,
+                            expression: "operatorData.logo"
+                          }
+                        ],
+                        staticClass: "logo"
                       })
                     ])
                   ]),
@@ -32802,8 +32830,15 @@ var render = function() {
                       _c("h6", [_vm._v("Certificate")]),
                       _vm._v(" "),
                       _c("img", {
-                        staticClass: "certificate",
-                        attrs: { src: _vm.operatorData.banner }
+                        directives: [
+                          {
+                            name: "lazy",
+                            rawName: "v-lazy",
+                            value: _vm.operatorData.banner,
+                            expression: "operatorData.banner"
+                          }
+                        ],
+                        staticClass: "certificate"
                       })
                     ])
                   ])

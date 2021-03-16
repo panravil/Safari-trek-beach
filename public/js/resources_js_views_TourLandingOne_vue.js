@@ -177,9 +177,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
  // import { mapState, mapGetters, mapMutations } from "vuex";
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
@@ -746,14 +743,23 @@ var render = function() {
       _c(
         "div",
         {
+          directives: [
+            {
+              name: "lazy",
+              rawName: "v-lazy:background-image",
+              value: _vm.tourData.image_url,
+              expression: "tourData.image_url",
+              arg: "background-image"
+            }
+          ],
           staticClass: "bg-image hover-overlay ripple",
-          style: {
-            "background-image": "url(" + _vm.tourData.image_url + ")"
-          },
           attrs: { "data-mdb-ripple-color": "light" }
         },
         [
-          _vm._m(0),
+          _c("div", {
+            staticClass: "mask",
+            staticStyle: { "background-color": "rgba(251, 251, 251, 0.15)" }
+          }),
           _vm._v(" "),
           _c("div", { staticClass: "tour_title" }, [
             _vm._v(
@@ -766,14 +772,21 @@ var render = function() {
           ]),
           _vm._v(" "),
           _c("img", {
+            directives: [
+              {
+                name: "lazy",
+                rawName: "v-lazy",
+                value: _vm.tourData.operator_logo,
+                expression: "tourData.operator_logo"
+              }
+            ],
             staticClass: "position-absolute",
             staticStyle: {
               width: "70px",
               height: "auto",
               top: "0px",
               left: "30px"
-            },
-            attrs: { src: _vm.tourData.operator_logo }
+            }
           })
         ]
       ),
@@ -794,21 +807,42 @@ var render = function() {
             ? _c("div", { staticClass: "tag-image" }, [
                 _vm.tourData.tag == "review"
                   ? _c("img", {
+                      directives: [
+                        {
+                          name: "lazy",
+                          rawName: "v-lazy",
+                          value: "/images/best-review.png",
+                          expression: "'/images/best-review.png'"
+                        }
+                      ],
                       staticStyle: {
                         "margin-top": "-3px",
                         width: "60px",
                         height: "auto"
-                      },
-                      attrs: { src: "/images/best-review.png" }
+                      }
                     })
                   : _vm.tourData.tag == "seller"
                   ? _c("img", {
-                      staticStyle: { width: "80px", height: "auto" },
-                      attrs: { src: "/images/bestseller.png" }
+                      directives: [
+                        {
+                          name: "lazy",
+                          rawName: "v-lazy",
+                          value: "/images/bestseller.png",
+                          expression: "'/images/bestseller.png'"
+                        }
+                      ],
+                      staticStyle: { width: "80px", height: "auto" }
                     })
                   : _c("img", {
-                      staticStyle: { width: "100px", height: "auto" },
-                      attrs: { src: "/images/toprated2.png" }
+                      directives: [
+                        {
+                          name: "lazy",
+                          rawName: "v-lazy",
+                          value: "/images/toprated2.png",
+                          expression: "'/images/toprated2.png'"
+                        }
+                      ],
+                      staticStyle: { width: "100px", height: "auto" }
                     })
               ])
             : _vm._e(),
@@ -816,13 +850,13 @@ var render = function() {
           _c("p", { staticClass: "card-text mb-1" }, [
             _c("strong", [_vm._v(" Accommodation: ")]),
             _vm._v(" "),
-            _vm.tourData.no_of_day == 2
+            _vm.tourData.no_of_night == 1
               ? _c("span", [
-                  _vm._v(_vm._s(_vm.tourData.no_of_day - 1) + " Night")
+                  _vm._v(_vm._s(_vm.tourData.no_of_night) + " Night")
                 ])
-              : _vm.tourData.no_of_day > 2
+              : _vm.tourData.no_of_night > 1
               ? _c("span", [
-                  _vm._v(_vm._s(_vm.tourData.no_of_day - 1) + " Nights")
+                  _vm._v(_vm._s(_vm.tourData.no_of_night) + " Nights")
                 ])
               : _c("span", [_vm._v("Not Included")])
           ]),
@@ -916,19 +950,7 @@ var render = function() {
     ]
   )
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", [
-      _c("div", {
-        staticClass: "mask",
-        staticStyle: { "background-color": "rgba(251, 251, 251, 0.15)" }
-      })
-    ])
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 
 

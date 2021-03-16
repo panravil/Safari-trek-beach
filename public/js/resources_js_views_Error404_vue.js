@@ -22,6 +22,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: "Error404",
   data: function data() {
@@ -52,7 +53,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n#notfound {\n  position: relative;\n  height: 100vh;\n}\n#notfound .notfound {\n  position: absolute;\n  left: 50%;\n  top: 50%;\n  transform: translate(-50%, -50%);\n  max-width: 520px;\n  width: 100%;\n  line-height: 1.4;\n  text-align: center;\n}\n.notfound .notfound-404 {\n    position: relative;\n    height: 200px;\n    margin: 0px auto 20px;\n    z-index: -1;\n}\n.notfound .notfound-404 h1 {\n    font-family: 'Montserrat', sans-serif;\n    font-size: 236px;\n    font-weight: 200;\n    margin: 0px;\n    color: #211b19;\n    text-transform: uppercase;\n    position: absolute;\n    left: 50%;\n    top: 50%;\n    transform: translate(-50%, -50%);\n}\n.notfound .notfound-404 h2 {\n    font-family: 'Montserrat', sans-serif;\n    font-size: 28px;\n    font-weight: 400;\n    text-transform: uppercase;\n    color: #211b19;\n    background: #fff;\n    padding: 10px 5px;\n    margin: auto;\n    display: inline-block;\n    position: absolute;\n    bottom: 0px;\n    left: 0;\n    right: 0;\n}\n@media (max-width: 767px) {\n.notfound .notfound-404 h1 {\n    top: 30%;\n    font-size: 100px;\n}\n}\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n#notfound {\n  position: relative;\n  height: 100vh;\n}\n#notfound .notfound {\n  position: absolute;\n  left: 50%;\n  top: 50%;\n  transform: translate(-50%, -50%);\n  max-width: 520px;\n  width: 100%;\n  line-height: 1.4;\n  text-align: center;\n}\n.notfound .notfound-404 {\n    position: relative;\n    height: 200px;\n    margin: 0px auto 20px;\n    z-index: -1;\n}\n.notfound .notfound-404 h1 {\n    font-family: 'Montserrat', sans-serif;\n    font-size: 236px;\n    font-weight: 400;\n    margin: 0px;\n    color: #211b19;\n    text-transform: uppercase;\n    position: absolute;\n    left: 50%;\n    top: 50%;\n    transform: translate(-50%, -50%);\n}\n.notfound .notfound-404 h2 {\n    font-family: 'Montserrat', sans-serif;\n    font-size: 28px;\n    font-weight: 400;\n    text-transform: uppercase;\n    color: #211b19;\n    background: #f2f2f2;\n    padding: 10px 5px;\n    margin: auto;\n    display: inline-block;\n    position: absolute;\n    bottom: 0px;\n    left: 0;\n    right: 0;\n}\n@media (max-width: 767px) {\n.notfound .notfound-404 h1 {\n    top: 30%;\n    font-size: 100px;\n}\n}\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -192,25 +193,44 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
+  return _c("div", { attrs: { id: "notfound" } }, [
+    _c(
+      "div",
+      { staticClass: "notfound" },
+      [
+        _vm._m(0),
+        _vm._v(" "),
+        _c(
+          "router-link",
+          {
+            staticClass: "btn btn-danger m-2",
+            attrs: { to: { name: "Home Page" } }
+          },
+          [_vm._v("Homepage")]
+        ),
+        _vm._v(" "),
+        _c(
+          "router-link",
+          {
+            staticClass: "btn btn-danger m-2",
+            attrs: { to: { name: "Our Tours" } }
+          },
+          [_vm._v("OUR TOURS")]
+        )
+      ],
+      1
+    )
+  ])
 }
 var staticRenderFns = [
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { attrs: { id: "notfound" } }, [
-      _c("div", { staticClass: "notfound" }, [
-        _c("div", { staticClass: "notfound-404" }, [
-          _c("h1", [_vm._v("Oops!")]),
-          _vm._v(" "),
-          _c("h2", [_vm._v("404 - The Page can't be found")])
-        ]),
-        _vm._v(" "),
-        _c("a", { staticClass: "btn btn-danger", attrs: { href: "/" } }, [
-          _vm._v("Go TO Homepage")
-        ])
-      ])
+    return _c("div", { staticClass: "notfound-404" }, [
+      _c("h1", [_vm._v("Oops!")]),
+      _vm._v(" "),
+      _c("h2", [_vm._v("404 - The Page can't be found")])
     ])
   }
 ]

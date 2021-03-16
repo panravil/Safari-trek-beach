@@ -45,7 +45,7 @@ class TourController extends Controller
     $focus         = ($request->input('focus') != '') ? explode("|", $request->input('focus')) : [];
 
     // data query
-    $sql = "SELECT package.package_id, package.image_url, package.no_of_day, package.title as title, package.tour_group, tour_focus.title as tour_focus, package_level.level_title as tour_level, tour_activity.title as tour_destination, LEAST(package_rate.adult_currency_winter, package_rate.adult_currency_spring, package_rate.adult_currency_summer, package_rate.adult_currency_autumn) AS adult_currency
+    $sql = "SELECT package.package_id, package.image_url, package.no_of_day, package.no_of_night, package.title as title, package.tour_group, tour_focus.title as tour_focus, package_level.level_title as tour_level, tour_activity.title as tour_destination, LEAST(package_rate.adult_currency_winter, package_rate.adult_currency_spring, package_rate.adult_currency_summer, package_rate.adult_currency_autumn) AS adult_currency
             FROM package, package_rate, package_level, tour_focus, tour_activity, package_activity
             WHERE package.package_id = package_rate.package_id
             AND package_rate.no_of_person = 1
@@ -98,7 +98,7 @@ class TourController extends Controller
 
     $data = !empty($data)?array_slice($data, $start, $limit):[];
 
-    // dd($start + 1);
+    // dd($data);
 
     return response()->json(
       [

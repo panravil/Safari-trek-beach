@@ -12384,34 +12384,61 @@ vue__WEBPACK_IMPORTED_MODULE_0__.default.use(_syncfusion_ej2_vue_inputs__WEBPACK
     //   // window.open(url, "_blank");
     // },
     sendEmail: function sendEmail(e) {
+      var _this = this;
+
+      // console.log('tag', e.target)
       try {
-        emailjs_com__WEBPACK_IMPORTED_MODULE_2__.default.sendForm('service_5wlzkqg', 'template_vgycw1m', e.target, 'user_K5HSyHWK6LhDHg35fCPQz', {
-          name: this.name,
-          email: this.email,
-          message: this.meessage
+        emailjs_com__WEBPACK_IMPORTED_MODULE_2__.default.sendForm('service_5wlzkqg', 'template_39c1z2t', e.target, 'user_K5HSyHWK6LhDHg35fCPQz').then(function () {
+          _this.$notify({
+            group: 'success',
+            title: 'Email Sent!',
+            text: 'Thank you! We have received your email. We will soon reply.'
+          }); // console.log('it works!!!')
+
+        })["catch"](function () {
+          _this.$notify({
+            group: "warning",
+            title: "Sending Error !",
+            text: "Sorry, Something went wrong..."
+          });
         });
-        this.$notify({
-          group: 'success',
-          title: 'Email Sent!',
-          text: 'Thank you! We have received your email. We will soon reply.'
-        });
-        console.log('it works!!!');
       } catch (error) {
         this.$notify({
           group: "warning",
           title: "Sending Error !",
           text: "Sorry, Something went wrong..."
-        });
-        console.log({
-          error: error
-        });
+        }); // console.log({error})
       } // Reset form field
 
 
       this.name = '';
       this.email = '';
       this.message = '';
-    }
+    } // sendEmail: (e) => {
+    //    this.$notify({
+    //           group: "warning",
+    //           title: "Sending Error !",
+    //           text: "Sorry, Something went wrong...",
+    //         });
+    //       console.log('tag', e.target)
+    //   emailjs.sendForm('service_5wlzkqg', 'template_vgycw1m', e.target, 'user_K5HSyHWK6LhDHg35fCPQz')
+    //     .then((result) => {
+    //         console.log('SUCCESS!', result.status, result.text);
+    //         this.$notify({
+    //           group: 'success',
+    //           title: 'Email Sent!',
+    //           text: 'Thank you! We have received your email. We will soon reply.'
+    //         });
+    //     }, (error) => {
+    //         console.log('FAILED...', error);
+    //         this.$notify({
+    //           group: "warning",
+    //           title: "Sending Error !",
+    //           text: "Sorry, Something went wrong...",
+    //         });
+    //     });
+    // }
+
   }
 });
 
@@ -12490,7 +12517,7 @@ var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBP
 ___CSS_LOADER_EXPORT___.i(_node_modules_css_loader_dist_cjs_js_clonedRuleSet_9_0_rules_0_use_1_node_modules_syncfusion_ej2_vue_inputs_styles_material_css__WEBPACK_IMPORTED_MODULE_2__.default);
 ___CSS_LOADER_EXPORT___.i(_node_modules_css_loader_dist_cjs_js_clonedRuleSet_9_0_rules_0_use_1_node_modules_syncfusion_ej2_base_styles_material_css__WEBPACK_IMPORTED_MODULE_1__.default);
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n#contact-us-page {\n  background-color: #f2f2f2;\n  padding-top: 50px;\n  padding-bottom: 100px;\n}\n#contact-us-page section {\n  margin-top: 100px;\n}\n#contact-us-page .e-multi-line-input textarea {\n  height: 100px;\n}\n#contact-us-page .contact-form-card {\n  width: 75%;\n}\n#contact-us-page a {\n  color: #4f4f4f;\n}\n@media (max-width: 991px) {\n#contact-us-page .contact-form-card {\n    width: 100%;\n}\n#contact-us-page h3,\n  #contact-us-page h5 {\n    text-align: center;\n}\n#contact-us-page .contact-form-card h5 {\n    text-align: left;\n    font-size: 15px;\n}\n}\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n#contact-us-page {\n  /* background-color: #f2f2f2; */\n  padding-top: 50px;\n  padding-bottom: 100px;\n}\n#contact-us-page section {\n  margin-top: 100px;\n}\n#contact-us-page .e-multi-line-input textarea {\n  height: 100px;\n}\n#contact-us-page .contact-form-card {\n  width: 75%;\n}\n#contact-us-page a {\n  color: #4f4f4f;\n}\n@media (max-width: 991px) {\n#contact-us-page .contact-form-card {\n    width: 100%;\n}\n#contact-us-page h3,\n  #contact-us-page h5 {\n    text-align: center;\n}\n#contact-us-page .contact-form-card h5 {\n    text-align: left;\n    font-size: 15px;\n}\n}\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -12817,7 +12844,56 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c("div", { attrs: { id: "contact-us-page" } }, [
     _c("div", { staticClass: "container" }, [
-      _vm._m(0),
+      _c("section", [
+        _vm._m(0),
+        _vm._v(" "),
+        _c("h3", { staticClass: "text-center mt-5" }, [
+          _vm._v(
+            "Safari Packages in Safari-Trek-Beach are offered by individual tour operator and not Safari-Trek-Beach company."
+          )
+        ]),
+        _vm._v(" "),
+        _c("h4", { staticClass: "mt-3 text-center" }, [
+          _vm._v(
+            "For questions about a specific tour, we recommend that you contact tour operator directly."
+          )
+        ]),
+        _vm._v(" "),
+        _c("h4", { staticClass: "mt-5 fw-bold text-center" }, [
+          _vm._v("Follow these three steps:")
+        ]),
+        _vm._v(" "),
+        _c("h5", { staticClass: "mt-4 mb-0" }, [
+          _vm._v("1. Select the tour package you like!")
+        ]),
+        _vm._v(" "),
+        _c("h5", { staticClass: "mt-3" }, [
+          _vm._v("2. Then Click Get Free Quote button to contact.")
+        ]),
+        _vm._v(" "),
+        _c("h5", { staticClass: "mt-3" }, [
+          _vm._v("3. Fill your email and message then send.")
+        ]),
+        _vm._v(" "),
+        _c(
+          "div",
+          { staticClass: "text-center mt-5" },
+          [
+            _c(
+              "router-link",
+              {
+                staticClass: "btn btn-danger text-light",
+                attrs: { to: { name: "Our Tours" } }
+              },
+              [
+                _vm._v(" Start Here "),
+                _c("span", { staticClass: "fa fa-angle-right ms-2" })
+              ]
+            )
+          ],
+          1
+        )
+      ]),
       _vm._v(" "),
       _c("section", [
         _vm._m(1),
@@ -12850,6 +12926,7 @@ var render = function() {
                         floatLabelType: "Auto",
                         type: "text",
                         placeholder: "Name",
+                        name: "user_name",
                         required: ""
                       },
                       model: {
@@ -12873,6 +12950,7 @@ var render = function() {
                         floatLabelType: "Auto",
                         type: "email",
                         placeholder: "Email",
+                        name: "user_email",
                         required: ""
                       },
                       model: {
@@ -12895,6 +12973,7 @@ var render = function() {
                       attrs: {
                         multiline: true,
                         floatLabelType: "Auto",
+                        name: "message",
                         placeholder: "Write a message",
                         required: ""
                       },
@@ -12932,52 +13011,8 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("section", [
-      _c("header", { staticClass: "section-header" }, [
-        _c("h3", [_vm._v("QUERIES ABOUT SAFARI OR TOUR OPERATOR")])
-      ]),
-      _vm._v(" "),
-      _c("h3", { staticClass: "text-center mt-5" }, [
-        _vm._v(
-          "Safari Packages in Safari-Trek-Beach are offered by individual tour operator and not Safari-Trek-Beach company."
-        )
-      ]),
-      _vm._v(" "),
-      _c("h4", { staticClass: "mt-3 text-center" }, [
-        _vm._v(
-          "For questions about a specific tour, we recommend that you contact tour operator directly."
-        )
-      ]),
-      _vm._v(" "),
-      _c("h4", { staticClass: "mt-5 fw-bold text-center" }, [
-        _vm._v("Follow these three steps:")
-      ]),
-      _vm._v(" "),
-      _c("h5", { staticClass: "mt-4 mb-0" }, [
-        _vm._v("1. Select the tour package you like!")
-      ]),
-      _vm._v(" "),
-      _c("h5", { staticClass: "mt-3" }, [
-        _vm._v("2. Then Click Get Free Quote button to contact.")
-      ]),
-      _vm._v(" "),
-      _c("h5", { staticClass: "mt-3" }, [
-        _vm._v("3. Fill your email and message then send.")
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "text-center mt-5" }, [
-        _c(
-          "a",
-          {
-            staticClass: "btn btn-danger text-light",
-            attrs: { href: "/our-tours" }
-          },
-          [
-            _vm._v(" Start Here "),
-            _c("span", { staticClass: "fa fa-angle-right ms-2" })
-          ]
-        )
-      ])
+    return _c("header", { staticClass: "section-header" }, [
+      _c("h3", [_vm._v("QUERIES ABOUT SAFARI OR TOUR OPERATOR")])
     ])
   },
   function() {

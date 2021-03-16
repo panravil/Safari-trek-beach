@@ -32,9 +32,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: "BlogCard",
   props: {
@@ -322,7 +319,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n.blog-post-page {\n    padding-top: 50px;\n    padding-bottom: 100px;\n    background-color: #f2f2f2;\n}\n.blog-post-page section {\n    margin-top: 100px;\n}\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n.blog-post-page {\n    padding-top: 50px;\n    padding-bottom: 100px;\n    /* background-color: #f2f2f2; */\n}\n.blog-post-page section {\n    margin-top: 100px;\n}\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -707,16 +704,27 @@ var render = function() {
       _c(
         "div",
         {
+          directives: [
+            {
+              name: "lazy",
+              rawName: "v-lazy:background-image",
+              value: _vm.blog.post_image,
+              expression: "blog.post_image",
+              arg: "background-image"
+            }
+          ],
           staticClass: "bg-image hover-overlay ripple",
-          style: {
-            "background-image": "url(" + _vm.blog.post_image + ")"
-          },
           attrs: {
             "data-mdb-ripple-color": "light",
             title: _vm.blog.post_title
           }
         },
-        [_vm._m(0)]
+        [
+          _c("div", {
+            staticClass: "mask",
+            staticStyle: { "background-color": "rgba(251, 251, 251, 0.15)" }
+          })
+        ]
       ),
       _vm._v(" "),
       _c("div", { staticClass: "card-body" }, [
@@ -740,18 +748,12 @@ var render = function() {
           [_vm._v("\n      " + _vm._s(_vm.blog.short_description) + "\n    ")]
         ),
         _vm._v(" "),
-        _vm._m(1)
+        _vm._m(0)
       ])
     ]
   )
 }
 var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("a", [_c("div", { staticClass: "mask" })])
-  },
   function() {
     var _vm = this
     var _h = _vm.$createElement

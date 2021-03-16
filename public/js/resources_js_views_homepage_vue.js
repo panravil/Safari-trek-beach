@@ -32,9 +32,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: "BlogCard",
   props: {
@@ -128,9 +125,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => __WEBPACK_DEFAULT_EXPORT__
 /* harmony export */ });
 /* harmony import */ var _components_CustomStarRating__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../components/CustomStarRating */ "./resources/js/components/CustomStarRating.vue");
-//
-//
-//
 //
 //
 //
@@ -371,13 +365,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
+/* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
 /* harmony import */ var vue_numeric_input__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vue-numeric-input */ "./node_modules/vue-numeric-input/dist/vue-numeric-input.min.js");
 /* harmony import */ var vue_numeric_input__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(vue_numeric_input__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var vuejs_datepicker__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! vuejs-datepicker */ "./node_modules/vuejs-datepicker/dist/vuejs-datepicker.esm.js");
 /* harmony import */ var _components_TourCard__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../components/TourCard */ "./resources/js/components/TourCard.vue");
 /* harmony import */ var _components_BlogCard__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../components/BlogCard */ "./resources/js/components/BlogCard.vue");
 /* harmony import */ var _components_TourCardSkelecton__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../components/TourCardSkelecton */ "./resources/js/components/TourCardSkelecton.vue");
+/* harmony import */ var _components_fakedata__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../components/fakedata */ "./resources/js/components/fakedata.js");
 
 
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
@@ -891,13 +886,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
+
 
 
 
@@ -935,10 +924,13 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       },
       where_to_search: "",
       search_result: [],
-      whyus_value: 0
+      whyus_value: 0,
+      fake_popular: _components_fakedata__WEBPACK_IMPORTED_MODULE_6__.default.popularTour,
+      fake_blog: _components_fakedata__WEBPACK_IMPORTED_MODULE_6__.default.homepageBlog,
+      fake_destination: _components_fakedata__WEBPACK_IMPORTED_MODULE_6__.default.topDestinations
     };
   },
-  computed: _objectSpread({}, (0,vuex__WEBPACK_IMPORTED_MODULE_6__.mapGetters)({
+  computed: _objectSpread({}, (0,vuex__WEBPACK_IMPORTED_MODULE_7__.mapGetters)({
     popularTours: "tourController/popularTours",
     topDestinations: "destinationController/topDestinations",
     popularBlogs: "blogController/popularBlogs",
@@ -958,10 +950,11 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     this.start_date = this.start_date_state;
     this.adults_number = this.adults_number_state;
     this.children_number = this.children_number_state;
-    this.traveler_number_calc();
-    this.getPopularTours();
-    this.getTopDestinations();
-    this.getPopularBlogs();
+    this.traveler_number_calc(); // this.getPopularTours();
+    // this.getTopDestinations();
+    // this.getPopularBlogs();
+
+    document.title = 'Safari Trek Beach';
   },
   directives: {
     "click-outside-dropdown": {
@@ -1005,6 +998,14 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
             return item.title.toLowerCase().includes(v);
           });
         });
+        var start_filtered = this.search_result.filter(function (p) {
+          return p.title.toLowerCase().startsWith(_this.where_to_search.toLowerCase());
+        });
+        var not_start_filtered = this.search_result.filter(function (p) {
+          return !p.title.toLowerCase().startsWith(_this.where_to_search.toLowerCase());
+        });
+        Array.prototype.push.apply(start_filtered, not_start_filtered);
+        this.search_result = start_filtered;
       } else {
         this.search_result = this.where_to_list;
       }
@@ -1160,14 +1161,336 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         } else {
           url_query["destination"] = url_query["destination"].split(" ").join("_");
           url_query["destination"] = url_query["destination"].split("&").join("~");
-        }
+        } // this.$router.push("/our-tours/" + url_query["destination"]);
 
-        this.$router.push("/our-tours/" + url_query["destination"]);
+
+        var routeData = this.$router.resolve({
+          name: "Our Tours2",
+          params: {
+            destination: url_query["destination"]
+          }
+        });
+        window.open(routeData.href, "_blank");
       } else {
-        this.$router.push("/our-tours");
+        // this.$router.push("/our-tours");
+        var _routeData = this.$router.resolve({
+          name: "Our Tours"
+        });
+
+        window.open(_routeData.href, "_blank");
       }
     }
   }
+});
+
+/***/ }),
+
+/***/ "./resources/js/components/fakedata.js":
+/*!*********************************************!*\
+  !*** ./resources/js/components/fakedata.js ***!
+  \*********************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => __WEBPACK_DEFAULT_EXPORT__
+/* harmony export */ });
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  popularTour: [{
+    "package_id": 402,
+    "no_of_day": 1,
+    "no_of_night": 0,
+    "title": "Stone Town & Prison Island",
+    "description": "<p>Immerse yourself in Zanzibar&rsquo;s culture &ndash; history on a full-day guided tour of Stone Town and Prison Island. Explore on foot and by boat for a comprehensive overview of the area. Bring your swimsuit along for swimming or snorkeling in Prison Island</p>",
+    "tour_focus_id": 16,
+    "image_url": "https://operators.safari-trek-beach.com/images/gallery/tanzania/tour/PRISON_ISLAND_5.jpg",
+    "customizable": "1",
+    "tour_group": "private",
+    "status": 1,
+    "position": 1,
+    "published": 1,
+    "user_id": 13,
+    "created_at": "2020-11-30 05:23:31",
+    "updated_at": "2021-02-23 13:45:17",
+    "start_city": "Zanzibar City",
+    "end_city": "Zanzibar City",
+    "adult_currency": 12169,
+    "company_name": "See Endless Adventures",
+    "tag": "review",
+    "operator_logo": "https://operators.safari-trek-beach.com/images/user/13_1612774884.jpg",
+    "num_review": 12,
+    "sum_review": "60",
+    "avg_review": 5,
+    "destination": ["Prison Island"],
+    "level": ["mid range"]
+  }, {
+    "package_id": 322,
+    "no_of_day": 5,
+    "no_of_night": 0,
+    "title": "Private Tour",
+    "description": "The safari takes you around the best places in Tanzania, visiting places such as Tarangire for huge herds of elephants, Lake Manyara which is famous for its tree climbing lions, The Ngorongoro Crater which is known also as the Garden of Eden, Serengeti National Park which will give you the chance to experience the big five.",
+    "tour_focus_id": 1,
+    "image_url": "https://operators.safari-trek-beach.com/images/gallery/tanzania/tour/TARANGIRE_NATIONAL_PARK_7.jpg",
+    "customizable": "1",
+    "tour_group": "private",
+    "status": 1,
+    "position": 1,
+    "published": 1,
+    "user_id": 14,
+    "created_at": "2020-11-28 03:41:33",
+    "updated_at": "2020-11-28 04:45:10",
+    "start_city": "Arusha",
+    "end_city": "Arusha",
+    "adult_currency": 2996,
+    "company_name": "wildlife oasis tours",
+    "tag": "review",
+    "operator_logo": "https://operators.safari-trek-beach.com/images/user/14_1613634167.jpg",
+    "num_review": 60,
+    "sum_review": "296",
+    "avg_review": 4.9,
+    "destination": ["Ngorongoro crater", "Serengeti National Park", "Tarangire National Park"],
+    "level": ["mid range"]
+  }, {
+    "package_id": 208,
+    "no_of_day": 3,
+    "no_of_night": 0,
+    "title": "Multi-Activities - Ngorongoro | Tarangire",
+    "description": "<p>The 3 days/ 2 Nights Special Package is ideal to visitors who prefer to more than one activity during a tour. You will visit Tarangire National park, Lake Manyara National Park &amp; Ngorongoro Crater, Activities to be done in this tour are walking safari, game drive, Canoeing, Treetop Walkway, and cultural visit. You will be picked up from your hotel and dropped off in your hotel Arusha town.</p>",
+    "tour_focus_id": 4,
+    "image_url": "https://operators.safari-trek-beach.com/images/gallery/tanzania/tour/TARANGIRE_NATIONAL_PARK_29.jpg",
+    "customizable": "1",
+    "tour_group": "private",
+    "status": 1,
+    "position": 2,
+    "published": 1,
+    "user_id": 13,
+    "created_at": "2020-11-25 20:13:22",
+    "updated_at": "2021-02-17 11:46:02",
+    "start_city": "Arusha",
+    "end_city": "Arusha",
+    "adult_currency": 1356,
+    "company_name": "See Endless Adventures",
+    "tag": "review",
+    "operator_logo": "https://operators.safari-trek-beach.com/images/user/13_1612774884.jpg",
+    "num_review": 12,
+    "sum_review": "60",
+    "avg_review": 5,
+    "destination": ["Lake Manyara National Park", "Ngorongoro crater", "Tarangire National Park"],
+    "level": ["lodge", "mid range"]
+  }, {
+    "package_id": 66,
+    "no_of_day": 6,
+    "no_of_night": 0,
+    "title": "Kilimanjaro hike via Rongai Route.",
+    "description": "The Rongai route is the only route that approaches Kilimanjaro from the north, close to the Kenyan border. Though gaining popularity amongst climbers, this route still experiences low crowds. Rongai has a more gradual slope than the mountain’s other routes.\r\nIt is the preferred route for those looking for an alternative to the popular Marangu route, for those who would like a more remote hike, and for those who are climbing during the rainy season (the north side receives less precipitation). Ro",
+    "tour_focus_id": 21,
+    "image_url": "https://operators.safari-trek-beach.com/images/gallery/tanzania/tour/MOUNT_KILIMANJARO_NATIONAL_PARK_6.jpg",
+    "customizable": "0",
+    "tour_group": "group",
+    "status": 1,
+    "position": 3,
+    "published": 1,
+    "user_id": 19,
+    "created_at": "2020-10-27 08:01:52",
+    "updated_at": "2020-11-24 00:55:45",
+    "start_city": "Arusha",
+    "end_city": "Arusha",
+    "adult_currency": 2100,
+    "company_name": "Safari soles tours",
+    "tag": "seller",
+    "operator_logo": "https://operators.safari-trek-beach.com/images/user/19_1613634215.jpg",
+    "num_review": 46,
+    "sum_review": "228",
+    "avg_review": 5,
+    "destination": ["Kilimanjaro Mountain", "Kilimanjaro Mountain."],
+    "level": ["camping"]
+  }, {
+    "package_id": 63,
+    "no_of_day": 6,
+    "no_of_night": 0,
+    "title": "Kilimanjaro hike via Marangu route.",
+    "description": "<p style=\"text-align: justify;\">This multi-day hike takes you up the Kilimanjaro through the Marangu Route with an extra acclimatization day, unlike the 5-day trek you will have even more chances of reaching the summit with this route considered one of the easiest, however, its has the least success rate. Trip Highlights Hut accommodation on the Mountain</p>",
+    "tour_focus_id": 21,
+    "image_url": "https://operators.safari-trek-beach.com/images/gallery/tanzania/tour/MARANGU_ROUTE_4.jpg",
+    "customizable": "0",
+    "tour_group": "group",
+    "status": 1,
+    "position": 1,
+    "published": 1,
+    "user_id": 19,
+    "created_at": "2020-10-27 06:26:43",
+    "updated_at": "2021-03-05 11:03:56",
+    "start_city": "Arusha",
+    "end_city": "Arusha",
+    "adult_currency": 2041,
+    "company_name": "Safari soles tours",
+    "tag": "seller",
+    "operator_logo": "https://operators.safari-trek-beach.com/images/user/19_1613634215.jpg",
+    "num_review": 46,
+    "sum_review": "228",
+    "avg_review": 5,
+    "destination": ["Mount Kilimanjaro"],
+    "level": ["budget", "camping"]
+  }, {
+    "package_id": 119,
+    "no_of_day": 2,
+    "no_of_night": 0,
+    "title": "joined group safari in Ngorongoro and Tarangaire",
+    "description": "While in a window seat(max 6 clients) you'll be taken to 2 great National Parks in Northern circuit. Your adventure starts from the moment you land till you exit with your flight.Complementaey offers such as airport transfers, free hotel accomodations will make you feel comfort and avoid all kind of inconveniences. 2 days in Tarangire and Ngongoro exepect to spot the big 5 in accordance with other such as cheetah, wildebeest, giraffe, many antelope species,many birds species and many others.",
+    "tour_focus_id": 1,
+    "image_url": "https://operators.safari-trek-beach.com/images/gallery/tanzania/tour/TARANGIRE_NATIONAL_PARK_9.jpg",
+    "customizable": "1",
+    "tour_group": "group",
+    "status": 1,
+    "position": 2,
+    "published": 1,
+    "user_id": 48,
+    "created_at": "2020-11-23 07:46:22",
+    "updated_at": "2020-11-24 02:43:20",
+    "start_city": "Arusha",
+    "end_city": "Arusha",
+    "adult_currency": 380,
+    "company_name": "Serengeti Safari Booking",
+    "tag": null,
+    "operator_logo": "https://operators.safari-trek-beach.com/images/user/48_1613634310.jpg",
+    "num_review": 47,
+    "sum_review": "234",
+    "avg_review": 5,
+    "destination": ["Ngorongoro crater", "Tarangire National Park"],
+    "level": ["budget", "lodge"]
+  }],
+  homepageBlog: [{
+    "post_id": 7,
+    "post_title": "UKEREWE ISLAND",
+    "post_slug": "ukerewe-island",
+    "short_description": "Ukerewe is known for having a large population of Africans with albinism.",
+    "post_image": "https://operators.safari-trek-beach.com/images/gallery/tanzania/tour/SELOUS_GAME_RESERVE_19.jpg",
+    "post_page_image": "https://operators.safari-trek-beach.com/images/gallery/tanzania/tour_inner/SELOUS_GAME_RESERVE_19.jpg",
+    "published": 1,
+    "position": 1,
+    "created_at": "2020-12-28 20:07:51",
+    "updated_at": "2021-02-16 12:27:45"
+  }, {
+    "post_id": 5,
+    "post_title": "RUBONDO ISLAND NATIONAL PARK",
+    "post_slug": "rubondo-island-national-park",
+    "short_description": "It is located in the northern parts of Tanzania Mwanza (region).",
+    "post_image": "https://operators.safari-trek-beach.com/images/gallery/tanzania/tour/LAKE_MANYARA_NATIONAL_PARK_5.jpg",
+    "post_page_image": "https://operators.safari-trek-beach.com/images/gallery/tanzania/tour_inner/LAKE_MANYARA_NATIONAL_PARK_5.jpg",
+    "published": 1,
+    "position": 2,
+    "created_at": "2020-12-28 19:49:32",
+    "updated_at": "2020-12-28 19:49:32"
+  }, {
+    "post_id": 3,
+    "post_title": "Exclusive Safaris In Tanzania",
+    "post_slug": "exclusive-safaris-in-tanzania",
+    "short_description": "This makes Tanzania an ideal country for combining a luxury safari with a relaxing beach holiday!",
+    "post_image": "https://operators.safari-trek-beach.com/images/gallery/tanzania/tour/NGORONGORO_CRATER_3.jpg",
+    "post_page_image": "https://operators.safari-trek-beach.com/images/gallery/tanzania/tour_inner/NGORONGORO_CRATER_3.jpg",
+    "published": 1,
+    "position": 3,
+    "created_at": "2020-12-27 12:09:56",
+    "updated_at": "2020-12-30 08:37:25"
+  }],
+  topDestinations: [{
+    "post_id": 11,
+    "post_title": "Places In Africa 2020",
+    "post_sub_title": "Top 10 Best Places To Visit In Africa in 2020",
+    "post_slug": "places-in-africa-2020",
+    "short_description": "Africa is home to dozens make that hundreds  of national parks, game reserves and other safari destinations.",
+    "post_image": "https://cloudfront.safaribookings.com/lib/tanzania/tour/744x372/Katavi_National_Park_021.jpg",
+    "post_page_image": "https://www.safaribookings.com/blog/wp-content/uploads/2018/05/0.10-Best-Places-To-Visit-in-Africa-400BW.jpg",
+    "published": 1,
+    "position": 1,
+    "created_at": "2021-02-16 12:50:44",
+    "updated_at": "2021-02-16 12:50:44"
+  }, {
+    "post_id": 2,
+    "post_title": "Tanzania",
+    "post_sub_title": "Here are some of my favorite islands of Tanzania",
+    "post_slug": "tanzania",
+    "short_description": "Dreaming of an island holiday? Maybe some sun, sand and sea are exactly what you need.",
+    "post_image": "https://www.safaribookings.com/blog/wp-content/uploads/2020/10/00-top-best-islands-on-the-coast-of-tanzania-BW-600px-723x362.jpg",
+    "post_page_image": "https://www.safaribookings.com/blog/wp-content/uploads/2020/10/00-top-best-islands-on-the-coast-of-tanzania-BW-400px.jpg",
+    "published": 1,
+    "position": 2,
+    "created_at": "2020-12-30 19:50:02",
+    "updated_at": "2021-02-04 17:22:58"
+  }, {
+    "post_id": 4,
+    "post_title": "SCUBA DIVING",
+    "post_sub_title": "(i)\tDiving Mask best",
+    "post_slug": "scuba-diving",
+    "short_description": "Scuba Diving is the diving with the help of Self Contained Underwater Breathing Apparatus called SCUBA. The eq",
+    "post_image": "https://www.safaribookings.com/blog/wp-content/uploads/2020/12/00-what-you-should-bring-on-a-safari-BW-header600px-723x362.jpg",
+    "post_page_image": "https://www.safaribookings.com/blog/wp-content/uploads/2020/12/00-what-you-should-bring-on-a-safari-BW-header400px.jpg",
+    "published": 1,
+    "position": 4,
+    "created_at": "2021-02-04 17:28:49",
+    "updated_at": "2021-02-04 18:04:10"
+  }, {
+    "post_id": 5,
+    "post_title": "Dolphine",
+    "post_sub_title": "SWIM WITH DOLPHIN IN ZANZIBAR.",
+    "post_slug": "dolphine",
+    "short_description": "Apart from being the spice Island, Zanzibar also offer the tour such as to swim with dolphins in the wild. You",
+    "post_image": "https://www.safaribookings.com/blog/wp-content/uploads/2020/10/00-top-best-islands-on-the-coast-of-tanzania-BW-600px-723x362.jpg",
+    "post_page_image": "https://www.safaribookings.com/blog/wp-content/uploads/2020/10/00-top-best-islands-on-the-coast-of-tanzania-BW-400px.jpg",
+    "published": 1,
+    "position": 5,
+    "created_at": "2021-02-04 17:30:33",
+    "updated_at": "2021-02-04 18:04:44"
+  }, {
+    "post_id": 6,
+    "post_title": "Spice",
+    "post_sub_title": "3. SPICE ISLAND / SPICE TOUR.",
+    "post_slug": "spice",
+    "short_description": "Zanzibar is such a small island  but it one among the best spice producers in the world.spices such as clove,",
+    "post_image": "https://www.safaribookings.com/blog/wp-content/uploads/2020/12/00-what-you-should-bring-on-a-safari-BW-header600px-723x362.jpg",
+    "post_page_image": "https://www.safaribookings.com/blog/wp-content/uploads/2020/12/00-what-you-should-bring-on-a-safari-BW-header400px.jpg",
+    "published": 1,
+    "position": 6,
+    "created_at": "2021-02-04 17:31:55",
+    "updated_at": "2021-02-04 18:05:21"
+  }, {
+    "post_id": 7,
+    "post_title": "Dhow",
+    "post_sub_title": "DHOW SUNSET SAILING IN ZANZIBAR.",
+    "post_slug": "dhow",
+    "short_description": "All these starts at stone town and normaly is around 9am if not 10am according to your flexibility. Your tour",
+    "post_image": "https://www.safaribookings.com/blog/wp-content/uploads/2020/10/00-top-best-islands-on-the-coast-of-tanzania-BW-600px-723x362.jpg",
+    "post_page_image": "https://www.safaribookings.com/blog/wp-content/uploads/2020/10/00-top-best-islands-on-the-coast-of-tanzania-BW-400px.jpg",
+    "published": 1,
+    "position": 7,
+    "created_at": "2021-02-04 17:34:03",
+    "updated_at": "2021-02-04 18:06:03"
+  }, {
+    "post_id": 8,
+    "post_title": "STONE TOWN.",
+    "post_sub_title": "(i)\tForodhani garden food market.",
+    "post_slug": "stone-town.",
+    "short_description": "It’s the old part of Zanzibar city. It’s found in Western Coast of Unguja. It was once the capital area where",
+    "post_image": "https://www.safaribookings.com/blog/wp-content/uploads/2020/12/00-what-you-should-bring-on-a-safari-BW-header600px-723x362.jpg",
+    "post_page_image": "https://www.safaribookings.com/blog/wp-content/uploads/2020/12/00-what-you-should-bring-on-a-safari-BW-header400px.jpg",
+    "published": 1,
+    "position": 8,
+    "created_at": "2021-02-04 17:35:20",
+    "updated_at": "2021-02-04 18:06:36"
+  }, {
+    "post_id": 10,
+    "post_title": "Materuni Watertfalls",
+    "post_sub_title": "be st tour ever in moshi",
+    "post_slug": "materuni-watertfalls",
+    "short_description": "https://operators.safari-trek-beach.com/images/blog/3%20Days%20Join%20Group%20Tour%20Tanzania.jpg",
+    "post_image": "https://www.safaribookings.com/blog/wp-content/uploads/2020/10/00-top-best-islands-on-the-coast-of-tanzania-BW-600px-723x362.jpg",
+    "post_page_image": "https://www.safaribookings.com/blog/wp-content/uploads/2020/10/00-top-best-islands-on-the-coast-of-tanzania-BW-400px.jpg",
+    "published": 1,
+    "position": 9,
+    "created_at": "2021-02-04 17:44:59",
+    "updated_at": "2021-02-04 18:13:48"
+  }]
 });
 
 /***/ }),
@@ -1835,16 +2158,27 @@ var render = function() {
       _c(
         "div",
         {
+          directives: [
+            {
+              name: "lazy",
+              rawName: "v-lazy:background-image",
+              value: _vm.blog.post_image,
+              expression: "blog.post_image",
+              arg: "background-image"
+            }
+          ],
           staticClass: "bg-image hover-overlay ripple",
-          style: {
-            "background-image": "url(" + _vm.blog.post_image + ")"
-          },
           attrs: {
             "data-mdb-ripple-color": "light",
             title: _vm.blog.post_title
           }
         },
-        [_vm._m(0)]
+        [
+          _c("div", {
+            staticClass: "mask",
+            staticStyle: { "background-color": "rgba(251, 251, 251, 0.15)" }
+          })
+        ]
       ),
       _vm._v(" "),
       _c("div", { staticClass: "card-body" }, [
@@ -1868,18 +2202,12 @@ var render = function() {
           [_vm._v("\n      " + _vm._s(_vm.blog.short_description) + "\n    ")]
         ),
         _vm._v(" "),
-        _vm._m(1)
+        _vm._m(0)
       ])
     ]
   )
 }
 var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("a", [_c("div", { staticClass: "mask" })])
-  },
   function() {
     var _vm = this
     var _h = _vm.$createElement
@@ -1986,14 +2314,23 @@ var render = function() {
       _c(
         "div",
         {
+          directives: [
+            {
+              name: "lazy",
+              rawName: "v-lazy:background-image",
+              value: _vm.tourData.image_url,
+              expression: "tourData.image_url",
+              arg: "background-image"
+            }
+          ],
           staticClass: "bg-image hover-overlay ripple",
-          style: {
-            "background-image": "url(" + _vm.tourData.image_url + ")"
-          },
           attrs: { "data-mdb-ripple-color": "light" }
         },
         [
-          _vm._m(0),
+          _c("div", {
+            staticClass: "mask",
+            staticStyle: { "background-color": "rgba(251, 251, 251, 0.15)" }
+          }),
           _vm._v(" "),
           _c("div", { staticClass: "tour_title" }, [
             _vm._v(
@@ -2006,14 +2343,21 @@ var render = function() {
           ]),
           _vm._v(" "),
           _c("img", {
+            directives: [
+              {
+                name: "lazy",
+                rawName: "v-lazy",
+                value: _vm.tourData.operator_logo,
+                expression: "tourData.operator_logo"
+              }
+            ],
             staticClass: "position-absolute",
             staticStyle: {
               width: "70px",
               height: "auto",
               top: "0px",
               left: "30px"
-            },
-            attrs: { src: _vm.tourData.operator_logo }
+            }
           })
         ]
       ),
@@ -2034,21 +2378,42 @@ var render = function() {
             ? _c("div", { staticClass: "tag-image" }, [
                 _vm.tourData.tag == "review"
                   ? _c("img", {
+                      directives: [
+                        {
+                          name: "lazy",
+                          rawName: "v-lazy",
+                          value: "/images/best-review.png",
+                          expression: "'/images/best-review.png'"
+                        }
+                      ],
                       staticStyle: {
                         "margin-top": "-3px",
                         width: "60px",
                         height: "auto"
-                      },
-                      attrs: { src: "/images/best-review.png" }
+                      }
                     })
                   : _vm.tourData.tag == "seller"
                   ? _c("img", {
-                      staticStyle: { width: "80px", height: "auto" },
-                      attrs: { src: "/images/bestseller.png" }
+                      directives: [
+                        {
+                          name: "lazy",
+                          rawName: "v-lazy",
+                          value: "/images/bestseller.png",
+                          expression: "'/images/bestseller.png'"
+                        }
+                      ],
+                      staticStyle: { width: "80px", height: "auto" }
                     })
                   : _c("img", {
-                      staticStyle: { width: "100px", height: "auto" },
-                      attrs: { src: "/images/toprated2.png" }
+                      directives: [
+                        {
+                          name: "lazy",
+                          rawName: "v-lazy",
+                          value: "/images/toprated2.png",
+                          expression: "'/images/toprated2.png'"
+                        }
+                      ],
+                      staticStyle: { width: "100px", height: "auto" }
                     })
               ])
             : _vm._e(),
@@ -2056,13 +2421,13 @@ var render = function() {
           _c("p", { staticClass: "card-text mb-1" }, [
             _c("strong", [_vm._v(" Accommodation: ")]),
             _vm._v(" "),
-            _vm.tourData.no_of_day == 2
+            _vm.tourData.no_of_night == 1
               ? _c("span", [
-                  _vm._v(_vm._s(_vm.tourData.no_of_day - 1) + " Night")
+                  _vm._v(_vm._s(_vm.tourData.no_of_night) + " Night")
                 ])
-              : _vm.tourData.no_of_day > 2
+              : _vm.tourData.no_of_night > 1
               ? _c("span", [
-                  _vm._v(_vm._s(_vm.tourData.no_of_day - 1) + " Nights")
+                  _vm._v(_vm._s(_vm.tourData.no_of_night) + " Nights")
                 ])
               : _c("span", [_vm._v("Not Included")])
           ]),
@@ -2156,19 +2521,7 @@ var render = function() {
     ]
   )
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", [
-      _c("div", {
-        staticClass: "mask",
-        staticStyle: { "background-color": "rgba(251, 251, 251, 0.15)" }
-      })
-    ])
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 
 
@@ -2673,7 +3026,7 @@ var render = function() {
           : _c(
               "div",
               { staticClass: "row gx-0" },
-              _vm._l(_vm.popularTours, function(item, index) {
+              _vm._l(_vm.fake_popular, function(item, index) {
                 return _c(
                   "div",
                   { key: index, staticClass: "col-lg-4 col-md-6 col-xs-12" },
@@ -2688,11 +3041,22 @@ var render = function() {
       ]
     ),
     _vm._v(" "),
-    _c("section", { staticClass: "why-us" }, [
+    _c("section", [
       _c("div", { staticClass: "text-center text-light" }, [
         _c(
           "div",
-          { staticClass: "pt-5 why-us position-relative" },
+          {
+            directives: [
+              {
+                name: "lazy",
+                rawName: "v-lazy:background-image",
+                value: "./images/why_us.jpg",
+                expression: "'./images/why_us.jpg'",
+                arg: "background-image"
+              }
+            ],
+            staticClass: "pt-5 why-us position-relative"
+          },
           [
             _vm._m(4),
             _vm._v(" "),
@@ -2719,7 +3083,16 @@ var render = function() {
               },
               [
                 _c("slide", [
-                  _c("img", { attrs: { src: "./images/why_pool.png" } }),
+                  _c("img", {
+                    directives: [
+                      {
+                        name: "lazy",
+                        rawName: "v-lazy",
+                        value: "./images/why_pool.png",
+                        expression: "'./images/why_pool.png'"
+                      }
+                    ]
+                  }),
                   _vm._v(" "),
                   _c("p", [
                     _vm._v("We set "),
@@ -2729,7 +3102,16 @@ var render = function() {
                 ]),
                 _vm._v(" "),
                 _c("slide", [
-                  _c("img", { attrs: { src: "./images/why_service.png" } }),
+                  _c("img", {
+                    directives: [
+                      {
+                        name: "lazy",
+                        rawName: "v-lazy",
+                        value: "./images/why_service.png",
+                        expression: "'./images/why_service.png'"
+                      }
+                    ]
+                  }),
                   _vm._v(" "),
                   _c("p", [
                     _vm._v("Unbiased Reviews "),
@@ -2739,7 +3121,16 @@ var render = function() {
                 ]),
                 _vm._v(" "),
                 _c("slide", [
-                  _c("img", { attrs: { src: "./images/why_dollar.png" } }),
+                  _c("img", {
+                    directives: [
+                      {
+                        name: "lazy",
+                        rawName: "v-lazy",
+                        value: "./images/why_dollar.png",
+                        expression: "'./images/why_dollar.png'"
+                      }
+                    ]
+                  }),
                   _vm._v(" "),
                   _c("p", [
                     _vm._v("Connecting with "),
@@ -2749,7 +3140,16 @@ var render = function() {
                 ]),
                 _vm._v(" "),
                 _c("slide", [
-                  _c("img", { attrs: { src: "./images/why_service.png" } }),
+                  _c("img", {
+                    directives: [
+                      {
+                        name: "lazy",
+                        rawName: "v-lazy",
+                        value: "./images/why_service.png",
+                        expression: "'./images/why_service.png'"
+                      }
+                    ]
+                  }),
                   _vm._v(" "),
                   _c("p", [
                     _vm._v("Comparing quotes "),
@@ -2759,7 +3159,16 @@ var render = function() {
                 ]),
                 _vm._v(" "),
                 _c("slide", [
-                  _c("img", { attrs: { src: "./images/why_pool.png" } }),
+                  _c("img", {
+                    directives: [
+                      {
+                        name: "lazy",
+                        rawName: "v-lazy",
+                        value: "./images/why_pool.png",
+                        expression: "'./images/why_pool.png'"
+                      }
+                    ]
+                  }),
                   _vm._v(" "),
                   _c("p", [
                     _vm._v("\n              Advise clients on questions "),
@@ -2771,7 +3180,16 @@ var render = function() {
                 ]),
                 _vm._v(" "),
                 _c("slide", [
-                  _c("img", { attrs: { src: "./images/why_service.png" } }),
+                  _c("img", {
+                    directives: [
+                      {
+                        name: "lazy",
+                        rawName: "v-lazy",
+                        value: "./images/why_service.png",
+                        expression: "'./images/why_service.png'"
+                      }
+                    ]
+                  }),
                   _vm._v(" "),
                   _c("p", [
                     _vm._v("\n              We ensure clients get "),
@@ -2783,7 +3201,16 @@ var render = function() {
                 ]),
                 _vm._v(" "),
                 _c("slide", [
-                  _c("img", { attrs: { src: "./images/why_pool.png" } }),
+                  _c("img", {
+                    directives: [
+                      {
+                        name: "lazy",
+                        rawName: "v-lazy",
+                        value: "./images/why_pool.png",
+                        expression: "'./images/why_pool.png'"
+                      }
+                    ]
+                  }),
                   _vm._v(" "),
                   _c("p", [
                     _vm._v(
@@ -2801,7 +3228,16 @@ var render = function() {
                 ]),
                 _vm._v(" "),
                 _c("slide", [
-                  _c("img", { attrs: { src: "./images/why_africa.png" } }),
+                  _c("img", {
+                    directives: [
+                      {
+                        name: "lazy",
+                        rawName: "v-lazy",
+                        value: "./images/why_africa.png",
+                        expression: "'./images/why_africa.png'"
+                      }
+                    ]
+                  }),
                   _vm._v(" "),
                   _c("p", [
                     _vm._v("\n              We offer packages "),
@@ -2841,7 +3277,7 @@ var render = function() {
         _c(
           "div",
           { staticClass: "row gx-0" },
-          _vm._l(_vm.topDestinations, function(item) {
+          _vm._l(_vm.fake_destination, function(item) {
             return _c(
               "div",
               {
@@ -2858,14 +3294,20 @@ var render = function() {
                   _c(
                     "div",
                     {
+                      directives: [
+                        {
+                          name: "lazy",
+                          rawName: "v-lazy:background-image",
+                          value: item.post_image,
+                          expression: "item.post_image",
+                          arg: "background-image"
+                        }
+                      ],
                       staticClass: "bg-image hover-overlay ripple",
-                      style: {
-                        "background-image": "url(" + item.post_image + ")"
-                      },
                       attrs: { "data-mdb-ripple-color": "light" }
                     },
                     [
-                      _vm._m(6, true),
+                      _c("div", { staticClass: "mask" }),
                       _vm._v(" "),
                       _c("div", { staticClass: "overlay-text" }, [
                         _vm._v(
@@ -2883,59 +3325,98 @@ var render = function() {
           0
         ),
         _vm._v(" "),
-        _vm._m(7)
+        _vm._m(6)
       ]
     ),
     _vm._v(" "),
-    _c("section", { staticClass: "reviews_testimonial" }, [
-      _c("div", { staticClass: "text-center text-light" }, [
-        _c(
-          "div",
-          { staticClass: "pt-5 review-testimonial-section" },
-          [
-            _c(
-              "carousel",
-              {
-                attrs: {
-                  "per-page": 1,
-                  speed: 1000,
-                  loop: true,
-                  autoplayTimeout: 3000,
-                  autoplayDirection: "backward",
-                  paginationEnabled: false,
-                  autoplay: true
-                }
-              },
-              [
-                _c("slide", [
-                  _c("div", { staticClass: "wrap" }, [
-                    _c("header", { staticClass: "section-header" }, [
-                      _c("h3", { staticClass: "text-light" }, [
-                        _vm._v("REVIEWS & TESTIMONIES")
+    _c(
+      "section",
+      {
+        directives: [
+          {
+            name: "lazy",
+            rawName: "v-lazy:background-image",
+            value: "./images/reviews_testimonial.jpg",
+            expression: "'./images/reviews_testimonial.jpg'",
+            arg: "background-image"
+          }
+        ],
+        staticClass: "reviews_testimonial"
+      },
+      [
+        _c("div", { staticClass: "text-center text-light" }, [
+          _c(
+            "div",
+            { staticClass: "pt-5 review-testimonial-section" },
+            [
+              _c(
+                "carousel",
+                {
+                  attrs: {
+                    "per-page": 1,
+                    speed: 1000,
+                    loop: true,
+                    autoplayTimeout: 3000,
+                    autoplayDirection: "backward",
+                    paginationEnabled: false,
+                    autoplay: true
+                  }
+                },
+                [
+                  _c("slide", [
+                    _c("div", { staticClass: "wrap" }, [
+                      _c("header", { staticClass: "section-header" }, [
+                        _c("h3", { staticClass: "text-light" }, [
+                          _vm._v("REVIEWS & TESTIMONIES")
+                        ])
+                      ]),
+                      _vm._v(" "),
+                      _c("p", [
+                        _vm._v(
+                          "\n                We booked a safari with Travel Africa Safari Agency through Safari Trek Beach platform after comparing many \n                offers from tour operators in the platform. Through Safari trek beach we got a reliable operator very easily \n                and guidance on the questions to ask tour operators so we can get the best deals. I recommend the use of this \n                platform in your search for a good tour operator and best prices.\n              "
+                        )
                       ])
-                    ]),
-                    _vm._v(" "),
-                    _c("p", [
-                      _vm._v(
-                        "\n                We booked a safari with Travel Africa Safari Agency through Safari Trek Beach platform after comparing many \n                offers from tour operators in the platform. Through Safari trek beach we got a reliable operator very easily \n                and guidance on the questions to ask tour operators so we can get the best deals. I recommend the use of this \n                platform in your search for a good tour operator and best prices.\n              "
-                      )
                     ])
                   ])
-                ])
-              ],
-              1
-            )
-          ],
-          1
-        )
-      ])
-    ]),
+                ],
+                1
+              )
+            ],
+            1
+          )
+        ])
+      ]
+    ),
     _vm._v(" "),
     _c("div", { staticClass: "container bg-gray", attrs: { id: "about-us" } }, [
-      _vm._m(8),
+      _c("section", [
+        _c("div", { staticClass: "container" }, [
+          _c(
+            "div",
+            { staticClass: "row gx-0 text-center align-items-center" },
+            [
+              _c("div", { staticClass: "col-md-6 px-2" }, [
+                _c("img", {
+                  directives: [
+                    {
+                      name: "lazy",
+                      rawName: "v-lazy",
+                      value: "./images/img5.jpg",
+                      expression: "'./images/img5.jpg'"
+                    }
+                  ],
+                  staticClass: "w-100"
+                })
+              ]),
+              _vm._v(" "),
+              _vm._m(7)
+            ]
+          )
+        ])
+      ]),
       _vm._v(" "),
       _c("section", { staticClass: "mt-3" }, [
-        _vm._m(9),
+        _vm._m(8),
         _vm._v(" "),
         _vm.blog_loading
           ? _c(
@@ -2957,7 +3438,7 @@ var render = function() {
           : _c(
               "div",
               { staticClass: "row gx-0" },
-              _vm._l(_vm.popularBlogs, function(blog, index) {
+              _vm._l(_vm.fake_blog, function(blog, index) {
                 return _c(
                   "div",
                   { key: index, staticClass: "col-lg-4 col-md-6 col-xs-12" },
@@ -2968,7 +3449,7 @@ var render = function() {
               0
             ),
         _vm._v(" "),
-        _vm._m(10)
+        _vm._m(9)
       ])
     ])
   ])
@@ -3032,14 +3513,6 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("a", { attrs: { href: "" } }, [
-      _c("div", { staticClass: "mask" })
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
     return _c("div", { staticClass: "text-center mt-3" }, [
       _c(
         "a",
@@ -3058,42 +3531,29 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("section", [
-      _c("div", { staticClass: "container" }, [
-        _c("div", { staticClass: "row gx-0 text-center align-items-center" }, [
-          _c("div", { staticClass: "col-md-6" }, [
-            _c("div", {
-              staticClass: "bg-image shadow-lg",
-              staticStyle: { "background-image": "url('./images/img5.jpg')" }
-            })
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "col-md-6 px-3 mt-5 mt-md-0" }, [
-            _c("h2", {}, [_vm._v("About Us")]),
-            _vm._v(" "),
-            _c("div", [
-              _c("p", [
-                _vm._v(
-                  "\n                Safari Trek Beach is the biggest market place for Tanzania\n                tour packages. We help travellers find the best Tour Operators\n                with the tour packages of their choice, to suit their budget\n                and standard. We are the experts when it involves Tours and\n                Holidays in Tanzania. Safari Trek Beach enables you to compare\n                different tour operators on different categories such as\n                Luxury, Lodge, Camping safaris or Mountain Climbing tours as\n                well as Beach Holidays.\n              "
-                )
-              ])
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "mt-3" }, [
-              _c(
-                "a",
-                {
-                  staticClass: "btn btn-danger",
-                  attrs: { href: "/about", target: "_blank" }
-                },
-                [
-                  _vm._v("\n                Read More "),
-                  _c("span", { staticClass: "fa fa-angle-right ms-2" })
-                ]
-              )
-            ])
-          ])
+    return _c("div", { staticClass: "col-md-6 px-3 mt-5 mt-md-0" }, [
+      _c("h2", {}, [_vm._v("About Us")]),
+      _vm._v(" "),
+      _c("div", [
+        _c("p", [
+          _vm._v(
+            "\n                Safari Trek Beach is the biggest market place for Tanzania\n                tour packages. We help travellers find the best Tour Operators\n                with the tour packages of their choice, to suit their budget\n                and standard. We are the experts when it involves Tours and\n                Holidays in Tanzania. Safari Trek Beach enables you to compare\n                different tour operators on different categories such as\n                Luxury, Lodge, Camping safaris or Mountain Climbing tours as\n                well as Beach Holidays.\n              "
+          )
         ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "mt-3" }, [
+        _c(
+          "a",
+          {
+            staticClass: "btn btn-danger",
+            attrs: { href: "/about", target: "_blank" }
+          },
+          [
+            _vm._v("\n                Read More "),
+            _c("span", { staticClass: "fa fa-angle-right ms-2" })
+          ]
+        )
       ])
     ])
   },

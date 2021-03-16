@@ -18847,9 +18847,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
  // import { mapState, mapGetters, mapMutations } from "vuex";
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
@@ -19621,6 +19618,12 @@ vue__WEBPACK_IMPORTED_MODULE_5__.default.use(_syncfusion_ej2_vue_buttons__WEBPAC
     where_to_list_state: "tourController/tourActivity"
   })),
   watch: {
+    // $route (to, from){
+    //   console.log('router change')
+    //   // this.preProcess();
+    //   // console.log('to', to)
+    //   // console.log('from', from)
+    // },
     where_to_search: function where_to_search() {
       var _this = this;
 
@@ -19630,6 +19633,14 @@ vue__WEBPACK_IMPORTED_MODULE_5__.default.use(_syncfusion_ej2_vue_buttons__WEBPAC
             return item.title.toLowerCase().includes(v);
           });
         });
+        var start_filtered = this.search_result.filter(function (p) {
+          return p.title.toLowerCase().startsWith(_this.where_to_search.toLowerCase());
+        });
+        var not_start_filtered = this.search_result.filter(function (p) {
+          return !p.title.toLowerCase().startsWith(_this.where_to_search.toLowerCase());
+        });
+        Array.prototype.push.apply(start_filtered, not_start_filtered);
+        this.search_result = start_filtered;
       } else {
         this.search_result = this.where_to_list;
       }
@@ -19653,241 +19664,13 @@ vue__WEBPACK_IMPORTED_MODULE_5__.default.use(_syncfusion_ej2_vue_buttons__WEBPAC
     var _this2 = this;
 
     return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee() {
-      var temp_query, destination_url, single_url, destination_item, single, _single, temp_destination, _single2, _temp_destination;
-
       return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee$(_context) {
         while (1) {
           switch (_context.prev = _context.next) {
             case 0:
-              _this2.where_to_search = _this2.where_to_search_state;
-              _this2.traveler_number = _this2.traveler_number_state;
-              _this2.start_date = _this2.start_date_state;
-              _this2.adults_number = _this2.adults_number_state;
-              _this2.children_number = _this2.children_number_state;
+              _this2.preProcess();
 
-              if (_this2.where_to_search != "") {
-                _this2.where_to_search_option = _this2.where_to_search;
-              }
-
-              _this2.$store.commit("tourController/initFilterData");
-
-              _context.next = 9;
-              return _this2.getTourFocus();
-
-            case 9:
-              _context.next = 11;
-              return _this2.getTourLevel();
-
-            case 11:
-              _context.next = 13;
-              return _this2.getTourActivity();
-
-            case 13:
-              _this2.traveler_number_calc(); // this is for conversion from url query to normal text for api request
-
-
-              temp_query = _this2.router_query; // console.log('temp query', temp_query )
-              // let possible_single = [];
-              // if ( temp_query['group'] == undefined ) possible_single.push('group')
-              // if ( temp_query['comfort'] == undefined ) possible_single.push('comfort')
-              // if ( temp_query['focus'] == undefined ) possible_single.push('focus')
-              // console.log('possible', possible_single)
-
-              destination_url = _this2.destination_id;
-              single_url = _this2.single_id;
-
-              if (!(destination_url !== undefined && destination_url !== "")) {
-                _context.next = 78;
-                break;
-              }
-
-              //if first param exists, i.e. if one of params exists at least
-              // Destination search if first string is the element of the pre-determined activity list
-              destination_item = _this2.where_to_list.find(function (el) {
-                return el.input_id == destination_url;
-              });
-
-              if (!(destination_item != undefined)) {
-                _context.next = 38;
-                break;
-              }
-
-              // if found, to query for api request, append this element
-              temp_query = Object.assign({
-                destination: destination_item.title
-              }, temp_query);
-
-              if (!(single_url != "")) {
-                _context.next = 36;
-                break;
-              }
-
-              //if the second single param is not empty, check what it is and append
-              single = [];
-              single = _this2.checkSingleParam(single_url);
-              _context.t0 = single[0];
-              _context.next = _context.t0 === 'group' ? 27 : _context.t0 === 'comfort' ? 29 : _context.t0 === 'focus' ? 31 : _context.t0 === 'day' ? 33 : 35;
-              break;
-
-            case 27:
-              temp_query = Object.assign({
-                group: single[1]
-              }, temp_query);
-              return _context.abrupt("break", 36);
-
-            case 29:
-              temp_query = Object.assign({
-                comfort: single[1]
-              }, temp_query);
-              return _context.abrupt("break", 36);
-
-            case 31:
-              temp_query = Object.assign({
-                focus: single[1]
-              }, temp_query);
-              return _context.abrupt("break", 36);
-
-            case 33:
-              temp_query = Object.assign({
-                min_day: single[1]
-              }, {
-                max_day: single[1]
-              }, temp_query);
-              return _context.abrupt("break", 36);
-
-            case 35:
-              return _context.abrupt("break", 36);
-
-            case 36:
-              _context.next = 76;
-              break;
-
-            case 38:
-              if (!(single_url != '')) {
-                _context.next = 57;
-                break;
-              }
-
-              _single = _this2.checkSingleParam(single_url);
-              _context.t1 = _single[0];
-              _context.next = _context.t1 === 'group' ? 43 : _context.t1 === 'comfort' ? 45 : _context.t1 === 'focus' ? 47 : _context.t1 === 'day' ? 49 : 51;
-              break;
-
-            case 43:
-              temp_query = Object.assign({
-                group: _single[1]
-              }, temp_query);
-              return _context.abrupt("break", 52);
-
-            case 45:
-              temp_query = Object.assign({
-                comfort: _single[1]
-              }, temp_query);
-              return _context.abrupt("break", 52);
-
-            case 47:
-              temp_query = Object.assign({
-                focus: _single[1]
-              }, temp_query);
-              return _context.abrupt("break", 52);
-
-            case 49:
-              temp_query = Object.assign({
-                min_day: _single[1]
-              }, {
-                max_day: _single[1]
-              }, temp_query);
-              return _context.abrupt("break", 52);
-
-            case 51:
-              return _context.abrupt("break", 52);
-
-            case 52:
-              // append to temp query
-              temp_destination = _this2.destination_id.split("_").join(" ");
-              temp_destination = _this2.destination_id.split("~").join("&");
-              temp_query = Object.assign({
-                destination: temp_destination
-              }, temp_query);
-              _context.next = 76;
-              break;
-
-            case 57:
-              _single2 = _this2.checkSingleParam(destination_url);
-
-              if (!(_single2 != null)) {
-                _context.next = 73;
-                break;
-              }
-
-              _context.t2 = _single2[0];
-              _context.next = _context.t2 === 'group' ? 62 : _context.t2 === 'comfort' ? 64 : _context.t2 === 'focus' ? 66 : _context.t2 === 'day' ? 68 : 70;
-              break;
-
-            case 62:
-              temp_query = Object.assign({
-                group: _single2[1]
-              }, temp_query);
-              return _context.abrupt("break", 71);
-
-            case 64:
-              temp_query = Object.assign({
-                comfort: _single2[1]
-              }, temp_query);
-              return _context.abrupt("break", 71);
-
-            case 66:
-              temp_query = Object.assign({
-                focus: _single2[1]
-              }, temp_query);
-              return _context.abrupt("break", 71);
-
-            case 68:
-              temp_query = Object.assign({
-                min_day: _single2[1]
-              }, {
-                max_day: _single2[1]
-              }, temp_query);
-              return _context.abrupt("break", 71);
-
-            case 70:
-              return _context.abrupt("break", 71);
-
-            case 71:
-              _context.next = 76;
-              break;
-
-            case 73:
-              // if not single parameter, detect it as a custom typed destination
-              _temp_destination = _this2.destination_id.split("_").join(" ");
-              _temp_destination = _this2.destination_id.split("~").join("&");
-              temp_query = Object.assign({
-                destination: _temp_destination
-              }, temp_query);
-
-            case 76:
-              _context.next = 81;
-              break;
-
-            case 78:
-              // if no params in URL ...
-              _this2.where_to_search = "";
-              _this2.where_to_search_option = "";
-
-              _this2.saveFormtoStore();
-
-            case 81:
-              if (temp_query["comfort"] !== undefined) {
-                temp_query["comfort"] = temp_query["comfort"].split("_").join(" ");
-                temp_query["comfort"] = temp_query["comfort"].split("@").join("+");
-              } // console.log('temp after', temp_query)
-
-
-              _this2.$store.dispatch("tourController/setQuery", temp_query);
-
-              _this2.setCurrentCheck();
-
-            case 84:
+            case 1:
             case "end":
               return _context.stop();
           }
@@ -19896,16 +19679,270 @@ vue__WEBPACK_IMPORTED_MODULE_5__.default.use(_syncfusion_ej2_vue_buttons__WEBPAC
     }))();
   },
   methods: {
-    getTourActivity: function getTourActivity() {
+    preProcess: function preProcess() {
       var _this3 = this;
 
       return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee2() {
+        var temp_query, destination_url, single_url, destination_item, single, _single, temp_destination, _single2, _temp_destination;
+
         return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee2$(_context2) {
           while (1) {
             switch (_context2.prev = _context2.next) {
               case 0:
-                _context2.next = 2;
-                return _this3.$store.dispatch("tourController/getTourActivity").then(function () {
+                _this3.where_to_search = _this3.where_to_search_state;
+                _this3.traveler_number = _this3.traveler_number_state;
+                _this3.start_date = _this3.start_date_state;
+                _this3.adults_number = _this3.adults_number_state;
+                _this3.children_number = _this3.children_number_state;
+
+                if (_this3.where_to_search != "") {
+                  _this3.where_to_search_option = _this3.where_to_search;
+                }
+
+                _this3.$store.commit("tourController/initFilterData");
+
+                _context2.next = 9;
+                return _this3.getTourFocus();
+
+              case 9:
+                _context2.next = 11;
+                return _this3.getTourLevel();
+
+              case 11:
+                _context2.next = 13;
+                return _this3.getTourActivity();
+
+              case 13:
+                _this3.traveler_number_calc(); // this is for conversion from url query to normal text for api request
+
+
+                temp_query = _this3.router_query; // console.log('temp query', temp_query )
+                // let possible_single = [];
+                // if ( temp_query['group'] == undefined ) possible_single.push('group')
+                // if ( temp_query['comfort'] == undefined ) possible_single.push('comfort')
+                // if ( temp_query['focus'] == undefined ) possible_single.push('focus')
+                // console.log('possible', possible_single)
+
+                destination_url = _this3.destination_id;
+                single_url = _this3.single_id;
+
+                if (!(destination_url !== undefined && destination_url !== "")) {
+                  _context2.next = 78;
+                  break;
+                }
+
+                //if first param exists, i.e. if one of params exists at least
+                // Destination search if first string is the element of the pre-determined activity list
+                destination_item = _this3.where_to_list.find(function (el) {
+                  return el.input_id == destination_url;
+                });
+
+                if (!(destination_item != undefined)) {
+                  _context2.next = 38;
+                  break;
+                }
+
+                // if found, to query for api request, append this element
+                temp_query = Object.assign({
+                  destination: destination_item.title
+                }, temp_query);
+
+                if (!(single_url != "" && single_url != null)) {
+                  _context2.next = 36;
+                  break;
+                }
+
+                //if the second single param is not empty, check what it is and append
+                single = [];
+                single = _this3.checkSingleParam(single_url);
+                _context2.t0 = single[0];
+                _context2.next = _context2.t0 === 'group' ? 27 : _context2.t0 === 'comfort' ? 29 : _context2.t0 === 'focus' ? 31 : _context2.t0 === 'day' ? 33 : 35;
+                break;
+
+              case 27:
+                temp_query = Object.assign({
+                  group: single[1]
+                }, temp_query);
+                return _context2.abrupt("break", 36);
+
+              case 29:
+                temp_query = Object.assign({
+                  comfort: single[1]
+                }, temp_query);
+                return _context2.abrupt("break", 36);
+
+              case 31:
+                temp_query = Object.assign({
+                  focus: single[1]
+                }, temp_query);
+                return _context2.abrupt("break", 36);
+
+              case 33:
+                temp_query = Object.assign({
+                  min_day: single[1]
+                }, {
+                  max_day: single[1]
+                }, temp_query);
+                return _context2.abrupt("break", 36);
+
+              case 35:
+                return _context2.abrupt("break", 36);
+
+              case 36:
+                _context2.next = 76;
+                break;
+
+              case 38:
+                if (!(single_url != '' && single_url != null)) {
+                  _context2.next = 57;
+                  break;
+                }
+
+                _single = _this3.checkSingleParam(single_url);
+                _context2.t1 = _single[0];
+                _context2.next = _context2.t1 === 'group' ? 43 : _context2.t1 === 'comfort' ? 45 : _context2.t1 === 'focus' ? 47 : _context2.t1 === 'day' ? 49 : 51;
+                break;
+
+              case 43:
+                temp_query = Object.assign({
+                  group: _single[1]
+                }, temp_query);
+                return _context2.abrupt("break", 52);
+
+              case 45:
+                temp_query = Object.assign({
+                  comfort: _single[1]
+                }, temp_query);
+                return _context2.abrupt("break", 52);
+
+              case 47:
+                temp_query = Object.assign({
+                  focus: _single[1]
+                }, temp_query);
+                return _context2.abrupt("break", 52);
+
+              case 49:
+                temp_query = Object.assign({
+                  min_day: _single[1]
+                }, {
+                  max_day: _single[1]
+                }, temp_query);
+                return _context2.abrupt("break", 52);
+
+              case 51:
+                return _context2.abrupt("break", 52);
+
+              case 52:
+                // append to temp query
+                temp_destination = _this3.destination_id.split("_").join(" ");
+                temp_destination = _this3.destination_id.split("~").join("&");
+                temp_query = Object.assign({
+                  destination: temp_destination
+                }, temp_query);
+                _context2.next = 76;
+                break;
+
+              case 57:
+                _single2 = _this3.checkSingleParam(destination_url);
+
+                if (!(_single2 != null && _single2.length != 0)) {
+                  _context2.next = 73;
+                  break;
+                }
+
+                _context2.t2 = _single2[0];
+                _context2.next = _context2.t2 === 'group' ? 62 : _context2.t2 === 'comfort' ? 64 : _context2.t2 === 'focus' ? 66 : _context2.t2 === 'day' ? 68 : 70;
+                break;
+
+              case 62:
+                temp_query = Object.assign({
+                  group: _single2[1]
+                }, temp_query);
+                return _context2.abrupt("break", 71);
+
+              case 64:
+                temp_query = Object.assign({
+                  comfort: _single2[1]
+                }, temp_query);
+                return _context2.abrupt("break", 71);
+
+              case 66:
+                temp_query = Object.assign({
+                  focus: _single2[1]
+                }, temp_query);
+                return _context2.abrupt("break", 71);
+
+              case 68:
+                temp_query = Object.assign({
+                  min_day: _single2[1]
+                }, {
+                  max_day: _single2[1]
+                }, temp_query);
+                return _context2.abrupt("break", 71);
+
+              case 70:
+                return _context2.abrupt("break", 71);
+
+              case 71:
+                _context2.next = 76;
+                break;
+
+              case 73:
+                // if not single parameter, detect it as a custom typed destination
+                _temp_destination = _this3.destination_id.split("_").join(" ");
+                _temp_destination = _this3.destination_id.split("~").join("&");
+                temp_query = Object.assign({
+                  destination: _temp_destination
+                }, temp_query);
+
+              case 76:
+                _context2.next = 81;
+                break;
+
+              case 78:
+                // if no params in URL ...
+                _this3.where_to_search = "";
+                _this3.where_to_search_option = "";
+
+                _this3.saveFormtoStore();
+
+              case 81:
+                if (temp_query["comfort"] !== undefined) {
+                  temp_query["comfort"] = temp_query["comfort"].split("_").join(" ");
+                  temp_query["comfort"] = temp_query["comfort"].split("@").join("+");
+                } // console.log('temp after', temp_query)
+
+
+                _this3.$store.dispatch("tourController/setQuery", temp_query);
+
+                _this3.setCurrentCheck(); // console.log('query requested----------')
+                // await this.$store
+                //   .dispatch("tourController/getTourFilter", temp_query)
+                //   .then(() => {
+                //     this.current_ourtour_page = parseInt(this.filterTours.page);
+                //     document.title = this.search_name + " ( " + this.filterTours.total_tours + " Tours )";
+                //   })
+                //   .catch(() => {});
+
+
+              case 84:
+              case "end":
+                return _context2.stop();
+            }
+          }
+        }, _callee2);
+      }))();
+    },
+    getTourActivity: function getTourActivity() {
+      var _this4 = this;
+
+      return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee3() {
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee3$(_context3) {
+          while (1) {
+            switch (_context3.prev = _context3.next) {
+              case 0:
+                _context3.next = 2;
+                return _this4.$store.dispatch("tourController/getTourActivity").then(function () {
                   var first_activity = [{
                     "title": "Serengeti National Park",
                     "input_id": "serengeti-national-park"
@@ -19925,7 +19962,7 @@ vue__WEBPACK_IMPORTED_MODULE_5__.default.use(_syncfusion_ej2_vue_buttons__WEBPAC
                     "title": "Ruaha National Park",
                     "input_id": "ruaha-national-park"
                   }];
-                  var ar = _this3.where_to_list_state;
+                  var ar = _this4.where_to_list_state;
 
                   for (var i = 0; i < ar.length; i++) {
                     if (ar[i].title == "Serengeti National Park" || ar[i].title == "Mount Kilimanjaro" || ar[i].title == "Ngorongoro Crater" || ar[i].title == "Tarangire National Park" || ar[i].title == "Zanzibar" || ar[i].title == "Ruaha National Park") {
@@ -19933,33 +19970,8 @@ vue__WEBPACK_IMPORTED_MODULE_5__.default.use(_syncfusion_ej2_vue_buttons__WEBPAC
                     }
                   }
 
-                  _this3.where_to_list = first_activity.concat(ar);
-                  _this3.search_result = _this3.where_to_list;
-                });
-
-              case 2:
-              case "end":
-                return _context2.stop();
-            }
-          }
-        }, _callee2);
-      }))();
-    },
-    getTourFocus: function getTourFocus() {
-      var _this4 = this;
-
-      return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee3() {
-        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee3$(_context3) {
-          while (1) {
-            switch (_context3.prev = _context3.next) {
-              case 0:
-                _context3.next = 2;
-                return _this4.$store.dispatch("tourController/getTourFocus").then(function () {
-                  _this4.specialized_check_list = _this4.tourFocus;
-
-                  for (var i = 0; i < _this4.tourFocus.length; i++) {
-                    _this4.specialized_check_list[i].checked_state = false;
-                  }
+                  _this4.where_to_list = first_activity.concat(ar);
+                  _this4.search_result = _this4.where_to_list;
                 });
 
               case 2:
@@ -19970,7 +19982,7 @@ vue__WEBPACK_IMPORTED_MODULE_5__.default.use(_syncfusion_ej2_vue_buttons__WEBPAC
         }, _callee3);
       }))();
     },
-    getTourLevel: function getTourLevel() {
+    getTourFocus: function getTourFocus() {
       var _this5 = this;
 
       return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee4() {
@@ -19979,11 +19991,11 @@ vue__WEBPACK_IMPORTED_MODULE_5__.default.use(_syncfusion_ej2_vue_buttons__WEBPAC
             switch (_context4.prev = _context4.next) {
               case 0:
                 _context4.next = 2;
-                return _this5.$store.dispatch("tourController/getTourLevel").then(function () {
-                  _this5.standard_check_list = _this5.tourLevel;
+                return _this5.$store.dispatch("tourController/getTourFocus").then(function () {
+                  _this5.specialized_check_list = _this5.tourFocus;
 
-                  for (var i = 0; i < _this5.tourLevel.length; i++) {
-                    _this5.standard_check_list[i].checked_state = false;
+                  for (var i = 0; i < _this5.tourFocus.length; i++) {
+                    _this5.specialized_check_list[i].checked_state = false;
                   }
                 });
 
@@ -19993,6 +20005,31 @@ vue__WEBPACK_IMPORTED_MODULE_5__.default.use(_syncfusion_ej2_vue_buttons__WEBPAC
             }
           }
         }, _callee4);
+      }))();
+    },
+    getTourLevel: function getTourLevel() {
+      var _this6 = this;
+
+      return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee5() {
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee5$(_context5) {
+          while (1) {
+            switch (_context5.prev = _context5.next) {
+              case 0:
+                _context5.next = 2;
+                return _this6.$store.dispatch("tourController/getTourLevel").then(function () {
+                  _this6.standard_check_list = _this6.tourLevel;
+
+                  for (var i = 0; i < _this6.tourLevel.length; i++) {
+                    _this6.standard_check_list[i].checked_state = false;
+                  }
+                });
+
+              case 2:
+              case "end":
+                return _context5.stop();
+            }
+          }
+        }, _callee5);
       }))();
     },
     setCurrentCheck: function setCurrentCheck() {
@@ -20123,7 +20160,8 @@ vue__WEBPACK_IMPORTED_MODULE_5__.default.use(_syncfusion_ej2_vue_buttons__WEBPAC
     deleteFilterOption: function deleteFilterOption(e) {
       var lastChar = e.data.text[e.data.text.length - 1];
       var check_first_string = e.data.text.substr(0, 4);
-      var check_last_string = e.data.text.substr(e.data.text.length - 4, 4);
+      var check_last_string = e.data.text.substr(e.data.text.length - 5, 5);
+      var check_last_string_4 = e.data.text.substr(e.data.text.length - 4, 4);
 
       if (lastChar == "$") {
         this.price_range = [10, 10000];
@@ -20140,7 +20178,7 @@ vue__WEBPACK_IMPORTED_MODULE_5__.default.use(_syncfusion_ej2_vue_buttons__WEBPAC
         return;
       }
 
-      if (check_last_string == "days") {
+      if (check_last_string == " days" || check_last_string_4 == " day") {
         this.day_range = [1, 30];
         this.page = 1;
         this.getFilterTours();
@@ -20338,14 +20376,14 @@ vue__WEBPACK_IMPORTED_MODULE_5__.default.use(_syncfusion_ej2_vue_buttons__WEBPAC
       return [];
     },
     getFilterTours: function getFilterTours() {
-      var _this6 = this;
+      var _this7 = this;
 
-      return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee5() {
+      return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee6() {
         var group_filter, level_filter, specialized_filter, focus_for_url, group_number, comfort_number, focus_number, day_number, i, _i6, query, url_query, key, destination_item, destination_params, single, params;
 
-        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee5$(_context5) {
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee6$(_context6) {
           while (1) {
-            switch (_context5.prev = _context5.next) {
+            switch (_context6.prev = _context6.next) {
               case 0:
                 group_filter = "";
                 level_filter = "";
@@ -20356,32 +20394,32 @@ vue__WEBPACK_IMPORTED_MODULE_5__.default.use(_syncfusion_ej2_vue_buttons__WEBPAC
                 focus_number = 0;
                 day_number = 0;
 
-                if (_this6.check_private_filter) {
+                if (_this7.check_private_filter) {
                   group_filter = "private";
                   group_number = 1;
-                } else if (_this6.check_group_filter) {
+                } else if (_this7.check_group_filter) {
                   group_filter = "group";
                   group_number = 1;
                 }
 
-                if (_this6.day_range[0] == _this6.day_range[1]) {
+                if (_this7.day_range[0] == _this7.day_range[1]) {
                   day_number = 1;
                 }
 
-                comfort_number = _this6.checked_standard_filter_options.length;
-                focus_number = _this6.checked_specialized_filter_options.length;
+                comfort_number = _this7.checked_standard_filter_options.length;
+                focus_number = _this7.checked_specialized_filter_options.length;
 
-                for (i = 0; i < _this6.checked_standard_filter_options.length; i++) {
-                  level_filter += _this6.checked_standard_filter_options[i].title + "|";
+                for (i = 0; i < _this7.checked_standard_filter_options.length; i++) {
+                  level_filter += _this7.checked_standard_filter_options[i].title + "|";
                 }
 
                 if (level_filter != "") {
                   level_filter = level_filter.substring(0, level_filter.length - 1);
                 }
 
-                for (_i6 = 0; _i6 < _this6.checked_specialized_filter_options.length; _i6++) {
-                  specialized_filter += _this6.checked_specialized_filter_options[_i6].title + "|";
-                  focus_for_url += _this6.checked_specialized_filter_options[_i6].input_id + "|";
+                for (_i6 = 0; _i6 < _this7.checked_specialized_filter_options.length; _i6++) {
+                  specialized_filter += _this7.checked_specialized_filter_options[_i6].title + "|";
+                  focus_for_url += _this7.checked_specialized_filter_options[_i6].input_id + "|";
                 }
 
                 if (specialized_filter != "") {
@@ -20394,33 +20432,33 @@ vue__WEBPACK_IMPORTED_MODULE_5__.default.use(_syncfusion_ej2_vue_buttons__WEBPAC
 
 
                 query = {
-                  destination: _this6.where_to_search,
-                  min_price: _this6.price_range[0],
-                  max_price: _this6.price_range[1],
-                  min_day: _this6.day_range[0],
-                  max_day: _this6.day_range[1],
+                  destination: _this7.where_to_search,
+                  min_price: _this7.price_range[0],
+                  max_price: _this7.price_range[1],
+                  min_day: _this7.day_range[0],
+                  max_day: _this7.day_range[1],
                   group: group_filter,
                   comfort: level_filter,
                   focus: specialized_filter,
-                  p: _this6.page
+                  p: _this7.page
                 }; //for URL query
 
                 url_query = {
-                  destination: _this6.where_to_search,
-                  min_price: _this6.price_range[0],
-                  max_price: _this6.price_range[1],
-                  min_day: _this6.day_range[0],
-                  max_day: _this6.day_range[1],
+                  destination: _this7.where_to_search,
+                  min_price: _this7.price_range[0],
+                  max_price: _this7.price_range[1],
+                  min_day: _this7.day_range[0],
+                  max_day: _this7.day_range[1],
                   group: group_filter,
                   comfort: level_filter,
                   focus: focus_for_url,
-                  p: _this6.page
+                  p: _this7.page
                 };
 
-                if (_this6.page_from_url > 1) {
-                  query.p = _this6.page_from_url;
-                  url_query.p = _this6.page_from_url;
-                  _this6.page_from_url = 0;
+                if (_this7.page_from_url > 1) {
+                  query.p = _this7.page_from_url;
+                  url_query.p = _this7.page_from_url;
+                  _this7.page_from_url = 0;
                 } // let filtered_query = query
 
 
@@ -20430,7 +20468,7 @@ vue__WEBPACK_IMPORTED_MODULE_5__.default.use(_syncfusion_ej2_vue_buttons__WEBPAC
                   }
                 }
 
-                _this6.$store.dispatch("tourController/setQuery", query); // let filtered_query = query
+                _this7.$store.dispatch("tourController/setQuery", query); // let filtered_query = query
 
 
                 for (key in url_query) {
@@ -20456,11 +20494,11 @@ vue__WEBPACK_IMPORTED_MODULE_5__.default.use(_syncfusion_ej2_vue_buttons__WEBPAC
                   delete url_query["max_day"];
                 }
 
-                _this6.search_name = "";
+                _this7.search_name = "";
 
                 if (url_query["destination"] != undefined) {
-                  _this6.search_name = url_query["destination"];
-                  destination_item = _this6.where_to_list.find(function (el) {
+                  _this7.search_name = url_query["destination"];
+                  destination_item = _this7.where_to_list.find(function (el) {
                     return el.title == url_query["destination"];
                   });
 
@@ -20491,48 +20529,49 @@ vue__WEBPACK_IMPORTED_MODULE_5__.default.use(_syncfusion_ej2_vue_buttons__WEBPAC
 
                 single = ""; //this is for single router params
 
-                _context5.t0 = true;
-                _context5.next = _context5.t0 === (focus_number == 1) ? 37 : _context5.t0 === (group_number == 1) ? 40 : _context5.t0 === (comfort_number == 1) ? 44 : _context5.t0 === (day_number == 1) ? 48 : 53;
+                _context6.t0 = true;
+                _context6.next = _context6.t0 === (focus_number == 1) ? 37 : _context6.t0 === (group_number == 1) ? 40 : _context6.t0 === (comfort_number == 1) ? 44 : _context6.t0 === (day_number == 1) ? 48 : 53;
                 break;
 
               case 37:
                 single = url_query["focus"]; // this.search_name = query["focus"] + " " + this.search_name;
 
                 delete url_query["focus"];
-                return _context5.abrupt("break", 54);
+                return _context6.abrupt("break", 54);
 
               case 40:
                 single = url_query["group"];
-                _this6.search_name = query["group"] + " " + _this6.search_name;
+                _this7.search_name = query["group"] + " " + _this7.search_name;
                 delete url_query["group"];
-                return _context5.abrupt("break", 54);
+                return _context6.abrupt("break", 54);
 
               case 44:
                 single = url_query["comfort"];
-                _this6.search_name = query["comfort"] + " " + _this6.search_name;
+                _this7.search_name = query["comfort"] + " " + _this7.search_name;
                 delete url_query["comfort"];
-                return _context5.abrupt("break", 54);
+                return _context6.abrupt("break", 54);
 
               case 48:
-                single = url_query["min_day"] + '-Day';
-                _this6.search_name = single + " " + _this6.search_name;
+                if (url_query["min_day"] != undefined) single = url_query["min_day"] + '-Day';else if (url_query["max_day"] != undefined) single = url_query["max_day"] + '-Day'; // console.log('tag', single)
+
+                _this7.search_name = single + " " + _this7.search_name;
                 if (url_query["min_day"] != undefined) delete url_query["min_day"];
                 if (url_query["max_day"] != undefined) delete url_query["max_day"];
-                return _context5.abrupt("break", 54);
+                return _context6.abrupt("break", 54);
 
               case 53:
-                return _context5.abrupt("break", 54);
+                return _context6.abrupt("break", 54);
 
               case 54:
-                if (_this6.search_name != '') {
-                  _this6.search_name = _this6.search_name + " Tours";
+                if (_this7.search_name != '') {
+                  _this7.search_name = _this7.search_name + " Tours";
                 } else {
-                  _this6.search_name = "Our Tours";
+                  _this7.search_name = "Our Tours";
                 }
 
                 if (destination_params == "" && single == "") {
                   // query only
-                  _this6.$router.replace({
+                  _this7.$router.replace({
                     name: "Our Tours",
                     query: url_query
                   })["catch"](function () {});
@@ -20548,26 +20587,26 @@ vue__WEBPACK_IMPORTED_MODULE_5__.default.use(_syncfusion_ej2_vue_buttons__WEBPAC
                   } // console.log('parmas', params)
 
 
-                  _this6.$router.replace({
+                  _this7.$router.replace({
                     name: "Our Tours2",
                     params: params,
                     query: url_query
                   })["catch"](function () {});
-                } // with params amd query
+                } // with params and query
 
 
-                _context5.next = 58;
-                return _this6.$store.dispatch("tourController/getTourFilter", query).then(function () {
-                  _this6.current_ourtour_page = parseInt(_this6.filterTours.page);
-                  document.title = _this6.search_name + " ( " + _this6.filterTours.total_tours + " Tours )";
+                _context6.next = 58;
+                return _this7.$store.dispatch("tourController/getTourFilter", query).then(function () {
+                  _this7.current_ourtour_page = parseInt(_this7.filterTours.page);
+                  document.title = _this7.search_name + " ( " + _this7.filterTours.total_tours + " Tours )";
                 })["catch"](function () {});
 
               case 58:
               case "end":
-                return _context5.stop();
+                return _context6.stop();
             }
           }
-        }, _callee5);
+        }, _callee6);
       }))();
     }
   }
@@ -21268,14 +21307,23 @@ var render = function() {
       _c(
         "div",
         {
+          directives: [
+            {
+              name: "lazy",
+              rawName: "v-lazy:background-image",
+              value: _vm.tourData.image_url,
+              expression: "tourData.image_url",
+              arg: "background-image"
+            }
+          ],
           staticClass: "bg-image hover-overlay ripple",
-          style: {
-            "background-image": "url(" + _vm.tourData.image_url + ")"
-          },
           attrs: { "data-mdb-ripple-color": "light" }
         },
         [
-          _vm._m(0),
+          _c("div", {
+            staticClass: "mask",
+            staticStyle: { "background-color": "rgba(251, 251, 251, 0.15)" }
+          }),
           _vm._v(" "),
           _c("div", { staticClass: "tour_title" }, [
             _vm._v(
@@ -21288,14 +21336,21 @@ var render = function() {
           ]),
           _vm._v(" "),
           _c("img", {
+            directives: [
+              {
+                name: "lazy",
+                rawName: "v-lazy",
+                value: _vm.tourData.operator_logo,
+                expression: "tourData.operator_logo"
+              }
+            ],
             staticClass: "position-absolute",
             staticStyle: {
               width: "70px",
               height: "auto",
               top: "0px",
               left: "30px"
-            },
-            attrs: { src: _vm.tourData.operator_logo }
+            }
           })
         ]
       ),
@@ -21316,21 +21371,42 @@ var render = function() {
             ? _c("div", { staticClass: "tag-image" }, [
                 _vm.tourData.tag == "review"
                   ? _c("img", {
+                      directives: [
+                        {
+                          name: "lazy",
+                          rawName: "v-lazy",
+                          value: "/images/best-review.png",
+                          expression: "'/images/best-review.png'"
+                        }
+                      ],
                       staticStyle: {
                         "margin-top": "-3px",
                         width: "60px",
                         height: "auto"
-                      },
-                      attrs: { src: "/images/best-review.png" }
+                      }
                     })
                   : _vm.tourData.tag == "seller"
                   ? _c("img", {
-                      staticStyle: { width: "80px", height: "auto" },
-                      attrs: { src: "/images/bestseller.png" }
+                      directives: [
+                        {
+                          name: "lazy",
+                          rawName: "v-lazy",
+                          value: "/images/bestseller.png",
+                          expression: "'/images/bestseller.png'"
+                        }
+                      ],
+                      staticStyle: { width: "80px", height: "auto" }
                     })
                   : _c("img", {
-                      staticStyle: { width: "100px", height: "auto" },
-                      attrs: { src: "/images/toprated2.png" }
+                      directives: [
+                        {
+                          name: "lazy",
+                          rawName: "v-lazy",
+                          value: "/images/toprated2.png",
+                          expression: "'/images/toprated2.png'"
+                        }
+                      ],
+                      staticStyle: { width: "100px", height: "auto" }
                     })
               ])
             : _vm._e(),
@@ -21338,13 +21414,13 @@ var render = function() {
           _c("p", { staticClass: "card-text mb-1" }, [
             _c("strong", [_vm._v(" Accommodation: ")]),
             _vm._v(" "),
-            _vm.tourData.no_of_day == 2
+            _vm.tourData.no_of_night == 1
               ? _c("span", [
-                  _vm._v(_vm._s(_vm.tourData.no_of_day - 1) + " Night")
+                  _vm._v(_vm._s(_vm.tourData.no_of_night) + " Night")
                 ])
-              : _vm.tourData.no_of_day > 2
+              : _vm.tourData.no_of_night > 1
               ? _c("span", [
-                  _vm._v(_vm._s(_vm.tourData.no_of_day - 1) + " Nights")
+                  _vm._v(_vm._s(_vm.tourData.no_of_night) + " Nights")
                 ])
               : _c("span", [_vm._v("Not Included")])
           ]),
@@ -21438,19 +21514,7 @@ var render = function() {
     ]
   )
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", [
-      _c("div", {
-        staticClass: "mask",
-        staticStyle: { "background-color": "rgba(251, 251, 251, 0.15)" }
-      })
-    ])
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 
 

@@ -324,7 +324,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n#tour-operators-page {\n  background-color: #f2f2f2;\n  padding-top: 50px;\n  padding-bottom: 100px;\n}\n#tour-operators-page section {\n  margin-top: 100px;\n  margin-bottom: 30px;\n}\n#tour-operators-page .wrapper {\n  display: flex;\n  flex-direction: row;\n  justify-content: space-between;\n}\n#tour-operators-page .logo-layout {\n  min-width: 400px;\n  width: 400px;\n}\n#tour-operators-page .operator-logo img {\n  min-width: 150px;\n  height: 150px;\n}\n.tour-operator-card:hover {\n  box-shadow: 0px 1px 13px #666;\n  transition: box-shadow 0.2s ease-in-out, transform 0.3s ease-in-out;\n}\n/* #tour-operators-page .logo-layout {\n  min-width: 400px;\n  width: 400px;\n  height: 0;\n  padding-top: calc(0.5625 * 400px);\n  background-repeat: no-repeat;\n  background-size: cover;\n  background-position: center;\n  margin: auto;\n} */\n#tour-operators-page .logo-layout img {\n  width: 400px;\n  height: auto;\n}\n#tour-operators-page .operator-content {\n  min-width: calc(100% - 550px);\n}\n.tour-operator-card {\n  cursor: pointer;\n}\n.operator-pagination {\n  display: flex;\n  justify-content: center;\n  margin-top: 40px;\n}\n@media (max-width: 1200px) {\n#tour-operators-page .wrapper {\n    display: flex;\n    flex-direction: column;\n    justify-content: center;\n}\n.operator-content {\n    margin-top: 20px;\n    margin-bottom: 20px;\n}\n#tour-operators-page .operator-content h4 {\n    text-align: center;\n}\n#tour-operators-page .logo-layout {\n    margin: auto;\n}\n}\n@media (max-width: 480px) {\n#tour-operators-page .logo-layout img {\n    min-width: 100%;\n    width: 100%;\n}\n#tour-operators-page .logo-layout {\n    min-width: 100%;\n    margin: auto;\n    width: 100%;\n}\n}\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n#tour-operators-page {\n  /* background-color: #f2f2f2; */\n  padding-top: 50px;\n  padding-bottom: 100px;\n}\n#tour-operators-page section {\n  margin-top: 100px;\n  margin-bottom: 30px;\n}\n#tour-operators-page .wrapper {\n  display: flex;\n  flex-direction: row;\n  justify-content: space-between;\n}\n#tour-operators-page .logo-layout {\n  min-width: 400px;\n  width: 400px;\n}\n#tour-operators-page .operator-logo img {\n  min-width: 150px;\n  height: 150px;\n}\n.tour-operator-card:hover {\n  box-shadow: 0px 1px 13px #666;\n  transition: box-shadow 0.2s ease-in-out, transform 0.3s ease-in-out;\n}\n/* #tour-operators-page .logo-layout {\n  min-width: 400px;\n  width: 400px;\n  height: 0;\n  padding-top: calc(0.5625 * 400px);\n  background-repeat: no-repeat;\n  background-size: cover;\n  background-position: center;\n  margin: auto;\n} */\n#tour-operators-page .logo-layout img {\n  width: 400px;\n  height: auto;\n}\n#tour-operators-page .operator-content {\n  min-width: calc(100% - 550px);\n}\n.tour-operator-card {\n  cursor: pointer;\n}\n.operator-pagination {\n  display: flex;\n  justify-content: center;\n  margin-top: 40px;\n}\n@media (max-width: 1200px) {\n#tour-operators-page .wrapper {\n    display: flex;\n    flex-direction: column;\n    justify-content: center;\n}\n.operator-content {\n    margin-top: 20px;\n    margin-bottom: 20px;\n}\n#tour-operators-page .operator-content h4 {\n    text-align: center;\n}\n#tour-operators-page .logo-layout {\n    margin: auto;\n}\n}\n@media (max-width: 480px) {\n#tour-operators-page .logo-layout img {\n    min-width: 100%;\n    width: 100%;\n}\n#tour-operators-page .logo-layout {\n    min-width: 100%;\n    margin: auto;\n    width: 100%;\n}\n}\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -813,7 +813,16 @@ var render = function() {
                 [
                   _c("div", { staticClass: "wrapper" }, [
                     _c("div", { staticClass: "operator-logo text-center" }, [
-                      _c("img", { attrs: { src: operator.logo } })
+                      _c("img", {
+                        directives: [
+                          {
+                            name: "lazy",
+                            rawName: "v-lazy",
+                            value: operator.logo,
+                            expression: "operator.logo"
+                          }
+                        ]
+                      })
                     ]),
                     _vm._v(" "),
                     _c("div", { staticClass: "px-3 operator-content" }, [
@@ -861,7 +870,16 @@ var render = function() {
                     ]),
                     _vm._v(" "),
                     _c("div", { staticClass: "logo-layout text-center" }, [
-                      _c("img", { attrs: { src: operator.banner } })
+                      _c("img", {
+                        directives: [
+                          {
+                            name: "lazy",
+                            rawName: "v-lazy",
+                            value: operator.banner,
+                            expression: "operator.banner"
+                          }
+                        ]
+                      })
                     ])
                   ])
                 ]

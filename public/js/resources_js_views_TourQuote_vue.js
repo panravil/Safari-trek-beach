@@ -30654,8 +30654,7 @@ vue__WEBPACK_IMPORTED_MODULE_2__.default.use(_syncfusion_ej2_vue_buttons__WEBPAC
               zanzibar_days: _this4.zanzibar_days,
               kilimanjaro_days: _this4.kilimanjaro_days,
               safari_days: _this4.safari_days
-            };
-            console.log('tag', detail_data);
+            }; // console.log('tag', detail_data)
 
             _this4.$store.dispatch("tourController/setdetailData", detail_data);
           } // if checked remember option
@@ -33897,7 +33896,7 @@ ___CSS_LOADER_EXPORT___.i(_node_modules_css_loader_dist_cjs_js_clonedRuleSet_9_0
 ___CSS_LOADER_EXPORT___.i(_node_modules_css_loader_dist_cjs_js_clonedRuleSet_9_0_rules_0_use_1_node_modules_syncfusion_ej2_popups_styles_material_css__WEBPACK_IMPORTED_MODULE_5__.default);
 ___CSS_LOADER_EXPORT___.i(_node_modules_css_loader_dist_cjs_js_clonedRuleSet_9_0_rules_0_use_1_node_modules_syncfusion_ej2_vue_calendars_styles_material_css__WEBPACK_IMPORTED_MODULE_6__.default);
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n.tour-quote-page {\n  padding-top: 50px;\n  padding-bottom: 100px;\n  background-color: #f2f2f2;\n}\n.tour-quote-page section {\n  margin-top: 100px;\n}\n.tour-quote-page .e-multi-line-input textarea {\n  height: 100px;\n}\n.tour-quote-page .quote .e-date-wrapper,\n.tour-quote-page .quote .e-ddl {\n  margin-top: 16px;\n}\n.additional-activity div:first-child {\n  width: 150px;\n}\n.additional-activity div:last-child {\n  width: 150px;\n}\n.additional-activity {\n  margin-left: 30px;\n}\n@media (max-width: 540px) {\n.additional-activity {\n    /* justify-content: center; */\n    margin-left: 0px;\n}\n}\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n.tour-quote-page {\n  padding-top: 50px;\n  padding-bottom: 100px;\n  /* background-color: #f2f2f2; */\n}\n.tour-quote-page section {\n  margin-top: 100px;\n}\n.tour-quote-page .e-multi-line-input textarea {\n  height: 100px;\n}\n.tour-quote-page .quote .e-date-wrapper,\n.tour-quote-page .quote .e-ddl {\n  margin-top: 16px;\n}\n.additional-activity div:first-child {\n  width: 150px;\n}\n.additional-activity div:last-child {\n  width: 150px;\n}\n.additional-activity {\n  margin-left: 30px;\n}\n@media (max-width: 540px) {\n.additional-activity {\n    /* justify-content: center; */\n    margin-left: 0px;\n}\n}\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 

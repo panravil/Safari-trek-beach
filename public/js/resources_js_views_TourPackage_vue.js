@@ -36767,6 +36767,37 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 vue__WEBPACK_IMPORTED_MODULE_0__.default.use(_syncfusion_ej2_vue_navigations__WEBPACK_IMPORTED_MODULE_1__.TabPlugin);
@@ -36897,9 +36928,8 @@ vue__WEBPACK_IMPORTED_MODULE_0__.default.use(_syncfusion_ej2_vue_buttons__WEBPAC
         if (_this.review_1 == 0) _this.terrible = false;
         _this.update_checklist++;
 
-        _this.reviewFilter();
+        _this.reviewFilter(); // console.log("package", this.packageData);
 
-        console.log("package", _this.packageData);
       });
     },
     reviewFilter: function reviewFilter() {
@@ -36991,8 +37021,12 @@ vue__WEBPACK_IMPORTED_MODULE_0__.default.use(_syncfusion_ej2_vue_buttons__WEBPAC
         package_id: this.packageData.package_id,
         user_id: this.packageData.user_id
       };
-      this.$store.dispatch("tourController/setTourInfo", quote_tourInfo);
-      this.$router.push("/tour-quote")["catch"](function () {});
+      this.$store.dispatch("tourController/setTourInfo", quote_tourInfo); // this.$router.push("/tour-quote").catch(() => {});
+
+      var routeData = this.$router.resolve({
+        name: "Tour Quote"
+      });
+      window.open(routeData.href, "_blank");
     },
     onFocus: function onFocus(args) {
       this.$refs.dateObj.show();
@@ -37257,7 +37291,7 @@ ___CSS_LOADER_EXPORT___.i(_node_modules_css_loader_dist_cjs_js_clonedRuleSet_12_
 ___CSS_LOADER_EXPORT___.i(_node_modules_css_loader_dist_cjs_js_clonedRuleSet_12_0_rules_0_use_1_node_modules_syncfusion_ej2_vue_inputs_styles_material_css__WEBPACK_IMPORTED_MODULE_5__.default);
 ___CSS_LOADER_EXPORT___.i(_node_modules_css_loader_dist_cjs_js_clonedRuleSet_12_0_rules_0_use_1_node_modules_syncfusion_ej2_vue_calendars_styles_material_css__WEBPACK_IMPORTED_MODULE_6__.default);
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ".package-inner-page[data-v-4c60977f] {\n  padding-top: 60px;\n  padding-bottom: 60px;\n  background-color: #f2f2f2;\n}\n.package-inner-page .package-inner-image[data-v-4c60977f] {\n  height: 0;\n  width: 100%;\n  padding-top: 45%;\n  background-repeat: no-repeat;\n  background-size: cover;\n  background-position: center;\n  border-top-left-radius: 0.25rem;\n  border-bottom-left-radius: 0.25rem;\n  border-top-right-radius: 0;\n  border-bottom-right-radius: 0;\n}\n.package-inner-page .price-rate[data-v-4c60977f] {\n  bottom: 0;\n  left: 0;\n  position: absolute;\n}\n.package-inner-page .photo-gallery-item[data-v-4c60977f] {\n  height: 0;\n  width: 100%;\n  padding-top: 56.25%;\n  background-repeat: no-repeat;\n  background-size: cover;\n  background-position: center;\n}\n.package-inner-page .review-content[data-v-4c60977f],\n.package-inner-page .overview-description[data-v-4c60977f],\n.package-inner-page .itinery-content[data-v-4c60977f] {\n  font-size: 15px;\n  font-family: \"Open Sans\", sans-serif;\n  font-weight: 400;\n  line-height: 1.5;\n  text-align: justify;\n}\n.package-inner-page .itinery-title[data-v-4c60977f] {\n  position: absolute;\n  bottom: 0px;\n  left: 0;\n  width: 100%;\n  padding: 20px 10px 30px 30px;\n  color: white;\n  font-size: 2rem;\n  line-height: 2.5rem;\n  font-weight: 600;\n  font-family: \"Gentium Basic\", serif;\n  text-shadow: 1px 1px 5px #000;\n  z-index: 3;\n  background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.5) 45%, rgba(0, 0, 0, 0.9) 100%);\n}\n.review-pagination[data-v-4c60977f] {\n  justify-content: center;\n  display: flex;\n}\n.exclusion-inclusion[data-v-4c60977f] {\n  font-size: 15px;\n}\n.package-inner-page .mobile[data-v-4c60977f] {\n  display: block;\n}\n.gallery .bg-image[data-v-4c60977f] {\n  height: 0;\n  width: 100%;\n  padding-top: 56.25%;\n  background-repeat: no-repeat;\n  background-size: cover;\n  background-position: center;\n}\n.package-inner-page .review-detail[data-v-4c60977f] {\n  border: 1px solid #f93154;\n  padding: 20px;\n  position: relative;\n}\n.gallery-viewer img[data-v-4c60977f] {\n  cursor: pointer;\n}\n.package-inner-page .review-detail[data-v-4c60977f]::before {\n  position: absolute;\n  top: -9px;\n  left: 2.1875rem;\n  transform: rotate(-45deg);\n  content: \"\";\n  display: block;\n  width: 1rem;\n  height: 1rem;\n  border: 0.0625rem solid #f93154;\n  background-color: white;\n  border-bottom: none;\n  border-left: none;\n}\n.package-inner-page .e-multi-line-input textarea[data-v-4c60977f] {\n  height: 150px;\n}\n.rating-wrap[data-v-4c60977f] {\n  display: table;\n  max-width: 400px;\n  width: 100%;\n  position: relative;\n}\n.rating-item[data-v-4c60977f] {\n  display: table-row;\n}\n.rating-item span[data-v-4c60977f] {\n  font-size: 15px;\n}\n.rating-item .progress[data-v-4c60977f] {\n  height: 15px;\n}\n.rating-grade[data-v-4c60977f] {\n  display: table-cell;\n  white-space: nowrap;\n  vertical-align: middle;\n}\n.get-quote-mobile[data-v-4c60977f] {\n  display: none;\n}\nh4.flex-shrink-0[data-v-4c60977f] {\n  font-size: 16px;\n  line-height: 22px;\n}\n.horizontal-grayline[data-v-4c60977f] {\n  margin-top: 11px;\n  height: 1px;\n  margin-left: 5px;\n  background: #b3b3b3;\n}\n.routine h6[data-v-4c60977f] {\n  font-size: 15px;\n}\n.routine-detail h6[data-v-4c60977f] {\n  text-transform: capitalize;\n}\ntable th[data-v-4c60977f], table td[data-v-4c60977f] {\n  padding: 10px 15px;\n  vertical-align: middle;\n}\ntable thead th[data-v-4c60977f]:first-child {\n  min-width: 150px;\n}\n@media (min-width: 1201px) and (max-width: 1400px) {\n.package-inner-page .package-inner-image[data-v-4c60977f] {\n    padding-top: 55%;\n}\n}\n@media (min-width: 992px) and (max-width: 1200px) {\n.package-inner-page .package-inner-image[data-v-4c60977f] {\n    padding-top: 70%;\n}\n}\n@media (max-width: 991px) {\n.package-inner-page .package-inner-image[data-v-4c60977f] {\n    padding-top: 50%;\n    border-bottom-left-radius: 0;\n    border-bottom-right-radius: 0;\n    border-top-right-radius: 0.25rem;\n    border-top-left-radius: 0.25rem;\n}\n.package-inner-page .price-rate[data-v-4c60977f] {\n    position: relative;\n    padding-top: 0 !important;\n    padding-bottom: 0 !important;\n}\n.package-inner-page .mobile[data-v-4c60977f] {\n    display: none;\n}\n.package-inner-page .package-inner-title[data-v-4c60977f] {\n    height: auto;\n}\n.package-inner-page .package-inner-title h3[data-v-4c60977f] {\n    font-size: 20px;\n}\n.package-inner-page .package-inner-title h5[data-v-4c60977f] {\n    font-size: 18px;\n}\n.package-inner-page .itinery-title[data-v-4c60977f] {\n    padding: 20px 10px 20px 20px;\n}\n.get-quote-mobile[data-v-4c60977f] {\n    display: block;\n    position: fixed;\n    bottom: 0px;\n    z-index: 2222;\n    background-color: white;\n}\n}", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, ".package-inner-page[data-v-4c60977f] {\n  padding-top: 60px;\n  padding-bottom: 60px;\n}\n.package-inner-page .package-inner-image[data-v-4c60977f] {\n  height: 0;\n  width: 100%;\n  padding-top: 45%;\n  background-repeat: no-repeat;\n  background-size: cover;\n  background-position: center;\n  border-top-left-radius: 0.25rem;\n  border-bottom-left-radius: 0.25rem;\n  border-top-right-radius: 0;\n  border-bottom-right-radius: 0;\n}\n.package-inner-page .price-rate[data-v-4c60977f] {\n  bottom: 0;\n  left: 0;\n  position: absolute;\n}\n.package-inner-page .photo-gallery-item[data-v-4c60977f] {\n  height: 0;\n  width: 100%;\n  padding-top: 56.25%;\n  background-repeat: no-repeat;\n  background-size: cover;\n  background-position: center;\n}\n.package-inner-page .review-content[data-v-4c60977f],\n.package-inner-page .overview-description[data-v-4c60977f],\n.package-inner-page .itinery-content[data-v-4c60977f] {\n  font-size: 15px;\n  font-family: sans-serif;\n  font-weight: 400;\n  line-height: 1.5;\n  text-align: justify;\n}\n.package-inner-page .itinery-title[data-v-4c60977f] {\n  position: absolute;\n  bottom: 0px;\n  left: 0;\n  width: 100%;\n  padding: 20px 10px 30px 30px;\n  color: white;\n  font-size: 2rem;\n  line-height: 2.5rem;\n  font-weight: 700;\n  font-family: \"Gentium Basic\", serif;\n  text-shadow: 1px 1px 5px #000;\n  z-index: 3;\n  background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.5) 45%, rgba(0, 0, 0, 0.9) 100%);\n}\n.review-pagination[data-v-4c60977f] {\n  justify-content: center;\n  display: flex;\n}\n.exclusion-inclusion[data-v-4c60977f] {\n  font-size: 15px;\n}\n.package-inner-page .mobile[data-v-4c60977f] {\n  display: block;\n}\n.gallery .bg-image[data-v-4c60977f] {\n  height: 0;\n  width: 100%;\n  padding-top: 56.25%;\n  background-repeat: no-repeat;\n  background-size: cover;\n  background-position: center;\n}\n.package-inner-page .review-detail[data-v-4c60977f] {\n  border: 1px solid #f93154;\n  padding: 20px;\n  position: relative;\n}\n.gallery-viewer img[data-v-4c60977f] {\n  cursor: pointer;\n}\n.package-inner-page .review-detail[data-v-4c60977f]::before {\n  position: absolute;\n  top: -9px;\n  left: 2.1875rem;\n  transform: rotate(-45deg);\n  content: \"\";\n  display: block;\n  width: 1rem;\n  height: 1rem;\n  border: 0.0625rem solid #f93154;\n  background-color: white;\n  border-bottom: none;\n  border-left: none;\n}\n.package-inner-page .e-multi-line-input textarea[data-v-4c60977f] {\n  height: 150px;\n}\n.rating-wrap[data-v-4c60977f] {\n  display: table;\n  max-width: 400px;\n  width: 100%;\n  position: relative;\n}\n.rating-item[data-v-4c60977f] {\n  display: table-row;\n}\n.rating-item span[data-v-4c60977f] {\n  font-size: 15px;\n}\n.rating-item .progress[data-v-4c60977f] {\n  height: 15px;\n}\n.rating-grade[data-v-4c60977f] {\n  display: table-cell;\n  white-space: nowrap;\n  vertical-align: middle;\n}\n.get-quote-mobile[data-v-4c60977f] {\n  display: none;\n}\nh4.flex-shrink-0[data-v-4c60977f] {\n  font-size: 16px;\n  line-height: 22px;\n}\n.horizontal-grayline[data-v-4c60977f] {\n  margin-top: 11px;\n  height: 1px;\n  margin-left: 5px;\n  background: #b3b3b3;\n}\n.routine h6[data-v-4c60977f] {\n  font-size: 15px;\n}\n.routine-detail h6[data-v-4c60977f] {\n  text-transform: capitalize;\n}\ntable th[data-v-4c60977f], table td[data-v-4c60977f] {\n  padding: 10px 15px;\n  vertical-align: middle;\n}\ntable thead th[data-v-4c60977f]:first-child {\n  min-width: 150px;\n}\n@media (min-width: 1201px) and (max-width: 1400px) {\n.package-inner-page .package-inner-image[data-v-4c60977f] {\n    padding-top: 55%;\n}\n}\n@media (min-width: 992px) and (max-width: 1200px) {\n.package-inner-page .package-inner-image[data-v-4c60977f] {\n    padding-top: 70%;\n}\n}\n@media (max-width: 991px) {\n.package-inner-page .package-inner-image[data-v-4c60977f] {\n    padding-top: 50%;\n    border-bottom-left-radius: 0;\n    border-bottom-right-radius: 0;\n    border-top-right-radius: 0.25rem;\n    border-top-left-radius: 0.25rem;\n}\n.package-inner-page .price-rate[data-v-4c60977f] {\n    position: relative;\n    padding-top: 0 !important;\n    padding-bottom: 0 !important;\n}\n.package-inner-page .mobile[data-v-4c60977f] {\n    display: none;\n}\n.package-inner-page .package-inner-title[data-v-4c60977f] {\n    height: auto;\n}\n.package-inner-page .package-inner-title h3[data-v-4c60977f] {\n    font-size: 20px;\n}\n.package-inner-page .package-inner-title h5[data-v-4c60977f] {\n    font-size: 18px;\n}\n.package-inner-page .itinery-title[data-v-4c60977f] {\n    padding: 20px 10px 20px 20px;\n}\n.get-quote-mobile[data-v-4c60977f] {\n    display: block;\n    position: fixed;\n    bottom: 0px;\n    z-index: 2222;\n    background-color: white;\n}\n}", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -41705,7 +41739,12 @@ var render = function() {
             [
               _c("div", { staticClass: "card-body" }, [
                 _vm.loading
-                  ? _c("div", [_c("content-placeholders-heading")], 1)
+                  ? _c(
+                      "h5",
+                      { staticClass: "card-title mb-3" },
+                      [_c("content-placeholders-heading")],
+                      1
+                    )
                   : _vm.packageData != null
                   ? _c(
                       "h5",
@@ -41724,15 +41763,97 @@ var render = function() {
                     )
                   : _vm._e(),
                 _vm._v(" "),
-                _vm._m(0),
+                _vm.loading
+                  ? _c(
+                      "h6",
+                      { staticClass: "card-title" },
+                      [
+                        _c("content-placeholders-text", { attrs: { lines: 1 } })
+                      ],
+                      1
+                    )
+                  : _vm.packageData.additional_info.cancellation == "24-hrs"
+                  ? _c("h6", { staticClass: "card-title" }, [
+                      _c("span", { staticClass: "fa fa-location-arrow mx-2" }),
+                      _vm._v(
+                        " Cancellation Up\n              to 24 Hrs\n            "
+                      )
+                    ])
+                  : _vm._e(),
                 _vm._v(" "),
-                _vm._m(1),
+                _vm.loading
+                  ? _c(
+                      "h6",
+                      { staticClass: "card-title" },
+                      [
+                        _c("content-placeholders-text", { attrs: { lines: 1 } })
+                      ],
+                      1
+                    )
+                  : _vm.packageData.additional_info.advance_payment == ""
+                  ? _c("h6", { staticClass: "card-title" }, [
+                      _c("span", { staticClass: "fa fa-location-arrow mx-2" }),
+                      _vm._v(
+                        " Only " +
+                          _vm._s(
+                            _vm.packageData.additional_info.advance_payment
+                          ) +
+                          " Advance\n              Payment\n            "
+                      )
+                    ])
+                  : _vm._e(),
                 _vm._v(" "),
-                _vm._m(2),
+                _vm.loading
+                  ? _c(
+                      "h6",
+                      { staticClass: "card-title" },
+                      [
+                        _c("content-placeholders-text", { attrs: { lines: 1 } })
+                      ],
+                      1
+                    )
+                  : _vm.packageData.customizable == 1
+                  ? _c("h6", { staticClass: "card-title" }, [
+                      _c("span", { staticClass: "fa fa-location-arrow mx-2" }),
+                      _vm._v(" Can be\n              customized\n            ")
+                    ])
+                  : _vm._e(),
                 _vm._v(" "),
-                _vm._m(3),
+                _vm.loading
+                  ? _c(
+                      "h6",
+                      { staticClass: "card-title" },
+                      [
+                        _c("content-placeholders-text", { attrs: { lines: 1 } })
+                      ],
+                      1
+                    )
+                  : _vm.packageData.additional_info.departure == "yes"
+                  ? _c("h6", { staticClass: "card-title" }, [
+                      _c("span", { staticClass: "fa fa-location-arrow mx-2" }),
+                      _vm._v(
+                        " Guaranteed\n              Departure\n            "
+                      )
+                    ])
+                  : _vm._e(),
                 _vm._v(" "),
-                _vm._m(4)
+                _vm.loading
+                  ? _c(
+                      "h6",
+                      { staticClass: "card-title" },
+                      [
+                        _c("content-placeholders-text", { attrs: { lines: 1 } })
+                      ],
+                      1
+                    )
+                  : _vm.packageData.additional_info.arrival_visa == "yes"
+                  ? _c("h6", { staticClass: "card-title" }, [
+                      _c("span", { staticClass: "fa fa-location-arrow mx-2" }),
+                      _vm._v(
+                        " Get Visa On\n              Arrival (Available)\n            "
+                      )
+                    ])
+                  : _vm._e()
               ]),
               _vm._v(" "),
               _c("div", { staticClass: "price-rate p-3" }, [
@@ -42674,7 +42795,8 @@ var render = function() {
                               })
                             ]),
                             _vm._v(" "),
-                            _vm.packageData != null
+                            _vm.packageData != null &&
+                            _vm.packageData.adult_currency_rate != undefined
                               ? _c("div", { staticClass: "table-responsive" }, [
                                   _c(
                                     "table",
@@ -42684,145 +42806,216 @@ var render = function() {
                                     },
                                     [
                                       _c("thead", [
-                                        _c("tr", [
-                                          _c(
-                                            "th",
-                                            { attrs: { scope: "col" } },
-                                            [_vm._v("Start Dates")]
-                                          ),
-                                          _vm._v(" "),
-                                          _c(
-                                            "th",
-                                            { attrs: { scope: "col" } },
-                                            [_vm._v("1 Person")]
-                                          ),
-                                          _vm._v(" "),
-                                          _c(
-                                            "th",
-                                            { attrs: { scope: "col" } },
-                                            [_vm._v("2 Person")]
-                                          ),
-                                          _vm._v(" "),
-                                          _c(
-                                            "th",
-                                            { attrs: { scope: "col" } },
-                                            [_vm._v("3 Person")]
-                                          ),
-                                          _vm._v(" "),
-                                          _c(
-                                            "th",
-                                            { attrs: { scope: "col" } },
-                                            [_vm._v("4 Person")]
-                                          ),
-                                          _vm._v(" "),
-                                          _c(
-                                            "th",
-                                            { attrs: { scope: "col" } },
-                                            [_vm._v("5 Person")]
-                                          ),
-                                          _vm._v(" "),
-                                          _c(
-                                            "th",
-                                            { attrs: { scope: "col" } },
-                                            [_vm._v("6 Person")]
-                                          ),
-                                          _vm._v(" "),
-                                          _c("th", { attrs: { scope: "col" } })
-                                        ])
+                                        _c(
+                                          "tr",
+                                          [
+                                            _c(
+                                              "th",
+                                              { attrs: { scope: "col" } },
+                                              [_vm._v("Start Dates")]
+                                            ),
+                                            _vm._v(" "),
+                                            _vm._l(
+                                              _vm.packageData
+                                                .adult_currency_rate
+                                                .adult_currency_autumn,
+                                              function(item, index) {
+                                                return _c(
+                                                  "th",
+                                                  {
+                                                    key: index + "rate header",
+                                                    attrs: { scope: "col" }
+                                                  },
+                                                  [
+                                                    _vm._v(
+                                                      _vm._s(index + 1) +
+                                                        " Person"
+                                                    )
+                                                  ]
+                                                )
+                                              }
+                                            ),
+                                            _vm._v(" "),
+                                            _c("th", {
+                                              attrs: { scope: "col" }
+                                            })
+                                          ],
+                                          2
+                                        )
                                       ]),
                                       _vm._v(" "),
                                       _c("tbody", [
-                                        _c("tr", [
-                                          _c(
-                                            "th",
-                                            { attrs: { scope: "row" } },
-                                            [_vm._v("Mar 10 - Dec 10")]
-                                          ),
-                                          _vm._v(" "),
-                                          _c("td", [
-                                            _vm._v(
-                                              _vm._s(
-                                                _vm._f("currency")(
-                                                  _vm.packageData.rate
-                                                    .adult_currency
+                                        _c(
+                                          "tr",
+                                          [
+                                            _c(
+                                              "th",
+                                              { attrs: { scope: "row" } },
+                                              [_vm._v("Dec 1 - Feb 28")]
+                                            ),
+                                            _vm._v(" "),
+                                            _vm._l(
+                                              _vm.packageData
+                                                .adult_currency_rate
+                                                .adult_currency_winter,
+                                              function(item, index) {
+                                                return _c(
+                                                  "td",
+                                                  { key: index + "rate ff" },
+                                                  [
+                                                    _vm._v(
+                                                      _vm._s(
+                                                        _vm._f("currency")(item)
+                                                      )
+                                                    )
+                                                  ]
                                                 )
-                                              )
-                                            )
-                                          ]),
-                                          _vm._v(" "),
-                                          _c("td", [
-                                            _vm._v(
-                                              _vm._s(
-                                                _vm._f("currency")(
-                                                  _vm.packageData.rate
-                                                    .adult_currency
-                                                )
-                                              )
-                                            )
-                                          ]),
-                                          _vm._v(" "),
-                                          _c("td", [
-                                            _vm._v(
-                                              _vm._s(
-                                                _vm._f("currency")(
-                                                  _vm.packageData.rate
-                                                    .adult_currency
-                                                )
-                                              )
-                                            )
-                                          ]),
-                                          _vm._v(" "),
-                                          _c("td", [
-                                            _vm._v(
-                                              _vm._s(
-                                                _vm._f("currency")(
-                                                  Math.round(
-                                                    _vm.packageData.rate
-                                                      .adult_currency * 0.98
-                                                  )
-                                                )
-                                              )
-                                            )
-                                          ]),
-                                          _vm._v(" "),
-                                          _c("td", [
-                                            _vm._v(
-                                              _vm._s(
-                                                _vm._f("currency")(
-                                                  Math.round(
-                                                    _vm.packageData.rate
-                                                      .adult_currency * 0.98
-                                                  )
-                                                )
-                                              )
-                                            )
-                                          ]),
-                                          _vm._v(" "),
-                                          _c("td", [
-                                            _vm._v(
-                                              _vm._s(
-                                                _vm._f("currency")(
-                                                  Math.round(
-                                                    _vm.packageData.rate
-                                                      .adult_currency * 0.97
-                                                  )
-                                                )
-                                              )
-                                            )
-                                          ]),
-                                          _vm._v(" "),
-                                          _c(
-                                            "td",
-                                            {
-                                              staticClass: "text-primary",
-                                              staticStyle: {
-                                                cursor: "pointer"
+                                              }
+                                            ),
+                                            _vm._v(" "),
+                                            _c(
+                                              "td",
+                                              {
+                                                staticClass: "text-primary",
+                                                staticStyle: {
+                                                  cursor: "pointer"
+                                                },
+                                                on: { click: _vm.getQuoteNow }
                                               },
-                                              on: { click: _vm.getQuoteNow }
-                                            },
-                                            [_vm._v("Get Quote")]
-                                          )
-                                        ])
+                                              [_vm._v("Get Quote")]
+                                            )
+                                          ],
+                                          2
+                                        ),
+                                        _vm._v(" "),
+                                        _c(
+                                          "tr",
+                                          [
+                                            _c(
+                                              "th",
+                                              { attrs: { scope: "row" } },
+                                              [_vm._v("Mar 1 - May 31")]
+                                            ),
+                                            _vm._v(" "),
+                                            _vm._l(
+                                              _vm.packageData
+                                                .adult_currency_rate
+                                                .adult_currency_spring,
+                                              function(item, index) {
+                                                return _c(
+                                                  "td",
+                                                  { key: index + "rate w" },
+                                                  [
+                                                    _vm._v(
+                                                      _vm._s(
+                                                        _vm._f("currency")(item)
+                                                      )
+                                                    )
+                                                  ]
+                                                )
+                                              }
+                                            ),
+                                            _vm._v(" "),
+                                            _c(
+                                              "td",
+                                              {
+                                                staticClass: "text-primary",
+                                                staticStyle: {
+                                                  cursor: "pointer"
+                                                },
+                                                on: { click: _vm.getQuoteNow }
+                                              },
+                                              [_vm._v("Get Quote")]
+                                            )
+                                          ],
+                                          2
+                                        ),
+                                        _vm._v(" "),
+                                        _c(
+                                          "tr",
+                                          [
+                                            _c(
+                                              "th",
+                                              { attrs: { scope: "row" } },
+                                              [_vm._v("Jun 1 - Aug 31")]
+                                            ),
+                                            _vm._v(" "),
+                                            _vm._l(
+                                              _vm.packageData
+                                                .adult_currency_rate
+                                                .adult_currency_summer,
+                                              function(item, index) {
+                                                return _c(
+                                                  "td",
+                                                  { key: index + "rate s" },
+                                                  [
+                                                    _vm._v(
+                                                      _vm._s(
+                                                        _vm._f("currency")(item)
+                                                      )
+                                                    )
+                                                  ]
+                                                )
+                                              }
+                                            ),
+                                            _vm._v(" "),
+                                            _c(
+                                              "td",
+                                              {
+                                                staticClass: "text-primary",
+                                                staticStyle: {
+                                                  cursor: "pointer"
+                                                },
+                                                on: { click: _vm.getQuoteNow }
+                                              },
+                                              [_vm._v("Get Quote")]
+                                            )
+                                          ],
+                                          2
+                                        ),
+                                        _vm._v(" "),
+                                        _c(
+                                          "tr",
+                                          [
+                                            _c(
+                                              "th",
+                                              { attrs: { scope: "row" } },
+                                              [_vm._v("Sep 1 - Nov 30")]
+                                            ),
+                                            _vm._v(" "),
+                                            _vm._l(
+                                              _vm.packageData
+                                                .adult_currency_rate
+                                                .adult_currency_autumn,
+                                              function(item, index) {
+                                                return _c(
+                                                  "td",
+                                                  { key: index + "rate ss" },
+                                                  [
+                                                    _vm._v(
+                                                      _vm._s(
+                                                        _vm._f("currency")(item)
+                                                      )
+                                                    )
+                                                  ]
+                                                )
+                                              }
+                                            ),
+                                            _vm._v(" "),
+                                            _c(
+                                              "td",
+                                              {
+                                                staticClass: "text-primary",
+                                                staticStyle: {
+                                                  cursor: "pointer"
+                                                },
+                                                on: { click: _vm.getQuoteNow }
+                                              },
+                                              [_vm._v("Get Quote")]
+                                            )
+                                          ],
+                                          2
+                                        )
                                       ])
                                     ]
                                   )
@@ -43187,14 +43380,20 @@ var render = function() {
                                         { staticClass: "position-relative" },
                                         [
                                           _c("img", {
+                                            directives: [
+                                              {
+                                                name: "lazy",
+                                                rawName: "v-lazy",
+                                                value:
+                                                  "https://operators.safari-trek-beach.com" +
+                                                  item.image_url,
+                                                expression:
+                                                  "\n                          'https://operators.safari-trek-beach.com' +\n                          item.image_url\n                        "
+                                              }
+                                            ],
                                             staticClass: "w-100",
                                             staticStyle: {
                                               "min-height": "170px"
-                                            },
-                                            attrs: {
-                                              src:
-                                                "http://operators.safari-trek-beach.com" +
-                                                item.image_url
                                             }
                                           }),
                                           _vm._v(" "),
@@ -43990,11 +44189,18 @@ var render = function() {
                                           },
                                           [
                                             _c("img", {
+                                              directives: [
+                                                {
+                                                  name: "lazy",
+                                                  rawName: "v-lazy",
+                                                  value: item,
+                                                  expression: "item"
+                                                }
+                                              ],
                                               staticStyle: {
                                                 width: "100%",
                                                 height: "auto"
-                                              },
-                                              attrs: { src: item }
+                                              }
                                             })
                                           ]
                                         )
@@ -44013,7 +44219,7 @@ var render = function() {
               ]),
               _vm._v(" "),
               _c("div", { staticClass: "mobile" }, [
-                _vm._m(5),
+                _vm._m(0),
                 _vm._v(" "),
                 _c("div", [
                   _c(
@@ -44029,11 +44235,11 @@ var render = function() {
                   )
                 ]),
                 _vm._v(" "),
-                _vm._m(6),
+                _vm._m(1),
                 _vm._v(" "),
-                _vm._m(7),
+                _vm._m(2),
                 _vm._v(" "),
-                _vm._m(8)
+                _vm._m(3)
               ])
             ],
             1
@@ -44044,7 +44250,7 @@ var render = function() {
           ]),
           _vm._v(" "),
           _c("div", { staticClass: "d-flex ms-3" }, [
-            _vm._m(9),
+            _vm._m(4),
             _vm._v(" "),
             _c("div", [
               _vm._v("\n            This tour is offered by\n            "),
@@ -44053,14 +44259,14 @@ var render = function() {
             ])
           ]),
           _vm._v(" "),
-          _vm._m(10),
+          _vm._m(5),
           _vm._v(" "),
-          _vm._m(11),
+          _vm._m(6),
           _vm._v(" "),
-          _vm._m(12),
+          _vm._m(7),
           _vm._v(" "),
           _c("div", { staticClass: "d-flex ms-3" }, [
-            _vm._m(13),
+            _vm._m(8),
             _vm._v(" "),
             _c("div", [
               _vm._v(
@@ -44071,7 +44277,7 @@ var render = function() {
             ])
           ]),
           _vm._v(" "),
-          _vm._m(14)
+          _vm._m(9)
         ]),
         _vm._v(" "),
         _c("div", { staticClass: "col-lg-4 col-md-12 mobile" }, [
@@ -44098,7 +44304,7 @@ var render = function() {
                       "div",
                       { staticClass: "d-flex text-danger align-items-center" },
                       [
-                        _vm._m(15),
+                        _vm._m(10),
                         _vm._v(" "),
                         _c("ejs-datepicker", {
                           ref: "dateObj",
@@ -44140,7 +44346,7 @@ var render = function() {
                           staticClass: "d-flex text-danger align-items-center"
                         },
                         [
-                          _vm._m(16),
+                          _vm._m(11),
                           _vm._v(" "),
                           _c(
                             "div",
@@ -44208,7 +44414,7 @@ var render = function() {
                                     "py-2 px-3 mt-2 border-1 text-start d-flex justify-content-between"
                                 },
                                 [
-                                  _vm._m(17),
+                                  _vm._m(12),
                                   _vm._v(" "),
                                   _c(
                                     "div",
@@ -44236,7 +44442,7 @@ var render = function() {
                                     "py-2 px-3 mt-2 border-1 text-start d-flex justify-content-between"
                                 },
                                 [
-                                  _vm._m(18),
+                                  _vm._m(13),
                                   _vm._v(" "),
                                   _c(
                                     "div",
@@ -44289,11 +44495,11 @@ var render = function() {
                   [_vm._v("\n            Enquire Now\n          ")]
                 ),
                 _vm._v(" "),
-                _vm._m(19),
+                _vm._m(14),
                 _vm._v(" "),
-                _vm._m(20),
+                _vm._m(15),
                 _vm._v(" "),
-                _vm._m(21)
+                _vm._m(16)
               ])
             : _vm._e(),
           _vm._v(" "),
@@ -44301,8 +44507,15 @@ var render = function() {
             ? _c("div", { staticClass: "card p-4 mb-3" }, [
                 _vm.packageData.logo != null
                   ? _c("img", {
-                      staticClass: "mx-auto w-50",
-                      attrs: { src: _vm.packageData.logo }
+                      directives: [
+                        {
+                          name: "lazy",
+                          rawName: "v-lazy",
+                          value: _vm.packageData.logo,
+                          expression: "packageData.logo"
+                        }
+                      ],
+                      staticClass: "mx-auto w-50"
                     })
                   : _vm._e(),
                 _vm._v(" "),
@@ -44500,7 +44713,7 @@ var render = function() {
                         _vm._v("There are no reviews yet.")
                       ]),
                   _vm._v(" "),
-                  _vm._m(22),
+                  _vm._m(17),
                   _vm._v(" "),
                   _c(
                     "div",
@@ -44533,7 +44746,7 @@ var render = function() {
                               }
                             },
                             [
-                              _vm._m(23),
+                              _vm._m(18),
                               _vm._v(" "),
                               _c(
                                 "div",
@@ -44612,7 +44825,7 @@ var render = function() {
                                         1
                                       ),
                                       _vm._v(" "),
-                                      _vm._m(24),
+                                      _vm._m(19),
                                       _vm._v(" "),
                                       _c(
                                         "div",
@@ -44750,51 +44963,6 @@ var render = function() {
   ])
 }
 var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("h6", { staticClass: "card-title" }, [
-      _c("span", { staticClass: "fa fa-location-arrow mx-2" }),
-      _vm._v(" Cancellation Up\n              to 24 Hrs\n            ")
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("h6", { staticClass: "card-title" }, [
-      _c("span", { staticClass: "fa fa-location-arrow mx-2" }),
-      _vm._v(" Only 5% Advance\n              Payment\n            ")
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("h6", { staticClass: "card-title" }, [
-      _c("span", { staticClass: "fa fa-location-arrow mx-2" }),
-      _vm._v(" Can be\n              customized\n            ")
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("h6", { staticClass: "card-title" }, [
-      _c("span", { staticClass: "fa fa-location-arrow mx-2" }),
-      _vm._v(" Guaranteed\n              Departure\n            ")
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("h6", { staticClass: "card-title" }, [
-      _c("span", { staticClass: "fa fa-location-arrow mx-2" }),
-      _vm._v(" Get Visa On\n              Arrival (Available)\n            ")
-    ])
-  },
   function() {
     var _vm = this
     var _h = _vm.$createElement
