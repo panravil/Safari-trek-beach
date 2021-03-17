@@ -7,7 +7,7 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.2/css/font-awesome.min.css">
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,700;1,400;1,700&display=swap"
     rel="stylesheet">
-  <link href="https://unpkg.com/nprogress@0.2.0/nprogress.css" rel="stylesheet" />
+  <!-- <link href="https://unpkg.com/nprogress@0.2.0/nprogress.css" rel="stylesheet" /> -->
   <link rel="stylesheet" href="{{ asset('css/app.css') }}" />
   <title>{{env('APP_NAME')}}</title>
 

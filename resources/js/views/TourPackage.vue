@@ -31,15 +31,15 @@
               <h6 class="card-title" v-if="loading">
                 <content-placeholders-text :lines="1"/>
               </h6>
-              <h6 class="card-title" v-else-if="packageData.additional_info.cancellation == '24-hrs'">
-                <span class="fa fa-location-arrow mx-2"></span> Cancellation Up
-                to 24 Hrs
+              <h6 class="card-title" v-else-if="packageData.additional_info.cancellation != ''">
+                <span class="fa fa-location-arrow mx-2"></span>Free Cancellation Up
+                to {{ packageData.additional_info.cancellation }}
               </h6>
 
               <h6 class="card-title" v-if="loading">
                 <content-placeholders-text :lines="1"/>
               </h6>
-              <h6 class="card-title" v-else-if="packageData.additional_info.advance_payment == ''">
+              <h6 class="card-title" v-else-if="packageData.additional_info.advance_payment != ''">
                 <span class="fa fa-location-arrow mx-2"></span> Only {{ packageData.additional_info.advance_payment }} Advance
                 Payment
               </h6>
@@ -51,12 +51,20 @@
                 <span class="fa fa-location-arrow mx-2"></span> Can be
                 customized
               </h6>
+              <h6 class="card-title" v-else-if="packageData.customizable == 0">
+                <span class="fa fa-location-arrow mx-2"></span> Can't be
+                customized
+              </h6>
 
               <h6 class="card-title" v-if="loading">
                 <content-placeholders-text :lines="1"/>
               </h6>
               <h6 class="card-title" v-else-if="packageData.additional_info.departure == 'yes'">
                 <span class="fa fa-location-arrow mx-2"></span> Guaranteed
+                Departure
+              </h6>
+              <h6 class="card-title" v-else-if="packageData.additional_info.departure == 'no'">
+                <span class="fa fa-location-arrow mx-2"></span>Non Guaranteed
                 Departure
               </h6>
 
@@ -67,6 +75,11 @@
                 <span class="fa fa-location-arrow mx-2"></span> Get Visa On
                 Arrival (Available)
               </h6>
+              <h6 class="card-title" v-else-if="packageData.additional_info.arrival_visa == 'no'">
+                <span class="fa fa-location-arrow mx-2"></span> Get Visa On
+                Arrival (Unavailable)
+              </h6>
+
             </div>
             <div class="price-rate p-3">
               <div v-if="loading" class="p-3">
@@ -225,7 +238,7 @@
                               </h6>
                             </div>
                           </div>
-                          <div class="my-2 d-flex" v-else>
+                          <!-- <div class="my-2 d-flex" v-else>
                             <div style="min-width: 20px">
                               <h6 class="my-0 me-2">✗</h6>
                             </div>
@@ -235,7 +248,7 @@
                                 <strong> Excluded</strong>
                               </h6>
                             </div>
-                          </div>
+                          </div> -->
                           <div
                             class="my-2 d-flex"
                             v-if="
@@ -253,7 +266,7 @@
                               </h6>
                             </div>
                           </div>
-                          <div class="my-2 d-flex" v-else>
+                          <!-- <div class="my-2 d-flex" v-else>
                             <div style="min-width: 20px">
                               <h6 class="my-0 me-2">✗</h6>
                             </div>
@@ -263,7 +276,7 @@
                                 <strong> Excluded</strong>
                               </h6>
                             </div>
-                          </div>
+                          </div> -->
                           <div
                             class="my-2 d-flex"
                             v-if="
@@ -282,7 +295,7 @@
                               </h6>
                             </div>
                           </div>
-                          <div class="my-2 d-flex" v-else>
+                          <!-- <div class="my-2 d-flex" v-else>
                             <div style="min-width: 20px">
                               <h6 class="my-0 me-2">✗</h6>
                             </div>
@@ -292,7 +305,7 @@
                                 <strong> Excluded</strong>
                               </h6>
                             </div>
-                          </div>
+                          </div> -->
                           <div
                             class="my-2 d-flex"
                             v-if="
@@ -483,6 +496,13 @@
                             </tr>
                           </tbody>
                         </table>
+                        <div>* All Park Fees or Tickets cost are included in the cost.</div>
+                        <div v-if="packageData.additional_info.arrival_visa == 'yes'">
+                          * We Do accept Credit Card Payments. 
+                        </div>
+                        <div v-else-if="packageData.additional_info.arrival_visa == 'no'">
+                          * We Do not accept Credit Card Payments. 
+                        </div>
                       </div>
 
                     </div>
@@ -555,7 +575,9 @@
                     </div>
                     <div class="ms-2 d-flex" v-if="packageData != null">
                       <div style="min-width: 20px">
+                      <h6>
                         <span class="fa fa-check me-3 text-danger"></span>
+                        </h6>
                       </div>
                       <div>
                         <h6 class="exclusion-inclusion">
@@ -568,7 +590,9 @@
                     </div>
                     <div class="ms-2 d-flex" v-if="packageData != null">
                       <div style="min-width: 20px">
+                      <h6>
                         <span class="fa fa-check me-3 text-danger"></span>
+                        </h6>
                       </div>
                       <div>
                         <h6 class="exclusion-inclusion">
@@ -595,7 +619,9 @@
                     </div>
                     <div class="ms-2 d-flex" v-if="packageData != null">
                       <div style="min-width: 20px">
+                      <h6>
                         <span class="fa fa-check me-3 text-danger"></span>
+                        </h6>
                       </div>
                       <div>
                         <h6 class="exclusion-inclusion">
@@ -614,7 +640,9 @@
                         "
                       >
                         <div style="min-width: 20px">
+                      <h6>
                           <span class="fa fa-check me-3 text-danger"></span>
+                      </h6>
                         </div>
                         <div>
                           <h6 class="exclusion-inclusion">
@@ -629,7 +657,9 @@
                   </h5> -->
                     <div class="ms-2 d-flex" v-if="packageData != null">
                       <div style="min-width: 20px">
+                      <h6>
                         <span class="fa fa-check me-3 text-danger"></span>
+                      </h6>
                       </div>
                       <div>
                         <h6 class="exclusion-inclusion">
@@ -1628,7 +1658,7 @@ export default {
 
           this.reviewFilter();
 
-          // console.log("package", this.packageData);
+          console.log("package", this.packageData);
         });
     },
 
